@@ -1,0 +1,44 @@
+[project]
+name = "agentic-multimodal-research-platform"
+version = "0.1.0"
+description = "Agentic Multimodal Research Platform"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.3",
+    "mypy>=1.8",
+    "pre-commit>=3.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+select = ["E", "F", "I", "UP", "W", "C4", "C90", "ISC", "ICN", "PIE", "T20", "PYI", "PT", "QF", "RSE", "RET", "SIM", "TCH", "TRY", "PL", "ARG", "PTH", "ERA", "PD", "PGH", "PLW", "NPY", "CPY", "DTZ", "TID", "EXE"]
+ignore = ["E501", "ARG001", "ARG002"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+strict_optional = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = [
+    "packages/ai/src",
+    "packages/shared/src",
+    "packages/agents/src",
+    "packages/database/src",
+    "packages/ingestion/src",
+    "packages/research/src",
+    "packages/retrieval/src",
+    "packages/tools/src",
+    "apps/api/src",
+]
