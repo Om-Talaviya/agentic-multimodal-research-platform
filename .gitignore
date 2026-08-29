@@ -44,7 +44,7 @@ uploads/
 *.jpeg
 
 # Model files
-models/
+/models/
 *.bin
 *.gguf
 *.safetensors

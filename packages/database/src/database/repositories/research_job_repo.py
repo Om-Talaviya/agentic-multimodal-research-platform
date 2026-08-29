@@ -50,7 +50,9 @@ class ResearchJobRepository:
         values = {"status": status.value, "updated_at": datetime.utcnow()}
         if error:
             values["error_message"] = error
-        if status == JobStatus.COMPLETED:
+        if status == JobStatus.RUNNING:
+            values["started_at"] = datetime.utcnow()
+        elif status == JobStatus.COMPLETED:
             values["completed_at"] = datetime.utcnow()
         elif status == JobStatus.FAILED:
             values["completed_at"] = datetime.utcnow()
