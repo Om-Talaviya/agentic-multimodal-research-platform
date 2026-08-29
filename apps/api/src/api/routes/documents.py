@@ -1,12 +1,19 @@
 """Document upload and management routes."""
 
+import io
+from datetime import datetime
 from typing import Optional
 from uuid import UUID
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 from database.connection import get_session
 from database.repositories import DocumentRepository
 from database.models import Document
+from ingestion.pipeline import IngestionPipeline
+from ingestion.parsers.registry import ParserRegistry
+from ingestion.chunking import SemanticChunker
+from ai.gateway.model_gateway import ModelGateway
 from shared.config import settings
 from shared.logging import get_logger
 from shared.exceptions import ValidationError
@@ -34,11 +41,20 @@ class DocumentResponse(BaseModel):
     mime_type: str
     file_size: int
     file_path: str
-    status: str
+    status: str = "ingested"
     created_at: str
     
     class Config:
         from_attributes = True
+
+
+async def get_model_gateway() -> Optional[ModelGateway]:
+    """Dependency helper to get active ModelGateway instance."""
+    from api.dependencies import get_model_gateway as get_gateway
+    try:
+        return await get_gateway()
+    except Exception:
+        return None
 
 
 async def validate_upload(file: UploadFile) -> bytes:
@@ -93,33 +109,67 @@ async def upload_document(
     file: UploadFile = File(...),
     research_job_id: Optional[str] = Form(None),
     session: AsyncSession = Depends(get_session),
+    gateway: Optional[ModelGateway] = Depends(get_model_gateway),
 ):
-    """Upload a document for research."""
+    """Upload a document and run it through the multimodal ingestion pipeline."""
     content = await validate_upload(file)
     file_path, safe_name = await save_upload(content, file.filename, research_job_id)
     
-    doc = Document(
-        filename=file.filename,
-        mime_type=file.content_type or "application/octet-stream",
-        file_size=len(content),
-        file_path=file_path,
-        job_id=UUID(research_job_id) if research_job_id else None,
-        status="uploaded",
+    repo = DocumentRepository(session)
+    parser_registry = ParserRegistry(vision_source=gateway)
+    pipeline = IngestionPipeline(
+        parser_registry=parser_registry,
+        chunker=SemanticChunker(),
+        doc_repo=repo,
     )
     
-    repo = DocumentRepository(session)
-    await repo.create(doc)
+    doc_id: Optional[UUID] = None
+    file_io = io.BytesIO(content)
+    try:
+        result = await pipeline.ingest(
+            file=file_io,
+            filename=file.filename,
+            mime_type=file.content_type,
+            research_job_id=research_job_id,
+            file_path=file_path,
+        )
+        doc_id = UUID(result.document_id)
+        logger.info(
+            "Document uploaded and ingested",
+            doc_id=result.document_id,
+            filename=file.filename,
+            chunks=len(result.chunks),
+            tables=result.table_count,
+            images=result.image_count,
+        )
+    except Exception as e:
+        logger.error("Ingestion failed during document upload, falling back to raw record", filename=file.filename, error=str(e))
+        doc = Document(
+            filename=file.filename,
+            mime_type=file.content_type or "application/octet-stream",
+            file_size=len(content),
+            file_path=file_path,
+            job_id=UUID(research_job_id) if research_job_id else None,
+            content="",
+            doc_metadata={"ingestion_error": str(e)},
+            created_at=datetime.utcnow(),
+        )
+        await repo.create(doc)
+        doc_id = doc.id
     
-    logger.info("Document uploaded", doc_id=doc.id, filename=file.filename, job_id=research_job_id)
+    doc = await repo.get(doc_id)
+    if not doc:
+        raise HTTPException(status_code=500, detail="Failed to retrieve uploaded document")
     
+    created_str = doc.created_at.isoformat() if doc.created_at else datetime.utcnow().isoformat()
     return DocumentResponse(
         id=doc.id,
         filename=doc.filename,
         mime_type=doc.mime_type,
-        file_size=doc.file_size,
-        file_path=doc.file_path,
-        status=doc.status,
-        created_at=doc.created_at.isoformat(),
+        file_size=doc.file_size or len(content),
+        file_path=doc.file_path or file_path,
+        status="ingested",
+        created_at=created_str,
     )
 
 
@@ -135,14 +185,15 @@ async def get_document(
     if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
     
+    created_str = doc.created_at.isoformat() if doc.created_at else datetime.utcnow().isoformat()
     return DocumentResponse(
         id=doc.id,
         filename=doc.filename,
         mime_type=doc.mime_type,
-        file_size=doc.file_size,
-        file_path=doc.file_path,
-        status=doc.status,
-        created_at=doc.created_at.isoformat(),
+        file_size=doc.file_size or 0,
+        file_path=doc.file_path or "",
+        status="ingested",
+        created_at=created_str,
     )
 
 
@@ -167,10 +218,10 @@ async def list_documents(
             id=d.id,
             filename=d.filename,
             mime_type=d.mime_type,
-            file_size=d.file_size,
-            file_path=d.file_path,
-            status=d.status,
-            created_at=d.created_at.isoformat(),
+            file_size=d.file_size or 0,
+            file_path=d.file_path or "",
+            status="ingested",
+            created_at=d.created_at.isoformat() if d.created_at else datetime.utcnow().isoformat(),
         )
         for d in docs[offset:offset+limit]
     ]
