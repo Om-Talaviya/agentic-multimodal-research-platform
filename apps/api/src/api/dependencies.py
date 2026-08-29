@@ -12,10 +12,17 @@ from agents.registry import AgentRegistry, registry as agent_registry
 from tools.registry import ToolRegistry, tool_registry
 from tools.definitions.web_search import WebSearchTool, WebFetchTool
 from tools.definitions.document_read import DocumentReadTool
+from tools.definitions.knowledge_search import KnowledgeSearchTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
 from agents.critic.critic_agent import CriticAgent
+from retrieval.bm25 import BM25Index
+from retrieval.embedder import Embedder
+from retrieval.in_memory_store import InMemoryVectorStore
+from retrieval.indexer import KnowledgeIndexer
+from retrieval.retriever import HybridRetriever
+from retrieval.vector_store import VectorStore
 from shared.config import settings
 from shared.logging import get_logger
 
@@ -25,6 +32,11 @@ logger = get_logger(__name__)
 _model_router: Optional[ModelRouter] = None
 _model_gateway: Optional[ModelGateway] = None
 _orchestrator: Optional[AgentOrchestrator] = None
+_vector_store: Optional[VectorStore] = None
+_embedder: Optional[Embedder] = None
+_bm25_index: Optional[BM25Index] = None
+_retriever: Optional[HybridRetriever] = None
+_indexer: Optional[KnowledgeIndexer] = None
 
 
 async def init_providers() -> None:
@@ -102,6 +114,22 @@ async def init_providers() -> None:
         provider_registry=provider_registry,
     )
     
+    # Initialize Retrieval & RAG services
+    global _vector_store, _embedder, _bm25_index, _retriever, _indexer
+    _vector_store = InMemoryVectorStore()
+    _embedder = Embedder(model_router=_model_router)
+    _bm25_index = BM25Index()
+    _retriever = HybridRetriever(
+        vector_store=_vector_store,
+        bm25_index=_bm25_index,
+        embedder=_embedder,
+    )
+    _indexer = KnowledgeIndexer(
+        vector_store=_vector_store,
+        bm25_index=_bm25_index,
+        embedder=_embedder,
+    )
+
     # Register agents
     agent_registry.register("planner", PlannerAgent)
     agent_registry.register("web_research", WebResearchAgent)
@@ -112,6 +140,7 @@ async def init_providers() -> None:
     tool_registry.register(WebSearchTool())
     tool_registry.register(WebFetchTool())
     tool_registry.register(DocumentReadTool())
+    tool_registry.register(KnowledgeSearchTool(retriever=_retriever))
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(
@@ -146,6 +175,30 @@ async def get_orchestrator() -> AgentOrchestrator:
 
 async def get_agent_registry() -> AgentRegistry:
     return agent_registry
+
+
+async def get_vector_store() -> VectorStore:
+    if _vector_store is None:
+        await init_providers()
+    return _vector_store
+
+
+async def get_embedder() -> Embedder:
+    if _embedder is None:
+        await init_providers()
+    return _embedder
+
+
+async def get_retriever() -> HybridRetriever:
+    if _retriever is None:
+        await init_providers()
+    return _retriever
+
+
+async def get_indexer() -> KnowledgeIndexer:
+    if _indexer is None:
+        await init_providers()
+    return _indexer
 
 
 async def get_tool_registry() -> ToolRegistry:

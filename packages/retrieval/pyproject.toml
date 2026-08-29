@@ -1,0 +1,26 @@
+[project]
+name = "retrieval"
+version = "0.1.0"
+description = "Retrieval, Vector Search, and Hybrid RAG Layer"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "shared",
+    "ai",
+    "database",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = [
+    "src",
+    "../ai/src",
+    "../shared/src",
+    "../database/src",
+    "../tools/src",
+    "../agents/src",
+]
