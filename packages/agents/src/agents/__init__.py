@@ -32,14 +32,29 @@ from agents.runtime import (
     AgentExecutionResult,
 )
 
+from agents.critic.critic_agent import CriticAgent
+from agents.memory import AgentMemory, MemoryItem
+from agents.tracing import AgentTrace, ToolCallTrace, ModelCallTrace
+from agents.planner.planner_agent import PlannerAgent
+from agents.research.web_agent import WebResearchAgent
+from agents.research.document_agent import DocumentAnalysisAgent
+
 __all__ = [
     "Agent",
     "AgentContext",
     "AgentResult",
     "AgentMemory",
+    "MemoryItem",
     "AgentRegistry",
     "registry",
     "AgentOrchestrator",
+    "CriticAgent",
+    "PlannerAgent",
+    "WebResearchAgent",
+    "DocumentAnalysisAgent",
+    "AgentTrace",
+    "ToolCallTrace",
+    "ModelCallTrace",
     "AgentState",
     "AgentStateMachine",
     "InvalidStateTransitionError",

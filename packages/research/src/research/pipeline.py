@@ -144,6 +144,48 @@ class ResearchPipeline:
                         
                     completed.add(task.id)
     
+    async def run_verification(self, job: ResearchJob) -> None:
+        """Run critic agent to evaluate and verify collected evidence."""
+        from uuid import UUID
+        from database.connection import get_session
+        from database.repositories import EvidenceRepository
+
+        try:
+            job_uuid = UUID(str(job.id))
+            async with get_session() as session:
+                evidence_repo = EvidenceRepository(session)
+                evidence_list = await evidence_repo.get_by_job(job_uuid)
+
+            if not evidence_list:
+                logger.info("No evidence to verify for job", job_id=job.id)
+                return
+
+            critic_result = await self.orchestrator.run_critic(
+                evidence=evidence_list,
+                question=job.question,
+                job_id=str(job.id),
+                request_id=str(job.request_id),
+            )
+
+            if critic_result.success and isinstance(critic_result.output, dict):
+                verifications = critic_result.output.get("verifications", [])
+                async with get_session() as session:
+                    evidence_repo = EvidenceRepository(session)
+                    for item in verifications:
+                        ev_id = item.get("evidence_id")
+                        if ev_id:
+                            try:
+                                await evidence_repo.update_verification(
+                                    evidence_id=UUID(str(ev_id)),
+                                    status=item.get("verification_status", "verified"),
+                                    confidence=item.get("confidence"),
+                                    notes=item.get("verification_notes"),
+                                )
+                            except Exception as update_err:
+                                logger.warning("Could not update verification for evidence", evidence_id=ev_id, error=str(update_err))
+        except Exception as verif_err:
+            logger.warning("Evidence verification step encountered error", job_id=job.id, error=str(verif_err))
+
     async def run(self, request: ResearchRequest) -> ResearchJob:
         """Run full research pipeline."""
         job = await self.create_job(request)
@@ -163,7 +205,8 @@ class ResearchPipeline:
             # Execution
             await self.execute_plan(job, plan)
             
-            # TODO: Verification, Synthesis, Report
+            # Verification using Critic Agent
+            await self.run_verification(job)
             
             async with get_session() as session:
                 repo = ResearchJobRepository(session)

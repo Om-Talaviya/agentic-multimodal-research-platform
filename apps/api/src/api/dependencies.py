@@ -15,6 +15,7 @@ from tools.definitions.document_read import DocumentReadTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
+from agents.critic.critic_agent import CriticAgent
 from shared.config import settings
 from shared.logging import get_logger
 
@@ -105,6 +106,7 @@ async def init_providers() -> None:
     agent_registry.register("planner", PlannerAgent)
     agent_registry.register("web_research", WebResearchAgent)
     agent_registry.register("document_analysis", DocumentAnalysisAgent)
+    agent_registry.register("critic", CriticAgent)
     
     # Register tools
     tool_registry.register(WebSearchTool())
