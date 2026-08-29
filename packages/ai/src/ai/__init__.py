@@ -1,5 +1,3 @@
-"""AI provider package."""
-
 from ai.schemas import (
     LLMMessage, LLMRequest, LLMResponse,
     VisionRequest, VisionResponse,
@@ -14,6 +12,10 @@ from ai.providers import (
     GeminiWeb2APIProvider, OllamaProvider, OpenAICompatibleProvider,
     ModelRouter, NoSuitableModelError,
 )
+from ai.registry import ModelDefinition, ModelRegistry, ProviderRegistry
+from ai.router.tasks import TaskType
+from ai.gateway import ModelGateway, GatewayHealth
+from ai.factory import create_default_gateway
 
 __all__ = [
     "LLMMessage", "LLMRequest", "LLMResponse",
@@ -26,4 +28,8 @@ __all__ = [
     "LLMProvider", "VisionProvider", "EmbeddingProvider", "RerankerProvider",
     "GeminiWeb2APIProvider", "OllamaProvider", "OpenAICompatibleProvider",
     "ModelRouter", "NoSuitableModelError",
+    "ModelDefinition", "ModelRegistry", "ProviderRegistry",
+    "TaskType",
+    "ModelGateway", "GatewayHealth",
+    "create_default_gateway",
 ]

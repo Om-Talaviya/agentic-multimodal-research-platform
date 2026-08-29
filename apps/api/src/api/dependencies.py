@@ -1,10 +1,12 @@
-"""API dependencies - provider initialization."""
-
 from typing import Optional
+from ai.gateway.model_gateway import ModelGateway
 from ai.providers.gemini_web2api import GeminiWeb2APIProvider
 from ai.providers.ollama import OllamaProvider
 from ai.providers.openai_compatible import OpenAICompatibleProvider
 from ai.providers.router import ModelRouter
+from ai.registry.model_registry import ModelRegistry
+from ai.registry.provider_registry import ProviderRegistry
+from ai.factory import DEFAULT_GEMINI_MODEL_DEFINITIONS
 from agents.orchestrator import AgentOrchestrator
 from agents.registry import AgentRegistry, registry as agent_registry
 from tools.registry import ToolRegistry, tool_registry
@@ -20,12 +22,13 @@ logger = get_logger(__name__)
 
 # Global instances
 _model_router: Optional[ModelRouter] = None
+_model_gateway: Optional[ModelGateway] = None
 _orchestrator: Optional[AgentOrchestrator] = None
 
 
 async def init_providers() -> None:
     """Initialize all providers and registries."""
-    global _model_router, _orchestrator
+    global _model_router, _model_gateway, _orchestrator
     
     # Initialize Ollama provider
     ollama = OllamaProvider(base_url=settings.ollama_base_url)
@@ -70,12 +73,32 @@ async def init_providers() -> None:
         )
         providers_llm.append(anthropic)
     
-    # Create model router
+    # Create registries and model router
+    model_registry = ModelRegistry()
+    provider_registry = ProviderRegistry()
+
+    for p in providers_llm:
+        provider_registry.register_llm(p)
+    for p in providers_vision:
+        provider_registry.register_vision(p)
+    for p in providers_embedding:
+        provider_registry.register_embedding(p)
+    for p in providers_reranker:
+        provider_registry.register_reranker(p)
+
+    if settings.gemini_web2api_base_url:
+        for model_def in DEFAULT_GEMINI_MODEL_DEFINITIONS:
+            model_registry.register(model_def)
+
     _model_router = ModelRouter(
-        llm_providers=providers_llm,
-        vision_providers=providers_vision,
-        embedding_providers=providers_embedding,
-        reranker_providers=providers_reranker,
+        model_registry=model_registry,
+        provider_registry=provider_registry,
+    )
+
+    _model_gateway = ModelGateway(
+        router=_model_router,
+        model_registry=model_registry,
+        provider_registry=provider_registry,
     )
     
     # Register agents
@@ -105,6 +128,12 @@ async def get_model_router() -> ModelRouter:
     if _model_router is None:
         await init_providers()
     return _model_router
+
+
+async def get_model_gateway() -> ModelGateway:
+    if _model_gateway is None:
+        await init_providers()
+    return _model_gateway
 
 
 async def get_orchestrator() -> AgentOrchestrator:
