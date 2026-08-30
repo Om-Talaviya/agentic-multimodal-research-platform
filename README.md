@@ -224,7 +224,3 @@ All configuration via environment variables (see `.env.example`):
 - [ ] Evidence verification and synthesis
 - [ ] Report generation
 - [ ] Real-time WebSocket updates
-
-## License
-
-MIT License - see LICENSE file for details.
