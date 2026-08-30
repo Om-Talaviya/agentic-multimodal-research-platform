@@ -12,7 +12,8 @@ from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
 from database.connection import init_db, close_db
-from api.routes import health, research, documents, models
+from api.routes import health, research, documents, models, auth, metrics
+from api.middleware.metrics import PrometheusMiddleware
 
 logger = get_logger(__name__)
 
@@ -44,6 +45,9 @@ app = FastAPI(
     docs_url="/docs" if settings.debug else None,
     redoc_url="/redoc" if settings.debug else None,
 )
+
+# Prometheus metrics middleware
+app.add_middleware(PrometheusMiddleware)
 
 # Rate limiting
 app.state.limiter = limiter
@@ -88,9 +92,12 @@ async def add_request_id(request: Request, call_next):
 
 # Include routers
 app.include_router(health.router, prefix=settings.api_prefix)
+app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(research.router, prefix=settings.api_prefix)
 app.include_router(documents.router, prefix=settings.api_prefix)
 app.include_router(models.router, prefix=settings.api_prefix)
+app.include_router(metrics.router, prefix=settings.api_prefix)
+app.include_router(metrics.router)  # Also expose directly on /metrics
 
 
 @app.get("/")

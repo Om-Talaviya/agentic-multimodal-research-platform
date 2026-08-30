@@ -30,7 +30,7 @@ async def health_check(
     # Model providers
     try:
         from api.dependencies import get_model_router
-        router: ModelRouter = get_model_router()
+        router: ModelRouter = await get_model_router()
         health_results = await router.health_check_all()
         for name, health in health_results.items():
             checks[name] = "healthy" if health.healthy else f"unhealthy: {health.error}"

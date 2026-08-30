@@ -58,4 +58,5 @@ pythonpath = [
     "../../packages/agents/src",
     "../../packages/research/src",
     "../../packages/ingestion/src",
+    "../../packages/retrieval/src",
 ]

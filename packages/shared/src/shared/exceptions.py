@@ -124,3 +124,17 @@ class RateLimitError(ResearchError):
             code="RATE_LIMITED",
             details={"limit": limit, "window_seconds": window},
         )
+
+
+class AuthenticationError(ResearchError):
+    """Raised when user authentication fails."""
+
+    def __init__(self, message: str = "Authentication failed", details: dict | None = None):
+        super().__init__(message, code="AUTHENTICATION_ERROR", details=details)
+
+
+class AuthorizationError(ResearchError):
+    """Raised when user lacks required permission or role."""
+
+    def __init__(self, message: str = "Permission denied", details: dict | None = None):
+        super().__init__(message, code="AUTHORIZATION_ERROR", details=details)

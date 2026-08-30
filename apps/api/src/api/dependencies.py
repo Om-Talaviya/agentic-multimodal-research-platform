@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional, Sequence
 from ai.gateway.model_gateway import ModelGateway
 from ai.providers.gemini_web2api import GeminiWeb2APIProvider
 from ai.providers.ollama import OllamaProvider
@@ -203,3 +203,69 @@ async def get_indexer() -> KnowledgeIndexer:
 
 async def get_tool_registry() -> ToolRegistry:
     return tool_registry
+
+
+# --- Authentication & Authorization Dependencies ---
+from fastapi import HTTPException, Security, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from shared.auth import User, UserRole, user_registry, verify_token
+from shared.exceptions import AuthenticationError, AuthorizationError
+
+security = HTTPBearer(auto_error=False)
+
+
+async def get_current_user(
+    credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
+) -> User:
+    """Validate bearer JWT token and return authenticated User."""
+    if not credentials or not credentials.credentials:
+        # Check default system user if running in dev without explicit token
+        admin = user_registry.get_by_username("admin")
+        if admin and settings.debug and not credentials:
+            return admin
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentication credentials were not provided",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    token = credentials.credentials
+    try:
+        payload = verify_token(token, expected_type="access")
+        user = user_registry.get_by_id(payload.sub)
+        if not user or not user.is_active:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="User inactive or does not exist",
+            )
+        return user
+    except AuthenticationError as auth_err:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=str(auth_err),
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+
+async def get_optional_current_user(
+    credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
+) -> Optional[User]:
+    """Optionally validate bearer JWT token if present."""
+    if not credentials or not credentials.credentials:
+        return None
+    try:
+        return await get_current_user(credentials)
+    except Exception:
+        return None
+
+
+def require_role(allowed_roles: List[UserRole]):
+    """Enforce RBAC role requirement on route dependency."""
+    async def role_checker(current_user: User = Security(get_current_user)) -> User:
+        if current_user.role not in allowed_roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Access forbidden: requires one of roles {[r.value for r in allowed_roles]}, user has role '{current_user.role.value}'",
+            )
+        return current_user
+    return role_checker

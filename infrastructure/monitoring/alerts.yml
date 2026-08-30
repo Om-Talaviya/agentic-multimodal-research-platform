@@ -1,0 +1,38 @@
+groups:
+  - name: research_platform_alerts
+    rules:
+      - alert: HighHttpErrorRate
+        expr: rate(http_errors_total[5m]) / rate(http_requests_total[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High HTTP error rate detected on Research Platform API"
+          description: "HTTP error rate is {{ $value | humanizePercentage }} (threshold 5%)."
+
+      - alert: HighRequestLatency
+        expr: http_request_duration_seconds_sum / http_request_duration_seconds_count > 2.0
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High average request latency on Research Platform API"
+          description: "Average latency is {{ $value }}s (threshold 2.0s)."
+
+      - alert: AgentExecutionFailureSpike
+        expr: rate(agent_runs_total{status="failed"}[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Agent execution failures detected"
+          description: "Agent '{{ $labels.agent }}' failure rate is elevated."
+
+      - alert: AIModelProviderErrors
+        expr: rate(model_calls_total{status="error"}[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "AI Model Provider error rate elevated"
+          description: "Model provider '{{ $labels.provider }}' is failing to process requests."
