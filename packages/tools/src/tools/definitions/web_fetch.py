@@ -1,11 +1,62 @@
 """Web fetch tool definition."""
 
 from html.parser import HTMLParser
+import asyncio
 import httpx
+import ipaddress
+import socket
+from urllib.parse import urlparse
 from tools.base import Permission, Tool, ToolParameter, ToolSchema
 from shared.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+def _is_ip_allowed(ip_str: str) -> bool:
+    """Check if an IP address is allowed for outbound requests.
+
+    Blocks: loopback, private, link-local, reserved, and unspecified addresses.
+    Allows: public IPv4 and IPv6 addresses.
+    """
+    try:
+        ip = ipaddress.ip_address(ip_str)
+    except ValueError:
+        return False
+
+    if ip.is_loopback:
+        return False
+    if ip.is_private:
+        return False
+    if ip.is_link_local:
+        return False
+    if ip.is_reserved:
+        return False
+    if ip.is_unspecified:
+        return False
+    if ip.is_multicast:
+        return False
+
+    return True
+
+
+async def _resolve_and_validate_hostname(hostname: str) -> None:
+    """Resolve hostname and validate all resolved IPs are public.
+
+    Raises:
+        ValueError: If any resolved IP is not allowed (private, loopback, etc.)
+        socket.gaierror: If hostname cannot be resolved
+    """
+    try:
+        infos = await asyncio.get_event_loop().getaddrinfo(
+            hostname, None, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM
+        )
+    except socket.gaierror as e:
+        raise ValueError(f"Failed to resolve hostname: {e}")
+
+    for info in infos:
+        ip = info[4][0]
+        if not _is_ip_allowed(ip):
+            raise ValueError(f"Blocked IP address: {ip}")
 
 
 class TextExtractor(HTMLParser):
@@ -57,6 +108,16 @@ class WebFetchTool(Tool):
     async def execute(self, url: str, max_length: int = 50000) -> str:
         """Fetch URL content and extract clean text."""
         try:
+            parsed = urlparse(url)
+            if parsed.scheme not in ("http", "https"):
+                return "Error fetching URL: Only HTTP and HTTPS schemes are allowed"
+
+            hostname = parsed.hostname
+            if not hostname:
+                return "Error fetching URL: Invalid URL - no hostname"
+
+            await _resolve_and_validate_hostname(hostname)
+
             async with httpx.AsyncClient() as client:
                 response = await client.get(url, timeout=30.0, follow_redirects=True)
                 response.raise_for_status()
@@ -69,6 +130,9 @@ class WebFetchTool(Tool):
                     content = content[:max_length] + "... [truncated]"
 
                 return content
+        except ValueError as e:
+            logger.warning("Web fetch blocked by SSRF protection", url=url, error=str(e))
+            return f"Error fetching URL: {str(e)}"
         except Exception as e:
             logger.error("Web fetch failed", url=url, error=str(e))
             return f"Error fetching URL: {str(e)}"
