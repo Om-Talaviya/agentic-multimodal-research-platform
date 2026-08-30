@@ -16,6 +16,7 @@ from tools.definitions.knowledge_search import KnowledgeSearchTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
+from agents.research.report_agent import ReportAgent
 from agents.critic.critic_agent import CriticAgent
 from retrieval.bm25 import BM25Index
 from retrieval.embedder import Embedder
@@ -135,6 +136,7 @@ async def init_providers() -> None:
     agent_registry.register("web_research", WebResearchAgent)
     agent_registry.register("document_analysis", DocumentAnalysisAgent)
     agent_registry.register("critic", CriticAgent)
+    agent_registry.register("report", ReportAgent)
     
     # Register tools
     tool_registry.register(WebSearchTool())
