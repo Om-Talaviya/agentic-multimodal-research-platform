@@ -189,12 +189,24 @@ class ResearchPipeline:
     async def run(self, request: ResearchRequest) -> ResearchJob:
         """Run full research pipeline."""
         job = await self.create_job(request)
+        await self.run_job(job.id)
+        return job
+
+    async def run_job(self, job_id: str) -> ResearchJob:
+        """Run full research pipeline on an existing job."""
+        from database.connection import get_session
+        from database.repositories import ResearchJobRepository
+        from shared.types import JobStatus
+        from uuid import UUID
+
+        # Load the job
+        async with get_session() as session:
+            repo = ResearchJobRepository(session)
+            job = await repo.get(UUID(job_id))
+            if not job:
+                raise ValueError(f"Job not found: {job_id}")
         
         try:
-            from database.connection import get_session
-            from database.repositories import ResearchJobRepository
-            from shared.types import JobStatus
-            
             async with get_session() as session:
                 repo = ResearchJobRepository(session)
                 await repo.update_status(job.id, JobStatus.RUNNING)
@@ -214,9 +226,6 @@ class ResearchPipeline:
             
         except Exception as e:
             logger.error("Research pipeline failed", job_id=job.id, error=str(e))
-            from database.connection import get_session
-            from database.repositories import ResearchJobRepository
-            from shared.types import JobStatus
             async with get_session() as session:
                 repo = ResearchJobRepository(session)
                 await repo.update_status(job.id, JobStatus.FAILED, str(e))

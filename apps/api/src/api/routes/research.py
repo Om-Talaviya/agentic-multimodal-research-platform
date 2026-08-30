@@ -2,7 +2,7 @@
 
 from typing import Optional
 from uuid import UUID
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 from database.connection import get_session
@@ -124,12 +124,22 @@ async def get_pipeline() -> ResearchPipeline:
     )
 
 
+async def run_pipeline_background(pipeline: ResearchPipeline, job_id: str) -> None:
+    """Run pipeline in background and handle errors."""
+    try:
+        await pipeline.run_job(job_id)
+    except Exception as e:
+        logger.error("Background pipeline execution failed", job_id=job_id, error=str(e))
+        # Error is already persisted in run_job via repo.update_status
+
+
 @router.post("", response_model=ResearchJobResponse, status_code=status.HTTP_201_CREATED)
 async def create_research_job(
     request: ResearchJobCreate,
+    background_tasks: BackgroundTasks,
     pipeline: ResearchPipeline = Depends(get_pipeline),
 ):
-    """Create a new research job."""
+    """Create a new research job and execute it in the background."""
     research_request = ResearchRequest(
         question=request.question,
         context=request.context,
@@ -139,6 +149,9 @@ async def create_research_job(
     
     job = await pipeline.create_job(research_request)
     
+    # Schedule background execution
+    background_tasks.add_task(run_pipeline_background, pipeline, str(job.id))
+
     return ResearchJobResponse(
         id=job.id,
         request_id=job.request_id,
