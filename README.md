@@ -4,34 +4,8 @@ A production-grade research platform that uses agentic AI to conduct comprehensi
 
 ## Architecture Overview
 
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Web UI    │     │   REST API  │     │  WebSocket  │
-│  (React)    │────▶│  (FastAPI)  │◀───▶│  (Real-time)│
-└─────────────┘     └──────┬──────┘     └─────────────┘
-                           │
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-        ┌─────────┐  ┌───────────┐ ┌───────────┐
-        │Planner  │  │Research   │ │Synthesis  │
-        │Agent    │──▶│Agents     │─▶│& Report   │
-        └─────────┘  └───────────┘ └───────────┘
-              │            │            │
-              ▼            ▼            ▼
-        ┌─────────────────────────────────────────┐
-        │         Model Router / Providers        │
-        │  ┌────────┐ ┌────────┐ ┌────────────┐  │
-        │  │ Ollama │ │ OpenAI │ │ Anthropic  │  │
-        │  │ (Local)│ │        │ │            │  │
-        │  └────────┘ └────────┘ └────────────┘  │
-        └─────────────────────────────────────────┘
-              │            │            │
-              ▼            ▼            ▼
-        ┌─────────┐  ┌──────────┐ ┌────────────┐
-        │PostgreSQL│  │ ChromaDB │ │ File Store │
-        │(Relational)│ │ (Vectors)│ │ (Assets)   │
-        └─────────┘  └──────────┘ └────────────┘
-```
+![System Architecture](docs/architecture.png)
+
 
 ## Features
 

@@ -42,6 +42,10 @@ uploads/
 *.png
 *.jpg
 *.jpeg
+!docs/*.png
+!docs/*.jpg
+!docs/*.jpeg
+
 
 # Model files
 /models/

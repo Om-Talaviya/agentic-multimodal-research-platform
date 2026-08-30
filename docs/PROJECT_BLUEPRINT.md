@@ -46,34 +46,8 @@ The Agentic Multimodal Research Platform is a production-grade system that enabl
 
 ## 4. System Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        API Layer (FastAPI)                      │
-├─────────────────────────────────────────────────────────────────┤
-│                     Research Orchestrator                       │
-├──────────────┬──────────────┬──────────────┬───────────────────┤
-│  Planner     │  Web Research│  Document    │  Multimodal       │
-│  Agent       │  Agent       │  Analysis    │  Analysis Agent   │
-│              │              │  Agent       │                   │
-├──────────────┼──────────────┼──────────────┼───────────────────┤
-│         Evidence Verification & Critic Agents                  │
-├─────────────────────────────────────────────────────────────────┤
-│              Synthesis & Report Generation Agents              │
-├─────────────────────────────────────────────────────────────────┤
-│                    Model Router / Provider Abstraction          │
-├──────────┬──────────┬──────────┬──────────┬────────────────────┤
-│  LLM     │  Vision  │Embedding │ Reranker │  Future Providers  │
-│ Provider │ Provider │ Provider │ Provider │                    │
-└──────────┴──────────┴──────────┴──────────┴────────────────────┘
-          │          │          │          │
-┌─────────┴──────────┴──────────┴──────────┴────────────────────┐
-│                      Data Layer                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │ PostgreSQL  │  │  ChromaDB   │  │  File Store │             │
-│  │ (Relational)│  │  (Vectors)  │  │  (Assets)   │             │
-│  └─────────────┘  └─────────────┘  └─────────────┘             │
-└─────────────────────────────────────────────────────────────────┘
-```
+![System Architecture](architecture.png)
+
 
 ## 5. Technology Stack
 
