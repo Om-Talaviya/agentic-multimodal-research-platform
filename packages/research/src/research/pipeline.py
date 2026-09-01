@@ -233,7 +233,7 @@ class ResearchPipeline:
             # Create report generation task
             report_task = ResearchTask(
                 id=str(uuid4()),
-                job_id=job.id,
+                job_id=str(job.id),
                 type="report",
                 objective=f"Generate research report for: {job.question}",
                 agent="report",
@@ -245,7 +245,7 @@ class ResearchPipeline:
             )
 
             # Run ReportAgent through orchestrator
-            context = self.orchestrator.create_context(job.id, report_task.id, job.request_id)
+            context = self.orchestrator.create_context(str(job.id), report_task.id, str(job.request_id))
             report_result = await self.orchestrator.run_agent("report", report_task, context)
 
             if not report_result.success:

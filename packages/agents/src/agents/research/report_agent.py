@@ -195,7 +195,7 @@ OUTPUT FORMAT (JSON):
 
     def _generate_empty_report(self, question: str) -> AgentResult:
         """Generate a minimal report when no evidence is available."""
-        from datetime import datetime
+        from datetime import UTC, datetime
         from research.models import ResearchReport
 
         report = ResearchReport(
@@ -209,7 +209,7 @@ OUTPUT FORMAT (JSON):
             sources=[],
             conclusions=[],
             limitations=["No evidence available to support any findings."],
-            generated_at=datetime.utcnow(),
+            generated_at=datetime.now(UTC),
         )
 
         return AgentResult(
