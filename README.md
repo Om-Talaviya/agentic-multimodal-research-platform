@@ -203,24 +203,65 @@ All configuration via environment variables (see `.env.example`):
 - **File Upload**: `UPLOAD_DIR`, `MAX_UPLOAD_SIZE`
 - **Logging**: `LOG_LEVEL`, `LOG_FORMAT`
 
-## Current Status: Phase 1 (Foundation)
+## Project Implementation Status
 
-✅ Repository structure  
-✅ Architecture documentation  
-✅ Backend foundation (FastAPI, config, logging, database)  
-✅ Frontend foundation (React + TypeScript + Vite)  
-✅ Model provider abstractions (Ollama, OpenAI-compatible)  
-✅ Agent framework with registry and orchestrator  
-✅ Tool system (web_search, web_fetch, document_read)  
-✅ Planner, Web Research, Document Analysis agents  
-✅ Research pipeline orchestration  
-✅ Database models and repositories  
-✅ Testing infrastructure  
+### Phase 1 — Foundation
+🟢 **COMPLETE**
+- ✅ Repository structure & architectural specifications
+- ✅ Backend foundation (FastAPI, Pydantic settings, structlog, SQLAlchemy async)
+- ✅ Database models & repositories (PostgreSQL & SQLite parity)
+- ✅ Frontend foundation shell (React + TypeScript + Vite)
+- ✅ Model provider abstractions (Ollama, Gemini Web2API, OpenAI-compatible)
+- ✅ Testing infrastructure & Docker Compose environment
 
-### Next: Phase 2 - Research MVP
+### Phase 2 — Research MVP
+🟡 **~95% COMPLETE**
+- ✅ Planner Agent with LLM-based structured decomposition
+- ✅ Dynamic, persistent DAG task execution & dependency resolution
+- ✅ Web Research Agent (search & fetch) & Document Analysis Agent
+- ✅ Agent Orchestrator with retries, context isolation & lifecycle hooks
+- ✅ Critic Agent for evidence quality verification & confidence scoring
+- ✅ Report Agent for structured report synthesis & citation preservation
+- ✅ Complete REST API for jobs, plans, tasks, sources, evidence & reports
+- ⬜ Real-time WebSocket streaming updates
 
-- [ ] Complete planner agent with LLM integration
-- [ ] End-to-end research execution
-- [ ] Evidence verification and synthesis
-- [ ] Report generation
-- [ ] Real-time WebSocket updates
+### Phase 3 — Multimodal Ingestion
+🟢 **COMPLETE**
+- ✅ Plain text & Markdown parsing
+- ✅ PDF document extraction (`pdfplumber`) with table extraction
+- ✅ Word document extraction (`python-docx`) with paragraph structure
+- ✅ Image vision analysis via Model Gateway (Ollama / Gemini)
+- ✅ Semantic & fixed-size chunking pipelines
+- ✅ Multipart document upload API (`/api/v1/documents`)
+
+### Phase 4 — Agentic System
+🟢 **COMPLETE**
+- ✅ Extensible Tool Framework & Registry with permission controls
+- ✅ Web Fetch Tool hardened against SSRF (full IPv4/IPv6 private/multicast rejection)
+- ✅ Web Search Tool & Document Read Tool
+- ✅ Knowledge Search Tool wired to RAG retriever
+- ✅ Agent short/long-term memory & execution tracing (`agent_runs` & `model_calls`)
+
+### Phase 5 — RAG / Knowledge Layer
+🟢 **COMPLETE**
+- ✅ Provider-agnostic Embedder abstraction
+- ✅ ChromaDB vector store adapter & In-Memory vector store
+- ✅ BM25 sparse keyword index
+- ✅ Hybrid Retriever with Reciprocal Rank Fusion (RRF)
+- ✅ Cross-job Knowledge Indexer & evidence citation grounding
+
+### Phase 6 — Production & Security
+🟢 **COMPLETE** (Core Roadmap Capabilities)
+- ✅ JWT authentication (access & refresh token lifecycle)
+- ✅ Role-Based Access Control (RBAC with Admin, Researcher, Viewer roles)
+- ✅ Security filters (prompt injection detection, safe filename validation)
+- ✅ Prometheus metrics exposition (`/metrics` endpoint)
+- ✅ Kubernetes manifests (`infrastructure/k8s/`) & monitoring configs
+
+---
+
+### Test Suite Status
+- **Total Tests**: 185
+- **Passing**: 184
+- **Skipped**: 1 (Live Gemini Web2API integration test when API key is unconfigured)
+- **Failed**: 0

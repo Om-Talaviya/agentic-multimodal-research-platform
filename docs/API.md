@@ -12,7 +12,7 @@ RESTful API for the research platform with clear resource-oriented endpoints.
 
 ## Authentication
 
-Future: JWT Bearer tokens. Phase 1: No auth (local development).
+JWT Bearer tokens are implemented in `packages/shared/auth.py` and `apps/api/src/api/routes/auth.py` with Role-Based Access Control (`Admin`, `Researcher`, `Viewer`). Endpoints support bearer authorization headers.
 
 ## Endpoints
 
