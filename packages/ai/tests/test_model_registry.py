@@ -34,14 +34,14 @@ def test_model_registry_crud():
     assert len(registry.list_models()) == 0
 
     m1 = ModelDefinition(
-        model_id="gemini-3.7-flash",
-        provider_name="gemini-web2api",
+        model_id="gemini-2.0-flash",
+        provider_name="gemini",
         capabilities={ModelCapability.REASONING},
         priority=10,
     )
     m2 = ModelDefinition(
-        model_id="gemini-3.5-flash-thinking",
-        provider_name="gemini-web2api",
+        model_id="gemini-1.5-pro",
+        provider_name="gemini",
         capabilities={ModelCapability.REASONING},
         priority=8,
     )
@@ -49,19 +49,19 @@ def test_model_registry_crud():
     registry.register(m1)
     registry.register(m2)
 
-    assert registry.contains("gemini-3.7-flash") is True
+    assert registry.contains("gemini-2.0-flash") is True
     assert registry.contains("non-existent") is False
-    assert registry.get("gemini-3.7-flash") == m1
+    assert registry.get("gemini-2.0-flash") == m1
 
     models = registry.list_models()
     assert len(models) == 2
     # Ordered by priority descending
-    assert models[0].model_id == "gemini-3.7-flash"
-    assert models[1].model_id == "gemini-3.5-flash-thinking"
+    assert models[0].model_id == "gemini-2.0-flash"
+    assert models[1].model_id == "gemini-1.5-pro"
 
     # Unregister
-    assert registry.unregister("gemini-3.7-flash") is True
-    assert registry.contains("gemini-3.7-flash") is False
+    assert registry.unregister("gemini-2.0-flash") is True
+    assert registry.contains("gemini-2.0-flash") is False
     assert len(registry.list_models()) == 1
 
     # Clear

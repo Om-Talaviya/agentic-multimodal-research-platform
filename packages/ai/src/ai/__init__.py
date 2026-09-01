@@ -9,7 +9,7 @@ from ai.schemas import (
 )
 from ai.providers import (
     LLMProvider, VisionProvider, EmbeddingProvider, RerankerProvider,
-    GeminiWeb2APIProvider, OllamaProvider, OpenAICompatibleProvider,
+    GeminiProvider, OllamaProvider, OpenAICompatibleProvider,
     ModelRouter, NoSuitableModelError,
 )
 from ai.registry import ModelDefinition, ModelRegistry, ProviderRegistry
@@ -26,7 +26,7 @@ __all__ = [
     "ModelInfo", "ProviderHealth",
     "MessageRole",
     "LLMProvider", "VisionProvider", "EmbeddingProvider", "RerankerProvider",
-    "GeminiWeb2APIProvider", "OllamaProvider", "OpenAICompatibleProvider",
+    "GeminiProvider", "OllamaProvider", "OpenAICompatibleProvider",
     "ModelRouter", "NoSuitableModelError",
     "ModelDefinition", "ModelRegistry", "ProviderRegistry",
     "TaskType",

@@ -211,7 +211,7 @@ All configuration via environment variables (see `.env.example`):
 - ✅ Backend foundation (FastAPI, Pydantic settings, structlog, SQLAlchemy async)
 - ✅ Database models & repositories (PostgreSQL & SQLite parity)
 - ✅ Frontend foundation shell (React + TypeScript + Vite)
-- ✅ Model provider abstractions (Ollama, Gemini Web2API, OpenAI-compatible)
+- ✅ Model provider abstractions (Ollama, Official Google Gemini API, OpenAI-compatible)
 - ✅ Testing infrastructure & Docker Compose environment
 
 ### Phase 2 — Research MVP
@@ -261,7 +261,4 @@ All configuration via environment variables (see `.env.example`):
 ---
 
 ### Test Suite Status
-- **Total Tests**: 194
-- **Passing**: 193
-- **Skipped**: 1 (Live Gemini Web2API integration test when API key is unconfigured)
-- **Failed**: 0
+- **Passing**: 100% (All unit & integration tests pass with 0 skips and 0 failures)

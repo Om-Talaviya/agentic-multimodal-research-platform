@@ -1,6 +1,6 @@
 from typing import List, Optional, Sequence
 from ai.gateway.model_gateway import ModelGateway
-from ai.providers.gemini_web2api import GeminiWeb2APIProvider
+from ai.providers.gemini import GeminiProvider
 from ai.providers.ollama import OllamaProvider
 from ai.providers.openai_compatible import OpenAICompatibleProvider
 from ai.providers.router import ModelRouter
@@ -57,17 +57,17 @@ async def init_providers() -> None:
     providers_embedding = [ollama]
     providers_reranker = []
 
-    # Initialize Gemini Web2API provider
-    if settings.gemini_web2api_base_url:
-        gemini = GeminiWeb2APIProvider(
-            base_url=settings.gemini_web2api_base_url,
-            api_key=settings.gemini_web2api_api_key,
+    # Initialize Official Gemini provider
+    if settings.gemini_api_key or settings.gemini_base_url:
+        gemini = GeminiProvider(
+            base_url=settings.gemini_base_url,
+            api_key=settings.gemini_api_key,
             default_model=settings.gemini_default_model,
         )
         try:
             await gemini._load_models()
         except Exception as e:
-            logger.warning("Failed to load Gemini Web2API models on startup", error=str(e))
+            logger.warning("Failed to load Gemini models on startup", error=str(e))
         providers_llm.append(gemini)
         providers_vision.append(gemini)
     
@@ -101,7 +101,7 @@ async def init_providers() -> None:
     for p in providers_reranker:
         provider_registry.register_reranker(p)
 
-    if settings.gemini_web2api_base_url:
+    if settings.gemini_api_key or settings.gemini_base_url:
         for model_def in DEFAULT_GEMINI_MODEL_DEFINITIONS:
             model_registry.register(model_def)
 
@@ -213,23 +213,38 @@ async def get_research_event_bus() -> ResearchEventBus:
 
 
 # --- Authentication & Authorization Dependencies ---
-from fastapi import HTTPException, Security, status
+from uuid import UUID
+from fastapi import Depends, HTTPException, Security, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from shared.auth import User, UserRole, user_registry, verify_token
+from sqlalchemy.ext.asyncio import AsyncSession
+from database.connection import get_db_session
+from database.repositories import UserRepository
+from shared.auth import User, UserRole, verify_token
 from shared.exceptions import AuthenticationError, AuthorizationError
 
 security = HTTPBearer(auto_error=False)
 
 
+
 async def get_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
+    session: AsyncSession = Depends(get_db_session),
 ) -> User:
-    """Validate bearer JWT token and return authenticated User."""
+    """Validate bearer JWT token and return authenticated User from database or registry."""
+    repo = UserRepository(session)
+
     if not credentials or not credentials.credentials:
         # Check default system user if running in dev without explicit token
-        admin = user_registry.get_by_username("admin")
-        if admin and settings.debug and not credentials:
-            return admin
+        if settings.debug and not credentials:
+            try:
+                admin_db = await repo.get_by_username("admin")
+                if admin_db and admin_db.is_active:
+                    return User.from_db(admin_db)
+            except Exception:
+                pass
+            admin_mem = user_registry.get_by_username("admin")
+            if admin_mem:
+                return admin_mem
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Authentication credentials were not provided",
@@ -239,13 +254,30 @@ async def get_current_user(
     token = credentials.credentials
     try:
         payload = verify_token(token, expected_type="access")
-        user = user_registry.get_by_id(payload.sub)
-        if not user or not user.is_active:
+        db_user = None
+        try:
+            try:
+                db_user = await repo.get_by_id(UUID(payload.sub))
+            except (ValueError, TypeError):
+                db_user = await repo.get_by_username(payload.username)
+        except Exception:
+            db_user = None
+
+        if db_user:
+            if not db_user.is_active:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="User inactive or does not exist",
+                )
+            return User.from_db(db_user)
+
+        mem_user = user_registry.get_by_id(payload.sub) or user_registry.get_by_username(payload.username)
+        if not mem_user or not mem_user.is_active:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="User inactive or does not exist",
             )
-        return user
+        return mem_user
     except AuthenticationError as auth_err:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -256,12 +288,13 @@ async def get_current_user(
 
 async def get_optional_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
+    session: AsyncSession = Depends(get_db_session),
 ) -> Optional[User]:
     """Optionally validate bearer JWT token if present."""
     if not credentials or not credentials.credentials:
         return None
     try:
-        return await get_current_user(credentials)
+        return await get_current_user(credentials, session)
     except Exception:
         return None
 

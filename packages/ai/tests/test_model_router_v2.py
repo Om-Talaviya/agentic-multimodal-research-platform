@@ -3,7 +3,7 @@
 import pytest
 import httpx
 from ai.factory import DEFAULT_GEMINI_MODEL_DEFINITIONS
-from ai.providers.gemini_web2api import GeminiWeb2APIProvider
+from ai.providers.gemini import GeminiProvider
 from ai.providers.router import ModelRouter, NoSuitableModelError
 from ai.registry.model_registry import ModelDefinition, ModelRegistry
 from ai.registry.provider_registry import ProviderRegistry
@@ -23,8 +23,8 @@ def configured_router():
     def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(200, json={"choices": [{"message": {"content": "ok"}}]})
 
-    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://127.0.0.1:8081/v1")
-    gemini_provider = GeminiWeb2APIProvider(client=client)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="https://generativelanguage.googleapis.com/v1beta/openai")
+    gemini_provider = GeminiProvider(api_key="test-key", client=client)
     prov_reg.register_all_in_one(gemini_provider)
 
     return ModelRouter(model_registry=model_reg, provider_registry=prov_reg)
@@ -33,11 +33,11 @@ def configured_router():
 def test_explicit_model_override(configured_router):
     """Explicit model selection takes precedence over automatic routing."""
     model_def, provider = configured_router.select_model_and_provider(
-        requested_model="gemini-3.5-flash-thinking",
+        requested_model="gemini-2.0-flash",
         task="fast_text_generation",
     )
-    assert model_def.model_id == "gemini-3.5-flash-thinking"
-    assert provider.name == "gemini-web2api"
+    assert model_def.model_id == "gemini-2.0-flash"
+    assert provider.name == "gemini"
 
 
 def test_task_routing_deep_reasoning(configured_router):
@@ -45,7 +45,7 @@ def test_task_routing_deep_reasoning(configured_router):
     model_def, provider = configured_router.select_model_and_provider(
         task=TaskType.DEEP_REASONING,
     )
-    assert model_def.model_id in ["gemini-3.5-flash-thinking", "gemini-3.7-flash", "gemini-3.1-pro"]
+    assert model_def.model_id in ["gemini-2.0-flash", "gemini-1.5-pro"]
     assert ModelCapability.REASONING in model_def.capabilities
 
 
@@ -54,7 +54,7 @@ def test_task_routing_fast_text(configured_router):
     model_def, provider = configured_router.select_model_and_provider(
         task="fast text generation",
     )
-    assert model_def.model_id in ["gemini-3.7-flash", "gemini-flash-lite", "gemini-3.6-flash", "gemini-3.5-flash"]
+    assert model_def.model_id in ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
 
 
 def test_task_routing_vision(configured_router):

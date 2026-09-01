@@ -15,7 +15,7 @@ async def test_image_parser_with_gateway():
     mock_gateway.analyze_vision = AsyncMock(
         return_value=VisionResponse(
             content="A chart showing quantum algorithm performance with 98% accuracy.",
-            model="gemini-3.7-flash",
+            model="gemini-2.0-flash",
         )
     )
 
@@ -30,7 +30,7 @@ async def test_image_parser_with_gateway():
     assert "A chart showing quantum algorithm performance" in parsed.content
     assert parsed.metadata["format"] == "image"
     assert parsed.metadata["mime_type"] == "image/png"
-    assert parsed.metadata["model"] == "gemini-3.7-flash"
+    assert parsed.metadata["model"] == "gemini-2.0-flash"
     assert len(parsed.images) == 1
     assert parsed.images[0].data == image_data
     assert parsed.images[0].mime_type == "image/png"

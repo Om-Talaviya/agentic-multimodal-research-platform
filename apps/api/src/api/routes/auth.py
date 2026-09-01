@@ -1,7 +1,11 @@
 """Authentication and user session routes."""
 
+from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.ext.asyncio import AsyncSession
 from api.dependencies import get_current_user
+from database.connection import get_db_session
+from database.repositories import UserRepository
 from shared.auth import (
     LoginRequest,
     TokenRefreshRequest,
@@ -9,7 +13,7 @@ from shared.auth import (
     User,
     create_access_token,
     create_refresh_token,
-    user_registry,
+    verify_password,
     verify_token,
 )
 from shared.exceptions import AuthenticationError
@@ -21,10 +25,14 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 @router.post("/login", response_model=TokenResponse)
-async def login(credentials: LoginRequest) -> TokenResponse:
+async def login(
+    credentials: LoginRequest,
+    session: AsyncSession = Depends(get_db_session),
+) -> TokenResponse:
     """Authenticate with username/email and password to obtain JWT access & refresh tokens."""
-    user = user_registry.authenticate(credentials.username, credentials.password)
-    if not user:
+    repo = UserRepository(session)
+    db_user = await repo.get_by_username_or_email(credentials.username)
+    if not db_user or not db_user.is_active or not verify_password(credentials.password, db_user.password_hash):
         logger.warning("Failed login attempt", username=credentials.username)
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -32,6 +40,7 @@ async def login(credentials: LoginRequest) -> TokenResponse:
             headers={"WWW-Authenticate": "Bearer"},
         )
 
+    user = User.from_db(db_user)
     access_token = create_access_token(user)
     refresh_token = create_refresh_token(user)
 
@@ -51,17 +60,27 @@ async def login(credentials: LoginRequest) -> TokenResponse:
 
 
 @router.post("/token/refresh", response_model=TokenResponse)
-async def refresh_token(request: TokenRefreshRequest) -> TokenResponse:
+async def refresh_token(
+    request: TokenRefreshRequest,
+    session: AsyncSession = Depends(get_db_session),
+) -> TokenResponse:
     """Exchange a valid refresh token for a fresh access token."""
     try:
         payload = verify_token(request.refresh_token, expected_type="refresh")
-        user = user_registry.get_by_id(payload.sub)
-        if not user or not user.is_active:
+        repo = UserRepository(session)
+        db_user = None
+        try:
+            db_user = await repo.get_by_id(UUID(payload.sub))
+        except (ValueError, TypeError):
+            db_user = await repo.get_by_username(payload.username)
+
+        if not db_user or not db_user.is_active:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="User inactive or no longer exists",
             )
 
+        user = User.from_db(db_user)
         new_access_token = create_access_token(user)
         new_refresh_token = create_refresh_token(user)
 

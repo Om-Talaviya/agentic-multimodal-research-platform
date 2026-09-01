@@ -17,6 +17,7 @@ from database.repositories import (
     ResearchJobRepository,
     SourceRepository,
     TaskRepository,
+    UserRepository,
 )
 from research.events import ResearchEventBus
 from shared.auth import User, user_registry, verify_token
@@ -131,7 +132,7 @@ def _serialize_report(report: Any) -> dict[str, Any] | None:
     }
 
 
-async def _authenticate_websocket(websocket: WebSocket) -> User | None:
+async def _authenticate_websocket(websocket: WebSocket, session: Any) -> User | None:
     token = websocket.query_params.get("token")
     if not token:
         auth_header = websocket.headers.get("authorization")
@@ -144,24 +145,54 @@ async def _authenticate_websocket(websocket: WebSocket) -> User | None:
                     token = p
                     break
 
+    repo = UserRepository(session)
+
     if not token:
-        admin = user_registry.get_by_username("admin")
-        if admin and settings.debug:
-            return admin
+        if settings.debug:
+            try:
+                admin_db = await repo.get_by_username("admin")
+                if admin_db and admin_db.is_active:
+                    return User.from_db(admin_db)
+            except Exception:
+                pass
+            admin_mem = user_registry.get_by_username("admin")
+            if admin_mem:
+                return admin_mem
         await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
         return None
 
     try:
         payload = verify_token(token, expected_type="access")
-        user = user_registry.get_by_id(payload.sub)
+        from uuid import UUID
+        db_user = None
+        try:
+            try:
+                db_user = await repo.get_by_id(UUID(payload.sub))
+            except (ValueError, TypeError):
+                db_user = await repo.get_by_username(payload.username)
+        except Exception:
+            db_user = None
+
+        if db_user:
+            if not db_user.is_active:
+                await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+                return None
+            user = User.from_db(db_user)
+        else:
+            mem_user = user_registry.get_by_id(payload.sub) or user_registry.get_by_username(payload.username)
+            if not mem_user or not mem_user.is_active:
+                await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+                return None
+            user = mem_user
+
+        if not user.has_permission("research:read"):
+            await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+            return None
+        return user
     except Exception:
         await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
         return None
 
-    if not user or not user.is_active or not user.has_permission("research:read"):
-        await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
-        return None
-    return user
 
 
 async def _build_snapshot(session: Any, job_id: UUID) -> dict[str, Any] | None:
@@ -195,49 +226,49 @@ async def research_job_websocket(
     job_id: UUID,
     event_bus: ResearchEventBus = Depends(get_research_event_bus),
 ) -> None:
-    user = await _authenticate_websocket(websocket)
-    if user is None:
-        return
+    async with get_session() as session:
+        user = await _authenticate_websocket(websocket, session)
+        if user is None:
+            return
 
-    job_id_str = str(job_id)
-    await connection_manager.connect(job_id_str, websocket)
-    logger.info("Research WebSocket connected", job_id=job_id_str, user_id=user.id)
+        job_id_str = str(job_id)
+        await connection_manager.connect(job_id_str, websocket)
+        logger.info("Research WebSocket connected", job_id=job_id_str, user_id=user.id)
 
-    try:
-        # Subscribe before loading the snapshot to prevent race conditions with background execution
-        async with event_bus.subscribe(job_id_str) as queue:
-            async with get_session() as session:
+        try:
+            # Subscribe before loading the snapshot to prevent race conditions with background execution
+            async with event_bus.subscribe(job_id_str) as queue:
                 snapshot = await _build_snapshot(session, job_id)
 
-            if snapshot is None:
+                if snapshot is None:
+                    await connection_manager.send_json(
+                        websocket,
+                        {"type": "error", "error": {"code": "NOT_FOUND", "message": "Research job not found"}},
+                    )
+                    await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+                    return
+
                 await connection_manager.send_json(
                     websocket,
-                    {"type": "error", "error": {"code": "NOT_FOUND", "message": "Research job not found"}},
+                    {"type": "snapshot", "job_id": job_id_str, "data": snapshot},
                 )
-                await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
-                return
 
-            await connection_manager.send_json(
-                websocket,
-                {"type": "snapshot", "job_id": job_id_str, "data": snapshot},
-            )
-
-            while True:
-                try:
-                    event = await asyncio.wait_for(queue.get(), timeout=30)
-                    await connection_manager.send_json(
-                        websocket,
-                        {"type": "event", "job_id": job_id_str, "event": event.to_payload()},
-                    )
-                except TimeoutError:
-                    await connection_manager.send_json(
-                        websocket,
-                        {"type": "heartbeat", "job_id": job_id_str},
-                    )
-    except WebSocketDisconnect:
-        pass
-    except Exception as exc:
-        logger.warning("WebSocket error", job_id=job_id_str, error=str(exc))
-    finally:
-        connection_manager.disconnect(job_id_str, websocket)
-        logger.info("Research WebSocket disconnected", job_id=job_id_str, user_id=user.id)
+                while True:
+                    try:
+                        event = await asyncio.wait_for(queue.get(), timeout=30)
+                        await connection_manager.send_json(
+                            websocket,
+                            {"type": "event", "job_id": job_id_str, "event": event.to_payload()},
+                        )
+                    except TimeoutError:
+                        await connection_manager.send_json(
+                            websocket,
+                            {"type": "heartbeat", "job_id": job_id_str},
+                        )
+        except WebSocketDisconnect:
+            pass
+        except Exception as exc:
+            logger.warning("WebSocket error", job_id=job_id_str, error=str(exc))
+        finally:
+            connection_manager.disconnect(job_id_str, websocket)
+            logger.info("Research WebSocket disconnected", job_id=job_id_str, user_id=user.id)

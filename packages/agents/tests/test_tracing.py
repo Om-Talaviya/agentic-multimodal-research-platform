@@ -22,8 +22,8 @@ def test_tool_call_trace_serialization():
 
 def test_model_call_trace_serialization():
     mc = ModelCallTrace(
-        provider="gemini_web2api",
-        model="gemini-2.5-pro",
+        provider="gemini",
+        model="gemini-2.0-flash",
         request_type="complete",
         prompt_tokens=500,
         completion_tokens=150,
@@ -31,7 +31,7 @@ def test_model_call_trace_serialization():
         latency_ms=800,
     )
     d = mc.to_dict()
-    assert d["provider"] == "gemini_web2api"
+    assert d["provider"] == "gemini"
     assert d["total_tokens"] == 650
     assert d["latency_ms"] == 800
 

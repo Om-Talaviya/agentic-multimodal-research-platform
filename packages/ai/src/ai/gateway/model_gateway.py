@@ -117,6 +117,8 @@ class ModelGateway:
                 if fallback_occurred:
                     response.metadata["original_model"] = original_model_id
                     response.metadata["actual_model"] = response.model or target_model
+                    if last_error:
+                        response.metadata["primary_error"] = str(last_error)
 
                 logger.info(
                     "Gateway completion succeeded",

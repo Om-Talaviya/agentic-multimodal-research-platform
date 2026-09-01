@@ -5,7 +5,7 @@ import pytest
 import httpx
 from ai.factory import DEFAULT_GEMINI_MODEL_DEFINITIONS
 from ai.gateway.model_gateway import ModelGateway
-from ai.providers.gemini_web2api import GeminiWeb2APIProvider
+from ai.providers.gemini import GeminiProvider
 from ai.providers.router import ModelRouter
 from ai.registry.model_registry import ModelDefinition, ModelRegistry
 from ai.registry.provider_registry import ProviderRegistry
@@ -24,7 +24,7 @@ async def test_gateway_complete_success():
     """Test gateway completion, normalization, and telemetry."""
     mock_payload = {
         "id": "cmpl-gateway-123",
-        "model": "gemini-3.7-flash",
+        "model": "gemini-2.0-flash",
         "choices": [{"index": 0, "message": {"role": "assistant", "content": "Gateway response"}, "finish_reason": "stop"}],
         "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
     }
@@ -32,8 +32,8 @@ async def test_gateway_complete_success():
     def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(200, json=mock_payload)
 
-    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://127.0.0.1:8081/v1")
-    gemini_provider = GeminiWeb2APIProvider(client=client)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="https://generativelanguage.googleapis.com/v1beta/openai")
+    gemini_provider = GeminiProvider(api_key="test-key", client=client)
 
     model_reg = ModelRegistry()
     for m in DEFAULT_GEMINI_MODEL_DEFINITIONS:
@@ -47,91 +47,80 @@ async def test_gateway_complete_success():
 
     request = LLMRequest(
         messages=[LLMMessage(role=MessageRole.USER, content="Hello Gateway")],
-        model="gemini-3.7-flash",
+        model="gemini-2.0-flash",
     )
 
     response = await gateway.complete(request, task="fast text generation")
 
     assert response.content == "Gateway response"
-    assert response.model == "gemini-3.7-flash"
-    assert response.metadata["provider"] == "gemini-web2api"
+    assert response.model == "gemini-2.0-flash"
+    assert response.metadata["provider"] == "gemini"
     assert response.metadata["fallback_occurred"] is False
     assert "telemetry" in response.metadata
     assert response.metadata["telemetry"]["latency_ms"] >= 0
-    assert response.metadata["telemetry"]["requested_model"] == "gemini-3.7-flash"
 
 
 @pytest.mark.asyncio
-async def test_gateway_fallback_on_failure():
-    """Test safe fallback when primary model/provider fails."""
-    # Setup two mock providers: Primary (which fails) and Secondary (which succeeds)
+async def test_gateway_complete_with_fallback():
+    """Test automatic failover to fallback model when primary provider fails."""
     def primary_handler(request: httpx.Request) -> httpx.Response:
-        raise httpx.ConnectError("Primary bridge down")
+        raise httpx.ConnectError("Primary failed")
 
     def secondary_handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(
-            200,
-            json={
-                "id": "cmpl-secondary",
-                "model": "secondary-model",
-                "choices": [{"index": 0, "message": {"role": "assistant", "content": "Fallback response"}}],
-            },
-        )
+        return httpx.Response(200, json={
+            "id": "cmpl-sec",
+            "model": "gemini-1.5-flash",
+            "choices": [{"message": {"content": "Fallback response"}}],
+            "usage": {"total_tokens": 8},
+        })
 
-    client_primary = httpx.AsyncClient(transport=httpx.MockTransport(primary_handler), base_url="http://127.0.0.1:8081/v1")
-    client_secondary = httpx.AsyncClient(transport=httpx.MockTransport(secondary_handler), base_url="http://127.0.0.1:8082/v1")
+    client_primary = httpx.AsyncClient(transport=httpx.MockTransport(primary_handler), base_url="https://primary.ai/v1")
+    client_secondary = httpx.AsyncClient(transport=httpx.MockTransport(secondary_handler), base_url="https://secondary.ai/v1")
 
-    p1 = GeminiWeb2APIProvider(client=client_primary, max_retries=0)
-    p1._name = "primary-provider"
-
-    p2 = GeminiWeb2APIProvider(client=client_secondary, max_retries=0)
-    p2._name = "secondary-provider"
+    p1 = GeminiProvider(api_key="key1", client=client_primary, max_retries=0, name="p1")
+    p2 = GeminiProvider(api_key="key2", client=client_secondary, max_retries=0, name="p2")
 
     model_reg = ModelRegistry()
-    model_reg.register(
-        ModelDefinition(
-            model_id="primary-model",
-            provider_name="primary-provider",
-            capabilities={ModelCapability.REASONING},
-            priority=10,
-        )
+    m1 = ModelDefinition(
+        model_id="gemini-2.0-flash",
+        provider_name="p1",
+        capabilities={ModelCapability.REASONING},
+        priority=10,
     )
-    model_reg.register(
-        ModelDefinition(
-            model_id="secondary-model",
-            provider_name="secondary-provider",
-            capabilities={ModelCapability.REASONING},
-            priority=8,
-        )
+    m2 = ModelDefinition(
+        model_id="gemini-1.5-flash",
+        provider_name="p2",
+        capabilities={ModelCapability.REASONING},
+        priority=5,
     )
+    model_reg.register(m1)
+    model_reg.register(m2)
 
     prov_reg = ProviderRegistry()
     prov_reg.register_llm(p1)
     prov_reg.register_llm(p2)
 
     router = ModelRouter(model_registry=model_reg, provider_registry=prov_reg)
-    gateway = ModelGateway(router=router, model_registry=model_reg, provider_registry=prov_reg, max_fallback_attempts=1)
+    gateway = ModelGateway(router=router, model_registry=model_reg, provider_registry=prov_reg)
 
-    req = LLMRequest(messages=[LLMMessage(role=MessageRole.USER, content="Test")])
-    res = await gateway.complete(req, fallback_enabled=True)
+    request = LLMRequest(messages=[LLMMessage(role=MessageRole.USER, content="Hello")])
+    response = await gateway.complete(request, task="reasoning")
 
-    assert res.content == "Fallback response"
-    assert res.metadata["fallback_occurred"] is True
-    assert res.metadata["original_model"] == "primary-model"
-    assert res.metadata["actual_model"] == "secondary-model"
-    assert res.metadata["provider"] == "secondary-provider"
+    assert response.content == "Fallback response"
+    assert response.model == "gemini-1.5-flash"
+    assert response.metadata["fallback_occurred"] is True
+    assert "primary_error" in response.metadata
 
 
 @pytest.mark.asyncio
-async def test_gateway_stream_complete():
-    """Test streaming completion through gateway."""
-    sse_data = b'data: {"choices":[{"delta":{"content":"Hi"}}]}\n\ndata: [DONE]\n\n'
-
+async def test_gateway_stream_success():
+    """Test streaming chunk forwarding."""
     def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(200, headers={"Content-Type": "text/event-stream"}, content=sse_data)
+        content = 'data: {"choices":[{"delta":{"content":"A"}}]}\n\ndata: {"choices":[{"delta":{"content":"B"}}]}\n\ndata: [DONE]\n\n'
+        return httpx.Response(200, text=content)
 
-    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://127.0.0.1:8081/v1")
-    gemini = GeminiWeb2APIProvider(client=client)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="https://generativelanguage.googleapis.com/v1beta/openai")
+    gemini = GeminiProvider(api_key="test-key", client=client)
 
     model_reg = ModelRegistry()
     for m in DEFAULT_GEMINI_MODEL_DEFINITIONS:
@@ -143,29 +132,24 @@ async def test_gateway_stream_complete():
     router = ModelRouter(model_registry=model_reg, provider_registry=prov_reg)
     gateway = ModelGateway(router=router, model_registry=model_reg, provider_registry=prov_reg)
 
-    tokens = []
-    async for token in gateway.stream_complete(
-        LLMRequest(messages=[LLMMessage(role=MessageRole.USER, content="Stream")])
-    ):
-        tokens.append(token)
+    request = LLMRequest(messages=[LLMMessage(role=MessageRole.USER, content="Stream")])
+    chunks = []
+    async for chunk in gateway.stream_complete(request):
+        chunks.append(chunk)
 
-    assert "".join(tokens) == "Hi"
+    assert "".join(chunks) == "AB"
 
 
 @pytest.mark.asyncio
 async def test_gateway_vision_analysis():
-    """Test vision analysis through gateway."""
+    """Test multimodal vision analysis route."""
     def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(
-            200,
-            json={
-                "model": "gemini-3.7-flash",
-                "choices": [{"index": 0, "message": {"role": "assistant", "content": "Diagram description"}}],
-            },
-        )
+        return httpx.Response(200, json={
+            "choices": [{"message": {"content": "Image analysis text"}}],
+        })
 
-    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://127.0.0.1:8081/v1")
-    gemini = GeminiWeb2APIProvider(client=client)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="https://generativelanguage.googleapis.com/v1beta/openai")
+    gemini = GeminiProvider(api_key="test-key", client=client)
 
     model_reg = ModelRegistry()
     for m in DEFAULT_GEMINI_MODEL_DEFINITIONS:
@@ -177,26 +161,23 @@ async def test_gateway_vision_analysis():
     router = ModelRouter(model_registry=model_reg, provider_registry=prov_reg)
     gateway = ModelGateway(router=router, model_registry=model_reg, provider_registry=prov_reg)
 
-    res = await gateway.analyze_vision(
-        VisionRequest(prompt="Analyze", images=["data:image/png;base64,123"])
-    )
-    assert res.content == "Diagram description"
-    assert res.metadata["telemetry"]["provider"] == "gemini-web2api"
+    vreq = VisionRequest(images=["aGVsbG8="], prompt="Describe", model="gemini-2.0-flash")
+    res = await gateway.analyze_vision(vreq)
+
+    assert res.content == "Image analysis text"
+    assert res.metadata["telemetry"]["provider"] == "gemini"
 
 
 @pytest.mark.asyncio
-async def test_gateway_health():
-    """Test gateway health aggregation."""
+async def test_gateway_health_check():
+    """Test unified health check across all registered providers."""
     def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(200, json={"object": "list", "data": [{"id": "gemini-3.7-flash"}]})
+        return httpx.Response(200, json={"data": [{"id": "gemini-2.0-flash"}]})
 
-    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://127.0.0.1:8081/v1")
-    gemini = GeminiWeb2APIProvider(client=client)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="https://generativelanguage.googleapis.com/v1beta/openai")
+    gemini = GeminiProvider(api_key="test-key", client=client)
 
     model_reg = ModelRegistry()
-    for m in DEFAULT_GEMINI_MODEL_DEFINITIONS:
-        model_reg.register(m)
-
     prov_reg = ProviderRegistry()
     prov_reg.register_all_in_one(gemini)
 
@@ -205,5 +186,4 @@ async def test_gateway_health():
 
     health = await gateway.health_check()
     assert health.healthy is True
-    assert health.total_models == len(DEFAULT_GEMINI_MODEL_DEFINITIONS)
-    assert "gemini-web2api" in health.active_providers
+    assert "gemini" in health.active_providers

@@ -2,7 +2,7 @@
 
 from typing import Optional
 from ai.gateway.model_gateway import ModelGateway
-from ai.providers.gemini_web2api import GeminiWeb2APIProvider
+from ai.providers.gemini import GeminiProvider
 from ai.providers.router import ModelRouter
 from ai.registry.model_registry import ModelDefinition, ModelRegistry
 from ai.registry.provider_registry import ProviderRegistry
@@ -24,17 +24,17 @@ ALL_GEMINI_CAPS = {
     ModelCapability.JSON_MODE,
 }
 
-# Pre-defined catalog of Gemini Web2API models
+# Pre-defined catalog of official Gemini models
 DEFAULT_GEMINI_MODEL_DEFINITIONS = [
     ModelDefinition(
-        model_id="gemini-3.7-flash",
-        provider_name="gemini-web2api",
+        model_id="gemini-2.0-flash",
+        provider_name="gemini",
         capabilities=ALL_GEMINI_CAPS,
         context_window=1048576,
         supports_streaming=True,
         supports_vision=True,
         priority=10,
-        is_local=True,
+        is_local=False,
         task_suitability=[
             "fast_text_generation",
             "vision_analysis",
@@ -44,129 +44,63 @@ DEFAULT_GEMINI_MODEL_DEFINITIONS = [
             "synthesis",
             "report",
         ],
-        metadata={"description": "Latest all-around model (Gemini 3.7 Flash)"},
+        metadata={"description": "Next-generation multimodal flagship (Gemini 2.0 Flash)"},
     ),
     ModelDefinition(
-        model_id="gemini-3.6-flash",
-        provider_name="gemini-web2api",
-        capabilities=ALL_GEMINI_CAPS,
-        context_window=1048576,
-        supports_streaming=True,
-        supports_vision=True,
-        priority=8,
-        is_local=True,
-        task_suitability=[
-            "fast_text_generation",
-            "vision_analysis",
-            "long_form_research",
-            "streaming_response",
-        ],
-        metadata={"description": "All-around model (Gemini 3.6 Flash)"},
-    ),
-    ModelDefinition(
-        model_id="gemini-3.5-flash",
-        provider_name="gemini-web2api",
-        capabilities=ALL_GEMINI_CAPS,
-        context_window=1048576,
-        supports_streaming=True,
-        supports_vision=True,
-        priority=7,
-        is_local=True,
-        task_suitability=[
-            "fast_text_generation",
-            "vision_analysis",
-            "streaming_response",
-        ],
-        metadata={"description": "Alias for gemini-3.6-flash (backend upgraded)"},
-    ),
-    ModelDefinition(
-        model_id="gemini-3.5-flash-thinking",
-        provider_name="gemini-web2api",
-        capabilities=ALL_GEMINI_CAPS,
-        context_window=1048576,
-        supports_streaming=True,
-        supports_vision=True,
-        priority=10,
-        is_local=True,
-        task_suitability=[
-            "deep_reasoning",
-            "long_form_research",
-            "planning",
-            "synthesis",
-        ],
-        metadata={"description": "Deep thinking mode, longest output (~20k chars)"},
-    ),
-    ModelDefinition(
-        model_id="gemini-3.1-pro",
-        provider_name="gemini-web2api",
+        model_id="gemini-2.0-flash-lite",
+        provider_name="gemini",
         capabilities=ALL_GEMINI_CAPS,
         context_window=1048576,
         supports_streaming=True,
         supports_vision=True,
         priority=9,
-        is_local=True,
+        is_local=False,
+        task_suitability=[
+            "fast_text_generation",
+            "streaming_response",
+        ],
+        metadata={"description": "Cost-efficient lightweight model (Gemini 2.0 Flash Lite)"},
+    ),
+    ModelDefinition(
+        model_id="gemini-1.5-pro",
+        provider_name="gemini",
+        capabilities=ALL_GEMINI_CAPS,
+        context_window=2097152,
+        supports_streaming=True,
+        supports_vision=True,
+        priority=9,
+        is_local=False,
         task_suitability=[
             "deep_reasoning",
             "long_form_research",
             "coding",
             "planning",
+            "synthesis",
         ],
-        metadata={"description": "Pro model (requires cookie for real routing)"},
+        metadata={"description": "Complex reasoning model with 2M context (Gemini 1.5 Pro)"},
     ),
     ModelDefinition(
-        model_id="gemini-auto",
-        provider_name="gemini-web2api",
-        capabilities=ALL_GEMINI_CAPS,
-        context_window=1048576,
-        supports_streaming=True,
-        supports_vision=True,
-        priority=6,
-        is_local=True,
-        task_suitability=[
-            "fast_text_generation",
-        ],
-        metadata={"description": "Auto model selection"},
-    ),
-    ModelDefinition(
-        model_id="gemini-3.5-flash-thinking-lite",
-        provider_name="gemini-web2api",
+        model_id="gemini-1.5-flash",
+        provider_name="gemini",
         capabilities=ALL_GEMINI_CAPS,
         context_window=1048576,
         supports_streaming=True,
         supports_vision=True,
         priority=8,
-        is_local=True,
-        task_suitability=[
-            "deep_reasoning",
-            "fast_text_generation",
-        ],
-        metadata={"description": "Dynamic thinking with adaptive depth"},
-    ),
-    ModelDefinition(
-        model_id="gemini-flash-lite",
-        provider_name="gemini-web2api",
-        capabilities={
-            ModelCapability.REASONING,
-            ModelCapability.SUMMARIZATION,
-            ModelCapability.EXTRACTION,
-            ModelCapability.CLASSIFICATION,
-        },
-        context_window=524288,
-        supports_streaming=True,
-        supports_vision=False,
-        priority=9,
-        is_local=True,
+        is_local=False,
         task_suitability=[
             "fast_text_generation",
+            "vision_analysis",
+            "long_form_research",
             "streaming_response",
         ],
-        metadata={"description": "Lightweight fast model"},
+        metadata={"description": "Fast and versatile multimodal model (Gemini 1.5 Flash)"},
     ),
 ]
 
 
 def create_default_gateway(
-    gemini_provider: Optional[GeminiWeb2APIProvider] = None,
+    gemini_provider: Optional[GeminiProvider] = None,
     custom_model_registry: Optional[ModelRegistry] = None,
     custom_provider_registry: Optional[ProviderRegistry] = None,
 ) -> ModelGateway:
@@ -174,11 +108,11 @@ def create_default_gateway(
     provider_registry = custom_provider_registry or ProviderRegistry()
     model_registry = custom_model_registry or ModelRegistry()
 
-    # 1. Register Gemini Web2API Provider
-    if gemini_provider is None and settings.gemini_web2api_base_url:
-        gemini_provider = GeminiWeb2APIProvider(
-            base_url=settings.gemini_web2api_base_url,
-            api_key=settings.gemini_web2api_api_key,
+    # 1. Register Gemini Provider if configured
+    if gemini_provider is None and (settings.gemini_api_key or settings.gemini_base_url):
+        gemini_provider = GeminiProvider(
+            base_url=settings.gemini_base_url,
+            api_key=settings.gemini_api_key,
             default_model=settings.gemini_default_model,
         )
 
