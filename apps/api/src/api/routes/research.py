@@ -110,12 +110,13 @@ class ReportResponse(BaseModel):
 
 # Dependencies
 async def get_pipeline() -> ResearchPipeline:
-    from api.dependencies import get_orchestrator, get_agent_registry, get_tool_registry, get_model_router
+    from api.dependencies import get_orchestrator, get_agent_registry, get_tool_registry, get_model_router, get_research_event_bus
     return ResearchPipeline(
         orchestrator=await get_orchestrator(),
         agent_registry=await get_agent_registry(),
         tool_registry=await get_tool_registry(),
         model_router=await get_model_router(),
+        event_bus=await get_research_event_bus(),
     )
 
 

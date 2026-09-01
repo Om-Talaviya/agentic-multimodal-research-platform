@@ -5,6 +5,12 @@ from research.models import (
     ResearchStep, ResearchPlan,
     Source, Evidence, Finding, ResearchReport,
 )
+from research.events import (
+    ResearchEvent,
+    ResearchEventBus,
+    ResearchEventType,
+    research_event_bus,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -12,4 +18,6 @@ __all__ = [
     "ResearchStep", "ResearchPlan",
     "Source", "Evidence", "Finding", "ResearchReport",
     "ResearchPipeline",
+    "ResearchEvent", "ResearchEventBus", "ResearchEventType",
+    "research_event_bus",
 ]

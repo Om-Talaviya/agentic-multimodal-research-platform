@@ -222,7 +222,18 @@ Response:
 }
 ```
 
+#### Research Progress WebSocket Stream
+```http
+GET /api/v1/research/{job_id}/ws?token={access_token}
+```
+
+Frames:
+1. **Initial Snapshot** (`type: "snapshot"`): Delivers full job state, tasks, sources, evidence, and report.
+2. **Live Events** (`type: "event"`): Streams real-time task progress, evidence discovery, and verification events.
+3. **Heartbeat** (`type: "heartbeat"`): Periodic keep-alive frames on idle connections.
+
 ### Documents
+
 
 #### Upload Document
 ```http

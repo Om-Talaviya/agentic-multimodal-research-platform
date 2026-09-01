@@ -215,7 +215,7 @@ All configuration via environment variables (see `.env.example`):
 - ✅ Testing infrastructure & Docker Compose environment
 
 ### Phase 2 — Research MVP
-🟡 **~95% COMPLETE**
+🟢 **COMPLETE**
 - ✅ Planner Agent with LLM-based structured decomposition
 - ✅ Dynamic, persistent DAG task execution & dependency resolution
 - ✅ Web Research Agent (search & fetch) & Document Analysis Agent
@@ -223,7 +223,7 @@ All configuration via environment variables (see `.env.example`):
 - ✅ Critic Agent for evidence quality verification & confidence scoring
 - ✅ Report Agent for structured report synthesis & citation preservation
 - ✅ Complete REST API for jobs, plans, tasks, sources, evidence & reports
-- ⬜ Real-time WebSocket streaming updates
+- ✅ Real-time WebSocket streaming updates (`/api/v1/research/{job_id}/ws`)
 
 ### Phase 3 — Multimodal Ingestion
 🟢 **COMPLETE**
@@ -261,7 +261,7 @@ All configuration via environment variables (see `.env.example`):
 ---
 
 ### Test Suite Status
-- **Total Tests**: 185
-- **Passing**: 184
+- **Total Tests**: 194
+- **Passing**: 193
 - **Skipped**: 1 (Live Gemini Web2API integration test when API key is unconfigured)
 - **Failed**: 0

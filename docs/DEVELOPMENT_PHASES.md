@@ -51,9 +51,9 @@ npm run dev
 ---
 
 ## Phase 2: Research MVP
-**Status**: 🟡 ~95% COMPLETE
+**Status**: 🟢 COMPLETE
 
-**Goal**: End-to-end research pipeline with planner + basic agents + persistent DAG execution
+**Goal**: End-to-end research pipeline with planner + basic agents + persistent DAG execution + real-time WebSocket streaming
 
 ### Deliverables
 
@@ -66,8 +66,8 @@ npm run dev
 - [x] Report Generation Agent (structured synthesis with citation preservation)
 - [x] Research pipeline integration with persistent/dynamic DAG execution
 - [x] API endpoints for plan, tasks, sources, evidence, report
-- [ ] WebSocket for real-time updates
-- [x] Integration tests for full pipeline
+- [x] WebSocket for real-time updates (`/api/v1/research/{job_id}/ws` with snapshot + live DAG streaming)
+- [x] Integration tests for full pipeline and WebSocket streaming
 
 ### Components
 
@@ -81,6 +81,7 @@ packages/agents/
   └── orchestrator.py
 
 packages/research/
+  ├── events.py
   ├── pipeline.py
   ├── planner.py
   ├── verification.py
@@ -277,7 +278,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ## Phase 7+: Future Expansion
 
-- Real-time WebSocket streaming updates
+## Phase 7+: Future Expansion
+
 - Persistent database `users` table with Alembic migrations
 - Audio/video processing (Whisper speech-to-text)
 - Multi-user collaboration workspaces
@@ -292,19 +294,18 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | Phase | Milestone | Status | Test Coverage |
 | :--- | :--- | :--- | :--- |
 | **Phase 1** | Foundation | 🟢 COMPLETE | Full backend, DB, API & test infra |
-| **Phase 2** | Research MVP | 🟡 ~95% COMPLETE | DAG, agents, synthesis, report (WebSocket remaining) |
+| **Phase 2** | Research MVP | 🟢 COMPLETE | DAG, agents, synthesis, report, WebSocket streaming |
 | **Phase 3** | Multimodal Ingestion | 🟢 COMPLETE | Text, PDF, DOCX, Vision Image parsing & chunking |
 | **Phase 4** | Agentic System | 🟢 COMPLETE | Tools, SSRF defense, Critic, tracing, retries |
 | **Phase 5** | RAG / Knowledge Layer | 🟢 COMPLETE | Hybrid RRF, Embedder, BM25, Chroma adapter |
 | **Phase 6** | Production & Security | 🟢 COMPLETE | JWT, RBAC, Prometheus metrics, K8s manifests |
 
 ### Test Suite Status
-- **Total Tests**: 185
-- **Passed**: 184
+- **Total Tests**: 194
+- **Passed**: 193
 - **Skipped**: 1 (Live Gemini Web2API integration test when API key is unconfigured)
 - **Failed**: 0
 
 ### Immediate Focus Areas
-1. Implement real-time WebSocket progress streaming (`/api/v1/research/{id}/ws`).
-2. Migrate `UserRegistry` from in-memory seed storage to persistent SQLAlchemy `users` table with Alembic migrations.
-3. Wire the React frontend (`apps/web`) to backend DAG execution and report views.
+1. Migrate `UserRegistry` from in-memory seed storage to persistent SQLAlchemy `users` table with Alembic migrations.
+2. Expand multimodal ingestion for audio/video processing and multi-user collaboration workspaces.

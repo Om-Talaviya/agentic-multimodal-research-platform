@@ -7,6 +7,7 @@ from agents.registry import AgentRegistry
 from tools.registry import ToolRegistry
 from ai.providers.router import ModelRouter
 from shared.logging import get_logger
+from research.events import ResearchEvent, ResearchEventBus, ResearchEventType, research_event_bus
 
 logger = get_logger(__name__)
 
@@ -24,11 +25,37 @@ class ResearchPipeline:
         agent_registry: AgentRegistry,
         tool_registry: ToolRegistry,
         model_router: ModelRouter,
+        event_bus: ResearchEventBus | None = None,
     ):
         self.orchestrator = orchestrator
         self.agent_registry = agent_registry
         self.tool_registry = tool_registry
         self.model_router = model_router
+        self.event_bus = event_bus or research_event_bus
+
+    async def _emit(
+        self,
+        job_id: str,
+        event_type: ResearchEventType,
+        message: str | None = None,
+        data: dict[str, Any] | None = None,
+    ) -> None:
+        try:
+            await self.event_bus.publish(
+                ResearchEvent(
+                    job_id=job_id,
+                    type=event_type,
+                    message=message,
+                    data=data or {},
+                )
+            )
+        except Exception as exc:
+            logger.warning(
+                "Failed to publish research event",
+                job_id=job_id,
+                event_type=event_type.value,
+                error=str(exc),
+            )
     
     async def create_job(self, request: ResearchRequest) -> ResearchJob:
         """Create a new research job from request."""
@@ -64,6 +91,12 @@ class ResearchPipeline:
         )
 
         logger.info("Research job created", job_id=job.id)
+        await self._emit(
+            str(job.id),
+            ResearchEventType.JOB_CREATED,
+            "Research job created",
+            {"status": JobStatus.PENDING.value},
+        )
         return job
     
     async def run_planning(self, job: ResearchJob) -> ResearchPlan:
@@ -89,11 +122,24 @@ class ResearchPipeline:
         )
         
         context = self.orchestrator.create_context(job_id_str, task.id, request_id_str)
+        await self._emit(
+            job_id_str,
+            ResearchEventType.PLANNING_STARTED,
+            "Research planning started",
+            {"task_id": task.id, "agent": task.agent},
+        )
         result = await planner.run(task, context)
         
         if not result.success:
             raise ValueError(f"Planning failed: {result.errors}")
-        
+
+        step_count = len(result.output.steps) if result.output else 0
+        await self._emit(
+            job_id_str,
+            ResearchEventType.PLANNING_COMPLETED,
+            "Research planning completed",
+            {"task_id": task.id, "agent": task.agent, "step_count": step_count},
+        )
         return result.output
 
     @staticmethod
@@ -261,6 +307,24 @@ class ResearchPipeline:
             task_repo = TaskRepository(session)
             await task_repo.create_batch(db_tasks)
 
+        await self._emit(
+            str(job.id),
+            ResearchEventType.TASKS_CREATED,
+            "Research tasks created",
+            {
+                "task_count": len(db_tasks),
+                "tasks": [
+                    {
+                        "id": str(t.id),
+                        "agent": t.agent,
+                        "status": t.status,
+                        "objective": t.objective,
+                    }
+                    for t in db_tasks
+                ],
+            },
+        )
+
         completed: set[str] = set()
 
         while len(completed) < len(tasks):
@@ -276,6 +340,23 @@ class ResearchPipeline:
 
             # Sort ready tasks by priority descending
             ready.sort(key=lambda t: t.priority, reverse=True)
+
+            async with get_session() as session:
+                task_repo = TaskRepository(session)
+                for task in ready:
+                    await task_repo.update_status(UUID(task.id), TaskStatus.RUNNING)
+                    await self._emit(
+                        str(job.id),
+                        ResearchEventType.TASK_STARTED,
+                        "Research task started",
+                        {
+                            "task_id": task.id,
+                            "agent": task.agent,
+                            "type": task.type,
+                            "objective": task.objective,
+                            "status": TaskStatus.RUNNING.value,
+                        },
+                    )
 
             # Create an isolated context for each ready task
             contexts = [
@@ -301,9 +382,32 @@ class ResearchPipeline:
                     if isinstance(result, Exception):
                         await task_repo.update_status(task_uuid, TaskStatus.FAILED, str(result))
                         logger.error("Task failed", task_id=task.id, error=str(result))
+                        await self._emit(
+                            str(job.id),
+                            ResearchEventType.TASK_FAILED,
+                            "Research task failed",
+                            {
+                                "task_id": task.id,
+                                "agent": task.agent,
+                                "type": task.type,
+                                "status": TaskStatus.FAILED.value,
+                                "error": str(result),
+                            },
+                        )
                     else:
                         task_output = self._serialize_task_result(result.output)
                         await task_repo.update_status(task_uuid, TaskStatus.COMPLETED, result=task_output)
+                        await self._emit(
+                            str(job.id),
+                            ResearchEventType.TASK_COMPLETED,
+                            "Research task completed",
+                            {
+                                "task_id": task.id,
+                                "agent": task.agent,
+                                "type": task.type,
+                                "status": TaskStatus.COMPLETED.value,
+                            },
+                        )
 
                         # Convert and persist sources and evidence
                         if result.output and isinstance(result.output, dict):
@@ -314,6 +418,16 @@ class ResearchPipeline:
                                     for s in raw_sources
                                 ]
                                 await source_repo.create_batch(db_sources)
+                                await self._emit(
+                                    str(job.id),
+                                    ResearchEventType.SOURCES_ADDED,
+                                    "Research sources added",
+                                    {
+                                        "task_id": task.id,
+                                        "count": len(db_sources),
+                                        "source_ids": [str(s.id) for s in db_sources],
+                                    },
+                                )
 
                             raw_evidence = result.output.get("evidence", [])
                             if raw_evidence:
@@ -322,6 +436,16 @@ class ResearchPipeline:
                                     for ev in raw_evidence
                                 ]
                                 await evidence_repo.create_batch(db_evidence)
+                                await self._emit(
+                                    str(job.id),
+                                    ResearchEventType.EVIDENCE_ADDED,
+                                    "Research evidence added",
+                                    {
+                                        "task_id": task.id,
+                                        "count": len(db_evidence),
+                                        "evidence_ids": [str(ev.id) for ev in db_evidence],
+                                    },
+                                )
 
                     completed.add(task.id)
     
@@ -333,12 +457,23 @@ class ResearchPipeline:
 
         try:
             job_uuid = UUID(str(job.id))
+            await self._emit(
+                str(job.id),
+                ResearchEventType.VERIFICATION_STARTED,
+                "Evidence verification started",
+            )
             async with get_session() as session:
                 evidence_repo = EvidenceRepository(session)
                 evidence_list = await evidence_repo.get_by_job(job_uuid)
 
             if not evidence_list:
                 logger.info("No evidence to verify for job", job_id=job.id)
+                await self._emit(
+                    str(job.id),
+                    ResearchEventType.VERIFICATION_COMPLETED,
+                    "Evidence verification completed",
+                    {"evidence_count": 0, "verified_count": 0},
+                )
                 return
 
             critic_result = await self.orchestrator.run_critic(
@@ -364,6 +499,15 @@ class ResearchPipeline:
                                 )
                             except Exception as update_err:
                                 logger.warning("Could not update verification for evidence", evidence_id=ev_id, error=str(update_err))
+                await self._emit(
+                    str(job.id),
+                    ResearchEventType.VERIFICATION_COMPLETED,
+                    "Evidence verification completed",
+                    {
+                        "evidence_count": len(evidence_list),
+                        "verified_count": len(verifications),
+                    },
+                )
         except Exception as verif_err:
             logger.warning("Evidence verification step encountered error", job_id=job.id, error=str(verif_err))
 
@@ -376,6 +520,11 @@ class ResearchPipeline:
 
         try:
             job_uuid = UUID(str(job.id))
+            await self._emit(
+                str(job.id),
+                ResearchEventType.REPORT_STARTED,
+                "Report generation started",
+            )
 
             # Get verified evidence and sources
             async with get_session() as session:
@@ -451,6 +600,12 @@ class ResearchPipeline:
                 await report_repo.create(report_model)
 
             logger.info("Report generated and persisted", job_id=job.id, report_id=str(report_model.id))
+            await self._emit(
+                str(job.id),
+                ResearchEventType.REPORT_GENERATED,
+                "Report generated",
+                {"report_id": str(report_model.id)},
+            )
 
         except Exception as report_err:
             logger.error("Report generation step encountered error", job_id=job.id, error=str(report_err))
@@ -480,6 +635,12 @@ class ResearchPipeline:
             async with get_session() as session:
                 repo = ResearchJobRepository(session)
                 await repo.update_status(job.id, JobStatus.RUNNING)
+            await self._emit(
+                str(job.id),
+                ResearchEventType.JOB_STARTED,
+                "Research job started",
+                {"status": JobStatus.RUNNING.value},
+            )
             
             # Planning
             plan = await self.run_planning(job)
@@ -496,12 +657,24 @@ class ResearchPipeline:
             async with get_session() as session:
                 repo = ResearchJobRepository(session)
                 await repo.update_status(job.id, JobStatus.COMPLETED)
+            await self._emit(
+                str(job.id),
+                ResearchEventType.JOB_COMPLETED,
+                "Research job completed",
+                {"status": JobStatus.COMPLETED.value},
+            )
             
         except Exception as e:
             logger.error("Research pipeline failed", job_id=job.id, error=str(e))
             async with get_session() as session:
                 repo = ResearchJobRepository(session)
                 await repo.update_status(job.id, JobStatus.FAILED, str(e))
+            await self._emit(
+                str(job.id),
+                ResearchEventType.JOB_FAILED,
+                "Research job failed",
+                {"status": JobStatus.FAILED.value, "error": str(e)},
+            )
             raise
         
         return job

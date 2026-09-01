@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState, useRef, useCallback } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck } from 'lucide-react'
-import { api } from '../services/api'
+import { api, getResearchWebSocketUrl } from '../services/api'
 import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport } from '../types/research'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
-  const navigate = useNavigate()
   const [job, setJob] = useState<ResearchJob | null>(null)
   const [tasks, setTasks] = useState<ResearchTask[]>([])
   const [sources, setSources] = useState<Source[]>([])
@@ -14,11 +13,12 @@ export function ResearchDetail() {
   const [report, setReport] = useState<ResearchReport | null>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report'>('overview')
+  const socketRef = useRef<WebSocket | null>(null)
+  const reconnectTimeoutRef = useRef<any>(null)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (!id) return
     try {
-      setLoading(true)
       const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes] = await Promise.all([
         api.get(`/research/${id}`),
         api.get(`/research/${id}/tasks`),
@@ -33,17 +33,117 @@ export function ResearchDetail() {
       setReport(reportRes.data)
     } catch (err) {
       console.error(err)
-      navigate('/dashboard')
     } finally {
       setLoading(false)
     }
-  }
+  }, [id])
 
   useEffect(() => {
+    if (!id) return
+
+    let isMounted = true
+    let reconnectAttempts = 0
+
+    const connectWebSocket = () => {
+      if (!isMounted) return
+
+      try {
+        const wsUrl = getResearchWebSocketUrl(id)
+        const ws = new WebSocket(wsUrl)
+        socketRef.current = ws
+
+        ws.onopen = () => {
+          reconnectAttempts = 0
+        }
+
+        ws.onmessage = (event) => {
+          if (!isMounted) return
+          try {
+            const message = JSON.parse(event.data)
+            if (message.type === 'snapshot' && message.data) {
+              const data = message.data
+              if (data.job) setJob(data.job)
+              if (data.tasks) setTasks(data.tasks)
+              if (data.sources) setSources(data.sources)
+              if (data.evidence) setEvidence(data.evidence)
+              if (data.report) setReport(data.report)
+              setLoading(false)
+            } else if (message.type === 'event' && message.event) {
+              const ev = message.event
+              const evType = ev.type
+              const evData = ev.data || {}
+
+              if (evType === 'job_started' || evType === 'job_completed' || evType === 'job_failed') {
+                setJob(prev => prev ? {
+                  ...prev,
+                  status: evData.status || prev.status,
+                  error_message: evData.error || prev.error_message,
+                  completed_at: evType === 'job_completed' ? new Date().toISOString() : prev.completed_at,
+                } : null)
+                if (evType === 'job_completed') {
+                  fetchData()
+                }
+              } else if (evType === 'tasks_created' && evData.tasks) {
+                fetchData()
+              } else if (evType === 'task_started' || evType === 'task_completed' || evType === 'task_failed') {
+                setTasks(prev => prev.map(t => {
+                  if (t.id === evData.task_id) {
+                    return {
+                      ...t,
+                      status: evData.status || t.status,
+                      error_message: evData.error || t.error_message,
+                      completed_at: (evType === 'task_completed' || evType === 'task_failed') ? new Date().toISOString() : t.completed_at,
+                    }
+                  }
+                  return t
+                }))
+                if (evType === 'task_completed' || evType === 'task_failed') {
+                  fetchData()
+                }
+              } else if (
+                evType === 'sources_added' ||
+                evType === 'evidence_added' ||
+                evType === 'verification_completed' ||
+                evType === 'report_generated'
+              ) {
+                fetchData()
+              }
+            }
+          } catch (parseErr) {
+            console.error('Failed to parse WebSocket message', parseErr)
+          }
+        }
+
+        ws.onerror = () => {
+          fetchData()
+        }
+
+        ws.onclose = () => {
+          if (!isMounted) return
+          const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 10000)
+          reconnectAttempts++
+          reconnectTimeoutRef.current = setTimeout(connectWebSocket, delay)
+        }
+      } catch (err) {
+        console.error('WebSocket connection initialization failed', err)
+        fetchData()
+      }
+    }
+
     fetchData()
-    const interval = setInterval(fetchData, 5000) // Poll for updates
-    return () => clearInterval(interval)
-  }, [id])
+    connectWebSocket()
+
+    return () => {
+      isMounted = false
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current)
+      }
+      if (socketRef.current) {
+        socketRef.current.close()
+        socketRef.current = null
+      }
+    }
+  }, [id, fetchData])
 
   const getStatusIcon = (status: string) => {
     switch (status) {

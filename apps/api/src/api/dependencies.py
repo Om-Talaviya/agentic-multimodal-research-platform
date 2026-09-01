@@ -26,6 +26,7 @@ from retrieval.retriever import HybridRetriever
 from retrieval.vector_store import VectorStore
 from shared.config import settings
 from shared.logging import get_logger
+from research.events import ResearchEventBus, research_event_bus
 
 logger = get_logger(__name__)
 
@@ -205,6 +206,10 @@ async def get_indexer() -> KnowledgeIndexer:
 
 async def get_tool_registry() -> ToolRegistry:
     return tool_registry
+
+
+async def get_research_event_bus() -> ResearchEventBus:
+    return research_event_bus
 
 
 # --- Authentication & Authorization Dependencies ---

@@ -28,4 +28,12 @@ api.interceptors.response.use(
   }
 )
 
+export function getResearchWebSocketUrl(jobId: string): string {
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
+  const host = window.location.host
+  const token = localStorage.getItem('token') || ''
+  const query = token ? `?token=${encodeURIComponent(token)}` : ''
+  return `${protocol}//${host}/api/v1/research/${jobId}/ws${query}`
+}
+
 export { api }
