@@ -32,9 +32,8 @@ engine = create_async_engine(settings.database_url, **engine_kwargs)
 async_session_maker = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 
-@asynccontextmanager
-async def get_session() -> AsyncSession:
-    """Get database session with automatic commit/rollback."""
+async def get_db_session() -> AsyncSession:
+    """FastAPI dependency yielding database session with automatic commit/rollback."""
     async with async_session_maker() as session:
         try:
             yield session
@@ -44,6 +43,9 @@ async def get_session() -> AsyncSession:
             raise
         finally:
             await session.close()
+
+
+get_session = asynccontextmanager(get_db_session)
 
 
 async def init_db() -> None:

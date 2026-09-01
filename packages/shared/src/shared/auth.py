@@ -189,7 +189,11 @@ def verify_token(
     """Verify and decode JWT token."""
     key = secret_key or settings.secret_key
     try:
-        payload_dict = jwt.decode(token, key, algorithms=[JWT_ALGORITHM])
+        payload_dict = jwt.decode(token, key, algorithms=[JWT_ALGORITHM], options={"verify_exp": False})
+        exp = payload_dict.get("exp")
+        if exp is not None and datetime.now(timezone.utc).timestamp() > exp:
+            raise JWTError("Signature has expired.")
+
         token_type = payload_dict.get("type", "access")
         if token_type != expected_type:
             raise AuthenticationError(f"Invalid token type: expected '{expected_type}', got '{token_type}'")

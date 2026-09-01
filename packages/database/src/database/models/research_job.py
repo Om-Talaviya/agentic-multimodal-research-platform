@@ -1,11 +1,15 @@
 """Research job and task models."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer, Index
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class ResearchJob(Base):
@@ -24,8 +28,8 @@ class ResearchJob(Base):
     status = Column(String(50), nullable=False, default="pending", index=True)
     error_message = Column(Text)
     started_at = Column(DateTime(timezone=True))
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
-    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False)
     completed_at = Column(DateTime(timezone=True))
     
     # Relationships
@@ -57,6 +61,7 @@ class ResearchTask(Base):
     depends_on = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     priority = Column(Integer, default=1)
     status = Column(String(50), nullable=False, default="pending", index=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     started_at = Column(DateTime(timezone=True))
     completed_at = Column(DateTime(timezone=True))
     error_message = Column(Text)

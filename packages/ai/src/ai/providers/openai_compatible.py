@@ -131,18 +131,22 @@ class OpenAICompatibleProvider(LLMProvider, VisionProvider):
         
         async with self._client.stream("POST", "/chat/completions", json=payload, timeout=self._timeout) as response:
             response.raise_for_status()
-            async for line in response.aiter_lines():
-                if line.startswith("data: "):
-                    data_str = line[6:]
-                    if data_str.strip() == "[DONE]":
-                        break
-                    try:
-                        data = json.loads(data_str)
-                        delta = data["choices"][0].get("delta", {})
-                        if "content" in delta:
-                            yield delta["content"]
-                    except json.JSONDecodeError:
-                        continue
+            lines = response.aiter_lines()
+            try:
+                async for line in lines:
+                    if line.startswith("data: "):
+                        data_str = line[6:]
+                        if data_str.strip() == "[DONE]":
+                            break
+                        try:
+                            data = json.loads(data_str)
+                            delta = data["choices"][0].get("delta", {})
+                            if "content" in delta:
+                                yield delta["content"]
+                        except json.JSONDecodeError:
+                            continue
+            finally:
+                await lines.aclose()
     
     async def analyze(self, request: VisionRequest) -> VisionResponse:
         model = request.model or "gpt-4o-mini"

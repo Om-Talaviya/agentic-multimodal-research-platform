@@ -1,7 +1,7 @@
 """Ingestion pipeline orchestrating document parsing, normalization, chunking, and persistence."""
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, BinaryIO, Dict, List, Optional
 from uuid import UUID, uuid4
 from ingestion.chunking import Chunk, ChunkingStrategy, SemanticChunker
@@ -10,6 +10,10 @@ from ingestion.parsers.registry import ParserRegistry
 from shared.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 @dataclass
@@ -72,7 +76,7 @@ class IngestionPipeline:
                     doc_metadata=parsed.metadata,
                     file_size=parsed.metadata.get("byte_size", len(parsed.content.encode("utf-8"))),
                     file_path=file_path,
-                    created_at=datetime.utcnow(),
+                    created_at=utc_now(),
                 )
                 await self.doc_repo.create(doc_model)
 

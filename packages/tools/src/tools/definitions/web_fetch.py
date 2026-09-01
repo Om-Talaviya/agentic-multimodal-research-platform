@@ -46,9 +46,20 @@ async def _resolve_and_validate_hostname(hostname: str) -> None:
         ValueError: If any resolved IP is not allowed (private, loopback, etc.)
         socket.gaierror: If hostname cannot be resolved
     """
+    clean_host = hostname.strip("[]")
     try:
-        infos = await asyncio.get_event_loop().getaddrinfo(
-            hostname, None, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM
+        ipaddress.ip_address(clean_host)
+        if not _is_ip_allowed(clean_host):
+            raise ValueError(f"Blocked IP address: {clean_host}")
+        return
+    except ValueError as e:
+        if "Blocked IP address" in str(e):
+            raise
+        # Not an IP literal, proceed to DNS resolution
+
+    try:
+        infos = socket.getaddrinfo(
+            clean_host, None, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM
         )
     except socket.gaierror as e:
         raise ValueError(f"Failed to resolve hostname: {e}")

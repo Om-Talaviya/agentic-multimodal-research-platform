@@ -5,10 +5,10 @@ from uuid import uuid4
 import pytest
 from httpx import ASGITransport, AsyncClient
 from main import app
-from database.connection import get_session
+from database.connection import get_db_session
 from api.routes.research import get_pipeline, run_pipeline_background
 from shared.types import UUIDStr
-from datetime import datetime
+from datetime import UTC, datetime
 from research.models import ResearchJob
 from database.models import Report as ReportModel
 
@@ -43,15 +43,15 @@ async def test_create_research_job_returns_201_and_job_id(mock_pipeline, mock_db
         objective="Test objective",
         constraints=[],
         status="pending",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
     mock_pipeline.create_job.return_value = test_job
 
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
     app.dependency_overrides[get_pipeline] = lambda: mock_pipeline
 
     transport = ASGITransport(app=app)
@@ -113,8 +113,8 @@ async def test_background_execution_updates_job_on_success(mock_pipeline):
         objective="Test objective",
         constraints=[],
         status="pending",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
     # run_job should be called and update status
     mock_pipeline.run_job = AsyncMock(return_value=test_job)
@@ -140,8 +140,8 @@ async def test_background_execution_records_failed_on_error(mock_pipeline):
         objective="Test objective",
         constraints=[],
         status="pending",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
     # Simulate an error in run_job
     mock_pipeline.run_job = AsyncMock(side_effect=Exception("Pipeline failed"))
@@ -165,7 +165,7 @@ async def test_get_research_job_returns_404_for_unknown(mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
 
     with patch("api.routes.research.ResearchJobRepository", return_value=mock_repo):
         transport = ASGITransport(app=app)
@@ -192,8 +192,8 @@ async def test_list_research_jobs(mock_db_session):
             question=f"Question {i}",
             objective=f"Objective {i}",
             status=JobStatus.PENDING.value,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow(),
+            created_at=datetime.now(UTC),
+            updated_at=datetime.now(UTC),
         )
         for i in range(3)
     ]
@@ -204,7 +204,7 @@ async def test_list_research_jobs(mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
 
     with patch("api.routes.research.ResearchJobRepository", return_value=mock_repo):
         transport = ASGITransport(app=app)
@@ -232,15 +232,15 @@ async def test_create_research_job_invalid_request(mock_pipeline, mock_db_sessio
         objective="Test objective",
         constraints=[],
         status="pending",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
     mock_pipeline.create_job.return_value = test_job
 
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
     app.dependency_overrides[get_pipeline] = lambda: mock_pipeline
 
     transport = ASGITransport(app=app)
@@ -269,8 +269,8 @@ async def test_get_research_report_returns_404_for_unknown(mock_db_session):
         objective="Test objective",
         constraints=[],
         status="completed",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     ))
     mock_report_repo = MagicMock()
     mock_report_repo.get_by_job = AsyncMock(return_value=None)
@@ -278,7 +278,7 @@ async def test_get_research_report_returns_404_for_unknown(mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
 
     with patch("api.routes.research.ResearchJobRepository", return_value=mock_job_repo):
         with patch("api.routes.research.ReportRepository", return_value=mock_report_repo):
@@ -306,8 +306,8 @@ async def test_get_research_report_returns_persisted_report(mock_db_session):
         objective="Test objective",
         constraints=[],
         status="completed",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
     mock_report = ReportModel(
         id=report_id,
@@ -320,7 +320,7 @@ async def test_get_research_report_returns_persisted_report(mock_db_session):
         source_ids=[{"id": "src_1", "type": "web", "url": "https://example.com", "title": "Test Source"}],
         conclusions=["Conclusion 1"],
         limitations=["Limitation 1"],
-        generated_at=datetime.utcnow(),
+        generated_at=datetime.now(UTC),
     )
 
     mock_job_repo = MagicMock()
@@ -331,7 +331,7 @@ async def test_get_research_report_returns_persisted_report(mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
 
     with patch("api.routes.research.ResearchJobRepository", return_value=mock_job_repo):
         with patch("api.routes.research.ReportRepository", return_value=mock_report_repo):
@@ -370,8 +370,8 @@ async def test_pipeline_run_job_creates_report(mock_pipeline, mock_db_session):
         objective="Test objective",
         constraints=[],
         status="pending",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
 
     # Mock the pipeline to simulate report generation
@@ -399,8 +399,8 @@ async def test_report_generation_failure_handled(mock_pipeline):
         objective="Test objective",
         constraints=[],
         status="pending",
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
 
     # Simulate report generation failure

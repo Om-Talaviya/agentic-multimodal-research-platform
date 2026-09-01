@@ -2,10 +2,14 @@
 
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from uuid import UUID, uuid4
 from shared.types import UUIDStr, TaskStatus, JobStatus
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class ResearchRequest(BaseModel):
@@ -25,8 +29,8 @@ class ResearchJob(BaseModel):
     constraints: List[str] = Field(default_factory=list)
     expected_output: str = "report"
     status: JobStatus = JobStatus.PENDING
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
+    updated_at: datetime = Field(default_factory=utc_now)
     completed_at: Optional[datetime] = None
     error_message: Optional[str] = None
 
@@ -71,7 +75,7 @@ class Source(BaseModel):
     title: str
     metadata: Dict[str, Any] = Field(default_factory=dict)
     content_hash: Optional[str] = None
-    retrieved_at: datetime = Field(default_factory=datetime.utcnow)
+    retrieved_at: datetime = Field(default_factory=utc_now)
 
 
 class Evidence(BaseModel):
@@ -105,4 +109,4 @@ class ResearchReport(BaseModel):
     sources: List[Source] = Field(default_factory=list)
     conclusions: List[str] = Field(default_factory=list)
     limitations: List[str] = Field(default_factory=list)
-    generated_at: datetime = Field(default_factory=datetime.utcnow)
+    generated_at: datetime = Field(default_factory=utc_now)

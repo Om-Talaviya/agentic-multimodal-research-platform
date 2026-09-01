@@ -2,12 +2,16 @@
 
 from typing import Optional, List
 from uuid import UUID
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update, func
 from sqlalchemy.orm import selectinload
 from database.models import ResearchJob, ResearchTask, Source, Evidence
 from shared.types import TaskStatus, JobStatus
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class ResearchJobRepository:
@@ -47,15 +51,16 @@ class ResearchJobRepository:
         status: JobStatus, 
         error: str | None = None
     ) -> None:
-        values = {"status": status.value, "updated_at": datetime.utcnow()}
+        now = utc_now()
+        values = {"status": status.value, "updated_at": now}
         if error:
             values["error_message"] = error
         if status == JobStatus.RUNNING:
-            values["started_at"] = datetime.utcnow()
+            values["started_at"] = now
         elif status == JobStatus.COMPLETED:
-            values["completed_at"] = datetime.utcnow()
+            values["completed_at"] = now
         elif status == JobStatus.FAILED:
-            values["completed_at"] = datetime.utcnow()
+            values["completed_at"] = now
         
         await self.session.execute(
             update(ResearchJob).where(ResearchJob.id == job_id).values(**values)
@@ -121,10 +126,11 @@ class TaskRepository:
         result: dict | None = None
     ) -> None:
         values = {"status": status.value}
+        now = utc_now()
         if status == TaskStatus.RUNNING:
-            values["started_at"] = datetime.utcnow()
+            values["started_at"] = now
         elif status in (TaskStatus.COMPLETED, TaskStatus.FAILED):
-            values["completed_at"] = datetime.utcnow()
+            values["completed_at"] = now
         if error:
             values["error_message"] = error
         if result:

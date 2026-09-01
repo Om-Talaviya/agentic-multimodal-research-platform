@@ -1,13 +1,17 @@
 """Agent observability and execution tracing framework."""
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 import time
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
 from shared.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 @dataclass
@@ -20,7 +24,7 @@ class ToolCallTrace:
     success: bool = True
     error: Optional[str] = None
     duration_ms: int = 0
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=utc_now)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -47,7 +51,7 @@ class ModelCallTrace:
     latency_ms: int = 0
     success: bool = True
     error: Optional[str] = None
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=utc_now)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -73,7 +77,7 @@ class AgentTrace:
     job_id: str
     request_id: str
     trace_id: str = field(default_factory=lambda: str(uuid4()))
-    started_at: datetime = field(default_factory=datetime.utcnow)
+    started_at: datetime = field(default_factory=utc_now)
     completed_at: Optional[datetime] = None
     success: bool = False
     input: Dict[str, Any] = field(default_factory=dict)
@@ -93,7 +97,7 @@ class AgentTrace:
 
     def complete(self, success: bool, output: Optional[Dict[str, Any]] = None, errors: Optional[List[str]] = None) -> None:
         """Mark the trace as finished and compute total duration."""
-        self.completed_at = datetime.utcnow()
+        self.completed_at = utc_now()
         self.success = success
         if output is not None:
             self.output = output

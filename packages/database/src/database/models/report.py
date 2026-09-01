@@ -1,11 +1,15 @@
 """Report model."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy import Column, Text, DateTime, ForeignKey, JSON
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class Report(Base):
@@ -23,7 +27,7 @@ class Report(Base):
     source_ids = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     conclusions = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     limitations = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
-    generated_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    generated_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships
     job = relationship("ResearchJob", back_populates="reports")

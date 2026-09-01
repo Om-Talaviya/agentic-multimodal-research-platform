@@ -1,13 +1,13 @@
 """Document upload and management routes."""
 
 import io
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Optional
 from uuid import UUID
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
-from database.connection import get_session
+from database.connection import get_db_session
 from database.repositories import DocumentRepository
 from database.models import Document
 from ingestion.pipeline import IngestionPipeline
@@ -36,6 +36,8 @@ ALLOWED_EXTENSIONS = {".txt", ".md", ".pdf", ".docx", ".png", ".jpg", ".jpeg", "
 
 
 class DocumentResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     filename: str
     mime_type: str
@@ -43,9 +45,10 @@ class DocumentResponse(BaseModel):
     file_path: str
     status: str = "ingested"
     created_at: str
-    
-    class Config:
-        from_attributes = True
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 async def get_model_gateway() -> Optional[ModelGateway]:
@@ -108,7 +111,7 @@ async def save_upload(content: bytes, filename: str, job_id: Optional[str] = Non
 async def upload_document(
     file: UploadFile = File(...),
     research_job_id: Optional[str] = Form(None),
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
     gateway: Optional[ModelGateway] = Depends(get_model_gateway),
 ):
     """Upload a document and run it through the multimodal ingestion pipeline."""
@@ -152,7 +155,7 @@ async def upload_document(
             job_id=UUID(research_job_id) if research_job_id else None,
             content="",
             doc_metadata={"ingestion_error": str(e)},
-            created_at=datetime.utcnow(),
+            created_at=utc_now(),
         )
         await repo.create(doc)
         doc_id = doc.id
@@ -161,7 +164,7 @@ async def upload_document(
     if not doc:
         raise HTTPException(status_code=500, detail="Failed to retrieve uploaded document")
     
-    created_str = doc.created_at.isoformat() if doc.created_at else datetime.utcnow().isoformat()
+    created_str = doc.created_at.isoformat() if doc.created_at else utc_now().isoformat()
     return DocumentResponse(
         id=doc.id,
         filename=doc.filename,
@@ -176,7 +179,7 @@ async def upload_document(
 @router.get("/{doc_id}", response_model=DocumentResponse)
 async def get_document(
     doc_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get document by ID."""
     repo = DocumentRepository(session)
@@ -185,7 +188,7 @@ async def get_document(
     if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
     
-    created_str = doc.created_at.isoformat() if doc.created_at else datetime.utcnow().isoformat()
+    created_str = doc.created_at.isoformat() if doc.created_at else utc_now().isoformat()
     return DocumentResponse(
         id=doc.id,
         filename=doc.filename,
@@ -202,7 +205,7 @@ async def list_documents(
     job_id: Optional[str] = None,
     limit: int = 20,
     offset: int = 0,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """List documents."""
     repo = DocumentRepository(session)
@@ -221,7 +224,7 @@ async def list_documents(
             file_size=d.file_size or 0,
             file_path=d.file_path or "",
             status="ingested",
-            created_at=d.created_at.isoformat() if d.created_at else datetime.utcnow().isoformat(),
+            created_at=d.created_at.isoformat() if d.created_at else utc_now().isoformat(),
         )
         for d in docs[offset:offset+limit]
     ]

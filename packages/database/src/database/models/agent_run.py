@@ -1,11 +1,15 @@
 """Agent run and model call models."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer, Boolean, Index
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class AgentRun(Base):
@@ -18,7 +22,7 @@ class AgentRun(Base):
     task_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_tasks.id", ondelete="SET NULL"), index=True)
     agent_name = Column(String(100), nullable=False)
     request_id = Column(PG_UUID(as_uuid=True), nullable=False, index=True)
-    started_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    started_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     completed_at = Column(DateTime(timezone=True))
     success = Column(Boolean)
     input = Column(JSON().with_variant(JSONB, "postgresql"))
@@ -54,7 +58,7 @@ class ModelCall(Base):
     latency_ms = Column(Integer)
     success = Column(Boolean)
     error_message = Column(Text)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships
     agent_run = relationship("AgentRun", back_populates="model_calls_rel")

@@ -1,5 +1,6 @@
 """Tests for tools package."""
 
+from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 import socket
 from tools.base import Tool, ToolSchema, ToolParameter, Permission
@@ -74,7 +75,8 @@ def test_tool_permissions():
     assert no_perm.check_permissions(set()) is True
 
 
-def test_tool_registry():
+@pytest.mark.asyncio
+async def test_tool_registry():
     """Test ToolRegistry."""
     registry = ToolRegistry()
     
@@ -96,13 +98,12 @@ def test_tool_registry():
     assert schemas[0]["function"]["name"] == "mock_tool"
     
     # Execute tool
-    import asyncio
-    result = asyncio.run(registry.execute("mock_tool", input="test"))
+    result = await registry.execute("mock_tool", input="test")
     assert result == "Processed: test"
     
     # Execute unknown tool
     with pytest.raises(ValueError):
-        asyncio.run(registry.execute("unknown_tool"))
+        await registry.execute("unknown_tool")
 
 
 def test_global_tool_registry():
@@ -253,19 +254,35 @@ class TestWebFetchSSRFProtection:
 
     @pytest.mark.asyncio
     async def test_execute_allows_public_http(self, web_fetch_tool):
-        # Test that public URLs pass scheme validation (SSRF check happens at DNS resolution)
-        # We can't easily mock the DNS resolution here, so we just verify the scheme check passes
-        # by checking that a non-HTTP scheme is rejected
-        result = await web_fetch_tool.execute("http://example.com/")
-        # Should NOT be blocked by SSRF (will fail at network level, not SSRF level)
-        assert "Only HTTP and HTTPS schemes are allowed" not in result
-        assert "Invalid URL" not in result
+        mock_resp = MagicMock(text="<html><body>Hello Public HTTP</body></html>")
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = MagicMock()
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=None)
+        mock_client.get = AsyncMock(return_value=mock_resp)
+
+        with patch("tools.definitions.web_fetch._resolve_and_validate_hostname", AsyncMock()), \
+             patch("httpx.AsyncClient", return_value=mock_client):
+            result = await web_fetch_tool.execute("http://example.com/")
+            assert "Only HTTP and HTTPS schemes are allowed" not in result
+            assert "Invalid URL" not in result
+            assert "Hello Public HTTP" in result
 
     @pytest.mark.asyncio
     async def test_execute_allows_public_https(self, web_fetch_tool):
-        result = await web_fetch_tool.execute("https://example.com/")
-        assert "Only HTTP and HTTPS schemes are allowed" not in result
-        assert "Invalid URL" not in result
+        mock_resp = MagicMock(text="<html><body>Hello Public HTTPS</body></html>")
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = MagicMock()
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=None)
+        mock_client.get = AsyncMock(return_value=mock_resp)
+
+        with patch("tools.definitions.web_fetch._resolve_and_validate_hostname", AsyncMock()), \
+             patch("httpx.AsyncClient", return_value=mock_client):
+            result = await web_fetch_tool.execute("https://example.com/")
+            assert "Only HTTP and HTTPS schemes are allowed" not in result
+            assert "Invalid URL" not in result
+            assert "Hello Public HTTPS" in result
 
     @pytest.mark.asyncio
     async def test_execute_rejects_non_http_scheme(self, web_fetch_tool):

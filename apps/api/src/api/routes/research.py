@@ -4,8 +4,8 @@ from typing import Optional
 from uuid import UUID
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from pydantic import BaseModel
-from database.connection import get_session
+from pydantic import BaseModel, ConfigDict
+from database.connection import get_db_session
 from database.repositories import (
     ResearchJobRepository, TaskRepository,
     SourceRepository, EvidenceRepository, ReportRepository,
@@ -31,6 +31,8 @@ class ResearchJobCreate(BaseModel):
 
 
 class ResearchJobResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     request_id: UUID
     question: str
@@ -44,9 +46,6 @@ class ResearchJobResponse(BaseModel):
     updated_at: str
     completed_at: Optional[str]
     error_message: Optional[str]
-    
-    class Config:
-        from_attributes = True
 
 
 class ResearchPlanResponse(BaseModel):
@@ -56,6 +55,8 @@ class ResearchPlanResponse(BaseModel):
 
 
 class TaskResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     job_id: UUID
     type: str
@@ -66,24 +67,22 @@ class TaskResponse(BaseModel):
     completed_at: Optional[str]
     error_message: Optional[str]
     result: Optional[dict]
-    
-    class Config:
-        from_attributes = True
 
 
 class SourceResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     type: str
     url: Optional[str]
     title: str
     metadata: dict
     retrieved_at: str
-    
-    class Config:
-        from_attributes = True
 
 
 class EvidenceResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     source_id: UUID
     claim: str
@@ -91,12 +90,11 @@ class EvidenceResponse(BaseModel):
     confidence: float
     verification_status: str
     verification_notes: Optional[str]
-    
-    class Config:
-        from_attributes = True
 
 
 class ReportResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     job_id: UUID
     title: str
@@ -108,9 +106,6 @@ class ReportResponse(BaseModel):
     conclusions: list[str]
     limitations: list[str]
     generated_at: str
-    
-    class Config:
-        from_attributes = True
 
 
 # Dependencies
@@ -172,7 +167,7 @@ async def create_research_job(
 @router.get("/{job_id}", response_model=ResearchJobResponse)
 async def get_research_job(
     job_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get research job by ID."""
     repo = ResearchJobRepository(session)
@@ -201,7 +196,7 @@ async def get_research_job(
 @router.get("/{job_id}/plan", response_model=ResearchPlanResponse)
 async def get_research_plan(
     job_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get research plan."""
     repo = ResearchJobRepository(session)
@@ -222,7 +217,7 @@ async def get_research_plan(
 @router.get("/{job_id}/tasks", response_model=list[TaskResponse])
 async def get_research_tasks(
     job_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get research tasks."""
     repo = ResearchJobRepository(session)
@@ -254,7 +249,7 @@ async def get_research_tasks(
 @router.get("/{job_id}/sources", response_model=list[SourceResponse])
 async def get_research_sources(
     job_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get research sources."""
     repo = ResearchJobRepository(session)
@@ -282,7 +277,7 @@ async def get_research_sources(
 @router.get("/{job_id}/evidence", response_model=list[EvidenceResponse])
 async def get_research_evidence(
     job_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get research evidence."""
     repo = ResearchJobRepository(session)
@@ -311,7 +306,7 @@ async def get_research_evidence(
 @router.get("/{job_id}/report", response_model=ReportResponse)
 async def get_research_report(
     job_id: UUID,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Get research report."""
     repo = ResearchJobRepository(session)
@@ -346,7 +341,7 @@ async def list_research_jobs(
     limit: int = 20,
     offset: int = 0,
     status: Optional[str] = None,
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """List research jobs."""
     repo = ResearchJobRepository(session)

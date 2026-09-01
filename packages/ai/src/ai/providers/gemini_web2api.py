@@ -268,22 +268,35 @@ class GeminiWeb2APIProvider(LLMProvider, VisionProvider):
                         details={"status_code": response.status_code, "response": error_text.decode("utf-8", errors="ignore")},
                     )
 
-                async for line in response.aiter_lines():
-                    if not line:
-                        continue
-                    if line.startswith("data: "):
-                        data_str = line[6:].strip()
-                        if data_str == "[DONE]":
+                aiter = response.aiter_bytes()
+                try:
+                    buffer = ""
+                    done = False
+                    async for chunk in aiter:
+                        buffer += chunk.decode("utf-8", errors="ignore")
+                        while "\n" in buffer:
+                            line, buffer = buffer.split("\n", 1)
+                            line = line.strip()
+                            if not line:
+                                continue
+                            if line.startswith("data: "):
+                                data_str = line[6:].strip()
+                                if data_str == "[DONE]":
+                                    done = True
+                                    break
+                                try:
+                                    data = json.loads(data_str)
+                                    choices = data.get("choices", [])
+                                    if choices:
+                                        delta = choices[0].get("delta", {})
+                                        if "content" in delta and delta["content"]:
+                                            yield delta["content"]
+                                except json.JSONDecodeError:
+                                    continue
+                        if done:
                             break
-                        try:
-                            data = json.loads(data_str)
-                            choices = data.get("choices", [])
-                            if choices:
-                                delta = choices[0].get("delta", {})
-                                if "content" in delta and delta["content"]:
-                                    yield delta["content"]
-                        except json.JSONDecodeError:
-                            continue
+                finally:
+                    await aiter.aclose()
         except (httpx.ConnectError, httpx.ConnectTimeout, httpx.ReadTimeout, httpx.NetworkError) as e:
             logger.error("Gemini Web2API stream connection failed", error=str(e))
             raise ProviderUnavailableError(self._name) from e

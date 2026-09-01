@@ -6,7 +6,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 from main import app
 from database.models import Document
-from database.connection import get_session
+from database.connection import get_db_session
 from api.routes.documents import get_model_gateway
 
 
@@ -45,7 +45,7 @@ async def test_upload_document_success(mock_document_repo, mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
     app.dependency_overrides[get_model_gateway] = lambda: None
 
     with patch("api.routes.documents.DocumentRepository", return_value=mock_document_repo):
@@ -74,7 +74,7 @@ async def test_upload_document_invalid_extension(mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -94,7 +94,7 @@ async def test_upload_document_invalid_extension(mock_db_session):
 @pytest.mark.asyncio
 async def test_get_document_success(mock_document_repo, mock_db_session):
     from uuid import uuid4
-    from datetime import datetime
+    from datetime import UTC, datetime
 
     test_id = uuid4()
     mock_doc = Document(
@@ -103,7 +103,7 @@ async def test_get_document_success(mock_document_repo, mock_db_session):
         mime_type="text/plain",
         file_size=100,
         file_path="/tmp/test.txt",
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
     )
     mock_document_repo.get.side_effect = None
     mock_document_repo.get.return_value = mock_doc
@@ -111,7 +111,7 @@ async def test_get_document_success(mock_document_repo, mock_db_session):
     async def override_get_session():
         yield mock_db_session
 
-    app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[get_db_session] = override_get_session
 
     with patch("api.routes.documents.DocumentRepository", return_value=mock_document_repo):
         transport = ASGITransport(app=app)

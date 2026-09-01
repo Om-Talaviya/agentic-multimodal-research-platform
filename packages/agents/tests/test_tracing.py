@@ -1,6 +1,6 @@
 """Unit tests for agent tracing."""
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 import pytest
 from agents.tracing import AgentTrace, ToolCallTrace, ModelCallTrace
 
@@ -48,7 +48,7 @@ def test_agent_trace_lifecycle_and_duration():
     trace.add_model_call(ModelCallTrace("ollama", "qwen2.5:7b", prompt_tokens=100, completion_tokens=50))
 
     # Fast forward start time to test duration
-    trace.started_at = datetime.utcnow() - timedelta(seconds=2)
+    trace.started_at = datetime.now(UTC) - timedelta(seconds=2)
     trace.complete(success=True, output={"status": "done"})
 
     assert trace.success is True

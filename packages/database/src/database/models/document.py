@@ -1,11 +1,15 @@
 """Document and chunk models."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer, Index
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class Document(Base):
@@ -21,7 +25,7 @@ class Document(Base):
     doc_metadata = Column(JSON().with_variant(JSONB, "postgresql"), default=dict)
     file_size = Column(Integer)
     file_path = Column(String(1000))
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships
     job = relationship("ResearchJob", back_populates="documents")

@@ -1,11 +1,15 @@
 """Source and evidence models."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Index, Float
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class Source(Base):
@@ -20,7 +24,7 @@ class Source(Base):
     title = Column(Text, nullable=False)
     source_metadata = Column(JSON().with_variant(JSONB, "postgresql"), default=dict)
     content_hash = Column(String(64), index=True)
-    retrieved_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    retrieved_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships
     job = relationship("ResearchJob", back_populates="sources")
@@ -40,7 +44,7 @@ class Evidence(Base):
     confidence = Column(Float, nullable=False, default=0.5)
     verification_status = Column(String(50), default="unverified")
     verification_notes = Column(Text)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships
     job = relationship("ResearchJob", back_populates="evidence")
