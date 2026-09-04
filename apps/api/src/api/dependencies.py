@@ -230,21 +230,10 @@ async def get_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
     session: AsyncSession = Depends(get_db_session),
 ) -> User:
-    """Validate bearer JWT token and return authenticated User from database or registry."""
+    """Validate bearer JWT token and return authenticated User from database."""
     repo = UserRepository(session)
 
     if not credentials or not credentials.credentials:
-        # Check default system user if running in dev without explicit token
-        if settings.debug and not credentials:
-            try:
-                admin_db = await repo.get_by_username("admin")
-                if admin_db and admin_db.is_active:
-                    return User.from_db(admin_db)
-            except Exception:
-                pass
-            admin_mem = user_registry.get_by_username("admin")
-            if admin_mem:
-                return admin_mem
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Authentication credentials were not provided",

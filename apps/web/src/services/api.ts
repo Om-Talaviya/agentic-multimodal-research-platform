@@ -11,6 +11,13 @@ const api = axios.create({
 api.interceptors.request.use(config => {
   const requestId = crypto.randomUUID()
   config.headers['X-Request-ID'] = requestId
+
+  // Automatically inject Bearer token if authenticated
+  const token = localStorage.getItem('token')
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
   return config
 })
 

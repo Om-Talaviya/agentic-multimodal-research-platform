@@ -114,3 +114,60 @@ async def get_me(user: User = Depends(get_current_user)) -> dict:
         "role": user.role.value,
         "permissions": [p for p in ["research:create", "research:read", "documents:upload"] if user.has_permission(p)],
     }
+
+
+@router.post("/register", response_model=TokenResponse)
+async def register(
+    credentials: LoginRequest,
+    session: AsyncSession = Depends(get_db_session),
+) -> TokenResponse:
+    """Register a new user with username/email and password.
+
+    Rejects duplicate username/email. New registrations cannot select ADMIN role.
+    Returns authentication tokens consistent with the existing login flow.
+    """
+    repo = UserRepository(session)
+
+    # Check if user already exists (by username or email)
+    existing = await repo.get_by_username_or_email(credentials.username)
+    if existing:
+        logger.warning("Registration failed: username or email already taken", username=credentials.username)
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Username or email already registered",
+        )
+
+    # Hash password using existing implementation
+    hashed = hash_password(credentials.password)
+
+    # Create user with RESEARCHER role only (ADMIN rejection)
+    from uuid import uuid4
+    user = User(
+        id=uuid4(),
+        username=credentials.username,
+        email=credentials.username if "@" not in credentials.username else credentials.username,
+        password_hash=hashed,
+        role="researcher",  # ADMIN role forbidden for new registrations
+        is_active=True,
+    )
+    await repo.create(user)
+
+    # Build User entity and generate tokens consistent with login flow
+    user_entity = User.from_db(user)
+    access_token = create_access_token(user_entity)
+    refresh_token = create_refresh_token(user_entity)
+
+    logger.info("User registered successfully", username=user_entity.username)
+
+    return TokenResponse(
+        access_token=access_token,
+        refresh_token=refresh_token,
+        token_type="bearer",
+        expires_in=60 * 24 * 60,  # 24 hours in seconds
+        user={
+            "id": user_entity.id,
+            "username": user_entity.username,
+            "email": user_entity.email,
+            "role": user_entity.role.value,
+        },
+    )
