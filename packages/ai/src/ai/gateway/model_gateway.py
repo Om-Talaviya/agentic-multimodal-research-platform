@@ -1,5 +1,4 @@
 """Model Gateway providing high-level abstraction, fallback, telemetry, and health management."""
-
 import time
 from typing import Any, AsyncIterator, Dict, List, Optional, Union
 from pydantic import BaseModel, Field
@@ -44,7 +43,7 @@ class ModelGateway:
         router: ModelRouter,
         model_registry: Optional[ModelRegistry] = None,
         provider_registry: Optional[ProviderRegistry] = None,
-        max_fallback_attempts: int = 1,
+        max_fallback_attempts: int = 3,  # PHASE 8A: configurable fallback depth
     ) -> None:
         self.router = router
         self.model_registry = model_registry or router.model_registry
@@ -57,7 +56,14 @@ class ModelGateway:
         task: Optional[Union[str, TaskType]] = None,
         fallback_enabled: bool = True,
     ) -> LLMResponse:
-        """Execute text completion with capability routing, safe fallback, and telemetry."""
+        """Execute text completion with capability routing, safe fallback, and telemetry.
+
+        Routing pipeline:
+        1. Select initial model/provider via ModelRouter (capability-aware, tier-aware, health-aware)
+        2. Attempt invocation
+        3. OnProviderUnavailableError/ProviderError: attempt fallback (up to max_fallback_attempts)
+        4. Return LLMResponse with full telemetry metadata
+        """
         start_time = time.perf_counter()
         requested_model = request.model
         fallback_occurred = False
@@ -66,22 +72,32 @@ class ModelGateway:
         attempted_providers: List[str] = []
         last_error: Optional[Exception] = None
 
-        # Select initial model & provider
+        # -------------------------------------------------------------------------
+        # 1. Select initial model & provider via Router
+        # -------------------------------------------------------------------------
         try:
             model_def, provider = self.router.select_model_and_provider(
                 requested_model=requested_model,
                 task=task,
                 requires_streaming=False,
+                user_id=getattr(request, "metadata", {}).get("user_id"),
             )
         except Exception as e:
-            logger.error("Failed to route request to any model", error=str(e), task=task, requested_model=requested_model)
+            logger.error(
+                "Failed to route request to any model",
+                error=str(e),
+                task=task,
+                requested_model=requested_model,
+            )
             raise
 
         original_model_id = model_def.model_id
         target_model = model_def.model_id
         target_provider = provider
 
-        # Attempt invocation with fallback support
+        # -------------------------------------------------------------------------
+        # 2. Attempt invocation with fallback support
+        # -------------------------------------------------------------------------
         for attempt in range(self.max_fallback_attempts + 1):
             attempted_models.append(target_model)
             attempted_providers.append(target_provider.name)
@@ -116,7 +132,6 @@ class ModelGateway:
                 response.metadata["fallback_occurred"] = fallback_occurred
                 if fallback_occurred:
                     response.metadata["original_model"] = original_model_id
-                    response.metadata["actual_model"] = response.model or target_model
                     if last_error:
                         response.metadata["primary_error"] = str(last_error)
 
@@ -140,9 +155,10 @@ class ModelGateway:
                 )
 
                 if not fallback_enabled or attempt >= self.max_fallback_attempts:
+                    # No more retries — break and raise
                     break
 
-                # Attempt finding alternative model
+                # Attempt finding alternative model via router
                 try:
                     fallback_model_def, fallback_provider = self.router.select_model_and_provider(
                         task=task,
@@ -163,6 +179,9 @@ class ModelGateway:
                     logger.warning("No compatible fallback model available", error=str(route_err))
                     break
 
+        # -------------------------------------------------------------------------
+        # 3. All attempts exhausted — raise last error or generic unavailable
+        # -------------------------------------------------------------------------
         if last_error:
             raise last_error
         raise ProviderUnavailableError("gateway")
@@ -196,7 +215,6 @@ class ModelGateway:
         except (ProviderUnavailableError, ProviderError) as e:
             if not fallback_enabled:
                 raise
-
             logger.warning("Stream failed, attempting fallback stream", model=model_def.model_id, error=str(e))
             try:
                 fallback_def, fallback_provider = self.router.select_model_and_provider(
@@ -232,6 +250,8 @@ class ModelGateway:
             vision_provider = self.provider_registry.get_vision(provider.name)
             if not vision_provider:
                 vision_provider = self.router.select_vision()
+            else:
+                vision_provider = provider
         else:
             vision_provider = provider
 
@@ -254,8 +274,9 @@ class ModelGateway:
             logger.warning("Vision analysis failed", provider=vision_provider.name, error=str(e))
             if not fallback_enabled:
                 raise
-
+            # Attempt fallback vision provider
             fallback_prov = self.router.select_vision(exclude=[vision_provider.name])
+            current_request = request.model_copy(update={"model": model_def.model_id})
             response = await fallback_prov.analyze(current_request)
             response.metadata["fallback_occurred"] = True
             return response

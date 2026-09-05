@@ -1,5 +1,4 @@
 """Factory functions for assembling default ModelGateway and registries."""
-
 from typing import Optional
 from ai.gateway.model_gateway import ModelGateway
 from ai.providers.gemini import GeminiProvider
@@ -25,6 +24,8 @@ ALL_GEMINI_CAPS = {
 }
 
 # Pre-defined catalog of official Gemini models
+# Tier set to "free" since these are the platform's default models;
+# pricing can be configured independently via input_cost/output_cost
 DEFAULT_GEMINI_MODEL_DEFINITIONS = [
     ModelDefinition(
         model_id="gemini-2.0-flash",
@@ -35,6 +36,9 @@ DEFAULT_GEMINI_MODEL_DEFINITIONS = [
         supports_vision=True,
         priority=10,
         is_local=False,
+        tier="free",  # Phase 8A: default to free for platform models
+        input_cost=0.0,
+        output_cost=0.0,
         task_suitability=[
             "fast_text_generation",
             "vision_analysis",
@@ -55,6 +59,9 @@ DEFAULT_GEMINI_MODEL_DEFINITIONS = [
         supports_vision=True,
         priority=9,
         is_local=False,
+        tier="free",  # Phase 8A: default to free for platform models
+        input_cost=0.0,
+        output_cost=0.0,
         task_suitability=[
             "fast_text_generation",
             "streaming_response",
@@ -70,6 +77,9 @@ DEFAULT_GEMINI_MODEL_DEFINITIONS = [
         supports_vision=True,
         priority=9,
         is_local=False,
+        tier="free",  # Phase 8A: default to free for platform models
+        input_cost=0.0,
+        output_cost=0.0,
         task_suitability=[
             "deep_reasoning",
             "long_form_research",
@@ -88,6 +98,9 @@ DEFAULT_GEMINI_MODEL_DEFINITIONS = [
         supports_vision=True,
         priority=8,
         is_local=False,
+        tier="free",  # Phase 8A: default to free for platform models
+        input_cost=0.0,
+        output_cost=0.0,
         task_suitability=[
             "fast_text_generation",
             "vision_analysis",
