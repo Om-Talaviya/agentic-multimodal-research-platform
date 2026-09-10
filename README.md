@@ -7,265 +7,216 @@
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
 </p>
 
-A production-grade research platform that uses agentic AI to conduct comprehensive, evidence-based research across multiple modalities (text, PDF, images, web).
+A production-grade, local-first research platform that uses agentic AI to conduct autonomous, verifiable, and evidence-grounded research across multiple modalities (text, PDF, DOCX, images, and the live web).
+
+---
 
 ## Architecture Overview
 
 ![System Architecture](docs/architecture.png)
 
+The platform implements a layered, decoupled architecture with a dynamic Directed Acyclic Graph (DAG) task execution pipeline, structured agentic orchestration, hybrid vector/BM25 retrieval (RAG), and a centralized multi-provider model routing layer.
 
-## Features
+---
 
-- **Agentic Research Pipeline**: Planner → Research Agents → Verification → Synthesis → Report
-- **Multimodal Ingestion**: Text, Markdown, PDF, DOCX, Images (with vision models)
-- **Local-First Models**: Runs entirely locally with Ollama (llama3.1, llava, nomic-embed-text)
-- **Cloud Provider Support**: OpenAI, Anthropic compatible APIs
-- **Full Provenance**: Every claim traceable to source evidence with citations
-- **Real-time Updates**: WebSocket streaming for research progress
-- **Observability**: Structured logging, agent traces, model call metrics
+## Core Capabilities
+
+- **Autonomous Agentic Pipeline**: Dynamic Planner → Parallel Specialized Research Agents → Critic/Verifier → Evidence Synthesis → Structured Report Generation.
+- **Dynamic DAG Task Execution**: Tasks with dependency graphs are scheduled and executed concurrently with real-time topological resolution and error recovery.
+- **Multimodal Ingestion**: Native extraction and chunking for Plain Text, Markdown, PDF (with tables via `pdfplumber`), DOCX (`python-docx`), and Images (via Vision models).
+- **Intelligent Model Routing & Gateway**: Centralized `ModelGateway` → `ModelRouter` → `ModelRegistry` / `ProviderRegistry` hierarchy with task-to-model matching, automated fallback failovers, and telemetry capture.
+- **Hybrid RAG & Grounded Evidence**: Vector embeddings (ChromaDB / In-Memory) combined with BM25 sparse lexical search and Reciprocal Rank Fusion (RRF) for strict citation preservation.
+- **Live Real-time Streaming**: Bi-directional WebSocket streaming (`/api/v1/research/{id}/ws`) delivering real-time task lifecycle events, DAG transitions, evidence extraction, and report streaming.
+- **Persistent RBAC Authentication**: PostgreSQL-backed user store with Alembic migrations, PBKDF2-HMAC-SHA256 password hashing, and JWT access/refresh token lifecycle.
+- **Production Hardening & Observability**: Server-Side Request Forgery (SSRF) protection on web tools, prompt injection detection, Prometheus metrics (`/metrics`), structured `structlog` logging, and Kubernetes deployment manifests.
+
+---
+
+## Tech Stack
+
+### Backend & AI Engine
+- **Framework**: FastAPI (Python 3.11+) with Uvicorn ASGI
+- **Database**: PostgreSQL 16 (production) / SQLite (development/testing) with SQLAlchemy 2.0 Async + Alembic migrations
+- **Vector & Cache**: ChromaDB 0.4+, Redis 7 (caching and event pub/sub)
+- **Model Providers**: Ollama (local-first `llama3.1`, `llava`, `nomic-embed-text`), Google Gemini API (`gemini-2.0-flash`), OpenAI-compatible endpoints
+- **Data Ingestion**: `pdfplumber`, `python-docx`, `Pillow`, `rank-bm25`
+- **Security & Auth**: `python-jose` (JWT), `passlib` / `hashlib` PBKDF2, IPv4/IPv6 private IP filtering
+
+### Frontend
+- **Framework**: React 18 with TypeScript and Vite
+- **Styling**: Vanilla CSS with modern tokens, CSS variables, and glassmorphism styling
+- **Routing & Icons**: React Router v6, Lucide React
+- **Network**: Axios HTTP client and native WebSocket client with exponential backoff auto-reconnect
+
+---
+
+## Repository Structure
+
+```
+.
+├── apps/
+│   ├── api/                     # FastAPI backend application
+│   │   ├── src/
+│   │   │   ├── api/             # HTTP routes, dependencies & WebSockets
+│   │   │   └── main.py          # ASGI application entry point
+│   │   └── tests/               # API route and integration tests
+│   └── web/                     # React + TypeScript + Vite frontend
+│       ├── src/
+│       │   ├── components/      # Reusable UI components
+│       │   ├── pages/           # Dashboard, NewResearch, ResearchDetail, Settings
+│       │   ├── services/        # API and WebSocket client adapters
+│       │   └── types/           # TypeScript domain definitions
+│       └── package.json
+│
+├── packages/                    # Modular Python shared packages
+│   ├── ai/                      # ModelRegistry, ProviderRegistry, ModelRouter, ModelGateway
+│   ├── agents/                  # PlannerAgent, WebAgent, DocumentAgent, CriticAgent, ReportAgent
+│   ├── research/                # Pipeline orchestrator, DAG runner, event bus, synthesis
+│   ├── ingestion/               # Document parsers (PDF, DOCX, Image, Text), chunkers, extractors
+│   ├── retrieval/               # Embedder, ChromaStore, InMemoryStore, BM25, HybridRetriever
+│   ├── database/                # SQLAlchemy async models, repositories, Alembic migrations
+│   ├── tools/                   # Tool registry, WebSearch, WebFetch (SSRF safe), DocReader
+│   └── shared/                  # Config, structlog, JWT auth, security filters, exceptions
+│
+├── docs/                        # Deep-dive architectural specifications & diagrams
+├── infrastructure/              # Docker Compose, Kubernetes manifests, Prometheus configs
+├── pyproject.toml               # Workspace root configuration
+└── docker-compose.yml           # Local multi-service infrastructure
+```
+
+---
 
 ## Quick Start
 
 ### Prerequisites
-
 - Docker & Docker Compose
 - Python 3.11+
 - Node.js 20+
-- Ollama (for local models)
+- Ollama (optional, for local model inference)
 
-### 1. Clone and Configure
-
+### 1. Configure Environment
 ```bash
-git clone <repository>
-cd agentic-multimodal-research-platform
-
-# Copy environment template
 cp .env.example .env
-
-# Edit .env with your settings (optional for local development)
+# Edit .env if configuring external API keys or custom ports
 ```
 
-### 2. Start Infrastructure
-
+### 2. Launch Local Infrastructure
 ```bash
 docker-compose up -d
 ```
+Starts:
+- PostgreSQL (`localhost:5432`)
+- ChromaDB (`localhost:8000`)
+- Redis (`localhost:6379`)
+- Ollama (`localhost:11434`)
 
-This starts:
-- PostgreSQL (port 5432)
-- ChromaDB (port 8000)
-- Redis (port 6379)
-- Ollama (port 11434)
-
-### 3. Pull Required Models
-
+*(Optional) Pull local Ollama models:*
 ```bash
-# Pull models into Ollama
 docker exec -it ollama ollama pull llama3.1
 docker exec -it ollama ollama pull llava
 docker exec -it ollama ollama pull nomic-embed-text
 ```
 
-### 4. Backend
-
+### 3. Backend Setup
 ```bash
 cd apps/api
-
-# Install dependencies
 pip install -e ".[dev]"
 
-# Run database migrations (when implemented)
-# alembic upgrade head
+# Apply database migrations
+alembic upgrade head
 
-# Start development server
-uvicorn src.main:app --reload
+# Start FastAPI development server
+uvicorn src.main:app --reload --port 8000
 ```
+- API Docs: `http://localhost:8000/docs`
+- Health Check: `http://localhost:8000/api/v1/health`
+- Metrics: `http://localhost:8000/metrics`
 
-API will be available at `http://localhost:8000`
-- API docs: `http://localhost:8000/docs`
-- Health check: `http://localhost:8000/api/v1/health`
-
-### 5. Frontend
-
+### 4. Frontend Setup
 ```bash
 cd apps/web
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
-
-Frontend will be available at `http://localhost:5173`
-
-## Project Structure
-
-```
-project-root/
-│
-├── apps/
-│   ├── api/                 # FastAPI backend
-│   │   ├── src/
-│   │   │   ├── main.py      # Application entry point
-│   │   │   ├── api/         # API routes
-│   │   │   ├── dependencies.py  # Provider initialization
-│   │   │   └── ...
-│   │   ├── tests/
-│   │   └── pyproject.toml
-│   │
-│   └── web/                 # React frontend
-│       ├── src/
-│       │   ├── components/
-│       │   ├── pages/
-│       │   ├── services/
-│       │   └── types/
-│       ├── package.json
-│       └── ...
-│
-├── packages/                # Shared internal packages
-│   ├── ai/                  # Model provider abstractions
-│   ├── agents/              # Agent framework
-│   ├── research/            # Research pipeline
-│   ├── ingestion/           # Multimodal ingestion (planned)
-│   ├── retrieval/           # Vector search & RAG (planned)
-│   ├── database/            # Database layer
-│   ├── tools/               # Tool system
-│   └── shared/              # Common utilities
-│
-├── tests/                   # Integration & E2E tests
-├── docs/                    # Architecture documentation
-├── scripts/                 # Utility scripts
-├── infrastructure/          # Docker, Kubernetes configs
-├── docker-compose.yml
-├── .env.example
-└── README.md
-```
-
-## Development
-
-### Running Tests
-
-```bash
-# Backend unit tests
-cd apps/api && pytest tests/unit -v
-
-# Backend integration tests (requires Docker services)
-cd apps/api && pytest tests/integration -v
-
-# Frontend tests
-cd apps/web && npm run test:unit
-
-# All tests
-pytest tests/ -v
-```
-
-### Code Quality
-
-```bash
-# Backend linting
-cd apps/api && ruff check .
-
-# Frontend linting
-cd apps/web && npm run lint
-
-# Type checking
-cd apps/api && mypy src/
-```
-
-### Adding a New Model Provider
-
-1. Implement the provider protocols in `packages/ai/src/ai/providers/`
-2. Add provider initialization in `apps/api/src/api/dependencies.py`
-3. Register with the ModelRouter
-
-### Adding a New Agent
-
-1. Create agent class in `packages/agents/src/agents/` extending `Agent`
-2. Register in `apps/api/src/api/dependencies.py`
-3. Add to planner's available agents list
-
-## API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/v1/health` | GET | Health check |
-| `/api/v1/research` | POST | Create research job |
-| `/api/v1/research/{id}` | GET | Get job status |
-| `/api/v1/research/{id}/plan` | GET | Get research plan |
-| `/api/v1/research/{id}/tasks` | GET | List tasks |
-| `/api/v1/research/{id}/sources` | GET | List sources |
-| `/api/v1/research/{id}/evidence` | GET | List evidence |
-| `/api/v1/research/{id}/report` | GET | Get final report |
-| `/api/v1/documents` | POST | Upload document |
-| `/api/v1/models` | GET | List available models |
-
-## Configuration
-
-All configuration via environment variables (see `.env.example`):
-
-- **Model Providers**: `OLLAMA_BASE_URL`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`
-- **Database**: `DATABASE_URL`
-- **Vector Store**: `CHROMA_HOST`, `CHROMA_PORT`
-- **File Upload**: `UPLOAD_DIR`, `MAX_UPLOAD_SIZE`
-- **Logging**: `LOG_LEVEL`, `LOG_FORMAT`
-
-## Project Implementation Status
-
-### Phase 1 — Foundation
-🟢 **COMPLETE**
-- ✅ Repository structure & architectural specifications
-- ✅ Backend foundation (FastAPI, Pydantic settings, structlog, SQLAlchemy async)
-- ✅ Database models & repositories (PostgreSQL & SQLite parity)
-- ✅ Frontend foundation shell (React + TypeScript + Vite)
-- ✅ Model provider abstractions (Ollama, Official Google Gemini API, OpenAI-compatible)
-- ✅ Testing infrastructure & Docker Compose environment
-
-### Phase 2 — Research MVP
-🟢 **COMPLETE**
-- ✅ Planner Agent with LLM-based structured decomposition
-- ✅ Dynamic, persistent DAG task execution & dependency resolution
-- ✅ Web Research Agent (search & fetch) & Document Analysis Agent
-- ✅ Agent Orchestrator with retries, context isolation & lifecycle hooks
-- ✅ Critic Agent for evidence quality verification & confidence scoring
-- ✅ Report Agent for structured report synthesis & citation preservation
-- ✅ Complete REST API for jobs, plans, tasks, sources, evidence & reports
-- ✅ Real-time WebSocket streaming updates (`/api/v1/research/{job_id}/ws`)
-
-### Phase 3 — Multimodal Ingestion
-🟢 **COMPLETE**
-- ✅ Plain text & Markdown parsing
-- ✅ PDF document extraction (`pdfplumber`) with table extraction
-- ✅ Word document extraction (`python-docx`) with paragraph structure
-- ✅ Image vision analysis via Model Gateway (Ollama / Gemini)
-- ✅ Semantic & fixed-size chunking pipelines
-- ✅ Multipart document upload API (`/api/v1/documents`)
-
-### Phase 4 — Agentic System
-🟢 **COMPLETE**
-- ✅ Extensible Tool Framework & Registry with permission controls
-- ✅ Web Fetch Tool hardened against SSRF (full IPv4/IPv6 private/multicast rejection)
-- ✅ Web Search Tool & Document Read Tool
-- ✅ Knowledge Search Tool wired to RAG retriever
-- ✅ Agent short/long-term memory & execution tracing (`agent_runs` & `model_calls`)
-
-### Phase 5 — RAG / Knowledge Layer
-🟢 **COMPLETE**
-- ✅ Provider-agnostic Embedder abstraction
-- ✅ ChromaDB vector store adapter & In-Memory vector store
-- ✅ BM25 sparse keyword index
-- ✅ Hybrid Retriever with Reciprocal Rank Fusion (RRF)
-- ✅ Cross-job Knowledge Indexer & evidence citation grounding
-
-### Phase 6 — Production & Security
-🟢 **COMPLETE** (Core Roadmap Capabilities)
-- ✅ JWT authentication (access & refresh token lifecycle)
-- ✅ Role-Based Access Control (RBAC with Admin, Researcher, Viewer roles)
-- ✅ Security filters (prompt injection detection, safe filename validation)
-- ✅ Prometheus metrics exposition (`/metrics` endpoint)
-- ✅ Kubernetes manifests (`infrastructure/k8s/`) & monitoring configs
+- Web Application: `http://localhost:5173`
 
 ---
 
-### Test Suite Status
-- **Passing**: 100% (All unit & integration tests pass with 0 skips and 0 failures)
+## Development & Testing Commands
+
+### Backend Test Suite
+```bash
+# Run all unit tests across all packages
+pytest packages/ apps/api/tests/ -v
+
+# Run backend API integration tests
+pytest apps/api/tests/ -v
+
+# Run with coverage report
+pytest --cov=packages --cov=apps/api
+```
+
+### Frontend Validation
+```bash
+cd apps/web
+npm run build
+npm run lint
+```
+
+### Code Formatting & Linting
+```bash
+# Ruff lint & formatting
+ruff check .
+ruff format .
+
+# Type checking
+mypy apps/api/src packages/
+```
+
+---
+
+## API Summary
+
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|---|
+| `POST` | `/api/v1/auth/login` | Authenticate and obtain JWT access/refresh tokens | No |
+| `POST` | `/api/v1/auth/token/refresh` | Exchange refresh token for fresh access token | No |
+| `GET` | `/api/v1/auth/me` | Retrieve authenticated user profile and permissions | Yes |
+| `GET` | `/api/v1/health` | Service and gateway health probe | No |
+| `POST` | `/api/v1/research` | Create and trigger an autonomous research job | Yes (`research:create`) |
+| `GET` | `/api/v1/research` | List research jobs with pagination | Yes (`research:read`) |
+| `GET` | `/api/v1/research/{id}` | Get research job metadata and execution status | Yes (`research:read`) |
+| `GET` | `/api/v1/research/{id}/tasks` | Get DAG task graph and execution progress | Yes (`research:read`) |
+| `GET` | `/api/v1/research/{id}/sources` | List retrieved web and document sources | Yes (`research:read`) |
+| `GET` | `/api/v1/research/{id}/evidence` | List extracted claims and verification confidence | Yes (`research:read`) |
+| `GET` | `/api/v1/research/{id}/report` | Retrieve final synthesized research report | Yes (`research:read`) |
+| `WS` | `/api/v1/research/{id}/ws` | Live WebSocket streaming for DAG updates & events | Yes (Token query/header) |
+| `POST` | `/api/v1/documents` | Ingest and parse PDF, DOCX, or image document | Yes (`documents:upload`) |
+| `GET` | `/api/v1/models` | List catalog models and provider health statuses | No |
+| `GET` | `/metrics` | Prometheus telemetry and metrics exposition | No / Internal |
+
+---
+
+## Project Status
+
+| Phase | Milestone | Status | Notes |
+|---|---|---|---|
+| **Phase 1** | Foundation | 🟢 COMPLETE | Backend shell, async DB, logging, React frontend |
+| **Phase 2** | Research MVP | 🟢 COMPLETE | DAG runner, Planner, Web/Doc/Report agents, WebSockets |
+| **Phase 3** | Multimodal Ingestion | 🟢 COMPLETE | PDF (`pdfplumber`), DOCX, Vision images, semantic chunking |
+| **Phase 4** | Agentic System | 🟢 COMPLETE | SSRF-hardened tools, Critic agent, memory, tracing |
+| **Phase 5** | RAG / Knowledge Layer | 🟢 COMPLETE | Hybrid RRF (Vector + BM25), Embedder, citation preservation |
+| **Phase 6** | Production & Security | 🟢 COMPLETE | JWT auth, RBAC, Prometheus metrics, K8s manifests |
+| **Phase 7.1** | Dashboard Integration | 🟢 COMPLETE | Fixed job response mapping in web dashboard |
+| **Phase 7.2** | Persistent Users | 🟢 COMPLETE | PostgreSQL `users` table, Alembic migrations, password hashing |
+| **Phase 7.3** | Official Gemini Provider | 🟢 COMPLETE | Migrated to official Gemini API; removed unofficial Web2API |
+| **Phase 8A** | Intelligent Model Routing Core | 🟢 COMPLETE | `ModelRegistry`, `ProviderRegistry`, `ModelRouter`, `ModelGateway` |
+| **Phase 8B** | Quotas, Usage Telemetry & Fallback Refinements | 🟡 IN REVIEW | Implementation completed in local branch; uncommitted / pending review |
+
+---
+
+## Security & Architectural Guarantees
+
+1. **Local-First Privacy**: Can operate in 100% offline air-gapped mode using Ollama without cloud leakage.
+2. **SSRF Protection**: `WebFetchTool` validates all resolved IP addresses, rejecting Loopback (`127.0.0.0/8`, `::1`), Private subnets (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `fc00::/7`), Link-local (`169.254.0.0/16`, `fe80::/10`), and Multicast.
+3. **No Unchecked Model Execution**: Models generate data and structured payloads; no arbitrary string evaluation (`eval()`) is executed.
