@@ -1,0 +1,155 @@
+# Frontend Design & UI/UX Architecture: ui-ux.md
+
+This document defines the complete visual design system, interaction patterns, user flows, and wireframe layouts for the **Agentic Multimodal Research Platform (AI Research Operating System)**.
+
+---
+
+## 1. Visual Design Philosophy & Principles
+
+1. **AI Research Operating System (Not a Generic Chatbot)**: The interface is designed as an interactive research cockpit where complex Directed Acyclic Graph (DAG) state, multi-source evidence, and long-form synthesis reports are organized with high clarity and depth.
+2. **Transparent Progression & Zero Black Box**: Every step of the agentic workflow is streamed live over WebSockets with granular step indicators, agent attribution, and execution metrics.
+3. **Deep Explainability ("Why do you believe this?")**: Users can click any factual claim or chart in the final report to inspect the exact underlying evidence, confidence score, source document, and page/paragraph coordinates.
+4. **Curated Aesthetic Standards**: Built with modern typography, refined dark mode palette, smooth gradients, subtle glassmorphism cards, and explicit state handling (Loading, Empty, Error, Active).
+
+---
+
+## 2. Design System Tokens (Vanilla CSS)
+
+```css
+:root {
+  /* Color Palette */
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: rgba(17, 24, 39, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #38bdf8;
+  
+  /* Brand & Accent Accents */
+  --accent-blue: #38bdf8;
+  --accent-purple: #818cf8;
+  --accent-emerald: #34d399;
+  --accent-amber: #fbbf24;
+  --accent-rose: #f43f5e;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Shadows & Glassmorphism */
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 15px rgba(56, 189, 248, 0.25);
+  --blur-glass: blur(12px);
+}
+```
+
+---
+
+## 3. Platform Screen Breakdown & Layouts
+
+### 3.1 Main Navigation & Dashboard Layout
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [🔬 AI RESEARCH OS]    Dashboard    Research    Knowledge    Documents    Projects    ⚙️    │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                             │
+│   🚀 Start New Autonomous Research                                                          │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ 💬 What do you want to research?                                                      │  │
+│  │ [ Analyze whether biodegradable packaging can realistically replace conventional... ] │  │
+│  │ ┌───────────────┐  ┌─────────────────────┐  ┌──────────────────┐  [ Launch Research →]│  │
+│  │ │ 🌐 Live Web   │  │ 📚 Private Knowledge│  │ 📊 Data Analysis │                      │  │
+│  │ └───────────────┘  └─────────────────────┘  └──────────────────┘                      │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                             │
+│   📈 Recent Research Dossiers                         ⚡ System Health & Quota              │
+│  ┌──────────────────────────────────────────────────┐ ┌───────────────────────────────────┐  │
+│  │ • Sustainable Food Packaging 10-Yr Outlook (82%) │ │ Monthly Tokens: 142,500 / 500,000 │  │
+│  │ • Solid-State Battery Commercialization (94%)    │ │ Active Model: Gemini 2.0 Flash    │  │
+│  │ • Microplastic Filtration in Wastewater (88%)    │ │ Local Fallback: Ollama Llama 3.1  │  │
+│  └──────────────────────────────────────────────────┘ └───────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 3.2 Live Research Progression Screen
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│  ◄ Back to Dashboard    Job: Sustainable Food Packaging (ID: 8351-5d5a)    [● RUNNING]      │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [Overview]  [Execution Plan]  [Task DAG]  [Sources (14)]  [Evidence (28)]  [Final Report]  │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                             │
+│   LIVE AGENT PROGRESSION:                                                                   │
+│   1. Understanding Request .................................................... [DONE 0.4s] │
+│   2. Planning & Subquestion Decomposition ..................................... [DONE 1.2s] │
+│   3. Checking Private Knowledge Base (Found 3 PDFs) ........................... [DONE 0.8s] │
+│   4. Retrieving Relevant Document Context ..................................... [DONE 0.5s] │
+│   5. Conducting External Web Research ......................................... [DONE 3.1s] │
+│   6. Analyzing Academic Papers & Tables ....................................... [DONE 4.2s] │
+│   7. Analyzing Numerical Data with Deterministic Tools ........................ [DONE 1.1s] │
+│   8. Comparing Evidence & Cross-Checking Claims ............................... [DONE 2.0s] │
+│   9. Identifying Contradictions & Uncertainties ............................... [DONE 0.9s] │
+│  10. Critic Review (Auditing Sufficiency) ..................................... [DONE 1.5s] │
+│  ► 11. Synthesizing Final Intelligence Report ................................. [STREAMING] │
+│                                                                                             │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ 📝 Synthesizing Section 3: Comparative Degradation Rates under Industrial Composting..│  │
+│  │ "According to ASTM D6400 testing in Paper [1], PLA demonstrated a 90% mass loss..."   │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 3.3 Final Report Experience & Explainability Explorer
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│  SUSTAINABLE FOOD PACKAGING: 10-YEAR COMMERCIAL & TECHNICAL OUTLOOK                         │
+│  Overall Confidence Score: [██████████████████░░] 82%                                       │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│  1. Executive Summary                                                                       │
+│     Biodegradable polymers (primarily PLA and PHA blends) can replace up to 35% of rigid     │
+│     food packaging by 2035, but barrier limitations against moisture remain a hurdle [1][3].│
+│                                                                                             │
+│  2. Key Findings & Evidence Matrix (Interactive Click-to-Verify)                            │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ Finding 1: PHA degradation in marine environments exceeds PLA by 4.2x [Click to View] │  │
+│  │ ┌───────────────────────────────────────────────────────────────────────────────────┐ │  │
+│  │ │ 🔍 EXPLAINABILITY PROVENANCE:                                                     │ │  │
+│  │ │ • Claim: "PHA shows 85% biodegradation at 28 days vs 18% for PLA in seawater"   │ │  │
+│  │ │ • Confidence: 0.96 (Verified by CriticAgent)                                     │ │  │
+│  │ │ • Source: Journal of Applied Polymer Science (2025)                              │ │  │
+│  │ │ • Location: Page 14, Table 3 (Uploaded Document: bio_marine_2025.pdf)            │ │  │
+│  │ │ • Quote: "In static seawater immersion at 20°C, polyhydroxyalkanoate films..."   │ │  │
+│  │ └───────────────────────────────────────────────────────────────────────────────────┘ │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                             │
+│  3. Identified Contradictions & Uncertainties                                               │
+│     • Paper [2] reports PLA degradation within 60 days in home compost, whereas Industrial   │
+│       Standard [4] states PLA requires >58°C thermal trigger for micro-cleavage.            │
+│                                                                                             │
+│  4. Deterministic Data & Statistical Analysis                                               │
+│     [ Interactive Chart: Cost per Kilogram Projection (2026 - 2036) ]                       │
+│     *Calculated deterministically using Python SciPy statistical regression engine.         │
+│                                                                                             │
+│  5. Conclusions & Limitations                                                               │
+│     Further lifecycle assessments are needed regarding agricultural land use for feedstock. │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 4. UI Interaction States
+
+| State | Visual Treatment | Transition |
+|---|---|---|
+| **Formulation** | Focused search bar with glowing cyan border and toggle pill filters (Web, Knowledge, Data) | Smooth expand on focus |
+| **Stream Processing** | Pulsing emerald step nodes, animated progress bars, live markdown token streaming | WebSocket event triggered |
+| **Evidence Hover** | Elevation increase, amber badge for contradictions, green badge for high confidence | 150ms ease-out hover |
+| **Explainability Modal** | Glassmorphic slide-out drawer revealing exact document slice and table coordinates | Slide-left 250ms |
+| **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

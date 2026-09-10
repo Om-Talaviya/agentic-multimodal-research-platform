@@ -45,9 +45,6 @@ Return your evaluation as a JSON object with this structure:
 
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
         """Run critic evaluation on research findings, claims, or raw evidence."""
-        router: ModelRouter = context.model_router
-        llm = router.select_llm(ModelCapabilities.for_task("research"))
-
         evidence_items = task.inputs.get("evidence", [])
         question = task.inputs.get("question") or task.objective
 

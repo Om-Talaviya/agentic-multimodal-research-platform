@@ -1,18 +1,20 @@
 """Authentication and user session routes."""
 
-from uuid import UUID
+from uuid import UUID, uuid4
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from api.dependencies import get_current_user
 from database.connection import get_db_session
+from database.models.user import User as DBUser
 from database.repositories import UserRepository
 from shared.auth import (
     LoginRequest,
     TokenRefreshRequest,
     TokenResponse,
-    User,
+    User as AuthUser,
     create_access_token,
     create_refresh_token,
+    hash_password,
     verify_password,
     verify_token,
 )
@@ -40,7 +42,7 @@ async def login(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    user = User.from_db(db_user)
+    user = AuthUser.from_db(db_user)
     access_token = create_access_token(user)
     refresh_token = create_refresh_token(user)
 
@@ -80,7 +82,7 @@ async def refresh_token(
                 detail="User inactive or no longer exists",
             )
 
-        user = User.from_db(db_user)
+        user = AuthUser.from_db(db_user)
         new_access_token = create_access_token(user)
         new_refresh_token = create_refresh_token(user)
 
@@ -105,7 +107,7 @@ async def refresh_token(
 
 
 @router.get("/me")
-async def get_me(user: User = Depends(get_current_user)) -> dict:
+async def get_me(user: AuthUser = Depends(get_current_user)) -> dict:
     """Retrieve current authenticated user profile and permissions."""
     return {
         "id": user.id,
@@ -137,23 +139,22 @@ async def register(
             detail="Username or email already registered",
         )
 
-    # Hash password using existing implementation
+    # Hash password using secure PBKDF2 implementation
     hashed = hash_password(credentials.password)
 
     # Create user with RESEARCHER role only (ADMIN rejection)
-    from uuid import uuid4
-    user = User(
+    db_user = DBUser(
         id=uuid4(),
         username=credentials.username,
-        email=credentials.username if "@" not in credentials.username else credentials.username,
+        email=credentials.username if "@" in credentials.username else f"{credentials.username}@local.dev",
         password_hash=hashed,
-        role="researcher",  # ADMIN role forbidden for new registrations
+        role="researcher",  # ADMIN role forbidden for self-registration
         is_active=True,
     )
-    await repo.create(user)
+    await repo.create(db_user)
 
     # Build User entity and generate tokens consistent with login flow
-    user_entity = User.from_db(user)
+    user_entity = AuthUser.from_db(db_user)
     access_token = create_access_token(user_entity)
     refresh_token = create_refresh_token(user_entity)
 
@@ -171,3 +172,4 @@ async def register(
             "role": user_entity.role.value,
         },
     )
+

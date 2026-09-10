@@ -77,11 +77,12 @@ async def generic_error_handler(request: Request, exc: Exception):
         content={"error": {"code": "INTERNAL_ERROR", "message": "Internal server error"}},
     )
 
+from uuid import uuid4
+
 # Request ID middleware
 @app.middleware("http")
 async def add_request_id(request: Request, call_next):
-    import uuid
-    request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+    request_id = request.headers.get("X-Request-ID", str(uuid4()))
     request.state.request_id = request_id
     
     structlog.contextvars.clear_contextvars()

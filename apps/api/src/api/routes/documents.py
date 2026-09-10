@@ -73,7 +73,8 @@ async def validate_upload(file: UploadFile) -> bytes:
     
     # Check extension
     from pathlib import Path
-    ext = Path(file.filename).suffix.lower()
+    raw_filename = file.filename or "unnamed_document"
+    ext = Path(raw_filename).suffix.lower()
     if ext not in ALLOWED_EXTENSIONS:
         raise ValidationError(
             f"File type not allowed: {ext}",
@@ -91,15 +92,32 @@ async def validate_upload(file: UploadFile) -> bytes:
 
 
 async def save_upload(content: bytes, filename: str, job_id: Optional[str] = None) -> tuple[str, str]:
-    """Save upload to disk."""
+    """Save upload to disk safely preventing path traversal."""
     from pathlib import Path
     import uuid
     
-    subdir = job_id or "unassigned"
-    upload_dir = settings.upload_dir / subdir
+    if job_id:
+        try:
+            subdir = str(UUID(str(job_id)))
+        except (ValueError, TypeError):
+            subdir = "".join(c for c in str(job_id) if c.isalnum() or c in "-_") or "unassigned"
+    else:
+        subdir = "unassigned"
+
+    upload_dir = (settings.upload_dir / subdir).resolve()
+    base_dir = settings.upload_dir.resolve()
+    
+    # Ensure resolved upload directory does not escape root upload directory
+    if not str(upload_dir).startswith(str(base_dir)):
+        upload_dir = (base_dir / "unassigned").resolve()
+
     upload_dir.mkdir(parents=True, exist_ok=True)
     
-    safe_name = f"{uuid.uuid4()}{Path(filename).suffix}"
+    raw_ext = Path(filename or "doc").suffix.lower()
+    if raw_ext not in ALLOWED_EXTENSIONS:
+        raw_ext = ".bin"
+
+    safe_name = f"{uuid.uuid4()}{raw_ext}"
     file_path = upload_dir / safe_name
     
     file_path.write_bytes(content)
@@ -207,14 +225,18 @@ async def list_documents(
     offset: int = 0,
     session: AsyncSession = Depends(get_db_session),
 ):
-    """List documents."""
+    """List documents with optional job_id filtering and pagination."""
     repo = DocumentRepository(session)
     
     if job_id:
-        docs = await repo.get_by_job(UUID(job_id))
+        try:
+            parsed_job_id = UUID(str(job_id))
+            docs = await repo.get_by_job(parsed_job_id)
+            docs = docs[offset:offset + limit]
+        except (ValueError, TypeError):
+            docs = []
     else:
-        # For now, return empty list if no job_id
-        docs = []
+        docs = await repo.list_all(limit=limit, offset=offset)
     
     return [
         DocumentResponse(
@@ -226,5 +248,5 @@ async def list_documents(
             status="ingested",
             created_at=d.created_at.isoformat() if d.created_at else utc_now().isoformat(),
         )
-        for d in docs[offset:offset+limit]
+        for d in docs
     ]

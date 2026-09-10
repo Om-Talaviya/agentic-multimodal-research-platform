@@ -52,9 +52,6 @@ OUTPUT FORMAT (JSON):
 
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
         """Generate report from verified evidence."""
-        router: ModelRouter = context.model_router
-        llm = router.select_llm(ModelCapabilities.for_task("report"))
-
         # Get verified evidence from task inputs
         evidence_items = task.inputs.get("evidence", [])
         sources = task.inputs.get("sources", [])
