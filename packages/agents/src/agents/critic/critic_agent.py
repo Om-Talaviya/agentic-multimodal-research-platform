@@ -88,7 +88,7 @@ Return your evaluation as a JSON object with this structure:
         )
 
         try:
-            response = await llm.complete(
+            response = await context.complete_llm(
                 LLMRequest(
                     messages=[
                         LLMMessage(role="system", content=self.SYSTEM_PROMPT),
@@ -96,7 +96,8 @@ Return your evaluation as a JSON object with this structure:
                     ],
                     temperature=0.1,
                     json_mode=True,
-                )
+                ),
+                task="research",
             )
 
             result_data = json.loads(response.content)

@@ -28,9 +28,6 @@ class WebResearchAgent(Agent):
     """
     
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
-        router: ModelRouter = context.model_router
-        llm = router.select_llm(ModelCapabilities.for_task("research"))
-        
         search_tool = tool_registry.get("web_search")
         fetch_tool = tool_registry.get("web_fetch")
         
@@ -63,14 +60,17 @@ class WebResearchAgent(Agent):
                         continue
                     
                     # Extract evidence using LLM
-                    extract_response = await llm.complete(LLMRequest(
-                        messages=[
-                            LLMMessage(role="system", content="Extract key facts from this content relevant to the research question. Return JSON array of {claim, evidence, confidence}."),
-                            LLMMessage(role="user", content=f"Question: {task.objective}\n\nContent: {content[:10000]}"),
-                        ],
-                        temperature=0.2,
-                        json_mode=True,
-                    ))
+                    extract_response = await context.complete_llm(
+                        LLMRequest(
+                            messages=[
+                                LLMMessage(role="system", content="Extract key facts from this content relevant to the research question. Return JSON array of {claim, evidence, confidence}."),
+                                LLMMessage(role="user", content=f"Question: {task.objective}\n\nContent: {content[:10000]}"),
+                            ],
+                            temperature=0.2,
+                            json_mode=True,
+                        ),
+                        task="research",
+                    )
                     
                     import json
                     facts = json.loads(extract_response.content)

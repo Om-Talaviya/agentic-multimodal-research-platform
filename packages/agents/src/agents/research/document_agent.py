@@ -77,7 +77,7 @@ Return findings as a valid JSON object:
                     logger.warning("Empty or unreadable document content", doc_id=doc_str)
                     continue
 
-                extract_response = await llm.complete(
+                extract_response = await context.complete_llm(
                     LLMRequest(
                         messages=[
                             LLMMessage(role="system", content=self.SYSTEM_PROMPT),
@@ -88,7 +88,8 @@ Return findings as a valid JSON object:
                         ],
                         temperature=0.2,
                         json_mode=True,
-                    )
+                    ),
+                    task="research",
                 )
 
                 parsed_result = json.loads(extract_response.content)

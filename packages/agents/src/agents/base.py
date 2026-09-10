@@ -51,9 +51,34 @@ class AgentContext:
     tools: dict[str, Any]  # Tool instances
     memory: AgentMemory
     model_router: ModelRouter
+    model_gateway: Optional[Any] = None
     config: dict[str, Any] = field(default_factory=dict)
     metadata: JSONDict = field(default_factory=dict)
     permissions: set[str] = field(default_factory=set)
+
+    async def complete_llm(
+        self,
+        request: Any,
+        task: Optional[str] = None,
+    ) -> Any:
+        """Helper to invoke completion via gateway (with telemetry & user_id) or fallback to router."""
+        req_meta = dict(getattr(request, "metadata", {}) or {})
+        if "user_id" not in req_meta and self.metadata.get("user_id"):
+            req_meta["user_id"] = self.metadata["user_id"]
+        if "job_id" not in req_meta:
+            req_meta["job_id"] = self.research_job_id
+        if "task_id" not in req_meta:
+            req_meta["task_id"] = self.task_id
+
+        current_req = request.model_copy(update={"metadata": req_meta}) if hasattr(request, "model_copy") else request
+
+        if self.model_gateway:
+            return await self.model_gateway.complete(current_req, task=task)
+        else:
+            from ai.schemas import ModelCapabilities
+            caps = ModelCapabilities.for_task(task or "research") if task else None
+            llm = self.model_router.select_llm(caps)
+            return await llm.complete(current_req)
 
 
 @dataclass

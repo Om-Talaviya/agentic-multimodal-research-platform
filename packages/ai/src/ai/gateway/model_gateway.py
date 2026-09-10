@@ -1,6 +1,7 @@
 """Model Gateway providing high-level abstraction, fallback, telemetry, and health management."""
 import time
 from typing import Any, AsyncIterator, Dict, List, Optional, Union
+from uuid import UUID
 from pydantic import BaseModel, Field
 
 from ai.providers.base import LLMProvider, VisionProvider
@@ -19,6 +20,7 @@ from shared.exceptions import (
     ModelNotFoundError,
     ProviderError,
     ProviderUnavailableError,
+    QuotaExceededError,
 )
 from shared.logging import get_logger
 
@@ -43,12 +45,92 @@ class ModelGateway:
         router: ModelRouter,
         model_registry: Optional[ModelRegistry] = None,
         provider_registry: Optional[ProviderRegistry] = None,
-        max_fallback_attempts: int = 3,  # PHASE 8A: configurable fallback depth
+        max_fallback_attempts: int = 3,
+        session_factory: Optional[Any] = None,
     ) -> None:
         self.router = router
         self.model_registry = model_registry or router.model_registry
         self.provider_registry = provider_registry or router.provider_registry
         self.max_fallback_attempts = max_fallback_attempts
+        self.session_factory = session_factory
+
+    async def _check_user_quota(
+        self,
+        user_id: UUID,
+        model_def: Optional[ModelDefinition] = None,
+        estimated_tokens: int = 1000,
+    ) -> bool:
+        """Check if user has remaining quota for this model request."""
+        try:
+            from database.connection import get_session
+            from database.repositories.quota_repo import UserQuotaRepository
+
+            estimated_cost = 0.0
+            if model_def:
+                estimated_cost = model_def.estimated_cost(estimated_tokens, 500)
+
+            session_cm = self.session_factory() if self.session_factory else get_session()
+            async with session_cm as session:
+                quota_repo = UserQuotaRepository(session)
+                return await quota_repo.check_quota(
+                    user_id=user_id,
+                    estimated_tokens=estimated_tokens,
+                    estimated_cost=estimated_cost,
+                )
+        except Exception as exc:
+            logger.warning("Quota check failed, defaulting to allowed", error=str(exc))
+            return True
+
+    async def _record_usage(
+        self,
+        provider_name: str,
+        model_name: str,
+        prompt_tokens: int,
+        completion_tokens: int,
+        cost_usd: float,
+        latency_ms: int,
+        user_id: Optional[UUID] = None,
+        job_id: Optional[UUID] = None,
+        request_type: str = "complete",
+        success: bool = True,
+        error_message: Optional[str] = None,
+    ) -> None:
+        """Persist model usage telemetry to the database asynchronously. Best-effort persistence."""
+        try:
+            from database.connection import get_session
+            from database.repositories.usage_repo import UsageRepository
+            from database.repositories.quota_repo import UserQuotaRepository
+
+            session_cm = self.session_factory() if self.session_factory else get_session()
+            async with session_cm as session:
+                usage_repo = UsageRepository(session)
+                await usage_repo.record_usage(
+                    provider=provider_name,
+                    model=model_name,
+                    user_id=user_id,
+                    job_id=job_id,
+                    request_type=request_type,
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                    total_tokens=prompt_tokens + completion_tokens,
+                    cost_usd=cost_usd,
+                    success=success,
+                    error_message=error_message,
+                    latency_ms=latency_ms,
+                )
+                if user_id and success:
+                    quota_repo = UserQuotaRepository(session)
+                    try:
+                        await quota_repo.reserve_or_consume_quota(
+                            user_id=user_id,
+                            tokens=prompt_tokens + completion_tokens,
+                            cost=cost_usd,
+                            with_for_update=True,
+                        )
+                    except Exception as q_err:
+                        logger.warning("Could not update user quota consumption", user_id=str(user_id), error=str(q_err))
+        except Exception as exc:
+            logger.warning("Failed to persist model usage record to database", error=str(exc))
 
     async def complete(
         self,
@@ -56,14 +138,7 @@ class ModelGateway:
         task: Optional[Union[str, TaskType]] = None,
         fallback_enabled: bool = True,
     ) -> LLMResponse:
-        """Execute text completion with capability routing, safe fallback, and telemetry.
-
-        Routing pipeline:
-        1. Select initial model/provider via ModelRouter (capability-aware, tier-aware, health-aware)
-        2. Attempt invocation
-        3. OnProviderUnavailableError/ProviderError: attempt fallback (up to max_fallback_attempts)
-        4. Return LLMResponse with full telemetry metadata
-        """
+        """Execute text completion with capability routing, safe fallback, and telemetry."""
         start_time = time.perf_counter()
         requested_model = request.model
         fallback_occurred = False
@@ -71,6 +146,25 @@ class ModelGateway:
         attempted_models: List[str] = []
         attempted_providers: List[str] = []
         last_error: Optional[Exception] = None
+
+        # Extract user_id and job_id from request metadata if present
+        req_meta = getattr(request, "metadata", {}) or {}
+        user_id_raw = req_meta.get("user_id")
+        job_id_raw = req_meta.get("job_id")
+
+        user_id: Optional[UUID] = None
+        if user_id_raw:
+            try:
+                user_id = UUID(str(user_id_raw))
+            except Exception:
+                user_id = None
+
+        job_id: Optional[UUID] = None
+        if job_id_raw:
+            try:
+                job_id = UUID(str(job_id_raw))
+            except Exception:
+                job_id = None
 
         # -------------------------------------------------------------------------
         # 1. Select initial model & provider via Router
@@ -80,7 +174,7 @@ class ModelGateway:
                 requested_model=requested_model,
                 task=task,
                 requires_streaming=False,
-                user_id=getattr(request, "metadata", {}).get("user_id"),
+                user_id=str(user_id) if user_id else None,
             )
         except Exception as e:
             logger.error(
@@ -96,7 +190,30 @@ class ModelGateway:
         target_provider = provider
 
         # -------------------------------------------------------------------------
-        # 2. Attempt invocation with fallback support
+        # 2. Check quota on initial selection if user_id is present
+        # -------------------------------------------------------------------------
+        if user_id:
+            has_quota = await self._check_user_quota(user_id, model_def)
+            while not has_quota:
+                attempted_models.append(target_model)
+                logger.info("Model exceeds user quota, falling back", model=target_model, user_id=str(user_id))
+                try:
+                    fallback_def, fallback_prov = self.router.select_model_and_provider(
+                        task=task,
+                        required_capabilities=model_def.capabilities,
+                        exclude_models=attempted_models,
+                        exclude_providers=attempted_providers,
+                    )
+                    model_def = fallback_def
+                    target_model = fallback_def.model_id
+                    target_provider = fallback_prov
+                    fallback_occurred = True
+                    has_quota = await self._check_user_quota(user_id, model_def)
+                except Exception:
+                    raise QuotaExceededError(f"All available models exceed quota limits for user {user_id}")
+
+        # -------------------------------------------------------------------------
+        # 3. Attempt invocation with fallback support
         # -------------------------------------------------------------------------
         for attempt in range(self.max_fallback_attempts + 1):
             attempted_models.append(target_model)
@@ -116,6 +233,24 @@ class ModelGateway:
                 response = await target_provider.complete(current_request)
                 latency_ms = int((time.perf_counter() - start_time) * 1000)
 
+                prompt_tokens = 0
+                completion_tokens = 0
+                total_tokens = 0
+                if response.usage and isinstance(response.usage, dict):
+                    prompt_tokens = int(response.usage.get("prompt_tokens") or response.usage.get("input_tokens") or 0)
+                    completion_tokens = int(response.usage.get("completion_tokens") or response.usage.get("output_tokens") or 0)
+                    total_tokens = int(response.usage.get("total_tokens") or (prompt_tokens + completion_tokens))
+                elif hasattr(response, "usage") and response.usage:
+                    prompt_tokens = int(getattr(response.usage, "prompt_tokens", 0) or getattr(response.usage, "input_tokens", 0) or 0)
+                    completion_tokens = int(getattr(response.usage, "completion_tokens", 0) or getattr(response.usage, "output_tokens", 0) or 0)
+                    total_tokens = int(getattr(response.usage, "total_tokens", prompt_tokens + completion_tokens) or (prompt_tokens + completion_tokens))
+
+                # Cost calculation: (input_cost / 1000 * prompt_tokens) + (output_cost / 1000 * completion_tokens)
+                cost_usd = 0.0
+                active_model_def = self.model_registry.get(response.model or target_model) or model_def
+                if active_model_def:
+                    cost_usd = active_model_def.estimated_cost(prompt_tokens, completion_tokens)
+
                 # Attach observability telemetry
                 telemetry = {
                     "provider": target_provider.name,
@@ -123,6 +258,10 @@ class ModelGateway:
                     "requested_model": requested_model,
                     "requested_task": str(task) if task else None,
                     "latency_ms": latency_ms,
+                    "prompt_tokens": prompt_tokens,
+                    "completion_tokens": completion_tokens,
+                    "total_tokens": total_tokens,
+                    "cost_usd": cost_usd,
                     "fallback_occurred": fallback_occurred,
                     "original_model": original_model_id if fallback_occurred else None,
                     "attempts": attempt + 1,
@@ -130,10 +269,26 @@ class ModelGateway:
                 response.metadata.setdefault("telemetry", telemetry)
                 response.metadata["provider"] = target_provider.name
                 response.metadata["fallback_occurred"] = fallback_occurred
+                response.metadata["cost_usd"] = cost_usd
+                response.metadata["total_tokens"] = total_tokens
                 if fallback_occurred:
                     response.metadata["original_model"] = original_model_id
                     if last_error:
                         response.metadata["primary_error"] = str(last_error)
+
+                # Persist usage telemetry asynchronously
+                await self._record_usage(
+                    provider_name=target_provider.name,
+                    model_name=response.model or target_model,
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                    cost_usd=cost_usd,
+                    latency_ms=latency_ms,
+                    user_id=user_id,
+                    job_id=job_id,
+                    request_type="complete",
+                    success=True,
+                )
 
                 logger.info(
                     "Gateway completion succeeded",
@@ -141,6 +296,8 @@ class ModelGateway:
                     provider=target_provider.name,
                     latency_ms=latency_ms,
                     fallback=fallback_occurred,
+                    tokens=total_tokens,
+                    cost_usd=cost_usd,
                 )
                 return response
 
@@ -166,8 +323,19 @@ class ModelGateway:
                         exclude_models=attempted_models,
                         exclude_providers=attempted_providers,
                     )
+                    if user_id:
+                        while not await self._check_user_quota(user_id, fallback_model_def):
+                            attempted_models.append(fallback_model_def.model_id)
+                            fallback_model_def, fallback_provider = self.router.select_model_and_provider(
+                                task=task,
+                                required_capabilities=model_def.capabilities,
+                                exclude_models=attempted_models,
+                                exclude_providers=attempted_providers,
+                            )
+
                     target_model = fallback_model_def.model_id
                     target_provider = fallback_provider
+                    model_def = fallback_model_def
                     fallback_occurred = True
                     logger.info(
                         "Switching to fallback model",
@@ -180,7 +348,7 @@ class ModelGateway:
                     break
 
         # -------------------------------------------------------------------------
-        # 3. All attempts exhausted — raise last error or generic unavailable
+        # 4. All attempts exhausted — raise last error or generic unavailable
         # -------------------------------------------------------------------------
         if last_error:
             raise last_error
@@ -239,6 +407,24 @@ class ModelGateway:
         start_time = time.perf_counter()
         requested_model = request.model
 
+        req_meta = getattr(request, "metadata", {}) or {}
+        user_id_raw = req_meta.get("user_id")
+        job_id_raw = req_meta.get("job_id")
+
+        user_id: Optional[UUID] = None
+        if user_id_raw:
+            try:
+                user_id = UUID(str(user_id_raw))
+            except Exception:
+                user_id = None
+
+        job_id: Optional[UUID] = None
+        if job_id_raw:
+            try:
+                job_id = UUID(str(job_id_raw))
+            except Exception:
+                job_id = None
+
         model_def, provider = self.router.select_model_and_provider(
             requested_model=requested_model,
             task=TaskType.VISION_ANALYSIS,
@@ -269,6 +455,18 @@ class ModelGateway:
                     "fallback_occurred": False,
                 },
             )
+            await self._record_usage(
+                provider_name=vision_provider.name,
+                model_name=response.model or model_def.model_id,
+                prompt_tokens=0,
+                completion_tokens=0,
+                cost_usd=0.0,
+                latency_ms=latency_ms,
+                user_id=user_id,
+                job_id=job_id,
+                request_type="vision",
+                success=True,
+            )
             return response
         except Exception as e:
             logger.warning("Vision analysis failed", provider=vision_provider.name, error=str(e))
@@ -279,6 +477,19 @@ class ModelGateway:
             current_request = request.model_copy(update={"model": model_def.model_id})
             response = await fallback_prov.analyze(current_request)
             response.metadata["fallback_occurred"] = True
+            latency_ms = int((time.perf_counter() - start_time) * 1000)
+            await self._record_usage(
+                provider_name=fallback_prov.name,
+                model_name=response.model or model_def.model_id,
+                prompt_tokens=0,
+                completion_tokens=0,
+                cost_usd=0.0,
+                latency_ms=latency_ms,
+                user_id=user_id,
+                job_id=job_id,
+                request_type="vision",
+                success=True,
+            )
             return response
 
     async def health_check(self) -> GatewayHealth:

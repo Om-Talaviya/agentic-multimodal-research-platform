@@ -130,7 +130,7 @@ OUTPUT FORMAT (JSON):
         )
 
         try:
-            response = await llm.complete(
+            response = await context.complete_llm(
                 LLMRequest(
                     messages=[
                         LLMMessage(role="system", content=self.SYSTEM_PROMPT),
@@ -138,7 +138,8 @@ OUTPUT FORMAT (JSON):
                     ],
                     temperature=0.2,
                     json_mode=True,
-                )
+                ),
+                task="report",
             )
 
             result_data = json.loads(response.content)

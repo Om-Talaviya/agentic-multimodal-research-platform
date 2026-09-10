@@ -22,6 +22,10 @@ router = APIRouter(prefix="/research", tags=["research"])
 logger = get_logger(__name__)
 
 
+from shared.auth import User
+from api.dependencies import get_optional_current_user
+
+
 # Request/Response models
 class ResearchJobCreate(BaseModel):
     question: str
@@ -110,12 +114,20 @@ class ReportResponse(BaseModel):
 
 # Dependencies
 async def get_pipeline() -> ResearchPipeline:
-    from api.dependencies import get_orchestrator, get_agent_registry, get_tool_registry, get_model_router, get_research_event_bus
+    from api.dependencies import (
+        get_orchestrator,
+        get_agent_registry,
+        get_tool_registry,
+        get_model_router,
+        get_model_gateway,
+        get_research_event_bus,
+    )
     return ResearchPipeline(
         orchestrator=await get_orchestrator(),
         agent_registry=await get_agent_registry(),
         tool_registry=await get_tool_registry(),
         model_router=await get_model_router(),
+        model_gateway=await get_model_gateway(),
         event_bus=await get_research_event_bus(),
     )
 
@@ -134,13 +146,16 @@ async def create_research_job(
     request: ResearchJobCreate,
     background_tasks: BackgroundTasks,
     pipeline: ResearchPipeline = Depends(get_pipeline),
+    current_user: Optional[User] = Depends(get_optional_current_user),
 ):
     """Create a new research job and execute it in the background."""
+    user_id_str = str(current_user.id) if current_user and hasattr(current_user, "id") and current_user.id else None
     research_request = ResearchRequest(
         question=request.question,
         context=request.context,
         constraints=request.constraints,
         preferred_sources=request.preferred_sources,
+        user_id=user_id_str,
     )
     
     job = await pipeline.create_job(research_request)

@@ -150,6 +150,7 @@ async def init_providers() -> None:
         agent_registry=agent_registry,
         tool_registry=tool_registry,
         model_router=_model_router,
+        model_gateway=_model_gateway,
     )
     
     logger.info("Providers initialized", 
