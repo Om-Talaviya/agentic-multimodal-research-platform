@@ -231,41 +231,25 @@ class ModelRouter:
             filtered_by_tier = candidates
 
         # =========================================================================
-        # 5. Health/availability filtering
+        # 5. Health/availability filtering (Uses ProviderRegistry cached health)
         # =========================================================================
-        import asyncio
+        healthy_candidates = [
+            m for m in filtered_by_tier
+            if self.provider_registry.is_provider_healthy(m.provider_name)
+        ]
 
-        healthy_set: Set[str] = set()
-        for m in filtered_by_tier:
-            provider = self.provider_registry.get_llm(m.provider_name)
-            if provider is None:
-                continue
-            try:
-                health = asyncio.run(provider.health_check())
-                if health.healthy:
-                    healthy_set.add(m.model_id)
-            except Exception:
-                pass  # Skip unhealthy models
-
-        # Re-filter: only keep models with healthy providers
-        # But keep at least one candidate if nothing is healthy (degraded mode)
-        final_candidates: List[ModelDefinition] = []
-        for m in filtered_by_tier:
-            if m.model_id in healthy_set:
-                final_candidates.append(m)
-            elif not healthy_set and m in filtered_by_tier:
-                # No models healthy — include the least-unavailable as fallback
-                final_candidates.append(m)
-
-        if not final_candidates:
-            # If we have candidates that failed health check, use those as last resort
-            final_candidates = [m for m in filtered_by_tier if m not in final_candidates]
+        if healthy_candidates:
+            final_candidates = healthy_candidates
+        else:
+            # If no providers are cached healthy, fall back to all candidates (degraded mode)
+            final_candidates = filtered_by_tier
 
         if not final_candidates:
             raise NoSuitableModelError(
                 f"No suitable model found for task={task}, capabilities={target_caps}. "
                 f"Available: {[m.model_id for m in all_models]}"
             )
+
 
         # =========================================================================
         # 6. Context window compatibility filtering

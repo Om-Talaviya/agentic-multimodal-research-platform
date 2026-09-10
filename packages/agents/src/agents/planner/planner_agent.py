@@ -46,20 +46,20 @@ class PlannerAgent(Agent):
     """
     
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
-        router: ModelRouter = context.model_router
-        llm = router.select_llm(ModelCapabilities.for_task("planning"))
-        
         prompt = f"Research request: {task.objective}\n\nContext: {task.context}"
         
         try:
-            response = await llm.complete(LLMRequest(
-                messages=[
-                    LLMMessage(role="system", content=self.SYSTEM_PROMPT),
-                    LLMMessage(role="user", content=prompt),
-                ],
-                temperature=0.3,
-                json_mode=True,
-            ))
+            response = await context.complete_llm(
+                LLMRequest(
+                    messages=[
+                        LLMMessage(role="system", content=self.SYSTEM_PROMPT),
+                        LLMMessage(role="user", content=prompt),
+                    ],
+                    temperature=0.3,
+                    json_mode=True,
+                ),
+                task="planning",
+            )
             
             plan_data = json.loads(response.content)
             plan = ResearchPlan(**plan_data)

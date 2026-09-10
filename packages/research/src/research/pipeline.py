@@ -25,12 +25,14 @@ class ResearchPipeline:
         agent_registry: AgentRegistry,
         tool_registry: ToolRegistry,
         model_router: ModelRouter,
+        model_gateway: Optional[Any] = None,
         event_bus: ResearchEventBus | None = None,
     ):
         self.orchestrator = orchestrator
         self.agent_registry = agent_registry
         self.tool_registry = tool_registry
         self.model_router = model_router
+        self.model_gateway = model_gateway
         self.event_bus = event_bus or research_event_bus
 
     async def _emit(
@@ -67,10 +69,17 @@ class ResearchPipeline:
 
         job_uuid = uuid4()
         req_uuid = uuid4()
+        user_uuid = None
+        if request.user_id:
+            try:
+                user_uuid = UUID(str(request.user_id))
+            except Exception:
+                user_uuid = None
 
         db_job = DBResearchJob(
             id=job_uuid,
             request_id=req_uuid,
+            user_id=user_uuid,
             question=request.question,
             objective=request.question,
             constraints=request.constraints,
@@ -84,6 +93,7 @@ class ResearchPipeline:
         job = ResearchJob(
             id=str(job_uuid),
             request_id=str(req_uuid),
+            user_id=str(user_uuid) if user_uuid else (str(request.user_id) if request.user_id else None),
             question=request.question,
             objective=request.question,
             constraints=request.constraints,
@@ -107,6 +117,7 @@ class ResearchPipeline:
         planner = PlannerAgent()
         job_id_str = str(job.id)
         request_id_str = str(getattr(job, "request_id", uuid4()))
+        user_id_str = getattr(job, "user_id", None)
 
         task = ResearchTask(
             id=str(uuid4()),
@@ -121,7 +132,12 @@ class ResearchPipeline:
             },
         )
         
-        context = self.orchestrator.create_context(job_id_str, task.id, request_id_str)
+        context = self.orchestrator.create_context(
+            job_id=job_id_str,
+            task_id=task.id,
+            request_id=request_id_str,
+            user_id=user_id_str,
+        )
         await self._emit(
             job_id_str,
             ResearchEventType.PLANNING_STARTED,
@@ -359,8 +375,14 @@ class ResearchPipeline:
                     )
 
             # Create an isolated context for each ready task
+            user_id_str = getattr(job, "user_id", None)
             contexts = [
-                self.orchestrator.create_context(str(job.id), t.id, job_req_id)
+                self.orchestrator.create_context(
+                    job_id=str(job.id),
+                    task_id=t.id,
+                    request_id=job_req_id,
+                    user_id=user_id_str,
+                )
                 for t in ready
             ]
 

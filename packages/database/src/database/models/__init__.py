@@ -1,9 +1,11 @@
-from database.models.research_job import ResearchJob, ResearchTask
-from database.models.source import Source, Evidence
+from database.models.agent_run import AgentRun, ModelCall
 from database.models.document import Document, DocumentChunk
 from database.models.report import Report
-from database.models.agent_run import AgentRun, ModelCall
+from database.models.research_job import ResearchJob, ResearchTask
+from database.models.source import Evidence, Source
+from database.models.usage_record import UsageRecord
 from database.models.user import User
+from database.models.user_quota import UserQuota
 
 __all__ = [
     "ResearchJob",
@@ -16,4 +18,6 @@ __all__ = [
     "AgentRun",
     "ModelCall",
     "User",
+    "UsageRecord",
+    "UserQuota",
 ]
