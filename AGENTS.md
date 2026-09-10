@@ -8,6 +8,10 @@ Welcome to the **Agentic Multimodal Research Platform** codebase. This file serv
 
 The repository is organized as a modular Python monorepo with a decoupled FastAPI backend and a React (TypeScript + Vite) frontend.
 
+### The Core Vision: An AI Research Operating System
+> **This isn't just a chatbot.**  
+> The system enables AI to **Plan $\rightarrow$ Investigate $\rightarrow$ Retrieve $\rightarrow$ Reason $\rightarrow$ Critique $\rightarrow$ Synthesize $\rightarrow$ Report**, while managing multi-user authentication, quota allocation, multi-provider model routing, persistent storage, and real-time streaming progress.
+
 ### Architectural Tiers:
 ```
 Frontend (React/Vite)
@@ -16,6 +20,7 @@ Frontend (React/Vite)
 FastAPI API Layer (apps/api)
        │
        ├── Auth & RBAC (JWT, PBKDF2, PostgreSQL/SQLite)
+       ├── User Context Propagation (JWT User ID -> ResearchPipeline -> AgentContext)
        ├── Research Pipeline Orchestrator (packages/research)
        │      │
        │      ├── PlannerAgent (packages/agents)
@@ -28,7 +33,8 @@ FastAPI API Layer (apps/api)
               └── ModelGateway
                      └── ModelRouter
                             ├── ModelRegistry (Task capability matching & model definitions)
-                            └── ProviderRegistry (Ollama, Gemini, OpenAI-compatible)
+                            ├── ProviderRegistry (Ollama, Gemini, OpenAI-compatible)
+                            └── Usage & Quotas (Row-locking concurrency, persistent tracking)
 ```
 
 ---
@@ -67,7 +73,7 @@ FastAPI API Layer (apps/api)
 │       └── package.json
 │
 ├── packages/                    # Core modular Python packages
-│   ├── ai/                      # Multi-provider Gateway, Router, Registry, Providers
+│   ├── ai/                      # Multi-provider Gateway, Router, Registry, Quotas, Providers
 │   ├── agents/                  # Autonomous agents (Planner, Web, Doc, Critic, Report)
 │   ├── research/                # DAG execution, Pipeline, EventBus, Synthesis
 │   ├── ingestion/               # Parsers (PDF, DOCX, Image, Text), Chunkers, Normalizers
@@ -76,7 +82,8 @@ FastAPI API Layer (apps/api)
 │   ├── tools/                   # Tool registry, WebSearch, SSRF-safe WebFetch, DocReader
 │   └── shared/                  # Config, logging, JWT auth, security, exceptions
 │
-├── docs/                        # Architectural specs and diagrams
+├── design/                      # UI/UX design specifications, tokens, and screens
+├── docs/                        # Architectural specs, PRD, TRD, flows, schema, decisions
 ├── infrastructure/              # Kubernetes manifests, Docker Compose, monitoring
 └── pyproject.toml               # Python monorepo configuration
 ```
@@ -92,6 +99,7 @@ FastAPI API Layer (apps/api)
 4. **Error Handling**: Use domain exceptions defined in `shared.exceptions` (e.g., `ModelNotFoundError`, `ProviderUnavailableError`, `AuthenticationError`, `ValidationError`).
 5. **Logging**: Always use structured logging with `structlog` (`logger = get_logger(__name__)`). Include contextual key-value pairs (e.g., `job_id`, `task_id`, `model`, `latency_ms`). Do not use `print()` in production packages.
 6. **SQL Parity**: Database models must remain cross-compatible with PostgreSQL (using `JSONB` and native `UUID`) and SQLite (fallback variants via `JSON().with_variant(...)`).
+7. **Deterministic Calculations**: AI agents must invoke deterministic Python tools for numerical, statistical, or mathematical evaluations rather than relying on LLMs to invent numbers.
 
 ### TypeScript / React (Frontend)
 1. **Vanilla CSS**: Rely on the established design system tokens in `apps/web/src/index.css`. Avoid adding Tailwind CSS unless explicitly requested.
@@ -134,30 +142,51 @@ npm run lint
 
 1. **Security & Secrets**: NEVER hardcode API keys, passwords, or JWT secrets in code or documentation. Always reference environment variables by name (e.g., `GEMINI_API_KEY`, `OPENAI_API_KEY`, `DATABASE_URL`, `SECRET_KEY`).
 2. **SSRF Prevention**: When fetching web resources, always route through `WebFetchTool` or validate targets against `packages.shared.security.is_safe_url()`. Private IPs, loopbacks, and metadata service endpoints (e.g., `169.254.169.254`) must be rejected.
-3. **Model Provider Migration**: Note that the legacy unofficial `GeminiWeb2API` has been removed in Phase 7.3 in favor of the official Google Gemini SDK (`ai.providers.gemini.GeminiProvider`). Do NOT restore or reintroduce Web2API scrapers.
-4. **WebSocket Connection Lifecycles**: Always subscribe to the `ResearchEventBus` BEFORE querying initial snapshot state to prevent race conditions during rapid background task transitions.
-5. **Windows Path Compatibility**: Use forward slashes (`/`) or `pathlib.Path` in Python code. Avoid hardcoding Unix-only shell commands or symlinks that break on Windows systems.
+3. **Model Provider Architecture**: The legacy unofficial `GeminiWeb2API` scraper was completely removed in Phase 7.3. Use the official `ai.providers.gemini.GeminiProvider`. Do NOT restore or reintroduce Web2API scrapers.
+4. **User Attribution Flow**: Always pass authenticated `user_id` down into `AgentContext` and `ModelGateway` so model usage records and quota limits are strictly attributed in `UsageRepository`.
+5. **Quota Concurrency**: Quota verification utilizes transactional row locking (`SELECT ... FOR UPDATE` or equivalent SQLite locks) to prevent race conditions during concurrent requests.
+6. **Anti-Patterns & Architectural Discipline ("What We Should NOT Do")**:
+   - Do NOT add premature infrastructure (e.g., Kafka, Kubernetes distributed workers, 10 LLM providers, OAuth microservices, redundant vector databases).
+   - Priority must remain: **Connect existing components and make the product genuinely useful before adding more infrastructure.**
 
 ---
 
-## 7. Git & Branching Rules
+## 7. Current Project Phase Status & Roadmap
 
-- Work on feature branches or version branches (e.g., `develop/v1.1`).
-- Write descriptive commit messages adhering to conventional commits (`feat:`, `fix:`, `refactor:`, `docs:`, `test:`).
-- **DO NOT commit or push without explicit user request.**
-
----
-
-## 8. Current Project Phase Status
-
+### Completed Foundations:
 - **Phase 1 (Foundation)**: 🟢 COMPLETE
 - **Phase 2 (Research MVP)**: 🟢 COMPLETE
 - **Phase 3 (Multimodal Ingestion)**: 🟢 COMPLETE
 - **Phase 4 (Agentic System)**: 🟢 COMPLETE
 - **Phase 5 (RAG / Knowledge Layer)**: 🟢 COMPLETE
 - **Phase 6 (Production & Security)**: 🟢 COMPLETE
-- **Phase 7.1 (Dashboard UI Fix)**: 🟢 COMPLETE
-- **Phase 7.2 (Persistent Database Users)**: 🟢 COMPLETE
-- **Phase 7.3 (Official Gemini Provider)**: 🟢 COMPLETE
-- **Phase 8A (Intelligent Model Routing Core)**: 🟢 COMPLETE (`ModelRegistry`, `ModelRouter`, `ModelGateway`)
-- **Phase 8B (Quotas, Usage Tracking & Fallback Extensions)**: 🟡 IN PROGRESS / UNCOMMITTED (Implementation exists locally, awaiting final review and integration).
+- **Phase 7 (Application Maturity)**: 🟢 COMPLETE (7.1 Dashboard fix, 7.2 Persistent DB users, 7.3 Official Gemini Provider, WebSockets, Auth completion)
+- **Phase 8A (Intelligent Model Routing Core)**: 🟢 COMPLETE (`ModelRegistry`, `ModelRouter`, `ModelGateway` - Commit: `88ac57d`)
+- **Phase 8B (Usage Tracking & Quotas)**: 🟢 COMPLETE (`UserQuota`, row-locking concurrency, quota-aware fallback - Commit: `a603114`)
+- **Documentation Architecture**: 🟢 COMPLETE (Commit: `a00949e`, Stable branch: `develop/v1.1`)
+
+### The 6 Generations Ahead (Phases 9 – 26):
+- **Generation 1 — Intelligent Research Core**:
+  - **Phase 9**: Intelligent Knowledge Automation (🟡 **IMMEDIATE NEXT MILESTONE**: End-to-end ingestion pipeline & planner auto-retrieval)
+  - **Phase 10**: Evidence & Citation Intelligence (Strict claim $\rightarrow$ source mappings, confidence scoring, contradiction detection)
+  - **Phase 11**: Advanced Research Planning (Deep subquestion decomposition, agent role assignment)
+- **Generation 2 — Multimodal Intelligence**:
+  - **Phase 12**: Advanced Multimodal Research (Unified context: 50+ page PDFs, papers, images, charts, audio, video)
+  - **Phase 13**: Dataset & Data Analysis Intelligence (CSV/Excel/JSON analysis, deterministic math tools, visualization)
+  - **Phase 14**: Document & Paper Intelligence (200-page paper structure parsing, methodology comparison)
+- **Generation 3 — Autonomous Research**:
+  - **Phase 15**: Deep Research Engine (Autonomous iterative feedback loops with CriticAgent)
+  - **Phase 16**: Research Memory (Cross-session persistent project memory)
+  - **Phase 17**: Long-Term Knowledge Graph (Entity-relationship reasoning)
+- **Generation 4 — Collaboration Platform**:
+  - **Phase 18**: Projects & Workspaces (User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge)
+  - **Phase 19**: Team Collaboration (Roles, permissions, shared reports, inline comments)
+- **Generation 5 — AI Platform Intelligence**:
+  - **Phase 20**: Intelligent Model Ecosystem (Multi-parameter routing optimization)
+  - **Phase 21**: Model Evaluation System (Automated model benchmarking)
+  - **Phase 22**: Agent Evaluation (Automated agent quality and hallucination tracking)
+- **Generation 6 — Production Product**:
+  - **Phase 23**: Enterprise Security (SOC 2, GDPR, audit logs, secret management)
+  - **Phase 24**: Production Infrastructure (Distributed queues, worker pools, object storage, autoscaling)
+  - **Phase 25**: Public API / Developer Platform (Developer REST endpoints, SDKs, API keys)
+  - **Phase 26**: Research Automation (Recurring scheduled research sweeps, change detection alerts)

@@ -1,328 +1,238 @@
-# Architecture Documentation
+# System Architecture Documentation: ARCHITECTURE.md
 
-## High-Level Architecture
+## High-Level System Architecture
 
-The Agentic Multimodal Research Platform follows a modular, layered architecture with clear separation of concerns:
-
-![System Architecture](architecture.png)
-
-
-## Core Design Principles
-
-### 1. Dependency Inversion
-All high-level modules depend on abstractions, not concrete implementations:
-- `LLMProvider` interface → `OllamaProvider`, `OpenAICompatibleProvider`
-- `VectorStore` interface → `ChromaStore`, future `PineconeStore`, `WeaviateStore`
-- `DocumentParser` interface → `PDFParser`, `ImageParser`, `TextParser`
-
-### 2. Configuration-Driven Behavior
-Behavior controlled via Pydantic Settings from environment variables:
-- Model selection and parameters
-- Database connections
-- Feature flags
-- Resource limits
-
-### 3. Async-First Design
-All I/O operations use async/await:
-- FastAPI endpoints
-- Database operations (SQLAlchemy async)
-- Model provider calls
-- File operations
-- HTTP requests
-
-### 4. Structured Logging & Observability
-- Every request gets a `request_id`
-- Every research job gets a `job_id`
-- Every agent run gets a `run_id`
-- All logs are structured JSON with context
-- OpenTelemetry traces span agent executions
-
-## Package Boundaries
-
-### `packages/ai` - Model Provider Abstractions
-```
-ai/
-├── providers/
-│   ├── base.py              # Abstract base classes
-│   ├── llm.py               # LLMProvider protocol
-│   ├── vision.py            # VisionProvider protocol
-│   ├── embeddings.py        # EmbeddingProvider protocol
-│   ├── reranker.py          # RerankerProvider protocol
-│   ├── router.py            # ModelRouter
-│   ├── ollama.py            # Ollama implementation
-│   └── openai_compatible.py # OpenAI-compatible implementation
-├── schemas.py               # Request/response models
-├── exceptions.py            # Provider-specific exceptions
-└── __init__.py
-```
-
-### `packages/agents` - Agent Framework
-```
-agents/
-├── base.py                  # Agent base class, AgentContext
-├── registry.py              # AgentRegistry for discovery
-├── orchestrator.py          # Multi-agent coordination
-├── tools/
-│   ├── base.py              # Tool protocol
-│   ├── registry.py          # ToolRegistry
-│   └── builtin/             # Built-in tools (search, fetch, etc.)
-├── memory.py                # Agent memory (short/long term)
-├── planner/
-│   └── planner_agent.py     # Planning agent implementation
-├── research/
-│   ├── web_agent.py         # Web research agent
-│   └── document_agent.py    # Document analysis agent
-├── synthesis/
-│   └── synthesis_agent.py   # Evidence synthesis agent
-├── report/
-│   └── report_agent.py      # Report generation agent
-└── __init__.py
-```
-
-### `packages/research` - Research Pipeline
-```
-research/
-├── pipeline.py              # Main pipeline orchestration
-├── planner.py               # Research planning logic
-├── models.py                # Research job, task, plan models
-├── evidence.py              # Evidence collection & verification
-├── synthesis.py             # Finding synthesis
-├── report.py                # Report generation
-└── __init__.py
-```
-
-### `packages/ingestion` - Multimodal Ingestion
-```
-ingestion/
-├── pipeline.py              # Ingestion pipeline orchestrator
-├── parsers/
-│   ├── base.py              # DocumentParser protocol
-│   ├── text.py              # Text/markdown parser
-│   ├── pdf.py               # PDF parser (pdfplumber)
-│   ├── image.py             # Image parser (vision model)
-│   └── docx.py              # DOCX parser
-├── extractors/
-│   ├── text.py              # Text extraction
-│   ├── tables.py            # Table extraction
-│   └── metadata.py          # Metadata extraction
-├── chunking.py              # Semantic chunking strategies
-├── normalization.py         # Normalized document representation
-└── __init__.py
-```
-
-### `packages/retrieval` - Vector Search & RAG
-```
-retrieval/
-├── vector_store.py          # VectorStore protocol
-├── chroma_store.py          # ChromaDB implementation
-├── embedder.py              # Embedding generation
-├── retriever.py             # Hybrid retrieval (vector + keyword)
-├── reranker.py              # Result reranking
-└── __init__.py
-```
-
-### `packages/database` - Database Abstractions
-```
-database/
-├── connection.py            # Async engine/session management
-├── models/                  # SQLAlchemy models
-│   ├── research_job.py
-│   ├── research_task.py
-│   ├── source.py
-│   ├── evidence.py
-│   ├── report.py
-│   └── agent_run.py
-├── repositories/            # Repository pattern
-│   ├── research_job_repo.py
-│   ├── source_repo.py
-│   └── evidence_repo.py
-├── migrations/              # Alembic migrations
-└── __init__.py
-```
-
-### `packages/tools` - Tool System
-```
-tools/
-├── base.py                  # Tool protocol
-├── registry.py              # ToolRegistry
-├── definitions/             # Tool schemas
-│   ├── web_search.py
-│   ├── web_fetch.py
-│   ├── document_read.py
-│   └── code_exec.py         # Sandboxed (future)
-└── __init__.py
-```
-
-### `packages/shared` - Common Utilities
-```
-shared/
-├── config.py                # Shared configuration
-├── logging.py               # Structured logging setup
-├── observability.py         # OpenTelemetry setup
-├── exceptions.py            # Custom exceptions
-├── types.py                 # Common type definitions
-├── utils.py                 # Utility functions
-└── __init__.py
-```
-
-## Data Flow: Research Request
+The **Agentic Multimodal Research Platform** is engineered as a modular, local-first **AI Research Operating System**. It moves beyond standard single-turn chatbots by employing a coordinated, Directed Acyclic Graph (DAG) based agentic workflow that plans, investigates, retrieves, reasons, critiques, synthesizes, and reports on complex multi-domain questions.
 
 ```
-1. POST /api/research
-   │
-   ▼
-2. ResearchOrchestrator.create_job()
-   │   - Creates ResearchJob in DB
-   │   - Emits JobCreated event
-   │
-   ▼
-3. PlannerAgent.analyze_request()
-   │   - Uses LLM to decompose request
-   │   - Produces ResearchPlan (DAG of tasks)
-   │   - Stores plan in DB
-   │
-   ▼
-4. Orchestrator.execute_plan()
-   │   - Topological sort of tasks
-   │   - Parallel execution where possible
-   │   - Each task → Agent.run()
-   │
-   ▼
-5. Agent Execution Loop
-   │   - Agent receives Task + Context
-   │   - Agent uses Tools + Model Providers
-   │   - Agent produces Evidence/Results
-   │   - Results stored in DB
-   │   - Execution trace logged
-   │
-   ▼
-6. Evidence Verification
-   │   - Cross-reference sources
-   │   - Detect contradictions
-   │   - Assess credibility
-   │
-   ▼
-7. SynthesisAgent.synthesize()
-   │   - Groups evidence by claim
-   │   - Identifies consensus/conflicts
-   │   - Produces Findings with citations
-   │
-   ▼
-8. ReportAgent.generate()
-   │   - Structures findings
-   │   - Adds uncertainty markers
-   │   - Generates citations
-   │   - Produces final report
-   │
-   ▼
-9. GET /api/research/{id}/report
-```
+                                 ┌──────────────┐
+                                 │     USER     │
+                                 └───────┬──────┘
+                                         │
+                                         ▼
+                        ┌─────────────────────────────────┐
+                        │      React Web Platform         │
+                        │ (Dashboard / Research / Studio) │
+                        └────────────────┬────────────────┘
+                                         │ HTTPS / WSS
+                                         ▼
+                        ┌─────────────────────────────────┐
+                        │          FastAPI API            │
+                        └────────┬───────────────┬────────┘
+                                 │               │
+                 ┌───────────────┘               └───────────────┐
+                 ▼                                               ▼
+      ┌─────────────────────┐                         ┌─────────────────────┐
+      │   Research Engine   │                         │   Knowledge Layer   │
+      │ (Agent Orchestrator)│                         │  (Hybrid RAG Store) │
+      └──────────┬──────────┘                         └──────────┬──────────┘
+                 │                                               │
+        ┌────────┴───────────────────┐                           │
+        ▼              ▼             ▼                           │
+   ┌─────────┐   ┌───────────┐ ┌──────────┐                      │
+   │ Planner │   │ Web Agent │ │Doc Agent │                      │
+   └────┬────┘   └─────┬─────┘ └────┬─────┘                      │
+        │              │            │                            │
+        └──────────────┼────────────┴────────────────────────────┤
+                       ▼                                         │
+                 ┌───────────┐                                   │
+                 │  Critic   │◄──────────────────────────────────┘
+                 └─────┬─────┘
+                       ▼
+                 ┌───────────┐
+                 │ Synthesis │
+                 └─────┬─────┘
+                       ▼
+                 ┌───────────┐
+                 │  Report   │
+                 └───────────┘
 
-## Concurrency Model
-
-- **Research Jobs**: Independent, can run in parallel
-- **Tasks within Job**: DAG-based, parallel where dependencies allow
-- **Agent Execution**: Single-threaded per agent instance (stateful)
-- **Model Calls**: Async, concurrent via connection pooling
-- **Database**: Async connection pool (SQLAlchemy async)
-
-## Error Handling Strategy
-
-```python
-# Layered error handling
-try:
-    result = await agent.run(task, context)
-except ModelProviderError as e:
-    # Log, try fallback provider, or mark task failed
-    await handle_model_failure(task, e)
-except ToolError as e:
-    # Retry with backoff, then fail task
-    await handle_tool_failure(task, e)
-except ValidationError as e:
-    # Invalid input, fail fast
-    raise
-except Exception as e:
-    # Unexpected: log full trace, mark job errored
-    logger.exception("Unexpected error", job_id=job.id)
-    await mark_job_failed(job.id, str(e))
-```
-
-## Security Boundaries
-
-```
-┌─────────────────────────────────────────────┐
-│                 Trusted Zone                │
-│  ┌─────────┐ ┌─────────┐ ┌───────────────┐ │
-│  │ Orchest.│ │ Agents  │ │ Model Router  │ │
-│  └─────────┘ └─────────┘ └───────────────┘ │
-└─────────────────────────────────────────────┘
-                    │
-        ┌───────────┴───────────┐
-        ▼                       ▼
-┌───────────────┐       ┌───────────────┐
-│  Tools        │       │ Model         │
-│  (Sandboxed)  │       │ Providers     │
-│               │       │ (External)    │
-│ - Web search  │       │               │
-│ - File read   │       │ - Ollama      │
-│ - Code exec   │       │ - OpenAI      │
-│   (isolated)  │       │ - Anthropic   │
-└───────────────┘       └───────────────┘
-```
-
-- Tools execute in restricted contexts
-- Model providers are external dependencies
-- No `eval()` or arbitrary code execution from model output
-- File system access limited to designated directories
-
-## Extensibility Points
-
-1. **New Model Provider**: Implement `LLMProvider` protocol
-2. **New Agent**: Subclass `Agent`, register in `AgentRegistry`
-3. **New Tool**: Implement `Tool` protocol, register in `ToolRegistry`
-4. **New Document Format**: Implement `DocumentParser` protocol
-5. **New Vector Store**: Implement `VectorStore` protocol
-6. **New Retrieval Strategy**: Extend `Retriever` class
-
-## Configuration Management
-
-All configuration via `packages/shared/config.py` using Pydantic Settings:
-
-```python
-class Settings(BaseSettings):
-    # API
-    api_host: str = "0.0.0.0"
-    api_port: int = 8000
-    
-    # Database
-    database_url: str
-    database_pool_size: int = 10
-    
-    # Vector Store
-    chroma_host: str = "localhost"
-    chroma_port: int = 8000
-    
-    # Redis
-    redis_url: str
-    
-    # Model Providers
-    ollama_base_url: str = "http://localhost:11434"
-    default_llm_model: str = "llama3.1"
-    default_embedding_model: str = "nomic-embed-text"
-    
-    # File Storage
-    upload_dir: Path = Path("./uploads")
-    max_upload_size: int = 50 * 1024 * 1024  # 50MB
-    
-    # Logging
-    log_level: str = "INFO"
-    log_format: str = "json"
-    
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
+═════════════════════════════════════════════════════════════════════════════════
+                              PLATFORM INFRASTRUCTURE
+─────────────────────────────────────────────────────────────────────────────────
+  [Authentication]       [AI Infrastructure]              [Platform Persistence]
+  • Users & RBAC         • ModelRegistry (Capabilities)   • PostgreSQL / SQLite
+  • PBKDF2 Password Hash • ModelRouter (Task Matching)    • ChromaDB / In-Memory
+  • JWT Access/Refresh   • ModelGateway (Failover)        • Usage Records & Quotas
+  • User Context Flow    • Ollama / Gemini / OpenAI       • Row-Locking Concurrency
+═════════════════════════════════════════════════════════════════════════════════
 ```
 
 ---
 
-*Architecture is a living document. Update as implementation evolves.*
+## 1. Core Architectural Pillars
+
+### 1.1 Dependency Inversion & Provider Agnosticism
+High-level agent logic depends strictly on abstract protocols (`packages/ai`):
+- `LLMProvider` $\rightarrow$ `OllamaProvider`, `GeminiProvider`, `OpenAICompatibleProvider`.
+- `VisionProvider` $\rightarrow$ Multimodal model endpoints.
+- `EmbeddingProvider` $\rightarrow$ Vector embedders (`nomic-embed-text`, etc.).
+- `VectorStore` $\rightarrow$ `ChromaStore`, `InMemoryStore`.
+
+### 1.2 Multi-Tier AI Routing & Gateway Hierarchy (Phase 8A & 8B)
+```
+  Agent Request (AgentContext + TaskType)
+                     │
+                     ▼
+             ┌──────────────┐
+             │ ModelGateway │
+             └───────┬──────┘
+                     │
+                     ▼
+             ┌──────────────┐
+             │ ModelRouter  │
+             └───────┬──────┘
+                     │
+         ┌───────────┴───────────┐
+         ▼                       ▼
+┌─────────────────┐     ┌──────────────────┐
+│  ModelRegistry  │     │ ProviderRegistry │
+│ (Capabilities)  │     │ (Health & Auth)  │
+└─────────────────┘     └──────────────────┘
+         │                       │
+         └───────────┬───────────┘
+                     ▼
+        ┌─────────────────────────┐
+        │ Quota Verification Lock │
+        │ (SELECT ... FOR UPDATE) │
+        └────────────┬────────────┘
+                     │
+                     ▼
+        ┌─────────────────────────┐
+        │ Concrete Provider Call  │
+        │ (Ollama, Gemini, OpenAI)│
+        └────────────┬────────────┘
+                     │
+                     ▼
+        ┌─────────────────────────┐
+        │  Usage Telemetry Log    │
+        │  (UsageRecord in DB)    │
+        └─────────────────────────┘
+```
+
+1. **`ModelRegistry`**: Catalog of registered models, capabilities (`STREAMING_RESPONSE`, `VISION_ANALYSIS`, `FACTUAL_EXTRACTION`, `SYNTHESIS`), context sizes, and priority scores.
+2. **`ProviderRegistry`**: Manages live provider instances, connection pooling, and health status.
+3. **`ModelRouter`**: Dynamically maps task requirements and constraints to candidate models.
+4. **`ModelGateway`**: High-level execution entry point that handles model selection, fallback execution on rate limits/errors, quota verification, and telemetry logging.
+5. **Usage & Quotas**: Persistent `UsageRecord` and `UserQuota` models with transactional row locking to eliminate race conditions under concurrent worker executions.
+
+---
+
+## 2. Research Engine & Agentic Orchestration
+
+### 2.1 Dynamic DAG Task Execution
+The research process is modeled as an executable Directed Acyclic Graph:
+```mermaid
+graph TD
+    A[User Research Question] --> B[PlannerAgent]
+    B --> C[Generate Task DAG]
+    C --> D1[Task 1: Web Search]
+    C --> D2[Task 2: Ingest Document Context]
+    D1 --> E[CriticAgent: Verify Evidence]
+    D2 --> E
+    E --> F{Evidence Sufficient?}
+    F -->|No: Gaps Found| G[Schedule Iterative Subtask]
+    G --> D1
+    F -->|Yes| H[ReportAgent: Synthesis & Provenance]
+    H --> I[Final Research Report]
+```
+
+### 2.2 Agent Roles & Specialization
+- **`PlannerAgent`**: Deconstructs broad questions into structured subtasks with explicit dependencies (`depends_on`).
+- **`WebResearchAgent`**: Executes web search queries and retrieves sanitized web pages using `SSRF-safe` network adapters.
+- **`DocumentAnalysisAgent`**: Retrieves and extracts relevant passages from local uploaded PDFs, DOCX, and images.
+- **`CriticAgent`**: Audits factual claims, calculates confidence metrics, detects source contradictions, and flags unverified assertions.
+- **`ReportAgent`**: Compiles verified evidence into an executive summary, findings, methodology, conclusions, and citation map.
+
+---
+
+## 3. Multimodal Ingestion & Hybrid RAG Architecture
+
+```mermaid
+flowchart LR
+    Doc[User Documents: PDF, DOCX, Img] --> Parse[Parser Layer]
+    Parse --> Chunk[Semantic Chunker]
+    Chunk --> Embed[Vector Embedder]
+    Chunk --> Lexical[BM25 Tokenizer]
+    Embed --> Chroma[(ChromaDB)]
+    Lexical --> BM25Index[(BM25 Sparse Store)]
+    
+    Query[Agent Search Query] --> DenseSearch[Dense Vector Query]
+    Query --> SparseSearch[BM25 Lexical Query]
+    DenseSearch --> RRF[Reciprocal Rank Fusion RRF]
+    SparseSearch --> RRF
+    RRF --> Context[Ranked Grounded Context]
+```
+
+---
+
+## 4. User Context Flow & Persistence
+
+Authenticated requests flow through the entire system with complete user attribution:
+```
+  FastAPI JWT Authentication (/api/v1/auth)
+                     │
+                     ▼ (Extract authenticated user_id)
+        Endpoint: POST /api/v1/research
+                     │
+                     ▼ (Pass user_id into pipeline)
+             ResearchPipeline
+                     │
+                     ▼ (Initialize orchestrator with context)
+             AgentOrchestrator
+                     │
+                     ▼ (Propagate into AgentContext)
+               AgentContext
+                     │
+                     ▼ (Invoke LLM with user context)
+               ModelGateway
+                     │
+                     ▼ (Record tokens & cost)
+             UsageRepository
+                     │
+                     ▼
+          Database (UsageRecord.user_id)
+```
+
+---
+
+## 5. The 6-Generation Long-Term Architecture (Phases 9 – 26)
+
+### Generation 1: Intelligent Research Core (Phases 9 – 11)
+- **Phase 9 (Knowledge Automation - NEXT)**: Automated document ingestion daemon and planner-integrated retrieval.
+- **Phase 10 (Evidence & Citation Intelligence)**: Fine-grained claim-to-source anchoring with page/coordinate coordinates.
+- **Phase 11 (Advanced Research Planning)**: Hierarchical planning engine capable of 3-level recursive task decomposition.
+
+### Generation 2: Multimodal Intelligence (Phases 12 – 14)
+- **Phase 12 (Advanced Multimodal Research)**: Unified multi-modal context assembler for 50+ page PDFs, images, charts, and audio/video transcripts.
+- **Phase 13 (Dataset & Data Analysis Intelligence)**: Tabular data analysis (CSV/Excel/JSON) using sandboxed Python calculation tools.
+- **Phase 14 (Document & Paper Intelligence)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
+
+### Generation 3: Autonomous Research (Phases 15 – 17)
+- **Phase 15 (Deep Research Engine)**: Recursive self-healing research loops driven by Critic confidence thresholds.
+- **Phase 16 (Research Memory)**: Cross-session persistent research memory indexing past investigations.
+- **Phase 17 (Long-Term Knowledge Graph)**: Entity-relationship graph networks for multi-hop relational reasoning.
+
+### Generation 4: Collaboration Platform (Phases 18 – 19)
+- **Phase 18 (Projects & Workspaces)**: Hierarchical tenant isolation (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
+- **Phase 19 (Team Collaboration)**: Granular workspace roles, shared knowledge pools, and collaborative report editing.
+
+### Generation 5: AI Platform Intelligence (Phases 20 – 22)
+- **Phase 20 (Intelligent Model Ecosystem)**: Multi-parameter optimization across cost, latency, quality, and context size.
+- **Phase 21 (Model Evaluation System)**: Automated benchmarking measuring model output fidelity against golden datasets.
+- **Phase 22 (Agent Evaluation)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
+
+### Generation 6: Production Product (Phases 23 – 26)
+- **Phase 23 (Enterprise Security)**: Audit log streaming, KMS envelope encryption, and SOC 2 / GDPR compliance readiness.
+- **Phase 24 (Production Scale Infrastructure)**: Celery/Redis distributed task queues, MinIO/S3 object storage, and read-replica routing.
+- **Phase 25 (Public API & Developer Platform)**: Public OpenAPI 3.1 gateway, SDK generation, and developer API keys.
+- **Phase 26 (Research Automation)**: Cron-based research workers with automated web/academic change detection.
+
+---
+
+## 6. Architectural Anti-Patterns ("What We Should NOT Do")
+
+To prevent engineering decay and maintain structural velocity:
+1. **No Premature Complexity**: We will not introduce distributed message queues (Kafka), microservices, OAuth federations, or additional vector databases before the core agentic research loops are tightly integrated and proven.
+2. **No Generative Arithmetic**: LLMs must never perform arithmetic or statistical computations directly; all calculations are executed via deterministic tools.
+3. **Core Philosophy**: **Make the research engine excellent first $\rightarrow$ make knowledge deeply integrated $\rightarrow$ make evidence trustworthy $\rightarrow$ make multimodal analysis powerful $\rightarrow$ make it collaborative $\rightarrow$ make it production-grade.**

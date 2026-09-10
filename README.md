@@ -5,48 +5,153 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
+  <img src="https://img.shields.io/badge/Status-Phase%208B%20Complete-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
-A production-grade, local-first research platform that uses agentic AI to conduct autonomous, verifiable, and evidence-grounded research across multiple modalities (text, PDF, DOCX, images, and the live web).
+An enterprise-grade, local-first **AI Research Operating System** that conducts autonomous, verifiable, and evidence-grounded investigations across multiple modalities (text, academic PDFs, DOCX, datasets, images, and the live web).
+
+> **This isn't just a chatbot.**  
+> The platform enables AI to **Plan $\rightarrow$ Investigate $\rightarrow$ Retrieve $\rightarrow$ Reason $\rightarrow$ Critique $\rightarrow$ Synthesize $\rightarrow$ Report**, while managing multi-user authentication, quota allocation, multi-provider model routing, persistent storage, and real-time streaming progress.
 
 ---
 
-## Architecture Overview
+## High-Level System Architecture
 
-![System Architecture](docs/architecture.png)
+```
+                                 ┌──────────────┐
+                                 │     USER     │
+                                 └───────┬──────┘
+                                         │
+                                         ▼
+                        ┌─────────────────────────────────┐
+                        │      React Web Platform         │
+                        │ (Dashboard / Research / Studio) │
+                        └────────────────┬────────────────┘
+                                         │ HTTP / WebSocket
+                                         ▼
+                        ┌─────────────────────────────────┐
+                        │          FastAPI API            │
+                        └────────┬───────────────┬────────┘
+                                 │               │
+                 ┌───────────────┘               └───────────────┐
+                 ▼                                               ▼
+      ┌─────────────────────┐                         ┌─────────────────────┐
+      │   Research Engine   │                         │   Knowledge Layer   │
+      │ (Agent Orchestrator)│                         │  (Hybrid RAG Store) │
+      └──────────┬──────────┘                         └──────────┬──────────┘
+                 │                                               │
+        ┌────────┴───────────────────┐                           │
+        ▼              ▼             ▼                           │
+   ┌─────────┐   ┌───────────┐ ┌──────────┐                      │
+   │ Planner │   │ Web Agent │ │Doc Agent │                      │
+   └────┬────┘   └─────┬─────┘ └────┬─────┘                      │
+        │              │            │                            │
+        └──────────────┼────────────┴────────────────────────────┤
+                       ▼                                         │
+                 ┌───────────┐                                   │
+                 │  Critic   │◄──────────────────────────────────┘
+                 └─────┬─────┘
+                       ▼
+                 ┌───────────┐
+                 │ Synthesis │
+                 └─────┬─────┘
+                       ▼
+                 ┌───────────┐
+                 │  Report   │
+                 └───────────┘
 
-The platform implements a layered, decoupled architecture with a dynamic Directed Acyclic Graph (DAG) task execution pipeline, structured agentic orchestration, hybrid vector/BM25 retrieval (RAG), and a centralized multi-provider model routing layer.
+═════════════════════════════════════════════════════════════════════════════════
+                              PLATFORM INFRASTRUCTURE
+─────────────────────────────────────────────────────────────────────────────────
+  [Authentication]       [AI Infrastructure]              [Platform Persistence]
+  • Users & RBAC         • ModelRegistry (Capabilities)   • PostgreSQL / SQLite
+  • PBKDF2 Password Hash • ModelRouter (Task Matching)    • ChromaDB / In-Memory
+  • JWT Access/Refresh   • ModelGateway (Failover)        • Usage Records & Quotas
+  • User Context Flow    • Ollama / Gemini / OpenAI       • Row-Locking Concurrency
+═════════════════════════════════════════════════════════════════════════════════
+```
 
 ---
 
-## Core Capabilities
+## What Makes This Platform Different?
 
-- **Autonomous Agentic Pipeline**: Dynamic Planner → Parallel Specialized Research Agents → Critic/Verifier → Evidence Synthesis → Structured Report Generation.
-- **Dynamic DAG Task Execution**: Tasks with dependency graphs are scheduled and executed concurrently with real-time topological resolution and error recovery.
-- **Multimodal Ingestion**: Native extraction and chunking for Plain Text, Markdown, PDF (with tables via `pdfplumber`), DOCX (`python-docx`), and Images (via Vision models).
-- **Intelligent Model Routing & Gateway**: Centralized `ModelGateway` → `ModelRouter` → `ModelRegistry` / `ProviderRegistry` hierarchy with task-to-model matching, automated fallback failovers, and telemetry capture.
-- **Hybrid RAG & Grounded Evidence**: Vector embeddings (ChromaDB / In-Memory) combined with BM25 sparse lexical search and Reciprocal Rank Fusion (RRF) for strict citation preservation.
-- **Live Real-time Streaming**: Bi-directional WebSocket streaming (`/api/v1/research/{id}/ws`) delivering real-time task lifecycle events, DAG transitions, evidence extraction, and report streaming.
-- **Persistent RBAC Authentication**: PostgreSQL-backed user store with Alembic migrations, PBKDF2-HMAC-SHA256 password hashing, and JWT access/refresh token lifecycle.
-- **Production Hardening & Observability**: Server-Side Request Forgery (SSRF) protection on web tools, prompt injection detection, Prometheus metrics (`/metrics`), structured `structlog` logging, and Kubernetes deployment manifests.
+| Feature | Generic AI Chatbot / Wrapper | Agentic Multimodal Research Platform |
+|---|---|---|
+| **Execution Paradigm** | Single-prompt `Question $\rightarrow$ LLM $\rightarrow$ Answer` | Multi-agent DAG `Plan $\rightarrow$ Search $\rightarrow$ Read $\rightarrow$ Critique $\rightarrow$ Synthesize` |
+| **Model Coupling** | Locked to a single proprietary API | **Model-Agnostic Routing**: Dynamically routes tasks to optimal fast, vision, or reasoning models with automated failover |
+| **Evidence & Provenance** | Unverifiable assertions & frequent hallucinations | **Strict Claim $\rightarrow$ Evidence Mapping**: Every claim links to verified sources, document page numbers, and confidence metrics |
+| **Critic & Verification** | No verification loop | Independent `CriticAgent` detects contradictions, audits sufficiency, and triggers iterative research loops |
+| **Data Ingestion** | Raw text only | Native extraction for multi-page PDFs with tables, DOCX, images, and tabular datasets |
+| **Multi-Tenancy & Quotas** | Simple API keys or no quotas | Persistent RBAC, transactional row-locking token/cost quotas, and per-user usage attribution |
+
+---
+
+## Current Status & Evolution
+
+The project is currently at **Phase 8B Complete** on the stable branch `develop/v1.1`.
+
+```
+Phase 1: Foundation                  [████████████████████] 100%
+Phase 2: Research MVP                [████████████████████] 100%
+Phase 3: Multimodal Ingestion        [████████████████████] 100%
+Phase 4: Agentic System              [████████████████████] 100%
+Phase 5: RAG / Knowledge Core        [████████████████████] 100%
+Phase 6: Production / Security       [████████████████████] 100%
+Phase 7: Application Maturity        [████████████████████] 100%
+Phase 8A: Intelligent Model Routing  [████████████████████] 100% (Commit: 88ac57d)
+Phase 8B: Usage Tracking & Quotas    [████████████████████] 100% (Commit: a603114)
+─────────────────────────────────────────────────────────────────────────────────
+Phase 9: Intelligent Knowledge Auto  [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+```
+
+---
+
+## 6-Generation Product Roadmap (Phases 9 – 26)
+
+### Generation 1: Intelligent Research Core
+- **Phase 9: Intelligent Knowledge Automation (NEXT)**: Automated end-to-end ingestion (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`) and autonomous planner retrieval integration.
+- **Phase 10: Evidence & Citation Intelligence**: Strict source tracking, claim-to-evidence links, reliability metrics, and contradiction detection.
+- **Phase 11: Advanced Research Planning**: Deep query decomposition into multi-tier subquestions with agent role specialization.
+
+### Generation 2: Multimodal Intelligence
+- **Phase 12: Advanced Multimodal Research**: Unified context across 50+ page PDFs, research papers, images, charts, graphs, tables, audio, and video.
+- **Phase 13: Dataset & Data Analysis Intelligence**: Tabular data processing (CSV, Excel, JSON, SQL) with deterministic computational tools and charting.
+- **Phase 14: Document & Paper Intelligence**: Deep academic paper structure parsing (sections, tables, figures, citations, limitations, methodology diffs).
+
+### Generation 3: Autonomous Research
+- **Phase 15: Deep Research Engine**: Autonomous recursive research loops (`Critic identifies gap $\rightarrow$ Planner schedules subtask $\rightarrow$ Synthesizer updates report`).
+- **Phase 16: Research Memory**: Persistent cross-session research memory allowing users to resume complex investigations months later.
+- **Phase 17: Long-Term Knowledge Graph**: Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts beyond vector search.
+
+### Generation 4: Collaboration Platform
+- **Phase 18: Projects & Workspaces**: Multi-tiered workspace organization (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
+- **Phase 19: Team Collaboration**: Workspace role-based sharing (Owner, Researcher, Analyst, Reviewer, Viewer), inline comments, and collaborative reports.
+
+### Generation 5: AI Platform Intelligence
+- **Phase 20: Intelligent Model Ecosystem**: Multi-variable routing optimization (Task, Quality, Latency, Cost budget, Context size, Provider health, Quotas).
+- **Phase 21: Model Evaluation System**: Automated benchmarking for accuracy, relevance, latency, cost, and reasoning quality.
+- **Phase 22: Agent Evaluation**: Observability framework tracking research quality, evidence coverage, hallucination rate, and execution efficiency.
+
+### Generation 6: Production Product
+- **Phase 23: Enterprise Security**: SOC 2 & GDPR compliance, workspace isolation, immutable audit logging, data retention policies, and secret management.
+- **Phase 24: Production Infrastructure**: Distributed task queues (Celery/Redis), worker pools, object storage (S3/MinIO), autoscaling, and DB replication.
+- **Phase 25: Public API & Developer Platform**: Public developer REST endpoints (`POST /research`, `POST /documents`), client SDKs, and API key management.
+- **Phase 26: Research Automation**: Scheduled recurring research sweeps, topic monitoring, diff detection, and automated alerting.
 
 ---
 
 ## Tech Stack
 
-### Backend & AI Engine
-- **Framework**: FastAPI (Python 3.11+) with Uvicorn ASGI
-- **Database**: PostgreSQL 16 (production) / SQLite (development/testing) with SQLAlchemy 2.0 Async + Alembic migrations
-- **Vector & Cache**: ChromaDB 0.4+, Redis 7 (caching and event pub/sub)
-- **Model Providers**: Ollama (local-first `llama3.1`, `llava`, `nomic-embed-text`), Google Gemini API (`gemini-2.0-flash`), OpenAI-compatible endpoints
-- **Data Ingestion**: `pdfplumber`, `python-docx`, `Pillow`, `rank-bm25`
-- **Security & Auth**: `python-jose` (JWT), `passlib` / `hashlib` PBKDF2, IPv4/IPv6 private IP filtering
-
-### Frontend
-- **Framework**: React 18 with TypeScript and Vite
-- **Styling**: Vanilla CSS with modern tokens, CSS variables, and glassmorphism styling
-- **Routing & Icons**: React Router v6, Lucide React
-- **Network**: Axios HTTP client and native WebSocket client with exponential backoff auto-reconnect
+| Domain | Technologies |
+|---|---|
+| **Backend & ASGI** | Python 3.11+, FastAPI, Uvicorn, Pydantic v2, Structlog |
+| **Database & ORM** | PostgreSQL 16 (production) / SQLite (testing), SQLAlchemy 2.0 Async, Alembic |
+| **Vector & RAG** | ChromaDB, In-Memory Vector Store, `rank-bm25` (Sparse Search), Reciprocal Rank Fusion (RRF) |
+| **Multimodal Ingestion**| `pdfplumber`, `python-docx`, `Pillow`, Vision LLMs |
+| **AI Providers** | Multi-provider Gateway: Local Ollama, Official Google Gemini SDK, OpenAI-compatible |
+| **Frontend** | React 18, TypeScript, Vite, React Router v6, Lucide React, Modern Vanilla CSS |
+| **Security & Auth** | PBKDF2-HMAC-SHA256, JWT (Access + Refresh), SSRF-safe URL validation, Prompt Injection Guards |
 
 ---
 
@@ -78,44 +183,27 @@ The platform implements a layered, decoupled architecture with a dynamic Directe
 │   ├── tools/                   # Tool registry, WebSearch, WebFetch (SSRF safe), DocReader
 │   └── shared/                  # Config, structlog, JWT auth, security filters, exceptions
 │
-├── docs/                        # Deep-dive architectural specifications & diagrams
+├── design/                      # UI/UX design architecture, tokens, and wireframe specs
+├── docs/                        # Deep-dive architectural specifications, PRD, TRD, flows, schema
 ├── infrastructure/              # Docker Compose, Kubernetes manifests, Prometheus configs
-├── pyproject.toml               # Workspace root configuration
-└── docker-compose.yml           # Local multi-service infrastructure
+└── pyproject.toml               # Monorepo workspace configuration
 ```
 
 ---
 
 ## Quick Start
 
-### Prerequisites
-- Docker & Docker Compose
-- Python 3.11+
-- Node.js 20+
-- Ollama (optional, for local model inference)
-
 ### 1. Configure Environment
 ```bash
 cp .env.example .env
-# Edit .env if configuring external API keys or custom ports
+# Configure GEMINI_API_KEY or local Ollama endpoints as needed
 ```
 
 ### 2. Launch Local Infrastructure
 ```bash
 docker-compose up -d
 ```
-Starts:
-- PostgreSQL (`localhost:5432`)
-- ChromaDB (`localhost:8000`)
-- Redis (`localhost:6379`)
-- Ollama (`localhost:11434`)
-
-*(Optional) Pull local Ollama models:*
-```bash
-docker exec -it ollama ollama pull llama3.1
-docker exec -it ollama ollama pull llava
-docker exec -it ollama ollama pull nomic-embed-text
-```
+Starts PostgreSQL (`5432`), ChromaDB (`8000`), Redis (`6379`), and Ollama (`11434`).
 
 ### 3. Backend Setup
 ```bash
@@ -130,7 +218,6 @@ uvicorn src.main:app --reload --port 8000
 ```
 - API Docs: `http://localhost:8000/docs`
 - Health Check: `http://localhost:8000/api/v1/health`
-- Metrics: `http://localhost:8000/metrics`
 
 ### 4. Frontend Setup
 ```bash
@@ -144,79 +231,29 @@ npm run dev
 
 ## Development & Testing Commands
 
-### Backend Test Suite
 ```bash
 # Run all unit tests across all packages
 pytest packages/ apps/api/tests/ -v
 
-# Run backend API integration tests
-pytest apps/api/tests/ -v
+# Run specific package tests
+pytest packages/ai/tests/ -v
+pytest packages/research/tests/ -v
+pytest packages/database/tests/ -v
 
 # Run with coverage report
 pytest --cov=packages --cov=apps/api
-```
 
-### Frontend Validation
-```bash
+# Frontend build and linting
 cd apps/web
 npm run build
 npm run lint
 ```
 
-### Code Formatting & Linting
-```bash
-# Ruff lint & formatting
-ruff check .
-ruff format .
-
-# Type checking
-mypy apps/api/src packages/
-```
-
----
-
-## API Summary
-
-| Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| `POST` | `/api/v1/auth/login` | Authenticate and obtain JWT access/refresh tokens | No |
-| `POST` | `/api/v1/auth/token/refresh` | Exchange refresh token for fresh access token | No |
-| `GET` | `/api/v1/auth/me` | Retrieve authenticated user profile and permissions | Yes |
-| `GET` | `/api/v1/health` | Service and gateway health probe | No |
-| `POST` | `/api/v1/research` | Create and trigger an autonomous research job | Yes (`research:create`) |
-| `GET` | `/api/v1/research` | List research jobs with pagination | Yes (`research:read`) |
-| `GET` | `/api/v1/research/{id}` | Get research job metadata and execution status | Yes (`research:read`) |
-| `GET` | `/api/v1/research/{id}/tasks` | Get DAG task graph and execution progress | Yes (`research:read`) |
-| `GET` | `/api/v1/research/{id}/sources` | List retrieved web and document sources | Yes (`research:read`) |
-| `GET` | `/api/v1/research/{id}/evidence` | List extracted claims and verification confidence | Yes (`research:read`) |
-| `GET` | `/api/v1/research/{id}/report` | Retrieve final synthesized research report | Yes (`research:read`) |
-| `WS` | `/api/v1/research/{id}/ws` | Live WebSocket streaming for DAG updates & events | Yes (Token query/header) |
-| `POST` | `/api/v1/documents` | Ingest and parse PDF, DOCX, or image document | Yes (`documents:upload`) |
-| `GET` | `/api/v1/models` | List catalog models and provider health statuses | No |
-| `GET` | `/metrics` | Prometheus telemetry and metrics exposition | No / Internal |
-
----
-
-## Project Status
-
-| Phase | Milestone | Status | Notes |
-|---|---|---|---|
-| **Phase 1** | Foundation | 🟢 COMPLETE | Backend shell, async DB, logging, React frontend |
-| **Phase 2** | Research MVP | 🟢 COMPLETE | DAG runner, Planner, Web/Doc/Report agents, WebSockets |
-| **Phase 3** | Multimodal Ingestion | 🟢 COMPLETE | PDF (`pdfplumber`), DOCX, Vision images, semantic chunking |
-| **Phase 4** | Agentic System | 🟢 COMPLETE | SSRF-hardened tools, Critic agent, memory, tracing |
-| **Phase 5** | RAG / Knowledge Layer | 🟢 COMPLETE | Hybrid RRF (Vector + BM25), Embedder, citation preservation |
-| **Phase 6** | Production & Security | 🟢 COMPLETE | JWT auth, RBAC, Prometheus metrics, K8s manifests |
-| **Phase 7.1** | Dashboard Integration | 🟢 COMPLETE | Fixed job response mapping in web dashboard |
-| **Phase 7.2** | Persistent Users | 🟢 COMPLETE | PostgreSQL `users` table, Alembic migrations, password hashing |
-| **Phase 7.3** | Official Gemini Provider | 🟢 COMPLETE | Migrated to official Gemini API; removed unofficial Web2API |
-| **Phase 8A** | Intelligent Model Routing Core | 🟢 COMPLETE | `ModelRegistry`, `ProviderRegistry`, `ModelRouter`, `ModelGateway` |
-| **Phase 8B** | Quotas, Usage Telemetry & Fallback Refinements | 🟡 IN REVIEW | Implementation completed in local branch; uncommitted / pending review |
-
 ---
 
 ## Security & Architectural Guarantees
 
-1. **Local-First Privacy**: Can operate in 100% offline air-gapped mode using Ollama without cloud leakage.
-2. **SSRF Protection**: `WebFetchTool` validates all resolved IP addresses, rejecting Loopback (`127.0.0.0/8`, `::1`), Private subnets (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `fc00::/7`), Link-local (`169.254.0.0/16`, `fe80::/10`), and Multicast.
-3. **No Unchecked Model Execution**: Models generate data and structured payloads; no arbitrary string evaluation (`eval()`) is executed.
+1. **Local-First Privacy**: Can run 100% air-gapped using Ollama without sending sensitive data to external APIs.
+2. **SSRF Protection**: `WebFetchTool` validates all resolved IP addresses, strictly blocking loopback, private subnets (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`), link-local metadata endpoints (`169.254.169.254`), and multicast ranges.
+3. **Deterministic Calculations**: Agents utilize code execution/deterministic math tools for calculations rather than relying on LLMs to invent numbers.
+4. **Transparent Explainability**: "Why do you believe this?" — all findings trace back through explicit claim $\rightarrow$ evidence $\rightarrow$ document source $\rightarrow$ exact page/section mappings.

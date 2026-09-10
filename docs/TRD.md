@@ -123,6 +123,27 @@ flowchart TD
 
 ---
 
+### 3.2 Research Engine: DAG Task Orchestrator & State Flow
+
+1. **DAG Representation**: Research plans are compiled into topological dependency graphs (`depends_on: [task_id_1, task_id_2]`).
+2. **Concurrency Execution**: Tasks with no pending dependencies execute concurrently via `asyncio.gather()` / coroutine pools.
+3. **EventBus Dispatch**: Every task lifecycle transition (`PENDING` $\rightarrow$ `RUNNING` $\rightarrow$ `COMPLETED` / `FAILED`) emits structured events onto `ResearchEventBus`.
+4. **Critic Verification Loop**: `CriticAgent` inspects extracted evidence, computes factual support confidence (0.0 to 1.0), flags contradictions, and can request iterative research loops.
+
+---
+
+### 3.3 Multimodal Ingestion & Hybrid RAG
+
+1. **Ingestion Pipeline**:
+   - PDF: Page-by-page text extraction + tabular grid detection via `pdfplumber`.
+   - DOCX: Document hierarchy preservation (headings, body, lists) via `python-docx`.
+   - Images: Visual feature description and OCR via vision LLM endpoints.
+2. **Chunking**: Semantic boundary chunking with overlap (500 tokens / 50 token stride) preserving document metadata (`source_id`, `page_number`, `chunk_index`).
+3. **Hybrid Retrieval**:
+   $$\text{RRF Score}(d) = \sum_{m \in \{\text{dense}, \text{sparse}\}} \frac{1}{k + \text{rank}_m(d)} \quad (k=60)$$
+
+---
+
 ## 4. Security & Hardening Requirements
 
 1. **SSRF Safe Fetching (`WebFetchTool`)**:

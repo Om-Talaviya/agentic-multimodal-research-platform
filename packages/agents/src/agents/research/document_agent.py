@@ -44,9 +44,6 @@ Return findings as a valid JSON object:
 """
 
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
-        router: ModelRouter = context.model_router
-        llm = router.select_llm(ModelCapabilities.for_task("research"))
-
         doc_read_tool = context.tools.get("document_read") or tool_registry.get("document_read")
         if not doc_read_tool:
             return AgentResult(
