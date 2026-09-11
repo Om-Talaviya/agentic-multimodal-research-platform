@@ -17,7 +17,7 @@ def utc_now() -> datetime:
 
 
 class ResearchPipeline:
-    """Orchestrates the full research pipeline."""
+    """Orchestrates the full research pipeline with automated knowledge retrieval."""
     
     def __init__(
         self,
@@ -27,6 +27,7 @@ class ResearchPipeline:
         model_router: ModelRouter,
         model_gateway: Optional[Any] = None,
         event_bus: ResearchEventBus | None = None,
+        retriever: Optional[Any] = None,
     ):
         self.orchestrator = orchestrator
         self.agent_registry = agent_registry
@@ -34,6 +35,7 @@ class ResearchPipeline:
         self.model_router = model_router
         self.model_gateway = model_gateway
         self.event_bus = event_bus or research_event_bus
+        self.retriever = retriever
 
     async def _emit(
         self,
@@ -110,7 +112,7 @@ class ResearchPipeline:
         return job
     
     async def run_planning(self, job: ResearchJob) -> ResearchPlan:
-        """Run planner agent to create research plan."""
+        """Run planner agent to create research plan with automated knowledge base integration."""
         from agents.planner.planner_agent import PlannerAgent
         from uuid import uuid4
         
@@ -119,17 +121,53 @@ class ResearchPipeline:
         request_id_str = str(getattr(job, "request_id", uuid4()))
         user_id_str = getattr(job, "user_id", None)
 
+        # 1. Query knowledge base for relevant document context before planning
+        knowledge_summary = ""
+        relevant_doc_ids: List[str] = []
+        
+        if self.retriever is not None:
+            try:
+                evidence_results = await self.retriever.retrieve(
+                    query=job.objective or job.question,
+                    top_k=4,
+                )
+                if evidence_results:
+                    summary_lines = []
+                    for ev in evidence_results:
+                        citation = getattr(ev, "citation", "Document Chunk")
+                        content_snip = getattr(ev, "content", "")[:300].strip()
+                        summary_lines.append(f"- [{citation}]: {content_snip}")
+                        doc_id = getattr(ev, "document_id", None)
+                        if doc_id and doc_id not in relevant_doc_ids:
+                            relevant_doc_ids.append(str(doc_id))
+                    
+                    knowledge_summary = "\n".join(summary_lines)
+                    logger.info(
+                        "Planner discovered relevant knowledge base documents",
+                        job_id=job_id_str,
+                        doc_count=len(relevant_doc_ids),
+                        evidence_count=len(evidence_results),
+                    )
+            except Exception as e:
+                logger.warning("Failed to retrieve knowledge base context during planning", error=str(e))
+
+        planning_context: Dict[str, Any] = {
+            "domain": getattr(job, "domain", None),
+            "scope": getattr(job, "scope", None),
+            "constraints": getattr(job, "constraints", []),
+        }
+        if knowledge_summary:
+            planning_context["available_knowledge"] = knowledge_summary
+        if relevant_doc_ids:
+            planning_context["document_ids"] = relevant_doc_ids
+
         task = ResearchTask(
             id=str(uuid4()),
             job_id=job_id_str,
             type="planning",
             objective=job.objective,
             agent="planner",
-            context={
-                "domain": getattr(job, "domain", None),
-                "scope": getattr(job, "scope", None),
-                "constraints": getattr(job, "constraints", []),
-            },
+            context=planning_context,
         )
         
         context = self.orchestrator.create_context(
@@ -142,7 +180,12 @@ class ResearchPipeline:
             job_id_str,
             ResearchEventType.PLANNING_STARTED,
             "Research planning started",
-            {"task_id": task.id, "agent": task.agent},
+            {
+                "task_id": task.id,
+                "agent": task.agent,
+                "has_knowledge": bool(knowledge_summary),
+                "attached_docs": len(relevant_doc_ids),
+            },
         )
         result = await planner.run(task, context)
         
@@ -212,8 +255,10 @@ class ResearchPipeline:
             claim = ev.get("claim", "")
             supporting_text = ev.get("supporting_text", "")
             conf = float(ev.get("confidence", 0.5))
+            reliability = float(ev.get("source_reliability", 1.0))
             v_status = ev.get("verification_status", "unverified")
             v_notes = ev.get("verification_notes")
+            coords = ev.get("citation_coordinates") or (ev.get("coordinates").model_dump() if hasattr(ev.get("coordinates"), "model_dump") else ev.get("coordinates")) or {}
             c_at = ev.get("created_at") or utc_now()
         else:
             e_id = UUID(str(getattr(ev, "id", uuid4())))
@@ -221,8 +266,11 @@ class ResearchPipeline:
             claim = getattr(ev, "claim", "")
             supporting_text = getattr(ev, "supporting_text", "")
             conf = float(getattr(ev, "confidence", 0.5))
+            reliability = float(getattr(ev, "source_reliability", 1.0))
             v_status = getattr(ev, "verification_status", "unverified")
             v_notes = getattr(ev, "verification_notes", None)
+            coords_obj = getattr(ev, "coordinates", None) or getattr(ev, "citation_coordinates", None)
+            coords = coords_obj.model_dump() if hasattr(coords_obj, "model_dump") else (coords_obj or {})
             c_at = getattr(ev, "created_at", None) or utc_now()
 
         return DBEvidence(
@@ -232,8 +280,10 @@ class ResearchPipeline:
             claim=claim,
             supporting_text=supporting_text,
             confidence=conf,
+            source_reliability=reliability,
             verification_status=v_status,
             verification_notes=v_notes,
+            citation_coordinates=coords,
             created_at=c_at,
         )
 
@@ -471,11 +521,17 @@ class ResearchPipeline:
 
                     completed.add(task.id)
     
-    async def run_verification(self, job: ResearchJob) -> None:
-        """Run critic agent to evaluate and verify collected evidence."""
+    async def run_verification(self, job: ResearchJob) -> Dict[str, Any]:
+        """Run critic agent to evaluate and verify collected evidence, detecting contradictions."""
         from uuid import UUID
         from database.connection import get_session
         from database.repositories import EvidenceRepository
+
+        verif_data: Dict[str, Any] = {
+            "verifications": [],
+            "contradictions": [],
+            "confidence_score": 0.85,
+        }
 
         try:
             job_uuid = UUID(str(job.id))
@@ -494,9 +550,9 @@ class ResearchPipeline:
                     str(job.id),
                     ResearchEventType.VERIFICATION_COMPLETED,
                     "Evidence verification completed",
-                    {"evidence_count": 0, "verified_count": 0},
+                    {"evidence_count": 0, "verified_count": 0, "contradictions_count": 0},
                 )
-                return
+                return verif_data
 
             critic_result = await self.orchestrator.run_critic(
                 evidence=evidence_list,
@@ -507,6 +563,13 @@ class ResearchPipeline:
 
             if critic_result.success and isinstance(critic_result.output, dict):
                 verifications = critic_result.output.get("verifications", [])
+                contradictions = critic_result.output.get("contradictions", [])
+                confidence_score = float(critic_result.output.get("confidence_score", 0.85))
+                verif_data = {
+                    "verifications": verifications,
+                    "contradictions": contradictions,
+                    "confidence_score": confidence_score,
+                }
                 async with get_session() as session:
                     evidence_repo = EvidenceRepository(session)
                     for item in verifications:
@@ -528,12 +591,21 @@ class ResearchPipeline:
                     {
                         "evidence_count": len(evidence_list),
                         "verified_count": len(verifications),
+                        "contradictions_count": len(contradictions),
+                        "confidence_score": confidence_score,
                     },
                 )
         except Exception as verif_err:
             logger.warning("Evidence verification step encountered error", job_id=job.id, error=str(verif_err))
 
-    async def run_report_generation(self, job: ResearchJob) -> None:
+        return verif_data
+
+    async def run_report_generation(
+        self,
+        job: ResearchJob,
+        contradictions: Optional[List[Dict[str, Any]]] = None,
+        confidence_score: Optional[float] = None,
+    ) -> None:
         """Run report agent to synthesize verified evidence into a report and persist it."""
         from uuid import UUID
         from database.connection import get_session
@@ -566,11 +638,14 @@ class ResearchPipeline:
             for ev in evidence_list:
                 evidence_dicts.append({
                     "id": str(ev.id),
+                    "source_id": str(ev.source_id),
                     "claim": ev.claim,
                     "supporting_text": ev.supporting_text,
                     "confidence": ev.confidence,
+                    "source_reliability": getattr(ev, "source_reliability", 1.0),
                     "verification_status": ev.verification_status,
                     "verification_notes": ev.verification_notes,
+                    "citation_coordinates": getattr(ev, "citation_coordinates", {}),
                 })
 
             source_dicts = []
@@ -593,6 +668,8 @@ class ResearchPipeline:
                     "evidence": evidence_dicts,
                     "sources": source_dicts,
                     "question": job.question,
+                    "contradictions": contradictions or [],
+                    "confidence_score": confidence_score,
                 },
             )
 
@@ -613,6 +690,8 @@ class ResearchPipeline:
                 findings=report_data.get("findings", []),
                 evidence_ids=report_data.get("evidence_ids", []),
                 source_ids=report_data.get("source_ids", []),
+                contradictions=report_data.get("contradictions", contradictions or []),
+                confidence_score=float(report_data.get("confidence_score") or confidence_score or 0.85),
                 conclusions=report_data.get("conclusions", []),
                 limitations=report_data.get("limitations", []),
             )
@@ -671,10 +750,14 @@ class ResearchPipeline:
             await self.execute_plan(job, plan)
             
             # Verification using Critic Agent
-            await self.run_verification(job)
+            verif_data = await self.run_verification(job)
             
-            # Report generation
-            await self.run_report_generation(job)
+            # Report generation with contradiction & confidence propagation
+            await self.run_report_generation(
+                job,
+                contradictions=verif_data.get("contradictions"),
+                confidence_score=verif_data.get("confidence_score"),
+            )
 
             async with get_session() as session:
                 repo = ResearchJobRepository(session)

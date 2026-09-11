@@ -25,6 +25,7 @@ class Document(Base):
     doc_metadata = Column(JSON().with_variant(JSONB, "postgresql"), default=dict)
     file_size = Column(Integer)
     file_path = Column(String(1000))
+    status = Column(String(50), default="ready", nullable=False)
     created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships

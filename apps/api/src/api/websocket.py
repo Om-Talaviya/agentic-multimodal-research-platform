@@ -109,8 +109,10 @@ def _serialize_evidence(evidence: Any) -> dict[str, Any]:
         "claim": evidence.claim,
         "supporting_text": evidence.supporting_text,
         "confidence": evidence.confidence,
+        "source_reliability": getattr(evidence, "source_reliability", 1.0) or 1.0,
         "verification_status": evidence.verification_status,
         "verification_notes": evidence.verification_notes,
+        "citation_coordinates": getattr(evidence, "citation_coordinates", {}) or {},
     }
 
 
@@ -126,6 +128,8 @@ def _serialize_report(report: Any) -> dict[str, Any] | None:
         "findings": report.findings or [],
         "evidence": getattr(report, "evidence_ids", None) or getattr(report, "evidence", None) or [],
         "sources": getattr(report, "source_ids", None) or getattr(report, "sources", None) or [],
+        "contradictions": getattr(report, "contradictions", []) or [],
+        "confidence_score": getattr(report, "confidence_score", 0.85) or 0.85,
         "conclusions": report.conclusions or [],
         "limitations": report.limitations or [],
         "generated_at": report.generated_at.isoformat() if hasattr(report.generated_at, "isoformat") else str(report.generated_at),

@@ -36,14 +36,50 @@ export interface Source {
   retrieved_at: string
 }
 
+export interface CitationCoordinates {
+  page_number?: number | null
+  paragraph_index?: number | null
+  table_row?: number | null
+  table_col?: number | null
+  char_start?: number | null
+  char_end?: number | null
+}
+
+export interface Citation {
+  id: string
+  claim: string
+  source_id?: string | null
+  document_id?: string | null
+  citation_text: string
+  quote: string
+  coordinates?: CitationCoordinates | null
+  confidence: number
+  source_reliability?: number
+}
+
+export interface Contradiction {
+  id: string
+  topic: string
+  claim_a: string
+  source_a: string
+  claim_b: string
+  source_b: string
+  conflict_type: string
+  explanation: string
+  severity: string
+}
+
 export interface Evidence {
   id: string
   source_id: string
   claim: string
   supporting_text: string
   confidence: number
+  source_reliability?: number
   verification_status: string
   verification_notes: string | null
+  citation_coordinates?: CitationCoordinates | null
+  citations?: Citation[]
 }
 
 export interface Finding {
@@ -51,6 +87,7 @@ export interface Finding {
   topic: string
   summary: string
   evidence_ids: string[]
+  citations?: Citation[]
   confidence: number
   uncertainty: string | null
   assumptions: string[]
@@ -65,7 +102,19 @@ export interface ResearchReport {
   findings: Finding[]
   evidence: Evidence[]
   sources: Source[]
+  contradictions?: Contradiction[]
+  confidence_score?: number
   conclusions: string[]
   limitations: string[]
   generated_at: string
+}
+
+export interface DocumentItem {
+  id: string
+  filename: string
+  mime_type: string
+  file_size: number
+  file_path: string
+  status: string
+  created_at: string
 }

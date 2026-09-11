@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%208B%20Complete-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Phase%2010%20Complete-success?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
@@ -89,7 +89,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 8B Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 10 Complete** on the stable branch `develop/v1.1`.
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -101,8 +101,10 @@ Phase 6: Production / Security       [██████████████
 Phase 7: Application Maturity        [████████████████████] 100%
 Phase 8A: Intelligent Model Routing  [████████████████████] 100% (Commit: 88ac57d)
 Phase 8B: Usage Tracking & Quotas    [████████████████████] 100% (Commit: a603114)
+Phase 9: Intelligent Knowledge Auto  [████████████████████] 100%
+Phase 10: Evidence & Citation Intel  [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 9: Intelligent Knowledge Auto  [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 11: Advanced Research Planning [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -110,9 +112,9 @@ Phase 9: Intelligent Knowledge Auto  [░░░░░░░░░░░░░░
 ## 6-Generation Product Roadmap (Phases 9 – 26)
 
 ### Generation 1: Intelligent Research Core
-- **Phase 9: Intelligent Knowledge Automation (NEXT)**: Automated end-to-end ingestion (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`) and autonomous planner retrieval integration.
-- **Phase 10: Evidence & Citation Intelligence**: Strict source tracking, claim-to-evidence links, reliability metrics, and contradiction detection.
-- **Phase 11: Advanced Research Planning**: Deep query decomposition into multi-tier subquestions with agent role specialization.
+- **Phase 9: Intelligent Knowledge Automation (COMPLETE)**: Automated end-to-end ingestion (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`) and autonomous planner retrieval integration.
+- **Phase 10: Evidence & Citation Intelligence (COMPLETE)**: Strict source tracking, claim-to-evidence links, coordinate anchoring (`page_number`, `paragraph_index`, table coordinates), reliability metrics, and pairwise contradiction detection.
+- **Phase 11: Advanced Research Planning (NEXT)**: Deep query decomposition into multi-tier subquestions with agent role specialization.
 
 ### Generation 2: Multimodal Intelligence
 - **Phase 12: Advanced Multimodal Research**: Unified context across 50+ page PDFs, research papers, images, charts, graphs, tables, audio, and video.

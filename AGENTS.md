@@ -163,13 +163,13 @@ npm run lint
 - **Phase 7 (Application Maturity)**: 🟢 COMPLETE (7.1 Dashboard fix, 7.2 Persistent DB users, 7.3 Official Gemini Provider, WebSockets, Auth completion)
 - **Phase 8A (Intelligent Model Routing Core)**: 🟢 COMPLETE (`ModelRegistry`, `ModelRouter`, `ModelGateway` - Commit: `88ac57d`)
 - **Phase 8B (Usage Tracking & Quotas)**: 🟢 COMPLETE (`UserQuota`, row-locking concurrency, quota-aware fallback - Commit: `a603114`)
+- **Phase 9 (Intelligent Knowledge Automation)**: 🟢 COMPLETE (Zero-touch dual-indexing, status lifecycle, Planner KB integration, Hybrid DAG search)
+- **Phase 10 (Evidence & Citation Intelligence)**: 🟢 COMPLETE (Fine-grained claim extraction, coordinate anchoring, contradiction detection, citation-grounded synthesis)
 - **Documentation Architecture**: 🟢 COMPLETE (Commit: `a00949e`, Stable branch: `develop/v1.1`)
 
-### The 6 Generations Ahead (Phases 9 – 26):
+### The 6 Generations Ahead (Phases 11 – 26):
 - **Generation 1 — Intelligent Research Core**:
-  - **Phase 9**: Intelligent Knowledge Automation (🟡 **IMMEDIATE NEXT MILESTONE**: End-to-end ingestion pipeline & planner auto-retrieval)
-  - **Phase 10**: Evidence & Citation Intelligence (Strict claim $\rightarrow$ source mappings, confidence scoring, contradiction detection)
-  - **Phase 11**: Advanced Research Planning (Deep subquestion decomposition, agent role assignment)
+  - **Phase 11**: Advanced Research Planning (🟡 **IMMEDIATE NEXT MILESTONE**: Deep subquestion decomposition, query trees, dynamic agent role assignment)
 - **Generation 2 — Multimodal Intelligence**:
   - **Phase 12**: Advanced Multimodal Research (Unified context: 50+ page PDFs, papers, images, charts, audio, video)
   - **Phase 13**: Dataset & Data Analysis Intelligence (CSV/Excel/JSON analysis, deterministic math tools, visualization)

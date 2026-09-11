@@ -45,6 +45,33 @@ class DocumentRepository:
         )
         return list(result.scalars().all())
     
+    async def update_status(
+        self,
+        doc_id: UUID,
+        status: str,
+        error_message: Optional[str] = None,
+    ) -> Optional[Document]:
+        """Update the processing status of a document."""
+        doc = await self.get(doc_id)
+        if not doc:
+            return None
+        doc.status = status
+        if error_message:
+            meta = dict(doc.doc_metadata or {})
+            meta["error"] = error_message
+            doc.doc_metadata = meta
+        await self.session.flush()
+        return doc
+
+    async def delete(self, doc_id: UUID) -> bool:
+        """Delete document by ID."""
+        doc = await self.get(doc_id)
+        if not doc:
+            return False
+        await self.session.delete(doc)
+        await self.session.flush()
+        return True
+
     async def create_chunks(self, chunks: List[DocumentChunk]) -> List[DocumentChunk]:
         self.session.add_all(chunks)
         await self.session.flush()
