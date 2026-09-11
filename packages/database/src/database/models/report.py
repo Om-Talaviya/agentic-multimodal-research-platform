@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from sqlalchemy import Column, Text, DateTime, ForeignKey, JSON
+from sqlalchemy import Column, Text, DateTime, ForeignKey, JSON, Float
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
@@ -25,6 +25,8 @@ class Report(Base):
     findings = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     evidence_ids = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     source_ids = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
+    contradictions = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
+    confidence_score = Column(Float, nullable=False, default=0.85)
     conclusions = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     limitations = Column(JSON().with_variant(JSONB, "postgresql"), default=list)
     generated_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)

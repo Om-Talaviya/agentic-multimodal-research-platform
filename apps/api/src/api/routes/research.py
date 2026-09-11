@@ -92,8 +92,10 @@ class EvidenceResponse(BaseModel):
     claim: str
     supporting_text: str
     confidence: float
+    source_reliability: float = 1.0
     verification_status: str
-    verification_notes: Optional[str]
+    verification_notes: Optional[str] = None
+    citation_coordinates: Optional[dict] = None
 
 
 class ReportResponse(BaseModel):
@@ -107,6 +109,8 @@ class ReportResponse(BaseModel):
     findings: list[dict]
     evidence: list[dict]
     sources: list[dict]
+    contradictions: list[dict] = []
+    confidence_score: float = 0.85
     conclusions: list[str]
     limitations: list[str]
     generated_at: str
@@ -121,6 +125,7 @@ async def get_pipeline() -> ResearchPipeline:
         get_model_router,
         get_model_gateway,
         get_research_event_bus,
+        get_retriever,
     )
     return ResearchPipeline(
         orchestrator=await get_orchestrator(),
@@ -129,6 +134,7 @@ async def get_pipeline() -> ResearchPipeline:
         model_router=await get_model_router(),
         model_gateway=await get_model_gateway(),
         event_bus=await get_research_event_bus(),
+        retriever=await get_retriever(),
     )
 
 
@@ -312,8 +318,10 @@ async def get_research_evidence(
             claim=e.claim,
             supporting_text=e.supporting_text,
             confidence=e.confidence,
+            source_reliability=getattr(e, "source_reliability", 1.0) or 1.0,
             verification_status=e.verification_status,
             verification_notes=e.verification_notes,
+            citation_coordinates=getattr(e, "citation_coordinates", {}) or {},
         )
         for e in evidence
     ]
@@ -346,6 +354,8 @@ async def get_research_report(
         findings=report.findings,
         evidence=report.evidence_ids,
         sources=report.source_ids,
+        contradictions=getattr(report, "contradictions", []) or [],
+        confidence_score=getattr(report, "confidence_score", 0.85) or 0.85,
         conclusions=report.conclusions,
         limitations=report.limitations,
         generated_at=report.generated_at.isoformat(),

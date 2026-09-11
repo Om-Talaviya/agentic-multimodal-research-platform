@@ -40,10 +40,12 @@ class Evidence(Base):
     job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
     source_id = Column(PG_UUID(as_uuid=True), ForeignKey("sources.id", ondelete="CASCADE"), nullable=False, index=True)
     claim = Column(Text, nullable=False)
-    supporting_text = Column(Text, nullable=False)
+    supporting_text = Column(Text, nullable=False, default="")
     confidence = Column(Float, nullable=False, default=0.5)
+    source_reliability = Column(Float, nullable=False, default=1.0)
     verification_status = Column(String(50), default="unverified")
     verification_notes = Column(Text)
+    citation_coordinates = Column(JSON().with_variant(JSONB, "postgresql"), default=dict)
     created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     
     # Relationships

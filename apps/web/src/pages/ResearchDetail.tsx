@@ -364,14 +364,25 @@ export function ResearchDetail() {
               <div style={{ display: 'grid', gap: 'var(--spacing-md)' }}>
                 {evidence.map(e => (
                   <div key={e.id} style={{ padding: 'var(--spacing-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--spacing-sm)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-sm)' }}>
                       <span style={{ fontWeight: 500 }}>{e.claim}</span>
-                      <span className="badge badge-pending">{Math.round(e.confidence * 100)}% confidence</span>
+                      <div style={{ display: 'flex', gap: 'var(--spacing-xs)', flexWrap: 'wrap' }}>
+                        <span className="badge badge-pending">{Math.round(e.confidence * 100)}% confidence</span>
+                        {e.source_reliability !== undefined && (
+                          <span className="badge badge-primary">{Math.round((e.source_reliability || 1.0) * 100)}% reliability</span>
+                        )}
+                      </div>
                     </div>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{e.supporting_text.slice(0, 300)}...</p>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 'var(--spacing-xs)' }}>
-                      Verification: {e.verification_status}
-                    </p>
+                    <div style={{ display: 'flex', gap: 'var(--spacing-md)', fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 'var(--spacing-xs)', flexWrap: 'wrap' }}>
+                      <span>Verification: <strong>{e.verification_status}</strong></span>
+                      {e.citation_coordinates?.page_number && (
+                        <span>Page: {e.citation_coordinates.page_number}</span>
+                      )}
+                      {e.citation_coordinates?.paragraph_index !== undefined && e.citation_coordinates.paragraph_index !== null && (
+                        <span>Paragraph: {e.citation_coordinates.paragraph_index}</span>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -381,7 +392,14 @@ export function ResearchDetail() {
 
         {activeTab === 'report' && report && (
           <div style={{ maxWidth: '800px' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 'var(--spacing-sm)' }}>{report.title}</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-sm)', flexWrap: 'wrap', gap: 'var(--spacing-sm)' }}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{report.title}</h2>
+              {report.confidence_score !== undefined && (
+                <span className="badge badge-primary" style={{ fontSize: '0.875rem', padding: 'var(--spacing-xs) var(--spacing-sm)' }}>
+                  Grounding Index: {Math.round(report.confidence_score * 100)}%
+                </span>
+              )}
+            </div>
             <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-lg)' }}>
               Generated: {new Date(report.generated_at).toLocaleString()}
             </p>
@@ -402,17 +420,56 @@ export function ResearchDetail() {
 
             {report.findings.length > 0 && (
               <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--spacing-sm)' }}>Key Findings</h3>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--spacing-sm)' }}>Key Findings & Citations</h3>
                 {report.findings.map((f, i) => (
-                  <div key={i} style={{ marginBottom: 'var(--spacing-md)', padding: 'var(--spacing-md)', borderLeft: '3px solid var(--color-primary)' }}>
+                  <div key={i} style={{ marginBottom: 'var(--spacing-md)', padding: 'var(--spacing-md)', borderLeft: '3px solid var(--color-primary)', background: 'var(--color-background-alt, transparent)', borderRadius: '0 var(--radius-sm) var(--radius-sm) 0' }}>
                     <h4 style={{ fontWeight: 600, marginBottom: 'var(--spacing-xs)' }}>{f.topic}</h4>
                     <p style={{ marginBottom: 'var(--spacing-sm)' }}>{f.summary}</p>
+                    
+                    {f.citations && f.citations.length > 0 && (
+                      <div style={{ margin: 'var(--spacing-sm) 0', padding: 'var(--spacing-xs) var(--spacing-sm)', background: 'var(--color-background)', borderRadius: 'var(--radius-sm)', border: '1px dashed var(--color-border)' }}>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-muted)', display: 'block', marginBottom: 'var(--spacing-xs)' }}>Grounding Citations:</span>
+                        {f.citations.map((c, ci) => (
+                          <div key={ci} style={{ fontSize: '0.8125rem', marginBottom: 'var(--spacing-xs)' }}>
+                            <span style={{ color: 'var(--color-primary)', fontWeight: 500 }}>[{c.citation_text || `Ref ${ci + 1}`}]</span> &ldquo;{c.quote || c.claim}&rdquo;
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <div style={{ display: 'flex', gap: 'var(--spacing-md)', fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
                       <span>Confidence: {Math.round(f.confidence * 100)}%</span>
                       {f.uncertainty && <span>Uncertainty: {f.uncertainty}</span>}
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {report.contradictions && report.contradictions.length > 0 && (
+              <div style={{ marginBottom: 'var(--spacing-lg)', padding: 'var(--spacing-md)', border: '1px solid var(--color-warning, #f59e0b)', borderRadius: 'var(--radius-md)', background: 'rgba(245, 158, 11, 0.05)' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--spacing-sm)', color: 'var(--color-warning, #f59e0b)' }}>
+                  ⚠️ Contradictions & Discrepancies Matrix ({report.contradictions.length})
+                </h3>
+                <div style={{ display: 'grid', gap: 'var(--spacing-sm)' }}>
+                  {report.contradictions.map((contra, idx) => (
+                    <div key={idx} style={{ padding: 'var(--spacing-sm)', background: 'var(--color-background)', borderRadius: 'var(--radius-sm)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--spacing-xs)' }}>
+                        <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{contra.topic}</span>
+                        <span className="badge badge-warning" style={{ fontSize: '0.75rem' }}>{contra.conflict_type.replace('_', ' ')}</span>
+                      </div>
+                      <p style={{ fontSize: '0.8125rem', marginBottom: 'var(--spacing-xs)' }}>
+                        <strong>Source A ({contra.source_a}):</strong> {contra.claim_a}
+                      </p>
+                      <p style={{ fontSize: '0.8125rem', marginBottom: 'var(--spacing-xs)' }}>
+                        <strong>Source B ({contra.source_b}):</strong> {contra.claim_b}
+                      </p>
+                      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
+                        <em>Explanation:</em> {contra.explanation}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 

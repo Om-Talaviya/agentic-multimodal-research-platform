@@ -4,7 +4,7 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟢 Completed Milestones (Phases 1 – 8B)
+## 🟢 Completed Milestones (Phases 1 – 9)
 
 - [x] **Phase 1: Foundation**
   - [x] Modular Python monorepo setup (`packages/` + `apps/`).
@@ -47,36 +47,37 @@ This document tracks all completed engineering milestones, the immediate active 
   - [x] Transactional row locking (`SELECT ... FOR UPDATE`) preventing quota oversubscription under concurrent load.
   - [x] User context propagation (`JWT $\rightarrow$ ResearchPipeline $\rightarrow$ AgentContext $\rightarrow$ ModelGateway $\rightarrow$ UsageRecord`).
   - [x] Quota-aware fallback routing.
+- [x] **Phase 9: Intelligent Knowledge Automation**
+  - [x] Automated end-to-end ingestion and dual-indexing (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`).
+  - [x] Document status lifecycle (`pending` $\rightarrow$ `processing` $\rightarrow$ `ready` / `failed`) with repo status update methods.
+  - [x] `PlannerAgent` knowledge base integration inspecting local documents before decomposing inquiries.
+  - [x] `DocumentAnalysisAgent` hybrid search integration with `KnowledgeSearchTool`.
+  - [x] Document management REST endpoints (`GET /search`, `POST /{id}/reindex`, `DELETE /{id}`).
 - [x] **Documentation Architecture Synchronization** (`commit: a00949e`)
   - [x] Comprehensive documentation suite across root, `/docs/`, `/design/`, and roadmap specs.
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 9 — Intelligent Knowledge Automation
-
-- [ ] **Task 9.1: Automated End-to-End Ingestion Worker**
-  - [ ] Implement automatic asynchronous pipeline daemon: `Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`.
-  - [ ] Add background task worker updating document status from `pending` $\rightarrow$ `processing` $\rightarrow$ `ready`.
-- [ ] **Task 9.2: PlannerAgent Knowledge Base Integration**
-  - [ ] Inject knowledge base index summary into `PlannerAgent` prompt.
-  - [ ] Enable Planner to evaluate: *"Do I have existing relevant knowledge?"* before scheduling external web searches.
-- [ ] **Task 9.3: Automated Retrieval in Agent DAG**
-  - [ ] Automatically route relevant private knowledge chunks to specialized research agents.
-  - [ ] Provide unified hybrid context combining user documents and live web search.
-- [ ] **Task 9.4: End-to-End Verification & Testing**
-  - [ ] Write pytest integration tests for automated document upload through RAG retrieval.
-  - [ ] Verify zero-touch indexing with PDF, DOCX, and image uploads.
+- [x] **Phase 10: Evidence & Citation Intelligence**
+  - [x] Fine-grained claim extraction and coordinate anchoring (`page_number`, `paragraph_index`, `table_row`, `table_col`, `char_start`, `char_end`, `exact_quote`).
+  - [x] Structured `Citation`, `CitationCoordinates`, and `Contradiction` models with SQLite / PostgreSQL 16 cross-compatibility.
+  - [x] Contradiction Detection Engine in `CriticAgent` with pairwise taxonomy (`direct_conflict`, `numerical_discrepancy`, `methodological_divergence`).
+  - [x] Citation-aware `ReportAgent` synthesis linking findings to structured citations and quantitative confidence index (`confidence_score`).
+  - [x] Pipeline orchestration propagating contradictions and factual grounding scores through `ResearchPipeline`.
+  - [x] TypeScript interfaces in `apps/web` (`Citation`, `CitationCoordinates`, `Contradiction`).
+  - [x] Unit test suites (`test_citation_intelligence.py`, `test_critic_contradiction_detection.py`, `test_report_citation_synthesis.py`).
 
 ---
 
-## 🔮 Future Roadmap Backlog (Phases 10 – 26)
+## 🟡 Immediate Next Milestone: Phase 11 — Advanced Research Planning
 
-### Generation 1: Intelligent Research Core
-- [ ] **Phase 10: Evidence & Citation Intelligence**
-  - [ ] Fine-grained claim extraction and source linking with page/paragraph coordinates.
-  - [ ] Source reliability scoring, contradictory claim detection, and citation-aware report generation.
-- [ ] **Phase 11: Advanced Research Planning**
-  - [ ] Deep problem decomposition into subquestions with specialized agent roles.
+- [ ] **Task 11.1: Deep Subquestion Decomposition & Query Tree Generation**
+  - [ ] Multi-stage goal decomposition breaking broad questions into hierarchical sub-inquiries.
+  - [ ] Ambiguity scoring and recursive plan refinement.
+- [ ] **Task 11.2: Dynamic Agent Role & Capability Assignment**
+  - [ ] Granular DAG routing matching subquestions to specialized agent personas based on capability profiles.
+- [ ] **Task 11.3: Adaptive Planning & Dynamic Replanning**
+  - [ ] Runtime plan adjustment when evidence is sparse, refuted, or highly contradictory.
 
 ### Generation 2: Multimodal Intelligence
 - [ ] **Phase 12: Advanced Multimodal Research**

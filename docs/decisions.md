@@ -84,4 +84,27 @@ This document records the key architectural, engineering, and product design dec
 - **Context**: There is a common temptation to add complex distributed infrastructure (Kafka, Kubernetes distributed workers, OAuth microservices, redundant vector databases) before the core research experience is solid.
 - **Decision**: Formally adopt the 6-generation evolutionary roadmap (Phases 9 – 26): **Make the research engine excellent first $\rightarrow$ make knowledge deeply integrated $\rightarrow$ make evidence trustworthy $\rightarrow$ make multimodal analysis powerful $\rightarrow$ make it collaborative $\rightarrow$ make it production-grade.**
 - **Consequences**:
-  - Positive: Protects engineering velocity and ensures every added subsystem delivers immediate user value.
+-   Positive: Protects engineering velocity and ensures every added subsystem delivers immediate user value.
+
+---
+
+## ADR 009: Zero-Touch Dual-Indexing Knowledge Automation (Phase 9)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Ingested documents were previously only parsed on-demand or required manual indexing steps, creating latency and preventing the planner from anticipating available internal context.
+- **Decision**: Introduce immediate background dual-indexing upon upload (`VectorStore` dense embeddings + `BM25Index` sparse lexical tokens), document processing status lifecycle (`pending` $\rightarrow$ `processing` $\rightarrow$ `ready` / `failed`), and planner integration inspecting local knowledge before DAG task compilation.
+- **Consequences**:
+-   Positive: Instantaneous hybrid retrieval capability across all uploaded documents.
+-   Positive: Planner agent creates grounded research plans prioritizing existing internal knowledge before dispatching web searches.
+
+---
+
+## ADR 010: Fine-Grained Citation Coordinates and Contradiction Detection Taxonomy (Phase 10)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Enterprise research requires verifiable provenance down to exact document coordinates (page, paragraph, table row/col) and automated detection of conflicting findings across distinct sources.
+- **Decision**:
+  1. Define `CitationCoordinates`, `Citation`, and `Contradiction` domain and database models.
+  2. Implement a pairwise contradiction detection engine in `CriticAgent` categorizing conflicts into `direct_conflict`, `numerical_discrepancy`, and `methodological_divergence`.
+  3. Synthesize citation-grounded reports in `ReportAgent` with a dedicated contradictions matrix and overall quantitative `confidence_score`.
+- **Consequences**:
+-   Positive: 100% auditability with interactive claim-to-coordinate explainability.
+-   Positive: Explicit identification and taxonomy for all conflicting evidence across sources.

@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 ## Project: Agentic Multimodal Research Platform (AI Research OS)
-**Status**: Active / Production v1.1 (Phase 8B Complete, Preparing Phase 9)  
+**Status**: Active / Production v1.1 (Phase 10 Complete, Preparing Phase 11)  
 **Author**: Engineering & AI Systems Team  
 **Last Updated**: September 2026  
 **Stable Branch**: `develop/v1.1` (Commits: `88ac57d` Phase 8A, `a00949e` Docs, `a603114` Phase 8B)
@@ -97,7 +97,7 @@ The output is a structured intelligence dossier:
 
 ---
 
-## 6. Current Completed Scope (Phases 1 – 8B)
+## 6. Current Completed Scope (Phases 1 – 10)
 
 - ✅ **Phase 1 (Foundation)**: Core monorepo structure, async FastAPI backend, SQLAlchemy async, React/Vite shell.
 - ✅ **Phase 2 (Research MVP)**: DAG task scheduler, PlannerAgent, Web/Doc/Report agents, live WebSockets.
@@ -112,6 +112,8 @@ The output is a structured intelligence dossier:
   - Authenticated WebSocket streaming with snapshot hydration.
 - ✅ **Phase 8A (Intelligent Model Routing Core)**: `ModelRegistry`, `ProviderRegistry`, `ModelRouter`, and `ModelGateway` with task matching and automated fallback failover (Commit: `88ac57d`).
 - ✅ **Phase 8B (Usage Tracking & Quota Subsystem)**: Persistent `UsageRecord` and `UserQuota` models with transactional row-locking concurrency, quota-aware fallback, and pipeline user attribution (Commit: `a603114`).
+- ✅ **Phase 9 (Intelligent Knowledge Automation)**: Automated end-to-end zero-touch ingestion and dual-indexing (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`), document status lifecycle, and planner retrieval integration.
+- ✅ **Phase 10 (Evidence & Citation Intelligence)**: Fine-grained claim extraction, paragraph/table coordinate anchoring (`CitationCoordinates`), pairwise contradiction detection taxonomy in `CriticAgent`, and citation-grounded report synthesis.
 
 ---
 
@@ -121,14 +123,14 @@ The output is a structured intelligence dossier:
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                   AGENTIC MULTIMODAL RESEARCH PLATFORM ROADMAP                   │
 └──────────────────────────────────────────────────────────────────────────────────┘
-  Phase 1 to 8B: Core Platform Foundation & Model Routing [COMPLETE]
+  Phase 1 to 10: Core Platform Foundation, Model Routing, Knowledge & Evidence [COMPLETE]
                              │
                              ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐
   │ GENERATION 1: Intelligent Research Core                                      │
-  │ • Phase 9:  Intelligent Knowledge Automation (IMMEDIATE NEXT MILESTONE)      │
-  │ • Phase 10: Evidence & Citation Intelligence                                 │
-  │ • Phase 11: Advanced Research Planning                                       │
+  │ • Phase 9:  Intelligent Knowledge Automation [COMPLETE]                      │
+  │ • Phase 10: Evidence & Citation Intelligence [COMPLETE]                      │
+  │ • Phase 11: Advanced Research Planning (IMMEDIATE NEXT MILESTONE)            │
   └──────────────────────────────────────┬───────────────────────────────────────┘
                                          ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐

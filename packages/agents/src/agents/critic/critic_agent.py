@@ -19,15 +19,21 @@ class CriticAgent(Agent):
     description = "Evaluates evidence validity, identifies contradictions, and verifies factual grounding"
     capabilities = {"verification", "critic", "fact_checking", "quality_assessment"}
 
-    SYSTEM_PROMPT = """You are a rigorous research critic and fact-checking agent.
-Your objective is to evaluate research claims against supporting evidence, detect contradictions, and assign an accurate verification status.
+    SYSTEM_PROMPT = """You are an advanced research critic, fact-checking, and contradiction-detection agent.
+Your objective is to:
+1. Evaluate research claims against supporting evidence, assign verification statuses, and validate citations.
+2. Detect pairwise or multi-source CONTRADICTIONS, classifying them into:
+   - "direct_conflict": Sources make incompatible factual claims.
+   - "numerical_discrepancy": Discrepant statistics, percentages, dates, or measurements across sources.
+   - "methodological_divergence": Differences resulting from distinct evaluation methodologies, sample sizes, or baseline definitions.
+3. Calculate an overall quantitative factual confidence score (0.0 to 1.0).
 
 Verification statuses:
 - "verified": The supporting text directly and unambiguously substantiates the claim.
 - "refuted": The supporting text directly contradicts or disproves the claim.
 - "inconclusive": The supporting text is insufficient, ambiguous, or only partially supports the claim.
 
-Return your evaluation as a JSON object with this structure:
+Return your evaluation as a JSON object with this exact structure:
 {
     "verifications": [
         {
@@ -35,11 +41,25 @@ Return your evaluation as a JSON object with this structure:
             "claim": "claim text",
             "verification_status": "verified|refuted|inconclusive",
             "confidence": 0.95,
+            "source_reliability": 1.0,
             "verification_notes": "detailed explanation of why this status was assigned"
         }
     ],
+    "contradictions": [
+        {
+            "topic": "topic or subject matter of conflict",
+            "claim_a": "first claim statement",
+            "source_a": "source / citation A identifier or title",
+            "claim_b": "conflicting claim statement",
+            "source_b": "source / citation B identifier or title",
+            "conflict_type": "direct_conflict|numerical_discrepancy|methodological_divergence",
+            "explanation": "concise explanation of the contradiction and root cause",
+            "severity": "low|medium|high"
+        }
+    ],
+    "confidence_score": 0.88,
     "quality_score": 0.85,
-    "critique_summary": "Overall assessment of evidence reliability, gaps, and potential bias"
+    "critique_summary": "Overall assessment of evidence reliability, contradictions found, gaps, and potential bias"
 }
 """
 
@@ -54,10 +74,12 @@ Return your evaluation as a JSON object with this structure:
                 success=True,
                 output={
                     "verifications": [],
+                    "contradictions": [],
+                    "confidence_score": 1.0,
                     "quality_score": 1.0,
                     "critique_summary": "No evidence items to evaluate",
                 },
-                metadata={"evaluated_count": 0},
+                metadata={"evaluated_count": 0, "contradictions_count": 0},
             )
 
         # Prepare evidence prompt text
@@ -67,21 +89,30 @@ Return your evaluation as a JSON object with this structure:
                 ev_id = ev.get("id", f"ev_{i}")
                 claim = ev.get("claim", "")
                 text = ev.get("supporting_text", "")
+                source_id = ev.get("source_id", "")
+                reliability = ev.get("source_reliability", 1.0)
+                coords = ev.get("citation_coordinates") or ev.get("coordinates") or {}
             elif hasattr(ev, "claim"):
                 ev_id = str(getattr(ev, "id", f"ev_{i}"))
                 claim = getattr(ev, "claim", "")
                 text = getattr(ev, "supporting_text", "")
+                source_id = str(getattr(ev, "source_id", ""))
+                reliability = getattr(ev, "source_reliability", 1.0)
+                coords = getattr(ev, "coordinates", None) or getattr(ev, "citation_coordinates", None) or {}
             else:
                 continue
 
+            coord_str = f" | Coordinates: {coords}" if coords else ""
             formatted_evidence.append(
-                f"[Evidence #{i+1} | ID: {ev_id}]\nClaim: {claim}\nSupporting Text: {text[:2000]}\n"
+                f"[Evidence #{i+1} | ID: {ev_id} | Source: {source_id} | Reliability: {reliability}{coord_str}]\n"
+                f"Claim: {claim}\n"
+                f"Supporting Text: {text[:2000]}\n"
             )
 
         user_content = (
             f"Research Question: {question}\n\n"
-            f"Please verify the following {len(formatted_evidence)} evidence items:\n\n"
-            + "\n---\n".join(formatted_evidence[:20])
+            f"Please verify the following {len(formatted_evidence)} evidence items and identify any contradictions among them:\n\n"
+            + "\n---\n".join(formatted_evidence[:25])
         )
 
         try:
@@ -97,19 +128,34 @@ Return your evaluation as a JSON object with this structure:
                 task="research",
             )
 
-            result_data = json.loads(response.content)
+            raw_content = response.content.strip()
+            if raw_content.startswith("```"):
+                lines = raw_content.splitlines()
+                if lines[0].startswith("```"):
+                    lines = lines[1:]
+                if lines and lines[-1].startswith("```"):
+                    lines = lines[:-1]
+                raw_content = "\n".join(lines).strip()
+
+            result_data = json.loads(raw_content)
             verifications = result_data.get("verifications", [])
+            contradictions = result_data.get("contradictions", [])
             quality_score = float(result_data.get("quality_score", 0.8))
+            confidence_score = float(result_data.get("confidence_score", quality_score))
             summary = result_data.get("critique_summary", "")
 
             # Update working memory
             context.memory.set_working("last_critic_score", quality_score)
+            context.memory.set_working("last_confidence_score", confidence_score)
+            context.memory.set_working("last_contradictions", contradictions)
             context.memory.set_working("last_critic_summary", summary)
 
             logger.info(
                 "CriticAgent completed evaluation",
                 task_id=task.id,
                 evaluated_count=len(verifications),
+                contradictions_count=len(contradictions),
+                confidence_score=confidence_score,
                 quality_score=quality_score,
             )
 
@@ -117,12 +163,16 @@ Return your evaluation as a JSON object with this structure:
                 success=True,
                 output={
                     "verifications": verifications,
+                    "contradictions": contradictions,
+                    "confidence_score": confidence_score,
                     "quality_score": quality_score,
                     "critique_summary": summary,
                 },
                 metadata={
                     "model": response.model,
                     "evaluated_count": len(verifications),
+                    "contradictions_count": len(contradictions),
+                    "confidence_score": confidence_score,
                     "quality_score": quality_score,
                 },
             )
