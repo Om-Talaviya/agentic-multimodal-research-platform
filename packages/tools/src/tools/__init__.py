@@ -5,6 +5,7 @@ from tools.registry import ToolRegistry, tool_registry
 from tools.definitions.web_search import WebSearchTool, WebFetchTool
 from tools.definitions.document_read import DocumentReadTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
+from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 
 __all__ = [
     "Tool",
@@ -17,4 +18,6 @@ __all__ = [
     "WebFetchTool",
     "DocumentReadTool",
     "KnowledgeSearchTool",
+    "DataAnalysisTool",
+    "DeterministicMathTool",
 ]

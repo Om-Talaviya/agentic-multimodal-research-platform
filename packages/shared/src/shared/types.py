@@ -84,6 +84,11 @@ class DocumentFormat(str, Enum):
     IMAGE = "image"
     AUDIO = "audio"
     VIDEO = "video"
+    DATASET = "dataset"
+    CSV = "csv"
+    EXCEL = "excel"
+    JSON = "json"
+    TSV = "tsv"
     HTML = "html"
     UNKNOWN = "unknown"
 
@@ -95,6 +100,7 @@ class SourceType(str, Enum):
     IMAGE = "image"
     AUDIO = "audio"
     VIDEO = "video"
+    DATASET = "dataset"
     DATABASE = "database"
     API = "api"
 

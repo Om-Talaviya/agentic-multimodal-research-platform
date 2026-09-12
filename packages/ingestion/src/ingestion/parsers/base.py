@@ -92,6 +92,65 @@ class ChartRef:
 
 
 @dataclass
+class ColumnProfile:
+    """Statistical profile of a tabular column."""
+
+    name: str
+    data_type: str  # integer, float, string, boolean, datetime
+    total_count: int
+    null_count: int
+    unique_count: int
+    min_value: Optional[Any] = None
+    max_value: Optional[Any] = None
+    mean_value: Optional[float] = None
+    median_value: Optional[float] = None
+    std_dev: Optional[float] = None
+    sample_values: List[Any] = field(default_factory=list)
+
+
+@dataclass
+class DatasetProfile:
+    """Complete structural and statistical profile of a dataset."""
+
+    id: str
+    total_rows: int
+    total_cols: int
+    columns: List[ColumnProfile] = field(default_factory=list)
+    sample_rows: List[Dict[str, Any]] = field(default_factory=list)
+    summary_text: str = ""
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def to_markdown(self) -> str:
+        """Render dataset statistical summary as markdown."""
+        lines = [
+            f"**Dataset Overview: {self.metadata.get('filename', 'Dataset')}**",
+            f"- **Rows**: {self.total_rows} | **Columns**: {self.total_cols}",
+            "",
+            "### Column Profiles & Statistics",
+            "| Column | Type | Nulls | Unique | Mean / Range |",
+            "|---|---|---|---|---|",
+        ]
+        for col in self.columns:
+            stat_str = "-"
+            if col.mean_value is not None:
+                stat_str = f"Mean: {col.mean_value:.2f} (Min: {col.min_value}, Max: {col.max_value})"
+            elif col.min_value is not None and col.max_value is not None:
+                stat_str = f"Range: [{col.min_value} .. {col.max_value}]"
+            lines.append(f"| `{col.name}` | {col.data_type} | {col.null_count} | {col.unique_count} | {stat_str} |")
+
+        if self.sample_rows:
+            lines.append("\n### Sample Data Preview (First 5 Rows)")
+            headers = [c.name for c in self.columns]
+            lines.append("| " + " | ".join(headers) + " |")
+            lines.append("| " + " | ".join(["---"] * len(headers)) + " |")
+            for r in self.sample_rows[:5]:
+                vals = [str(r.get(h, "")) for h in headers]
+                lines.append("| " + " | ".join(vals) + " |")
+
+        return "\n".join(lines)
+
+
+@dataclass
 class ParsedDocument:
     """Normalized result of parsing a document."""
 
@@ -101,6 +160,7 @@ class ParsedDocument:
     tables: List[Table] = field(default_factory=list)
     audio_segments: List[AudioSegment] = field(default_factory=list)
     charts: List[ChartRef] = field(default_factory=list)
+    dataset_profile: Optional[DatasetProfile] = None
     structure: Dict[str, Any] = field(default_factory=dict)
 
 

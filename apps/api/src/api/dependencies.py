@@ -13,6 +13,7 @@ from tools.registry import ToolRegistry, tool_registry
 from tools.definitions.web_search import WebSearchTool, WebFetchTool
 from tools.definitions.document_read import DocumentReadTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
+from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
@@ -144,6 +145,8 @@ async def init_providers() -> None:
     tool_registry.register(WebFetchTool())
     tool_registry.register(DocumentReadTool())
     tool_registry.register(KnowledgeSearchTool(retriever=_retriever))
+    tool_registry.register(DataAnalysisTool())
+    tool_registry.register(DeterministicMathTool())
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(

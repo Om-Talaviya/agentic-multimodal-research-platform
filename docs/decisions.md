@@ -136,3 +136,19 @@ This document records the key architectural, engineering, and product design dec
   - Positive: True cross-modal factual grounding with verifiable timestamp and coordinate provenance.
   - Positive: Deterministic reasoning over extracted scientific chart data series.
 
+---
+
+## ADR 013: Deterministic Data Analysis & Statistical Profiling Engine (Phase 13)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: LLMs exhibit severe arithmetic hallucination and unreliability when asked to perform statistical calculations, aggregations, correlation coefficients, or regression analyses over raw datasets.
+- **Decision**:
+  1. Implement `TabularParser` for CSV, TSV, Excel, and JSON files to perform automated delimiter sniffing, schema type inference, and statistical column distribution profiling upon ingestion.
+  2. Create `DataAnalysisTool` implementing Python-native deterministic calculation operations (`describe`, `aggregate`, `correlation`, `linear_regression`, `filter`).
+  3. Create `DeterministicMathTool` evaluating mathematical expressions strictly via safe Python Abstract Syntax Tree (AST) parsing, barring any arbitrary code execution or network/filesystem side-effects.
+  4. Equip `DocumentAnalysisAgent` with these deterministic tools, strictly prohibiting raw model calculation estimates (reinforcing **ADR 007**).
+  5. Provide `DatasetViewer.tsx` for visual and tabbed inspection of dataset summaries, column metrics, and raw sample records in the React UI.
+- **Consequences**:
+  - Positive: 100% mathematically exact statistical and regression results with zero LLM arithmetic hallucination.
+  - Positive: Safe AST execution without risk of remote code execution or injection vulnerabilities.
+
+

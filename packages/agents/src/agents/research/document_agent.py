@@ -14,29 +14,36 @@ logger = get_logger(__name__)
 
 
 class DocumentAnalysisAgent(Agent):
-    """Analyzes uploaded documents, structured chunks, tables, and visual annotations."""
+    """Analyzes uploaded documents, structured chunks, tabular datasets, and visual annotations."""
 
     name = "document_analysis"
-    description = "Analyzes documents, tables, and multimodal ingestion chunks to extract grounded evidence"
-    capabilities = {"document_analysis", "content_extraction", "table_analysis", "multimodal_reasoning"}
+    description = "Analyzes documents, datasets, tables, and multimodal ingestion chunks to extract grounded evidence"
+    capabilities = {
+        "document_analysis",
+        "content_extraction",
+        "table_analysis",
+        "multimodal_reasoning",
+        "data_analysis",
+        "statistical_computation",
+    }
 
-    SYSTEM_PROMPT = """You are an expert multimodal document analysis agent.
-Your task is to analyze document contents, structured tables, and visual diagram annotations to extract grounded factual findings relevant to the research objective.
+    SYSTEM_PROMPT = """You are an expert multimodal document and dataset analysis agent.
+Your task is to analyze document contents, structured tables, dataset statistics, and visual diagram annotations to extract grounded factual findings relevant to the research objective.
 
 When analyzing:
-- Extract clear, unambiguous claims supported by the document text, tables, or image annotations.
-- For quantitative data in tables, extract exact figures, trends, and comparative metrics.
-- Cite the source chunk index, page number, paragraph index, or table coordinates where each piece of evidence originates.
+- Extract clear, unambiguous claims supported by the document text, tables, dataset profiles, or image annotations.
+- For quantitative data and tabular datasets, extract exact figures, computed means/medians, trends, and comparative metrics.
+- Cite the source chunk index, page number, paragraph index, table coordinates, or dataset column where each piece of evidence originates.
 
 Return findings as a valid JSON object:
 {
     "findings": [
         {
             "claim": "Specific factual claim or finding",
-            "evidence": "Exact excerpt, table cell/row, or diagram annotation supporting the claim",
+            "evidence": "Exact excerpt, computed statistic, table cell/row, or diagram annotation supporting the claim",
             "confidence": 0.9,
             "section": "Optional section name or chunk identifier",
-            "modality": "text|table|image",
+            "modality": "text|table|image|dataset",
             "page_number": 1,
             "paragraph_index": 2,
             "table_row": null,
@@ -51,6 +58,8 @@ Return findings as a valid JSON object:
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
         doc_read_tool = context.tools.get("document_read") or tool_registry.get("document_read")
         knowledge_search_tool = context.tools.get("knowledge_search") or tool_registry.get("knowledge_search")
+        data_analysis_tool = context.tools.get("data_analysis") or tool_registry.get("data_analysis")
+        math_tool = context.tools.get("deterministic_math") or tool_registry.get("deterministic_math")
 
         document_ids = task.inputs.get("document_ids", [])
         if not document_ids and "document_id" in task.inputs:

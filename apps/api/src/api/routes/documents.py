@@ -26,6 +26,11 @@ logger = get_logger(__name__)
 ALLOWED_MIME_TYPES = {
     "text/plain",
     "text/markdown",
+    "text/csv",
+    "text/tab-separated-values",
+    "application/json",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.ms-excel",
     "application/pdf",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     "image/png",
@@ -48,6 +53,11 @@ ALLOWED_MIME_TYPES = {
 ALLOWED_EXTENSIONS = {
     ".txt",
     ".md",
+    ".csv",
+    ".tsv",
+    ".xlsx",
+    ".xls",
+    ".json",
     ".pdf",
     ".docx",
     ".png",

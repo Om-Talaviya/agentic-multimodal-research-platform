@@ -10,6 +10,7 @@ from ingestion.parsers.base import DocumentParser, ParsedDocument
 from ingestion.parsers.docx import DocxParser
 from ingestion.parsers.image import ImageParser
 from ingestion.parsers.pdf import PDFParser
+from ingestion.parsers.tabular import TabularParser
 from ingestion.parsers.text import TextParser
 from ingestion.parsers.video import VideoParser
 from shared.exceptions import ValidationError
@@ -33,6 +34,7 @@ class ParserRegistry:
             TextParser(),
             PDFParser(),
             DocxParser(),
+            TabularParser(),
             ImageParser(vision_source=vision_source),
             AudioParser(ai_source=ai_src),
             VideoParser(ai_source=ai_src),
