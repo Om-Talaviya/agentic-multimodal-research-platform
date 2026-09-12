@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2012%20Complete-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Phase%2016%20Complete-success?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
@@ -89,7 +89,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 14 Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 16 Complete** on the stable branch `develop/v1.1`.
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -108,8 +108,9 @@ Phase 12: Advanced Multimodal Intel  [██████████████
 Phase 13: Dataset & Data Analysis    [████████████████████] 100% (Commit: 81a5f5d)
 Phase 14: Document & Paper Intel     [████████████████████] 100%
 Phase 15: Deep Research Engine       [████████████████████] 100%
+Phase 16: Research Memory            [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 16: Research Memory            [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 17: Long-Term Knowledge Graph  [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -128,8 +129,8 @@ Phase 16: Research Memory            [░░░░░░░░░░░░░░
 
 ### Generation 3: Autonomous Research
 - **Phase 15: Deep Research Engine (COMPLETE)**: Autonomous recursive multi-round research loops (`DeepResearchEngine`), recursive gap and hypothesis formulation with `CriticAgent`, adaptive DAG expansion with `PlannerAgent.replan()`, strict convergence guardrails ($\tau \ge 0.85$, max iterations, $\Delta \tau < 0.02$), WebSocket iteration telemetry, and `DeepResearchTracker.tsx` timeline studio.
-- **Phase 16: Research Memory (NEXT)**: Persistent cross-session research memory allowing users to resume complex investigations months later.
-- **Phase 17: Long-Term Knowledge Graph**: Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts beyond vector search.
+- **Phase 16: Research Memory (COMPLETE)**: Persistent cross-session research memory architecture (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), automatic report-to-memory consolidation (findings, methodologies, hypotheses, insights, summaries), semantic & text recall tools (`RecallMemoryTool`, `StoreMemoryTool`), REST APIs (`/api/v1/memory`), and interactive React UI (`ResearchMemoryViewer.tsx` & `MemoryPage.tsx`).
+- **Phase 17: Long-Term Knowledge Graph (NEXT)**: Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts beyond vector search.
 
 ### Generation 4: Collaboration Platform
 - **Phase 18: Projects & Workspaces**: Multi-tiered workspace organization (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).

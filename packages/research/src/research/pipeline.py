@@ -28,6 +28,7 @@ class ResearchPipeline:
         model_gateway: Optional[Any] = None,
         event_bus: ResearchEventBus | None = None,
         retriever: Optional[Any] = None,
+        memory_manager: Optional[Any] = None,
     ):
         self.orchestrator = orchestrator
         self.agent_registry = agent_registry
@@ -36,6 +37,11 @@ class ResearchPipeline:
         self.model_gateway = model_gateway
         self.event_bus = event_bus or research_event_bus
         self.retriever = retriever
+        if memory_manager is not None:
+            self.memory_manager = memory_manager
+        else:
+            from research.memory.manager import ResearchMemoryManager
+            self.memory_manager = ResearchMemoryManager(retriever=retriever)
 
     async def _emit(
         self,
@@ -151,6 +157,34 @@ class ResearchPipeline:
             except Exception as e:
                 logger.warning("Failed to retrieve knowledge base context during planning", error=str(e))
 
+        # 2. Query research memory for prior project findings / user memories
+        memory_summary = ""
+        recalled_memories_count = 0
+        if user_id_str and self.memory_manager is not None:
+            try:
+                mem_result = await self.memory_manager.recall_memories(
+                    user_id=user_id_str,
+                    query=job.objective or job.question,
+                    top_k=5,
+                )
+                if mem_result.memories:
+                    recalled_memories_count = len(mem_result.memories)
+                    memory_summary = self.memory_manager.format_memories_for_prompt(mem_result.memories)
+                    logger.info(
+                        "Planner recalled relevant cross-session research memories",
+                        job_id=job_id_str,
+                        user_id=user_id_str,
+                        memory_count=recalled_memories_count,
+                    )
+                    await self._emit(
+                        job_id_str,
+                        ResearchEventType.MEMORY_RECALLED,
+                        f"Recalled {recalled_memories_count} prior research memories",
+                        {"memory_count": recalled_memories_count, "query": job.objective or job.question},
+                    )
+            except Exception as mem_err:
+                logger.warning("Failed to recall research memories during planning", error=str(mem_err))
+
         planning_context: Dict[str, Any] = {
             "domain": getattr(job, "domain", None),
             "scope": getattr(job, "scope", None),
@@ -160,6 +194,8 @@ class ResearchPipeline:
             planning_context["available_knowledge"] = knowledge_summary
         if relevant_doc_ids:
             planning_context["document_ids"] = relevant_doc_ids
+        if memory_summary:
+            planning_context["historical_memories"] = memory_summary
 
         task = ResearchTask(
             id=str(uuid4()),
@@ -185,6 +221,8 @@ class ResearchPipeline:
                 "agent": task.agent,
                 "has_knowledge": bool(knowledge_summary),
                 "attached_docs": len(relevant_doc_ids),
+                "has_memories": bool(memory_summary),
+                "recalled_memories": recalled_memories_count,
             },
         )
         result = await planner.run(task, context)
@@ -769,6 +807,34 @@ class ResearchPipeline:
                 "Report generated",
                 {"report_id": str(report_model.id)},
             )
+
+            # Auto-store research memories (findings, insights, methodology) into persistent memory
+            if job.user_id and self.memory_manager is not None:
+                try:
+                    stored_memories = await self.memory_manager.store_memories_from_report(
+                        user_id=job.user_id,
+                        job_id=job.id,
+                        report_data=report_data,
+                        confidence_score=report_model.confidence_score,
+                    )
+                    if stored_memories:
+                        logger.info(
+                            "Auto-stored research memories from generated report",
+                            job_id=job.id,
+                            user_id=str(job.user_id),
+                            memory_count=len(stored_memories),
+                        )
+                        await self._emit(
+                            str(job.id),
+                            ResearchEventType.MEMORY_STORED,
+                            f"Synthesized and stored {len(stored_memories)} research memories",
+                            {
+                                "memory_count": len(stored_memories),
+                                "memory_ids": [str(m.id) for m in stored_memories],
+                            },
+                        )
+                except Exception as mem_store_err:
+                    logger.warning("Failed to auto-store research memories from report", job_id=job.id, error=str(mem_store_err))
 
         except Exception as report_err:
             logger.error("Report generation step encountered error", job_id=job.id, error=str(report_err))

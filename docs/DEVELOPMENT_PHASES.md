@@ -337,12 +337,7 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Section-aware `SemanticChunker` preserving structural section boundaries and metadata (`section_title`, `section_type`, `paper_title`, `authors`) for targeted hybrid RAG retrieval.
 - [x] `PaperAnalysisTool` (dimension extraction, section queries, benchmark parsing) and `MethodologyComparisonTool` (multi-paper comparative matrix generation).
 - [x] `DocumentAnalysisAgent` integration with academic paper analysis and methodology comparison capabilities.
-- [x] Interactive `PaperViewer.tsx` (section tree sidebar, abstract badge, citation popovers) and `ComparisonMatrix.tsx` (side-by-side comparative matrices) in `apps/web`.
-- [x] Comprehensive unit test suites in `packages/ingestion/tests/test_academic_parser.py` and `packages/tools/tests/test_paper_analysis.py`.
-
----
-
-## Phase 15: Deep Research Engine
+- [x] Interactive `Pape## Phase 15: Deep Research Engine
 **Status**: 🟢 COMPLETE (Generation 3: Autonomous Research)
 
 **Goal**: Transform research execution into an autonomous recursive engine featuring multi-round hypothesis loops, Critic gap audits, dynamic DAG subtask rescheduling, strict convergence guardrails ($\tau \ge 0.85$, max iterations, diminishing returns $\Delta \tau < 0.02$), WebSocket iteration telemetry, and interactive frontend `DeepResearchTracker.tsx` (**ADR 015**).
@@ -355,6 +350,22 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Real-time iteration telemetry: Defined deep research event types and WebSocket broadcast for live iteration status and hypothesis tracking.
 - [x] Interactive Deep Research UI: Built `DeepResearchTracker.tsx` with multi-round iteration stepper, confidence gauge, hypothesis status badges, and gap resolution explorer.
 - [x] Automated test suites: Added `test_deep_research.py`, `test_deep_critic.py`, and verified 100% passing across all 247 tests.
+
+---
+
+## Phase 16: Research Memory
+**Status**: 🟢 COMPLETE (Generation 3: Autonomous Research)
+
+**Goal**: Implement an autonomous, persistent cross-session memory architecture enabling long-term knowledge retention across research jobs, conceptual semantic indexing, query history recall for `PlannerAgent`, agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API endpoints (`/api/v1/memory`), and an interactive React UI (`ResearchMemoryViewer.tsx` / `MemoryPage.tsx`) (**ADR 016**).
+
+### Deliverables:
+- [x] Database Models & Repositories: Created `DBResearchMemory` database model with PostgreSQL 16 & SQLite cross-compatibility (`GUID`, `JSONType`), indexes, and access counters. Created `MemoryRepository` with CRUD, tag filtering, access tracking, and text search across title/content.
+- [x] Autonomous Memory Manager: Implemented `ResearchMemoryManager` in `packages/research/src/research/memory/manager.py` with automatic knowledge consolidation from research reports (`store_memories_from_report`), semantic recall (`recall_memories`), and markdown prompt formatting.
+- [x] Pipeline & Agent Memory Integration: Connected `ResearchPipeline` to recall memories during planning (`run_planning`) and auto-persist memories upon report completion (`run_report_generation`). Upgraded `PlannerAgent` prompt guidelines.
+- [x] Agent Memory Tools: Built and registered `RecallMemoryTool` and `StoreMemoryTool` for agent-level cross-session recall and persistence.
+- [x] REST API Endpoints: Created `/api/v1/memory` routes for listing, creating, searching/recalling, updating, and deleting memories.
+- [x] Interactive UI Studio: Built `ResearchMemoryViewer.tsx` and `MemoryPage.tsx` with memory type filters, semantic recall, tags, and memory creation modal. Added Memories tab to `ResearchDetail.tsx` and `/memory` navigation route.
+- [x] Comprehensive Test Suites: Added `test_memory_repository.py`, `test_research_memory.py`, `test_memory_tools.py`, `test_memory_api.py`, verified 256/256 tests passing.
 
 ---
 
@@ -378,6 +389,12 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 13**| Dataset & Data Analysis   | 🟢 COMPLETE | TabularParser, DataAnalysisTool, DeterministicMathTool, UI |
 | **Phase 14**| Document & Paper Intel    | 🟢 COMPLETE | AcademicPaperParser, section trees, BibEntry, PaperViewer |
 | **Phase 15**| Deep Research Engine      | 🟢 COMPLETE | DeepResearchEngine, recursive loops, Critic gap audits, UI |
+| **Phase 16**| Research Memory           | 🟢 COMPLETE | DBResearchMemory, MemoryRepository, ResearchMemoryManager, UI |
+
+### Immediate Focus Areas
+1. **Phase 17: Long-Term Knowledge Graph** (Entity-relationship reasoning, cross-document graph ontology).
+2. **Phase 18: Projects & Workspaces** (Multi-tenant workspace hierarchy).
+earch Engine      | 🟢 COMPLETE | DeepResearchEngine, recursive loops, Critic gap audits, UI |
 
 ### Immediate Focus Areas
 1. **Phase 16: Research Memory** (Cross-session persistent project memory, conceptual indexing, query history recall).

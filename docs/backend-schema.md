@@ -11,6 +11,7 @@ erDiagram
     users ||--o{ user_quotas : has
     users ||--o{ usage_records : incurs
     users ||--o{ research_jobs : creates
+    users ||--o{ research_memories : owns
     
     research_jobs ||--o{ research_tasks : contains
     research_jobs ||--o{ sources : references
@@ -19,6 +20,7 @@ erDiagram
     research_jobs ||--o{ reports : synthesizes
     research_jobs ||--o{ agent_runs : executes
     research_jobs ||--o{ usage_records : attributes
+    research_jobs ||--o{ research_memories : persists
 
     sources ||--o{ evidence : extracts
     documents ||--o{ document_chunks : splits
@@ -261,6 +263,58 @@ erDiagram
   "gap_queries": [],
   "status": "converged",
   "created_at": "2026-09-12T13:30:00Z"
+}
+```
+
+---
+
+### 2.6 Table: `research_memories` (Phase 16)
+- Represents persistent, cross-session distilled research findings, methodologies, and concepts.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique memory item ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id), NOT NULL` | Owning authenticated user ID |
+| `project_id` | `UUID` | `NULLABLE` | Associated project workspace ID |
+| `job_id` | `UUID` | `FOREIGN KEY (research_jobs.id), NULLABLE` | Originating research job ID |
+| `memory_type` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'concept'` | Type: `concept`, `finding`, `hypothesis`, `methodology`, `fact` |
+| `title` | `VARCHAR(255)` | `NOT NULL` | Short title / conceptual headline |
+| `content` | `TEXT` | `NOT NULL` | Markdown-formatted distilled knowledge body |
+| `tags` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Categorization tags for keyword filtering |
+| `confidence_score` | `FLOAT` | `NOT NULL, DEFAULT 1.0` | Confidence level [0.0, 1.0] |
+| `provenance_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Provenance metadata (`source`, `source_id`, `url`, `chunk_id`) |
+| `access_count` | `INTEGER` | `NOT NULL, DEFAULT 0` | Historical recall frequency count |
+| `last_accessed_at` | `TIMESTAMP WITH TZ` | `NULLABLE` | Timestamp of most recent recall |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last modification timestamp |
+
+#### Indexes:
+- `ix_research_memories_user_id` (`user_id`)
+- `ix_research_memories_project_id` (`project_id`)
+- `ix_research_memories_memory_type` (`memory_type`)
+- `ix_research_memories_title` (`title`)
+
+#### Memory Item Schema (`MemoryItem` / API Contract):
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "project_id": null,
+  "job_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  "memory_type": "finding",
+  "title": "Degradation Rate of PLA in Marine Environments",
+  "content": "Polylactic acid (PLA) degrades at less than 1.5% per year in ambient seawater (15-20°C).",
+  "tags": ["materials", "marine-biodegradation", "pla"],
+  "confidence": 0.94,
+  "provenance": {
+    "source": "paper",
+    "source_id": "doi:10.1016/j.polymdegradstab.2025.109876",
+    "url": "https://doi.org/10.1016/j.polymdegradstab.2025.109876"
+  },
+  "access_count": 3,
+  "last_accessed_at": "2026-09-12T14:15:00Z",
+  "created_at": "2026-09-12T13:45:00Z",
+  "updated_at": "2026-09-12T14:15:00Z"
 }
 ```
 

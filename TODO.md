@@ -123,14 +123,24 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 16 — Research Memory
+- [x] **Phase 16: Research Memory**
+  - [x] Persistent cross-session project memory architecture: Created `DBResearchMemory` database model with PostgreSQL 16 & SQLite cross-compatibility (`GUID`, `JSONType`), indexes, and access counters.
+  - [x] Memory persistence repository: Built `MemoryRepository` with CRUD, tag filtering, access tracking, and text search across title/content.
+  - [x] Autonomous memory manager: Implemented `ResearchMemoryManager` with automatic knowledge consolidation from research reports (`store_memories_from_report`), semantic recall (`recall_memories`), and prompt formatting.
+  - [x] Pipeline & Agent memory integration: Connected `ResearchPipeline` to recall memories during planning (`run_planning`) and auto-persist memories upon report completion (`run_report_generation`). Upgraded `PlannerAgent` prompt guidelines.
+  - [x] Agent memory tools: Built and registered `RecallMemoryTool` and `StoreMemoryTool` for agent-level memory operations.
+  - [x] REST API endpoints: Created `/api/v1/memory` routes for listing, creating, searching/recalling, updating, and deleting memories.
+  - [x] Interactive UI Studio: Built `ResearchMemoryViewer.tsx` and `MemoryPage.tsx` with memory type filters, semantic recall, tags, and memory creation modal. Added Memories tab to `ResearchDetail.tsx` and `/memory` navigation route.
+  - [x] Comprehensive test suites: Added `test_memory_repository.py`, `test_research_memory.py`, `test_memory_tools.py`, `test_memory_api.py`, verified 256/256 tests passing.
+
+---
+
+## 🟡 Immediate Next Milestone: Phase 17 — Long-Term Knowledge Graph
 
 ### Generation 3: Autonomous Research
-- [ ] **Phase 16: Research Memory**
-  - [ ] Persistent cross-session project memory allowing resumption months later.
-  - [ ] Conceptual indexing, query history recall, and automatic knowledge linking across sessions.
 - [ ] **Phase 17: Long-Term Knowledge Graph**
   - [ ] Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts.
+  - [ ] Cross-document entity resolution and knowledge graph ontology reasoning.
 
 ### Generation 4: Collaboration Platform
 - [ ] **Phase 18: Projects & Workspaces**

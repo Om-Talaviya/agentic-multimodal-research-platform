@@ -186,5 +186,24 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Autonomous self-refining research operating system eliminating manual prompt re-runs.
   - Positive: Complete transparency and deterministic termination guarantees preventing infinite execution loops or resource exhaustion.
 
+---
+
+## ADR 016: Persistent Cross-Session Research Memory & Conceptual Indexing (Phase 16)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Autonomous research workflows span multiple sessions, inquiries, and days. Without persistent cross-session memory, agents repeat identical background investigations, lose previously established findings, and cannot answer follow-up queries like *"Continue the research from where we stopped"* or *"How does this finding compare to our study on PLA polymers last week?"*.
+- **Decision**:
+  1. Define `DBResearchMemory` database model in `packages/database/src/database/models/memory.py` with dialect-safe `JSONType`, `GUID`, category types (`concept`, `finding`, `hypothesis`, `methodology`, `fact`), categorization tags, confidence score, provenance JSON, and access tracking (`access_count`, `last_accessed_at`).
+  2. Implement `MemoryRepository` in `packages/database/src/database/repositories/memory_repository.py` providing transactional async CRUD, keyword/text search, and access frequency tracking.
+  3. Implement `ResearchMemoryManager` in `packages/research/src/research/memory/manager.py` orchestrating:
+     - Pre-planning recall (`recall_memories()`): Recalls top relevant historical memories for the user's research query and injects a structured memory summary into `PlannerAgent` context.
+     - Post-synthesis auto-consolidation (`store_memories_from_report()`): Distills key findings, methodology summaries, and verified hypotheses from synthesized `ResearchReport` objects into persistent memory entries.
+  4. Create agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`) in `packages/tools/src/tools/definitions/memory.py` allowing autonomous in-flight memory queries and explicit memory storage by agents.
+  5. Implement FastAPI REST endpoints (`/api/v1/memory`) supporting memory querying, text search, manual memory creation, partial updates, and deletion.
+  6. Create interactive React components (`ResearchMemoryViewer.tsx` and `MemoryPage.tsx`) with dark glassmorphism theme, type badges, confidence gauges, tag filtering, access stats, and manual creation modals.
+- **Consequences**:
+  - Positive: Long-term continuity and knowledge accumulation across research sessions.
+  - Positive: Eliminates redundant web search and document ingestion for previously answered sub-questions.
+  - Positive: Seamless multi-agent collaboration with shared access to verified past findings and methodologies.
+
 
 

@@ -1,11 +1,13 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck } from 'lucide-react'
+import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, Brain } from 'lucide-react'
 import { api, getResearchWebSocketUrl } from '../services/api'
 import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
+import type { MemoryItem } from '../types/memory'
 import { QueryTreeViewer } from '../components/QueryTreeViewer'
 import { MultimodalEvidenceViewer } from '../components/MultimodalEvidenceViewer'
 import { DeepResearchTracker } from '../components/DeepResearchTracker'
+import { ResearchMemoryViewer } from '../components/ResearchMemoryViewer'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
@@ -15,26 +17,29 @@ export function ResearchDetail() {
   const [evidence, setEvidence] = useState<Evidence[]>([])
   const [report, setReport] = useState<ResearchReport | null>(null)
   const [plan, setPlan] = useState<ResearchPlan | null>(null)
+  const [memories, setMemories] = useState<MemoryItem[]>([])
   const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report' | 'memories'>('overview')
   const socketRef = useRef<WebSocket | null>(null)
   const reconnectTimeoutRef = useRef<any>(null)
 
   const fetchData = useCallback(async () => {
     if (!id) return
     try {
-      const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes] = await Promise.all([
+      const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes, memRes] = await Promise.all([
         api.get(`/research/${id}`),
         api.get(`/research/${id}/tasks`),
         api.get(`/research/${id}/sources`),
         api.get(`/research/${id}/evidence`),
         api.get(`/research/${id}/report`).catch(() => ({ data: null })),
+        api.get('/memory', { params: { job_id: id } }).catch(() => ({ data: [] })),
       ])
       setJob(jobRes.data)
       setTasks(tasksRes.data.tasks || tasksRes.data)
       setSources(sourcesRes.data.sources || sourcesRes.data)
       setEvidence(evidenceRes.data.evidence || evidenceRes.data)
       setReport(reportRes.data)
+      setMemories(memRes.data || [])
     } catch (err) {
       console.error(err)
     } finally {
@@ -220,6 +225,7 @@ export function ResearchDetail() {
     { id: 'sources', label: 'Sources', icon: FileText },
     { id: 'evidence', label: 'Evidence', icon: FileCheck },
     { id: 'report', label: 'Report', icon: FileText, disabled: !report },
+    { id: 'memories', label: `Memories (${memories.length})`, icon: Brain },
   ]
 
   return (
@@ -529,6 +535,13 @@ export function ResearchDetail() {
               Report will be generated after research completes
             </p>
           </div>
+        )}
+
+        {activeTab === 'memories' && (
+          <ResearchMemoryViewer
+            memories={memories}
+            selectedJobId={job.id}
+          />
         )}
       </div>
     </div>
