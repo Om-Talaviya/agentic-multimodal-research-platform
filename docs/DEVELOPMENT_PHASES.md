@@ -292,6 +292,23 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
+## Phase 12: Advanced Multimodal Research
+**Status**: 🟢 COMPLETE (Generation 2: Multimodal Intelligence)
+
+**Goal**: Unified multimodal context across audio/speech tracks, video demonstrations, scientific charts, and literature with timestamp/coordinate anchoring.
+
+### Deliverables:
+- [x] Multimodal schema extension (`CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, `chart_data`).
+- [x] `AudioParser` for `.mp3`, `.wav`, `.m4a`, `.flac`, `.ogg` extracting timestamped `AudioSegment` objects (`[MM:SS - MM:SS]`).
+- [x] `VideoParser` for `.mp4`, `.mov`, `.webm` generating synchronized chronological timelines and keyframe snapshots.
+- [x] `ImageParser` chart intelligence extracting structured `ChartRef` models with JSON data series and Markdown tables.
+- [x] Multimodal `SemanticChunker` dual-indexing timestamped audio/video segments and structured chart series into `VectorStore` + `BM25Index`.
+- [x] FastAPI upload whitelist for audio and video MIME types and extensions.
+- [x] Interactive `MultimodalEvidenceViewer.tsx` studio component in React frontend.
+- [x] Comprehensive unit test suite in `packages/ingestion/tests/test_multimodal_audio_video.py`.
+
+---
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
@@ -308,7 +325,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 9** | Intelligent Knowledge Auto| 🟢 COMPLETE | Dual-indexing (Dense+BM25), document lifecycle, Planner KB |
 | **Phase 10**| Evidence & Citation Intel | 🟢 COMPLETE | Coordinate anchoring, contradiction taxonomy, confidence score |
 | **Phase 11**| Advanced Research Planning| 🟢 COMPLETE | Query trees, ambiguity score, dynamic capability & replanning |
+| **Phase 12**| Advanced Multimodal Intel | 🟢 COMPLETE | Audio/video timestamps, ChartRef data series, Multimodal studio |
 
 ### Immediate Focus Areas
-1. **Phase 12: Advanced Multimodal Research** (Unified context across 50+ page PDFs, research papers, images, charts, audio, video).
-2. **Phase 13: Dataset & Data Analysis Intelligence** (Tabular data processing with deterministic calculation tools).
+1. **Phase 13: Dataset & Data Analysis Intelligence** (Tabular data processing CSV/Excel/JSON with deterministic calculation tools).
+2. **Phase 14: Document & Paper Intelligence** (200-page academic paper structure parsing and methodology diffs).

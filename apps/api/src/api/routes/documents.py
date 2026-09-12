@@ -31,9 +31,41 @@ ALLOWED_MIME_TYPES = {
     "image/png",
     "image/jpeg",
     "image/webp",
+    "audio/mpeg",
+    "audio/wav",
+    "audio/mp4",
+    "audio/ogg",
+    "audio/flac",
+    "audio/aac",
+    "audio/x-m4a",
+    "video/mp4",
+    "video/quicktime",
+    "video/x-msvideo",
+    "video/x-matroska",
+    "video/webm",
 }
 
-ALLOWED_EXTENSIONS = {".txt", ".md", ".pdf", ".docx", ".png", ".jpg", ".jpeg", ".webp"}
+ALLOWED_EXTENSIONS = {
+    ".txt",
+    ".md",
+    ".pdf",
+    ".docx",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".mp3",
+    ".wav",
+    ".m4a",
+    ".ogg",
+    ".flac",
+    ".aac",
+    ".mp4",
+    ".mov",
+    ".avi",
+    ".mkv",
+    ".webm",
+}
 
 
 class DocumentResponse(BaseModel):

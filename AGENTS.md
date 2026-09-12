@@ -166,12 +166,12 @@ npm run lint
 - **Phase 9 (Intelligent Knowledge Automation)**: 🟢 COMPLETE (Zero-touch dual-indexing, status lifecycle, Planner KB integration, Hybrid DAG search)
 - **Phase 10 (Evidence & Citation Intelligence)**: 🟢 COMPLETE (Fine-grained claim extraction, coordinate anchoring, contradiction detection, citation-grounded synthesis)
 - **Phase 11 (Advanced Research Planning)**: 🟢 COMPLETE (Hierarchical query trees, ambiguity scoring, inferred scope resolution, dynamic agent capability routing, closed-loop replanning)
+- **Phase 12 (Advanced Multimodal Research)**: 🟢 COMPLETE (Speech/audio transcription with timestamps, video timeline synchronization, scientific chart JSON data series parsing, multimodal chunking)
 - **Documentation Architecture**: 🟢 COMPLETE (Commit: `a00949e`, Stable branch: `develop/v1.1`)
 
-### The 6 Generations Ahead (Phases 12 – 26):
+### The 6 Generations Ahead (Phases 13 – 26):
 - **Generation 2 — Multimodal Intelligence**:
-  - **Phase 12**: Advanced Multimodal Research (🟡 **IMMEDIATE NEXT MILESTONE**: Unified context across 50+ page PDFs, papers, images, charts, audio Whisper, and video)
-  - **Phase 13**: Dataset & Data Analysis Intelligence (CSV/Excel/JSON analysis, deterministic math tools, visualization)
+  - **Phase 13**: Dataset & Data Analysis Intelligence (🟡 **IMMEDIATE NEXT MILESTONE**: CSV/Excel/JSON analysis, deterministic math tools, statistical summarization, visualization)
   - **Phase 14**: Document & Paper Intelligence (200-page paper structure parsing, methodology comparison)
 - **Generation 3 — Autonomous Research**:
   - **Phase 15**: Deep Research Engine (Autonomous iterative feedback loops with CriticAgent)

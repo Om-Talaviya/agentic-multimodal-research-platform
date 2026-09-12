@@ -82,6 +82,8 @@ class DocumentFormat(str, Enum):
     PDF = "pdf"
     DOCX = "docx"
     IMAGE = "image"
+    AUDIO = "audio"
+    VIDEO = "video"
     HTML = "html"
     UNKNOWN = "unknown"
 
@@ -91,6 +93,8 @@ class SourceType(str, Enum):
     DOCUMENT = "document"
     PDF = "pdf"
     IMAGE = "image"
+    AUDIO = "audio"
+    VIDEO = "video"
     DATABASE = "database"
     API = "api"
 

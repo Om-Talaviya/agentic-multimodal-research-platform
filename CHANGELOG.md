@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 12: Advanced Multimodal Research**:
+  - Extended `CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, and `chart_data` across models and schemas.
+  - Implemented `AudioParser` for speech audio formats (`.mp3`, `.wav`, `.m4a`, `.flac`, `.ogg`, `.aac`) extracting timestamped dialogue segments (`[MM:SS - MM:SS]`) and speaker attribution.
+  - Implemented `VideoParser` for video media (`.mp4`, `.mov`, `.avi`, `.mkv`, `.webm`) creating synchronized chronological timeline transcripts, visual events, and keyframe metadata.
+  - Upgraded `ImageParser` to detect scientific figures and plots, producing structured `ChartRef` models with JSON data series and Markdown data tables.
+  - Enhanced `SemanticChunker` with multimodal segmentation, generating timestamp-bounded audio/video chunks and structured chart chunks for vector and BM25 RRF indexing.
+  - Whitelisted audio and video MIME types and file extensions in FastAPI document upload endpoints.
+  - Created `MultimodalEvidenceViewer.tsx` studio component in React frontend for interactive inspection of media citations, timestamp ranges, speakers, and chart data series.
+  - Added unit test suite in `packages/ingestion/tests/test_multimodal_audio_video.py`.
 - **Phase 11: Advanced Research Planning**:
   - Implemented hierarchical Subquestion Decomposition and Query Trees (`QueryTreeNode`) for multi-level strategic planning.
   - Added quantitative ambiguity evaluation (`ambiguity_score`) and autonomous parameterization of research boundaries (`InferredScope`).

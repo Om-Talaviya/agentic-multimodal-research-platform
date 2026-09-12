@@ -220,7 +220,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 from database.connection import get_db_session
 from database.repositories import UserRepository
-from shared.auth import User, UserRole, verify_token
+from shared.auth import User, UserRole, user_registry, verify_token
 from shared.exceptions import AuthenticationError, AuthorizationError
 
 security = HTTPBearer(auto_error=False)
