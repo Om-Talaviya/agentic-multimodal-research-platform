@@ -146,7 +146,36 @@ class SemanticChunker(ChunkingStrategy):
                 )
                 index += 1
 
-        # 3. Standard Text / Paragraph Semantic Chunking
+        # 3. Handle Tabular Datasets & Statistical Profiles
+        if document.dataset_profile:
+            profile = document.dataset_profile
+            profile_md = profile.to_markdown()
+            chunks.append(
+                Chunk(
+                    id=f"{doc_name}_dataset_profile_chunk_{index}",
+                    content=profile_md,
+                    metadata={
+                        **document.metadata,
+                        "chunk_index": index,
+                        "chunk_type": "dataset_profile",
+                        "media_type": "dataset",
+                        "total_rows": profile.total_rows,
+                        "total_cols": profile.total_cols,
+                        "columns": [c.name for c in profile.columns],
+                        "numeric_columns": [c.name for c in profile.columns if c.data_type in ("integer", "float")],
+                    },
+                    start_char=0,
+                    end_char=len(profile_md),
+                    chunk_index=index,
+                )
+            )
+            index += 1
+
+            # If dataset profile covers the file, return chunks
+            if chunks:
+                return chunks
+
+        # 4. Standard Text / Paragraph Semantic Chunking
         text = document.content
         if not text:
             return chunks

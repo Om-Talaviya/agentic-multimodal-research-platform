@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 13: Dataset & Data Analysis Intelligence**:
+  - Implemented `TabularParser` in `packages/ingestion/src/ingestion/parsers/tabular.py` supporting `.csv`, `.tsv`, `.xlsx`, `.xls`, and `.json` datasets with automated delimiter sniffing, schema type inference, column distribution profiling (mean, median, std dev, min/max, nulls, unique count), and Markdown summary table formatting.
+  - Implemented `DataAnalysisTool` in `packages/tools/src/tools/definitions/data_analysis.py` providing deterministic calculations for descriptive statistics, multi-column group-by aggregations (`sum`, `mean`, `median`, `min`, `max`, `count`), Pearson correlation coefficients, linear regression modeling (slope, intercept, $R^2$), and relational record filtering.
+  - Implemented `DeterministicMathTool` enforcing **ADR 007** and **ADR 013** zero-hallucination standards via safe recursive Python Abstract Syntax Tree (AST) expression evaluation.
+  - Equipped `DocumentAnalysisAgent` with `DataAnalysisTool` and `DeterministicMathTool` for autonomous investigation of structured data files.
+  - Enhanced `SemanticChunker` with dataset profile chunking, making column metadata, statistics, and sample rows searchable via dense vector and BM25 RRF hybrid retrieval.
+  - Whitelisted dataset formats (`CSV`, `TSV`, `EXCEL`, `JSON`) in `DocumentFormat`, `SourceType`, and the FastAPI document upload route.
+  - Developed `DatasetViewer.tsx` React component with interactive tabbed views for dataset summaries, column metrics, and raw sample records.
+  - Added unit test suites in `packages/ingestion/tests/test_tabular_parser.py` and `packages/tools/tests/test_data_analysis_tool.py`.
 - **Phase 12: Advanced Multimodal Research**:
   - Extended `CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, and `chart_data` across models and schemas.
   - Implemented `AudioParser` for speech audio formats (`.mp3`, `.wav`, `.m4a`, `.flac`, `.ogg`, `.aac`) extracting timestamped dialogue segments (`[MM:SS - MM:SS]`) and speaker attribution.

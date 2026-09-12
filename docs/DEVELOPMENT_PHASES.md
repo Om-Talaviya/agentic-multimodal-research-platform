@@ -309,6 +309,23 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
+## Phase 13: Dataset & Data Analysis Intelligence
+**Status**: 🟢 COMPLETE (Generation 2: Multimodal Intelligence)
+
+**Goal**: Autonomous investigation of tabular datasets (CSV, TSV, Excel, JSON) using deterministic Python calculation tools and statistical profiling to eliminate LLM arithmetic hallucinations (**ADR 007** & **ADR 013**).
+
+### Deliverables:
+- [x] `TabularParser` for CSV, TSV, Excel (`.xlsx`, `.xls`), and JSON datasets with automated delimiter detection, type inference, and statistical column distribution profiling (`mean`, `median`, `std_dev`, `min`, `max`, `null_count`, `unique_count`).
+- [x] `DataAnalysisTool` providing deterministic computational operations (`describe`, `aggregate`, `correlation`, `linear_regression`, `filter`).
+- [x] `DeterministicMathTool` evaluating complex arithmetic and mathematical expressions strictly via safe Python Abstract Syntax Tree (AST) parsing.
+- [x] `DocumentAnalysisAgent` integration equipping agents with deterministic calculation tools.
+- [x] Dataset profile chunking in `SemanticChunker` preserving structured metrics and sample rows for dual vector/BM25 retrieval.
+- [x] Whitelisted dataset formats (`CSV`, `TSV`, `EXCEL`, `JSON`) in `DocumentFormat`, `SourceType`, and upload routes.
+- [x] Interactive `DatasetViewer.tsx` React component with summary overview, column metrics, and raw sample records.
+- [x] Comprehensive unit test suites in `packages/ingestion/tests/test_tabular_parser.py` and `packages/tools/tests/test_data_analysis_tool.py`.
+
+---
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
@@ -326,7 +343,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 10**| Evidence & Citation Intel | 🟢 COMPLETE | Coordinate anchoring, contradiction taxonomy, confidence score |
 | **Phase 11**| Advanced Research Planning| 🟢 COMPLETE | Query trees, ambiguity score, dynamic capability & replanning |
 | **Phase 12**| Advanced Multimodal Intel | 🟢 COMPLETE | Audio/video timestamps, ChartRef data series, Multimodal studio |
+| **Phase 13**| Dataset & Data Analysis   | 🟢 COMPLETE | TabularParser, DataAnalysisTool, DeterministicMathTool, UI |
 
 ### Immediate Focus Areas
-1. **Phase 13: Dataset & Data Analysis Intelligence** (Tabular data processing CSV/Excel/JSON with deterministic calculation tools).
-2. **Phase 14: Document & Paper Intelligence** (200-page academic paper structure parsing and methodology diffs).
+1. **Phase 14: Document & Paper Intelligence** (200-page academic paper structure parsing and methodology diffs).
+2. **Phase 15: Deep Research Engine** (Autonomous iterative feedback loops with CriticAgent).

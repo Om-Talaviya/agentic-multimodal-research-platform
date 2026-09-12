@@ -161,14 +161,14 @@ flowchart TD
 ## 5. Roadmap Technical Requirements (Phases 9 – 26)
 
 ### Generation 1: Intelligent Research Core
-- **Phase 9 (Knowledge Automation - NEXT)**: Automated asynchronous ingestion worker connecting upload to vector/BM25 indexing; Planner integration to query existing knowledge before dispatching web tasks.
-- **Phase 10 (Citation Intelligence)**: Data contract for `Citation` model anchoring claims to exact character/line offsets and page indices in source documents.
-- **Phase 11 (Advanced Planning)**: Hierarchical planning engine capable of 3-level recursive task decomposition.
+- **Phase 9 (Knowledge Automation - COMPLETE)**: Automated asynchronous ingestion worker connecting upload to vector/BM25 indexing; Planner integration to query existing knowledge before dispatching web tasks.
+- **Phase 10 (Citation Intelligence - COMPLETE)**: Data contract for `Citation` model anchoring claims to exact character/line offsets, paragraph indices, and page coordinates in source documents, with pairwise contradiction detection.
+- **Phase 11 (Advanced Planning - COMPLETE)**: Hierarchical planning engine with `QueryTreeNode` recursive decomposition, ambiguity scoring, and closed-loop dynamic replanning.
 
 ### Generation 2: Multimodal Intelligence
-- **Phase 12 (Advanced Multimodal)**: Multi-modal context assembler handling interleaved text, charts, and image tensors.
-- **Phase 13 (Data Intelligence)**: Sandboxed pandas/polars execution engine for statistical analysis on uploaded datasets.
-- **Phase 14 (Paper Intelligence)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
+- **Phase 12 (Advanced Multimodal - COMPLETE)**: Multi-modal context assembler handling interleaved text, charts (`ChartRef`), and audio/video timestamp segments (`[MM:SS - MM:SS]`).
+- **Phase 13 (Data Intelligence - COMPLETE)**: Deterministic execution engine (`DataAnalysisTool`, `DeterministicMathTool`, `TabularParser`) for statistical profiling, aggregations, correlation, linear regression, and AST math over CSV/TSV/Excel/JSON datasets.
+- **Phase 14 (Paper Intelligence - NEXT)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
 
 ### Generation 3: Autonomous Research
 - **Phase 15 (Deep Research)**: Dynamic re-planning trigger when Critic confidence falls below threshold $\tau < 0.70$.

@@ -90,14 +90,23 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 13 — Dataset & Data Analysis Intelligence
+- [x] **Phase 13: Dataset & Data Analysis Intelligence**
+  - [x] Multimodal tabular ingestion: Created `TabularParser` for `.csv`, `.tsv`, `.xlsx`, `.xls`, `.json` with automated type inference, column statistics (mean, median, std dev, min/max, nulls, unique count), and markdown summary table generation.
+  - [x] Deterministic mathematical calculation engine: Built `DataAnalysisTool` (descriptive statistics, aggregations, Pearson correlation, linear regression, filtering) and `DeterministicMathTool` (safe AST mathematical evaluator) enforcing **ADR 007** and **ADR 013** zero-hallucination standards.
+  - [x] Agent integration: Equipped `DocumentAnalysisAgent` with `DataAnalysisTool` and `DeterministicMathTool` for deterministic data processing.
+  - [x] API & Ingestion updates: Whitelisted dataset formats (`CSV`, `TSV`, `EXCEL`, `JSON`) in `DocumentFormat`, `SourceType`, and `/documents/upload` endpoint.
+  - [x] Semantic chunking: Extended `SemanticChunker` with tabular profile chunking preserving column statistics and sample rows for dual vector/BM25 indexing.
+  - [x] Interactive dataset UI: Developed `DatasetViewer.tsx` with summary overview, column profile metric tables, and raw data sample tabs.
+  - [x] Unit test suites: Added `test_tabular_parser.py` and `test_data_analysis_tool.py`.
+
+---
+
+## 🟡 Immediate Next Milestone: Phase 14 — Document & Paper Intelligence
 
 ### Generation 2: Multimodal Intelligence
-- [ ] **Phase 13: Dataset & Data Analysis Intelligence**
-  - [ ] Tabular data processing (CSV, Excel, JSON) using deterministic Python calculation tools.
-  - [ ] Statistical summaries, trend analysis, and chart visualization generation.
 - [ ] **Phase 14: Document & Paper Intelligence**
-  - [ ] Deep academic paper structure parsing and methodology comparison across preprints.
+  - [ ] Deep academic paper structure parsing (200+ page PDFs, section hierarchies, author metadata, abstract, bibliography).
+  - [ ] Cross-paper methodology comparison, experimental result extraction, and research preprint synthesis.
 
 ### Generation 3: Autonomous Research
 - [ ] **Phase 15: Deep Research Engine**

@@ -199,14 +199,14 @@ Authenticated requests flow through the entire system with complete user attribu
 ## 5. The 6-Generation Long-Term Architecture (Phases 9 – 26)
 
 ### Generation 1: Intelligent Research Core (Phases 9 – 11)
-- **Phase 9 (Knowledge Automation - NEXT)**: Automated document ingestion daemon and planner-integrated retrieval.
-- **Phase 10 (Evidence & Citation Intelligence)**: Fine-grained claim-to-source anchoring with page/coordinate coordinates.
-- **Phase 11 (Advanced Research Planning)**: Hierarchical planning engine capable of 3-level recursive task decomposition.
+- **Phase 9 (Knowledge Automation - COMPLETE)**: Automated document ingestion daemon and planner-integrated retrieval.
+- **Phase 10 (Evidence & Citation Intelligence - COMPLETE)**: Fine-grained claim-to-source anchoring with page/paragraph coordinates and pairwise contradiction detection.
+- **Phase 11 (Advanced Research Planning - COMPLETE)**: Hierarchical planning engine with `QueryTreeNode` recursive subquestion decomposition and closed-loop replanning.
 
 ### Generation 2: Multimodal Intelligence (Phases 12 – 14)
-- **Phase 12 (Advanced Multimodal Research)**: Unified multi-modal context assembler for 50+ page PDFs, images, charts, and audio/video transcripts.
-- **Phase 13 (Dataset & Data Analysis Intelligence)**: Tabular data analysis (CSV/Excel/JSON) using sandboxed Python calculation tools.
-- **Phase 14 (Document & Paper Intelligence)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
+- **Phase 12 (Advanced Multimodal Research - COMPLETE)**: Unified multi-modal context assembler for 50+ page PDFs, images, charts (`ChartRef`), and audio/video timestamp transcripts (`[MM:SS - MM:SS]`).
+- **Phase 13 (Dataset & Data Analysis Intelligence - COMPLETE)**: Tabular data analysis (CSV, TSV, Excel, JSON) using deterministic Python calculation tools (`DataAnalysisTool`, `DeterministicMathTool`, `TabularParser`).
+- **Phase 14 (Document & Paper Intelligence - NEXT)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
 
 ### Generation 3: Autonomous Research (Phases 15 – 17)
 - **Phase 15 (Deep Research Engine)**: Recursive self-healing research loops driven by Critic confidence thresholds.

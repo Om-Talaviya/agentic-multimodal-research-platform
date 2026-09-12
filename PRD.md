@@ -172,22 +172,22 @@ The output is a structured intelligence dossier:
 ### 7.1 Detailed Phase Breakdown
 
 #### Generation 1 — Intelligent Research Core
-- **Phase 9: Intelligent Knowledge Automation (NEXT)**:
+- **Phase 9: Intelligent Knowledge Automation (COMPLETE)**:
   - Automated document pipeline: `Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`.
   - Planner awareness: Planner evaluates whether user documents contain relevant context before scheduling external searches.
-- **Phase 10: Evidence & Citation Intelligence**:
+- **Phase 10: Evidence & Citation Intelligence (COMPLETE)**:
   - Fine-grained claim extraction and source linking with page/paragraph coordinates.
   - Source reliability scoring, contradictory claim detection, and citation-aware report generation.
-- **Phase 11: Advanced Research Planning**:
-  - Complex problem decomposition into subquestions, identifying evidence prerequisites, selecting research methods, and assigning specialized agent roles.
+- **Phase 11: Advanced Research Planning (COMPLETE)**:
+  - Complex problem decomposition into hierarchical query trees, identifying evidence prerequisites, selecting research methods, assigning specialized agent roles, and closed-loop replanning.
 
 #### Generation 2 — Multimodal Intelligence
-- **Phase 12: Advanced Multimodal Research**:
-  - Unified synthesis across 50+ page PDFs, research papers, microscope/product images, charts, graphs, tables, audio recordings, and video transcripts.
-- **Phase 13: Dataset & Data Analysis Intelligence**:
-  - Schema inference and analysis for CSV, Excel, and JSON data.
-  - Integration of deterministic Python computation tools for statistics (mean, correlation, ANOVA, regression) and visualization rather than relying on LLM math guesses.
-- **Phase 14: Document & Paper Intelligence**:
+- **Phase 12: Advanced Multimodal Research (COMPLETE)**:
+  - Unified synthesis across 50+ page PDFs, research papers, images, charts, graphs, tables, audio recordings, and video transcripts with timestamp and coordinate grounding.
+- **Phase 13: Dataset & Data Analysis Intelligence (COMPLETE)**:
+  - Schema inference and analysis for CSV, TSV, Excel, and JSON data.
+  - Integration of deterministic Python computation tools for statistics (mean, correlation, regression) and visualization enforcing **ADR 007** and **ADR 013** zero-hallucination standards.
+- **Phase 14: Document & Paper Intelligence (NEXT)**:
   - Deep semantic parsing of academic literature (abstract, introduction, methods, results, limitations, references) with automated cross-paper methodology comparisons.
 
 #### Generation 3 — Autonomous Research

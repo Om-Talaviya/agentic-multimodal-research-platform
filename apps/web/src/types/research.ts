@@ -114,6 +114,57 @@ export interface ChartRef {
   page_number?: number | null
 }
 
+export interface ColumnProfile {
+  name: string
+  data_type: string
+  total_count: number
+  null_count: number
+  unique_count: number
+  min_value?: any
+  max_value?: any
+  mean_value?: number | null
+  median_value?: number | null
+  std_dev?: number | null
+  sample_values?: any[]
+}
+
+export interface DatasetProfile {
+  id: string
+  total_rows: number
+  total_cols: number
+  columns: ColumnProfile[]
+  sample_rows: Record<string, any>[]
+  summary_text?: string
+  metadata?: Record<string, any>
+}
+
+export interface DataAnalysisResult {
+  success: boolean
+  operation: string
+  column?: string
+  column_y?: string
+  count?: number
+  mean?: number
+  median?: number
+  std_dev?: number
+  variance?: number
+  min?: number
+  max?: number
+  sum?: number
+  q25?: number
+  q50?: number
+  q75?: number
+  iqr?: number
+  pearson_r?: number
+  r_squared?: number
+  slope?: number
+  intercept?: number
+  equation?: string
+  results?: Record<string, number>
+  summary_markdown?: string
+  error?: string
+}
+
 export interface Citation {
   id: string
   claim: string

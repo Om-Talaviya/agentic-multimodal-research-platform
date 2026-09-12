@@ -4,7 +4,7 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟢 Completed Milestones (Phases 1 – 8B)
+## 🟢 Completed Milestones (Phases 1 – 9)
 
 - [x] **Phase 1: Foundation**
   - [x] Modular Python monorepo setup (`packages/` + `apps/`).
@@ -47,44 +47,66 @@ This document tracks all completed engineering milestones, the immediate active 
   - [x] Transactional row locking (`SELECT ... FOR UPDATE`) preventing quota oversubscription under concurrent load.
   - [x] User context propagation (`JWT $\rightarrow$ ResearchPipeline $\rightarrow$ AgentContext $\rightarrow$ ModelGateway $\rightarrow$ UsageRecord`).
   - [x] Quota-aware fallback routing.
+- [x] **Phase 9: Intelligent Knowledge Automation**
+  - [x] Automated end-to-end ingestion and dual-indexing (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`).
+  - [x] Document status lifecycle (`pending` $\rightarrow$ `processing` $\rightarrow$ `ready` / `failed`) with repo status update methods.
+  - [x] `PlannerAgent` knowledge base integration inspecting local documents before decomposing inquiries.
+  - [x] `DocumentAnalysisAgent` hybrid search integration with `KnowledgeSearchTool`.
+  - [x] Document management REST endpoints (`GET /search`, `POST /{id}/reindex`, `DELETE /{id}`).
 - [x] **Documentation Architecture Synchronization** (`commit: a00949e`)
   - [x] Comprehensive documentation suite across root, `/docs/`, `/design/`, and roadmap specs.
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 9 — Intelligent Knowledge Automation
-
-- [ ] **Task 9.1: Automated End-to-End Ingestion Worker**
-  - [ ] Implement automatic asynchronous pipeline daemon: `Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`.
-  - [ ] Add background task worker updating document status from `pending` $\rightarrow$ `processing` $\rightarrow$ `ready`.
-- [ ] **Task 9.2: PlannerAgent Knowledge Base Integration**
-  - [ ] Inject knowledge base index summary into `PlannerAgent` prompt.
-  - [ ] Enable Planner to evaluate: *"Do I have existing relevant knowledge?"* before scheduling external web searches.
-- [ ] **Task 9.3: Automated Retrieval in Agent DAG**
-  - [ ] Automatically route relevant private knowledge chunks to specialized research agents.
-  - [ ] Provide unified hybrid context combining user documents and live web search.
-- [ ] **Task 9.4: End-to-End Verification & Testing**
-  - [ ] Write pytest integration tests for automated document upload through RAG retrieval.
-  - [ ] Verify zero-touch indexing with PDF, DOCX, and image uploads.
+- [x] **Phase 10: Evidence & Citation Intelligence**
+  - [x] Fine-grained claim extraction and coordinate anchoring (`page_number`, `paragraph_index`, `table_row`, `table_col`, `char_start`, `char_end`, `exact_quote`).
+  - [x] Structured `Citation`, `CitationCoordinates`, and `Contradiction` models with SQLite / PostgreSQL 16 cross-compatibility.
+  - [x] Contradiction Detection Engine in `CriticAgent` with pairwise taxonomy (`direct_conflict`, `numerical_discrepancy`, `methodological_divergence`).
+  - [x] Citation-aware `ReportAgent` synthesis linking findings to structured citations and quantitative confidence index (`confidence_score`).
+  - [x] Pipeline orchestration propagating contradictions and factual grounding scores through `ResearchPipeline`.
+  - [x] TypeScript interfaces in `apps/web` (`Citation`, `CitationCoordinates`, `Contradiction`).
+  - [x] Unit test suites (`test_citation_intelligence.py`, `test_critic_contradiction_detection.py`, `test_report_citation_synthesis.py`).
 
 ---
 
-## 🔮 Future Roadmap Backlog (Phases 10 – 26)
+- [x] **Phase 11: Advanced Research Planning**
+  - [x] **Task 11.1: Deep Subquestion Decomposition & Query Tree Generation**: Hierarchical `QueryTreeNode` multi-tier decomposition, ambiguity scoring ($0.0 - 1.0$), and inferred scope parameterization (`InferredScope`).
+  - [x] **Task 11.2: Dynamic Agent Role & Capability Assignment**: Granular DAG routing matching subquestions to specialized agent personas with execution contracts.
+  - [x] **Task 11.3: Adaptive Planning & Dynamic Replanning**: Closed-loop dynamic replanning (`PlannerAgent.replan()`) triggering `task_spawned` and `dag_replanned` when contradictions or evidentiary gaps are flagged.
+  - [x] **Task 11.4: Interactive Research Planning Studio**: Real-time `QueryTreeViewer.tsx` component with expandable branch visualization and WebSocket progress streaming.
+  - [x] **Task 11.5: Automated Verification**: Comprehensive unit test suite in `test_planner_advanced_planning.py`.
 
-### Generation 1: Intelligent Research Core
-- [ ] **Phase 10: Evidence & Citation Intelligence**
-  - [ ] Fine-grained claim extraction and source linking with page/paragraph coordinates.
-  - [ ] Source reliability scoring, contradictory claim detection, and citation-aware report generation.
-- [ ] **Phase 11: Advanced Research Planning**
-  - [ ] Deep problem decomposition into subquestions with specialized agent roles.
+---
+
+- [x] **Phase 12: Advanced Multimodal Research**
+  - [x] Multimodal schema unification: Extended `CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, `chart_data`.
+  - [x] Speech & Audio Intelligence: Created `AudioParser` supporting `.mp3`, `.wav`, `.m4a`, `.flac`, `.ogg` with timestamped speech segments and speaker diarization.
+  - [x] Video Understanding: Created `VideoParser` generating synchronized timeline events, dialogue transcripts, and keyframe snapshots.
+  - [x] Scientific Chart & Diagram Parsing: Upgraded `ImageParser` to detect charts, extracting `ChartRef` models with structured JSON data series and Markdown data tables.
+  - [x] Multimodal Chunking & Dual-Indexing: Upgraded `SemanticChunker` to preserve audio/video timestamps and chart series for vector and BM25 RRF indexing.
+  - [x] API Whitelist Extension: Whitelisted audio/video MIME types and file extensions in `apps/api/src/api/routes/documents.py`.
+  - [x] Interactive Multimodal UI: Built `MultimodalEvidenceViewer.tsx` studio component with audio/video badges, timestamp ranges, and interactive chart inspector.
+  - [x] Automated Unit Test Suite: Added comprehensive test suite in `packages/ingestion/tests/test_multimodal_audio_video.py`.
+
+---
+
+- [x] **Phase 13: Dataset & Data Analysis Intelligence**
+  - [x] Multimodal tabular ingestion: Created `TabularParser` for `.csv`, `.tsv`, `.xlsx`, `.xls`, `.json` with automated type inference, column statistics (mean, median, std dev, min/max, nulls, unique count), and markdown summary table generation.
+  - [x] Deterministic mathematical calculation engine: Built `DataAnalysisTool` (descriptive statistics, aggregations, Pearson correlation, linear regression, filtering) and `DeterministicMathTool` (safe AST mathematical evaluator) enforcing **ADR 007** and **ADR 013** zero-hallucination standards.
+  - [x] Agent integration: Equipped `DocumentAnalysisAgent` with `DataAnalysisTool` and `DeterministicMathTool` for deterministic data processing.
+  - [x] API & Ingestion updates: Whitelisted dataset formats (`CSV`, `TSV`, `EXCEL`, `JSON`) in `DocumentFormat`, `SourceType`, and `/documents/upload` endpoint.
+  - [x] Semantic chunking: Extended `SemanticChunker` with tabular profile chunking preserving column statistics and sample rows for dual vector/BM25 indexing.
+  - [x] Interactive dataset UI: Developed `DatasetViewer.tsx` with summary overview, column profile metric tables, and raw data sample tabs.
+  - [x] Unit test suites: Added `test_tabular_parser.py` and `test_data_analysis_tool.py`.
+
+---
+
+## 🟡 Immediate Next Milestone: Phase 14 — Document & Paper Intelligence
 
 ### Generation 2: Multimodal Intelligence
-- [ ] **Phase 12: Advanced Multimodal Research**
-  - [ ] Unified context across 50+ page PDFs, research papers, images, charts, audio, and video.
-- [ ] **Phase 13: Dataset & Data Analysis Intelligence**
-  - [ ] Tabular data processing (CSV, Excel, JSON) using deterministic Python calculation tools.
 - [ ] **Phase 14: Document & Paper Intelligence**
-  - [ ] Deep academic paper structure parsing and methodology comparison across preprints.
+  - [ ] Deep academic paper structure parsing (200+ page PDFs, section hierarchies, author metadata, abstract, bibliography).
+  - [ ] Cross-paper methodology comparison, experimental result extraction, and research preprint synthesis.
 
 ### Generation 3: Autonomous Research
 - [ ] **Phase 15: Deep Research Engine**
