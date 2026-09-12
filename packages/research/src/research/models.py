@@ -12,6 +12,30 @@ def utc_now() -> datetime:
     return datetime.now(UTC)
 
 
+class DeepResearchConfig(BaseModel):
+    """Configuration controls and convergence thresholds for autonomous recursive deep research."""
+    enabled: bool = True
+    max_iterations: int = Field(default=3, ge=1, le=5)
+    min_confidence_threshold: float = Field(default=0.85, ge=0.5, le=1.0)
+    max_spawned_per_round: int = Field(default=4, ge=1, le=8)
+    diminishing_returns_threshold: float = 0.02
+
+
+class ResearchIteration(BaseModel):
+    """Telemetry and state tracking for a single autonomous recursive research loop."""
+    iteration_index: int
+    hypotheses: List[str] = Field(default_factory=list)
+    unresolved_gaps: List[str] = Field(default_factory=list)
+    gap_queries: List[str] = Field(default_factory=list)
+    confidence_score: float = 0.0
+    confidence_delta: float = 0.0
+    spawned_task_count: int = 0
+    is_converged: bool = False
+    convergence_reason: Optional[str] = None
+    started_at: datetime = Field(default_factory=utc_now)
+    completed_at: Optional[datetime] = None
+
+
 class ResearchRequest(BaseModel):
     question: str = Field(..., min_length=10, max_length=5000)
     context: Optional[str] = Field(None, max_length=10000)
@@ -35,6 +59,7 @@ class ResearchJob(BaseModel):
     updated_at: datetime = Field(default_factory=utc_now)
     completed_at: Optional[datetime] = None
     error_message: Optional[str] = None
+    iterations: List[ResearchIteration] = Field(default_factory=list)
 
 
 class QueryTreeNode(BaseModel):
@@ -101,6 +126,8 @@ class ResearchPlan(BaseModel):
     inferred_scope: Optional[InferredScope] = None
     replan_count: int = 0
     plan_explanation: str = ""
+    iterations: List[ResearchIteration] = Field(default_factory=list)
+    deep_research_config: Optional[DeepResearchConfig] = None
 
 
 class CitationCoordinates(BaseModel):
@@ -190,4 +217,5 @@ class ResearchReport(BaseModel):
     confidence_score: float = 0.85
     conclusions: List[str] = Field(default_factory=list)
     limitations: List[str] = Field(default_factory=list)
+    iterations: List[ResearchIteration] = Field(default_factory=list)
     generated_at: datetime = Field(default_factory=utc_now)

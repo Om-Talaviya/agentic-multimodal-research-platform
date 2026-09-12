@@ -209,8 +209,8 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 14 (Document & Paper Intelligence - COMPLETE)**: Academic research paper parser (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and cross-paper comparative matrices (`PaperAnalysisTool`, `MethodologyComparisonTool`).
 
 ### Generation 3: Autonomous Research (Phases 15 – 17)
-- **Phase 15 (Deep Research Engine - NEXT)**: Recursive self-healing research loops driven by Critic confidence thresholds.
-- **Phase 16 (Research Memory)**: Cross-session persistent research memory indexing past investigations.
+- **Phase 15 (Deep Research Engine - COMPLETE)**: Autonomous recursive multi-round research loops (`DeepResearchEngine`), recursive gap & hypothesis formulation with `CriticAgent`, adaptive DAG expansion with `PlannerAgent.replan()`, strict convergence guardrails ($\tau \ge 0.85$, max iterations, $\Delta \tau < 0.02$), WebSocket iteration telemetry, and `DeepResearchTracker.tsx` timeline studio.
+- **Phase 16 (Research Memory - NEXT)**: Cross-session persistent research memory indexing past investigations.
 - **Phase 17 (Long-Term Knowledge Graph)**: Entity-relationship graph networks for multi-hop relational reasoning.
 
 ### Generation 4: Collaboration Platform (Phases 18 – 19)

@@ -145,38 +145,47 @@ Planning Guidelines:
 4. Keep the plan rigorous, creating 3 to 6 high-impact executable steps.
 """
 
-    REPLAN_PROMPT = """You are the Lead Research Strategist reviewing an in-progress research execution that requires adaptive replanning.
-The Critic Agent or Synthesis step flagged evidentiary gaps, unverified claims, or critical contradictions between sources.
+    REPLAN_PROMPT = """You are the Lead Research Strategist directing an autonomous deep research recursive loop (Iteration #{iteration_index}).
+The Critic Agent evaluated collected findings and highlighted contradictions, evidentiary gaps, and unresolved hypotheses.
 
 Original Objective: {objective}
 Current Inferred Scope: {scope}
+Targeted Hypotheses to Validate:
+{hypotheses}
+
+Unresolved Evidentiary Gaps:
+{unresolved_gaps}
+
+Critic Gap Queries:
+{gap_queries}
+
 Identified Contradictions:
 {contradictions}
 
 Low-Confidence or Unverified Claims:
 {low_confidence_evidence}
 
-Generate a delta replanning JSON object with targeted follow-up steps to resolve the contradictions and fill the factual gaps:
-{
-    "plan_explanation": "Rationale for dynamic replanning",
+Generate a delta replanning JSON object with targeted follow-up steps to resolve the contradictions, validate hypotheses, and close evidentiary gaps:
+{{
+    "plan_explanation": "Rationale for dynamic replanning in iteration {iteration_index}",
     "spawned_steps": [
-        {
+        {{
             "id": "step_dynamic_1",
             "name": "Targeted deep-dive step title",
-            "description": "Specific investigation to resolve conflicting claim X vs Y",
+            "description": "Specific investigation to resolve conflicting claim or test hypothesis",
             "agent": "web_research|document_analysis|synthesis",
-            "inputs": {
-                "query": "laser-focused query to resolve contradiction",
+            "inputs": {{
+                "query": "laser-focused search query",
                 "document_ids": []
-            },
+            }},
             "depends_on": [],
             "priority": 1,
             "parent_id": "root_node",
             "depth": 1,
             "is_dynamic": true
-        }
+        }}
     ]
-}
+}}
 """
 
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
@@ -244,6 +253,10 @@ Generate a delta replanning JSON object with targeted follow-up steps to resolve
         evidence: List[Evidence],
         contradictions: List[Contradiction],
         context: AgentContext,
+        unresolved_gaps: Optional[List[str]] = None,
+        gap_queries: Optional[List[str]] = None,
+        hypotheses: Optional[List[str]] = None,
+        iteration_index: int = 1,
     ) -> AgentResult:
         """Dynamically generate targeted follow-up tasks to resolve contradictions and fill low-confidence gaps."""
         low_conf = [e for e in evidence if e.confidence < 0.65 or e.verification_status != "verified"]
@@ -255,10 +268,18 @@ Generate a delta replanning JSON object with targeted follow-up steps to resolve
         low_conf_text = "\n".join(
             [f"- Claim: '{e.claim}' (Confidence: {e.confidence:.2f}, Status: {e.verification_status})" for e in low_conf[:5]]
         ) or "None"
+
+        gaps_text = "\n".join([f"- {g}" for g in (unresolved_gaps or [])]) or "None"
+        gap_queries_text = "\n".join([f"- {q}" for q in (gap_queries or [])]) or "None"
+        hypotheses_text = "\n".join([f"- {h}" for h in (hypotheses or [])]) or "None"
         
         prompt = self.REPLAN_PROMPT.format(
+            iteration_index=iteration_index,
             objective=current_plan.objective,
             scope=current_plan.inferred_scope.model_dump_json() if current_plan.inferred_scope else "N/A",
+            hypotheses=hypotheses_text,
+            unresolved_gaps=gaps_text,
+            gap_queries=gap_queries_text,
             contradictions=contradictions_text,
             low_confidence_evidence=low_conf_text,
         )
@@ -280,9 +301,26 @@ Generate a delta replanning JSON object with targeted follow-up steps to resolve
             spawned_steps_raw = replan_data.get("spawned_steps", [])
             spawned_steps = [ResearchStep(**s) for s in spawned_steps_raw]
             
+            # If LLM didn't spawn any steps but we have gap queries, construct fallback steps
+            if not spawned_steps and gap_queries:
+                for idx, gq in enumerate(gap_queries[:3]):
+                    spawned_steps.append(
+                        ResearchStep(
+                            id=f"step_dynamic_gap_{iteration_index}_{idx+1}",
+                            name=f"Investigate gap: {gq[:40]}",
+                            description=f"Investigate missing evidence: {gq}",
+                            agent="web_research",
+                            inputs={"query": gq},
+                            priority=1,
+                            depth=iteration_index,
+                            is_dynamic=True,
+                        )
+                    )
+
             logger.info(
                 "Dynamic replan executed",
                 job_id=context.research_job_id,
+                iteration=iteration_index,
                 spawned_steps=len(spawned_steps),
                 reason=replan_data.get("plan_explanation"),
             )
@@ -290,7 +328,7 @@ Generate a delta replanning JSON object with targeted follow-up steps to resolve
             return AgentResult(
                 success=True,
                 output={
-                    "plan_explanation": replan_data.get("plan_explanation", "Dynamic replan for gap resolution"),
+                    "plan_explanation": replan_data.get("plan_explanation", f"Dynamic replan for iteration #{iteration_index}"),
                     "spawned_steps": spawned_steps,
                 },
                 metadata={"model": response.model, "tokens": response.usage},

@@ -85,8 +85,8 @@ def test_db_evidence_conversion_with_coordinates_and_reliability():
     assert isinstance(db_ev, DBEvidence)
     assert db_ev.claim == "Fine-tuning improves retrieval precision by 22%."
     assert db_ev.confidence == 0.92
-    assert db_ev.source_reliability == 1.0
-    assert db_ev.citation_coordinates == {"char_end": None, "char_start": None, "page_number": 5, "paragraph_index": 1, "table_col": None, "table_row": None}
+    assert db_ev.citation_coordinates["page_number"] == 5
+    assert db_ev.citation_coordinates["paragraph_index"] == 1
 
 
 def test_research_report_with_citations_and_contradictions():

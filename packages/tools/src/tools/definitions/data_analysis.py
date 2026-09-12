@@ -41,6 +41,12 @@ SAFE_MATH_FUNCTIONS = {
     "median": statistics.median,
     "stdev": statistics.stdev,
     "variance": statistics.variance,
+    "sin": math.sin,
+    "cos": math.cos,
+    "tan": math.tan,
+    "asin": math.asin,
+    "acos": math.acos,
+    "atan": math.atan,
 }
 
 
@@ -58,26 +64,26 @@ def safe_eval_ast(node: ast.AST) -> Any:
         op_type = type(node.op)
         if op_type in SAFE_OPERATORS:
             return SAFE_OPERATORS[op_type](left, right)
-        raise ValueError(f"Unsupported binary operator: {op_type.__name__}")
+        raise ValueError(f"Disallowed AST node or function: Unsupported binary operator {op_type.__name__}")
     elif isinstance(node, ast.UnaryOp):
         operand = safe_eval_ast(node.operand)
         op_type = type(node.op)
         if op_type in SAFE_OPERATORS:
             return SAFE_OPERATORS[op_type](operand)
-        raise ValueError(f"Unsupported unary operator: {op_type.__name__}")
+        raise ValueError(f"Disallowed AST node or function: Unsupported unary operator {op_type.__name__}")
     elif isinstance(node, ast.Call):
         if isinstance(node.func, ast.Name):
             func_name = node.func.id
             if func_name in SAFE_MATH_FUNCTIONS:
                 args = [safe_eval_ast(arg) for arg in node.args]
                 return SAFE_MATH_FUNCTIONS[func_name](*args)
-            raise ValueError(f"Math function '{func_name}' is not allowed in safe sandbox")
-        raise ValueError("Dynamic or nested function calls are forbidden")
+            raise ValueError(f"Disallowed AST node or function: Math function '{func_name}' is not allowed in safe sandbox")
+        raise ValueError("Disallowed AST node or function: Dynamic or nested function calls are forbidden")
     elif isinstance(node, ast.List):
         return [safe_eval_ast(elem) for elem in node.elts]
     elif isinstance(node, ast.Tuple):
         return tuple(safe_eval_ast(elem) for elem in node.elts)
-    raise ValueError(f"Unsupported AST expression node type: {type(node).__name__}")
+    raise ValueError(f"Disallowed AST node or function: Unsupported AST expression node type {type(node).__name__}")
 
 
 class DeterministicMathTool(Tool):
@@ -101,26 +107,29 @@ class DeterministicMathTool(Tool):
         permissions=[Permission.CODE_EXECUTION],
     )
 
-    async def execute(self, expression: str, **kwargs: Any) -> Dict[str, Any]:
+    async def execute(self, expression: str, **kwargs: Any) -> Any:
+        from tools.base import ToolResult
         expr_str = expression.strip()
         try:
             parsed = ast.parse(expr_str, mode="eval")
             result = safe_eval_ast(parsed)
             formatted = f"{result:.6f}".rstrip("0").rstrip(".") if isinstance(result, float) else str(result)
-            return {
-                "success": True,
-                "expression": expr_str,
-                "result": result,
-                "formatted_result": formatted,
-                "type": type(result).__name__,
-            }
+            return ToolResult(
+                success=True,
+                data={
+                    "expression": expr_str,
+                    "result": result,
+                    "formatted_result": formatted,
+                    "type": type(result).__name__,
+                },
+            )
         except Exception as e:
             logger.warning("Deterministic math evaluation failed", expression=expr_str, error=str(e))
-            return {
-                "success": False,
-                "expression": expr_str,
-                "error": str(e),
-            }
+            return ToolResult(
+                success=False,
+                error=str(e),
+                data={"expression": expr_str},
+            )
 
 
 class DataAnalysisTool(Tool):
@@ -193,26 +202,44 @@ class DataAnalysisTool(Tool):
         agg_function: str = "mean",
         filter_condition: Optional[str] = None,
         **kwargs: Any,
-    ) -> Dict[str, Any]:
+    ) -> Any:
+        from tools.base import ToolResult
+
         if not data:
-            return {"success": False, "error": "No data records provided"}
+            return ToolResult(success=False, error="No data records provided")
+
+        # Flexible parameter aliases
+        target_col = (
+            column
+            or kwargs.get("col")
+            or kwargs.get("col_x")
+            or kwargs.get("x")
+            or (kwargs.get("columns")[0] if kwargs.get("columns") and isinstance(kwargs.get("columns"), list) else None)
+        )
+        target_col_y = column_y or kwargs.get("col_y") or kwargs.get("y")
+        target_group = groupby_column or kwargs.get("group_by") or kwargs.get("groupby")
+        target_agg = agg_function if agg_function != "mean" else (kwargs.get("agg_func") or kwargs.get("agg") or "mean")
 
         try:
             if operation == "describe":
-                return self._describe(data, column)
+                res = self._describe(data, target_col)
             elif operation == "aggregate":
-                return self._aggregate(data, groupby_column, column, agg_function)
+                res = self._aggregate(data, target_group, target_col, target_agg)
             elif operation == "correlation":
-                return self._correlation(data, column, column_y)
+                res = self._correlation(data, target_col, target_col_y)
             elif operation == "linear_regression":
-                return self._linear_regression(data, column, column_y)
+                res = self._linear_regression(data, target_col, target_col_y)
             elif operation == "filter":
-                return self._filter(data, column, filter_condition)
+                res = self._filter(data, target_col, filter_condition or kwargs.get("condition"))
             else:
-                return {"success": False, "error": f"Unsupported operation: {operation}"}
+                return ToolResult(success=False, error=f"Unsupported operation: {operation}")
+
+            if isinstance(res, dict) and res.get("success") is False:
+                return ToolResult(success=False, error=res.get("error", "Analysis failed"), data=res)
+            return ToolResult(success=True, data=res)
         except Exception as e:
             logger.warning("Data analysis tool execution failed", operation=operation, error=str(e))
-            return {"success": False, "operation": operation, "error": str(e)}
+            return ToolResult(success=False, error=str(e))
 
     def _extract_numeric_series(self, data: List[Any], col: Optional[str]) -> List[float]:
         """Extract a clean float list from rows or raw array."""
@@ -229,7 +256,36 @@ class DataAnalysisTool(Tool):
         return values
 
     def _describe(self, data: List[Any], column: Optional[str]) -> Dict[str, Any]:
-        """Compute univariate descriptive statistics."""
+        """Compute univariate descriptive statistics or dataset-wide profiling."""
+        if not column and data and isinstance(data[0], dict):
+            # Dataset-wide description across all columns
+            col_stats: Dict[str, Any] = {}
+            for k in data[0].keys():
+                vals = self._extract_numeric_series(data, k)
+                if vals and len(vals) == len(data):
+                    n = len(vals)
+                    col_stats[k] = {
+                        "type": "numeric",
+                        "mean": statistics.mean(vals),
+                        "min": min(vals),
+                        "max": max(vals),
+                        "std_dev": statistics.stdev(vals) if n > 1 else 0.0,
+                        "median": statistics.median(vals),
+                    }
+                else:
+                    raw_vals = [d.get(k) for d in data if isinstance(d, dict)]
+                    col_stats[k] = {
+                        "type": "categorical",
+                        "unique_count": len(set(str(v) for v in raw_vals)),
+                    }
+            return {
+                "success": True,
+                "operation": "describe",
+                "row_count": len(data),
+                "column_count": len(col_stats),
+                "statistics": col_stats,
+            }
+
         values = self._extract_numeric_series(data, column)
         if not values:
             return {"success": False, "error": f"No valid numeric data found in column '{column}'"}
@@ -302,21 +358,32 @@ class DataAnalysisTool(Tool):
                     continue
 
         results: Dict[str, float] = {}
+        agg_out: Dict[str, Any] = {
+            "success": True,
+            "operation": "aggregate",
+            "groupby_column": groupby_col,
+            "target_column": target_col,
+            "agg_function": agg_func,
+            "results": results,
+        }
+
         for g_name, vals in groups.items():
             if not vals:
                 continue
             if agg_func == "sum":
-                results[g_name] = sum(vals)
+                v = sum(vals)
             elif agg_func == "min":
-                results[g_name] = min(vals)
+                v = min(vals)
             elif agg_func == "max":
-                results[g_name] = max(vals)
+                v = max(vals)
             elif agg_func == "count":
-                results[g_name] = float(len(vals))
+                v = float(len(vals))
             elif agg_func == "median":
-                results[g_name] = statistics.median(vals)
+                v = statistics.median(vals)
             else:  # default mean
-                results[g_name] = statistics.mean(vals)
+                v = statistics.mean(vals)
+            results[g_name] = v
+            agg_out[g_name] = {target_col: v}
 
         # Build Markdown Table
         table_lines = [
@@ -326,15 +393,8 @@ class DataAnalysisTool(Tool):
         for k, v in sorted(results.items(), key=lambda x: -x[1]):
             table_lines.append(f"| {k} | {v:.4f} | {len(groups[k])} |")
 
-        return {
-            "success": True,
-            "operation": "aggregate",
-            "groupby_column": groupby_col,
-            "target_column": target_col,
-            "agg_function": agg_func,
-            "results": results,
-            "summary_markdown": "\n".join(table_lines),
-        }
+        agg_out["summary_markdown"] = "\n".join(table_lines)
+        return agg_out
 
     def _correlation(self, data: List[Any], col_x: Optional[str], col_y: Optional[str]) -> Dict[str, Any]:
         """Compute Pearson correlation coefficient between two numeric columns."""

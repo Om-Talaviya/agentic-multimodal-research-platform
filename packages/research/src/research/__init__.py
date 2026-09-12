@@ -5,6 +5,7 @@ from research.models import (
     ResearchStep, ResearchPlan,
     Source, Evidence, Finding, ResearchReport,
     CitationCoordinates, Citation, Contradiction,
+    DeepResearchConfig, ResearchIteration,
 )
 from research.events import (
     ResearchEvent,
@@ -12,6 +13,7 @@ from research.events import (
     ResearchEventType,
     research_event_bus,
 )
+from research.deep_research import DeepResearchEngine
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -19,6 +21,8 @@ __all__ = [
     "ResearchStep", "ResearchPlan",
     "Source", "Evidence", "Finding", "ResearchReport",
     "CitationCoordinates", "Citation", "Contradiction",
+    "DeepResearchConfig", "ResearchIteration",
+    "DeepResearchEngine",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",

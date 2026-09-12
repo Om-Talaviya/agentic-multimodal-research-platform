@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, GitBranch } from 'lucide-react'
+import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck } from 'lucide-react'
 import { api, getResearchWebSocketUrl } from '../services/api'
 import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
 import { QueryTreeViewer } from '../components/QueryTreeViewer'
 import { MultimodalEvidenceViewer } from '../components/MultimodalEvidenceViewer'
+import { DeepResearchTracker } from '../components/DeepResearchTracker'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
@@ -126,7 +127,12 @@ export function ResearchDetail() {
                 evType === 'sources_added' ||
                 evType === 'evidence_added' ||
                 evType === 'verification_completed' ||
-                evType === 'report_generated'
+                evType === 'report_generated' ||
+                evType === 'deep_research_started' ||
+                evType === 'research_iteration_started' ||
+                evType === 'research_iteration_completed' ||
+                evType === 'deep_research_converged' ||
+                evType === 'deep_research_terminated'
               ) {
                 fetchData()
               }
@@ -264,6 +270,16 @@ export function ResearchDetail() {
       <div className="card">
         {activeTab === 'overview' && (
           <div>
+            {/* Deep Research Recursive Loop Telemetry */}
+            {(job.iterations && job.iterations.length > 0) || (plan?.iterations && plan.iterations.length > 0) ? (
+              <DeepResearchTracker
+                iterations={job.iterations || plan?.iterations || []}
+                config={plan?.deep_research_config}
+                currentConfidence={report?.confidence_score ?? 0.85}
+                isDeepResearchActive={job.status === 'running'}
+              />
+            ) : null}
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--spacing-md)', marginBottom: 'var(--spacing-lg)' }}>
               <div style={{ padding: 'var(--spacing-md)', background: 'var(--color-background)', borderRadius: 'var(--radius-md)' }}>
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Status</p>
@@ -298,6 +314,15 @@ export function ResearchDetail() {
 
         {activeTab === 'plan' && (
           <div>
+            {(job.iterations && job.iterations.length > 0) || (plan?.iterations && plan.iterations.length > 0) ? (
+              <DeepResearchTracker
+                iterations={job.iterations || plan?.iterations || []}
+                config={plan?.deep_research_config}
+                currentConfidence={report?.confidence_score ?? 0.85}
+                isDeepResearchActive={job.status === 'running'}
+              />
+            ) : null}
+
             <QueryTreeViewer
               queryTree={plan?.query_tree}
               ambiguityScore={plan?.ambiguity_score ?? 0}

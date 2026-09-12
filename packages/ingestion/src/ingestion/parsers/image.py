@@ -103,8 +103,9 @@ class ImageParser(DocumentParser):
     def _extract_chart_metadata(self, filename: str, content: str) -> Optional[ChartRef]:
         """Extract or construct structured ChartRef from vision content."""
         chart_type = "line_chart"
+        text_to_check = f"{filename} {content}".lower()
         for t in ["bar_chart", "scatter_plot", "pie_chart", "heatmap", "architecture_diagram", "flowchart"]:
-            if t.replace("_", " ") in content.lower():
+            if t.replace("_", " ") in text_to_check or t in text_to_check:
                 chart_type = t
                 break
 

@@ -12,6 +12,7 @@ export interface ResearchJob {
   updated_at: string
   completed_at: string | null
   error_message: string | null
+  iterations?: ResearchIteration[]
 }
 
 export interface QueryTreeNode {
@@ -56,6 +57,8 @@ export interface ResearchPlan {
   inferred_scope?: InferredScope | null
   replan_count?: number
   plan_explanation?: string
+  iterations?: ResearchIteration[]
+  deep_research_config?: DeepResearchConfig | null
 }
 
 export interface ResearchTask {
@@ -288,4 +291,26 @@ export interface MethodologyComparisonMatrix {
   }[]
   comparison_matrix_markdown: string
   focus?: string
+}
+
+export interface DeepResearchConfig {
+  enabled: boolean
+  max_iterations: number
+  min_confidence_threshold: number
+  max_spawned_per_round: number
+  diminishing_returns_threshold: number
+}
+
+export interface ResearchIteration {
+  iteration_index: number
+  hypotheses: string[]
+  unresolved_gaps: string[]
+  gap_queries: string[]
+  confidence_score: number
+  confidence_delta: number
+  spawned_task_count: number
+  is_converged: boolean
+  convergence_reason?: string | null
+  started_at: string
+  completed_at?: string | null
 }

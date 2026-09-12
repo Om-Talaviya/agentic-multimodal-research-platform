@@ -235,6 +235,37 @@ erDiagram
 
 ---
 
+### 2.5 Structured JSON Contracts: Deep Research Engine (Phase 15)
+
+#### `DeepResearchConfig` (Stored within `research_jobs.constraints` or pipeline request)
+```json
+{
+  "max_iterations": 3,
+  "confidence_threshold": 0.85,
+  "diminishing_returns_threshold": 0.02,
+  "max_subtasks_per_iteration": 4,
+  "enable_recursive_hypotheses": true
+}
+```
+
+#### `ResearchIteration` (Stored within `reports.metadata_json.iterations`)
+```json
+{
+  "iteration_index": 1,
+  "hypotheses": ["Higher batch sizes reduce communication overhead in federated learning."],
+  "scheduled_task_ids": ["uuid-1", "uuid-2"],
+  "completed_task_ids": ["uuid-1", "uuid-2"],
+  "evidence_count": 14,
+  "confidence_score": 0.88,
+  "unresolved_gaps": [],
+  "gap_queries": [],
+  "status": "converged",
+  "created_at": "2026-09-12T13:30:00Z"
+}
+```
+
+---
+
 ## 3. Database Cross-Compatibility Strategy
 
 To ensure seamless production deployment on PostgreSQL 16 while supporting fast, zero-dependency in-memory testing with SQLite, all model definitions use SQLAlchemy dialect-agnostic variants:

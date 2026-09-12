@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 15: Deep Research Engine**:
+  - Implemented `DeepResearchEngine` in `packages/research/src/research/deep_research.py` orchestrating autonomous multi-round recursive research loops, iterative hypothesis formulation, and dynamic DAG subtask rescheduling.
+  - Added `DeepResearchConfig` and `ResearchIteration` data structures in `packages/research/src/research/models.py` tracking iteration index, hypothesis formulation, targeted subtasks, and quantitative confidence progression.
+  - Upgraded `CriticAgent` in `packages/agents/src/agents/critic/critic_agent.py` to audit evidence coverage, isolate unresolved gaps (`gap_queries`), and formulate testable `suggested_hypotheses`.
+  - Enhanced `PlannerAgent.replan()` in `packages/agents/src/agents/planner/planner_agent.py` to accept deep iteration indices and transform gap queries and hypotheses into prioritized investigation subtasks.
+  - Enforced 3 strict convergence guardrails: target confidence threshold ($\tau \ge 0.85$), maximum iteration ceiling (`max_iterations`, default: 3, max: 5), and diminishing returns cutoff ($\Delta \tau < 0.02$ across rounds).
+  - Defined real-time deep research event types (`DEEP_RESEARCH_STARTED`, `RESEARCH_ITERATION_STARTED`, `HYPOTHESIS_FORMULATED`, `RESEARCH_ITERATION_COMPLETED`, `DEEP_RESEARCH_CONVERGED`, `DEEP_RESEARCH_TERMINATED`) with live WebSocket broadcasting.
+  - Built `DeepResearchTracker.tsx` in `apps/web/src/components/` with multi-round iteration stepper, confidence convergence gauge, hypothesis status badges, and gap resolution explorer.
+  - Added unit test suites in `packages/research/tests/test_deep_research.py` and `packages/agents/tests/test_deep_critic.py`, achieving 100% pass rate across all 247 tests.
 - **Phase 14: Document & Paper Intelligence**:
   - Implemented `AcademicPaperParser` in `packages/ingestion/src/ingestion/parsers/academic.py` extracting hierarchical section trees (`PaperSection`), metadata (title, authors, affiliations, abstract), LaTeX/markdown formulas, and explicit limitations.
   - Implemented `BibEntry` bibliographic extraction and citation anchoring, mapping inline references (`[1]`, `(Author et al., 2024)`) directly to bibliography entries with DOI and arXiv metadata.

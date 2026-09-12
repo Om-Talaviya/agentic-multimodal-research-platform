@@ -625,120 +625,42 @@ class ResearchPipeline:
 
         return verif_data
 
+    async def run_deep_research(
+        self,
+        job: ResearchJob,
+        plan: ResearchPlan,
+        verif_data: Dict[str, Any],
+        config: Optional[Any] = None,
+    ) -> Tuple[Dict[str, Any], List[Any]]:
+        """Run multi-round autonomous recursive deep research loops using DeepResearchEngine."""
+        from research.deep_research import DeepResearchEngine
+        engine = DeepResearchEngine(self)
+        return await engine.execute_deep_research(
+            job=job,
+            initial_plan=plan,
+            initial_verif_data=verif_data,
+            config=config,
+        )
+
     async def run_adaptive_replanning(
         self,
         job: ResearchJob,
         plan: ResearchPlan,
         verif_data: Dict[str, Any],
     ) -> Dict[str, Any]:
-        """Evaluate evidence quality and trigger adaptive dynamic replanning if critical contradictions or gaps exist."""
-        from uuid import UUID, uuid4
-        from database.connection import get_session
-        from database.repositories import EvidenceRepository
-        from agents.planner.planner_agent import PlannerAgent
-        from research.models import Evidence as ModelEvidence, Contradiction as ModelContradiction
+        """Evaluate evidence quality and execute autonomous deep research iterations."""
+        from research.deep_research import DeepResearchEngine
+        from research.models import DeepResearchConfig
 
-        contradictions_raw = verif_data.get("contradictions", [])
-        confidence_score = float(verif_data.get("confidence_score", 0.85))
-
-        # Check if replanning is warranted (contradictions detected or low confidence score)
-        needs_replan = (len(contradictions_raw) > 0 or confidence_score < 0.70) and plan.replan_count < 1
-        if not needs_replan:
-            return verif_data
-
-        try:
-            job_uuid = UUID(str(job.id))
-            async with get_session() as session:
-                evidence_repo = EvidenceRepository(session)
-                db_evidence_list = await evidence_repo.get_by_job(job_uuid)
-
-            model_evidence: List[ModelEvidence] = []
-            for ev in db_evidence_list:
-                model_evidence.append(
-                    ModelEvidence(
-                        id=str(ev.id),
-                        source_id=str(ev.source_id),
-                        claim=ev.claim,
-                        supporting_text=ev.supporting_text,
-                        confidence=ev.confidence,
-                        verification_status=ev.verification_status,
-                    )
-                )
-
-            model_contradictions: List[ModelContradiction] = []
-            for c in contradictions_raw:
-                if isinstance(c, dict):
-                    model_contradictions.append(ModelContradiction(**c))
-                elif isinstance(c, ModelContradiction):
-                    model_contradictions.append(c)
-
-            planner = PlannerAgent()
-            user_id_val = getattr(job, "user_id", None)
-            context = self.orchestrator.create_context(
-                job_id=str(job.id),
-                task_id=str(uuid4()),
-                request_id=str(getattr(job, "request_id", uuid4())),
-                user_id=str(user_id_val) if user_id_val else None,
-            )
-
-            replan_res = await planner.replan(
-                current_plan=plan,
-                evidence=model_evidence,
-                contradictions=model_contradictions,
-                context=context,
-            )
-
-            if not replan_res.success or not isinstance(replan_res.output, dict):
-                logger.warning("Dynamic replan returned no actionable steps", job_id=str(job.id))
-                return verif_data
-
-            spawned_steps = replan_res.output.get("spawned_steps", [])
-            if not spawned_steps:
-                return verif_data
-
-            plan.replan_count += 1
-            explanation = replan_res.output.get("plan_explanation", "Adaptive replanning for evidentiary gaps")
-
-            await self._emit(
-                str(job.id),
-                ResearchEventType.DAG_REPLANNED,
-                f"Adaptive replan: {explanation}",
-                {
-                    "replan_count": plan.replan_count,
-                    "spawned_steps_count": len(spawned_steps),
-                    "explanation": explanation,
-                },
-            )
-
-            for step in spawned_steps:
-                await self._emit(
-                    str(job.id),
-                    ResearchEventType.TASK_SPAWNED,
-                    f"Spawned dynamic subtask: {step.name}",
-                    {
-                        "step_id": step.id,
-                        "name": step.name,
-                        "agent": step.agent,
-                        "is_dynamic": True,
-                    },
-                )
-
-            # Create a dynamic mini-plan for the spawned steps and execute it
-            dynamic_plan = ResearchPlan(
-                objective=f"Adaptive sub-investigation: {explanation}",
-                steps=spawned_steps,
-                expected_outputs=[],
-                replan_count=plan.replan_count,
-            )
-            await self.execute_plan(job, dynamic_plan)
-
-            # Re-verify after executing spawned tasks
-            new_verif = await self.run_verification(job)
-            return new_verif
-
-        except Exception as replan_err:
-            logger.warning("Adaptive replanning encountered error", job_id=job.id, error=str(replan_err))
-            return verif_data
+        deep_config = getattr(plan, "deep_research_config", None) or DeepResearchConfig()
+        engine = DeepResearchEngine(self)
+        final_verif, iterations = await engine.execute_deep_research(
+            job=job,
+            initial_plan=plan,
+            initial_verif_data=verif_data,
+            config=deep_config,
+        )
+        return final_verif
 
     async def run_report_generation(
         self,

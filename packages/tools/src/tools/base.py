@@ -35,15 +35,37 @@ class ToolSchema(BaseModel):
     permissions: list[Permission] = Field(default_factory=list)
 
 
+class ToolResult(BaseModel):
+    """Result of a tool execution."""
+    success: bool = True
+    data: Any = None
+    error: Optional[str] = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+    def __getitem__(self, item: str) -> Any:
+        if hasattr(self, item):
+            return getattr(self, item)
+        if isinstance(self.data, dict) and item in self.data:
+            return self.data[item]
+        raise KeyError(item)
+
+    def get(self, item: str, default: Any = None) -> Any:
+        if hasattr(self, item):
+            val = getattr(self, item)
+            return val if val is not None else default
+        if isinstance(self.data, dict):
+            return self.data.get(item, default)
+        return default
+
+
 class Tool(ABC):
     """Base class for tools."""
     
-    schema: ToolSchema
+    schema: Optional[ToolSchema] = None
     
     def __init__(self):
-        if not hasattr(self, 'schema'):
-            raise NotImplementedError("Tool must define 'schema' class attribute")
-    
+        pass
+
     @abstractmethod
     async def execute(self, **kwargs) -> Any:
         """Execute the tool."""
@@ -51,6 +73,8 @@ class Tool(ABC):
     
     def to_openai_format(self) -> dict:
         """Convert to OpenAI function calling format."""
+        if not self.schema:
+            return {}
         properties = {}
         required = []
         for param in self.schema.parameters:
@@ -78,4 +102,9 @@ class Tool(ABC):
     
     def check_permissions(self, agent_permissions: set[Permission]) -> bool:
         """Check if agent has required permissions."""
+        if not self.schema:
+            return True
         return all(p in agent_permissions for p in self.schema.permissions)
+
+
+BaseTool = Tool

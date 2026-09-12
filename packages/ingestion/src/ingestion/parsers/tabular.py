@@ -33,27 +33,28 @@ class TabularParser(DocumentParser):
             DocumentFormat.EXCEL,
         ]
 
-    async def parse(self, file: BinaryIO, filename: str) -> ParsedDocument:
-        raw_bytes = file.read()
+    async def parse(self, file: Union[BinaryIO, bytes], filename: str) -> ParsedDocument:
+        raw_bytes = file.read() if hasattr(file, "read") else file
         ext = filename.lower().split(".")[-1]
 
         headers: List[str] = []
         rows: List[List[Any]] = []
+        delimiter: Optional[str] = None
 
         if ext in ("csv", "tsv", "txt"):
-            headers, rows = self._parse_csv_tsv(raw_bytes, ext)
+            headers, rows, delimiter = self._parse_csv_tsv(raw_bytes, ext)
         elif ext == "json":
             headers, rows = self._parse_json(raw_bytes)
         elif ext in ("xlsx", "xls"):
             headers, rows = self._parse_excel(raw_bytes, ext)
         else:
-            headers, rows = self._parse_csv_tsv(raw_bytes, "csv")
+            headers, rows, delimiter = self._parse_csv_tsv(raw_bytes, "csv")
 
         # In case file is empty
         if not headers and not rows:
             return ParsedDocument(
                 content=f"**Empty Dataset: {filename}**",
-                metadata={"filename": filename, "format": "dataset", "rows": 0, "cols": 0},
+                metadata={"filename": filename, "title": filename, "format": "dataset", "rows": 0, "row_count": 0, "cols": 0, "column_count": 0},
             )
 
         # Profile columns and compute deterministic stats
@@ -81,25 +82,32 @@ class TabularParser(DocumentParser):
             rows=[[str(val) for val in r] for r in rows[:50]],
             caption=f"Dataset Preview: {filename}",
             format="markdown",
-            metadata={"total_rows": len(rows), "total_cols": len(headers)},
+            metadata={"total_rows": len(rows), "row_count": len(rows), "total_cols": len(headers), "column_count": len(headers)},
         )
+
+        doc_meta = {
+            "format": ext if ext in ("csv", "tsv", "json", "xlsx", "xls") else "dataset",
+            "filename": filename,
+            "title": filename,
+            "file_size": len(raw_bytes),
+            "total_rows": len(rows),
+            "row_count": len(rows),
+            "total_cols": len(headers),
+            "column_count": len(headers),
+            "columns": headers,
+            "numeric_columns": [c.name for c in column_profiles if c.data_type in ("numeric", "integer", "float")],
+        }
+        if delimiter:
+            doc_meta["delimiter"] = delimiter
 
         return ParsedDocument(
             content=full_content,
-            metadata={
-                "format": "dataset",
-                "filename": filename,
-                "file_size": len(raw_bytes),
-                "total_rows": len(rows),
-                "total_cols": len(headers),
-                "columns": headers,
-                "numeric_columns": [c.name for c in column_profiles if c.data_type in ("integer", "float")],
-            },
+            metadata=doc_meta,
             tables=[table_obj],
             dataset_profile=dataset_profile,
         )
 
-    def _parse_csv_tsv(self, raw_bytes: bytes, ext: str) -> Tuple[List[str], List[List[Any]]]:
+    def _parse_csv_tsv(self, raw_bytes: bytes, ext: str) -> Tuple[List[str], List[List[Any]], str]:
         """Decode and parse delimited text."""
         text = ""
         for encoding in ("utf-8", "latin-1", "utf-16", "cp1252"):
@@ -110,7 +118,7 @@ class TabularParser(DocumentParser):
                 continue
 
         if not text:
-            return [], []
+            return [], [], ","
 
         delimiter = "\t" if ext == "tsv" else ","
         if ext not in ("tsv", "tab") and len(text) > 0:
@@ -124,11 +132,11 @@ class TabularParser(DocumentParser):
         reader = csv.reader(io.StringIO(text), delimiter=delimiter)
         raw_rows = [r for r in reader if r and any(cell.strip() for cell in r)]
         if not raw_rows:
-            return [], []
+            return [], [], delimiter
 
         headers = [h.strip() or f"col_{i+1}" for i, h in enumerate(raw_rows[0])]
         data_rows = raw_rows[1:]
-        return headers, data_rows
+        return headers, data_rows, delimiter
 
     def _parse_json(self, raw_bytes: bytes) -> Tuple[List[str], List[List[Any]]]:
         """Parse structured JSON arrays or objects."""
@@ -226,14 +234,15 @@ class TabularParser(DocumentParser):
                     break
 
             if is_numeric and typed_values:
-                inferred_type = "integer" if is_int else "float"
+                inferred_type = "numeric"
             elif all(str(v).lower() in ("true", "false", "1", "0") for v in non_null_raw) and non_null_raw:
                 inferred_type = "boolean"
             else:
                 inferred_type = "string"
                 typed_values = non_null_raw
 
-            unique_count = len(set(str(v) for v in non_null_raw))
+            unique_vals = list(set(str(v) for v in non_null_raw))
+            unique_count = len(unique_vals)
             sample_values = non_null_raw[:5]
 
             min_val = None
@@ -242,7 +251,7 @@ class TabularParser(DocumentParser):
             median_val = None
             std_dev_val = None
 
-            if inferred_type in ("integer", "float") and typed_values:
+            if inferred_type == "numeric" and typed_values:
                 num_list = [float(x) for x in typed_values]
                 min_val = min(num_list)
                 max_val = max(num_list)
@@ -266,6 +275,7 @@ class TabularParser(DocumentParser):
                     median_value=median_val,
                     std_dev=std_dev_val,
                     sample_values=sample_values,
+                    unique_vals_list=unique_vals,
                 )
             )
 
