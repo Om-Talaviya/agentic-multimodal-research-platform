@@ -25,15 +25,18 @@ class DocumentAnalysisAgent(Agent):
         "multimodal_reasoning",
         "data_analysis",
         "statistical_computation",
+        "academic_paper_analysis",
+        "methodology_comparison",
     }
 
-    SYSTEM_PROMPT = """You are an expert multimodal document and dataset analysis agent.
-Your task is to analyze document contents, structured tables, dataset statistics, and visual diagram annotations to extract grounded factual findings relevant to the research objective.
+    SYSTEM_PROMPT = """You are an expert multimodal document, academic preprint, and dataset analysis agent.
+Your task is to analyze document contents, academic paper section hierarchies (Abstract, Methods, Results, Limitations), structured tables, dataset statistics, and visual diagram annotations to extract grounded factual findings relevant to the research objective.
 
 When analyzing:
-- Extract clear, unambiguous claims supported by the document text, tables, dataset profiles, or image annotations.
+- Extract clear, unambiguous claims supported by the document text, paper sections, tables, dataset profiles, or image annotations.
+- For academic literature, identify proposed methodologies, benchmark datasets, baseline comparisons, metric evaluations, and stated limitations.
 - For quantitative data and tabular datasets, extract exact figures, computed means/medians, trends, and comparative metrics.
-- Cite the source chunk index, page number, paragraph index, table coordinates, or dataset column where each piece of evidence originates.
+- Cite the source chunk index, section title, page number, paragraph index, table coordinates, or dataset column where each piece of evidence originates.
 
 Return findings as a valid JSON object:
 {
@@ -43,7 +46,7 @@ Return findings as a valid JSON object:
             "evidence": "Exact excerpt, computed statistic, table cell/row, or diagram annotation supporting the claim",
             "confidence": 0.9,
             "section": "Optional section name or chunk identifier",
-            "modality": "text|table|image|dataset",
+            "modality": "text|table|image|dataset|academic_paper",
             "page_number": 1,
             "paragraph_index": 2,
             "table_row": null,
@@ -60,6 +63,8 @@ Return findings as a valid JSON object:
         knowledge_search_tool = context.tools.get("knowledge_search") or tool_registry.get("knowledge_search")
         data_analysis_tool = context.tools.get("data_analysis") or tool_registry.get("data_analysis")
         math_tool = context.tools.get("deterministic_math") or tool_registry.get("deterministic_math")
+        paper_tool = context.tools.get("paper_analysis") or tool_registry.get("paper_analysis")
+        comparison_tool = context.tools.get("methodology_comparison") or tool_registry.get("methodology_comparison")
 
         document_ids = task.inputs.get("document_ids", [])
         if not document_ids and "document_id" in task.inputs:

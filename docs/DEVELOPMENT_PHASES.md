@@ -326,6 +326,22 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
+## Phase 14: Document & Paper Intelligence
+**Status**: 🟢 COMPLETE (Generation 2: Multimodal Intelligence)
+
+**Goal**: Deep academic research paper parsing, hierarchical section trees (Abstract, Intro, Methods, Results, Limitations, References), BibTeX citation anchoring, and cross-paper methodology comparison matrices (**ADR 014**).
+
+### Deliverables:
+- [x] `AcademicPaperParser` in `packages/ingestion/src/ingestion/parsers/academic.py` supporting PDFs, LaTeX, and preprint manuscripts with automated section classification and header level hierarchy.
+- [x] Bibliographic extraction & citation matching (`BibEntry`), parsing inline reference anchors (`[1]`, `(Author et al., 2024)`) and matching to References section entries with DOIs and arXiv IDs.
+- [x] Section-aware `SemanticChunker` preserving structural section boundaries and metadata (`section_title`, `section_type`, `paper_title`, `authors`) for targeted hybrid RAG retrieval.
+- [x] `PaperAnalysisTool` (dimension extraction, section queries, benchmark parsing) and `MethodologyComparisonTool` (multi-paper comparative matrix generation).
+- [x] `DocumentAnalysisAgent` integration with academic paper analysis and methodology comparison capabilities.
+- [x] Interactive `PaperViewer.tsx` (section tree sidebar, abstract badge, citation popovers) and `ComparisonMatrix.tsx` (side-by-side comparative matrices) in `apps/web`.
+- [x] Comprehensive unit test suites in `packages/ingestion/tests/test_academic_parser.py` and `packages/tools/tests/test_paper_analysis.py`.
+
+---
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
@@ -344,7 +360,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 11**| Advanced Research Planning| 🟢 COMPLETE | Query trees, ambiguity score, dynamic capability & replanning |
 | **Phase 12**| Advanced Multimodal Intel | 🟢 COMPLETE | Audio/video timestamps, ChartRef data series, Multimodal studio |
 | **Phase 13**| Dataset & Data Analysis   | 🟢 COMPLETE | TabularParser, DataAnalysisTool, DeterministicMathTool, UI |
+| **Phase 14**| Document & Paper Intel    | 🟢 COMPLETE | AcademicPaperParser, section trees, BibEntry, PaperViewer |
 
 ### Immediate Focus Areas
-1. **Phase 14: Document & Paper Intelligence** (200-page academic paper structure parsing and methodology diffs).
-2. **Phase 15: Deep Research Engine** (Autonomous iterative feedback loops with CriticAgent).
+1. **Phase 15: Deep Research Engine** (Autonomous recursive execution loops with CriticAgent, dynamic gap resolution).
+2. **Phase 16: Research Memory** (Cross-session persistent project memory).

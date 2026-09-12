@@ -10,10 +10,12 @@ from ai.factory import DEFAULT_GEMINI_MODEL_DEFINITIONS
 from agents.orchestrator import AgentOrchestrator
 from agents.registry import AgentRegistry, registry as agent_registry
 from tools.registry import ToolRegistry, tool_registry
-from tools.definitions.web_search import WebSearchTool, WebFetchTool
+from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 from tools.definitions.document_read import DocumentReadTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
-from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
+from tools.definitions.paper_analysis import MethodologyComparisonTool, PaperAnalysisTool
+from tools.definitions.web_fetch import WebFetchTool
+from tools.definitions.web_search import WebSearchTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
@@ -147,6 +149,8 @@ async def init_providers() -> None:
     tool_registry.register(KnowledgeSearchTool(retriever=_retriever))
     tool_registry.register(DataAnalysisTool())
     tool_registry.register(DeterministicMathTool())
+    tool_registry.register(PaperAnalysisTool())
+    tool_registry.register(MethodologyComparisonTool())
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(

@@ -144,13 +144,13 @@ flowchart TD
 - **Phase 10 (Citation Intelligence - COMPLETE)**: Data contract for `Citation` model anchoring claims to exact character/line offsets, paragraph indices, and page coordinates in source documents, with pairwise contradiction detection.
 - **Phase 11 (Advanced Planning - COMPLETE)**: Hierarchical planning engine with `QueryTreeNode` recursive decomposition, ambiguity scoring, and closed-loop dynamic replanning.
 
-### Generation 2: Multimodal Intelligence
+### Generation 2: Multimodal Intelligence (COMPLETE)
 - **Phase 12 (Advanced Multimodal - COMPLETE)**: Multi-modal context assembler handling interleaved text, charts (`ChartRef`), and audio/video timestamp segments (`[MM:SS - MM:SS]`).
 - **Phase 13 (Data Intelligence - COMPLETE)**: Deterministic execution engine (`DataAnalysisTool`, `DeterministicMathTool`, `TabularParser`) for statistical profiling, aggregations, correlation, linear regression, and AST math over CSV/TSV/Excel/JSON datasets.
-- **Phase 14 (Paper Intelligence - NEXT)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
+- **Phase 14 (Paper Intelligence - COMPLETE)**: Academic research paper parser (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and cross-paper comparative matrices (`PaperAnalysisTool`, `MethodologyComparisonTool`).
 
 ### Generation 3: Autonomous Research
-- **Phase 15 (Deep Research)**: Dynamic re-planning trigger when Critic confidence falls below threshold $\tau < 0.70$.
+- **Phase 15 (Deep Research - NEXT)**: Dynamic re-planning trigger when Critic confidence falls below threshold $\tau < 0.70$.
 - **Phase 16 (Research Memory)**: Semantic search over historical `ResearchJob` graphs and synthesis summaries.
 - **Phase 17 (Knowledge Graph)**: Neo4j / pgvector entity-relationship graph storage with Cypher/SPARQL query interface.
 

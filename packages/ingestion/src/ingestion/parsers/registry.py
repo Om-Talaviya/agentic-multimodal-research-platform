@@ -5,6 +5,7 @@ from ai.gateway.model_gateway import ModelGateway
 from ai.providers.base import LLMProvider, VisionProvider
 from ai.providers.router import ModelRouter
 from ingestion.detection import detect_format
+from ingestion.parsers.academic import AcademicPaperParser
 from ingestion.parsers.audio import AudioParser
 from ingestion.parsers.base import DocumentParser, ParsedDocument
 from ingestion.parsers.docx import DocxParser
@@ -32,6 +33,7 @@ class ParserRegistry:
         ai_src = ai_source or vision_source
         self._parsers: List[DocumentParser] = custom_parsers if custom_parsers is not None else [
             TextParser(),
+            AcademicPaperParser(),
             PDFParser(),
             DocxParser(),
             TabularParser(),

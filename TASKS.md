@@ -101,16 +101,23 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 14 — Document & Paper Intelligence
+- [x] **Phase 14: Document & Paper Intelligence**
+  - [x] Academic paper structure parsing: Implemented `AcademicPaperParser` in `packages/ingestion/src/ingestion/parsers/academic.py` extracting hierarchical section trees (`PaperSection`), metadata (title, authors, affiliations, abstract), and limitations summaries.
+  - [x] Bibliographic extraction & citation matching: Structured `BibEntry` models, parsing inline reference markers (`[1]`, `[1, 2]`, `(Smith et al., 2024)`) and matching to References section entries with DOIs/arXiv IDs.
+  - [x] Section-aware semantic chunking: Enhanced `SemanticChunker` to preserve academic section boundaries, tagging chunks with `section_title`, `section_type`, `paper_title`, and `authors` for targeted hybrid RAG.
+  - [x] Academic research tooling: Created `PaperAnalysisTool` (dimension extraction, section queries, benchmark parsing) and `MethodologyComparisonTool` (cross-paper methodology comparison matrices).
+  - [x] Agent integration: Equipped `DocumentAnalysisAgent` with academic paper parsing and comparative analysis tools.
+  - [x] Interactive UI: Built `PaperViewer.tsx` (section tree sidebar, abstract, inline citations) and `ComparisonMatrix.tsx` (side-by-side methodology diffs).
+  - [x] Unit test suites: Added `test_academic_parser.py` and `test_paper_analysis.py`.
 
-### Generation 2: Multimodal Intelligence
-- [ ] **Phase 14: Document & Paper Intelligence**
-  - [ ] Deep academic paper structure parsing (200+ page PDFs, section hierarchies, author metadata, abstract, bibliography).
-  - [ ] Cross-paper methodology comparison, experimental result extraction, and research preprint synthesis.
+---
+
+## 🟡 Immediate Next Milestone: Phase 15 — Deep Research Engine
 
 ### Generation 3: Autonomous Research
 - [ ] **Phase 15: Deep Research Engine**
   - [ ] Autonomous recursive execution loops with Critic-driven follow-up investigations.
+  - [ ] Dynamic subtask rescheduling when evidentiary gaps or low confidence scores ($\tau < 0.70$) are flagged.
 - [ ] **Phase 16: Research Memory**
   - [ ] Persistent cross-session project memory allowing resumption months later.
 - [ ] **Phase 17: Long-Term Knowledge Graph**
