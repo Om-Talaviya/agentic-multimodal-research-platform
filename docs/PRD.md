@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 ## Project: Agentic Multimodal Research Platform (AI Research OS)
-**Status**: Active / Production v1.1 (Phase 16 Complete, Preparing Phase 17)  
+**Status**: Active / Production v1.1 (Phase 17 Complete, Preparing Phase 18)  
 **Author**: Engineering & AI Systems Team  
 **Last Updated**: September 2026  
 **Stable Branch**: `develop/v1.1`
@@ -100,7 +100,7 @@ The output is a structured intelligence dossier:
 
 ---
 
-## 6. Current Completed Scope (Phases 1 – 16)
+## 6. Current Completed Scope (Phases 1 – 17)
 
 - ✅ **Phase 1 (Foundation)**: Core monorepo structure, async FastAPI backend, SQLAlchemy async, React/Vite shell.
 - ✅ **Phase 2 (Research MVP)**: DAG task scheduler, PlannerAgent, Web/Doc/Report agents, live WebSockets.
@@ -150,12 +150,6 @@ The output is a structured intelligence dossier:
   └──────────────────────────────────────┬───────────────────────────────────────┘
                                          ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐
-  │ GENERATION 4: Collaboration Platform                                         │
-  │ • Phase 18: Projects & Workspaces Organization                               │
-  │ • Phase 19: Team Collaboration (Roles, Shared Knowledge, Collaborative Edit) │
-  └──────────────────────────────────────┬───────────────────────────────────────┘
-                                         ▼
-  ┌──────────────────────────────────────────────────────────────────────────────┐
   │ GENERATION 5: AI Platform Intelligence                                       │
   │ • Phase 20: Intelligent Model Ecosystem (Multi-Parameter Optimization)       │
   │ • Phase 21: Model Evaluation System (Automated Benchmarking)                 │
@@ -194,16 +188,16 @@ The output is a structured intelligence dossier:
 - **Phase 14: Document & Paper Intelligence (COMPLETE)**:
   - Deep semantic parsing of academic literature (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and automated cross-paper methodology comparisons (**ADR 014**).
 
-#### Generation 3 — Autonomous Research
+#### Generation 3 — Autonomous Research (COMPLETE)
 - **Phase 15: Deep Research Engine (COMPLETE)**:
   - Recursive execution loops: When `CriticAgent` detects insufficient evidence or unresolved questions, the `PlannerAgent` dynamically schedules follow-up investigation tasks.
 - **Phase 16: Research Memory (COMPLETE)**:
   - Persistent research memory indexing past papers, queries, findings, and hypotheses across sessions. Enables agents to recall prior discoveries and prevent duplicate work (**ADR 016**).
-- **Phase 17: Long-Term Knowledge Graph (NEXT)**:
-  - Structured graph representation of entities, authors, technologies, companies, claims, and datasets for graph-augmented reasoning.
+- **Phase 17: Long-Term Knowledge Graph (COMPLETE)**:
+  - Structured graph representation of entities, authors, technologies, companies, claims, and datasets for graph-augmented reasoning (**ADR 017**).
 
 #### Generation 4 — Collaboration Platform
-- **Phase 18: Projects & Workspaces**:
+- **Phase 18: Projects & Workspaces (NEXT MILESTONE)**:
   - Hierarchical workspace hierarchy: `User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Research & Knowledge`.
 - **Phase 19: Team Collaboration**:
   - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), shared project knowledge, inline annotations, and report co-editing.
