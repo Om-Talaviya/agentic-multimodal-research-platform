@@ -89,7 +89,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 13 Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 14 Complete** on the stable branch `develop/v1.1`.
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -105,9 +105,10 @@ Phase 9: Intelligent Knowledge Auto  [██████████████
 Phase 10: Evidence & Citation Intel  [████████████████████] 100%
 Phase 11: Advanced Research Planning [████████████████████] 100% (Commit: c3b639d)
 Phase 12: Advanced Multimodal Intel  [████████████████████] 100% (Commit: f52e694)
-Phase 13: Dataset & Data Analysis    [████████████████████] 100%
+Phase 13: Dataset & Data Analysis    [████████████████████] 100% (Commit: 81a5f5d)
+Phase 14: Document & Paper Intel     [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 14: Document & Paper Intel     [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 15: Deep Research Engine       [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -119,13 +120,13 @@ Phase 14: Document & Paper Intel     [░░░░░░░░░░░░░░
 - **Phase 10: Evidence & Citation Intelligence (COMPLETE)**: Strict source tracking, claim-to-evidence links, coordinate anchoring (`page_number`, `paragraph_index`, table coordinates), reliability metrics, and pairwise contradiction detection.
 - **Phase 11: Advanced Research Planning (COMPLETE)**: Hierarchical Query Trees (`QueryTreeNode`), ambiguity scoring, inferred scope resolution, dynamic agent capability routing, and closed-loop adaptive replanning.
 
-### Generation 2: Multimodal Intelligence
+### Generation 2: Multimodal Intelligence (100% COMPLETE)
 - **Phase 12: Advanced Multimodal Research (COMPLETE)**: Speech audio transcription with timestamps, synchronized video timeline generation, structured scientific chart parsing (`ChartRef`), and multimodal chunking.
 - **Phase 13: Dataset & Data Analysis Intelligence (COMPLETE)**: Tabular dataset ingestion (CSV, TSV, Excel, JSON) with automated type inference, column statistics, `DataAnalysisTool` (descriptive statistics, aggregations, correlation, linear regression), and `DeterministicMathTool` (AST evaluator).
-- **Phase 14: Document & Paper Intelligence (NEXT)**: Deep academic paper structure parsing (200+ pages, section trees, author metadata, abstract, methodology diffs).
+- **Phase 14: Document & Paper Intelligence (COMPLETE)**: Academic research paper parsing (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`, and `PaperViewer.tsx` UI.
 
 ### Generation 3: Autonomous Research
-- **Phase 15: Deep Research Engine**: Autonomous recursive research loops (`Critic identifies gap $\rightarrow$ Planner schedules subtask $\rightarrow$ Synthesizer updates report`).
+- **Phase 15: Deep Research Engine (NEXT)**: Autonomous recursive research loops (`Critic identifies gap / low confidence $\tau < 0.70 \rightarrow$ Planner schedules subtask $\rightarrow$ Synthesizer updates report`).
 - **Phase 16: Research Memory**: Persistent cross-session research memory allowing users to resume complex investigations months later.
 - **Phase 17: Long-Term Knowledge Graph**: Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts beyond vector search.
 

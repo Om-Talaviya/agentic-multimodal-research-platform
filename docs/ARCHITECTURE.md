@@ -203,13 +203,13 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 10 (Evidence & Citation Intelligence - COMPLETE)**: Fine-grained claim-to-source anchoring with page/paragraph coordinates and pairwise contradiction detection.
 - **Phase 11 (Advanced Research Planning - COMPLETE)**: Hierarchical planning engine with `QueryTreeNode` recursive subquestion decomposition and closed-loop replanning.
 
-### Generation 2: Multimodal Intelligence (Phases 12 – 14)
+### Generation 2: Multimodal Intelligence (Phases 12 – 14) (COMPLETE)
 - **Phase 12 (Advanced Multimodal Research - COMPLETE)**: Unified multi-modal context assembler for 50+ page PDFs, images, charts (`ChartRef`), and audio/video timestamp transcripts (`[MM:SS - MM:SS]`).
 - **Phase 13 (Dataset & Data Analysis Intelligence - COMPLETE)**: Tabular data analysis (CSV, TSV, Excel, JSON) using deterministic Python calculation tools (`DataAnalysisTool`, `DeterministicMathTool`, `TabularParser`).
-- **Phase 14 (Document & Paper Intelligence - NEXT)**: Academic paper parser extracting structured LaTeX, formulas, and citation networks.
+- **Phase 14 (Document & Paper Intelligence - COMPLETE)**: Academic research paper parser (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and cross-paper comparative matrices (`PaperAnalysisTool`, `MethodologyComparisonTool`).
 
 ### Generation 3: Autonomous Research (Phases 15 – 17)
-- **Phase 15 (Deep Research Engine)**: Recursive self-healing research loops driven by Critic confidence thresholds.
+- **Phase 15 (Deep Research Engine - NEXT)**: Recursive self-healing research loops driven by Critic confidence thresholds.
 - **Phase 16 (Research Memory)**: Cross-session persistent research memory indexing past investigations.
 - **Phase 17 (Long-Term Knowledge Graph)**: Entity-relationship graph networks for multi-hop relational reasoning.
 

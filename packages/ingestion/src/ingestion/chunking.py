@@ -175,7 +175,124 @@ class SemanticChunker(ChunkingStrategy):
             if chunks:
                 return chunks
 
-        # 4. Standard Text / Paragraph Semantic Chunking
+        # 4. Handle Academic Research Papers with Section Trees
+        if document.paper_structure:
+            paper = document.paper_structure
+            # 4a. Abstract Chunk
+            if paper.abstract:
+                abstract_text = f"**Paper: {paper.title}**\n**Authors**: {', '.join(paper.authors)}\n\n### Abstract\n{paper.abstract}"
+                chunks.append(
+                    Chunk(
+                        id=f"{doc_name}_paper_abstract_{index}",
+                        content=abstract_text,
+                        metadata={
+                            **document.metadata,
+                            "chunk_index": index,
+                            "chunk_type": "academic_abstract",
+                            "section_type": "abstract",
+                            "section_title": "Abstract",
+                            "paper_title": paper.title,
+                            "authors": paper.authors,
+                        },
+                        start_char=0,
+                        end_char=len(abstract_text),
+                        chunk_index=index,
+                    )
+                )
+                index += 1
+
+            # 4b. Section Chunks
+            for sec in paper.sections:
+                if not sec.content:
+                    continue
+
+                sec_header = f"**Paper: {paper.title}**\n### Section: {sec.title} ({sec.section_type})"
+                sec_full = f"{sec_header}\n\n{sec.content}"
+
+                if len(sec_full) <= self.max_chunk_size:
+                    chunks.append(
+                        Chunk(
+                            id=f"{doc_name}_sec_{sec.section_id}_{index}",
+                            content=sec_full,
+                            metadata={
+                                **document.metadata,
+                                "chunk_index": index,
+                                "chunk_type": "academic_section",
+                                "section_id": sec.section_id,
+                                "section_type": sec.section_type,
+                                "section_title": sec.title,
+                                "paper_title": paper.title,
+                                "authors": paper.authors,
+                                "citations_referenced": sec.citations_referenced,
+                            },
+                            start_char=0,
+                            end_char=len(sec_full),
+                            chunk_index=index,
+                        )
+                    )
+                    index += 1
+                else:
+                    # Subdivide long section paragraphs
+                    paras = sec.content.split("\n\n")
+                    sub_parts: List[str] = []
+                    sub_len = 0
+                    for p in paras:
+                        if sub_parts and (sub_len + len(p) + 2 > self.max_chunk_size - len(sec_header) - 10):
+                            sub_text = f"{sec_header}\n\n" + "\n\n".join(sub_parts)
+                            chunks.append(
+                                Chunk(
+                                    id=f"{doc_name}_sec_{sec.section_id}_{index}",
+                                    content=sub_text,
+                                    metadata={
+                                        **document.metadata,
+                                        "chunk_index": index,
+                                        "chunk_type": "academic_section",
+                                        "section_id": sec.section_id,
+                                        "section_type": sec.section_type,
+                                        "section_title": sec.title,
+                                        "paper_title": paper.title,
+                                        "authors": paper.authors,
+                                        "citations_referenced": sec.citations_referenced,
+                                    },
+                                    start_char=0,
+                                    end_char=len(sub_text),
+                                    chunk_index=index,
+                                )
+                            )
+                            index += 1
+                            sub_parts = [p]
+                            sub_len = len(p)
+                        else:
+                            sub_parts.append(p)
+                            sub_len += len(p) + 2
+                    if sub_parts:
+                        sub_text = f"{sec_header}\n\n" + "\n\n".join(sub_parts)
+                        chunks.append(
+                            Chunk(
+                                id=f"{doc_name}_sec_{sec.section_id}_{index}",
+                                content=sub_text,
+                                metadata={
+                                    **document.metadata,
+                                    "chunk_index": index,
+                                    "chunk_type": "academic_section",
+                                    "section_id": sec.section_id,
+                                    "section_type": sec.section_type,
+                                    "section_title": sec.title,
+                                    "paper_title": paper.title,
+                                    "authors": paper.authors,
+                                    "citations_referenced": sec.citations_referenced,
+                                },
+                                start_char=0,
+                                end_char=len(sub_text),
+                                chunk_index=index,
+                            )
+                        )
+                        index += 1
+
+            if chunks:
+                return chunks
+
+        # 5. Standard Text / Paragraph Semantic Chunking
         text = document.content
         if not text:
             return chunks

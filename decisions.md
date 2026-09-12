@@ -151,4 +151,20 @@ This document records the key architectural, engineering, and product design dec
   - Positive: 100% mathematically exact statistical and regression results with zero LLM arithmetic hallucination.
   - Positive: Safe AST execution without risk of remote code execution or injection vulnerabilities.
 
+---
+
+## ADR 014: Academic Paper Structure Parsing & Cross-Preprint Methodology Intelligence (Phase 14)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Academic research manuscripts, preprints (arXiv/bioRxiv), and technical reports require deep structural parsing (Abstract, Methods, Results, Limitations, References) rather than naive flat text splitting, and researchers need automated comparative matrices across multiple papers.
+- **Decision**:
+  1. Implement `PaperSection`, `BibEntry`, and `PaperStructure` models capturing hierarchical section trees (H1/H2/H3), metadata (authors, affiliations, abstract), and bibliographic citations.
+  2. Implement `AcademicPaperParser` with heuristic section classification and inline reference anchor extraction (`[1]`, `(Author et al., 2024)`).
+  3. Enhance `SemanticChunker` with academic section-aware boundary chunking, preserving section titles and types for targeted hybrid RAG.
+  4. Implement `PaperAnalysisTool` and `MethodologyComparisonTool` to extract core research dimensions and generate multi-paper comparative matrices.
+  5. Provide `PaperViewer.tsx` (interactive section tree navigation, citation popovers) and `ComparisonMatrix.tsx` (cross-paper methodology diffs) in the React frontend.
+- **Consequences**:
+  - Positive: High-fidelity academic document navigation and grounded section-level hybrid retrieval.
+  - Positive: Automated multi-paper methodology comparison matrices accelerating literature synthesis.
+
+
 

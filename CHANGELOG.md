@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 14: Document & Paper Intelligence**:
+  - Implemented `AcademicPaperParser` in `packages/ingestion/src/ingestion/parsers/academic.py` extracting hierarchical section trees (`PaperSection`), metadata (title, authors, affiliations, abstract), LaTeX/markdown formulas, and explicit limitations.
+  - Implemented `BibEntry` bibliographic extraction and citation anchoring, mapping inline references (`[1]`, `(Author et al., 2024)`) directly to bibliography entries with DOI and arXiv metadata.
+  - Enhanced `SemanticChunker` with academic section-aware boundary chunking, preserving section titles and types (`methodology`, `results`, `limitations`) for fine-grained hybrid RAG retrieval.
+  - Created `PaperAnalysisTool` and `MethodologyComparisonTool` in `packages/tools/src/tools/definitions/paper_analysis.py` for automated extraction of research dimensions and multi-paper comparative matrices.
+  - Equipped `DocumentAnalysisAgent` with academic paper parsing and comparative analysis tools.
+  - Created `PaperViewer.tsx` (interactive section navigation tree, citation popovers, limitations card) and `ComparisonMatrix.tsx` (cross-paper methodology diffs) in `apps/web`.
+  - Added unit test suites in `packages/ingestion/tests/test_academic_parser.py` and `packages/tools/tests/test_paper_analysis.py`.
 - **Phase 13: Dataset & Data Analysis Intelligence**:
   - Implemented `TabularParser` in `packages/ingestion/src/ingestion/parsers/tabular.py` supporting `.csv`, `.tsv`, `.xlsx`, `.xls`, and `.json` datasets with automated delimiter sniffing, schema type inference, column distribution profiling (mean, median, std dev, min/max, nulls, unique count), and Markdown summary table formatting.
   - Implemented `DataAnalysisTool` in `packages/tools/src/tools/definitions/data_analysis.py` providing deterministic calculations for descriptive statistics, multi-column group-by aggregations (`sum`, `mean`, `median`, `min`, `max`, `count`), Pearson correlation coefficients, linear regression modeling (slope, intercept, $R^2$), and relational record filtering.

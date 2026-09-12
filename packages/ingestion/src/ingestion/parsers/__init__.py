@@ -1,13 +1,15 @@
-"""Document parsers package."""
-
+from ingestion.parsers.academic import AcademicPaperParser
 from ingestion.parsers.audio import AudioParser
 from ingestion.parsers.base import (
     AudioSegment,
+    BibEntry,
     ChartRef,
     ColumnProfile,
     DatasetProfile,
     DocumentParser,
     ImageRef,
+    PaperSection,
+    PaperStructure,
     ParsedDocument,
     Table,
 )
@@ -28,6 +30,10 @@ __all__ = [
     "ChartRef",
     "ColumnProfile",
     "DatasetProfile",
+    "PaperSection",
+    "BibEntry",
+    "PaperStructure",
+    "AcademicPaperParser",
     "TextParser",
     "PDFParser",
     "DocxParser",

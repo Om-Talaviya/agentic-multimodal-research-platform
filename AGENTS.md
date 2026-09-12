@@ -168,13 +168,12 @@ npm run lint
 - **Phase 11 (Advanced Research Planning)**: 🟢 COMPLETE (Hierarchical query trees, ambiguity scoring, inferred scope resolution, dynamic agent capability routing, closed-loop replanning)
 - **Phase 12 (Advanced Multimodal Research)**: 🟢 COMPLETE (Speech/audio transcription with timestamps, video timeline synchronization, scientific chart JSON data series parsing, multimodal chunking)
 - **Phase 13 (Dataset & Data Analysis Intelligence)**: 🟢 COMPLETE (`TabularParser` CSV/TSV/Excel/JSON profiling, `DataAnalysisTool`, `DeterministicMathTool`, `DatasetViewer.tsx` UI)
+- **Phase 14 (Document & Paper Intelligence)**: 🟢 COMPLETE (`AcademicPaperParser`, hierarchical section trees, BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`, `PaperViewer.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Commit: `a00949e`, Stable branch: `develop/v1.1`)
 
-### The 6 Generations Ahead (Phases 14 – 26):
-- **Generation 2 — Multimodal Intelligence**:
-  - **Phase 14**: Document & Paper Intelligence (🟡 **IMMEDIATE NEXT MILESTONE**: 200-page paper structure parsing, methodology comparison, preprint synthesis)
+### The 4 Generations Ahead (Phases 15 – 26):
 - **Generation 3 — Autonomous Research**:
-  - **Phase 15**: Deep Research Engine (Autonomous iterative feedback loops with CriticAgent)
+  - **Phase 15**: Deep Research Engine (🟡 **IMMEDIATE NEXT MILESTONE**: Autonomous iterative feedback loops with CriticAgent, confidence threshold triggers)
   - **Phase 16**: Research Memory (Cross-session persistent project memory)
   - **Phase 17**: Long-Term Knowledge Graph (Entity-relationship reasoning)
 - **Generation 4 — Collaboration Platform**:

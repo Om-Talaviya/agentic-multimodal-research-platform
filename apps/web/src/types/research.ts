@@ -238,3 +238,54 @@ export interface DocumentItem {
   status: string
   created_at: string
 }
+
+export interface PaperSection {
+  section_id: string
+  title: string
+  level: number
+  section_type: string
+  content: string
+  page_start?: number
+  page_end?: number
+  subsections?: PaperSection[]
+  citations_referenced?: string[]
+}
+
+export interface BibEntry {
+  id: string
+  citation_key: string
+  raw_text: string
+  authors?: string[]
+  title?: string
+  year?: number
+  venue?: string
+  doi?: string
+  arxiv_id?: string
+  url?: string
+}
+
+export interface PaperStructure {
+  id: string
+  title: string
+  authors: string[]
+  affiliations?: string[]
+  abstract: string
+  sections: PaperSection[]
+  bibliography: BibEntry[]
+  benchmarks?: Record<string, any>[]
+  methodology_summary?: string
+  limitations_summary?: string
+}
+
+export interface MethodologyComparisonMatrix {
+  paper_count: number
+  papers: {
+    title: string
+    methodology: string
+    benchmarks: string[] | string
+    results: Record<string, any> | string
+    limitations: string
+  }[]
+  comparison_matrix_markdown: string
+  focus?: string
+}

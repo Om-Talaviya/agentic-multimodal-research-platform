@@ -181,17 +181,17 @@ The output is a structured intelligence dossier:
 - **Phase 11: Advanced Research Planning (COMPLETE)**:
   - Complex problem decomposition into hierarchical query trees, identifying evidence prerequisites, selecting research methods, assigning specialized agent roles, and closed-loop replanning.
 
-#### Generation 2 — Multimodal Intelligence
+#### Generation 2 — Multimodal Intelligence (COMPLETE)
 - **Phase 12: Advanced Multimodal Research (COMPLETE)**:
   - Unified synthesis across 50+ page PDFs, research papers, images, charts, graphs, tables, audio recordings, and video transcripts with timestamp and coordinate grounding.
 - **Phase 13: Dataset & Data Analysis Intelligence (COMPLETE)**:
   - Schema inference and analysis for CSV, TSV, Excel, and JSON data.
   - Integration of deterministic Python computation tools for statistics (mean, correlation, regression) and visualization enforcing **ADR 007** and **ADR 013** zero-hallucination standards.
-- **Phase 14: Document & Paper Intelligence (NEXT)**:
-  - Deep semantic parsing of academic literature (abstract, introduction, methods, results, limitations, references) with automated cross-paper methodology comparisons.
+- **Phase 14: Document & Paper Intelligence (COMPLETE)**:
+  - Deep semantic parsing of academic literature (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and automated cross-paper methodology comparisons (**ADR 014**).
 
 #### Generation 3 — Autonomous Research
-- **Phase 15: Deep Research Engine**:
+- **Phase 15: Deep Research Engine (NEXT)**:
   - Recursive execution loops: When `CriticAgent` detects insufficient evidence or unresolved questions, the `PlannerAgent` dynamically schedules follow-up investigation tasks.
 - **Phase 16: Research Memory**:
   - Persistent research memory indexing past papers, queries, and reports. Supports: *"Continue the research from where we stopped last month."*
