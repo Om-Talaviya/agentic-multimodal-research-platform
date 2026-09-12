@@ -112,14 +112,23 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 15 — Deep Research Engine
+- [x] **Phase 15: Deep Research Engine**
+  - [x] Multi-round autonomous research orchestration: Built `DeepResearchEngine` in `packages/research/src/research/deep_research.py` orchestrating recursive hypothesis generation, dynamic DAG subtask rescheduling, and Critic re-verification loops.
+  - [x] Recursive gap & hypothesis synthesis: Upgraded `CriticAgent` to audit evidence coverage, isolate unresolved gaps (`gap_queries`), and formulate suggested follow-up hypotheses.
+  - [x] Adaptive DAG expansion: Enhanced `PlannerAgent.replan()` to accept deep iteration indices and transform gap queries and hypotheses into prioritized investigation subtasks.
+  - [x] Strict convergence guardrails: Enforced threshold $\tau \ge 0.85$, maximum iteration ceiling (`max_iterations`, default: 3, max: 5), and diminishing returns cutoff ($\Delta \tau < 0.02$).
+  - [x] Real-time iteration telemetry: Defined deep research event types and WebSocket broadcast for live iteration status and hypothesis tracking.
+  - [x] Interactive Deep Research UI: Built `DeepResearchTracker.tsx` with multi-round iteration stepper, confidence gauge, hypothesis status badges, and gap resolution explorer.
+  - [x] Automated test suites: Added `test_deep_research.py`, `test_deep_critic.py`, and verified 100% passing across all 247 tests.
+
+---
+
+## 🟡 Immediate Next Milestone: Phase 16 — Research Memory
 
 ### Generation 3: Autonomous Research
-- [ ] **Phase 15: Deep Research Engine**
-  - [ ] Autonomous recursive execution loops with Critic-driven follow-up investigations.
-  - [ ] Dynamic subtask rescheduling when evidentiary gaps or low confidence scores ($\tau < 0.70$) are flagged.
 - [ ] **Phase 16: Research Memory**
   - [ ] Persistent cross-session project memory allowing resumption months later.
+  - [ ] Conceptual indexing, query history recall, and automatic knowledge linking across sessions.
 - [ ] **Phase 17: Long-Term Knowledge Graph**
   - [ ] Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts.
 
