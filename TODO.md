@@ -69,19 +69,21 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 11 — Advanced Research Planning
+- [x] **Phase 11: Advanced Research Planning**
+  - [x] **Task 11.1: Deep Subquestion Decomposition & Query Tree Generation**: Hierarchical `QueryTreeNode` multi-tier decomposition, ambiguity scoring ($0.0 - 1.0$), and inferred scope parameterization (`InferredScope`).
+  - [x] **Task 11.2: Dynamic Agent Role & Capability Assignment**: Granular DAG routing matching subquestions to specialized agent personas with execution contracts.
+  - [x] **Task 11.3: Adaptive Planning & Dynamic Replanning**: Closed-loop dynamic replanning (`PlannerAgent.replan()`) triggering `task_spawned` and `dag_replanned` when contradictions or evidentiary gaps are flagged.
+  - [x] **Task 11.4: Interactive Research Planning Studio**: Real-time `QueryTreeViewer.tsx` component with expandable branch visualization and WebSocket progress streaming.
+  - [x] **Task 11.5: Automated Verification**: Comprehensive unit test suite in `test_planner_advanced_planning.py`.
 
-- [ ] **Task 11.1: Deep Subquestion Decomposition & Query Tree Generation**
-  - [ ] Multi-stage goal decomposition breaking broad questions into hierarchical sub-inquiries.
-  - [ ] Ambiguity scoring and recursive plan refinement.
-- [ ] **Task 11.2: Dynamic Agent Role & Capability Assignment**
-  - [ ] Granular DAG routing matching subquestions to specialized agent personas based on capability profiles.
-- [ ] **Task 11.3: Adaptive Planning & Dynamic Replanning**
-  - [ ] Runtime plan adjustment when evidence is sparse, refuted, or highly contradictory.
+---
+
+## 🟡 Immediate Next Milestone: Phase 12 — Advanced Multimodal Research
 
 ### Generation 2: Multimodal Intelligence
 - [ ] **Phase 12: Advanced Multimodal Research**
-  - [ ] Unified context across 50+ page PDFs, research papers, images, charts, audio, and video.
+  - [ ] Unified context across 50+ page PDFs, research papers, images, charts, audio (Whisper), and video.
+  - [ ] Cross-modal evidence fusion and visual question answering over complex scientific diagrams.
 - [ ] **Phase 13: Dataset & Data Analysis Intelligence**
   - [ ] Tabular data processing (CSV, Excel, JSON) using deterministic Python calculation tools.
 - [ ] **Phase 14: Document & Paper Intelligence**
