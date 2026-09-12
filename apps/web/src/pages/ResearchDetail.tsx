@@ -4,6 +4,7 @@ import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, 
 import { api, getResearchWebSocketUrl } from '../services/api'
 import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
 import { QueryTreeViewer } from '../components/QueryTreeViewer'
+import { MultimodalEvidenceViewer } from '../components/MultimodalEvidenceViewer'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
@@ -381,38 +382,7 @@ export function ResearchDetail() {
 
         {activeTab === 'evidence' && (
           <div>
-            {evidence.length === 0 ? (
-              <div className="empty-state">
-                <FileCheck size={48} />
-                <p>No evidence extracted yet</p>
-              </div>
-            ) : (
-              <div style={{ display: 'grid', gap: 'var(--spacing-md)' }}>
-                {evidence.map(e => (
-                  <div key={e.id} style={{ padding: 'var(--spacing-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-sm)' }}>
-                      <span style={{ fontWeight: 500 }}>{e.claim}</span>
-                      <div style={{ display: 'flex', gap: 'var(--spacing-xs)', flexWrap: 'wrap' }}>
-                        <span className="badge badge-pending">{Math.round(e.confidence * 100)}% confidence</span>
-                        {e.source_reliability !== undefined && (
-                          <span className="badge badge-primary">{Math.round((e.source_reliability || 1.0) * 100)}% reliability</span>
-                        )}
-                      </div>
-                    </div>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{e.supporting_text.slice(0, 300)}...</p>
-                    <div style={{ display: 'flex', gap: 'var(--spacing-md)', fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 'var(--spacing-xs)', flexWrap: 'wrap' }}>
-                      <span>Verification: <strong>{e.verification_status}</strong></span>
-                      {e.citation_coordinates?.page_number && (
-                        <span>Page: {e.citation_coordinates.page_number}</span>
-                      )}
-                      {e.citation_coordinates?.paragraph_index !== undefined && e.citation_coordinates.paragraph_index !== null && (
-                        <span>Paragraph: {e.citation_coordinates.paragraph_index}</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+            <MultimodalEvidenceViewer evidence={evidence} title="Extracted Multimodal Evidence & Claims" />
           </div>
         )}
 

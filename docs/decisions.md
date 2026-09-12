@@ -106,5 +106,33 @@ This document records the key architectural, engineering, and product design dec
   2. Implement a pairwise contradiction detection engine in `CriticAgent` categorizing conflicts into `direct_conflict`, `numerical_discrepancy`, and `methodological_divergence`.
   3. Synthesize citation-grounded reports in `ReportAgent` with a dedicated contradictions matrix and overall quantitative `confidence_score`.
 - **Consequences**:
--   Positive: 100% auditability with interactive claim-to-coordinate explainability.
--   Positive: Explicit identification and taxonomy for all conflicting evidence across sources.
+  - Positive: 100% auditability with interactive claim-to-coordinate explainability.
+  - Positive: Explicit identification and taxonomy for all conflicting evidence across sources.
+
+---
+
+## ADR 011: Hierarchical Query Trees & Closed-Loop Adaptive Replanning (Phase 11)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Complex multi-domain research inquiries cannot be effectively executed as flat lists of independent tasks without structured sub-question hierarchies and adaptive feedback when evidence is missing or contradictory.
+- **Decision**:
+  1. Implement `QueryTreeNode` recursive subquestion decomposition with quantitative `ambiguity_score` evaluation and `InferredScope` resolution in `PlannerAgent`.
+  2. Implement dynamic agent role assignment matching subquestions to specialized agent capabilities.
+  3. Implement closed-loop adaptive replanning (`PlannerAgent.replan()`) triggering dynamic task additions (`task_spawned` and `dag_replanned` events) when `CriticAgent` flags evidentiary gaps.
+- **Consequences**:
+  - Positive: Transparent multi-tier strategic decomposition visible in real-time UI.
+  - Positive: Self-healing research execution DAG resolving knowledge blindspots autonomously.
+
+---
+
+## ADR 012: Unified Multimodal Evidence & Timestamp-Bounded Chunking (Phase 12)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Enterprise multimodal research must digest audio speech recordings, video demonstrations, and scientific charts alongside text, requiring exact time-bounding (`[MM:SS - MM:SS]`), speaker attribution, and structured chart data series extraction.
+- **Decision**:
+  1. Extend `CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, and `chart_data`.
+  2. Implement `AudioParser` for speech audio and `VideoParser` for synchronized multimodal video timelines.
+  3. Implement `ChartRef` structured extraction in `ImageParser` to preserve numerical JSON data series and Markdown tables.
+  4. Enhance `SemanticChunker` to generate timestamp-bounded and chart-specific chunks for hybrid RAG dual-indexing.
+- **Consequences**:
+  - Positive: True cross-modal factual grounding with verifiable timestamp and coordinate provenance.
+  - Positive: Deterministic reasoning over extracted scientific chart data series.
+

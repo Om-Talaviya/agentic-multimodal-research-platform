@@ -104,13 +104,18 @@ class ResearchPlan(BaseModel):
 
 
 class CitationCoordinates(BaseModel):
-    """Fine-grained physical coordinate anchors for grounding factual claims."""
+    """Fine-grained physical coordinate and time-series anchors for grounding factual claims."""
     page_number: Optional[int] = None
     paragraph_index: Optional[int] = None
     table_row: Optional[int] = None
     table_col: Optional[int] = None
     char_start: Optional[int] = None
     char_end: Optional[int] = None
+    timestamp_start: Optional[float] = None
+    timestamp_end: Optional[float] = None
+    media_type: Optional[str] = None  # text, pdf, image, audio, video, chart
+    speaker: Optional[str] = None
+    chart_data: Optional[Dict[str, Any]] = None
 
 
 class Citation(BaseModel):

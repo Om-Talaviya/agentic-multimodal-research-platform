@@ -90,6 +90,28 @@ export interface CitationCoordinates {
   table_col?: number | null
   char_start?: number | null
   char_end?: number | null
+  timestamp_start?: number | null
+  timestamp_end?: number | null
+  media_type?: string | null
+  speaker?: string | null
+  chart_data?: Record<string, any> | null
+}
+
+export interface AudioSegment {
+  start_seconds: number
+  end_seconds: number
+  text: string
+  speaker?: string | null
+  confidence?: number
+}
+
+export interface ChartRef {
+  id: string
+  chart_type: string
+  title: string
+  data_series: Record<string, any>
+  summary?: string
+  page_number?: number | null
 }
 
 export interface Citation {

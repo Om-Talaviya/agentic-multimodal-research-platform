@@ -78,14 +78,24 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 12 — Advanced Multimodal Research
+- [x] **Phase 12: Advanced Multimodal Research**
+  - [x] Multimodal schema unification: Extended `CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, `chart_data`.
+  - [x] Speech & Audio Intelligence: Created `AudioParser` supporting `.mp3`, `.wav`, `.m4a`, `.flac`, `.ogg` with timestamped speech segments and speaker diarization.
+  - [x] Video Understanding: Created `VideoParser` generating synchronized timeline events, dialogue transcripts, and keyframe snapshots.
+  - [x] Scientific Chart & Diagram Parsing: Upgraded `ImageParser` to detect charts, extracting `ChartRef` models with structured JSON data series and Markdown data tables.
+  - [x] Multimodal Chunking & Dual-Indexing: Upgraded `SemanticChunker` to preserve audio/video timestamps and chart series for vector and BM25 RRF indexing.
+  - [x] API Whitelist Extension: Whitelisted audio/video MIME types and file extensions in `apps/api/src/api/routes/documents.py`.
+  - [x] Interactive Multimodal UI: Built `MultimodalEvidenceViewer.tsx` studio component with audio/video badges, timestamp ranges, and interactive chart inspector.
+  - [x] Automated Unit Test Suite: Added comprehensive test suite in `packages/ingestion/tests/test_multimodal_audio_video.py`.
+
+---
+
+## 🟡 Immediate Next Milestone: Phase 13 — Dataset & Data Analysis Intelligence
 
 ### Generation 2: Multimodal Intelligence
-- [ ] **Phase 12: Advanced Multimodal Research**
-  - [ ] Unified context across 50+ page PDFs, research papers, images, charts, audio (Whisper), and video.
-  - [ ] Cross-modal evidence fusion and visual question answering over complex scientific diagrams.
 - [ ] **Phase 13: Dataset & Data Analysis Intelligence**
   - [ ] Tabular data processing (CSV, Excel, JSON) using deterministic Python calculation tools.
+  - [ ] Statistical summaries, trend analysis, and chart visualization generation.
 - [ ] **Phase 14: Document & Paper Intelligence**
   - [ ] Deep academic paper structure parsing and methodology comparison across preprints.
 
