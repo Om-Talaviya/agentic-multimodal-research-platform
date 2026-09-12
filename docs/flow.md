@@ -243,3 +243,48 @@ sequenceDiagram
     Pipe-->>User: Final Research Job Complete (Memory Retained for Future Jobs)
 ```
 
+---
+
+## 7. Knowledge Graph Extraction & GraphRAG Flow (Phase 17)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Researcher
+    participant Pipe as ResearchPipeline
+    participant GraphEng as KnowledgeGraphEngine
+    participant GraphRepo as KnowledgeGraphRepository
+    participant DB as PostgreSQL / SQLite (knowledge_entities, knowledge_relations)
+    participant Agent as Specialized Agent (Doc / Web / Report)
+    participant UI as KnowledgeGraphViewer.tsx
+
+    Note over Pipe, DB: 1. Graph-Augmented RAG (GraphRAG Context)
+    Pipe->>GraphEng: get_graph_augmented_context(query, user_id, max_hops=2)
+    GraphEng->>GraphRepo: find_entity_by_name(query)
+    GraphRepo->>DB: SELECT * FROM knowledge_entities
+    DB-->>GraphRepo: Root Entity
+    GraphEng->>GraphRepo: get_k_hop_subgraph(entity_id, max_hops=2)
+    GraphRepo->>DB: BFS Adjacency Traversal (nodes + edges)
+    DB-->>GraphRepo: Subgraph nodes & edges
+    GraphRepo-->>GraphEng: Subgraph data
+    GraphEng-->>Pipe: Formatted Graph Context Text + Subgraph
+    Pipe->>Agent: Prompt injected with Graph Context (Entities & Relations)
+
+    Note over Agent, DB: 2. Agent Graph Tool Execution
+    Agent->>GraphEng: FindRelationPathTool(source="Transformer", target="GPT-4")
+    GraphEng->>GraphRepo: find_shortest_path(src_id, tgt_id, max_depth=4)
+    GraphRepo-->>GraphEng: GraphPathResult(path_found=True, hops=2)
+    GraphEng-->>Agent: Shortest Relational Path
+
+    Note over Pipe, DB: 3. Post-Synthesis Triplet Extraction
+    Pipe->>GraphEng: extract_from_report(user_id, job_id, report)
+    GraphEng->>GraphEng: Parse entities & relation triplets from findings
+    GraphEng->>GraphRepo: batch_upsert_triplets(triplets, user_id, job_id)
+    GraphRepo->>DB: Upsert entities & relations with transaction commit
+    DB-->>GraphRepo: Persisted count
+
+    Note over UI, DB: 4. Real-time Interactive Graph Studio
+    UI->>GraphRepo: GET /api/v1/graph/subgraph?center_entity_id={id}
+    GraphRepo-->>UI: {nodes, edges, center_id} (Render force layout canvas)
+```
+

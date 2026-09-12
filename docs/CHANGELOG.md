@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 17: Long-Term Knowledge Graph**:
+  - Implemented `DBKnowledgeEntity` and `DBKnowledgeRelation` database models in `packages/database/src/database/models/graph.py` with cross-database dialect-safe `GUID`, `JSONType`, entity categories (`concept`, `person`, `organization`, `technology`, `methodology`, `finding`, `dataset`, `metric`, `other`), aliases, and properties.
+  - Implemented `KnowledgeGraphRepository` in `packages/database/src/database/repositories/graph_repo.py` supporting CRUD, entity name canonicalization, batch triplet upserting, $k$-hop BFS neighborhood extraction (`get_k_hop_subgraph`), and shortest-path multi-hop traversal (`find_shortest_path`).
+  - Implemented `KnowledgeGraphEngine` in `packages/research/src/research/graph/engine.py` orchestrating automated triplet extraction from research findings, LLM fallback parsing, Graph-Augmented RAG (`GraphRAG`), and semantic pathfinding.
+  - Added Agent graph tools in `packages/tools/src/tools/definitions/graph.py`: `QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, and `FindRelationPathTool` with lazy loading to prevent circular import chains.
+  - Created complete FastAPI REST API endpoints in `apps/api/src/api/routes/graph.py` (`/nodes`, `/edges`, `/subgraph`, `/paths`, `/extract`, `/stats`) wired in `dependencies.py` and `main.py`.
+  - Added WebSocket real-time events: `GRAPH_ENTITIES_EXTRACTED` and `GRAPH_RELATIONS_EXTRACTED`.
+  - Developed interactive React network studio `KnowledgeGraphViewer.tsx` and `KnowledgeGraphPage.tsx` with dynamic SVG force layouts, node dragging, pan/zoom, type color badges, multi-hop pathfinding explorer, and direct integration into `ResearchDetail.tsx` and `Layout.tsx`.
+  - Formalized **ADR 017** (Long-Term Knowledge Graph & GraphRAG via In-Database Adjacency vs External Graph DBs).
+  - Added unit test suites across all layers (`test_knowledge_graph_repository.py`, `test_knowledge_graph_engine.py`, `test_knowledge_graph_tools.py`, `test_graph_api.py`), achieving 100% pass rate (265/265 tests).
 - **Phase 16: Research Memory**:
   - Implemented `DBResearchMemory` database model in `packages/database/src/database/models/memory.py` supporting dialect-safe JSON/GUID types, memory types (`concept`, `finding`, `hypothesis`, `methodology`, `fact`), tagging, confidence scores, provenance, and access statistics (`access_count`, `last_accessed_at`).
   - Implemented `MemoryRepository` in `packages/database/src/database/repositories/memory_repository.py` providing transactional async CRUD, keyword/text search across titles/content/tags, access incrementing, and count aggregations.

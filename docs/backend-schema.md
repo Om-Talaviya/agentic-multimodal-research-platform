@@ -320,6 +320,61 @@ erDiagram
 
 ---
 
+### 2.7 Table: `knowledge_entities` (Phase 17)
+- Represents conceptual nodes, technologies, materials, metrics, datasets, papers, and persons in the persistent Research Knowledge Graph.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique entity node UUID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id), NULLABLE` | Optional owning user ID |
+| `project_id` | `UUID` | `NULLABLE` | Optional associated project UUID |
+| `name` | `VARCHAR(255)` | `NOT NULL` | Entity name / label |
+| `canonical_name` | `VARCHAR(255)` | `NOT NULL` | Normalized lowercase canonical entity key |
+| `entity_type` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'CONCEPT'` | Type: `CONCEPT`, `TECHNOLOGY`, `MATERIAL`, `PERSON`, `ORGANIZATION`, `METRIC`, `DATASET`, `PAPER`, `LOCATION`, `OTHER` |
+| `description` | `TEXT` | `NULLABLE` | Contextual conceptual description |
+| `aliases` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Synonyms and alias names |
+| `properties_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Arbitrary metadata key-values |
+| `confidence` | `FLOAT` | `NOT NULL, DEFAULT 1.0` | Confidence rating [0.0, 1.0] |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+#### Indexes:
+- `ix_knowledge_entities_canonical_name` (`canonical_name`)
+- `ix_knowledge_entities_entity_type` (`entity_type`)
+- `ix_knowledge_entities_user_id` (`user_id`)
+- `ix_knowledge_entities_project_id` (`project_id`)
+
+---
+
+### 2.8 Table: `knowledge_relations` (Phase 17)
+- Represents directed relational edges connecting knowledge entities in the Graph.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique relation edge UUID |
+| `source_id` | `UUID` | `FOREIGN KEY (knowledge_entities.id), NOT NULL` | Source entity node ID |
+| `target_id` | `UUID` | `FOREIGN KEY (knowledge_entities.id), NOT NULL` | Target entity node ID |
+| `relation_type` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'RELATES_TO'` | Predicate: `AUTHORED_BY`, `USES_MATERIAL`, `CONTRADICTS`, `EVALUATED_ON`, `DEVELOPED_BY`, `CORRELATES_WITH`, `DERIVED_FROM`, `APPLIES_METHODOLOGY`, `EXPOSED_TO`, `HOSTS`, `SECRETES`, `ENHANCES`, `SYNTHESIZED_VIA`, `RELATES_TO` |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id), NULLABLE` | Optional owning user ID |
+| `project_id` | `UUID` | `NULLABLE` | Optional associated project UUID |
+| `job_id` | `UUID` | `FOREIGN KEY (research_jobs.id), NULLABLE` | Associated research job ID |
+| `description` | `TEXT` | `NULLABLE` | Relational context / explanation |
+| `weight` | `FLOAT` | `NOT NULL, DEFAULT 1.0` | Connection weight / strength |
+| `confidence` | `FLOAT` | `NOT NULL, DEFAULT 1.0` | Confidence score [0.0, 1.0] |
+| `evidence_id` | `UUID` | `FOREIGN KEY (evidence.id), NULLABLE` | Linked research evidence UUID |
+| `properties_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Arbitrary edge metadata |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+
+#### Indexes:
+- `ix_knowledge_relations_source_id` (`source_id`)
+- `ix_knowledge_relations_target_id` (`target_id`)
+- `ix_knowledge_relations_relation_type` (`relation_type`)
+- `ix_knowledge_relations_job_id` (`job_id`)
+- `ix_knowledge_relations_user_id` (`user_id`)
+- `ix_knowledge_relations_src_tgt_type` (`source_id`, `target_id`, `relation_type`)
+
+---
+
 ## 3. Database Cross-Compatibility Strategy
 
 To ensure seamless production deployment on PostgreSQL 16 while supporting fast, zero-dependency in-memory testing with SQLite, all model definitions use SQLAlchemy dialect-agnostic variants:

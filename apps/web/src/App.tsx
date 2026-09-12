@@ -6,6 +6,7 @@ import { NewResearch } from './pages/NewResearch'
 import { ResearchDetail } from './pages/ResearchDetail'
 import { Settings } from './pages/Settings'
 import { MemoryPage } from './pages/MemoryPage'
+import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Loader2 } from 'lucide-react'
@@ -87,6 +88,7 @@ function App() {
       <Route path="research/new" element={isAuthenticated ? <NewResearch /> : <Navigate to="/login" replace />} />
       <Route path="research/:id" element={isAuthenticated ? <ResearchDetail /> : <Navigate to="/login" replace />} />
       <Route path="memory" element={isAuthenticated ? <MemoryPage /> : <Navigate to="/login" replace />} />
+      <Route path="graph" element={isAuthenticated ? <KnowledgeGraphPage /> : <Navigate to="/login" replace />} />
       <Route path="settings" element={isAuthenticated ? <Settings /> : <Navigate to="/login" replace />} />
 
       {/* Auth routes - only when not authenticated */}

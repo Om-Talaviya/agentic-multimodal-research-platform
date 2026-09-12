@@ -14,6 +14,7 @@ from research.events import (
     research_event_bus,
 )
 from research.deep_research import DeepResearchEngine
+from research.graph import KnowledgeGraphEngine
 from research.memory import (
     MemoryItem,
     MemoryRecallResult,
@@ -30,6 +31,7 @@ __all__ = [
     "CitationCoordinates", "Citation", "Contradiction",
     "DeepResearchConfig", "ResearchIteration",
     "DeepResearchEngine",
+    "KnowledgeGraphEngine",
     "ResearchMemoryManager",
     "MemoryItem",
     "MemoryType",

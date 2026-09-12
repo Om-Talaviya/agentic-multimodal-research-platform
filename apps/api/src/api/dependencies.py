@@ -16,6 +16,7 @@ from agents.registry import AgentRegistry, registry as agent_registry
 from tools.registry import ToolRegistry, tool_registry
 from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 from tools.definitions.document_read import DocumentReadTool
+from tools.definitions.graph import ExtractGraphTripletsTool, FindRelationPathTool, QueryKnowledgeGraphTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
 from tools.definitions.memory import RecallMemoryTool, StoreMemoryTool
 from tools.definitions.paper_analysis import MethodologyComparisonTool, PaperAnalysisTool
@@ -26,8 +27,9 @@ from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
 from agents.research.report_agent import ReportAgent
 from agents.critic.critic_agent import CriticAgent
+from research.graph.engine import KnowledgeGraphEngine
 from research.memory.manager import ResearchMemoryManager
-from database.repositories import MemoryRepository
+from database.repositories import KnowledgeGraphRepository, MemoryRepository
 from retrieval.bm25 import BM25Index
 from retrieval.embedder import Embedder
 from retrieval.in_memory_store import InMemoryVectorStore
@@ -165,6 +167,9 @@ async def init_providers() -> None:
     tool_registry.register(MethodologyComparisonTool())
     tool_registry.register(RecallMemoryTool(memory_manager=_memory_manager))
     tool_registry.register(StoreMemoryTool(memory_manager=_memory_manager))
+    tool_registry.register(QueryKnowledgeGraphTool())
+    tool_registry.register(ExtractGraphTripletsTool())
+    tool_registry.register(FindRelationPathTool())
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(
@@ -238,6 +243,14 @@ async def get_memory_manager() -> ResearchMemoryManager:
 
 async def get_memory_repository(session: AsyncSession = Depends(get_db_session)) -> MemoryRepository:
     return MemoryRepository(session)
+
+
+async def get_graph_repository(session: AsyncSession = Depends(get_db_session)) -> KnowledgeGraphRepository:
+    return KnowledgeGraphRepository(session)
+
+
+async def get_graph_engine(repo: KnowledgeGraphRepository = Depends(get_graph_repository)) -> KnowledgeGraphEngine:
+    return KnowledgeGraphEngine(repo)
 
 
 async def get_research_event_bus() -> ResearchEventBus:

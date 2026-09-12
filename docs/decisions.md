@@ -203,7 +203,25 @@ This document records the key architectural, engineering, and product design dec
 - **Consequences**:
   - Positive: Long-term continuity and knowledge accumulation across research sessions.
   - Positive: Eliminates redundant web search and document ingestion for previously answered sub-questions.
-  - Positive: Seamless multi-agent collaboration with shared access to verified past findings and methodologies.
+  ---
 
+## ADR 017: Long-Term Knowledge Graph with Adjacency List Storage & GraphRAG (Phase 17)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: While dense vector search and cross-session memory capture semantic similarity and text passages, complex scientific and competitive intelligence tasks require explicit entity-relation reasoning (e.g., *"Which organizations contributed to Transformer architectures, what datasets were used, and what methodologies were contradicted?"*). Vector similarity alone cannot perform multi-hop pathfinding or relational traversals across disparate documents.
+- **Decision**:
+  1. Implement persistent relational graph persistence in PostgreSQL 16 / SQLite using `DBKnowledgeEntity` and `DBKnowledgeRelation` models (`packages/database/src/database/models/graph.py`) with dialect-safe `GUID`, `JSONType`, entity categories (`CONCEPT`, `TECHNOLOGY`, `MATERIAL`, `PERSON`, `ORGANIZATION`, `METRIC`, `DATASET`, `PAPER`, `LOCATION`, `OTHER`), canonical name normalization, and relationship predicates (`AUTHORED_BY`, `USES_MATERIAL`, `CONTRADICTS`, `EVALUATED_ON`, `DEVELOPED_BY`, `CORRELATES_WITH`, `DERIVED_FROM`, `APPLIES_METHODOLOGY`, `EXPOSED_TO`, `HOSTS`, `SECRETES`, `ENHANCES`, `SYNTHESIZED_VIA`, `RELATES_TO`).
+  2. Implement `KnowledgeGraphRepository` with BFS $k$-hop subgraph extraction, shortest-path multi-hop traversal, entity canonicalization, and batch triplet upserts.
+  3. Adhere to **ADR 008** (avoiding premature Neo4j or external graph infrastructure) by implementing indexed adjacency lists in PostgreSQL/SQLite that execute sub-millisecond local traversals for tens of thousands of entity nodes.
+  4. Implement `KnowledgeGraphEngine` in `packages/research/src/research/graph/engine.py` orchestrating:
+     - Automated triplet extraction from research reports, papers, and text findings (`extract_triplets_from_text`, `extract_from_report`).
+     - Graph-Augmented RAG (`get_graph_augmented_context`) injecting structured relational subgraphs and neighbor entity definitions into agent prompts.
+     - Multi-hop relational pathfinding between arbitrary named entities (`find_path_between_entities`).
+  5. Build and register agent graph tools in `packages/tools/src/tools/definitions/graph.py` (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`).
+  6. Implement FastAPI REST routes (`/api/v1/graph`) supporting node/edge CRUD, k-hop subgraph extraction, multi-hop path queries, triplet extraction, and graph stats.
+  7. Develop `KnowledgeGraphViewer.tsx` and `KnowledgeGraphPage.tsx` with interactive force-layout SVG network visualization, entity type color palettes, node inspector drawer, multi-hop pathfinder, and triplet extraction studio.
+- **Consequences**:
+  - Positive: Multi-hop reasoning and relational discovery across hundreds of documents without external graph database dependencies.
+  - Positive: Graph-Augmented RAG significantly improves factual precision and reduces hallucination on complex cross-entity questions.
+  - Positive: High-performance SQLite in-memory test compatibility alongside PostgreSQL 16 production parity.
 
 

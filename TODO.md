@@ -135,16 +135,23 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 17 — Long-Term Knowledge Graph
+- [x] **Phase 17: Long-Term Knowledge Graph**
+  - [x] Graph database persistence: Created `DBKnowledgeEntity` and `DBKnowledgeRelation` models with dialect-safe `GUID` and `JSONType`, indexed foreign keys, and properties JSON.
+  - [x] Graph persistence repository: Built `KnowledgeGraphRepository` with entity CRUD, canonicalization, relationship CRUD, k-hop BFS subgraph extraction, and shortest path traversal.
+  - [x] Autonomous graph engine: Implemented `KnowledgeGraphEngine` with automated entity/relation extraction from findings/reports, Graph-Augmented RAG (`GraphRAG`) context builder, and multi-hop path search.
+  - [x] Agent graph tools: Created and registered `QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, and `FindRelationPathTool`.
+  - [x] REST API endpoints: Built `/api/v1/graph` routes (`GET /nodes`, `POST /nodes`, `GET /nodes/{id}`, `DELETE /nodes/{id}`, `GET /edges`, `POST /edges`, `DELETE /edges/{id}`, `GET /subgraph`, `GET /paths`, `POST /extract`, `GET /stats`).
+  - [x] Interactive UI Studio: Developed `KnowledgeGraphViewer.tsx` and `KnowledgeGraphPage.tsx` with interactive SVG canvas, entity-type color coding, node inspector, multi-hop pathfinder, and triplet extraction. Added Knowledge Graph tab to `ResearchDetail.tsx` and `/graph` navigation route.
+  - [x] Comprehensive test suites: Added `test_knowledge_graph_repository.py`, `test_knowledge_graph_engine.py`, `test_knowledge_graph_tools.py`, `test_graph_api.py`, verified 265/265 tests passing.
 
-### Generation 3: Autonomous Research
-- [ ] **Phase 17: Long-Term Knowledge Graph**
-  - [ ] Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts.
-  - [ ] Cross-document entity resolution and knowledge graph ontology reasoning.
+---
+
+## 🟡 Immediate Next Milestone: Phase 18 — Projects & Workspaces
 
 ### Generation 4: Collaboration Platform
 - [ ] **Phase 18: Projects & Workspaces**
   - [ ] Multi-tenant workspace hierarchy (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
+  - [ ] Workspace-level document isolation and scoped research pipelines.
 - [ ] **Phase 19: Team Collaboration**
   - [ ] Workspace roles (Owner, Researcher, Analyst, Reviewer, Viewer), shared projects, and collaborative report editing.
 
