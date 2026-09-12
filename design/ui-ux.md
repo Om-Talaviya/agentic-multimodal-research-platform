@@ -50,9 +50,9 @@ This document defines the complete visual design system, interaction patterns, u
 ### 3.1 Main Navigation & Dashboard Layout
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│  [🔬 AI RESEARCH OS]   Dashboard   Research   Knowledge   Documents   Memory   Projects   ⚙️│
-├─────────────────────────────────────────────────────────────────────────────────────────────┤
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [🔬 AI RESEARCH OS]   Dashboard   Research   Knowledge   Documents   Memory   Knowledge Graph   Projects ⚙️│
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                             │
 │   🚀 Start New Autonomous Research                                                          │
 │  ┌───────────────────────────────────────────────────────────────────────────────────────┐  │
@@ -172,6 +172,34 @@ This document defines the complete visual design system, interaction patterns, u
 │  │ Recalls: 1 time   •  Job: Sustainable Packaging  │ │ Recalls: 2 times  •  Job: Polymer 2 │  │
 │  └──────────────────────────────────────────────────┘ └───────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 3.5 Knowledge Graph Studio & Multi-Hop Pathfinder Layout (Phase 17)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🕸️ Long-Term Knowledge Graph Studio    [ 🔍 Search Entities / Nodes... ]   [ ➕ Extract from Research ] │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  Filters: [ All Types ] [ Concepts ] [ Methods ] [ Technologies ] [ Findings ] [ Datasets ] [ Metrics ] │
+├───────────────────────────────────────────────────────────────────┬─────────────────────────────────────┤
+│  NETWORK VISUALIZATION CANVAS (SVG FORCE-DIRECTED LAYOUT):        │  SELECTED NODE / PATHFINDER DRAWER: │
+│                                                                   │                                     │
+│         (PLA Polymer) ──[accelerated_by]──► (Industrial Compost)  │  📌 Node: PLA Polymer               │
+│               │                                   │               │  Type: Concept  •  Confidence: 94%  │
+│          [inhibited_by]                      [produces]           │  Description: Polylactic acid       │
+│               ▼                                   ▼               │  biodegradable polyester.           │
+│         (Cold Seawater)                     (CO2 + Biomass)       │  Aliases: Polylactide, PLA-904      │
+│               │                                                   ├─────────────────────────────────────┤
+│          [measured_by]                                            │  MULTI-HOP PATHFINDER:              │
+│               ▼                                                   │  From: [ PLA Polymer          ]     │
+│        (ASTM D6400 Protocol)                                      │  To:   [ Cold Seawater        ]     │
+│                                                                   │  [ 🚀 Find Relation Path ]          │
+│  Zoom: [ 100% ] [ + ] [ - ] [ 🔄 Recenter ] [ ⛶ Fullscreen ]      │  Path Found (1 Hop):                │
+│  Metrics: 42 Entities  •  88 Relations  •  0.91 Mean Confidence   │  PLA Polymer ──[inhibited_by]──►    │
+│                                                                   │  Cold Seawater                      │
+└───────────────────────────────────────────────────────────────────┴─────────────────────────────────────┘
 ```
 
 ---

@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, Brain } from 'lucide-react'
+import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, Brain, Share2 } from 'lucide-react'
 import { api, getResearchWebSocketUrl } from '../services/api'
 import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
 import type { MemoryItem } from '../types/memory'
+import type { KnowledgeEntity, KnowledgeRelation } from '../types/graph'
 import { QueryTreeViewer } from '../components/QueryTreeViewer'
 import { MultimodalEvidenceViewer } from '../components/MultimodalEvidenceViewer'
 import { DeepResearchTracker } from '../components/DeepResearchTracker'
 import { ResearchMemoryViewer } from '../components/ResearchMemoryViewer'
+import { KnowledgeGraphViewer } from '../components/KnowledgeGraphViewer'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
@@ -18,21 +20,25 @@ export function ResearchDetail() {
   const [report, setReport] = useState<ResearchReport | null>(null)
   const [plan, setPlan] = useState<ResearchPlan | null>(null)
   const [memories, setMemories] = useState<MemoryItem[]>([])
+  const [graphEntities, setGraphEntities] = useState<KnowledgeEntity[]>([])
+  const [graphRelations, setGraphRelations] = useState<KnowledgeRelation[]>([])
   const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report' | 'memories'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report' | 'memories' | 'graph'>('overview')
   const socketRef = useRef<WebSocket | null>(null)
   const reconnectTimeoutRef = useRef<any>(null)
 
   const fetchData = useCallback(async () => {
     if (!id) return
     try {
-      const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes, memRes] = await Promise.all([
+      const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes, memRes, graphNodesRes, graphEdgesRes] = await Promise.all([
         api.get(`/research/${id}`),
         api.get(`/research/${id}/tasks`),
         api.get(`/research/${id}/sources`),
         api.get(`/research/${id}/evidence`),
         api.get(`/research/${id}/report`).catch(() => ({ data: null })),
         api.get('/memory', { params: { job_id: id } }).catch(() => ({ data: [] })),
+        api.get('/graph/nodes', { params: { limit: 100 } }).catch(() => ({ data: [] })),
+        api.get('/graph/edges', { params: { limit: 200 } }).catch(() => ({ data: [] })),
       ])
       setJob(jobRes.data)
       setTasks(tasksRes.data.tasks || tasksRes.data)
@@ -40,6 +46,8 @@ export function ResearchDetail() {
       setEvidence(evidenceRes.data.evidence || evidenceRes.data)
       setReport(reportRes.data)
       setMemories(memRes.data || [])
+      setGraphEntities(graphNodesRes.data || [])
+      setGraphRelations(graphEdgesRes.data || [])
     } catch (err) {
       console.error(err)
     } finally {
@@ -226,6 +234,7 @@ export function ResearchDetail() {
     { id: 'evidence', label: 'Evidence', icon: FileCheck },
     { id: 'report', label: 'Report', icon: FileText, disabled: !report },
     { id: 'memories', label: `Memories (${memories.length})`, icon: Brain },
+    { id: 'graph', label: `Knowledge Graph (${graphEntities.length})`, icon: Share2 },
   ]
 
   return (
@@ -541,6 +550,13 @@ export function ResearchDetail() {
           <ResearchMemoryViewer
             memories={memories}
             selectedJobId={job.id}
+          />
+        )}
+
+        {activeTab === 'graph' && (
+          <KnowledgeGraphViewer
+            entities={graphEntities}
+            relations={graphRelations}
           />
         )}
       </div>

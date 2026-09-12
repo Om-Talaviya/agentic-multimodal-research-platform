@@ -171,13 +171,13 @@ flowchart TD
 - **Phase 13 (Data Intelligence - COMPLETE)**: Deterministic execution engine (`DataAnalysisTool`, `DeterministicMathTool`, `TabularParser`) for statistical profiling, aggregations, correlation, linear regression, and AST math over CSV/TSV/Excel/JSON datasets.
 - **Phase 14 (Paper Intelligence - COMPLETE)**: Academic research paper parser (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and cross-paper comparative matrices (`PaperAnalysisTool`, `MethodologyComparisonTool`).
 
-### Generation 3: Autonomous Research
+### Generation 3: Autonomous Research (COMPLETE)
 - **Phase 15 (Deep Research - COMPLETE)**: Dynamic recursive hypothesis formulation, Critic gap audits, DAG task rescheduling with convergence guardrails $\tau \ge 0.85$.
 - **Phase 16 (Research Memory - COMPLETE)**: Cross-session conceptual memory persistence (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API (`/api/v1/memory`), and interactive `ResearchMemoryViewer` UI.
-- **Phase 17 (Knowledge Graph - NEXT)**: Structured Neo4j / pgvector entity-relationship graph storage with Cypher/SPARQL query interface.
+- **Phase 17 (Knowledge Graph - COMPLETE)**: Relational entity-relationship adjacency persistence (`DBKnowledgeEntity`, `DBKnowledgeRelation`, `KnowledgeGraphRepository`), `KnowledgeGraphEngine` (triplet extraction from findings/reports, Graph-Augmented RAG `GraphRAG`), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
 ### Generation 4: Collaboration Platform
-- **Phase 18 (Workspaces)**: Database schema migration introducing `workspaces`, `workspace_members`, and `projects`.
+- **Phase 18 (Workspaces - NEXT)**: Database schema migration introducing `workspaces`, `workspace_members`, and `projects`.
 - **Phase 19 (Collaboration)**: Operational Transformation (OT) or CRDT-based collaborative report editing and threaded comments.
 
 ### Generation 5: AI Platform Intelligence

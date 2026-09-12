@@ -123,6 +123,7 @@ The output is a structured intelligence dossier:
 - ✅ **Phase 14 (Document & Paper Intelligence)**: Academic paper parser (`AcademicPaperParser`), section tree hierarchies, BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`.
 - ✅ **Phase 15 (Deep Research Engine)**: Recursive hypothesis formulation, Critic gap audits, dynamic DAG subtask rescheduling, convergence guardrails $\tau \ge 0.85$, WebSocket iteration telemetry, and `DeepResearchTracker` UI.
 - ✅ **Phase 16 (Research Memory)**: Persistent cross-session research memory (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), semantic conceptual indexing, agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API (`/api/v1/memory`), and interactive `ResearchMemoryViewer` UI.
+- ✅ **Phase 17 (Long-Term Knowledge Graph)**: Relational entity-relation knowledge graph (`DBKnowledgeEntity`, `DBKnowledgeRelation`), `KnowledgeGraphRepository` (subgraph BFS, shortest path), `KnowledgeGraphEngine` (triplet extraction, GraphRAG), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
 ---
 
@@ -139,7 +140,13 @@ The output is a structured intelligence dossier:
   │ GENERATION 3: Autonomous Research                                            │
   │ • Phase 15: Deep Research Engine (Recursive Feedback Loops) [COMPLETE]       │
   │ • Phase 16: Research Memory (Cross-Session Project Memory)  [COMPLETE]       │
-  │ • Phase 17: Long-Term Knowledge Graph (IMMEDIATE NEXT MILESTONE)             │
+  │ • Phase 17: Long-Term Knowledge Graph (Entity-Relation Reasoning) [COMPLETE] │
+  └──────────────────────────────────────┬───────────────────────────────────────┘
+                                         ▼
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │ GENERATION 4: Collaboration Platform                                         │
+  │ • Phase 18: Projects & Workspaces Organization (NEXT MILESTONE)              │
+  │ • Phase 19: Team Collaboration (Roles, Shared Knowledge, Collaborative Edit) │
   └──────────────────────────────────────┬───────────────────────────────────────┘
                                          ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐

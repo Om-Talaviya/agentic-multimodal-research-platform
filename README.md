@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2016%20Complete-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Phase%2017%20Complete-success?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
@@ -68,7 +68,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
   • Users & RBAC         • ModelRegistry (Capabilities)   • PostgreSQL / SQLite
   • PBKDF2 Password Hash • ModelRouter (Task Matching)    • ChromaDB / In-Memory
   • JWT Access/Refresh   • ModelGateway (Failover)        • Usage Records & Quotas
-  • User Context Flow    • Ollama / Gemini / OpenAI       • Row-Locking Concurrency
+  • User Context Flow    • Ollama / Gemini / OpenAI       • Knowledge Graph & Memory
 ═════════════════════════════════════════════════════════════════════════════════
 ```
 
@@ -83,13 +83,14 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 | **Evidence & Provenance** | Unverifiable assertions & frequent hallucinations | **Strict Claim $\rightarrow$ Evidence Mapping**: Every claim links to verified sources, document page numbers, audio/video timestamps, and confidence metrics |
 | **Critic & Verification** | No verification loop | Independent `CriticAgent` detects contradictions, audits sufficiency, and triggers iterative research loops |
 | **Data Ingestion** | Raw text only | Native extraction for multi-page PDFs with tables, DOCX, images, audio speech tracks, and video timelines |
+| **Long-Term Memory & Graph** | Session-only context | Persistent cross-session research memory and relational Knowledge Graph with Graph-Augmented RAG (`GraphRAG`) |
 | **Multi-Tenancy & Quotas** | Simple API keys or no quotas | Persistent RBAC, transactional row-locking token/cost quotas, and per-user usage attribution |
 
 ---
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 16 Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 17 Complete** on the stable branch `develop/v1.1`.
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -109,8 +110,9 @@ Phase 13: Dataset & Data Analysis    [██████████████
 Phase 14: Document & Paper Intel     [████████████████████] 100%
 Phase 15: Deep Research Engine       [████████████████████] 100%
 Phase 16: Research Memory            [████████████████████] 100%
+Phase 17: Long-Term Knowledge Graph  [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 17: Long-Term Knowledge Graph  [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 18: Projects & Workspaces      [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -127,13 +129,13 @@ Phase 17: Long-Term Knowledge Graph  [░░░░░░░░░░░░░░
 - **Phase 13: Dataset & Data Analysis Intelligence (COMPLETE)**: Tabular dataset ingestion (CSV, TSV, Excel, JSON) with automated type inference, column statistics, `DataAnalysisTool` (descriptive statistics, aggregations, correlation, linear regression), and `DeterministicMathTool` (AST evaluator).
 - **Phase 14: Document & Paper Intelligence (COMPLETE)**: Academic research paper parsing (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`, and `PaperViewer.tsx` UI.
 
-### Generation 3: Autonomous Research
+### Generation 3: Autonomous Research (100% COMPLETE)
 - **Phase 15: Deep Research Engine (COMPLETE)**: Autonomous recursive multi-round research loops (`DeepResearchEngine`), recursive gap and hypothesis formulation with `CriticAgent`, adaptive DAG expansion with `PlannerAgent.replan()`, strict convergence guardrails ($\tau \ge 0.85$, max iterations, $\Delta \tau < 0.02$), WebSocket iteration telemetry, and `DeepResearchTracker.tsx` timeline studio.
 - **Phase 16: Research Memory (COMPLETE)**: Persistent cross-session research memory architecture (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), automatic report-to-memory consolidation (findings, methodologies, hypotheses, insights, summaries), semantic & text recall tools (`RecallMemoryTool`, `StoreMemoryTool`), REST APIs (`/api/v1/memory`), and interactive React UI (`ResearchMemoryViewer.tsx` & `MemoryPage.tsx`).
-- **Phase 17: Long-Term Knowledge Graph (NEXT)**: Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts beyond vector search.
+- **Phase 17: Long-Term Knowledge Graph (COMPLETE)**: Entity-relationship graph database models (`DBKnowledgeEntity`, `DBKnowledgeRelation`), `KnowledgeGraphRepository` (subgraph extraction, shortest path BFS), `KnowledgeGraphEngine` (triplet extraction from findings/reports, Graph-Augmented RAG `GraphRAG`), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
 ### Generation 4: Collaboration Platform
-- **Phase 18: Projects & Workspaces**: Multi-tiered workspace organization (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
+- **Phase 18: Projects & Workspaces (NEXT)**: Multi-tiered workspace organization (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
 - **Phase 19: Team Collaboration**: Workspace role-based sharing (Owner, Researcher, Analyst, Reviewer, Viewer), inline comments, and collaborative reports.
 
 ### Generation 5: AI Platform Intelligence
