@@ -54,10 +54,8 @@ def safe_eval_ast(node: ast.AST) -> Any:
     """Recursively evaluate an AST expression safely without arbitrary code execution."""
     if isinstance(node, ast.Expression):
         return safe_eval_ast(node.body)
-    elif isinstance(node, ast.Constant):  # Python 3.8+ numbers/strings/booleans
+    elif isinstance(node, ast.Constant):  # Python numbers, strings, booleans
         return node.value
-    elif isinstance(node, ast.Num):  # Fallback for older AST
-        return node.n
     elif isinstance(node, ast.BinOp):
         left = safe_eval_ast(node.left)
         right = safe_eval_ast(node.right)
