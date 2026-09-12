@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { DatasetProfile, ColumnProfile } from '../types/research'
-import { Table, Database, BarChart2, Hash, Type, Calendar, HelpCircle, ChevronRight, Search, TrendingUp } from 'lucide-react'
+import { useState } from 'react'
+import type { DatasetProfile } from '../types/research'
+import { Table, Database, BarChart2, Hash, Type, Calendar, HelpCircle, ChevronRight, Search } from 'lucide-react'
 
 interface DatasetViewerProps {
   dataset: DatasetProfile

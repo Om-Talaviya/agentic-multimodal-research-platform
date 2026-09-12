@@ -166,5 +166,25 @@ This document records the key architectural, engineering, and product design dec
   - Positive: High-fidelity academic document navigation and grounded section-level hybrid retrieval.
   - Positive: Automated multi-paper methodology comparison matrices accelerating literature synthesis.
 
+---
+
+## ADR 015: Autonomous Deep Research Engine & Multi-Round Hypothesis Loop Architecture (Phase 15)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: High-stakes scientific and market research cannot conclude after a single linear execution pass. When initial evidence reveals critical gaps, contradictory claims, or low confidence scores ($\tau < 0.85$), the system must autonomously formulate follow-up hypotheses, dynamically schedule targeted investigation subtasks, and iterate until strict convergence criteria are met.
+- **Decision**:
+  1. Implement `DeepResearchEngine` in `packages/research/src/research/deep_research.py` to orchestrate recursive multi-round feedback loops between `CriticAgent`, `PlannerAgent`, and specialized execution agents.
+  2. Structure `DeepResearchConfig` and `ResearchIteration` data contracts in `packages/research/src/research/models.py` tracking iteration index, hypothesis formulation, targeted subtasks, and quantitative confidence progression.
+  3. Upgrade `CriticAgent` to perform recursive evidentiary gap audits, emitting `unresolved_gaps`, targeted `gap_queries`, and testable `suggested_hypotheses`.
+  4. Extend `PlannerAgent.replan()` to support deep iteration context, transforming gap queries into dynamically scheduled DAG subtasks with capability routing.
+  5. Enforce 3 strict convergence guardrails:
+     - Target confidence threshold ($\tau \ge 0.85$).
+     - Hard iteration ceiling (`max_iterations`, default: 3, max: 5).
+     - Diminishing returns cutoff ($\Delta \tau < 0.02$ across consecutive rounds).
+  6. Define deep research event types (`DEEP_RESEARCH_STARTED`, `RESEARCH_ITERATION_STARTED`, `HYPOTHESIS_FORMULATED`, `RESEARCH_ITERATION_COMPLETED`, `DEEP_RESEARCH_CONVERGED`, `DEEP_RESEARCH_TERMINATED`) with real-time WebSocket broadcasting.
+  7. Develop `DeepResearchTracker.tsx` in the React frontend with iteration timeline stepper, confidence convergence gauge, hypothesis status badges, and gap resolution tree.
+- **Consequences**:
+  - Positive: Autonomous self-refining research operating system eliminating manual prompt re-runs.
+  - Positive: Complete transparency and deterministic termination guarantees preventing infinite execution loops or resource exhaustion.
+
 
 

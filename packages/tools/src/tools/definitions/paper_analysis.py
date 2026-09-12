@@ -1,52 +1,50 @@
 """Tools for academic paper structure extraction, section queries, and cross-paper methodology comparisons."""
 
 from typing import Any, Dict, List, Optional
-from tools.base import BaseTool, ToolResult
+from tools.base import Tool, ToolParameter, ToolResult, ToolSchema
 from shared.logging import get_logger
 
 logger = get_logger(__name__)
 
 
-class PaperAnalysisTool(BaseTool):
+class PaperAnalysisTool(Tool):
     """Tool for analyzing academic paper structures, extracting dimensions, and querying sections."""
 
-    @property
-    def name(self) -> str:
-        return "paper_analysis"
-
-    @property
-    def description(self) -> str:
-        return (
+    schema = ToolSchema(
+        name="paper_analysis",
+        description=(
             "Analyzes structured academic papers, preprints, and research manuscripts. "
             "Extracts key dimensions (Objective, Proposed Architecture, Baselines, Benchmarks, "
             "Metric Results, Limitations) or retrieves specific structural sections."
-        )
-
-    @property
-    def parameters_schema(self) -> Dict[str, Any]:
-        return {
-            "type": "object",
-            "properties": {
-                "operation": {
-                    "type": "string",
-                    "enum": ["extract_structure", "query_section", "extract_benchmarks"],
-                    "description": "Operation to perform on the paper.",
-                },
-                "paper_structure": {
-                    "type": "object",
-                    "description": "Parsed PaperStructure dictionary or object.",
-                },
-                "paper_text": {
-                    "type": "string",
-                    "description": "Raw markdown or text of the academic paper.",
-                },
-                "section_type": {
-                    "type": "string",
-                    "description": "Target section type (e.g. 'methodology', 'results', 'limitations') for query_section.",
-                },
-            },
-            "required": ["operation"],
-        }
+        ),
+        parameters=[
+            ToolParameter(
+                name="operation",
+                type="string",
+                description="Operation to perform: 'extract_structure', 'query_section', 'extract_benchmarks'",
+                required=True,
+                enum=["extract_structure", "query_section", "extract_benchmarks"],
+            ),
+            ToolParameter(
+                name="paper_structure",
+                type="object",
+                description="Parsed PaperStructure dictionary or object.",
+                required=False,
+            ),
+            ToolParameter(
+                name="paper_text",
+                type="string",
+                description="Raw markdown or text of the academic paper.",
+                required=False,
+            ),
+            ToolParameter(
+                name="section_type",
+                type="string",
+                description="Target section type (e.g. 'methodology', 'results', 'limitations') for query_section.",
+                required=False,
+            ),
+        ],
+    )
 
     async def execute(self, **kwargs: Any) -> ToolResult:
         operation = kwargs.get("operation")
@@ -147,40 +145,33 @@ class PaperAnalysisTool(BaseTool):
         )
 
 
-class MethodologyComparisonTool(BaseTool):
+class MethodologyComparisonTool(Tool):
     """Tool for cross-paper methodology comparison, benchmark performance diffs, and trade-off synthesis."""
 
-    @property
-    def name(self) -> str:
-        return "methodology_comparison"
-
-    @property
-    def description(self) -> str:
-        return (
+    schema = ToolSchema(
+        name="methodology_comparison",
+        description=(
             "Compares 2 or more research papers across core dimensions: "
             "Problem Formulation, Proposed Architecture, Baseline Models, Evaluation Benchmarks, "
             "Metric Scores, Performance Deltas, and Stated Limitations."
-        )
-
-    @property
-    def parameters_schema(self) -> Dict[str, Any]:
-        return {
-            "type": "object",
-            "properties": {
-                "papers": {
-                    "type": "array",
-                    "items": {"type": "object"},
-                    "description": "List of paper summary objects containing 'title', 'methodology', 'benchmarks', 'results', 'limitations'.",
-                },
-                "comparison_focus": {
-                    "type": "string",
-                    "enum": ["all", "methodology", "benchmarks", "limitations"],
-                    "description": "Primary dimension for the comparative matrix.",
-                    "default": "all",
-                },
-            },
-            "required": ["papers"],
-        }
+        ),
+        parameters=[
+            ToolParameter(
+                name="papers",
+                type="array",
+                description="List of paper summary objects containing 'title', 'methodology', 'benchmarks', 'results', 'limitations'.",
+                required=True,
+            ),
+            ToolParameter(
+                name="comparison_focus",
+                type="string",
+                description="Primary dimension for the comparative matrix.",
+                required=False,
+                enum=["all", "methodology", "benchmarks", "limitations"],
+                default="all",
+            ),
+        ],
+    )
 
     async def execute(self, **kwargs: Any) -> ToolResult:
         papers: List[Dict[str, Any]] = kwargs.get("papers") or []

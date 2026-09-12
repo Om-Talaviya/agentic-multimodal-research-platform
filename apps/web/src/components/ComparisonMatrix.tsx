@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { MethodologyComparisonMatrix } from '../types/research'
-import { GitCompare, CheckCircle2, AlertCircle, Sparkles, Copy, Check } from 'lucide-react'
+import { useState } from 'react'
+import type { MethodologyComparisonMatrix } from '../types/research'
+import { GitCompare, Copy, Check } from 'lucide-react'
 
 interface ComparisonMatrixProps {
   matrix: MethodologyComparisonMatrix

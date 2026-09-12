@@ -149,3 +149,46 @@ When a user asks: *"Why do you believe this finding?"*, the platform traverses t
                ▼
   Raw Ingested Multimodal Chunk & Ingestion Timestamp
 ```
+
+---
+
+## 6. Phase 15: Deep Research Multi-Round Hypothesis Loop Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as Researcher / Web UI
+    participant DRE as DeepResearchEngine
+    participant DAG as PipelineDAG / ToolExecutor
+    participant Critic as CriticAgent
+    participant Planner as PlannerAgent
+    participant Rep as ReportAgent
+    participant WS as WebSocket Broadcaster
+
+    User->>DRE: start_deep_research(query, config: max_iter=3, target_tau=0.85)
+    DRE->>WS: DEEP_RESEARCH_STARTED
+
+    loop Iterative Hypothesis & Verification Loop (Round 1..N)
+        DRE->>WS: RESEARCH_ITERATION_STARTED(round_idx)
+        DRE->>DAG: execute_dag_subtasks(active_tasks)
+        DAG-->>DRE: TaskResults & Ingested Evidence
+
+        DRE->>Critic: critique_evidence_coverage(evidence, claims, current_hypotheses)
+        Critic-->>DRE: CriticEvaluation(confidence_score, unresolved_gaps, gap_queries, suggested_hypotheses)
+
+        alt Convergence Met (confidence >= target_tau OR delta_tau < 0.02 OR round >= max_iter)
+            DRE->>WS: DEEP_RESEARCH_CONVERGED(tau, final_round)
+            Note over DRE: Terminate loop immediately
+        else Evidentiary Gaps or Low Confidence Detected
+            DRE->>Planner: replan(gaps=gap_queries, hypotheses=suggested_hypotheses, iteration=round+1)
+            Planner-->>DRE: DynamicSubtasks(is_dynamic=True, priority=High)
+            DRE->>WS: HYPOTHESIS_FORMULATED(new_hypotheses, scheduled_tasks)
+        end
+    end
+
+    DRE->>Rep: synthesize_deep_report(all_iterations, citations, confidence_trajectory)
+    Rep-->>DRE: Comprehensive Deep Research Report
+    DRE->>WS: DEEP_RESEARCH_TERMINATED(final_report)
+    DRE-->>User: ResearchReport with Full Iteration History
+```
+

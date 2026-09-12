@@ -19,14 +19,16 @@ class CriticAgent(Agent):
     description = "Evaluates evidence validity, identifies contradictions, and verifies factual grounding"
     capabilities = {"verification", "critic", "fact_checking", "quality_assessment"}
 
-    SYSTEM_PROMPT = """You are an advanced research critic, fact-checking, and contradiction-detection agent.
+    SYSTEM_PROMPT = """You are an advanced research critic, fact-checking, contradiction-detection, and deep gap analysis agent.
 Your objective is to:
 1. Evaluate research claims against supporting evidence, assign verification statuses, and validate citations.
 2. Detect pairwise or multi-source CONTRADICTIONS, classifying them into:
    - "direct_conflict": Sources make incompatible factual claims.
    - "numerical_discrepancy": Discrepant statistics, percentages, dates, or measurements across sources.
    - "methodological_divergence": Differences resulting from distinct evaluation methodologies, sample sizes, or baseline definitions.
-3. Calculate an overall quantitative factual confidence score (0.0 to 1.0).
+3. Identify UNRESOLVED GAPS in evidence or missing dimensions required to comprehensively answer the research inquiry.
+4. Formulate precise GAP QUERIES and testable HYPOTHESES to guide recursive follow-up investigations.
+5. Calculate an overall quantitative factual confidence score (0.0 to 1.0).
 
 Verification statuses:
 - "verified": The supporting text directly and unambiguously substantiates the claim.
@@ -56,6 +58,15 @@ Return your evaluation as a JSON object with this exact structure:
             "explanation": "concise explanation of the contradiction and root cause",
             "severity": "low|medium|high"
         }
+    ],
+    "unresolved_gaps": [
+        "Description of missing data point or unverified area"
+    ],
+    "gap_queries": [
+        "targeted search query to fill gap or resolve contradiction"
+    ],
+    "suggested_hypotheses": [
+        "Testable hypothesis proposition explaining discrepancy"
     ],
     "confidence_score": 0.88,
     "quality_score": 0.85,
@@ -140,14 +151,27 @@ Return your evaluation as a JSON object with this exact structure:
             result_data = json.loads(raw_content)
             verifications = result_data.get("verifications", [])
             contradictions = result_data.get("contradictions", [])
+            unresolved_gaps = result_data.get("unresolved_gaps", [])
+            gap_queries = result_data.get("gap_queries", [])
+            suggested_hypotheses = result_data.get("suggested_hypotheses", [])
             quality_score = float(result_data.get("quality_score", 0.8))
             confidence_score = float(result_data.get("confidence_score", quality_score))
             summary = result_data.get("critique_summary", "")
+
+            # If gap_queries weren't provided but contradictions exist, generate targeted queries
+            if not gap_queries and contradictions:
+                for c in contradictions:
+                    topic = c.get("topic", "")
+                    if topic:
+                        gap_queries.append(f"Resolve conflict in {topic} evidence")
 
             # Update working memory
             context.memory.set_working("last_critic_score", quality_score)
             context.memory.set_working("last_confidence_score", confidence_score)
             context.memory.set_working("last_contradictions", contradictions)
+            context.memory.set_working("last_unresolved_gaps", unresolved_gaps)
+            context.memory.set_working("last_gap_queries", gap_queries)
+            context.memory.set_working("last_hypotheses", suggested_hypotheses)
             context.memory.set_working("last_critic_summary", summary)
 
             logger.info(
@@ -155,6 +179,7 @@ Return your evaluation as a JSON object with this exact structure:
                 task_id=task.id,
                 evaluated_count=len(verifications),
                 contradictions_count=len(contradictions),
+                unresolved_gaps_count=len(unresolved_gaps),
                 confidence_score=confidence_score,
                 quality_score=quality_score,
             )
@@ -164,6 +189,9 @@ Return your evaluation as a JSON object with this exact structure:
                 output={
                     "verifications": verifications,
                     "contradictions": contradictions,
+                    "unresolved_gaps": unresolved_gaps,
+                    "gap_queries": gap_queries,
+                    "suggested_hypotheses": suggested_hypotheses,
                     "confidence_score": confidence_score,
                     "quality_score": quality_score,
                     "critique_summary": summary,
@@ -172,6 +200,7 @@ Return your evaluation as a JSON object with this exact structure:
                     "model": response.model,
                     "evaluated_count": len(verifications),
                     "contradictions_count": len(contradictions),
+                    "unresolved_gaps_count": len(unresolved_gaps),
                     "confidence_score": confidence_score,
                     "quality_score": quality_score,
                 },

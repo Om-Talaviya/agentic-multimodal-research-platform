@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { GitBranch, Compass, Target, Clock, Globe, ShieldAlert, Sparkles, ChevronRight, ChevronDown, CheckCircle, Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { GitBranch, Compass, Target, Clock, Sparkles, ChevronRight, ChevronDown, CheckCircle, Loader2 } from 'lucide-react'
 import type { QueryTreeNode, InferredScope, ResearchTask } from '../types/research'
 
 interface QueryTreeViewerProps {

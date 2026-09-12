@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { PaperStructure, PaperSection, BibEntry } from '../types/research'
-import { BookOpen, FileText, ChevronRight, AlertTriangle, ExternalLink, Bookmark, Hash, Layers } from 'lucide-react'
+import { useState } from 'react'
+import type { PaperStructure, BibEntry } from '../types/research'
+import { BookOpen, FileText, AlertTriangle, ExternalLink, Bookmark, Layers } from 'lucide-react'
 
 interface PaperViewerProps {
   paper: PaperStructure

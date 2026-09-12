@@ -96,7 +96,7 @@ class ColumnProfile:
     """Statistical profile of a tabular column."""
 
     name: str
-    data_type: str  # integer, float, string, boolean, datetime
+    data_type: str  # numeric, integer, float, string, boolean, datetime
     total_count: int
     null_count: int
     unique_count: int
@@ -106,6 +106,27 @@ class ColumnProfile:
     median_value: Optional[float] = None
     std_dev: Optional[float] = None
     sample_values: List[Any] = field(default_factory=list)
+    unique_vals_list: List[Any] = field(default_factory=list)
+
+    @property
+    def min_val(self) -> Optional[Any]:
+        return self.min_value
+
+    @property
+    def max_val(self) -> Optional[Any]:
+        return self.max_value
+
+    @property
+    def mean(self) -> Optional[float]:
+        return self.mean_value
+
+    @property
+    def median(self) -> Optional[float]:
+        return self.median_value
+
+    @property
+    def unique_values(self) -> List[Any]:
+        return self.unique_vals_list if self.unique_vals_list else self.sample_values
 
 
 @dataclass
@@ -120,13 +141,21 @@ class DatasetProfile:
     summary_text: str = ""
     metadata: Dict[str, Any] = field(default_factory=dict)
 
+    @property
+    def row_count(self) -> int:
+        return self.total_rows
+
+    @property
+    def column_count(self) -> int:
+        return self.total_cols
+
     def to_markdown(self) -> str:
         """Render dataset statistical summary as markdown."""
         lines = [
             f"**Dataset Overview: {self.metadata.get('filename', 'Dataset')}**",
             f"- **Rows**: {self.total_rows} | **Columns**: {self.total_cols}",
             "",
-            "### Column Profiles & Statistics",
+            "### Dataset Profile Summary",
             "| Column | Type | Nulls | Unique | Mean / Range |",
             "|---|---|---|---|---|",
         ]
@@ -241,6 +270,14 @@ class ParsedDocument:
     dataset_profile: Optional[DatasetProfile] = None
     paper_structure: Optional[PaperStructure] = None
     structure: Dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def text(self) -> str:
+        return self.content
+
+    @property
+    def title(self) -> str:
+        return self.metadata.get("title") or self.metadata.get("filename", "")
 
 
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Evidence, Citation, CitationCoordinates } from '../types/research'
-import { Volume2, Video, BarChart3, FileText, Clock, User, CheckCircle, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
+import { useState } from 'react'
+import type { Evidence, CitationCoordinates } from '../types/research'
+import { Volume2, Video, BarChart3, FileText, Clock, User, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react'
 
 interface MultimodalEvidenceViewerProps {
   evidence: Evidence[]

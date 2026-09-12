@@ -107,8 +107,9 @@ Phase 11: Advanced Research Planning [██████████████
 Phase 12: Advanced Multimodal Intel  [████████████████████] 100% (Commit: f52e694)
 Phase 13: Dataset & Data Analysis    [████████████████████] 100% (Commit: 81a5f5d)
 Phase 14: Document & Paper Intel     [████████████████████] 100%
+Phase 15: Deep Research Engine       [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 15: Deep Research Engine       [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 16: Research Memory            [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -126,8 +127,8 @@ Phase 15: Deep Research Engine       [░░░░░░░░░░░░░░
 - **Phase 14: Document & Paper Intelligence (COMPLETE)**: Academic research paper parsing (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`, and `PaperViewer.tsx` UI.
 
 ### Generation 3: Autonomous Research
-- **Phase 15: Deep Research Engine (NEXT)**: Autonomous recursive research loops (`Critic identifies gap / low confidence $\tau < 0.70 \rightarrow$ Planner schedules subtask $\rightarrow$ Synthesizer updates report`).
-- **Phase 16: Research Memory**: Persistent cross-session research memory allowing users to resume complex investigations months later.
+- **Phase 15: Deep Research Engine (COMPLETE)**: Autonomous recursive multi-round research loops (`DeepResearchEngine`), recursive gap and hypothesis formulation with `CriticAgent`, adaptive DAG expansion with `PlannerAgent.replan()`, strict convergence guardrails ($\tau \ge 0.85$, max iterations, $\Delta \tau < 0.02$), WebSocket iteration telemetry, and `DeepResearchTracker.tsx` timeline studio.
+- **Phase 16: Research Memory (NEXT)**: Persistent cross-session research memory allowing users to resume complex investigations months later.
 - **Phase 17: Long-Term Knowledge Graph**: Entity-relationship graphs connecting researchers, claims, technologies, datasets, and concepts beyond vector search.
 
 ### Generation 4: Collaboration Platform
