@@ -37,9 +37,34 @@ class ResearchJob(BaseModel):
     error_message: Optional[str] = None
 
 
+class QueryTreeNode(BaseModel):
+    """Hierarchical node in a strategic research query tree."""
+    id: str = Field(default_factory=lambda: str(uuid4()))
+    parent_id: Optional[str] = None
+    question: str
+    rationale: str = ""
+    domain_focus: str = "general"
+    depth: int = 0
+    assigned_agent: str = "web_research"
+    subqueries: List["QueryTreeNode"] = Field(default_factory=list)
+    status: str = "pending"
+
+
+class InferredScope(BaseModel):
+    """Scope, boundaries, and implicit constraints inferred from the research inquiry."""
+    domain: str = "general"
+    time_horizon: Optional[str] = None
+    geography: Optional[str] = None
+    key_entities: List[str] = Field(default_factory=list)
+    constraints: List[str] = Field(default_factory=list)
+
+
 class ResearchTask(BaseModel):
     id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
     job_id: UUIDStr
+    parent_task_id: Optional[UUIDStr] = None
+    is_dynamic: bool = False
+    depth: int = 0
     type: str
     objective: str
     context: Dict[str, Any] = Field(default_factory=dict)
@@ -62,12 +87,20 @@ class ResearchStep(BaseModel):
     inputs: Dict[str, Any] = Field(default_factory=dict)
     depends_on: List[str] = Field(default_factory=list)
     priority: int = 1
+    parent_id: Optional[str] = None
+    depth: int = 0
+    is_dynamic: bool = False
 
 
 class ResearchPlan(BaseModel):
     objective: str
     steps: List[ResearchStep] = Field(default_factory=list)
     expected_outputs: List[str] = Field(default_factory=list)
+    query_tree: Optional[QueryTreeNode] = None
+    ambiguity_score: float = 0.0
+    inferred_scope: Optional[InferredScope] = None
+    replan_count: int = 0
+    plan_explanation: str = ""
 
 
 class CitationCoordinates(BaseModel):

@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.1.0] - 2026-09-11 (Branch: `develop/v1.1`)
+## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 11: Advanced Research Planning**:
+  - Implemented hierarchical Subquestion Decomposition and Query Trees (`QueryTreeNode`) for multi-level strategic planning.
+  - Added quantitative ambiguity evaluation (`ambiguity_score`) and autonomous parameterization of research boundaries (`InferredScope`).
+  - Added dynamic agent role and capability matching, mapping sub-inquiries to specialized agent personas with execution contracts.
+  - Implemented closed-loop Adaptive Replanning (`PlannerAgent.replan()`) triggered dynamically when `CriticAgent` detects evidentiary gaps or critical contradictions during execution.
+  - Extended `ResearchTask` and `DBResearchTask` with `parent_task_id`, `is_dynamic`, and `depth` metadata.
+  - Added `plan_decomposed`, `task_spawned`, and `dag_replanned` WebSocket events to `ResearchEventType`.
+  - Created interactive `QueryTreeViewer.tsx` React component in `apps/web` with branch expand/collapse, ambiguity indicators, and live execution status.
+  - Added unit test suite in `packages/agents/tests/test_planner_advanced_planning.py`.
 - **Phase 10: Evidence & Citation Intelligence**:
   - Implemented fine-grained claim extraction and coordinate anchoring (`CitationCoordinates`) mapping claims to exact document coordinates (`page_number`, `paragraph_index`, `table_row`, `table_col`, `char_start`, `char_end`, `exact_quote`).
   - Added structured `Citation` and `Contradiction` models with SQLite and PostgreSQL 16 JSONB cross-compatibility.

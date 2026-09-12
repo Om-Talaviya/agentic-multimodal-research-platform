@@ -14,9 +14,56 @@ export interface ResearchJob {
   error_message: string | null
 }
 
+export interface QueryTreeNode {
+  id: string
+  parent_id?: string | null
+  question: string
+  rationale?: string
+  domain_focus?: string
+  depth?: number
+  assigned_agent?: string
+  subqueries?: QueryTreeNode[]
+  status?: string
+}
+
+export interface InferredScope {
+  domain?: string
+  time_horizon?: string | null
+  geography?: string | null
+  key_entities?: string[]
+  constraints?: string[]
+}
+
+export interface ResearchStep {
+  id: string
+  name: string
+  description: string
+  agent: string
+  inputs?: Record<string, any>
+  depends_on?: string[]
+  priority?: number
+  parent_id?: string | null
+  depth?: number
+  is_dynamic?: boolean
+}
+
+export interface ResearchPlan {
+  objective: string
+  steps: ResearchStep[]
+  expected_outputs: string[]
+  query_tree?: QueryTreeNode | null
+  ambiguity_score?: number
+  inferred_scope?: InferredScope | null
+  replan_count?: number
+  plan_explanation?: string
+}
+
 export interface ResearchTask {
   id: string
   job_id: string
+  parent_task_id?: string | null
+  is_dynamic?: boolean
+  depth?: number
   type: string
   objective: string
   agent: string

@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer, Index
+from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer, Index, Boolean
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
@@ -34,7 +34,7 @@ class ResearchJob(Base):
     completed_at = Column(DateTime(timezone=True))
     
     # Relationships
-    tasks = relationship("ResearchTask", back_populates="job", cascade="all, delete-orphan", lazy="dynamic")
+    tasks = relationship("ResearchTask", back_populates="job", cascade="all, delete-orphan", lazy="dynamic", foreign_keys="ResearchTask.job_id")
     sources = relationship("Source", back_populates="job", cascade="all, delete-orphan", lazy="dynamic")
     evidence = relationship("Evidence", back_populates="job", cascade="all, delete-orphan", lazy="dynamic")
     documents = relationship("Document", back_populates="job", cascade="all, delete-orphan", lazy="dynamic")
@@ -54,6 +54,9 @@ class ResearchTask(Base):
     
     id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
+    parent_task_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_tasks.id", ondelete="SET NULL"), nullable=True, index=True)
+    is_dynamic = Column(Boolean, default=False, nullable=False)
+    depth = Column(Integer, default=0, nullable=False)
     type = Column(String(100), nullable=False)
     objective = Column(Text, nullable=False)
     context = Column(JSON().with_variant(JSONB, "postgresql"), default=dict)
@@ -69,8 +72,9 @@ class ResearchTask(Base):
     result = Column(JSON().with_variant(JSONB, "postgresql"))
     
     # Relationships
-    job = relationship("ResearchJob", back_populates="tasks")
+    job = relationship("ResearchJob", back_populates="tasks", foreign_keys=[job_id])
     
     __table_args__ = (
         Index("ix_research_tasks_job_status", "job_id", "status"),
+        Index("ix_research_tasks_parent", "parent_task_id"),
     )

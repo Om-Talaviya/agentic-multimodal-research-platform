@@ -193,13 +193,27 @@ class ResearchPipeline:
             raise ValueError(f"Planning failed: {result.errors}")
 
         step_count = len(result.output.steps) if result.output else 0
+        plan_output = result.output
         await self._emit(
             job_id_str,
             ResearchEventType.PLANNING_COMPLETED,
             "Research planning completed",
             {"task_id": task.id, "agent": task.agent, "step_count": step_count},
         )
-        return result.output
+        if plan_output:
+            await self._emit(
+                job_id_str,
+                ResearchEventType.PLAN_DECOMPOSED,
+                "Hierarchical research query tree generated",
+                {
+                    "query_tree": plan_output.query_tree.model_dump() if plan_output.query_tree else None,
+                    "ambiguity_score": plan_output.ambiguity_score,
+                    "inferred_scope": plan_output.inferred_scope.model_dump() if plan_output.inferred_scope else {},
+                    "plan_explanation": plan_output.plan_explanation,
+                    "step_count": step_count,
+                },
+            )
+        return plan_output
 
     @staticmethod
     def _convert_to_db_source(src: Any, job_uuid: "UUID") -> "DBSource":
@@ -341,9 +355,15 @@ class ResearchPipeline:
                 for dep in step.depends_on
                 if dep in step_id_to_task_id
             ]
+            parent_task_uuid = None
+            if step.parent_id and step.parent_id in step_id_to_task_id:
+                parent_task_uuid = step_id_to_task_id[step.parent_id]
             tasks[t_id] = ResearchTask(
                 id=t_id,
                 job_id=str(job.id),
+                parent_task_id=parent_task_uuid,
+                is_dynamic=getattr(step, "is_dynamic", False),
+                depth=getattr(step, "depth", 0),
                 type=step.agent,
                 objective=step.description,
                 agent=step.agent,
@@ -357,6 +377,9 @@ class ResearchPipeline:
             DBResearchTask(
                 id=UUID(t.id),
                 job_id=job_uuid,
+                parent_task_id=UUID(t.parent_task_id) if t.parent_task_id else None,
+                is_dynamic=t.is_dynamic,
+                depth=t.depth,
                 type=t.type,
                 objective=t.objective,
                 context=t.context,
@@ -385,6 +408,8 @@ class ResearchPipeline:
                         "agent": t.agent,
                         "status": t.status,
                         "objective": t.objective,
+                        "is_dynamic": t.is_dynamic,
+                        "depth": t.depth,
                     }
                     for t in db_tasks
                 ],
@@ -600,6 +625,121 @@ class ResearchPipeline:
 
         return verif_data
 
+    async def run_adaptive_replanning(
+        self,
+        job: ResearchJob,
+        plan: ResearchPlan,
+        verif_data: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        """Evaluate evidence quality and trigger adaptive dynamic replanning if critical contradictions or gaps exist."""
+        from uuid import UUID, uuid4
+        from database.connection import get_session
+        from database.repositories import EvidenceRepository
+        from agents.planner.planner_agent import PlannerAgent
+        from research.models import Evidence as ModelEvidence, Contradiction as ModelContradiction
+
+        contradictions_raw = verif_data.get("contradictions", [])
+        confidence_score = float(verif_data.get("confidence_score", 0.85))
+
+        # Check if replanning is warranted (contradictions detected or low confidence score)
+        needs_replan = (len(contradictions_raw) > 0 or confidence_score < 0.70) and plan.replan_count < 1
+        if not needs_replan:
+            return verif_data
+
+        try:
+            job_uuid = UUID(str(job.id))
+            async with get_session() as session:
+                evidence_repo = EvidenceRepository(session)
+                db_evidence_list = await evidence_repo.get_by_job(job_uuid)
+
+            model_evidence: List[ModelEvidence] = []
+            for ev in db_evidence_list:
+                model_evidence.append(
+                    ModelEvidence(
+                        id=str(ev.id),
+                        source_id=str(ev.source_id),
+                        claim=ev.claim,
+                        supporting_text=ev.supporting_text,
+                        confidence=ev.confidence,
+                        verification_status=ev.verification_status,
+                    )
+                )
+
+            model_contradictions: List[ModelContradiction] = []
+            for c in contradictions_raw:
+                if isinstance(c, dict):
+                    model_contradictions.append(ModelContradiction(**c))
+                elif isinstance(c, ModelContradiction):
+                    model_contradictions.append(c)
+
+            planner = PlannerAgent()
+            user_id_val = getattr(job, "user_id", None)
+            context = self.orchestrator.create_context(
+                job_id=str(job.id),
+                task_id=str(uuid4()),
+                request_id=str(getattr(job, "request_id", uuid4())),
+                user_id=str(user_id_val) if user_id_val else None,
+            )
+
+            replan_res = await planner.replan(
+                current_plan=plan,
+                evidence=model_evidence,
+                contradictions=model_contradictions,
+                context=context,
+            )
+
+            if not replan_res.success or not isinstance(replan_res.output, dict):
+                logger.warning("Dynamic replan returned no actionable steps", job_id=str(job.id))
+                return verif_data
+
+            spawned_steps = replan_res.output.get("spawned_steps", [])
+            if not spawned_steps:
+                return verif_data
+
+            plan.replan_count += 1
+            explanation = replan_res.output.get("plan_explanation", "Adaptive replanning for evidentiary gaps")
+
+            await self._emit(
+                str(job.id),
+                ResearchEventType.DAG_REPLANNED,
+                f"Adaptive replan: {explanation}",
+                {
+                    "replan_count": plan.replan_count,
+                    "spawned_steps_count": len(spawned_steps),
+                    "explanation": explanation,
+                },
+            )
+
+            for step in spawned_steps:
+                await self._emit(
+                    str(job.id),
+                    ResearchEventType.TASK_SPAWNED,
+                    f"Spawned dynamic subtask: {step.name}",
+                    {
+                        "step_id": step.id,
+                        "name": step.name,
+                        "agent": step.agent,
+                        "is_dynamic": True,
+                    },
+                )
+
+            # Create a dynamic mini-plan for the spawned steps and execute it
+            dynamic_plan = ResearchPlan(
+                objective=f"Adaptive sub-investigation: {explanation}",
+                steps=spawned_steps,
+                expected_outputs=[],
+                replan_count=plan.replan_count,
+            )
+            await self.execute_plan(job, dynamic_plan)
+
+            # Re-verify after executing spawned tasks
+            new_verif = await self.run_verification(job)
+            return new_verif
+
+        except Exception as replan_err:
+            logger.warning("Adaptive replanning encountered error", job_id=job.id, error=str(replan_err))
+            return verif_data
+
     async def run_report_generation(
         self,
         job: ResearchJob,
@@ -751,6 +891,9 @@ class ResearchPipeline:
             
             # Verification using Critic Agent
             verif_data = await self.run_verification(job)
+
+            # Adaptive dynamic replanning (closed-loop reflection)
+            verif_data = await self.run_adaptive_replanning(job, plan, verif_data)
             
             # Report generation with contradiction & confidence propagation
             await self.run_report_generation(

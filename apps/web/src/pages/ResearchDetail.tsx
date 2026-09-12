@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck } from 'lucide-react'
+import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, GitBranch } from 'lucide-react'
 import { api, getResearchWebSocketUrl } from '../services/api'
-import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport } from '../types/research'
+import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
+import { QueryTreeViewer } from '../components/QueryTreeViewer'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
@@ -11,6 +12,7 @@ export function ResearchDetail() {
   const [sources, setSources] = useState<Source[]>([])
   const [evidence, setEvidence] = useState<Evidence[]>([])
   const [report, setReport] = useState<ResearchReport | null>(null)
+  const [plan, setPlan] = useState<ResearchPlan | null>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report'>('overview')
   const socketRef = useRef<WebSocket | null>(null)
@@ -67,13 +69,32 @@ export function ResearchDetail() {
               if (data.sources) setSources(data.sources)
               if (data.evidence) setEvidence(data.evidence)
               if (data.report) setReport(data.report)
+              if (data.plan) setPlan(data.plan)
               setLoading(false)
             } else if (message.type === 'event' && message.event) {
               const ev = message.event
               const evType = ev.type
               const evData = ev.data || {}
 
-              if (evType === 'job_started' || evType === 'job_completed' || evType === 'job_failed') {
+              if (evType === 'plan_decomposed') {
+                setPlan(prev => ({
+                  objective: prev?.objective || '',
+                  steps: prev?.steps || [],
+                  expected_outputs: prev?.expected_outputs || [],
+                  query_tree: evData.query_tree,
+                  ambiguity_score: evData.ambiguity_score,
+                  inferred_scope: evData.inferred_scope,
+                  plan_explanation: evData.plan_explanation,
+                  replan_count: 0,
+                }))
+              } else if (evType === 'dag_replanned') {
+                setPlan(prev => prev ? {
+                  ...prev,
+                  replan_count: evData.replan_count || (prev.replan_count || 0) + 1,
+                  plan_explanation: evData.explanation || prev.plan_explanation,
+                } : null)
+                fetchData()
+              } else if (evType === 'job_started' || evType === 'job_completed' || evType === 'job_failed') {
                 setJob(prev => prev ? {
                   ...prev,
                   status: evData.status || prev.status,
@@ -85,7 +106,7 @@ export function ResearchDetail() {
                 }
               } else if (evType === 'tasks_created' && evData.tasks) {
                 fetchData()
-              } else if (evType === 'task_started' || evType === 'task_completed' || evType === 'task_failed') {
+              } else if (evType === 'task_started' || evType === 'task_completed' || evType === 'task_failed' || evType === 'task_spawned') {
                 setTasks(prev => prev.map(t => {
                   if (t.id === evData.task_id) {
                     return {
@@ -97,7 +118,7 @@ export function ResearchDetail() {
                   }
                   return t
                 }))
-                if (evType === 'task_completed' || evType === 'task_failed') {
+                if (evType === 'task_completed' || evType === 'task_failed' || evType === 'task_spawned') {
                   fetchData()
                 }
               } else if (
@@ -276,9 +297,14 @@ export function ResearchDetail() {
 
         {activeTab === 'plan' && (
           <div>
-            <p style={{ color: 'var(--color-text-muted)' }}>
-              Research plan will be displayed here after planning phase completes.
-            </p>
+            <QueryTreeViewer
+              queryTree={plan?.query_tree}
+              ambiguityScore={plan?.ambiguity_score ?? 0}
+              inferredScope={plan?.inferred_scope}
+              planExplanation={plan?.plan_explanation}
+              replanCount={plan?.replan_count ?? 0}
+              tasks={tasks}
+            />
           </div>
         )}
 

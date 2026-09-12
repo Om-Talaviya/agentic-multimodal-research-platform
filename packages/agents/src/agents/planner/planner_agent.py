@@ -1,58 +1,184 @@
-"""Planner agent - creates research plans from requests."""
+"""Planner agent - creates hierarchical research plans, query trees, and dynamic replans from requests."""
 
 import json
+from typing import List, Dict, Any, Optional
 from agents.base import Agent, AgentContext, AgentResult
-from research.models import ResearchTask, ResearchPlan, ResearchStep
+from research.models import (
+    ResearchTask,
+    ResearchPlan,
+    ResearchStep,
+    QueryTreeNode,
+    InferredScope,
+    Evidence,
+    Contradiction,
+)
 from ai.schemas import LLMRequest, LLMMessage
-from ai.providers.router import ModelRouter
-from ai.schemas import ModelCapabilities
 from shared.logging import get_logger
 
 logger = get_logger(__name__)
 
 
 class PlannerAgent(Agent):
-    """Decomposes research requests into executable plans, leveraging available knowledge base context."""
+    """Advanced strategic planner: decomposes inquiries into hierarchical query trees, measures ambiguity, and performs closed-loop replanning."""
     
     name = "planner"
-    description = "Creates research plans from user requests with knowledge base awareness"
-    capabilities = {"planning", "task_decomposition", "knowledge_routing"}
+    description = "Creates hierarchical research plans with query trees, ambiguity scoring, and adaptive dynamic replanning"
+    capabilities = {
+        "planning",
+        "task_decomposition",
+        "query_tree_generation",
+        "ambiguity_scoring",
+        "dynamic_replanning",
+        "knowledge_routing",
+    }
     
-    SYSTEM_PROMPT = """You are an expert research planner for an AI Research Operating System.
-Given a research question and any available private knowledge base context, create a structured
-research plan as a JSON object with the following schema:
+    SYSTEM_PROMPT = """You are the Lead Research Strategist for an autonomous AI Research Operating System.
+Your job is to transform a research inquiry into a deeply structured, hierarchical strategic research plan.
+
+Analyze the question for clarity and ambiguity (score 0.0 for crystal clear to 1.0 for vague/underspecified).
+Infer key scope dimensions (domain, time horizon, geography, key entities, constraints).
+Deconstruct the inquiry into a hierarchical Query Tree (Root -> 2-4 Thematic Subinquiries -> 1-2 Specific Granular Subquestions).
+Compile the tree into executable DAG Research Steps with dependencies.
+
+Respond with a strictly formatted JSON object adhering to this schema:
 {
-    "objective": "Clear statement of research goal",
+    "objective": "Clear, precise statement of the core research objective",
+    "ambiguity_score": 0.2,
+    "inferred_scope": {
+        "domain": "e.g. materials_science, renewable_energy, macroeconomics, healthcare",
+        "time_horizon": "e.g. 2025-2035, past 5 years, or immediate",
+        "geography": "e.g. Global, US/EU, Asia-Pacific",
+        "key_entities": ["Entity A", "Entity B"],
+        "constraints": ["Constraint 1", "Constraint 2"]
+    },
+    "plan_explanation": "Strategic justification for this investigation approach",
+    "query_tree": {
+        "id": "root_node",
+        "parent_id": null,
+        "question": "Main overarching research question",
+        "rationale": "High-level goal",
+        "domain_focus": "general",
+        "depth": 0,
+        "assigned_agent": "synthesis",
+        "subqueries": [
+            {
+                "id": "node_1",
+                "parent_id": "root_node",
+                "question": "Sub-inquiry regarding technical feasibility or core mechanisms",
+                "rationale": "Investigates baseline technical claims and benchmarks",
+                "domain_focus": "technical",
+                "depth": 1,
+                "assigned_agent": "document_analysis",
+                "subqueries": [
+                    {
+                        "id": "node_1_1",
+                        "parent_id": "node_1",
+                        "question": "Granular question targeting specific metrics or data",
+                        "rationale": "Extracts quantitative empirical figures",
+                        "domain_focus": "technical",
+                        "depth": 2,
+                        "assigned_agent": "document_analysis",
+                        "subqueries": []
+                    }
+                ]
+            },
+            {
+                "id": "node_2",
+                "parent_id": "root_node",
+                "question": "Sub-inquiry regarding external market, regulatory, or empirical context",
+                "rationale": "Surveys industry adoption and public landscape",
+                "domain_focus": "market",
+                "depth": 1,
+                "assigned_agent": "web_research",
+                "subqueries": []
+            }
+        ]
+    },
     "steps": [
         {
             "id": "step_1",
             "name": "Descriptive step title",
-            "description": "What this step accomplishes",
-            "agent": "web_research|document_analysis|synthesis|report",
+            "description": "Specific action and target data to extract",
+            "agent": "document_analysis|web_research|synthesis|report",
             "inputs": {
                 "query": "search query or focus topic",
-                "document_ids": ["optional_doc_id_1"]
+                "document_ids": []
             },
             "depends_on": [],
-            "priority": 1
+            "priority": 1,
+            "parent_id": "node_1",
+            "depth": 1,
+            "is_dynamic": false
+        },
+        {
+            "id": "step_2",
+            "name": "Synthesize and Audit Evidence",
+            "description": "Combine findings, reconcile contradictions, and verify confidence",
+            "agent": "synthesis",
+            "inputs": {},
+            "depends_on": ["step_1"],
+            "priority": 2,
+            "parent_id": "root_node",
+            "depth": 0,
+            "is_dynamic": false
+        },
+        {
+            "id": "step_3",
+            "name": "Final Intelligence Report Synthesis",
+            "description": "Compile verified evidence, citation coordinates, and contradictions into final dossier",
+            "agent": "report",
+            "inputs": {},
+            "depends_on": ["step_2"],
+            "priority": 3,
+            "parent_id": "root_node",
+            "depth": 0,
+            "is_dynamic": false
         }
     ],
-    "expected_outputs": ["executive_summary", "key_findings", "evidence_matrix", "conclusions"]
+    "expected_outputs": ["executive_summary", "key_findings", "evidence_matrix", "contradictions_matrix", "conclusions"]
 }
 
-Available agents:
-- document_analysis: Ingest and analyze uploaded documents, PDFs with tables, and private knowledge base chunks.
-- web_research: Search and retrieve live external web sources.
-- synthesis: Combine, cross-reference, and compare findings from multiple modalities and sources.
-- report: Synthesize final intelligence report with citations.
-
 Planning Guidelines:
-1. If "Available Private Knowledge Base" or uploaded documents are provided, ALWAYS schedule a "document_analysis" step to extract local domain findings. Pass the relevant document_ids or search queries in inputs.
-2. Schedule "web_research" steps for external web coverage. Steps without mutual dependencies can run in parallel (e.g. document_analysis and web_research).
-3. Conclude with a "report" step that depends on all upstream investigation steps.
-4. Keep the plan focused and create 3-5 high-impact steps.
+1. If "Available Private Knowledge Base" or attached documents exist, ALWAYS assign "document_analysis" steps to inspect internal files before or in parallel with external web search.
+2. Ensure upstream investigation steps have empty depends_on so they run in parallel.
+3. The final "report" step MUST depend on all preceding investigation/synthesis steps.
+4. Keep the plan rigorous, creating 3 to 6 high-impact executable steps.
 """
-    
+
+    REPLAN_PROMPT = """You are the Lead Research Strategist reviewing an in-progress research execution that requires adaptive replanning.
+The Critic Agent or Synthesis step flagged evidentiary gaps, unverified claims, or critical contradictions between sources.
+
+Original Objective: {objective}
+Current Inferred Scope: {scope}
+Identified Contradictions:
+{contradictions}
+
+Low-Confidence or Unverified Claims:
+{low_confidence_evidence}
+
+Generate a delta replanning JSON object with targeted follow-up steps to resolve the contradictions and fill the factual gaps:
+{
+    "plan_explanation": "Rationale for dynamic replanning",
+    "spawned_steps": [
+        {
+            "id": "step_dynamic_1",
+            "name": "Targeted deep-dive step title",
+            "description": "Specific investigation to resolve conflicting claim X vs Y",
+            "agent": "web_research|document_analysis|synthesis",
+            "inputs": {
+                "query": "laser-focused query to resolve contradiction",
+                "document_ids": []
+            },
+            "depends_on": [],
+            "priority": 1,
+            "parent_id": "root_node",
+            "depth": 1,
+            "is_dynamic": true
+        }
+    ]
+}
+"""
+
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
         knowledge_summary = task.context.get("available_knowledge") or task.context.get("knowledge_summary") or ""
         doc_ids = task.context.get("document_ids") or []
@@ -78,7 +204,7 @@ Planning Guidelines:
                         LLMMessage(role="system", content=self.SYSTEM_PROMPT),
                         LLMMessage(role="user", content=prompt),
                     ],
-                    temperature=0.3,
+                    temperature=0.2,
                     json_mode=True,
                 ),
                 task="planning",
@@ -87,16 +213,91 @@ Planning Guidelines:
             plan_data = json.loads(response.content)
             plan = ResearchPlan(**plan_data)
             
-            logger.info("Plan created", job_id=context.research_job_id, steps=len(plan.steps))
+            logger.info(
+                "Hierarchical plan created",
+                job_id=context.research_job_id,
+                steps=len(plan.steps),
+                ambiguity=plan.ambiguity_score,
+                domain=plan.inferred_scope.domain if plan.inferred_scope else "general",
+            )
             
             return AgentResult(
                 success=True,
                 output=plan,
-                metadata={"model": response.model, "tokens": response.usage},
+                metadata={
+                    "model": response.model,
+                    "tokens": response.usage,
+                    "ambiguity_score": plan.ambiguity_score,
+                    "query_tree": plan.query_tree.model_dump() if plan.query_tree else None,
+                },
             )
         except Exception as e:
             logger.error("Planning failed", error=str(e))
             return AgentResult(
                 success=False,
-                errors=[f"Failed to create plan: {e}"],
+                errors=[f"Failed to create hierarchical plan: {e}"],
+            )
+
+    async def replan(
+        self,
+        current_plan: ResearchPlan,
+        evidence: List[Evidence],
+        contradictions: List[Contradiction],
+        context: AgentContext,
+    ) -> AgentResult:
+        """Dynamically generate targeted follow-up tasks to resolve contradictions and fill low-confidence gaps."""
+        low_conf = [e for e in evidence if e.confidence < 0.65 or e.verification_status != "verified"]
+        
+        contradictions_text = "\n".join(
+            [f"- [{c.conflict_type}] Topic '{c.topic}': Claim A ('{c.claim_a}') vs Claim B ('{c.claim_b}'). Explanation: {c.explanation}" for c in contradictions]
+        ) or "None"
+        
+        low_conf_text = "\n".join(
+            [f"- Claim: '{e.claim}' (Confidence: {e.confidence:.2f}, Status: {e.verification_status})" for e in low_conf[:5]]
+        ) or "None"
+        
+        prompt = self.REPLAN_PROMPT.format(
+            objective=current_plan.objective,
+            scope=current_plan.inferred_scope.model_dump_json() if current_plan.inferred_scope else "N/A",
+            contradictions=contradictions_text,
+            low_confidence_evidence=low_conf_text,
+        )
+        
+        try:
+            response = await context.complete_llm(
+                LLMRequest(
+                    messages=[
+                        LLMMessage(role="system", content=self.SYSTEM_PROMPT),
+                        LLMMessage(role="user", content=prompt),
+                    ],
+                    temperature=0.2,
+                    json_mode=True,
+                ),
+                task="planning",
+            )
+            
+            replan_data = json.loads(response.content)
+            spawned_steps_raw = replan_data.get("spawned_steps", [])
+            spawned_steps = [ResearchStep(**s) for s in spawned_steps_raw]
+            
+            logger.info(
+                "Dynamic replan executed",
+                job_id=context.research_job_id,
+                spawned_steps=len(spawned_steps),
+                reason=replan_data.get("plan_explanation"),
+            )
+            
+            return AgentResult(
+                success=True,
+                output={
+                    "plan_explanation": replan_data.get("plan_explanation", "Dynamic replan for gap resolution"),
+                    "spawned_steps": spawned_steps,
+                },
+                metadata={"model": response.model, "tokens": response.usage},
+            )
+        except Exception as e:
+            logger.error("Replanning failed", error=str(e))
+            return AgentResult(
+                success=False,
+                errors=[f"Failed to generate dynamic replan: {e}"],
             )

@@ -276,16 +276,19 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
-## Phase 7+: Future Expansion
+## Phase 11: Advanced Research Planning
+**Status**: 🟢 COMPLETE (Generation 1: Intelligent Research Core)
 
-## Phase 7+: Future Expansion
+**Goal**: Hierarchical subquestion decomposition, strategic query trees, ambiguity scoring, dynamic agent capability routing, and closed-loop adaptive replanning.
 
-- Persistent database `users` table with Alembic migrations
-- Audio/video processing (Whisper speech-to-text)
-- Multi-user collaboration workspaces
-- Advanced long-term agent memory
-- Custom model fine-tuning
-- Plugin system
+### Deliverables:
+- [x] Hierarchical `QueryTreeNode` multi-level tree generator breaking complex inquiries into domain-focused sub-investigations.
+- [x] Quantitative `ambiguity_score` ($0.0 - 1.0$) and `InferredScope` resolution.
+- [x] Dynamic agent role and capability matching.
+- [x] Closed-loop adaptive replanning (`PlannerAgent.replan()`) when `CriticAgent` detects evidentiary gaps or critical contradictions.
+- [x] Real-time event streaming (`plan_decomposed`, `task_spawned`, `dag_replanned`).
+- [x] Interactive `QueryTreeViewer.tsx` React component in `apps/web`.
+- [x] Unit test suites in `packages/agents/tests/test_planner_advanced_planning.py`.
 
 ---
 
@@ -299,10 +302,13 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 4** | Agentic System | 🟢 COMPLETE | Tools, SSRF defense, Critic, tracing, retries |
 | **Phase 5** | RAG / Knowledge Layer | 🟢 COMPLETE | Hybrid RRF, Embedder, BM25, Chroma adapter |
 | **Phase 6** | Production & Security | 🟢 COMPLETE | JWT, RBAC, Prometheus metrics, K8s manifests |
-
-### Test Suite Status
-- **Passing**: 100% (All unit & integration tests passing with 0 skips and 0 failures)
+| **Phase 7** | Application Maturity | 🟢 COMPLETE | Persistent DB users, official Gemini SDK, auth WebSockets |
+| **Phase 8A**| Intelligent Model Routing | 🟢 COMPLETE | ModelRegistry, ProviderRegistry, ModelRouter, ModelGateway |
+| **Phase 8B**| Usage & Quotas Subsystem | 🟢 COMPLETE | UserQuota, row-locking concurrency, quota-aware fallback |
+| **Phase 9** | Intelligent Knowledge Auto| 🟢 COMPLETE | Dual-indexing (Dense+BM25), document lifecycle, Planner KB |
+| **Phase 10**| Evidence & Citation Intel | 🟢 COMPLETE | Coordinate anchoring, contradiction taxonomy, confidence score |
+| **Phase 11**| Advanced Research Planning| 🟢 COMPLETE | Query trees, ambiguity score, dynamic capability & replanning |
 
 ### Immediate Focus Areas
-1. Persistent user authentication & RBAC (PostgreSQL-backed `users` table with Alembic migrations).
-2. Expand multimodal ingestion for audio/video processing and multi-user collaboration workspaces.
+1. **Phase 12: Advanced Multimodal Research** (Unified context across 50+ page PDFs, research papers, images, charts, audio, video).
+2. **Phase 13: Dataset & Data Analysis Intelligence** (Tabular data processing with deterministic calculation tools).

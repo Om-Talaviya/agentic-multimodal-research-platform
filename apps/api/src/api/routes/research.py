@@ -56,6 +56,11 @@ class ResearchPlanResponse(BaseModel):
     objective: str
     steps: list[dict]
     expected_outputs: list[str]
+    query_tree: Optional[dict] = None
+    ambiguity_score: float = 0.0
+    inferred_scope: Optional[dict] = None
+    replan_count: int = 0
+    plan_explanation: str = ""
 
 
 class TaskResponse(BaseModel):
@@ -63,6 +68,9 @@ class TaskResponse(BaseModel):
 
     id: UUID
     job_id: UUID
+    parent_task_id: Optional[UUID] = None
+    is_dynamic: bool = False
+    depth: int = 0
     type: str
     objective: str
     agent: str
@@ -147,6 +155,9 @@ async def run_pipeline_background(pipeline: ResearchPipeline, job_id: str) -> No
         # Error is already persisted in run_job via repo.update_status
 
 
+from shared.security import validate_user_prompt
+
+
 @router.post("", response_model=ResearchJobResponse, status_code=status.HTTP_201_CREATED)
 async def create_research_job(
     request: ResearchJobCreate,
@@ -154,10 +165,18 @@ async def create_research_job(
     pipeline: ResearchPipeline = Depends(get_pipeline),
     current_user: Optional[User] = Depends(get_optional_current_user),
 ):
-    """Create a new research job and execute it in the background."""
+    """Create a new research job and execute it in the background with security validation."""
+    try:
+        sanitized_question = validate_user_prompt(request.question, min_length=5, max_length=5000)
+    except Exception as val_err:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=str(val_err),
+        )
+
     user_id_str = str(current_user.id) if current_user and hasattr(current_user, "id") and current_user.id else None
     research_request = ResearchRequest(
-        question=request.question,
+        question=sanitized_question,
         context=request.context,
         constraints=request.constraints,
         preferred_sources=request.preferred_sources,
@@ -255,6 +274,9 @@ async def get_research_tasks(
         TaskResponse(
             id=t.id,
             job_id=t.job_id,
+            parent_task_id=getattr(t, "parent_task_id", None),
+            is_dynamic=bool(getattr(t, "is_dynamic", False)),
+            depth=int(getattr(t, "depth", 0) or 0),
             type=t.type,
             objective=t.objective,
             agent=t.agent,

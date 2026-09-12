@@ -165,13 +165,12 @@ npm run lint
 - **Phase 8B (Usage Tracking & Quotas)**: 🟢 COMPLETE (`UserQuota`, row-locking concurrency, quota-aware fallback - Commit: `a603114`)
 - **Phase 9 (Intelligent Knowledge Automation)**: 🟢 COMPLETE (Zero-touch dual-indexing, status lifecycle, Planner KB integration, Hybrid DAG search)
 - **Phase 10 (Evidence & Citation Intelligence)**: 🟢 COMPLETE (Fine-grained claim extraction, coordinate anchoring, contradiction detection, citation-grounded synthesis)
+- **Phase 11 (Advanced Research Planning)**: 🟢 COMPLETE (Hierarchical query trees, ambiguity scoring, inferred scope resolution, dynamic agent capability routing, closed-loop replanning)
 - **Documentation Architecture**: 🟢 COMPLETE (Commit: `a00949e`, Stable branch: `develop/v1.1`)
 
-### The 6 Generations Ahead (Phases 11 – 26):
-- **Generation 1 — Intelligent Research Core**:
-  - **Phase 11**: Advanced Research Planning (🟡 **IMMEDIATE NEXT MILESTONE**: Deep subquestion decomposition, query trees, dynamic agent role assignment)
+### The 6 Generations Ahead (Phases 12 – 26):
 - **Generation 2 — Multimodal Intelligence**:
-  - **Phase 12**: Advanced Multimodal Research (Unified context: 50+ page PDFs, papers, images, charts, audio, video)
+  - **Phase 12**: Advanced Multimodal Research (🟡 **IMMEDIATE NEXT MILESTONE**: Unified context across 50+ page PDFs, papers, images, charts, audio Whisper, and video)
   - **Phase 13**: Dataset & Data Analysis Intelligence (CSV/Excel/JSON analysis, deterministic math tools, visualization)
   - **Phase 14**: Document & Paper Intelligence (200-page paper structure parsing, methodology comparison)
 - **Generation 3 — Autonomous Research**:
