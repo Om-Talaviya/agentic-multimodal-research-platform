@@ -1,5 +1,6 @@
 from database.repositories.agent_run_repo import AgentRunRepository, ModelCallRepository
 from database.repositories.document_repo import DocumentChunkRepository, DocumentRepository
+from database.repositories.memory_repository import MemoryRepository
 from database.repositories.quota_repo import UserQuotaRepository
 from database.repositories.report_repo import ReportRepository
 from database.repositories.research_job_repo import (
@@ -24,4 +25,5 @@ __all__ = [
     "UserRepository",
     "UsageRepository",
     "UserQuotaRepository",
+    "MemoryRepository",
 ]

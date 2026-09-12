@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 ## Project: Agentic Multimodal Research Platform (AI Research OS)
-**Status**: Active / Production v1.1 (Phase 12 Complete, Preparing Phase 13)  
+**Status**: Active / Production v1.1 (Phase 16 Complete, Preparing Phase 17)  
 **Author**: Engineering & AI Systems Team  
 **Last Updated**: September 2026  
 **Stable Branch**: `develop/v1.1`
@@ -61,23 +61,26 @@ The UI provides a unified research workspace:
 - **Documents**: Upload hub for PDFs, DOCX, images, datasets (CSV, Excel).
 - **Projects & Workspaces**: Structured project folders and team spaces (Generation 4).
 - **Reports**: Finished intelligence reports with citation explorer and export options.
+- **Memory**: Persistent cross-session research memory studio, conceptual indexing, tag filters.
 - **Settings**: Model provider toggles, Ollama endpoints, API keys, quota monitors.
 
 ### 5.2 Research Execution Progression
 When a user submits a query (e.g., *"Analyze whether biodegradable packaging can realistically replace conventional plastic in food packaging over the next 10 years"*), the system streams progress in real time:
 1. `Understanding Request...`
-2. `Planning Research & Decomposing Subquestions...`
-3. `Checking Private Knowledge Base...`
-4. `Retrieving Relevant Document Context...`
-5. `Conducting External Web Investigations...`
-6. `Analyzing Academic Papers & Tables...`
-7. `Analyzing Tabular Data & Statistics...`
-8. `Comparing Evidence & Cross-Checking Claims...`
-9. `Identifying Contradictions & Uncertainties...`
-10. `Critic Review (Auditing Sufficiency)...`
-11. `Iterative Research Loop (if gaps found)...`
-12. `Synthesizing Final Intelligence Report...`
-13. `Completed & Ready for Interactive Exploration.`
+2. `Recalling Cross-Session Research Memory...`
+3. `Planning Research & Decomposing Subquestions...`
+4. `Checking Private Knowledge Base...`
+5. `Retrieving Relevant Document Context...`
+6. `Conducting External Web Investigations...`
+7. `Analyzing Academic Papers & Tables...`
+8. `Analyzing Tabular Data & Statistics...`
+9. `Comparing Evidence & Cross-Checking Claims...`
+10. `Identifying Contradictions & Uncertainties...`
+11. `Critic Review (Auditing Sufficiency & Hypothesis Testing)...`
+12. `Iterative Deep Research Loop (if evidence gaps or hypotheses unverified)...`
+13. `Synthesizing Final Intelligence Report...`
+14. `Auto-Persisting Verified Findings to Research Memory...`
+15. `Completed & Ready for Interactive Exploration.`
 
 ### 5.3 Final Report Experience & Explainability
 The output is a structured intelligence dossier:
@@ -97,7 +100,7 @@ The output is a structured intelligence dossier:
 
 ---
 
-## 6. Current Completed Scope (Phases 1 – 10)
+## 6. Current Completed Scope (Phases 1 – 16)
 
 - ✅ **Phase 1 (Foundation)**: Core monorepo structure, async FastAPI backend, SQLAlchemy async, React/Vite shell.
 - ✅ **Phase 2 (Research MVP)**: DAG task scheduler, PlannerAgent, Web/Doc/Report agents, live WebSockets.
@@ -114,6 +117,12 @@ The output is a structured intelligence dossier:
 - ✅ **Phase 8B (Usage Tracking & Quota Subsystem)**: Persistent `UsageRecord` and `UserQuota` models with transactional row-locking concurrency, quota-aware fallback, and pipeline user attribution (Commit: `a603114`).
 - ✅ **Phase 9 (Intelligent Knowledge Automation)**: Automated end-to-end zero-touch ingestion and dual-indexing (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`), document status lifecycle, and planner retrieval integration.
 - ✅ **Phase 10 (Evidence & Citation Intelligence)**: Fine-grained claim extraction, paragraph/table coordinate anchoring (`CitationCoordinates`), pairwise contradiction detection taxonomy in `CriticAgent`, and citation-grounded report synthesis.
+- ✅ **Phase 11 (Advanced Research Planning)**: Hierarchical query trees, ambiguity scoring, dynamic agent capability routing, closed-loop replanning.
+- ✅ **Phase 12 (Advanced Multimodal Research)**: Unified synthesis across 50+ page PDFs, research papers, images, charts, audio/video transcripts with timestamp and coordinate grounding.
+- ✅ **Phase 13 (Dataset & Data Analysis Intelligence)**: Schema inference and tabular profiling for CSV/TSV/Excel/JSON, deterministic calculation tools (`DataAnalysisTool`, `DeterministicMathTool`), and interactive data viewer.
+- ✅ **Phase 14 (Document & Paper Intelligence)**: Academic paper parser (`AcademicPaperParser`), section tree hierarchies, BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`.
+- ✅ **Phase 15 (Deep Research Engine)**: Recursive hypothesis formulation, Critic gap audits, dynamic DAG subtask rescheduling, convergence guardrails $\tau \ge 0.85$, WebSocket iteration telemetry, and `DeepResearchTracker` UI.
+- ✅ **Phase 16 (Research Memory)**: Persistent cross-session research memory (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), semantic conceptual indexing, agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API (`/api/v1/memory`), and interactive `ResearchMemoryViewer` UI.
 
 ---
 
@@ -123,28 +132,14 @@ The output is a structured intelligence dossier:
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                   AGENTIC MULTIMODAL RESEARCH PLATFORM ROADMAP                   │
 └──────────────────────────────────────────────────────────────────────────────────┘
-  Phase 1 to 10: Core Platform Foundation, Model Routing, Knowledge & Evidence [COMPLETE]
+  Phase 1 to 14: Platform Foundation, Multimodal Intelligence & Paper Analysis [COMPLETE]
                              │
                              ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐
-  │ GENERATION 1: Intelligent Research Core                                      │
-  │ • Phase 9:  Intelligent Knowledge Automation [COMPLETE]                      │
-  │ • Phase 10: Evidence & Citation Intelligence [COMPLETE]                      │
-  │ • Phase 11: Advanced Research Planning (IMMEDIATE NEXT MILESTONE)            │
-  └──────────────────────────────────────┬───────────────────────────────────────┘
-                                         ▼
-  ┌──────────────────────────────────────────────────────────────────────────────┐
-  │ GENERATION 2: Multimodal Intelligence                                        │
-  │ • Phase 12: Advanced Multimodal Research (50+ Page PDFs, Images, Audio/Video)│
-  │ • Phase 13: Dataset & Data Analysis Intelligence (CSV/Excel, Math Tools)     │
-  │ • Phase 14: Document & Paper Intelligence (Structure, Methodology Diffs)     │
-  └──────────────────────────────────────┬───────────────────────────────────────┘
-                                         ▼
-  ┌──────────────────────────────────────────────────────────────────────────────┐
   │ GENERATION 3: Autonomous Research                                            │
-  │ • Phase 15: Deep Research Engine (Recursive Feedback Loops)                  │
-  │ • Phase 16: Research Memory (Cross-Session Project Memory)                   │
-  │ • Phase 17: Long-Term Knowledge Graph (Entity-Relationship Networks)         │
+  │ • Phase 15: Deep Research Engine (Recursive Feedback Loops) [COMPLETE]       │
+  │ • Phase 16: Research Memory (Cross-Session Project Memory)  [COMPLETE]       │
+  │ • Phase 17: Long-Term Knowledge Graph (IMMEDIATE NEXT MILESTONE)             │
   └──────────────────────────────────────┬───────────────────────────────────────┘
                                          ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -173,7 +168,7 @@ The output is a structured intelligence dossier:
 
 ### 7.1 Detailed Phase Breakdown
 
-#### Generation 1 — Intelligent Research Core
+#### Generation 1 — Intelligent Research Core (COMPLETE)
 - **Phase 9: Intelligent Knowledge Automation (COMPLETE)**:
   - Automated document pipeline: `Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`.
   - Planner awareness: Planner evaluates whether user documents contain relevant context before scheduling external searches.
@@ -193,11 +188,11 @@ The output is a structured intelligence dossier:
   - Deep semantic parsing of academic literature (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and automated cross-paper methodology comparisons (**ADR 014**).
 
 #### Generation 3 — Autonomous Research
-- **Phase 15: Deep Research Engine (NEXT)**:
+- **Phase 15: Deep Research Engine (COMPLETE)**:
   - Recursive execution loops: When `CriticAgent` detects insufficient evidence or unresolved questions, the `PlannerAgent` dynamically schedules follow-up investigation tasks.
-- **Phase 16: Research Memory**:
-  - Persistent research memory indexing past papers, queries, and reports. Supports: *"Continue the research from where we stopped last month."*
-- **Phase 17: Long-Term Knowledge Graph**:
+- **Phase 16: Research Memory (COMPLETE)**:
+  - Persistent research memory indexing past papers, queries, findings, and hypotheses across sessions. Enables agents to recall prior discoveries and prevent duplicate work (**ADR 016**).
+- **Phase 17: Long-Term Knowledge Graph (NEXT)**:
   - Structured graph representation of entities, authors, technologies, companies, claims, and datasets for graph-augmented reasoning.
 
 #### Generation 4 — Collaboration Platform

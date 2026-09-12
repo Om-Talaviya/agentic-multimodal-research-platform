@@ -14,6 +14,13 @@ from research.events import (
     research_event_bus,
 )
 from research.deep_research import DeepResearchEngine
+from research.memory import (
+    MemoryItem,
+    MemoryRecallResult,
+    MemorySearchRequest,
+    MemoryType,
+    ResearchMemoryManager,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -23,6 +30,11 @@ __all__ = [
     "CitationCoordinates", "Citation", "Contradiction",
     "DeepResearchConfig", "ResearchIteration",
     "DeepResearchEngine",
+    "ResearchMemoryManager",
+    "MemoryItem",
+    "MemoryType",
+    "MemorySearchRequest",
+    "MemoryRecallResult",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",

@@ -139,10 +139,11 @@ Respond with a strictly formatted JSON object adhering to this schema:
 }
 
 Planning Guidelines:
-1. If "Available Private Knowledge Base" or attached documents exist, ALWAYS assign "document_analysis" steps to inspect internal files before or in parallel with external web search.
-2. Ensure upstream investigation steps have empty depends_on so they run in parallel.
-3. The final "report" step MUST depend on all preceding investigation/synthesis steps.
-4. Keep the plan rigorous, creating 3 to 6 high-impact executable steps.
+1. If "Historical Cross-Session Research Memories" exist, utilize prior discoveries, concepts, and methodologies to focus the investigation on new frontiers and prevent redundant search.
+2. If "Available Private Knowledge Base" or attached documents exist, ALWAYS assign "document_analysis" steps to inspect internal files before or in parallel with external web search.
+3. Ensure upstream investigation steps have empty depends_on so they run in parallel.
+4. The final "report" step MUST depend on all preceding investigation/synthesis steps.
+5. Keep the plan rigorous, creating 3 to 6 high-impact executable steps.
 """
 
     REPLAN_PROMPT = """You are the Lead Research Strategist directing an autonomous deep research recursive loop (Iteration #{iteration_index}).
@@ -190,15 +191,22 @@ Generate a delta replanning JSON object with targeted follow-up steps to resolve
 
     async def run(self, task: ResearchTask, context: AgentContext) -> AgentResult:
         knowledge_summary = task.context.get("available_knowledge") or task.context.get("knowledge_summary") or ""
+        historical_memories = task.context.get("historical_memories") or ""
         doc_ids = task.context.get("document_ids") or []
         
         prompt_parts = [f"Research Request: {task.objective}"]
         
         if task.context:
-            context_meta = {k: v for k, v in task.context.items() if k not in ("available_knowledge", "knowledge_summary")}
+            context_meta = {
+                k: v for k, v in task.context.items()
+                if k not in ("available_knowledge", "knowledge_summary", "historical_memories")
+            }
             if context_meta:
                 prompt_parts.append(f"Context Parameters: {context_meta}")
                 
+        if historical_memories:
+            prompt_parts.append(f"Historical Cross-Session Research Memories:\n{historical_memories}")
+            
         if knowledge_summary:
             prompt_parts.append(f"Available Private Knowledge Base:\n{knowledge_summary}")
         elif doc_ids:

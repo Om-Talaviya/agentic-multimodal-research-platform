@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
+- **Phase 16: Research Memory**:
+  - Implemented `DBResearchMemory` database model in `packages/database/src/database/models/memory.py` supporting dialect-safe JSON/GUID types, memory types (`concept`, `finding`, `hypothesis`, `methodology`, `fact`), tagging, confidence scores, provenance, and access statistics (`access_count`, `last_accessed_at`).
+  - Implemented `MemoryRepository` in `packages/database/src/database/repositories/memory_repository.py` providing transactional async CRUD, keyword/text search across titles/content/tags, access incrementing, and count aggregations.
+  - Implemented `ResearchMemoryManager` in `packages/research/src/research/memory/manager.py` with `recall_memories()`, prompt formatting, and `store_memories_from_report()` for automated post-synthesis persistence of distilled findings, methodologies, and hypotheses.
+  - Integrated research memory recall into `PlannerAgent` context in `packages/research/src/research/pipeline.py` and `packages/agents/src/agents/planner/planner_agent.py`.
+  - Added `RecallMemoryTool` and `StoreMemoryTool` in `packages/tools/src/tools/definitions/memory.py` allowing autonomous agents to query and persist memory items during research execution.
+  - Created FastAPI REST endpoints in `apps/api/src/api/routes/memory.py` (`GET /`, `POST /`, `GET /search`, `GET /{id}`, `PATCH /{id}`, `DELETE /{id}`) with dependency injection in `apps/api/src/api/dependencies.py`.
+  - Added `MEMORY_RECALLED` and `MEMORY_STORED` WebSocket domain events in `ResearchEventType`.
+  - Built interactive `ResearchMemoryViewer.tsx` React component with rich dark theme, type filtering, confidence gauges, tag filtering, access stats, and manual creation modals.
+  - Added dedicated `/memory` route in `apps/web/src/App.tsx`, nav link in `apps/web/src/components/Layout.tsx`, and a Memories tab in `apps/web/src/pages/ResearchDetail.tsx`.
+  - Added unit test suites in `packages/database/tests/test_memory_repository.py`, `packages/research/tests/test_research_memory.py`, `packages/tools/tests/test_memory_tools.py`, and `apps/api/tests/test_memory_api.py`, achieving 100% pass rate across all 256 monorepo tests.
 - **Phase 15: Deep Research Engine**:
   - Implemented `DeepResearchEngine` in `packages/research/src/research/deep_research.py` orchestrating autonomous multi-round recursive research loops, iterative hypothesis formulation, and dynamic DAG subtask rescheduling.
   - Added `DeepResearchConfig` and `ResearchIteration` data structures in `packages/research/src/research/models.py` tracking iteration index, hypothesis formulation, targeted subtasks, and quantitative confidence progression.

@@ -170,12 +170,12 @@ npm run lint
 - **Phase 13 (Dataset & Data Analysis Intelligence)**: 🟢 COMPLETE (`TabularParser` CSV/TSV/Excel/JSON profiling, `DataAnalysisTool`, `DeterministicMathTool`, `DatasetViewer.tsx` UI)
 - **Phase 14 (Document & Paper Intelligence)**: 🟢 COMPLETE (`AcademicPaperParser`, hierarchical section trees, BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`, `PaperViewer.tsx` UI)
 - **Phase 15 (Deep Research Engine)**: 🟢 COMPLETE (`DeepResearchEngine`, recursive hypothesis formulation, Critic gap audits, dynamic DAG subtask rescheduling, convergence guardrails $\tau \ge 0.85$, WebSocket iteration telemetry, `DeepResearchTracker.tsx` UI)
+- **Phase 16 (Research Memory)**: 🟢 COMPLETE (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`, auto-consolidation from reports, `RecallMemoryTool`, `StoreMemoryTool`, `/api/v1/memory` REST API, `ResearchMemoryViewer.tsx` & `MemoryPage.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The 4 Generations Ahead (Phases 16 – 26):
+### The 4 Generations Ahead (Phases 17 – 26):
 - **Generation 3 — Autonomous Research**:
-  - **Phase 16**: Research Memory (🟡 **IMMEDIATE NEXT MILESTONE**: Cross-session persistent project memory, conceptual indexing, query history recall)
-  - **Phase 17**: Long-Term Knowledge Graph (Entity-relationship reasoning, cross-document graph ontology)
+  - **Phase 17**: Long-Term Knowledge Graph (🟡 **IMMEDIATE NEXT MILESTONE**: Entity-relationship reasoning, cross-document graph ontology)
 - **Generation 4 — Collaboration Platform**:
   - **Phase 18**: Projects & Workspaces (User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge)
   - **Phase 19**: Team Collaboration (Roles, permissions, shared reports, inline comments)

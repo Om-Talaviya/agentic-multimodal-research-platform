@@ -1,4 +1,8 @@
 from typing import List, Optional, Sequence
+from fastapi import Depends, HTTPException, Security, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from sqlalchemy.ext.asyncio import AsyncSession
+from database.connection import get_db_session
 from ai.gateway.model_gateway import ModelGateway
 from ai.providers.gemini import GeminiProvider
 from ai.providers.ollama import OllamaProvider
@@ -13,6 +17,7 @@ from tools.registry import ToolRegistry, tool_registry
 from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 from tools.definitions.document_read import DocumentReadTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
+from tools.definitions.memory import RecallMemoryTool, StoreMemoryTool
 from tools.definitions.paper_analysis import MethodologyComparisonTool, PaperAnalysisTool
 from tools.definitions.web_fetch import WebFetchTool
 from tools.definitions.web_search import WebSearchTool
@@ -21,6 +26,8 @@ from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
 from agents.research.report_agent import ReportAgent
 from agents.critic.critic_agent import CriticAgent
+from research.memory.manager import ResearchMemoryManager
+from database.repositories import MemoryRepository
 from retrieval.bm25 import BM25Index
 from retrieval.embedder import Embedder
 from retrieval.in_memory_store import InMemoryVectorStore
@@ -42,6 +49,7 @@ _embedder: Optional[Embedder] = None
 _bm25_index: Optional[BM25Index] = None
 _retriever: Optional[HybridRetriever] = None
 _indexer: Optional[KnowledgeIndexer] = None
+_memory_manager: Optional[ResearchMemoryManager] = None
 
 
 async def init_providers() -> None:
@@ -142,6 +150,10 @@ async def init_providers() -> None:
     agent_registry.register("critic", CriticAgent)
     agent_registry.register("report", ReportAgent)
     
+    # Initialize Research Memory Manager
+    global _memory_manager
+    _memory_manager = ResearchMemoryManager(retriever=_retriever)
+
     # Register tools
     tool_registry.register(WebSearchTool())
     tool_registry.register(WebFetchTool())
@@ -151,6 +163,8 @@ async def init_providers() -> None:
     tool_registry.register(DeterministicMathTool())
     tool_registry.register(PaperAnalysisTool())
     tool_registry.register(MethodologyComparisonTool())
+    tool_registry.register(RecallMemoryTool(memory_manager=_memory_manager))
+    tool_registry.register(StoreMemoryTool(memory_manager=_memory_manager))
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(
@@ -214,6 +228,16 @@ async def get_indexer() -> KnowledgeIndexer:
 
 async def get_tool_registry() -> ToolRegistry:
     return tool_registry
+
+
+async def get_memory_manager() -> ResearchMemoryManager:
+    if _memory_manager is None:
+        await init_providers()
+    return _memory_manager
+
+
+async def get_memory_repository(session: AsyncSession = Depends(get_db_session)) -> MemoryRepository:
+    return MemoryRepository(session)
 
 
 async def get_research_event_bus() -> ResearchEventBus:

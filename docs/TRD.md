@@ -1,8 +1,8 @@
 # Technical Requirements Document (TRD)
 
 ## Project: Agentic Multimodal Research Platform (AI Research OS)
-**Status**: Active / Production v1.1 (Phase 12 Complete, Preparing Phase 13)  
-**Architecture Version**: 1.1 (Phase 12 Complete, Preparing Phase 13)  
+**Status**: Active / Production v1.1 (Phase 16 Complete, Preparing Phase 17)  
+**Architecture Version**: 1.1 (Phase 16 Complete, Preparing Phase 17)  
 **Last Updated**: September 2026  
 **Stable Branch**: `develop/v1.1`
 
@@ -15,7 +15,7 @@ The platform implements a modular, asynchronous, decoupled monorepo architecture
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                           Client Tier (React 18 / Vite)                          │
-│     - Responsive Dashboard, Live Research Studio, Document Hub, Settings        │
+│     - Responsive Dashboard, Live Research Studio, Document Hub, Memory Studio    │
 │     - Bi-directional WebSockets with Exponential Backoff Auto-Reconnect         │
 └────────────────────────────────────────┬─────────────────────────────────────────┘
                                          │ HTTPS / WSS
@@ -23,7 +23,7 @@ The platform implements a modular, asynchronous, decoupled monorepo architecture
 │                     FastAPI Application Gateway (apps/api)                       │
 │  - JWT Authentication Middleware (PBKDF2-HMAC-SHA256, Access & Refresh)          │
 │  - User Context Extraction (Injects user_id into downstream async context)       │
-│  - REST Endpoints (/api/v1/auth, /research, /documents, /models, /health)        │
+│  - REST Endpoints (/api/v1/auth, /research, /documents, /memory, /models, /health)│
 │  - Real-Time WebSocket Connection Manager with Initial Snapshot Hydration       │
 └────────────────────────────────────────┬─────────────────────────────────────────┘
                                          │
@@ -35,10 +35,10 @@ The platform implements a modular, asynchronous, decoupled monorepo architecture
 │  database)       │           │  research)       │             │                  │
 │ • AsyncSession   │           │ • Task DAG Engine│             │ • ModelGateway   │
 │ • PostgreSQL 16  │           │ • Orchestrator   │             │ • ModelRouter    │
-│ • SQLite Parity  │           │ • EventBus       │             │ • ModelRegistry  │
-│ • UserQuota      │           │ • Synthesis      │             │ • ProviderReg.   │
-│ • UsageRecord    │           └────────┬─────────┘             │ • Quota & Usage  │
-│ • Row Locking    │                    │                       └────────┬─────────┘
+│ • SQLite Parity  │           │ • Memory Manager │             │ • ModelRegistry  │
+│ • ResearchMemory │           │ • EventBus       │             │ • ProviderReg.   │
+│ • UserQuota      │           │ • Synthesis      │             │ • Quota & Usage  │
+│ • Row Locking    │           └────────┬─────────┘             └────────┬─────────┘
 └──────────────────┘                    │                                │
                                         ▼                                │
                                ┌──────────────────┐                      │
@@ -59,7 +59,7 @@ The platform implements a modular, asynchronous, decoupled monorepo architecture
                 │ • WebSearch      │          │  retrieval)      │
                 │ • SSRF-Safe Fetch│          │ • ChromaDB       │
                 │ • DocReader      │          │ • In-Memory Store│
-                │ • Math Tools     │          │ • BM25 + RRF     │
+                │ • Math & Memory  │          │ • BM25 + RRF     │
                 └──────────────────┘          └──────────────────┘
 ```
 
@@ -74,7 +74,7 @@ The platform implements a modular, asynchronous, decoupled monorepo architecture
 | **ASGI Server** | Uvicorn | 0.29+ | Production ASGI server with uvloop support |
 | **Database ORM** | SQLAlchemy | 2.0+ (Async) | Unified async SQL interface across DB engines |
 | **Migration Tool** | Alembic | 1.13+ | Automated, version-controlled relational schema migrations |
-| **Primary Relational DB** | PostgreSQL | 16+ | Persistent users, quotas, usage logs, research jobs, DAG tasks |
+| **Primary Relational DB** | PostgreSQL | 16+ | Persistent users, quotas, memories, usage logs, research jobs, DAG tasks |
 | **Testing Relational DB** | SQLite (Async) | 3.40+ | In-memory zero-latency dialect-compatible test execution |
 | **Vector Database** | ChromaDB | 0.4+ | Semantic document chunk vector index |
 | **Sparse Lexical Search** | `rank-bm25` | 0.2+ | Exact keyword / BM25 search for Hybrid RAG |
@@ -128,7 +128,8 @@ flowchart TD
 1. **DAG Representation**: Research plans are compiled into topological dependency graphs (`depends_on: [task_id_1, task_id_2]`).
 2. **Concurrency Execution**: Tasks with no pending dependencies execute concurrently via `asyncio.gather()` / coroutine pools.
 3. **EventBus Dispatch**: Every task lifecycle transition (`PENDING` $\rightarrow$ `RUNNING` $\rightarrow$ `COMPLETED` / `FAILED`) emits structured events onto `ResearchEventBus`.
-4. **Critic Verification Loop**: `CriticAgent` inspects extracted evidence, computes factual support confidence (0.0 to 1.0), flags contradictions, and can request iterative research loops.
+4. **Critic Verification Loop & Deep Research**: `CriticAgent` audits evidence coverage, generates gap analyses, and triggers recursive hypothesis refinement loops until convergence criteria ($\tau \ge 0.85$) are met.
+5. **Research Memory Consolidation**: Synthesized report key findings, methodologies, and verified hypotheses are automatically persisted into `DBResearchMemory` across sessions.
 
 ---
 
@@ -160,7 +161,7 @@ flowchart TD
 
 ## 5. Roadmap Technical Requirements (Phases 9 – 26)
 
-### Generation 1: Intelligent Research Core
+### Generation 1: Intelligent Research Core (COMPLETE)
 - **Phase 9 (Knowledge Automation - COMPLETE)**: Automated asynchronous ingestion worker connecting upload to vector/BM25 indexing; Planner integration to query existing knowledge before dispatching web tasks.
 - **Phase 10 (Citation Intelligence - COMPLETE)**: Data contract for `Citation` model anchoring claims to exact character/line offsets, paragraph indices, and page coordinates in source documents, with pairwise contradiction detection.
 - **Phase 11 (Advanced Planning - COMPLETE)**: Hierarchical planning engine with `QueryTreeNode` recursive decomposition, ambiguity scoring, and closed-loop dynamic replanning.
@@ -171,9 +172,9 @@ flowchart TD
 - **Phase 14 (Paper Intelligence - COMPLETE)**: Academic research paper parser (`AcademicPaperParser`), section tree hierarchies (`PaperSection`), BibTeX citation matching, and cross-paper comparative matrices (`PaperAnalysisTool`, `MethodologyComparisonTool`).
 
 ### Generation 3: Autonomous Research
-- **Phase 15 (Deep Research - NEXT)**: Dynamic re-planning trigger when Critic confidence falls below threshold $\tau < 0.70$.
-- **Phase 16 (Research Memory)**: Semantic search over historical `ResearchJob` graphs and synthesis summaries.
-- **Phase 17 (Knowledge Graph)**: Neo4j / pgvector entity-relationship graph storage with Cypher/SPARQL query interface.
+- **Phase 15 (Deep Research - COMPLETE)**: Dynamic recursive hypothesis formulation, Critic gap audits, DAG task rescheduling with convergence guardrails $\tau \ge 0.85$.
+- **Phase 16 (Research Memory - COMPLETE)**: Cross-session conceptual memory persistence (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API (`/api/v1/memory`), and interactive `ResearchMemoryViewer` UI.
+- **Phase 17 (Knowledge Graph - NEXT)**: Structured Neo4j / pgvector entity-relationship graph storage with Cypher/SPARQL query interface.
 
 ### Generation 4: Collaboration Platform
 - **Phase 18 (Workspaces)**: Database schema migration introducing `workspaces`, `workspace_members`, and `projects`.

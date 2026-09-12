@@ -41,6 +41,8 @@ class ResearchEventType(str, Enum):
     DEEP_RESEARCH_TERMINATED = "deep_research_terminated"
     REPORT_STARTED = "report_started"
     REPORT_GENERATED = "report_generated"
+    MEMORY_RECALLED = "memory_recalled"
+    MEMORY_STORED = "memory_stored"
     JOB_COMPLETED = "job_completed"
     JOB_FAILED = "job_failed"
 

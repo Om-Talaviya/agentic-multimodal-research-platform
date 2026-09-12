@@ -192,3 +192,54 @@ sequenceDiagram
     DRE-->>User: ResearchReport with Full Iteration History
 ```
 
+---
+
+## 7. Phase 16: Research Memory Recall & Auto-Consolidation Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Researcher
+    participant Pipe as ResearchPipeline
+    participant MemMgr as ResearchMemoryManager
+    participant MemRepo as MemoryRepository
+    participant Planner as PlannerAgent
+    participant Agents as Specialized Agents / Tools
+    participant Rep as ReportAgent
+    participant WS as WebSocket Broadcaster
+
+    User->>Pipe: run(question, user_id)
+    
+    rect rgb(20, 30, 45)
+        Note over Pipe, MemRepo: 1. Cross-Session Memory Recall
+        Pipe->>MemMgr: recall_memories(user_id, query=question, limit=5)
+        MemMgr->>MemRepo: search_by_text(user_id, query, limit=5)
+        MemRepo-->>MemMgr: List[DBResearchMemory]
+        MemMgr->>MemRepo: increment_access(memory_ids)
+        MemMgr-->>Pipe: MemoryRecallResult(memories, summary)
+        Pipe->>WS: MEMORY_RECALLED(count, titles)
+        Pipe->>Planner: plan(question, context, historical_memories=recalled_summary)
+    end
+
+    Note over Planner, Agents: 2. Autonomous DAG Execution
+    Planner-->>Pipe: ResearchPlan (incorporating prior knowledge)
+    Pipe->>Agents: Execute DAG subtasks
+    opt In-Flight Agent Memory Tool Calls
+        Agents->>MemMgr: RecallMemoryTool / StoreMemoryTool
+        MemMgr-->>Agents: Memory contents / Confirmation
+    end
+    Agents-->>Pipe: Verified Evidence & Findings
+
+    rect rgb(20, 45, 30)
+        Note over Pipe, MemRepo: 3. Post-Report Auto-Consolidation
+        Pipe->>Rep: generate_report(evidence, query)
+        Rep-->>Pipe: Synthesized ResearchReport
+        Pipe->>MemMgr: store_memories_from_report(user_id, job_id, report)
+        MemMgr->>MemRepo: batch_create(distilled_findings, methodologies, hypotheses)
+        MemRepo-->>MemMgr: List[DBResearchMemory] persisted
+        Pipe->>WS: MEMORY_STORED(count, keys)
+    end
+
+    Pipe-->>User: Final Research Job Complete (Memory Retained for Future Jobs)
+```
+

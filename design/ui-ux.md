@@ -51,7 +51,7 @@ This document defines the complete visual design system, interaction patterns, u
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│  [🔬 AI RESEARCH OS]    Dashboard    Research    Knowledge    Documents    Projects    ⚙️    │
+│  [🔬 AI RESEARCH OS]   Dashboard   Research   Knowledge   Documents   Memory   Projects   ⚙️│
 ├─────────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                             │
 │   🚀 Start New Autonomous Research                                                          │
@@ -80,21 +80,22 @@ This document defines the complete visual design system, interaction patterns, u
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
 │  ◄ Back to Dashboard    Job: Sustainable Food Packaging (ID: 8351-5d5a)    [● RUNNING]      │
 ├─────────────────────────────────────────────────────────────────────────────────────────────┤
-│  [Overview]  [Execution Plan]  [Task DAG]  [Sources (14)]  [Evidence (28)]  [Final Report]  │
+│  [Overview] [Execution Plan] [Task DAG] [Sources (14)] [Evidence (28)] [Memories] [Report]  │
 ├─────────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                             │
 │   LIVE AGENT PROGRESSION:                                                                   │
 │   1. Understanding Request .................................................... [DONE 0.4s] │
-│   2. Planning & Subquestion Decomposition ..................................... [DONE 1.2s] │
-│   3. Checking Private Knowledge Base (Found 3 PDFs) ........................... [DONE 0.8s] │
-│   4. Retrieving Relevant Document Context ..................................... [DONE 0.5s] │
-│   5. Conducting External Web Research ......................................... [DONE 3.1s] │
-│   6. Analyzing Academic Papers & Tables ....................................... [DONE 4.2s] │
-│   7. Analyzing Numerical Data with Deterministic Tools ........................ [DONE 1.1s] │
-│   8. Comparing Evidence & Cross-Checking Claims ............................... [DONE 2.0s] │
-│   9. Identifying Contradictions & Uncertainties ............................... [DONE 0.9s] │
-│  10. Critic Review (Auditing Sufficiency) ..................................... [DONE 1.5s] │
-│  ► 11. Synthesizing Final Intelligence Report ................................. [STREAMING] │
+│   2. Recalling Cross-Session Research Memory .................................. [DONE 0.2s] │
+│   3. Planning & Subquestion Decomposition ..................................... [DONE 1.2s] │
+│   4. Checking Private Knowledge Base (Found 3 PDFs) ........................... [DONE 0.8s] │
+│   5. Retrieving Relevant Document Context ..................................... [DONE 0.5s] │
+│   6. Conducting External Web Research ......................................... [DONE 3.1s] │
+│   7. Analyzing Academic Papers & Tables ....................................... [DONE 4.2s] │
+│   8. Analyzing Numerical Data with Deterministic Tools ........................ [DONE 1.1s] │
+│   9. Comparing Evidence & Cross-Checking Claims ............................... [DONE 2.0s] │
+│  10. Identifying Contradictions & Uncertainties ............................... [DONE 0.9s] │
+│  11. Critic Review (Auditing Sufficiency & Hypotheses) ........................ [DONE 1.5s] │
+│  ► 12. Synthesizing Final Intelligence Report ................................. [STREAMING] │
 │                                                                                             │
 │  ┌───────────────────────────────────────────────────────────────────────────────────────┐  │
 │  │ 📝 Synthesizing Section 3: Comparative Degradation Rates under Industrial Composting..│  │
@@ -144,6 +145,37 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.4 Research Memory Studio Layout (Phase 16)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🧠 Research Memory Studio      [🔍 Search past concepts, findings, methodologies... ]       │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│  Filters: [ All (24) ] [ Findings (12) ] [ Hypotheses (4) ] [ Methodologies (5) ] [ Concepts] │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                             │
+│  ┌──────────────────────────────────────────────────┐ ┌───────────────────────────────────┐  │
+│  │ [FINDING] Degradation Rate of PLA in Seawater    │ │ [METHODOLOGY] ASTM D6400 Composting│  │
+│  │ In ambient seawater (15-20°C), PLA exhibits <1.5%│ │ Standard industrial composting test│  │
+│  │ degradation per year due to lack of hydrolysis.  │ │ protocol: 58°C thermophilic phase.│  │
+│  │                                                  │ │                                   │  │
+│  │ Confidence: [██████████████████░░] 94%           │ │ Confidence: [████████████████████] 100%│  │
+│  │ Tags: #materials #marine-biodegradation #pla     │ │ Tags: #testing #standard #astm    │  │
+│  │ Recalls: 3 times  •  Job: Sustainable Packaging  │ │ Recalls: 7 times  •  Job: Bio-Plastics│  │
+│  └──────────────────────────────────────────────────┘ └───────────────────────────────────┘  │
+│                                                                                             │
+│  ┌──────────────────────────────────────────────────┐ ┌───────────────────────────────────┐  │
+│  │ [HYPOTHESIS] Co-Polymerization Accelerates Rate  │ │ [CONCEPT] Enzyme-Mediated Cleavage │  │
+│  │ Blending with 15% starch will lower PLA barrier. │ │ Protease K catalyzed depolymerization.│  │
+│  │ Confidence: [██████████████░░░░░░] 72%           │ │ Confidence: [█████████████████░░░] 88%│  │
+│  │ Tags: #formulation #hypothesis #blends           │ │ Tags: #biochem #enzymes           │  │
+│  │ Recalls: 1 time   •  Job: Sustainable Packaging  │ │ Recalls: 2 times  •  Job: Polymer 2 │  │
+│  └──────────────────────────────────────────────────┘ └───────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -152,4 +184,5 @@ This document defines the complete visual design system, interaction patterns, u
 | **Stream Processing** | Pulsing emerald step nodes, animated progress bars, live markdown token streaming | WebSocket event triggered |
 | **Evidence Hover** | Elevation increase, amber badge for contradictions, green badge for high confidence | 150ms ease-out hover |
 | **Explainability Modal** | Glassmorphic slide-out drawer revealing exact document slice and table coordinates | Slide-left 250ms |
+| **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

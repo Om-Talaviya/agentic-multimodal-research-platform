@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { LayoutDashboard, Plus, Settings, FlaskConical } from 'lucide-react'
+import { LayoutDashboard, Plus, Settings, FlaskConical, Brain } from 'lucide-react'
 
 export function Layout() {
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/research/new', label: 'New Research', icon: Plus },
+    { path: '/memory', label: 'Memory', icon: Brain },
     { path: '/settings', label: 'Settings', icon: Settings },
   ]
 
