@@ -705,3 +705,73 @@ sequenceDiagram
         API-->>UI: Live Alert Count & Sweep Timeline Updated
     end
 ```
+
+---
+
+## 17. Adversarial Multi-Agent Debate & Dialectical Consensus Synthesis Flow (Phase 27)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Researcher as Lead Researcher
+    participant UI as DebateArenaPage.tsx
+    participant API as FastAPI (/api/v1/debates)
+    participant Engine as DebateEngine
+    participant Proposer as ProposerAgent (Affirmative Thesis)
+    participant Opposer as OpposerAgent (Adversarial Counter)
+    participant Arbiter as ConsensusArbiter (Judge & Synthesizer)
+    participant Repo as DebateRepository
+    participant DB as PostgreSQL / SQLite (agent_debates, debate_rounds, debate_consensus)
+
+    rect rgb(20, 30, 45)
+        Note over Researcher, DB: 1. Launch Multi-Agent Debate Arena
+        Researcher->>UI: Configures Debate Topic, Initial Thesis, Counter-Thesis, Max Rounds (3)
+        UI->>API: POST /api/v1/debates {topic, initial_thesis, counter_thesis, max_rounds: 3, proposer_model, opposer_model, arbiter_model}
+        API->>Repo: create_debate(user_id, topic, initial_thesis, counter_thesis, max_rounds, ...)
+        Repo->>DB: INSERT into agent_debates (proposer_elo=1500, opposer_elo=1500, status='active')
+        DB-->>Repo: DBAgentDebate Record
+        Repo-->>API: Persisted Debate Metadata
+        API-->>UI: 201 Created (Debate Active, Round 0/3)
+    end
+
+    rect rgb(20, 45, 30)
+        Note over Engine, DB: 2. Dialectical Round Execution & Dynamic Elo Scoring
+        Researcher->>UI: Clicks "Execute Round" or "Run Full Debate"
+        UI->>API: POST /api/v1/debates/{id}/rounds {run_to_completion: false}
+        API->>Engine: execute_round(debate_id, context)
+        Engine->>Repo: get_debate(debate_id, include_rounds=True)
+        Repo-->>Engine: DBAgentDebate + previous rounds
+
+        Note over Engine, Proposer: Proposer Turn: Evidence-Grounded Thesis Defense
+        Engine->>Proposer: execute(topic, thesis, round_number, opposer_prior_argument, history)
+        Proposer-->>Engine: ProposerTurn {argument_text, key_claims, citations, persuasiveness_self_score}
+
+        Note over Engine, Opposer: Opposer Turn: Adversarial Counterargument & Edge Cases
+        Engine->>Opposer: execute(topic, thesis, counter_thesis, round_number, proposer_argument, claims, history)
+        Opposer-->>Engine: OpposerTurn {argument_text, counter_claims, citations, flaws_identified}
+
+        Note over Engine, Arbiter: Arbiter Turn: Round Scoring & Critique
+        Engine->>Arbiter: evaluate_round(topic, round_number, proposer_turn, opposer_turn)
+        Arbiter-->>Engine: RoundEvaluation {proposer_score: 0.88, opposer_score: 0.82, round_winner: "proposer", critique}
+
+        Note over Engine: Compute Elo Shift: ΔR = K * (S_A - E_A)
+        Engine->>Engine: compute_elo_shift(proposer_elo, opposer_elo, p_score, o_score, k_factor=32)
+        Engine->>Repo: add_debate_round(debate_id, round_num, p_arg, o_arg, p_score, o_score, critique, winner, elo_delta, ...)
+        Repo->>DB: INSERT into debate_rounds
+        Engine->>Repo: update_debate_status(debate_id, current_round, new_p_elo, new_o_elo)
+        Repo->>DB: UPDATE agent_debates SET current_round=1, proposer_elo=1516, opposer_elo=1484
+    end
+
+    rect rgb(45, 30, 20)
+        Note over Engine, DB: 3. Dialectical Consensus Synthesis (Round 3 Reached)
+        alt current_round >= max_rounds
+            Engine->>Arbiter: synthesize_consensus(topic, initial_thesis, complete_rounds_history)
+            Arbiter-->>Engine: ConsensusPayload {consensus_statement, accepted_claims, refuted_claims, concessions, remaining_uncertainties, overall_confidence: 0.90, winner_overall}
+            Engine->>Repo: record_consensus(debate_id, consensus_statement, accepted_claims, refuted_claims, concessions, remaining_uncertainties, overall_confidence, winner_overall, final_elos)
+            Repo->>DB: INSERT into debate_consensus
+            Repo->>DB: UPDATE agent_debates SET status='concluded'
+        end
+        Engine-->>API: Round & Consensus Execution Summary
+        API-->>UI: Live Split-Screen Arena Transcripts, Elo Badges & Consensus Vault Updated
+    end
+```

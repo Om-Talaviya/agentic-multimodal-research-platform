@@ -493,6 +493,46 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Prevents alert fatigue by triggering notifications only when newly discovered findings exceed the configured novelty threshold.
   - Positive: Concludes the final milestone (Phase 26) of Generation 6 and the entire 6-Generation Product Roadmap!
 
+---
+
+## ADR 027: Adversarial Multi-Agent Debate, Elo Robustness Scoring, and Dialectical Consensus Synthesis (Phase 27)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Scientific inquiries and complex empirical hypotheses often suffer from confirmation bias and sycophancy when analyzed by single-agent or monolithic LLM pipelines. To achieve robust, high-veracity truth discovery, the platform requires an adversarial dialectical debate framework where competing agents defend opposing positions (`ProposerAgent` vs `OpposerAgent`), subjected to impartial evaluation (`ConsensusArbiter`) with dynamic skill/argument strength tracking (Elo rating shifts $\Delta R = K \times (S - E)$), and synthesized into nuanced consensus statements with explicitly categorized accepted claims, refuted claims, mutual concessions, and residual empirical uncertainties.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/debate.py`:
+     - `DBAgentDebate`: Persistent debate session entity with topic, affirmative thesis, counter-thesis, status (`active`, `concluded`, `abandoned`), round limits (`max_rounds`), multi-model configurations (`proposer_model`, `opposer_model`, `arbiter_model`), and current Elo ratings (`proposer_elo`, `opposer_elo`).
+     - `DBDebateRound`: Sequential round transcripts recording proposer arguments, opposer counterarguments, citations, arbiter scores ($S \in [0.0, 1.0]$), qualitative critique, round winner, and applied Elo delta.
+     - `DBDebateConsensus`: Synthesized dialectical consensus record storing unified consensus statements, accepted empirical claims, refuted claims, concessions, remaining uncertainties, overall factual confidence ratings, and winner verdict (`proposer_favored`, `opposer_favored`, `balanced_consensus`).
+  2. Implement `DebateRepository` in `packages/database/src/database/repositories/debate_repo.py`:
+     - Full lifecycle management: `create_debate`, `get_debate`, `list_debates`, `update_debate_status`, `add_debate_round`, `list_debate_rounds`, `record_consensus`, `get_consensus`, `get_debate_metrics`, `delete_debate`.
+  3. Implement Specialized Debate Agents in `packages/agents/src/agents/debate/`:
+     - `ProposerAgent`: Constructs affirmative, evidence-grounded logical arguments and structured thesis defenses with citation support.
+     - `OpposerAgent`: Probes edge cases, tests boundary assumptions, surfaces methodological flaws, and formulates counterarguments.
+     - `ConsensusArbiter`: Impartially evaluates round arguments, scores validity and grounding, calculates Elo shifts, and synthesizes dialectical consensus statements.
+  4. Implement `DebateEngine` in `packages/research/src/research/debate/engine.py`:
+     - `compute_elo_shift(rating_a, rating_b, score_a, score_b, k_factor=32.0)`: Standard Elo update formula based on round score differential.
+     - `execute_round(debate_id, context)`: Orchestrates Proposer turn $\rightarrow$ Opposer turn $\rightarrow$ Arbiter evaluation $\rightarrow$ Elo update $\rightarrow$ round persistence $\rightarrow$ auto-consensus trigger.
+     - `synthesize_and_save_consensus(debate_id, context)`: Reconciles all round arguments into final consensus vault.
+     - `execute_full_debate(debate_id, context)`: Autonomous round-to-round loop completing debate to consensus.
+  5. Implement REST APIs in `apps/api/src/api/routes/debate.py`:
+     - `POST /api/v1/debates`: Launch debate session.
+     - `GET /api/v1/debates`: List debates with status/workspace filtering.
+     - `GET /api/v1/debates/{id}`: Fetch debate details with rounds and consensus.
+     - `POST /api/v1/debates/{id}/rounds`: Execute round or full debate run.
+     - `GET /api/v1/debates/{id}/rounds`: List chronological rounds.
+     - `GET /api/v1/debates/{id}/consensus`: Fetch synthesized consensus.
+     - `GET /api/v1/debates/metrics`: Retrieve aggregate debate statistics.
+     - `DELETE /api/v1/debates/{id}`: Delete debate and cascade child records.
+  6. Build React Studio in `apps/web/src/pages/DebateArenaPage.tsx`:
+     - Active Debates tab: Grid of active and concluded debates with Elo badges, round counters, launch debate modal.
+     - Split-Screen Dialectical Arena Inspector: Side-by-side Proposer vs Opposer transcript viewer, claim cards, citations, Arbiter critique card with round winner and Elo shift delta pill.
+     - Synthesized Consensus Vault tab: High-confidence consensus statement card, accepted empirical claims with confidence bars, refuted claims, mutual concessions, and residual uncertainties.
+- **Consequences**:
+  - Positive: Eliminates single-model echo chambers and sycophantic hallucinations through adversarial dialectics.
+  - Positive: Dynamic Elo rating shifts quantify argument strength and model reasoning robustness.
+  - Positive: Produces higher-order synthesized scientific consensus with nuanced boundary constraints.
+  - Positive: Inaugurates Generation 7 (Scientific & Meta-Intelligence) on `develop/v1.1`.
+
 
 
 

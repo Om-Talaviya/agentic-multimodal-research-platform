@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2026%20Complete%20(All%206%20Generations%20100%25)-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Phase%2027%20Complete%20(Generation%207%20Active)-success?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
@@ -82,6 +82,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 | **Model Coupling** | Locked to a single proprietary API | **Model-Agnostic Routing**: Dynamically routes tasks to optimal fast, vision, or reasoning models with automated failover |
 | **Evidence & Provenance** | Unverifiable assertions & frequent hallucinations | **Strict Claim $\rightarrow$ Evidence Mapping**: Every claim links to verified sources, document page numbers, audio/video timestamps, and confidence metrics |
 | **Critic & Verification** | No verification loop | Independent `CriticAgent` detects contradictions, audits sufficiency, and triggers iterative research loops |
+| **Adversarial Multi-Agent Debates** | Monolithic agreement / echo chamber | `ProposerAgent` vs `OpposerAgent` structured dialectics with Elo rating shifts and `ConsensusArbiter` synthesis |
 | **Data Ingestion** | Raw text only | Native extraction for multi-page PDFs with tables, DOCX, images, audio speech tracks, and video timelines |
 | **Long-Term Memory & Graph** | Session-only context | Persistent cross-session research memory and relational Knowledge Graph with Graph-Augmented RAG (`GraphRAG`) |
 | **Multi-Tenancy & Quotas** | Simple API keys or no quotas | Persistent RBAC, transactional row-locking token/cost quotas, and per-user usage attribution |
@@ -90,7 +91,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 26 Complete — All 6 Generations 100% Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 27 Complete — Generation 7 Active** on the stable branch `develop/v1.1`.
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -120,13 +121,14 @@ Phase 23: Enterprise Security        [██████████████
 Phase 24: Production Infrastructure  [████████████████████] 100%
 Phase 25: Public API & Dev Platform  [████████████████████] 100%
 Phase 26: Research Automation        [████████████████████] 100%
+Phase 27: Multi-Agent Debate Engine  [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-ALL 26 PHASES COMPLETED — PRODUCTION PLATFORM READY
+PHASE 27 COMPLETED — ADVERSARIAL DEBATE & CONSENSUS ENGINE ACTIVE
 ```
 
 ---
 
-## 6-Generation Product Roadmap (Phases 9 – 26)
+## 7-Generation Product Roadmap (Phases 9 – 27+)
 
 ### Generation 1: Intelligent Research Core (100% COMPLETE)
 - **Phase 9: Intelligent Knowledge Automation (COMPLETE)**: Automated end-to-end ingestion (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`) and autonomous planner retrieval integration.
@@ -157,6 +159,9 @@ ALL 26 PHASES COMPLETED — PRODUCTION PLATFORM READY
 - **Phase 24: Production Infrastructure (COMPLETE)**: Distributed asynchronous priority task queues (`AsyncTaskQueue`), worker cluster node telemetry (`WorkerNode`, `DBWorkerNode`), S3/MinIO/Local blob vault (`ObjectStorageClient`, `DBStorageObject`), presigned URL generation, and `ProductionInfrastructurePage.tsx` React studio.
 - **Phase 25: Public API & Developer Platform (COMPLETE)**: Public REST gateway (`/api/v1/developer/*`), cryptographically secure SHA-256 hashed API keys (`DBApiKey`, `ApiKeyRepository`), granular permission scopes (`research:read/write`, `documents:read/write`, `memory:read`, `graph:read`), sliding window rate limiting tiers (Free, Pro, Enterprise), interactive API Playground with live cURL / Python / TypeScript SDK snippets, and `DeveloperPlatformPage.tsx` React studio.
 - **Phase 26: Research Automation (COMPLETE)**: Autonomous recurring research sweeps, cron and interval scheduling (`compute_next_run`), semantic claim diff engine, novelty scoring ($\text{novelty} \in [0.0, 1.0]$), threshold-triggered multi-channel alerts (in-app, email, webhooks), database models (`DBScheduledResearch`, `DBResearchSweepResult`, `DBAutomationAlert`), `AutomationRepository`, `/api/v1/automation/*` REST endpoints, and `ResearchAutomationPage.tsx` React studio.
+
+### Generation 7: Scientific & Meta-Intelligence (ACTIVE)
+- **Phase 27: Adversarial Multi-Agent Debate & Consensus Engine (COMPLETE)**: Multi-agent dialectical debate studio (`ProposerAgent` vs `OpposerAgent`), dynamic Elo rating shift tracking ($\Delta R = K \times (S - E)$), impartial arbitration and round critique (`ConsensusArbiter`), dialectical consensus synthesis (accepted claims, refuted claims, mutual concessions, residual uncertainties, factual confidence), database models (`DBAgentDebate`, `DBDebateRound`, `DBDebateConsensus`), `DebateRepository`, `/api/v1/debates/*` REST API, and `DebateArenaPage.tsx` React studio.
 
 ---
 
