@@ -487,5 +487,57 @@ sequenceDiagram
     UI-->>Dev: Displays Scorecard, Historical Trends, and Step Telemetry Inspector Drawer
 ```
 
+---
+
+## 13. Enterprise Security, KMS Envelope Vault & Cryptographic Audit Trail Flow (Phase 23)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor SecAdmin as Security Officer / Admin
+    participant UI as EnterpriseSecurityPage.tsx
+    participant API as FastAPI (/api/v1/security)
+    participant KMS as KMSEnvelopeEncryption
+    participant Chainer as AuditHashChainer
+    participant Repo as SecurityRepository
+    participant DB as PostgreSQL / SQLite (security_audit_logs, encrypted_secrets)
+
+    rect rgb(20, 30, 45)
+        Note over SecAdmin, DB: 1. Two-Tier KMS Envelope Encryption (Store Secret)
+        SecAdmin->>UI: Inputs API Key / Secret Plaintext
+        UI->>API: POST /api/v1/security/secrets {name, provider, plaintext_value}
+        API->>Repo: create_encrypted_secret(...)
+        Repo->>KMS: encrypt_secret(plaintext_value)
+        KMS->>KMS: Generate ephemeral 256-bit DEK
+        KMS->>KMS: AES-256-GCM Encrypt plaintext with DEK
+        KMS->>KMS: AES-256-GCM Encrypt DEK with KEK (derived from master key)
+        KMS-->>Repo: EncryptedPayload + EncryptedDEK + KeyVersion
+        Repo->>DB: INSERT into encrypted_secrets (masked_preview, ciphertexts)
+        Repo->>Chainer: compute_record_hash(prev_hash, timestamp, "secret_stored", ...)
+        Chainer-->>Repo: SHA-256 CurrentHash
+        Repo->>DB: INSERT into security_audit_logs (previous_hash, current_hash)
+        Repo-->>API: Persisted Secret Metadata (Masked Preview only)
+        API-->>UI: 201 Created (Vaulted Successfully)
+    end
+
+    rect rgb(20, 45, 30)
+        Note over SecAdmin, DB: 2. Tamper-Evident Merkle Hash Chain Verification
+        SecAdmin->>UI: Clicks "Verify Cryptographic Chain"
+        UI->>API: GET /api/v1/security/audit-logs/verify
+        API->>Repo: verify_audit_log_integrity(limit=500)
+        Repo->>DB: SELECT security_audit_logs ORDER BY created_at ASC
+        DB-->>Repo: Ordered Audit Records
+        Repo->>Chainer: verify_chain_integrity(records)
+        loop For Each Audit Record Link
+            Chainer->>Chainer: Assert record[i].previous_hash == record[i-1].current_hash
+            Chainer->>Chainer: Recompute SHA-256(prev | ts | event | actor | details)
+            Chainer->>Chainer: Assert recomputed_hash == record[i].current_hash
+        end
+        Chainer-->>Repo: (is_valid=True, error=None)
+        Repo-->>API: {verified: True, integrity_status: "VALID_TAMPER_EVIDENT", total_records: N}
+        API-->>UI: Displays Verified Green Badge & Genesis Anchor
+    end
+```
+
 
 

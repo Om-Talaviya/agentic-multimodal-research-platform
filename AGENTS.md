@@ -177,11 +177,11 @@ npm run lint
 - **Phase 20 (Intelligent Model Ecosystem)**: 🟢 COMPLETE (`ModelEcosystemOptimizer`, Pareto-frontier sorting, multi-parameter scoring across Quality/Speed/Cost/Locality, `/api/v1/models/profiles`, `/api/v1/models/optimize`, live simulation preview UI)
 - **Phase 21 (Model Evaluation System)**: 🟢 COMPLETE (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`, `EvaluationMetricsEngine`, `ModelEvaluator`, `DBModelEvaluation`, `DBModelBenchmarkResult`, `ModelEvaluationRepository`, `/api/v1/models/evaluate`, `/api/v1/models/evaluations`, `/api/v1/models/leaderboard`, `ModelEvaluationPage.tsx` UI)
 - **Phase 22 (Agent Evaluation)**: 🟢 COMPLETE (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, plan precision, tool accuracy, evidence coverage, hallucination rate scoring, `DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`, `/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`, `AgentEvaluationPage.tsx` UI)
+- **Phase 23 (Enterprise Security)**: 🟢 COMPLETE (`KMSEnvelopeEncryption` AES-256-GCM, `AuditHashChainer` Merkle/SHA-256 hash chains, `DBSecurityAuditLog`, `DBEncryptedSecret`, `DBSecurityPolicy`, `SecurityRepository`, GDPR cascade purge, SOC 2 scorecard API, `EnterpriseSecurityPage.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The Generation Ahead (Phases 23 – 26):
+### The Generation Ahead (Phases 24 – 26):
 - **Generation 6 — Production Product**:
-  - **Phase 23**: Enterprise Security (🟡 **IMMEDIATE NEXT MILESTONE**: SOC 2, GDPR, audit logs, secret management, workspace isolation)
-  - **Phase 24**: Production Infrastructure (Distributed queues, worker pools, object storage, autoscaling)
+  - **Phase 24**: Production Infrastructure (🟡 **IMMEDIATE NEXT MILESTONE**: Distributed queues, worker pools, object storage, autoscaling)
   - **Phase 25**: Public API / Developer Platform (Developer REST endpoints, SDKs, API keys)
   - **Phase 26**: Research Automation (Recurring scheduled research sweeps, change detection alerts)

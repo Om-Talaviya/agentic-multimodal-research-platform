@@ -363,6 +363,44 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Empirical, automated tracking of hallucination rates across research reports.
   - Positive: Concludes Generation 5 (AI Platform Intelligence) and unlocks Generation 6: Phase 23 (Enterprise Security).
 
+---
+
+## ADR 023: Enterprise KMS Envelope Encryption, Cryptographic Audit Chains, and GDPR Data Lifecycle Controls (Phase 23)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: As an enterprise-grade AI research operating system handling proprietary multi-tenant documents, corporate secrets (LLM API keys, database credentials), and compliance obligations (SOC 2 Type II, GDPR Article 17 Right-to-be-Forgotten), the platform required military-grade cryptographic protection. Storing plaintext secrets or mutable audit logs creates significant vulnerability to exfiltration or repudiation.
+- **Decision**:
+  1. Implement `KMSEnvelopeEncryption` in `packages/shared/src/shared/kms.py`:
+     - Two-tier envelope encryption architecture: Master Key $\rightarrow$ PBKDF2-HMAC-SHA256 Key Encryption Key (KEK) $\rightarrow$ Ephemeral 256-bit Data Encryption Key (DEK) $\rightarrow$ AES-256-GCM authenticated payload encryption.
+     - Protects sensitive credentials in `DBEncryptedSecret` with masked previews (`AIz...8877`) for secure UI management.
+  2. Implement `AuditHashChainer` in `packages/shared/src/shared/kms.py`:
+     - Tamper-evident cryptographic SHA-256 blockchain-like Merkle hash chaining across all security events:
+       $$\text{CurrentHash} = \text{SHA256}(\text{PreviousHash} \parallel \text{Timestamp} \parallel \text{EventType} \parallel \text{ActorId} \parallel \text{ResourceId} \parallel \text{Details})$$
+     - Cryptographic verification algorithm `verify_chain_integrity()` to detect broken links or modified records instantly.
+  3. Implement database persistence in `packages/database/src/database/models/security.py` and `packages/database/src/database/repositories/security_repo.py`:
+     - `DBSecurityAuditLog`: Stores immutable event logs with previous/current hash anchors.
+     - `DBEncryptedSecret`: Stores AES-256-GCM encrypted payload and wrapped DEK with revocation controls.
+     - `DBSecurityPolicy`: Configures per-workspace data retention days, MFA enforcement, IP whitelists, and data classification.
+     - `execute_gdpr_data_purge()`: Implements automated cascade deletion and anonymization across research jobs, documents, memories, and graph entities under GDPR Article 17.
+  4. Implement REST APIs in `apps/api/src/api/routes/security.py`:
+     - `POST /api/v1/security/audit-logs`: Records hash-chained security event.
+     - `GET /api/v1/security/audit-logs`: Queries audit trails.
+     - `GET /api/v1/security/audit-logs/verify`: Cryptographically verifies SHA-256 hash chain integrity.
+     - `POST /api/v1/security/secrets` & `GET /api/v1/security/secrets`: Vaults and lists secrets.
+     - `PATCH /api/v1/security/secrets/{id}/revoke` & `DELETE /api/v1/security/secrets/{id}`: Secret lifecycle controls.
+     - `GET /api/v1/security/policy` & `PATCH /api/v1/security/policy`: Workspace policy management.
+     - `POST /api/v1/security/gdpr/purge`: Right-to-be-Forgotten data purge with strict confirmation validation.
+     - `GET /api/v1/security/compliance/status`: Real-time SOC 2 & GDPR compliance scorecard.
+  5. Build React interface in `apps/web/src/pages/EnterpriseSecurityPage.tsx`:
+     - Compliance overview tab (SOC 2 Type II & GDPR live status cards with 1-click cryptographic integrity verification).
+     - KMS Secret Vault tab (credential creation modal, provider filters, masked previews, revocation actions).
+     - Immutable Audit Trail tab (log table with severity badges, SHA-256 hash anchors, and raw detail inspector).
+     - Retention & GDPR tab (retention policy configuration, classification badges, and confirmation-gated data purge).
+- **Consequences**:
+  - Positive: Enterprise-grade SOC 2 and GDPR compliance readiness out of the box.
+  - Positive: Tamper-evident cryptographic guarantees prevent audit log falsification.
+  - Positive: Secure multi-tenant credential vaulting without plaintext exposure in database or network payloads.
+  - Positive: Sets the security baseline for Phase 24 (Production Scale Infrastructure).
+
 
 
 

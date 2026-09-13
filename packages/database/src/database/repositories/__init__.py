@@ -18,6 +18,7 @@ from database.repositories.research_job_repo import (
     SourceRepository,
     TaskRepository,
 )
+from database.repositories.security_repo import SecurityRepository
 from database.repositories.usage_repo import UsageRepository
 from database.repositories.user_repo import UserRepository
 from database.repositories.workspace_repo import WorkspaceRepository
@@ -44,4 +45,5 @@ __all__ = [
     "WorkspaceActivityRepository",
     "ModelEvaluationRepository",
     "AgentEvaluationRepository",
+    "SecurityRepository",
 ]
