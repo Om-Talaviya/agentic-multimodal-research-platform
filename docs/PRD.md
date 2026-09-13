@@ -211,15 +211,15 @@ The output is a structured intelligence dossier:
 - **Phase 22: Agent Evaluation & Observability (COMPLETE)**:
   - Multi-metric autonomous agent evaluation engine (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`), plan precision scoring, tool invocation accuracy, evidence grounding coverage, sentence-level hallucination rate detection, database persistence (`DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`), REST APIs (`/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`), and interactive Agent Observability Studio (`AgentEvaluationPage.tsx`) (**ADR 022**).
 
-#### Generation 6 — Production Product (ACTIVE GENERATION - Phase 25 Next)
+#### Generation 6 — Production Product (ACTIVE GENERATION - Phase 26 Next)
 - **Phase 23: Enterprise Security (COMPLETE)**:
   - Enterprise compliance (SOC 2, GDPR), KMS two-tier envelope encryption (AES-256-GCM DEK/KEK), secret vault management, immutable tamper-evident SHA-256 audit log hash chains, automated GDPR Article 17 cascade purge, and `EnterpriseSecurityPage.tsx` React studio (**ADR 023**).
 - **Phase 24: Production Scale Infrastructure (COMPLETE)**:
   - Distributed priority task queue (`AsyncTaskQueue` with `CRITICAL`, `HIGH`, `DEFAULT`, `LOW` heap scheduling), worker node lifecycle tracking and heartbeat leasing (`WorkerNode`), S3/MinIO/Local unified blob storage vault (`ObjectStorageClient`), database persistence (`DBWorkerNode`, `DBStorageObject`, `InfrastructureRepository`), REST APIs (`/api/v1/system`), and `ProductionInfrastructurePage.tsx` React cluster topology studio (**ADR 024**).
-- **Phase 25: Public API & Developer Platform (🟡 IMMEDIATE NEXT MILESTONE)**:
-  - Public developer REST API, API key provisioning and secret hashing, granular permission scopes (`read:research`, `write:research`, `read:documents`, etc.), tier-based rate limiting, and official Python/TypeScript SDKs.
-- **Phase 26: Research Automation**:
-  - Cron-based recurring research jobs, automated change detection across academic archives and web sources, and notification dispatchers.
+- **Phase 25: Public API & Developer Platform (COMPLETE)**:
+  - Public developer REST API gateway (`/api/v1/developer/*`), cryptographically secure SHA-256 hashed API key provisioning (`DBApiKey`, `ApiKeyRepository`), granular permission scopes (`research:read`, `research:write`, `documents:read`, `documents:write`, `memory:read`, `graph:read`), sliding window rate limiting tiers (Free: 60 rpm, Pro: 300 rpm, Enterprise: 1,200 rpm), interactive API Playground with live cURL / Python / TypeScript SDK snippets, and `DeveloperPlatformPage.tsx` studio (**ADR 025**).
+- **Phase 26: Research Automation (🟡 IMMEDIATE NEXT MILESTONE)**:
+  - Cron-based recurring research jobs, automated change detection across academic archives and web sources, diff analysis engine, and webhook / alert notification dispatchers (**ADR 026**).
 
 ---
 

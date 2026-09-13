@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2026-09-13 (Generation 6 Milestone 3: Phase 25 - Public API & Developer Platform)
+
+### Added
+- **Phase 25: Public API Gateway, Developer Platform & SDK Playground**:
+  - Implemented secure API key model `DBApiKey` in `packages/database/src/database/models/api_key.py` with `key_prefix` indexing, SHA-256 `key_hash` storage, granular permission scopes (`research:read/write`, `documents:read/write`, `memory:read`, `graph:read`), and rate limit tiers (`free`, `pro`, `enterprise`).
+  - Implemented `ApiKeyRepository` in `packages/database/src/database/repositories/api_key_repo.py` supporting constant-time hash authentication, scope enforcement, and sliding 60-second window rate limit enforcement (`check_rate_limit`).
+  - Implemented public developer REST API endpoints in `apps/api/src/api/routes/developer.py`:
+    - `GET /api/v1/developer/keys`: Lists developer keys with masked previews.
+    - `POST /api/v1/developer/keys`: Generates new cryptographically secure API key with one-time plaintext reveal.
+    - `GET /api/v1/developer/keys/{id}`: Retrieves specific key metadata.
+    - `PATCH /api/v1/developer/keys/{id}/revoke`: Immediately revokes key access.
+    - `DELETE /api/v1/developer/keys/{id}`: Permanently deletes API key record.
+    - `POST /api/v1/developer/research`: Public endpoint for triggering research via `X-API-Key` header.
+    - `GET /api/v1/developer/research/{id}`: Public endpoint for polling research progress and fetching finished reports.
+    - `POST /api/v1/developer/documents`: Public endpoint for ingesting text/documents.
+    - `GET /api/v1/developer/usage`: Public endpoint for developer token/request analytics.
+  - Created interactive Developer Platform Studio in `apps/web/src/pages/DeveloperPlatformPage.tsx` with API Keys Vault, Create Key modal with scope & expiration selector, One-Time Key Reveal modal, Interactive API Playground & SDK generator (cURL, Python `requests`, TypeScript `axios`), and Rate Limits & Quotas breakdown.
+  - Mounted `/developer` route in `App.tsx` and added `Developer API` navigation link in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_api_key_repo.py` and `apps/api/tests/test_developer_api.py`, achieving 100% pass rate.
+  - Formalized **ADR 025** (Public API Gateway, SHA-256 Hashed API Keys, and Sliding Window Rate Limiting).
+
+---
+
 ## [1.8.0] - 2026-09-13 (Generation 6 Milestone 2: Phase 24 - Production Scale Infrastructure)
 
 ### Added

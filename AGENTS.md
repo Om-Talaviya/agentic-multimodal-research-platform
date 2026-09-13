@@ -179,9 +179,9 @@ npm run lint
 - **Phase 22 (Agent Evaluation)**: 🟢 COMPLETE (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, plan precision, tool accuracy, evidence coverage, hallucination rate scoring, `DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`, `/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`, `AgentEvaluationPage.tsx` UI)
 - **Phase 23 (Enterprise Security)**: 🟢 COMPLETE (`KMSEnvelopeEncryption` AES-256-GCM, `AuditHashChainer` Merkle/SHA-256 hash chains, `DBSecurityAuditLog`, `DBEncryptedSecret`, `DBSecurityPolicy`, `SecurityRepository`, GDPR cascade purge, SOC 2 scorecard API, `EnterpriseSecurityPage.tsx` UI)
 - **Phase 24 (Production Infrastructure)**: 🟢 COMPLETE (`AsyncTaskQueue` priority engine, `WorkerNode` lifecycle tracking, `ObjectStorageClient` S3/MinIO/Local abstraction, `DBWorkerNode`, `DBStorageObject`, `InfrastructureRepository`, `/api/v1/system` REST APIs, `ProductionInfrastructurePage.tsx` UI)
+- **Phase 25 (Public API & Developer Platform)**: 🟢 COMPLETE (`DBApiKey`, `ApiKeyRepository` SHA-256 keys, `/api/v1/developer/*` REST API, rate limit tiers, permission scopes, `DeveloperPlatformPage.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The Generation Ahead (Phases 25 – 26):
+### The Generation Ahead (Phase 26):
 - **Generation 6 — Production Product**:
-  - **Phase 25**: Public API / Developer Platform (🟡 **IMMEDIATE NEXT MILESTONE**: Developer REST endpoints, SDKs, API key management, granular scopes, rate limiting)
-  - **Phase 26**: Research Automation (Recurring scheduled research sweeps, academic/web change detection alerts)
+  - **Phase 26**: Research Automation (🟡 **IMMEDIATE NEXT MILESTONE**: Recurring scheduled research sweeps, academic/web change detection alerts, diff comparison engine)

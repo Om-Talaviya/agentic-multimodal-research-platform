@@ -392,6 +392,38 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.14 Developer Platform & API Playground Studio (Phase 25)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  💻 Developer Platform & Public API                     [ 🔄 Refresh ] [ ➕ Create API Key ]            │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🔑 API Keys (3) ]       [ 💻 API Playground & SDK ]       [ ⚡ Rate Limits & Quotas ]                 │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  API KEYS VAULT:                                                                                        │
+│  ┌──────────────────────────────┬─────────────────────┬────────────┬──────────────┬──────────────────┐  │
+│  │ KEY NAME                     │ MASKED KEY          │ TIER       │ STATUS       │ ACTIONS          │  │
+│  ├──────────────────────────────┼─────────────────────┼────────────┼──────────────┼──────────────────┤  │
+│  │ Production Automation Bot    │ `amrp_live_...9f8a` │ Enterprise │ 🟢 Active    │ [ 🚫 Revoke ] [🗑]│  │
+│  │ Development Local Test       │ `amrp_live_...3b21` │ Free       │ 🟢 Active    │ [ 🚫 Revoke ] [🗑]│  │
+│  └──────────────────────────────┴─────────────────────┴────────────┴──────────────┴──────────────────┘  │
+│                                                                                                         │
+│  INTERACTIVE SDK CODE GENERATOR (POST /api/v1/developer/research):                                      │
+│  [ cURL ]  [ Python (requests) ]  [ TypeScript (Axios) ]                         [ 📋 Copy Snippet ]    │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ import requests                                                                                   │  │
+│  │ response = requests.post(                                                                         │  │
+│  │     "https://api.research-os.ai/api/v1/developer/research",                                       │  │
+│  │     headers={"X-API-Key": "amrp_live_your_api_key_here"},                                        │  │
+│  │     json={"question": "What are the latest breakthroughs in high-temperature superconductors?"}   │  │
+│  │ )                                                                                                 │  │
+│  │ print(response.json())                                                                            │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -406,6 +438,7 @@ This document defines the complete visual design system, interaction patterns, u
 | **Agent Observability Studio** | KPI metrics cards, per-agent health indicators, evaluation scorecards, and sequential step telemetry inspector drawer | Instant click / slide drawer |
 | **Enterprise Security Studio** | Tabbed compliance cards, KMS secret creation modal, SHA-256 hash-anchored log explorer, and confirmation-gated GDPR purge modal | Instant tab switch / animated drawer |
 | **Production Infrastructure Studio** | Tabbed cluster topology, live CPU/RAM load bars, heartbeat pulse simulator, priority task enqueue modal, and S3 presigned URL generator | Instant tab switch / modal overlay |
+| **Developer Platform Studio** | Tabbed API key management, one-time plaintext key reveal modal, interactive code snippets (cURL/Python/TS), and tier rate limit cards | Instant tab switch / modal overlay |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
 

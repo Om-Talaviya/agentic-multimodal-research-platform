@@ -919,5 +919,43 @@ Metadata repository for unified object blob storage across Local, MinIO, and AWS
 - `POST /api/v1/system/storage/presigned-url`: Generate presigned upload/download URLs for S3/MinIO blobs.
 - `GET /api/v1/system/storage/usage`: Compute aggregate blob storage utilization, bucket byte totals, and object counts.
 
+---
+
+## 9. Developer Platform & Public API Schema (Phase 25)
+
+### 9.1 Table: `api_keys`
+Cryptographically secure hashed API key storage with prefix indexing, granular permission scopes, and rate limiting tier attributes.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique API key record ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE CASCADE), NOT NULL, INDEX` | Owner user reference |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), NULLABLE, INDEX` | Associated workspace ID |
+| `name` | `VARCHAR(100)` | `NOT NULL` | Human-readable key label |
+| `key_prefix` | `VARCHAR(20)` | `NOT NULL, INDEX` | Plaintext prefix (`amrp_live_...`) for indexing |
+| `key_hash` | `VARCHAR(255)` | `NOT NULL, UNIQUE, INDEX` | SHA-256 cryptographic digest of secret key |
+| `scopes` | `JSONB / JSON` | `NOT NULL, DEFAULT '["research:read", "research:write", "documents:read", "documents:write"]'` | Granular permission scopes |
+| `rate_limit_tier` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'free'` | Rate limit tier (`free`, `pro`, `enterprise`) |
+| `rate_limit_rpm` | `INTEGER` | `NOT NULL, DEFAULT 60` | Requests allowed per minute window |
+| `is_active` | `BOOLEAN` | `NOT NULL, DEFAULT TRUE` | Active lifecycle status |
+| `expires_at` | `TIMESTAMP WITH TZ` | `NULLABLE` | Key expiration date (`NULL` = no expiration) |
+| `last_used_at` | `TIMESTAMP WITH TZ` | `NULLABLE` | Last API request timestamp |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+---
+
+### 9.2 REST Endpoints (Phase 25)
+
+- `GET /api/v1/developer/keys`: List developer API keys for authenticated user with masked preview and usage stats.
+- `POST /api/v1/developer/keys`: Generate a new API key; returns full plaintext secret key once (`amrp_live_<48_hex>`) and stores SHA-256 hash.
+- `GET /api/v1/developer/keys/{id}`: Retrieve metadata for a specific API key.
+- `PATCH /api/v1/developer/keys/{id}/revoke`: Immediately deactivate an API key.
+- `DELETE /api/v1/developer/keys/{id}`: Permanently delete an API key record.
+- `POST /api/v1/developer/research`: Public API endpoint for enqueuing research inquiries via `X-API-Key` authentication.
+- `GET /api/v1/developer/research/{id}`: Public API endpoint for polling research progress and fetching finished reports.
+- `POST /api/v1/developer/documents`: Public API endpoint for programmatic document and text ingestion.
+- `GET /api/v1/developer/usage`: Public API endpoint for querying developer token and request usage statistics.
+
 
 

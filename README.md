@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2017%20Complete-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Phase%2025%20Complete-success?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
@@ -90,7 +90,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 22 Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 25 Complete** on the stable branch `develop/v1.1`.
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -118,8 +118,9 @@ Phase 21: Model Evaluation System    [██████████████
 Phase 22: Agent Evaluation           [████████████████████] 100%
 Phase 23: Enterprise Security        [████████████████████] 100%
 Phase 24: Production Infrastructure  [████████████████████] 100%
+Phase 25: Public API & Dev Platform  [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 25: Public API & Dev Platform  [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 26: Research Automation        [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -153,7 +154,7 @@ Phase 25: Public API & Dev Platform  [░░░░░░░░░░░░░░
 ### Generation 6: Production Product
 - **Phase 23: Enterprise Security (COMPLETE)**: Two-tier KMS envelope encryption (AES-256-GCM DEK/KEK), tamper-evident SHA-256 cryptographic audit hash chaining (`AuditHashChainer`), workspace security & data retention policies (`DBSecurityPolicy`), GDPR Article 17 cascade purge (`execute_gdpr_data_purge`), SOC 2 compliance scorecard APIs, and `EnterpriseSecurityPage.tsx` React studio.
 - **Phase 24: Production Infrastructure (COMPLETE)**: Distributed asynchronous priority task queues (`AsyncTaskQueue`), worker cluster node telemetry (`WorkerNode`, `DBWorkerNode`), S3/MinIO/Local blob vault (`ObjectStorageClient`, `DBStorageObject`), presigned URL generation, and `ProductionInfrastructurePage.tsx` React studio.
-- **Phase 25: Public API & Developer Platform**: Public developer REST endpoints (`POST /research`, `POST /documents`), client SDKs, and API key management.
+- **Phase 25: Public API & Developer Platform (COMPLETE)**: Public REST gateway (`/api/v1/developer/*`), cryptographically secure SHA-256 hashed API keys (`DBApiKey`, `ApiKeyRepository`), granular permission scopes (`research:read/write`, `documents:read/write`, `memory:read`, `graph:read`), sliding window rate limiting tiers (Free, Pro, Enterprise), interactive API Playground with live cURL / Python / TypeScript SDK snippets, and `DeveloperPlatformPage.tsx` React studio.
 - **Phase 26: Research Automation**: Scheduled recurring research sweeps, topic monitoring, diff detection, and automated alerting.
 
 ---
