@@ -7,6 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.0] - 2026-09-13 (Generation 6 Milestone 4 & 6-Generation Product Roadmap Completion: Phase 26 - Research Automation)
+
+### Added
+- **Phase 26: Research Automation, Cron Scheduling, Semantic Diffing & Alerting**:
+  - Implemented database models in `packages/database/src/database/models/automation.py` (`DBScheduledResearch`, `DBResearchSweepResult`, `DBAutomationAlert`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `AutomationRepository` in `packages/database/src/database/repositories/automation_repo.py` supporting schedule CRUD (`create_schedule`, `get_schedule`, `list_schedules`, `update_schedule`, `pause_schedule`, `resume_schedule`, `delete_schedule`), sweep recording (`record_sweep_result`, `list_sweep_results`), alert management (`create_alert`, `list_alerts`, `acknowledge_alert`), and aggregate automation telemetry (`get_automation_metrics`).
+  - Implemented `ResearchAutomationEngine` in `packages/research/src/research/automation/engine.py`:
+    - `compute_next_run(cron_expression, interval_seconds)`: Robust timestamp calculator supporting 5-field cron parsing and interval frequencies.
+    - `detect_novelty(current_claims, prior_claims)`: Semantic claim normalization and diff engine isolating novel and contradictory claims and generating novelty intensity scores $\in [0.0, 1.0]$.
+    - `execute_scheduled_sweep(schedule_id)`: Autonomous sweep execution pipeline that retrieves prior findings, calculates novelty, records sweep results, and dispatches in-app and webhook alerts when $\text{novelty} \ge \tau_{\text{novel}}$.
+  - Implemented REST API routes in `apps/api/src/api/routes/automation.py`:
+    - `POST /api/v1/automation/schedules`: Create recurring research sweeps.
+    - `GET /api/v1/automation/schedules`: List research schedules.
+    - `GET /api/v1/automation/schedules/{id}`: Fetch schedule details.
+    - `PATCH /api/v1/automation/schedules/{id}/pause` & `/resume`: Pause and resume schedules.
+    - `DELETE /api/v1/automation/schedules/{id}`: Delete schedules.
+    - `POST /api/v1/automation/schedules/{id}/trigger`: Trigger immediate on-demand sweep.
+    - `GET /api/v1/automation/schedules/{id}/sweeps`: List historical sweeps and diffs.
+    - `GET /api/v1/automation/alerts`: List change detection alerts with unread filtering.
+    - `PATCH /api/v1/automation/alerts/{id}/acknowledge`: Mark alert as acknowledged.
+    - `GET /api/v1/automation/metrics`: Query aggregate automation metrics.
+  - Created interactive Research Automation Studio in `apps/web/src/pages/ResearchAutomationPage.tsx`:
+    - Sweeps & Cron Schedules tab (active/paused schedules, countdown badges, instant trigger, pause/resume, and schedule creator modal).
+    - Sweep History & Diff Explorer tab (chronological sweep feed, novel/contradictory claim badges, crawl stats, novelty score gauge).
+    - Dispatched Alerts & Webhooks tab (unread alert cards, novelty score badges, 1-click acknowledge button, webhook test dispatcher).
+  - Mounted `/automation` in `App.tsx` and added `Research Automation` link in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_automation_repo.py`, `packages/research/tests/test_research_automation.py`, and `apps/api/tests/test_automation_api.py`, achieving 100% pass rate (329/329 tests passing across entire monorepo).
+  - Formalized **ADR 026** (Autonomous Research Automation, Cron Scheduling, and Novelty-Triggered Multi-Channel Alerting).
+  - **MILESTONE COMPLETED**: All 26 Phases across all 6 Generations are now 100% complete, tested, and production ready!
+
+---
+
 ## [1.9.0] - 2026-09-13 (Generation 6 Milestone 3: Phase 25 - Public API & Developer Platform)
 
 ### Added

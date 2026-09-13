@@ -3,8 +3,8 @@
 import uuid
 from datetime import UTC, datetime
 from sqlalchemy import Boolean, Column, DateTime, Index, String
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from database.connection import Base
+from database.models.memory import GUID
 
 
 def utc_now() -> datetime:
@@ -16,7 +16,7 @@ class User(Base):
 
     __tablename__ = "users"
 
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
     username = Column(String(100), unique=True, nullable=False, index=True)
     email = Column(String(255), unique=True, nullable=False, index=True)
     password_hash = Column(String(255), nullable=False)

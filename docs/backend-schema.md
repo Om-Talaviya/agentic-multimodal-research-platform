@@ -957,5 +957,88 @@ Cryptographically secure hashed API key storage with prefix indexing, granular p
 - `POST /api/v1/developer/documents`: Public API endpoint for programmatic document and text ingestion.
 - `GET /api/v1/developer/usage`: Public API endpoint for querying developer token and request usage statistics.
 
+---
+
+## 10. Research Automation Schema & REST Endpoints (Phase 26)
+
+### 10.1 Table: `scheduled_research`
+Automated scheduled research sweeps with cron or interval triggers, topic definitions, source filters, and novelty thresholds.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique schedule record ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE CASCADE), NOT NULL, INDEX` | Owning user reference |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), NULLABLE, INDEX` | Scoped workspace ID |
+| `project_id` | `UUID` | `FOREIGN KEY (projects.id ON DELETE SET NULL), NULLABLE, INDEX` | Scoped project ID |
+| `title` | `VARCHAR(255)` | `NOT NULL` | Human-readable schedule title |
+| `query` | `TEXT` | `NOT NULL` | Research query / topic prompt |
+| `cron_expression` | `VARCHAR(100)` | `NULLABLE` | Standard 5-field cron expression (e.g. `0 9 * * 1`) |
+| `interval_seconds` | `INTEGER` | `NULLABLE` | Frequency interval in seconds (e.g. `86400`) |
+| `is_active` | `BOOLEAN` | `NOT NULL, DEFAULT TRUE, INDEX` | Active polling status |
+| `novelty_threshold` | `FLOAT` | `NOT NULL, DEFAULT 0.3` | Score threshold $\in [0, 1]$ triggering alerts |
+| `source_filters` | `JSONB / JSON` | `NOT NULL, DEFAULT '["web", "arxiv", "documents"]'` | Sources to query on each sweep |
+| `routing_profile` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'balanced'` | Model optimization profile used |
+| `alert_channels` | `JSONB / JSON` | `NOT NULL, DEFAULT '["in_app"]'` | Alert destinations (`in_app`, `email`, `webhook`) |
+| `webhook_url` | `VARCHAR(500)` | `NULLABLE` | Target URL for automated webhook alerts |
+| `last_run_at` | `TIMESTAMP WITH TZ` | `NULLABLE` | Last sweep execution timestamp |
+| `next_run_at` | `TIMESTAMP WITH TZ` | `NULLABLE, INDEX` | Next scheduled sweep timestamp |
+| `sweep_count` | `INTEGER` | `NOT NULL, DEFAULT 0` | Total sweeps completed |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Schedule creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+---
+
+### 10.2 Table: `research_sweep_results`
+Historical record of completed automated research sweeps with claim diffs, novelty metrics, and findings.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique sweep result ID |
+| `schedule_id` | `UUID` | `FOREIGN KEY (scheduled_research.id ON DELETE CASCADE), NOT NULL, INDEX` | Parent schedule ID |
+| `job_id` | `VARCHAR(100)` | `NULLABLE, INDEX` | Associated research job ID |
+| `findings_summary` | `TEXT` | `NOT NULL` | Synthesized findings from this sweep |
+| `novel_claims` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Newly discovered facts/claims not in prior sweeps |
+| `contradictory_claims`| `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Claims conflicting with previous knowledge |
+| `sources_crawled` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | List of URLs and document IDs retrieved |
+| `novelty_score` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Computed novelty score $\in [0, 1]$ |
+| `metrics` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Sweep duration, token counts, and cost metrics |
+| `executed_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW(), INDEX` | Sweep execution timestamp |
+
+---
+
+### 10.3 Table: `automation_alerts`
+Dispatched change detection and novelty alerts for user review.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique alert ID |
+| `schedule_id` | `UUID` | `FOREIGN KEY (scheduled_research.id ON DELETE CASCADE), NOT NULL, INDEX` | Source schedule ID |
+| `sweep_result_id` | `UUID` | `FOREIGN KEY (research_sweep_results.id ON DELETE CASCADE), NOT NULL, INDEX` | Associated sweep result ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE CASCADE), NOT NULL, INDEX` | Recipient user ID |
+| `alert_type` | `VARCHAR(50)` | `NOT NULL, INDEX` | Type (`novel_finding`, `contradiction`, `schedule_error`) |
+| `title` | `VARCHAR(255)` | `NOT NULL` | Alert notification title |
+| `summary` | `TEXT` | `NOT NULL` | Concise explanation of new finding or change |
+| `novelty_score` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Novelty intensity score |
+| `channel` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'in_app'` | Dispatch medium (`in_app`, `email`, `webhook`) |
+| `is_read` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE, INDEX` | In-app read status |
+| `is_acknowledged` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE, INDEX` | User acknowledgment flag |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW(), INDEX` | Alert dispatch timestamp |
+
+---
+
+### 10.4 REST Endpoints (Phase 26)
+
+- `POST /api/v1/automation/schedules`: Create a recurring research schedule with cron/interval timing, novelty threshold, and alert channels.
+- `GET /api/v1/automation/schedules`: List research schedules for the authenticated user or workspace.
+- `GET /api/v1/automation/schedules/{id}`: Retrieve full details for a scheduled research topic.
+- `PATCH /api/v1/automation/schedules/{id}/pause`: Temporarily pause an active schedule.
+- `PATCH /api/v1/automation/schedules/{id}/resume`: Resume a paused schedule and recalculate `next_run_at`.
+- `DELETE /api/v1/automation/schedules/{id}`: Permanently delete a schedule and associated sweep history.
+- `POST /api/v1/automation/schedules/{id}/trigger`: Instantly trigger an on-demand research sweep.
+- `GET /api/v1/automation/schedules/{id}/sweeps`: List historical sweep results, novelty diffs, and novel claims.
+- `GET /api/v1/automation/alerts`: List alerts across all scheduled research with unread filtering.
+- `PATCH /api/v1/automation/alerts/{id}/acknowledge`: Mark an alert as acknowledged and read.
+- `GET /api/v1/automation/metrics`: Retrieve aggregate automation metrics (active schedules, total sweeps, pending alerts, avg novelty score).
+
 
 

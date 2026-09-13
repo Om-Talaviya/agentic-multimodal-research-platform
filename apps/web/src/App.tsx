@@ -13,6 +13,7 @@ import { AgentEvaluationPage } from './pages/AgentEvaluationPage'
 import { EnterpriseSecurityPage } from './pages/EnterpriseSecurityPage'
 import { ProductionInfrastructurePage } from './pages/ProductionInfrastructurePage'
 import { DeveloperPlatformPage } from './pages/DeveloperPlatformPage'
+import { ResearchAutomationPage } from './pages/ResearchAutomationPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -98,6 +99,7 @@ function App() {
           <Route path="security" element={<EnterpriseSecurityPage />} />
           <Route path="infrastructure" element={<ProductionInfrastructurePage />} />
           <Route path="developer" element={<DeveloperPlatformPage />} />
+          <Route path="automation" element={<ResearchAutomationPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
