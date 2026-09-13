@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-09-13 (Generation 4 Milestone 2: Phase 19 - Team Collaboration)
+
+### Added
+- **Phase 19: Team Collaboration**:
+  - Implemented `DBWorkspaceInvite`, `DBReportAnnotation`, and `DBWorkspaceActivity` database models in `packages/database/src/database/models/collaboration.py` with URL-safe crypto token generation, 7-day expiration, and dialect-safe `GUID`/`JSONType`.
+  - Implemented `WorkspaceInviteRepository`, `ReportAnnotationRepository`, and `WorkspaceActivityRepository` in `packages/database/src/database/repositories/collaboration_repo.py` supporting token redemption, multi-role membership upgrade, threaded report annotations with quotes and resolution tracking, and chronological activity auditing.
+  - Created REST API endpoints in `apps/api/src/api/routes/collaboration.py`:
+    - `/api/v1/workspaces/{id}/invites` (POST, GET)
+    - `/api/v1/invites/{token}` (GET)
+    - `/api/v1/invites/{token}/accept` (POST)
+    - `/api/v1/invites/{id}` (DELETE)
+    - `/api/v1/reports/{id}/annotations` (POST, GET)
+    - `/api/v1/annotations/{id}/resolve` (PATCH)
+    - `/api/v1/annotations/{id}` (DELETE)
+    - `/api/v1/workspaces/{id}/activities` (GET)
+    - `/api/v1/projects/{id}/activities` (GET)
+  - Built React collaboration components:
+    - `WorkspaceMembersModal.tsx`: Real-time member roster, role badges, email invitation modal, invite link copy button, and pending invite revocation.
+    - `ReportAnnotationsDrawer.tsx`: Slide-over review drawer on `ResearchDetail.tsx` with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution.
+    - Integrated team access modal into `ProjectsPage.tsx` and review notes trigger into `ResearchDetail.tsx`.
+  - Formalized **ADR 019** (Team Collaboration, Workspace Invites, Report Annotations, and Activity Feed).
+  - Added unit and integration test suites in `packages/database/tests/test_collaboration_repo.py` and `apps/api/tests/test_collaboration_api.py`, achieving 100% pass rate across all 276 monorepo tests.
+
+---
+
 ## [1.2.0] - 2026-09-13 (Generation 4 Milestone 1: Phase 18)
 
 ### Added

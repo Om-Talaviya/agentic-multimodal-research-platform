@@ -123,7 +123,8 @@ The output is a structured intelligence dossier:
 - ✅ **Phase 14 (Document & Paper Intelligence)**: Academic paper parser (`AcademicPaperParser`), section tree hierarchies, BibTeX citation matching, `PaperAnalysisTool`, `MethodologyComparisonTool`.
 - ✅ **Phase 15 (Deep Research Engine)**: Recursive hypothesis formulation, Critic gap audits, dynamic DAG subtask rescheduling, convergence guardrails $\tau \ge 0.85$, WebSocket iteration telemetry, and `DeepResearchTracker` UI.
 - ✅ **Phase 16 (Research Memory)**: Persistent cross-session research memory (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), semantic conceptual indexing, agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API (`/api/v1/memory`), and interactive `ResearchMemoryViewer` UI.
-- ✅ **Phase 17 (Long-Term Knowledge Graph)**: Relational entity-relation knowledge graph (`DBKnowledgeEntity`, `DBKnowledgeRelation`), `KnowledgeGraphRepository` (subgraph BFS, shortest path), `KnowledgeGraphEngine` (triplet extraction, GraphRAG), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
+- ✅ **Phase 18 (Projects & Workspaces)**: Multi-tiered hierarchical resource scoping (`User -> Workspace -> Projects -> Research & Knowledge`), `DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, REST APIs (`/api/v1/workspaces`, `/api/v1/projects`), `WorkspaceContext`, and React UI studio.
+- ✅ **Phase 19 (Team Collaboration)**: Granular workspace RBAC (`owner`, `admin`, `researcher`, `analyst`, `reviewer`, `viewer`), cryptographic email invitation lifecycle (`DBWorkspaceInvite`, `WorkspaceInviteRepository`), threaded report annotations with quotes and 1-click resolution (`DBReportAnnotation`, `ReportAnnotationsDrawer.tsx`), and collaborative audit activity logs (`DBWorkspaceActivity`).
 
 ---
 
@@ -145,13 +146,13 @@ The output is a structured intelligence dossier:
                                          ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐
   │ GENERATION 4: Collaboration Platform                                         │
-  │ • Phase 18: Projects & Workspaces Organization (NEXT MILESTONE)              │
-  │ • Phase 19: Team Collaboration (Roles, Shared Knowledge, Collaborative Edit) │
+  │ • Phase 18: Projects & Workspaces Organization [COMPLETE]                    │
+  │ • Phase 19: Team Collaboration (Roles, Invites, Report Annotations) [COMPLETE]│
   └──────────────────────────────────────┬───────────────────────────────────────┘
                                          ▼
   ┌──────────────────────────────────────────────────────────────────────────────┐
   │ GENERATION 5: AI Platform Intelligence                                       │
-  │ • Phase 20: Intelligent Model Ecosystem (Multi-Parameter Optimization)       │
+  │ • Phase 20: Intelligent Model Ecosystem (NEXT MILESTONE)                     │
   │ • Phase 21: Model Evaluation System (Automated Benchmarking)                 │
   │ • Phase 22: Agent Evaluation (Hallucination & Efficiency Observability)      │
   └──────────────────────────────────────┬───────────────────────────────────────┘
@@ -196,14 +197,15 @@ The output is a structured intelligence dossier:
 - **Phase 17: Long-Term Knowledge Graph (COMPLETE)**:
   - Structured graph representation of entities, authors, technologies, companies, claims, and datasets for graph-augmented reasoning (**ADR 017**).
 
-#### Generation 4 — Collaboration Platform
+#### Generation 4 — Collaboration Platform (COMPLETE)
 - **Phase 18: Projects & Workspaces (COMPLETE)**:
   - Hierarchical workspace hierarchy: `User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Research & Knowledge` (**ADR 018**).
-- **Phase 19: Team Collaboration (NEXT MILESTONE)**:
-  - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), workspace invitations, shared project knowledge, inline annotations, and report co-editing.
+- **Phase 19: Team Collaboration (COMPLETE)**:
+  - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), workspace invitations, shared project knowledge, inline report annotations, and collaborative audit activity logs (**ADR 019**).
 
 #### Generation 5 — AI Platform Intelligence
-- **Phase 20: Intelligent Model Ecosystem**:
+- **Phase 20: Intelligent Model Ecosystem (NEXT MILESTONE)**:
+  - Multi-variable routing optimization factoring in task complexity, latency SLA, cost budget, context window, vision requirement, provider health, and user quota.
   - Multi-variable routing optimization factoring in task complexity, latency SLA, cost budget, context window, vision requirement, provider health, and user quota.
 - **Phase 21: Model Evaluation System**:
   - Automated continuous evaluation of model outputs for accuracy, relevance, citation precision, and cost-efficiency.

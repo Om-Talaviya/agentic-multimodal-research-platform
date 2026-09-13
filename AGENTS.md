@@ -173,14 +173,13 @@ npm run lint
 - **Phase 16 (Research Memory)**: 🟢 COMPLETE (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`, auto-consolidation from reports, `RecallMemoryTool`, `StoreMemoryTool`, `/api/v1/memory` REST API, `ResearchMemoryViewer.tsx` & `MemoryPage.tsx` UI)
 - **Phase 17 (Long-Term Knowledge Graph)**: 🟢 COMPLETE (`DBKnowledgeEntity`, `DBKnowledgeRelation`, `KnowledgeGraphRepository`, `KnowledgeGraphEngine`, GraphRAG, `QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`, `/api/v1/graph` REST API, `KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx` UI)
 - **Phase 18 (Projects & Workspaces)**: 🟢 COMPLETE (`DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, `/api/v1/workspaces` & `/api/v1/projects` REST APIs, `WorkspaceSelector.tsx` & `ProjectsPage.tsx` UI)
+- **Phase 19 (Team Collaboration)**: 🟢 COMPLETE (`DBWorkspaceInvite`, `DBReportAnnotation`, `DBWorkspaceActivity`, `WorkspaceInviteRepository`, `ReportAnnotationRepository`, `WorkspaceActivityRepository`, `/api/v1/workspaces/{id}/invites`, `/api/v1/invites/{token}`, `/api/v1/reports/{id}/annotations`, `WorkspaceMembersModal.tsx`, `ReportAnnotationsDrawer.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The 3 Generations Ahead (Phases 19 – 26):
-- **Generation 4 — Collaboration Platform**:
-  - **Phase 19**: Team Collaboration (🟡 **IMMEDIATE NEXT MILESTONE**: Roles, permissions, workspace invites, shared reports, inline comments)
+### The 3 Generations Ahead (Phases 20 – 26):
 - **Generation 5 — AI Platform Intelligence**:
-  - **Phase 20**: Intelligent Model Ecosystem (Multi-parameter routing optimization)
-  - **Phase 21**: Model Evaluation System (Automated model benchmarking)
+  - **Phase 20**: Intelligent Model Ecosystem (🟡 **IMMEDIATE NEXT MILESTONE**: Multi-parameter routing optimization, latency/cost/quality trade-off thresholds)
+  - **Phase 21**: Model Evaluation System (Automated model benchmarking, ground-truth dataset evals)
   - **Phase 22**: Agent Evaluation (Automated agent quality and hallucination tracking)
 - **Generation 6 — Production Product**:
   - **Phase 23**: Enterprise Security (SOC 2, GDPR, audit logs, secret management)

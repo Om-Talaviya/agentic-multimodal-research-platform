@@ -327,5 +327,49 @@ sequenceDiagram
     UI->>API: POST /api/v1/documents {file, workspace_id, project_id}
     API->>Pipe: Chunk, extract, index chunks with project metadata
     API->>DB: Persist Document with workspace_id & project_id foreign keys
+
+---
+
+## 9. Team Collaboration & Peer Review Flow (Phase 19)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Alice as Workspace Owner (Alice)
+    actor Bob as Peer Reviewer (Bob)
+    participant UI as React UI (WorkspaceMembersModal / ReportDrawer)
+    participant API as FastAPI (/api/v1/collaboration)
+    participant DB as PostgreSQL / SQLite (invites, annotations, activities)
+
+    Note over Alice, DB: 1. Workspace Team Invitation Flow
+    Alice->>UI: Opens Team & Access Modal -> Enters Bob's email & role
+    UI->>API: POST /api/v1/workspaces/{ws_id}/invites {email: "bob@company.com", role: "reviewer"}
+    API->>DB: Generate crypto token, insert into workspace_invites
+    API->>DB: Log activity "member_invited" in workspace_activities
+    API-->>UI: Return invite link / token (/invites/{token})
+
+    Note over Bob, DB: 2. Token Redemption & Member Join
+    Bob->>UI: Clicks invite link
+    UI->>API: POST /api/v1/invites/{token}/accept
+    API->>DB: Verify token validity and expiration (+7 days)
+    API->>DB: Upsert Bob into workspace_members (role: reviewer)
+    API->>DB: Set invite.is_accepted = true
+    API->>DB: Log activity "member_joined" in workspace_activities
+    API-->>UI: Bob joined workspace successfully
+
+    Note over Bob, DB: 3. Inline Report Annotations & Collaborative Review
+    Bob->>UI: Opens ResearchDetail.tsx -> Clicks "Review Notes" drawer
+    Bob->>UI: Highlights section & writes comment note
+    UI->>API: POST /api/v1/reports/{report_id}/annotations {comment_text, selected_text, section_index}
+    API->>DB: Insert into report_annotations (status: open)
+    API-->>UI: Live annotation added to drawer
+
+    Note over Alice, DB: 4. Comment Resolution
+    Alice->>UI: Views review drawer on report
+    Alice->>UI: Clicks "Resolve" on Bob's comment
+    UI->>API: PATCH /api/v1/annotations/{id}/resolve
+    API->>DB: Update status = "resolved", resolved_by = Alice, resolved_at = NOW()
+    API-->>UI: Drawer updates comment state with resolution badge
+```
 ```
 
