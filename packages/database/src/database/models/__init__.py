@@ -8,11 +8,15 @@ from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
 from database.models.user import User
 from database.models.user_quota import UserQuota
+from database.models.workspace import DBProject, DBWorkspace, DBWorkspaceMember
 
 # Aliases for standard naming
 ResearchMemory = DBResearchMemory
 KnowledgeEntity = DBKnowledgeEntity
 KnowledgeRelation = DBKnowledgeRelation
+Workspace = DBWorkspace
+WorkspaceMember = DBWorkspaceMember
+Project = DBProject
 
 __all__ = [
     "ResearchJob",
@@ -33,4 +37,10 @@ __all__ = [
     "DBKnowledgeRelation",
     "KnowledgeEntity",
     "KnowledgeRelation",
+    "DBWorkspace",
+    "DBWorkspaceMember",
+    "DBProject",
+    "Workspace",
+    "WorkspaceMember",
+    "Project",
 ]

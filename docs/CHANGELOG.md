@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-09-13 (Generation 4 Milestone 1: Phase 18)
+
+### Added
+- **Phase 18: Projects & Workspaces**:
+  - Implemented `DBWorkspace`, `DBWorkspaceMember`, and `DBProject` database models in `packages/database/src/database/models/workspace.py` with cross-database dialect-safe `GUID`, `JSONType`, multi-role membership (`owner`, `admin`, `researcher`, `member`, `viewer`), and collision-resistant slug generation.
+  - Extended existing models (`ResearchJob`, `Document`, `DBResearchMemory`, `DBKnowledgeEntity`) with `workspace_id` and `project_id` foreign keys and compound indexes for full tenant isolation.
+  - Implemented `WorkspaceRepository` and `ProjectRepository` in `packages/database/src/database/repositories/` with auto-provisioning of personal workspaces and default projects, membership RBAC queries, and aggregate statistical overview queries (`total_jobs`, `total_documents`, `total_memories`, `total_graph_entities`).
+  - Created complete FastAPI REST API endpoints in `apps/api/src/api/routes/workspaces.py` and `apps/api/src/api/routes/projects.py` with dependency injection in `dependencies.py` and registration in `main.py`.
+  - Upgraded `ResearchPipeline` and `IngestionPipeline` to accept, propagate, and filter by `workspace_id` and `project_id`.
+  - Built `WorkspaceContext.tsx` global provider, `WorkspaceSelector.tsx` dropdown in sidebar navigation, and dedicated `ProjectsPage.tsx` management dashboard in `apps/web`.
+  - Formalized **ADR 018** (Multi-Tenant Workspace & Project Hierarchy).
+  - Added unit and integration test suites in `packages/database/tests/test_workspace_project_repo.py` and `apps/api/tests/test_workspaces_projects_api.py`, achieving 100% pass rate across all 270 monorepo tests.
+
+---
+
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added

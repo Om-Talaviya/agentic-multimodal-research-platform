@@ -24,6 +24,7 @@ class DBKnowledgeEntity(Base):
 
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
     user_id = Column(GUID, ForeignKey("users.id", ondelete="CASCADE"), nullable=True, index=True)
+    workspace_id = Column(GUID, nullable=True, index=True)
     project_id = Column(GUID, nullable=True, index=True)
 
     # Core identification

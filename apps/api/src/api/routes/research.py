@@ -32,6 +32,8 @@ class ResearchJobCreate(BaseModel):
     context: Optional[str] = None
     constraints: list[str] = []
     preferred_sources: list[str] = []
+    workspace_id: Optional[UUID] = None
+    project_id: Optional[UUID] = None
 
 
 class ResearchJobResponse(BaseModel):
@@ -39,6 +41,9 @@ class ResearchJobResponse(BaseModel):
 
     id: UUID
     request_id: UUID
+    user_id: Optional[UUID] = None
+    workspace_id: Optional[UUID] = None
+    project_id: Optional[UUID] = None
     question: str
     objective: str
     domain: Optional[str]
@@ -181,6 +186,8 @@ async def create_research_job(
         constraints=request.constraints,
         preferred_sources=request.preferred_sources,
         user_id=user_id_str,
+        workspace_id=str(request.workspace_id) if request.workspace_id else None,
+        project_id=str(request.project_id) if request.project_id else None,
     )
     
     job = await pipeline.create_job(research_request)
@@ -189,18 +196,21 @@ async def create_research_job(
     background_tasks.add_task(run_pipeline_background, pipeline, str(job.id))
 
     return ResearchJobResponse(
-        id=job.id,
-        request_id=job.request_id,
+        id=UUID(str(job.id)),
+        request_id=UUID(str(job.request_id)),
+        user_id=UUID(str(job.user_id)) if getattr(job, "user_id", None) else None,
+        workspace_id=UUID(str(job.workspace_id)) if getattr(job, "workspace_id", None) else None,
+        project_id=UUID(str(job.project_id)) if getattr(job, "project_id", None) else None,
         question=job.question,
         objective=job.objective,
         domain=job.domain,
         scope=job.scope,
         constraints=job.constraints,
         expected_output=job.expected_output,
-        status=job.status,
-        created_at=job.created_at.isoformat(),
-        updated_at=job.updated_at.isoformat(),
-        completed_at=job.completed_at.isoformat() if job.completed_at else None,
+        status=job.status.value if hasattr(job.status, "value") else str(job.status),
+        created_at=job.created_at.isoformat() if hasattr(job.created_at, "isoformat") else str(job.created_at),
+        updated_at=job.updated_at.isoformat() if hasattr(job.updated_at, "isoformat") else str(job.updated_at),
+        completed_at=job.completed_at.isoformat() if getattr(job, "completed_at", None) and hasattr(job.completed_at, "isoformat") else None,
         error_message=job.error_message,
     )
 
@@ -389,6 +399,8 @@ async def list_research_jobs(
     limit: int = 20,
     offset: int = 0,
     status: Optional[str] = None,
+    workspace_id: Optional[UUID] = None,
+    project_id: Optional[UUID] = None,
     session: AsyncSession = Depends(get_db_session),
 ):
     """List research jobs."""
@@ -402,12 +414,21 @@ async def list_research_jobs(
         except ValueError:
             pass
     
-    jobs = await repo.list_jobs(limit=limit, offset=offset, status=job_status)
+    jobs = await repo.list_jobs(
+        limit=limit,
+        offset=offset,
+        status=job_status,
+        workspace_id=workspace_id,
+        project_id=project_id,
+    )
     
     return [
         ResearchJobResponse(
             id=j.id,
             request_id=j.request_id,
+            user_id=j.user_id,
+            workspace_id=j.workspace_id,
+            project_id=j.project_id,
             question=j.question,
             objective=j.objective,
             domain=j.domain,

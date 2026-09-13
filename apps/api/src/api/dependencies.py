@@ -29,7 +29,7 @@ from agents.research.report_agent import ReportAgent
 from agents.critic.critic_agent import CriticAgent
 from research.graph.engine import KnowledgeGraphEngine
 from research.memory.manager import ResearchMemoryManager
-from database.repositories import KnowledgeGraphRepository, MemoryRepository
+from database.repositories import KnowledgeGraphRepository, MemoryRepository, ProjectRepository, WorkspaceRepository
 from retrieval.bm25 import BM25Index
 from retrieval.embedder import Embedder
 from retrieval.in_memory_store import InMemoryVectorStore
@@ -251,6 +251,14 @@ async def get_graph_repository(session: AsyncSession = Depends(get_db_session)) 
 
 async def get_graph_engine(repo: KnowledgeGraphRepository = Depends(get_graph_repository)) -> KnowledgeGraphEngine:
     return KnowledgeGraphEngine(repo)
+
+
+async def get_workspace_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceRepository:
+    return WorkspaceRepository(session)
+
+
+async def get_project_repository(session: AsyncSession = Depends(get_db_session)) -> ProjectRepository:
+    return ProjectRepository(session)
 
 
 async def get_research_event_bus() -> ResearchEventBus:

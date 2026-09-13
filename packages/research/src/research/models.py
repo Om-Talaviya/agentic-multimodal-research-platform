@@ -42,12 +42,16 @@ class ResearchRequest(BaseModel):
     constraints: List[str] = Field(default_factory=list, max_length=20)
     preferred_sources: List[str] = Field(default_factory=list, max_length=10)
     user_id: Optional[str] = None
+    workspace_id: Optional[str] = None
+    project_id: Optional[str] = None
 
 
 class ResearchJob(BaseModel):
     id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
     request_id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
     user_id: Optional[str] = None
+    workspace_id: Optional[str] = None
+    project_id: Optional[str] = None
     question: str
     objective: str
     domain: Optional[str] = None

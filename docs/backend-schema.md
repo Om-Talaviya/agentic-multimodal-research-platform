@@ -375,6 +375,55 @@ erDiagram
 
 ---
 
+### 2.9 Table: `workspaces` (Phase 18)
+- Multi-tenant workspace grouping users, projects, and research artifacts.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique workspace UUID |
+| `name` | `VARCHAR(255)` | `NOT NULL` | Workspace name |
+| `slug` | `VARCHAR(255)` | `UNIQUE, NOT NULL` | URL-safe slug |
+| `description` | `TEXT` | `NULLABLE` | Workspace description |
+| `owner_id` | `UUID` | `FOREIGN KEY (users.id), NOT NULL` | Owning user UUID |
+| `is_personal` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE` | Flag for personal workspace |
+| `settings_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Custom workspace settings |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+---
+
+### 2.10 Table: `workspace_members` (Phase 18)
+- Join table linking users to workspaces with RBAC roles.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique membership UUID |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id), NOT NULL` | Associated workspace |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id), NOT NULL` | Associated user |
+| `role` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'member'` | Role: `owner`, `admin`, `researcher`, `member`, `viewer` |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+---
+
+### 2.11 Table: `projects` (Phase 18)
+- Project workspace container scoping research jobs, documents, memories, and knowledge graphs.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique project UUID |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id), NOT NULL` | Owning workspace UUID |
+| `name` | `VARCHAR(255)` | `NOT NULL` | Project name |
+| `slug` | `VARCHAR(255)` | `NOT NULL` | Project slug (unique within workspace) |
+| `description` | `TEXT` | `NULLABLE` | Project goals and description |
+| `created_by` | `UUID` | `FOREIGN KEY (users.id), NULLABLE` | Creator user UUID |
+| `status` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'active'` | Status: `active`, `archived` |
+| `settings_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Project configuration |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+---
+
 ## 3. Database Cross-Compatibility Strategy
 
 To ensure seamless production deployment on PostgreSQL 16 while supporting fast, zero-dependency in-memory testing with SQLite, all model definitions use SQLAlchemy dialect-agnostic variants:

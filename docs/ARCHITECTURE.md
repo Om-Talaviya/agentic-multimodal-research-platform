@@ -214,8 +214,8 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 17 (Long-Term Knowledge Graph - COMPLETE)**: Relational entity-relationship adjacency persistence (`DBKnowledgeEntity`, `DBKnowledgeRelation`, `KnowledgeGraphRepository`), `KnowledgeGraphEngine` (triplet extraction from findings/reports, Graph-Augmented RAG `GraphRAG`), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
 ### Generation 4: Collaboration Platform (Phases 18 – 19)
-- **Phase 18 (Projects & Workspaces - NEXT)**: Hierarchical tenant isolation (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
-- **Phase 19 (Team Collaboration)**: Granular workspace roles, shared knowledge pools, and collaborative report editing.
+- **Phase 18 (Projects & Workspaces - COMPLETE)**: Hierarchical tenant isolation (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`), `DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, REST APIs (`/workspaces`, `/projects`), `WorkspaceSelector` and `ProjectsPage` UI.
+- **Phase 19 (Team Collaboration - NEXT)**: Granular workspace roles, member invitations, shared knowledge pools, and collaborative report editing with inline annotations.
 
 ### Generation 5: AI Platform Intelligence (Phases 20 – 22)
 - **Phase 20 (Intelligent Model Ecosystem)**: Multi-parameter optimization across cost, latency, quality, and context size.

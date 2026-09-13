@@ -146,14 +146,25 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 18 — Projects & Workspaces
+- [x] **Phase 18: Projects & Workspaces**
+  - [x] Multi-tenant workspace database persistence: Created `DBWorkspace`, `DBWorkspaceMember`, and `DBProject` models in `packages/database/src/database/models/workspace.py` with dialect-safe `GUID`, `JSONType`, multi-role membership (`owner`, `admin`, `researcher`, `member`, `viewer`), and unique slug generation.
+  - [x] Scoped foreign keys: Added `workspace_id` and `project_id` foreign keys to `ResearchJob`, `Document`, `DBResearchMemory`, and `DBKnowledgeEntity`.
+  - [x] Workspace & Project persistence repositories: Implemented `WorkspaceRepository` and `ProjectRepository` in `packages/database/src/database/repositories/` with auto-provisioning of personal default workspaces and projects, membership checks, and aggregate metric overview queries.
+  - [x] REST API endpoints: Built `/api/v1/workspaces` and `/api/v1/projects` routes with CRUD, project creation, member management, and metric aggregation in `apps/api/src/api/routes/`.
+  - [x] Pipeline & Document integration: Upgraded `ResearchPipeline`, `IngestionPipeline`, and API routes (`/research`, `/documents`) to accept, propagate, and filter by `workspace_id` and `project_id`.
+  - [x] Interactive UI Studio: Built `WorkspaceContext.tsx` global provider, `WorkspaceSelector.tsx` dropdown in sidebar navigation, and dedicated `ProjectsPage.tsx` management dashboard in `apps/web`.
+  - [x] Automated unit and integration test suites: Added `test_workspace_project_repo.py` and `test_workspaces_projects_api.py`, verified 100% passing across all 270 monorepo tests.
+
+---
+
+## 🟡 Immediate Next Milestone: Phase 19 — Team Collaboration
 
 ### Generation 4: Collaboration Platform
-- [ ] **Phase 18: Projects & Workspaces**
-  - [ ] Multi-tenant workspace hierarchy (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
-  - [ ] Workspace-level document isolation and scoped research pipelines.
 - [ ] **Phase 19: Team Collaboration**
-  - [ ] Workspace roles (Owner, Researcher, Analyst, Reviewer, Viewer), shared projects, and collaborative report editing.
+  - [ ] Workspace invitations via email/token and member management.
+  - [ ] Fine-grained RBAC permission middleware for research jobs and documents.
+  - [ ] Shared collaborative report editing and inline annotations (`ReportAnnotation`).
+  - [ ] Real-time workspace presence and audit activity stream.
 
 ### Generation 5: AI Platform Intelligence
 - [ ] **Phase 20: Intelligent Model Ecosystem**
