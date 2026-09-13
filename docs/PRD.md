@@ -203,16 +203,16 @@ The output is a structured intelligence dossier:
 - **Phase 19: Team Collaboration (COMPLETE)**:
   - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), workspace invitations, shared project knowledge, inline report annotations, and collaborative audit activity logs (**ADR 019**).
 
-#### Generation 5 — AI Platform Intelligence
+#### Generation 5 — AI Platform Intelligence (COMPLETE)
 - **Phase 20: Intelligent Model Ecosystem (COMPLETE)**:
   - Multi-parameter utility routing optimization (`ModelEcosystemOptimizer`), Pareto-frontier sorting across Quality, Speed, Cost, and Locality, preset optimization profiles (Balanced, Cost, Speed, Quality), and `/models/profiles` + `/models/optimize` REST endpoints (**ADR 020**).
 - **Phase 21: Model Evaluation System (COMPLETE)**:
   - Automated continuous evaluation of model outputs for factual accuracy, reasoning depth, retrieval faithfulness, citation precision, latency, and cost-efficiency. Includes standard golden research benchmark dataset, automated metrics engine, PostgreSQL persistence, and interactive competitive Model Leaderboard UI (**ADR 021**).
-- **Phase 22: Agent Evaluation (NEXT MILESTONE)**:
-  - Observability dashboard tracking agent reasoning quality, hallucination rates, token efficiency, and execution durations.
+- **Phase 22: Agent Evaluation & Observability (COMPLETE)**:
+  - Multi-metric autonomous agent evaluation engine (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`), plan precision scoring, tool invocation accuracy, evidence grounding coverage, sentence-level hallucination rate detection, database persistence (`DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`), REST APIs (`/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`), and interactive Agent Observability Studio (`AgentEvaluationPage.tsx`) (**ADR 022**).
 
-#### Generation 6 — Production Product
-- **Phase 23: Enterprise Security**:
+#### Generation 6 — Production Product (NEXT GENERATION - Phase 23 Active)
+- **Phase 23: Enterprise Security (🟡 IMMEDIATE NEXT MILESTONE)**:
   - Enterprise compliance (SOC 2, GDPR), encryption at rest and in transit, secret management, immutable audit logs, and data retention policies.
 - **Phase 24: Production Scale Infrastructure**:
   - Distributed background task queues (Celery/Redis/RabbitMQ), worker autoscaling, S3/MinIO object storage, and PostgreSQL replication.

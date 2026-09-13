@@ -446,4 +446,46 @@ sequenceDiagram
     UI-->>Admin: Displays updated ranking table & test case breakdown drawer
 ```
 
+---
+
+## 12. Agent Execution Evaluation & Observability Flow (Phase 22)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as AI Engineer / System
+    participant UI as AgentEvaluationPage.tsx
+    participant API as FastAPI (/api/v1/agents)
+    participant Evaluator as AgentEvaluator
+    participant Repo as AgentEvaluationRepository
+    participant DB as PostgreSQL / SQLite (agent_evaluations, agent_step_metrics)
+
+    Dev->>UI: Selects Agent / Run & clicks "Evaluate Agent"
+    UI->>API: POST /api/v1/agents/evaluate {agent_name, plan_tasks, step_telemetry, evidence_items, report_text}
+    API->>Evaluator: evaluate_job_execution(job_id, agent_name, plan_tasks, objective, telemetry, evidence, report)
+    
+    rect rgb(20, 30, 45)
+        Note over Evaluator: 1. Multi-Dimensional Metric Computation
+        Evaluator->>Evaluator: evaluate_plan_precision(plan_tasks, objective)
+        Evaluator->>Evaluator: evaluate_tool_accuracy(step_telemetry)
+        Evaluator->>Evaluator: evaluate_evidence_coverage(evidence_items, claims)
+        Evaluator->>Evaluator: evaluate_hallucination_rate(report_text, evidence_items)
+        Evaluator->>Evaluator: Compute overall_score & synthesis_fidelity
+    end
+
+    Evaluator-->>API: AgentEvaluationScorecard
+    API->>Repo: create_evaluation(scorecard, step_telemetry, evaluated_by)
+    Repo->>DB: INSERT into agent_evaluations & agent_step_metrics
+    DB-->>Repo: Saved evaluation record
+    Repo-->>API: Persisted DBAgentEvaluation
+    API-->>UI: 201 Created (Scorecard Details)
+
+    UI->>API: GET /api/v1/agents/metrics/summary
+    API->>Repo: get_agent_metrics_summary()
+    Repo-->>API: Summary aggregates (mean score, avg hallucination rate, tokens, cost)
+    API-->>UI: Live KPI cards update (System Hallucination Rate, Plan Precision, Tool Accuracy)
+    UI-->>Dev: Displays Scorecard, Historical Trends, and Step Telemetry Inspector Drawer
+```
+
+
 

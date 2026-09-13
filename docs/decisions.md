@@ -331,6 +331,39 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Seamless verification of new local/cloud LLMs before promoting them to production research pipelines.
   - Positive: Establishes the foundation for Phase 22 (Agent Evaluation).
 
+---
+
+## ADR 022: Autonomous Agent Evaluation and Hallucination Observability Engine (Phase 22)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: While Phase 21 benchmarked individual LLM models against static ground-truth questions, autonomous multi-agent pipelines (Planner, WebSearch, DocReader, Critic, Report Synthesizer) execute complex dynamic DAGs where failures can stem from invalid tool invocations, poor plan decomposition, ungrounded claim generation, or low evidence coverage. To ensure enterprise-grade reliability and track model drift, the platform requires an autonomous evaluation engine that audits complete agent execution trajectories, step telemetries, and report hallucination rates.
+- **Decision**:
+  1. Implement `AgentEvaluator` in `packages/ai/src/ai/eval/agent_evaluator.py`:
+     - `evaluate_plan_precision()`: Assesses DAG subtask relevance and diversity relative to research objective.
+     - `evaluate_tool_accuracy()`: Calculates tool execution success rates across historical steps.
+     - `evaluate_evidence_coverage()`: Verifies whether synthesized claims are supported by collected documents/snippets.
+     - `evaluate_hallucination_rate()`: Estimates proportion of ungrounded sentences using n-gram overlap with retrieved evidence sources.
+     - `evaluate_job_execution()`: Produces composite `AgentEvaluationScorecard` with step telemetry breakdowns.
+  2. Implement database persistence in `packages/database/src/database/models/agent_evaluation.py` and `packages/database/src/database/repositories/agent_evaluation_repo.py`:
+     - `DBAgentEvaluation`: Tracks top-level execution scorecards, execution times, token counts, costs, and findings audits.
+     - `DBAgentStepMetric`: Tracks sequential agent actions, tool inputs/outputs, error logs, and latencies.
+     - `AgentEvaluationRepository`: Provides CRUD, historical evaluation query methods, and system-wide aggregate metrics calculation.
+  3. Implement REST API endpoints in `apps/api/src/api/routes/agent_evaluations.py`:
+     - `POST /api/v1/agents/evaluate`: Evaluates an agent execution run or research job.
+     - `GET /api/v1/agents/evaluations`: Lists historical evaluations filtered by agent or job.
+     - `GET /api/v1/agents/evaluations/{id}`: Returns scorecard with step telemetry.
+     - `DELETE /api/v1/agents/evaluations/{id}`: Deletes evaluation run.
+     - `GET /api/v1/agents/metrics/summary`: Returns system-wide quality and hallucination KPIs.
+  4. Build React interface in `apps/web/src/pages/AgentEvaluationPage.tsx`:
+     - KPI scorecard headers (Overall Score, Plan Precision, Tool Accuracy, Evidence Coverage, Hallucination Rate).
+     - Per-agent architecture status cards (PlannerAgent, WebSearchAgent, DocumentReaderAgent, CriticAgent, ReportAgent).
+     - Historical evaluation runs table with score badges and 1-click execution modal.
+     - Step telemetry inspector drawer showing step-by-step tool inputs, outputs, tokens, and latencies.
+- **Consequences**:
+  - Positive: Complete visibility into autonomous multi-agent reasoning quality and step execution health.
+  - Positive: Empirical, automated tracking of hallucination rates across research reports.
+  - Positive: Concludes Generation 5 (AI Platform Intelligence) and unlocks Generation 6: Phase 23 (Enterprise Security).
+
+
 
 
 

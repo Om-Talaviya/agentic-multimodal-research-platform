@@ -693,3 +693,97 @@ Returns an aggregated competitive model leaderboard ranked by overall score with
 ]
 ```
 
+---
+
+## 6. Agent Evaluation & Observability Schemas & REST APIs (Phase 22)
+
+### 6.1 Table: `agent_evaluations`
+Tracks autonomous multi-agent execution scorecards assessing reasoning precision, tool accuracy, evidence coverage, and hallucination rates.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique evaluation scorecard ID |
+| `agent_name` | `VARCHAR(100)` | `NOT NULL, INDEX` | Agent type/name (e.g. `ResearchPipeline`, `WebResearchAgent`) |
+| `job_id` | `UUID` | `FOREIGN KEY (research_jobs.id ON DELETE SET NULL), NULLABLE` | Optional associated research job |
+| `total_steps` | `INTEGER` | `NOT NULL, DEFAULT 0` | Total sequential steps executed |
+| `successful_steps` | `INTEGER` | `NOT NULL, DEFAULT 0` | Steps succeeding without error |
+| `failed_steps` | `INTEGER` | `NOT NULL, DEFAULT 0` | Steps encountering errors or crashes |
+| `plan_precision` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Plan DAG relevance and diversity [0.0 - 1.0] |
+| `tool_accuracy` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Proportion of successful tool invocations |
+| `evidence_coverage` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Proportion of claims grounded in evidence |
+| `hallucination_rate` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Ratio of ungrounded sentences [0.0 - 1.0] |
+| `synthesis_fidelity` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Report faithfulness (1 - hallucination_rate) |
+| `overall_score` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Composite weighted agent execution score |
+| `execution_time_ms` | `INTEGER` | `NOT NULL, DEFAULT 0` | Total agent execution runtime in ms |
+| `total_tokens` | `INTEGER` | `NOT NULL, DEFAULT 0` | Total tokens consumed by agent steps |
+| `estimated_cost_usd` | `NUMERIC(10, 6)` | `NOT NULL, DEFAULT 0.000000` | Estimated USD inference cost |
+| `findings_audit` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Breakdown of evaluated claims and sources |
+| `evaluated_by` | `UUID` | `FOREIGN KEY (users.id ON DELETE SET NULL), NULLABLE` | Triggering user ID |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Scorecard creation timestamp |
+
+---
+
+### 6.2 Table: `agent_step_metrics`
+Individual step telemetry records for sequential agent actions.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Step metric ID |
+| `evaluation_id` | `UUID` | `FOREIGN KEY (agent_evaluations.id ON DELETE CASCADE), NOT NULL` | Parent evaluation scorecard |
+| `step_index` | `INTEGER` | `NOT NULL` | Sequence order index |
+| `agent_type` | `VARCHAR(100)` | `NOT NULL` | Agent identifier for this step |
+| `action_type` | `VARCHAR(50)` | `NOT NULL` | Action category (`plan`, `tool_execution`, `synthesis`) |
+| `tool_name` | `VARCHAR(100)` | `NULLABLE` | Invoked tool name (if applicable) |
+| `tool_args` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Tool input arguments |
+| `tool_output_length` | `INTEGER` | `NOT NULL, DEFAULT 0` | Character length of tool return |
+| `success` | `BOOLEAN` | `NOT NULL, DEFAULT TRUE` | Execution success status |
+| `error_message` | `TEXT` | `NULLABLE` | Error diagnostic if step failed |
+| `latency_ms` | `INTEGER` | `NOT NULL, DEFAULT 0` | Step execution duration in ms |
+| `tokens_consumed` | `INTEGER` | `NOT NULL, DEFAULT 0` | Tokens consumed in step |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Step record timestamp |
+
+---
+
+### 6.3 REST Endpoints (Phase 22)
+
+#### `POST /api/v1/agents/evaluate`
+Calculates and persists an agent evaluation scorecard with step telemetry.
+
+**Request:**
+```json
+{
+  "agent_name": "WebResearchAgent",
+  "research_objective": "Transformer scaling laws exploration",
+  "plan_tasks": [{"title": "Search transformer papers"}],
+  "step_telemetry": [
+    {
+      "step_index": 1,
+      "agent_type": "WebResearchAgent",
+      "action_type": "tool_execution",
+      "tool_name": "web_search",
+      "tool_args": {"query": "transformer scaling laws"},
+      "tool_output_length": 150,
+      "success": true,
+      "latency_ms": 110,
+      "tokens_consumed": 50
+    }
+  ],
+  "evidence_items": [{"content": "Transformer models scale with compute."}],
+  "report_text": "Transformer models scale with compute.",
+  "claims": ["Transformer models scale with compute."],
+  "execution_time_ms": 360,
+  "total_tokens": 200,
+  "cost_usd": 0.00004
+}
+```
+
+#### `GET /api/v1/agents/evaluations`
+Lists historical agent evaluation scorecards with filtering by `agent_name` and `job_id`.
+
+#### `GET /api/v1/agents/evaluations/{id}`
+Retrieves detailed scorecard and full sequential step telemetry history.
+
+#### `GET /api/v1/agents/metrics/summary`
+Returns system-wide aggregated agent metrics (mean score, plan precision, tool accuracy, evidence coverage, hallucination rate, total tokens, total cost).
+
+

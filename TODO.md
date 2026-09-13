@@ -187,21 +187,30 @@ This document tracks all completed engineering milestones, the immediate active 
   - [x] Interactive UI Studio: Built `ModelEvaluationPage.tsx` with ranked leaderboard table, benchmark execution modal, score progress meters, and sample test case audit drawer. Added `/evaluations` route and navigation link in `Layout.tsx`.
   - [x] Comprehensive test suites: Added `test_model_evaluator.py`, `test_evaluation_repo.py`, and `test_model_evaluation_api.py`, achieving 100% pass rate across 291 monorepo tests.
 
+- [x] **Phase 22: Agent Evaluation & Observability**
+  - [x] Multi-metric agent evaluation engine: Implemented `AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, `AgentEvaluationMetric` in `packages/ai/src/ai/eval/agent_evaluator.py`.
+  - [x] Deterministic scoring functions: Plan Precision (`evaluate_plan_precision`), Tool Accuracy (`evaluate_tool_accuracy`), Evidence Coverage (`evaluate_evidence_coverage`), and sentence-level Hallucination Rate (`evaluate_hallucination_rate`).
+  - [x] Database persistence models: Implemented `DBAgentEvaluation` and `DBAgentStepMetric` in `packages/database/src/database/models/agent_evaluation.py` with PostgreSQL/SQLite parity.
+  - [x] Agent evaluation repository: Built `AgentEvaluationRepository` in `packages/database/src/database/repositories/agent_evaluation_repo.py` supporting evaluation scorecard persistence, step telemetry inspection, and aggregate KPI calculation.
+  - [x] REST API endpoints: Created `/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/evaluations/{id}`, and `/api/v1/agents/metrics/summary` in `apps/api/src/api/routes/agent_evaluations.py`.
+  - [x] Interactive UI Studio: Built `AgentEvaluationPage.tsx` with KPI scorecards, per-agent architecture badges, historical evaluation runs table, run audit modal, and sequential step telemetry inspector drawer.
+  - [x] Frontend routing & navigation: Registered route `/agents/evaluations` in `App.tsx` and added `Agent Observability` link in `Layout.tsx`.
+  - [x] Automated test suites: Added `test_agent_evaluator.py`, `test_agent_evaluation_repo.py`, and `test_agent_evaluation_api.py`, achieving 100% pass rate (299/299 tests passing).
+
 ---
 
-## 🟡 Immediate Active Milestone: Phase 22 — Agent Evaluation
-
-### Generation 5: AI Platform Intelligence
-- [ ] **Phase 22: Agent Evaluation**
-  - [ ] Agent quality & hallucination evaluation engine (`packages/ai/src/ai/eval/agent_evaluator.py`).
-  - [ ] Step-level telemetry: Plan fidelity, tool call accuracy, evidence sufficiency score, and contradiction tracking.
-  - [ ] Automated regression testing harness for autonomous research workflows.
-  - [ ] Agent evaluation REST APIs (`/api/v1/agents/evaluations`, `/api/v1/agents/metrics`).
-  - [ ] Interactive Agent Observability & Evaluation Studio UI in `apps/web`.
+## 🟡 Immediate Active Milestone: Phase 23 — Enterprise Security
 
 ### Generation 6: Production Product
 - [ ] **Phase 23: Enterprise Security**
-  - [ ] SOC 2 & GDPR compliance, immutable audit logging, data retention policies, and secret management.
+  - [ ] Enterprise compliance readiness (SOC 2, GDPR controls).
+  - [ ] Workspace data isolation & tenant access validation policies.
+  - [ ] Immutable security audit logging with cryptographic hash chaining (`DBSecurityAuditLog`).
+  - [ ] Secret management & KMS envelope encryption for API keys and stored provider credentials.
+  - [ ] Data retention, soft deletion, and GDPR right-to-be-forgotten purge policies.
+  - [ ] Enterprise Security REST APIs (`/api/v1/security/audit-logs`, `/api/v1/security/retention`, `/api/v1/security/compliance`).
+  - [ ] Interactive Enterprise Security & Audit Studio UI in `apps/web`.
+
 - [ ] **Phase 24: Production Infrastructure**
   - [ ] Distributed task queues (Celery/Redis), worker autoscaling, S3/MinIO storage, and DB replication.
 - [ ] **Phase 25: Public API & Developer Platform**
