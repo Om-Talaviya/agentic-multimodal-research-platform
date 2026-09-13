@@ -1,49 +1,193 @@
-import { useEffect, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck } from 'lucide-react'
-import { api } from '../services/api'
-import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport } from '../types/research'
+import { useEffect, useState, useRef, useCallback } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, Brain, Share2, MessageSquare } from 'lucide-react'
+import { api, getResearchWebSocketUrl } from '../services/api'
+import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
+import type { MemoryItem } from '../types/memory'
+import type { KnowledgeEntity, KnowledgeRelation } from '../types/graph'
+import { QueryTreeViewer } from '../components/QueryTreeViewer'
+import { MultimodalEvidenceViewer } from '../components/MultimodalEvidenceViewer'
+import { DeepResearchTracker } from '../components/DeepResearchTracker'
+import { ResearchMemoryViewer } from '../components/ResearchMemoryViewer'
+import { KnowledgeGraphViewer } from '../components/KnowledgeGraphViewer'
+import { ReportAnnotationsDrawer } from '../components/ReportAnnotationsDrawer'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
-  const navigate = useNavigate()
   const [job, setJob] = useState<ResearchJob | null>(null)
   const [tasks, setTasks] = useState<ResearchTask[]>([])
   const [sources, setSources] = useState<Source[]>([])
   const [evidence, setEvidence] = useState<Evidence[]>([])
   const [report, setReport] = useState<ResearchReport | null>(null)
+  const [plan, setPlan] = useState<ResearchPlan | null>(null)
+  const [memories, setMemories] = useState<MemoryItem[]>([])
+  const [graphEntities, setGraphEntities] = useState<KnowledgeEntity[]>([])
+  const [graphRelations, setGraphRelations] = useState<KnowledgeRelation[]>([])
   const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report' | 'memories' | 'graph'>('overview')
+  const [isAnnotationsDrawerOpen, setIsAnnotationsDrawerOpen] = useState(false)
+  const [openAnnotationCount, setOpenAnnotationCount] = useState(0)
+  const socketRef = useRef<WebSocket | null>(null)
+  const reconnectTimeoutRef = useRef<any>(null)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (!id) return
     try {
-      setLoading(true)
-      const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes] = await Promise.all([
+      const [jobRes, tasksRes, sourcesRes, evidenceRes, reportRes, memRes, graphNodesRes, graphEdgesRes] = await Promise.all([
         api.get(`/research/${id}`),
         api.get(`/research/${id}/tasks`),
         api.get(`/research/${id}/sources`),
         api.get(`/research/${id}/evidence`),
         api.get(`/research/${id}/report`).catch(() => ({ data: null })),
+        api.get('/memory', { params: { job_id: id } }).catch(() => ({ data: [] })),
+        api.get('/graph/nodes', { params: { limit: 100 } }).catch(() => ({ data: [] })),
+        api.get('/graph/edges', { params: { limit: 200 } }).catch(() => ({ data: [] })),
       ])
       setJob(jobRes.data)
       setTasks(tasksRes.data.tasks || tasksRes.data)
       setSources(sourcesRes.data.sources || sourcesRes.data)
       setEvidence(evidenceRes.data.evidence || evidenceRes.data)
       setReport(reportRes.data)
+      setMemories(memRes.data || [])
+      setGraphEntities(graphNodesRes.data || [])
+      setGraphRelations(graphEdgesRes.data || [])
     } catch (err) {
       console.error(err)
-      navigate('/dashboard')
     } finally {
       setLoading(false)
     }
-  }
+  }, [id])
 
   useEffect(() => {
+    if (!id) return
+
+    let isMounted = true
+    let reconnectAttempts = 0
+
+    const connectWebSocket = () => {
+      if (!isMounted) return
+
+      try {
+        const wsUrl = getResearchWebSocketUrl(id)
+        const ws = new WebSocket(wsUrl)
+        socketRef.current = ws
+
+        ws.onopen = () => {
+          reconnectAttempts = 0
+        }
+
+        ws.onmessage = (event) => {
+          if (!isMounted) return
+          try {
+            const message = JSON.parse(event.data)
+            if (message.type === 'snapshot' && message.data) {
+              const data = message.data
+              if (data.job) setJob(data.job)
+              if (data.tasks) setTasks(data.tasks)
+              if (data.sources) setSources(data.sources)
+              if (data.evidence) setEvidence(data.evidence)
+              if (data.report) setReport(data.report)
+              if (data.plan) setPlan(data.plan)
+              setLoading(false)
+            } else if (message.type === 'event' && message.event) {
+              const ev = message.event
+              const evType = ev.type
+              const evData = ev.data || {}
+
+              if (evType === 'plan_decomposed') {
+                setPlan(prev => ({
+                  objective: prev?.objective || '',
+                  steps: prev?.steps || [],
+                  expected_outputs: prev?.expected_outputs || [],
+                  query_tree: evData.query_tree,
+                  ambiguity_score: evData.ambiguity_score,
+                  inferred_scope: evData.inferred_scope,
+                  plan_explanation: evData.plan_explanation,
+                  replan_count: 0,
+                }))
+              } else if (evType === 'dag_replanned') {
+                setPlan(prev => prev ? {
+                  ...prev,
+                  replan_count: evData.replan_count || (prev.replan_count || 0) + 1,
+                  plan_explanation: evData.explanation || prev.plan_explanation,
+                } : null)
+                fetchData()
+              } else if (evType === 'job_started' || evType === 'job_completed' || evType === 'job_failed') {
+                setJob(prev => prev ? {
+                  ...prev,
+                  status: evData.status || prev.status,
+                  error_message: evData.error || prev.error_message,
+                  completed_at: evType === 'job_completed' ? new Date().toISOString() : prev.completed_at,
+                } : null)
+                if (evType === 'job_completed') {
+                  fetchData()
+                }
+              } else if (evType === 'tasks_created' && evData.tasks) {
+                fetchData()
+              } else if (evType === 'task_started' || evType === 'task_completed' || evType === 'task_failed' || evType === 'task_spawned') {
+                setTasks(prev => prev.map(t => {
+                  if (t.id === evData.task_id) {
+                    return {
+                      ...t,
+                      status: evData.status || t.status,
+                      error_message: evData.error || t.error_message,
+                      completed_at: (evType === 'task_completed' || evType === 'task_failed') ? new Date().toISOString() : t.completed_at,
+                    }
+                  }
+                  return t
+                }))
+                if (evType === 'task_completed' || evType === 'task_failed' || evType === 'task_spawned') {
+                  fetchData()
+                }
+              } else if (
+                evType === 'sources_added' ||
+                evType === 'evidence_added' ||
+                evType === 'verification_completed' ||
+                evType === 'report_generated' ||
+                evType === 'deep_research_started' ||
+                evType === 'research_iteration_started' ||
+                evType === 'research_iteration_completed' ||
+                evType === 'deep_research_converged' ||
+                evType === 'deep_research_terminated'
+              ) {
+                fetchData()
+              }
+            }
+          } catch (parseErr) {
+            console.error('Failed to parse WebSocket message', parseErr)
+          }
+        }
+
+        ws.onerror = () => {
+          fetchData()
+        }
+
+        ws.onclose = () => {
+          if (!isMounted) return
+          const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 10000)
+          reconnectAttempts++
+          reconnectTimeoutRef.current = setTimeout(connectWebSocket, delay)
+        }
+      } catch (err) {
+        console.error('WebSocket connection initialization failed', err)
+        fetchData()
+      }
+    }
+
     fetchData()
-    const interval = setInterval(fetchData, 5000) // Poll for updates
-    return () => clearInterval(interval)
-  }, [id])
+    connectWebSocket()
+
+    return () => {
+      isMounted = false
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current)
+      }
+      if (socketRef.current) {
+        socketRef.current.close()
+        socketRef.current = null
+      }
+    }
+  }, [id, fetchData])
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -92,6 +236,8 @@ export function ResearchDetail() {
     { id: 'sources', label: 'Sources', icon: FileText },
     { id: 'evidence', label: 'Evidence', icon: FileCheck },
     { id: 'report', label: 'Report', icon: FileText, disabled: !report },
+    { id: 'memories', label: `Memories (${memories.length})`, icon: Brain },
+    { id: 'graph', label: `Knowledge Graph (${graphEntities.length})`, icon: Share2 },
   ]
 
   return (
@@ -142,6 +288,16 @@ export function ResearchDetail() {
       <div className="card">
         {activeTab === 'overview' && (
           <div>
+            {/* Deep Research Recursive Loop Telemetry */}
+            {(job.iterations && job.iterations.length > 0) || (plan?.iterations && plan.iterations.length > 0) ? (
+              <DeepResearchTracker
+                iterations={job.iterations || plan?.iterations || []}
+                config={plan?.deep_research_config}
+                currentConfidence={report?.confidence_score ?? 0.85}
+                isDeepResearchActive={job.status === 'running'}
+              />
+            ) : null}
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--spacing-md)', marginBottom: 'var(--spacing-lg)' }}>
               <div style={{ padding: 'var(--spacing-md)', background: 'var(--color-background)', borderRadius: 'var(--radius-md)' }}>
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Status</p>
@@ -176,9 +332,23 @@ export function ResearchDetail() {
 
         {activeTab === 'plan' && (
           <div>
-            <p style={{ color: 'var(--color-text-muted)' }}>
-              Research plan will be displayed here after planning phase completes.
-            </p>
+            {(job.iterations && job.iterations.length > 0) || (plan?.iterations && plan.iterations.length > 0) ? (
+              <DeepResearchTracker
+                iterations={job.iterations || plan?.iterations || []}
+                config={plan?.deep_research_config}
+                currentConfidence={report?.confidence_score ?? 0.85}
+                isDeepResearchActive={job.status === 'running'}
+              />
+            ) : null}
+
+            <QueryTreeViewer
+              queryTree={plan?.query_tree}
+              ambiguityScore={plan?.ambiguity_score ?? 0}
+              inferredScope={plan?.inferred_scope}
+              planExplanation={plan?.plan_explanation}
+              replanCount={plan?.replan_count ?? 0}
+              tasks={tasks}
+            />
           </div>
         )}
 
@@ -255,33 +425,41 @@ export function ResearchDetail() {
 
         {activeTab === 'evidence' && (
           <div>
-            {evidence.length === 0 ? (
-              <div className="empty-state">
-                <FileCheck size={48} />
-                <p>No evidence extracted yet</p>
-              </div>
-            ) : (
-              <div style={{ display: 'grid', gap: 'var(--spacing-md)' }}>
-                {evidence.map(e => (
-                  <div key={e.id} style={{ padding: 'var(--spacing-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--spacing-sm)' }}>
-                      <span style={{ fontWeight: 500 }}>{e.claim}</span>
-                      <span className="badge badge-pending">{Math.round(e.confidence * 100)}% confidence</span>
-                    </div>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{e.supporting_text.slice(0, 300)}...</p>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 'var(--spacing-xs)' }}>
-                      Verification: {e.verification_status}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
+            <MultimodalEvidenceViewer evidence={evidence} title="Extracted Multimodal Evidence & Claims" />
           </div>
         )}
 
         {activeTab === 'report' && report && (
           <div style={{ maxWidth: '800px' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 'var(--spacing-sm)' }}>{report.title}</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-sm)', flexWrap: 'wrap', gap: 'var(--spacing-sm)' }}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{report.title}</h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {report.confidence_score !== undefined && (
+                  <span className="badge badge-primary" style={{ fontSize: '0.875rem', padding: 'var(--spacing-xs) var(--spacing-sm)' }}>
+                    Grounding Index: {Math.round(report.confidence_score * 100)}%
+                  </span>
+                )}
+                <button
+                  onClick={() => setIsAnnotationsDrawerOpen(true)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 12px',
+                    backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                    border: '1px solid rgba(99, 102, 241, 0.3)',
+                    borderRadius: 'var(--radius-md)',
+                    color: '#818cf8',
+                    fontSize: '0.85rem',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <MessageSquare size={15} />
+                  Review Notes {openAnnotationCount > 0 && `(${openAnnotationCount})`}
+                </button>
+              </div>
+            </div>
             <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-lg)' }}>
               Generated: {new Date(report.generated_at).toLocaleString()}
             </p>
@@ -302,17 +480,56 @@ export function ResearchDetail() {
 
             {report.findings.length > 0 && (
               <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--spacing-sm)' }}>Key Findings</h3>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--spacing-sm)' }}>Key Findings & Citations</h3>
                 {report.findings.map((f, i) => (
-                  <div key={i} style={{ marginBottom: 'var(--spacing-md)', padding: 'var(--spacing-md)', borderLeft: '3px solid var(--color-primary)' }}>
+                  <div key={i} style={{ marginBottom: 'var(--spacing-md)', padding: 'var(--spacing-md)', borderLeft: '3px solid var(--color-primary)', background: 'var(--color-background-alt, transparent)', borderRadius: '0 var(--radius-sm) var(--radius-sm) 0' }}>
                     <h4 style={{ fontWeight: 600, marginBottom: 'var(--spacing-xs)' }}>{f.topic}</h4>
                     <p style={{ marginBottom: 'var(--spacing-sm)' }}>{f.summary}</p>
+                    
+                    {f.citations && f.citations.length > 0 && (
+                      <div style={{ margin: 'var(--spacing-sm) 0', padding: 'var(--spacing-xs) var(--spacing-sm)', background: 'var(--color-background)', borderRadius: 'var(--radius-sm)', border: '1px dashed var(--color-border)' }}>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-muted)', display: 'block', marginBottom: 'var(--spacing-xs)' }}>Grounding Citations:</span>
+                        {f.citations.map((c, ci) => (
+                          <div key={ci} style={{ fontSize: '0.8125rem', marginBottom: 'var(--spacing-xs)' }}>
+                            <span style={{ color: 'var(--color-primary)', fontWeight: 500 }}>[{c.citation_text || `Ref ${ci + 1}`}]</span> &ldquo;{c.quote || c.claim}&rdquo;
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <div style={{ display: 'flex', gap: 'var(--spacing-md)', fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
                       <span>Confidence: {Math.round(f.confidence * 100)}%</span>
                       {f.uncertainty && <span>Uncertainty: {f.uncertainty}</span>}
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {report.contradictions && report.contradictions.length > 0 && (
+              <div style={{ marginBottom: 'var(--spacing-lg)', padding: 'var(--spacing-md)', border: '1px solid var(--color-warning, #f59e0b)', borderRadius: 'var(--radius-md)', background: 'rgba(245, 158, 11, 0.05)' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--spacing-sm)', color: 'var(--color-warning, #f59e0b)' }}>
+                  ⚠️ Contradictions & Discrepancies Matrix ({report.contradictions.length})
+                </h3>
+                <div style={{ display: 'grid', gap: 'var(--spacing-sm)' }}>
+                  {report.contradictions.map((contra, idx) => (
+                    <div key={idx} style={{ padding: 'var(--spacing-sm)', background: 'var(--color-background)', borderRadius: 'var(--radius-sm)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--spacing-xs)' }}>
+                        <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{contra.topic}</span>
+                        <span className="badge badge-warning" style={{ fontSize: '0.75rem' }}>{contra.conflict_type.replace('_', ' ')}</span>
+                      </div>
+                      <p style={{ fontSize: '0.8125rem', marginBottom: 'var(--spacing-xs)' }}>
+                        <strong>Source A ({contra.source_a}):</strong> {contra.claim_a}
+                      </p>
+                      <p style={{ fontSize: '0.8125rem', marginBottom: 'var(--spacing-xs)' }}>
+                        <strong>Source B ({contra.source_b}):</strong> {contra.claim_b}
+                      </p>
+                      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
+                        <em>Explanation:</em> {contra.explanation}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -352,7 +569,30 @@ export function ResearchDetail() {
             </p>
           </div>
         )}
+
+        {activeTab === 'memories' && (
+          <ResearchMemoryViewer
+            memories={memories}
+            selectedJobId={job.id}
+          />
+        )}
+
+        {activeTab === 'graph' && (
+          <KnowledgeGraphViewer
+            entities={graphEntities}
+            relations={graphRelations}
+          />
+        )}
       </div>
+
+      {report && (
+        <ReportAnnotationsDrawer
+          reportId={report.id}
+          isOpen={isAnnotationsDrawerOpen}
+          onClose={() => setIsAnnotationsDrawerOpen(false)}
+          onAnnotationCountChange={setOpenAnnotationCount}
+        />
+      )}
     </div>
   )
 }

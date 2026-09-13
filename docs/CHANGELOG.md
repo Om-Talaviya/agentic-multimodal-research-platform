@@ -1,0 +1,337 @@
+# Changelog: CHANGELOG.md
+
+All notable changes to the **Agentic Multimodal Research Platform** will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [2.0.0] - 2026-09-13 (Generation 6 Milestone 4 & 6-Generation Product Roadmap Completion: Phase 26 - Research Automation)
+
+### Added
+- **Phase 26: Research Automation, Cron Scheduling, Semantic Diffing & Alerting**:
+  - Implemented database models in `packages/database/src/database/models/automation.py` (`DBScheduledResearch`, `DBResearchSweepResult`, `DBAutomationAlert`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `AutomationRepository` in `packages/database/src/database/repositories/automation_repo.py` supporting schedule CRUD (`create_schedule`, `get_schedule`, `list_schedules`, `update_schedule`, `pause_schedule`, `resume_schedule`, `delete_schedule`), sweep recording (`record_sweep_result`, `list_sweep_results`), alert management (`create_alert`, `list_alerts`, `acknowledge_alert`), and aggregate automation telemetry (`get_automation_metrics`).
+  - Implemented `ResearchAutomationEngine` in `packages/research/src/research/automation/engine.py`:
+    - `compute_next_run(cron_expression, interval_seconds)`: Robust timestamp calculator supporting 5-field cron parsing and interval frequencies.
+    - `detect_novelty(current_claims, prior_claims)`: Semantic claim normalization and diff engine isolating novel and contradictory claims and generating novelty intensity scores $\in [0.0, 1.0]$.
+    - `execute_scheduled_sweep(schedule_id)`: Autonomous sweep execution pipeline that retrieves prior findings, calculates novelty, records sweep results, and dispatches in-app and webhook alerts when $\text{novelty} \ge \tau_{\text{novel}}$.
+  - Implemented REST API routes in `apps/api/src/api/routes/automation.py`:
+    - `POST /api/v1/automation/schedules`: Create recurring research sweeps.
+    - `GET /api/v1/automation/schedules`: List research schedules.
+    - `GET /api/v1/automation/schedules/{id}`: Fetch schedule details.
+    - `PATCH /api/v1/automation/schedules/{id}/pause` & `/resume`: Pause and resume schedules.
+    - `DELETE /api/v1/automation/schedules/{id}`: Delete schedules.
+    - `POST /api/v1/automation/schedules/{id}/trigger`: Trigger immediate on-demand sweep.
+    - `GET /api/v1/automation/schedules/{id}/sweeps`: List historical sweeps and diffs.
+    - `GET /api/v1/automation/alerts`: List change detection alerts with unread filtering.
+    - `PATCH /api/v1/automation/alerts/{id}/acknowledge`: Mark alert as acknowledged.
+    - `GET /api/v1/automation/metrics`: Query aggregate automation metrics.
+  - Created interactive Research Automation Studio in `apps/web/src/pages/ResearchAutomationPage.tsx`:
+    - Sweeps & Cron Schedules tab (active/paused schedules, countdown badges, instant trigger, pause/resume, and schedule creator modal).
+    - Sweep History & Diff Explorer tab (chronological sweep feed, novel/contradictory claim badges, crawl stats, novelty score gauge).
+    - Dispatched Alerts & Webhooks tab (unread alert cards, novelty score badges, 1-click acknowledge button, webhook test dispatcher).
+  - Mounted `/automation` in `App.tsx` and added `Research Automation` link in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_automation_repo.py`, `packages/research/tests/test_research_automation.py`, and `apps/api/tests/test_automation_api.py`, achieving 100% pass rate (329/329 tests passing across entire monorepo).
+  - Formalized **ADR 026** (Autonomous Research Automation, Cron Scheduling, and Novelty-Triggered Multi-Channel Alerting).
+  - **MILESTONE COMPLETED**: All 26 Phases across all 6 Generations are now 100% complete, tested, and production ready!
+
+---
+
+## [1.9.0] - 2026-09-13 (Generation 6 Milestone 3: Phase 25 - Public API & Developer Platform)
+
+### Added
+- **Phase 25: Public API Gateway, Developer Platform & SDK Playground**:
+  - Implemented secure API key model `DBApiKey` in `packages/database/src/database/models/api_key.py` with `key_prefix` indexing, SHA-256 `key_hash` storage, granular permission scopes (`research:read/write`, `documents:read/write`, `memory:read`, `graph:read`), and rate limit tiers (`free`, `pro`, `enterprise`).
+  - Implemented `ApiKeyRepository` in `packages/database/src/database/repositories/api_key_repo.py` supporting constant-time hash authentication, scope enforcement, and sliding 60-second window rate limit enforcement (`check_rate_limit`).
+  - Implemented public developer REST API endpoints in `apps/api/src/api/routes/developer.py`:
+    - `GET /api/v1/developer/keys`: Lists developer keys with masked previews.
+    - `POST /api/v1/developer/keys`: Generates new cryptographically secure API key with one-time plaintext reveal.
+    - `GET /api/v1/developer/keys/{id}`: Retrieves specific key metadata.
+    - `PATCH /api/v1/developer/keys/{id}/revoke`: Immediately revokes key access.
+    - `DELETE /api/v1/developer/keys/{id}`: Permanently deletes API key record.
+    - `POST /api/v1/developer/research`: Public endpoint for triggering research via `X-API-Key` header.
+    - `GET /api/v1/developer/research/{id}`: Public endpoint for polling research progress and fetching finished reports.
+    - `POST /api/v1/developer/documents`: Public endpoint for ingesting text/documents.
+    - `GET /api/v1/developer/usage`: Public endpoint for developer token/request analytics.
+  - Created interactive Developer Platform Studio in `apps/web/src/pages/DeveloperPlatformPage.tsx` with API Keys Vault, Create Key modal with scope & expiration selector, One-Time Key Reveal modal, Interactive API Playground & SDK generator (cURL, Python `requests`, TypeScript `axios`), and Rate Limits & Quotas breakdown.
+  - Mounted `/developer` route in `App.tsx` and added `Developer API` navigation link in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_api_key_repo.py` and `apps/api/tests/test_developer_api.py`, achieving 100% pass rate.
+  - Formalized **ADR 025** (Public API Gateway, SHA-256 Hashed API Keys, and Sliding Window Rate Limiting).
+
+---
+
+## [1.8.0] - 2026-09-13 (Generation 6 Milestone 2: Phase 24 - Production Scale Infrastructure)
+
+### Added
+- **Phase 24: Production Infrastructure, Priority Task Queue & Blob Storage Vault**:
+  - Implemented asynchronous priority task queue and worker node engine in `packages/research/src/research/workers/task_queue.py` (`AsyncTaskQueue`, `QueuedTask`, `WorkerNode`, `TaskPriority`, and `global_task_queue`) supporting 4 priority levels (`CRITICAL`, `HIGH`, `DEFAULT`, `LOW`), concurrency throttling, retry counters, and task leases.
+  - Implemented unified multi-provider object storage client in `packages/shared/src/shared/storage.py` (`ObjectStorageClient`, `StorageBackendType`, `StorageObjectMetadata`) supporting AWS S3, MinIO, and local filesystem backends with presigned URL generation, MD5/SHA-256 checksumming, and aggregate bucket usage telemetry.
+  - Implemented database models `DBWorkerNode` and `DBStorageObject` in `packages/database/src/database/models/infrastructure.py` with full PostgreSQL/SQLite parity.
+  - Implemented `InfrastructureRepository` in `packages/database/src/database/repositories/infrastructure_repo.py` supporting worker node registration, heartbeat leasing, task assignment, blob recording, and storage usage calculations.
+  - Implemented REST API endpoints in `apps/api/src/api/routes/system_infra.py`:
+    - `GET /api/v1/system/workers`: Lists cluster worker nodes with heartbeat health.
+    - `POST /api/v1/system/workers/heartbeat`: Worker pulse registering CPU/RAM load and active tasks.
+    - `GET /api/v1/system/queue/status`: Returns priority queue length, latency, and throughput metrics.
+    - `POST /api/v1/system/queue/tasks`: Enqueues research tasks with priority.
+    - `GET /api/v1/system/storage/objects`: Queries stored object blobs.
+    - `POST /api/v1/system/storage/presigned-url`: Generates secure presigned download/upload links.
+    - `GET /api/v1/system/storage/usage`: Computes total byte and object count storage metrics.
+  - Created interactive Production Infrastructure Studio in `apps/web/src/pages/ProductionInfrastructurePage.tsx` with Cluster Topology dashboard, Distributed Task Queue manager, S3/MinIO Blob Storage browser, Heartbeat simulator modal, Task enqueue modal, and Presigned URL generator modal.
+  - Mounted `/infrastructure` route in `App.tsx` and added `Infrastructure` navigation link in `Layout.tsx`.
+  - Added test suites in `packages/research/tests/test_async_task_queue.py`, `packages/shared/tests/test_object_storage.py`, `packages/database/tests/test_infrastructure_repo.py`, and `apps/api/tests/test_system_infra_api.py`, achieving 100% pass rate (319/319 tests passing across monorepo).
+  - Formalized **ADR 024** (Distributed Priority Task Queue, Asynchronous Worker Clusters, and S3/MinIO Blob Vault Architecture).
+
+---
+
+## [1.7.0] - 2026-09-13 (Generation 6 Milestone 1: Phase 23 - Enterprise Security & Compliance Platform)
+
+### Added
+- **Phase 23: Enterprise Security, KMS Secret Vault & Cryptographic Audit Trails**:
+  - Implemented military-grade two-tier envelope encryption engine `KMSEnvelopeEncryption` in `packages/shared/src/shared/kms.py` using PBKDF2-HMAC-SHA256 derived Key Encryption Key (KEK) and ephemeral 256-bit Data Encryption Key (DEK) with AES-256-GCM authenticated ciphertext.
+  - Implemented blockchain-like tamper-evident cryptographic SHA-256 audit hash chaining `AuditHashChainer` in `packages/shared/src/shared/kms.py` calculating deterministic hashes linked to preceding records with `verify_chain_integrity()` validation.
+  - Implemented database models `DBSecurityAuditLog`, `DBEncryptedSecret`, and `DBSecurityPolicy` in `packages/database/src/database/models/security.py` with full PostgreSQL/SQLite parity.
+  - Implemented `SecurityRepository` in `packages/database/src/database/repositories/security_repo.py` supporting hash-chained audit event creation, integrity verification, secret vaulting/revocation, security policy management, and GDPR Article 17 automated cascade data purge (`execute_gdpr_data_purge`).
+  - Implemented REST API endpoints in `apps/api/src/api/routes/security.py`:
+    - `POST /api/v1/security/audit-logs`: Records hash-chained security event.
+    - `GET /api/v1/security/audit-logs`: Queries audit trails with filtering.
+    - `GET /api/v1/security/audit-logs/verify`: Cryptographically verifies SHA-256 hash chain integrity.
+    - `POST /api/v1/security/secrets` & `GET /api/v1/security/secrets`: Vaults and lists secrets with masked previews.
+    - `PATCH /api/v1/security/secrets/{id}/revoke` & `DELETE /api/v1/security/secrets/{id}`: Secret lifecycle and revocation.
+    - `GET /api/v1/security/policy` & `PATCH /api/v1/security/policy`: Workspace security policy and retention rules.
+    - `POST /api/v1/security/gdpr/purge`: GDPR Right-to-be-Forgotten cascade data purge.
+    - `GET /api/v1/security/compliance/status`: Real-time SOC 2 Type II and GDPR compliance scorecard.
+  - Created interactive Enterprise Security Studio in `apps/web/src/pages/EnterpriseSecurityPage.tsx` with Compliance Scorecard, KMS Secret Vault manager, Tamper-Evident Audit Log explorer, and Retention & GDPR purge controls.
+  - Mounted `/security` route in `App.tsx` and added `Enterprise Security` navigation link in `Layout.tsx`.
+  - Added test suites in `packages/shared/tests/test_kms_encryption.py`, `packages/database/tests/test_security_repo.py`, and `apps/api/tests/test_security_api.py`, achieving 100% pass rate (309/309 tests passing across monorepo).
+  - Formalized **ADR 023** (Enterprise KMS Envelope Encryption, Cryptographic Audit Chains, and GDPR Data Lifecycle Controls).
+
+---
+
+## [1.6.0] - 2026-09-13 (Generation 5 Milestone 3: Phase 22 - Agent Evaluation Engine & Observability Platform)
+
+### Added
+- **Phase 22: Agent Evaluation & Observability Platform**:
+  - Implemented multi-metric autonomous agent evaluation engine in `packages/ai/src/ai/eval/agent_evaluator.py` (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, `AgentEvaluationMetric`).
+  - Added deterministic scoring functions: Plan Precision (`evaluate_plan_precision`), Tool Accuracy (`evaluate_tool_accuracy`), Evidence Coverage (`evaluate_evidence_coverage`), and sentence-level Hallucination Rate (`evaluate_hallucination_rate`).
+  - Implemented database models `DBAgentEvaluation` and `DBAgentStepMetric` in `packages/database/src/database/models/agent_evaluation.py` with full PostgreSQL/SQLite parity.
+  - Implemented `AgentEvaluationRepository` in `packages/database/src/database/repositories/agent_evaluation_repo.py` supporting evaluation scorecard persistence, step telemetry inspection, and aggregate KPI calculation.
+  - Implemented REST API endpoints in `apps/api/src/api/routes/agent_evaluations.py`:
+    - `POST /api/v1/agents/evaluate`: Evaluates an agent execution run or research job.
+    - `GET /api/v1/agents/evaluations`: Lists historical evaluations with agent and job filters.
+    - `GET /api/v1/agents/evaluations/{id}`: Retrieves detailed evaluation scorecard and sequential step telemetry.
+    - `DELETE /api/v1/agents/evaluations/{id}`: Deletes evaluation run.
+    - `GET /api/v1/agents/metrics/summary`: Returns system-wide quality, evidence coverage, hallucination rate, token usage, and cost aggregates.
+  - Created interactive Agent Observability Studio in `apps/web/src/pages/AgentEvaluationPage.tsx` with KPI scorecards, per-agent architecture badges, historical evaluation runs table, run audit modal, and sequential step telemetry inspector drawer.
+  - Integrated `/agents/evaluations` route into `App.tsx` and added `Agent Observability` navigation link to `Layout.tsx`.
+  - Added comprehensive test suites in `packages/ai/tests/test_agent_evaluator.py`, `packages/database/tests/test_agent_evaluation_repo.py`, and `apps/api/tests/test_agent_evaluation_api.py`, achieving 100% pass rate (299/299 tests passing).
+  - Formalized **ADR 022** (Autonomous Agent Evaluation and Hallucination Observability Engine).
+
+---
+
+## [1.5.0] - 2026-09-13 (Generation 5 Milestone 2: Phase 21 - Model Evaluation System)
+
+### Added
+- **Phase 21: Model Evaluation System**:
+  - Implemented standardized golden benchmark suite in `packages/ai/src/ai/eval/schemas.py` (`BenchmarkCategory`, `BenchmarkSample`, `BenchmarkDataset`, and `DEFAULT_RESEARCH_BENCHMARK`).
+  - Implemented `EvaluationMetricsEngine` in `packages/ai/src/ai/eval/metrics.py` computing quantitative scores across Factual Accuracy, Reasoning Depth, Retrieval Faithfulness, Citation Precision, Latency, and Cost.
+  - Implemented `ModelEvaluator` in `packages/ai/src/ai/eval/evaluator.py` orchestrating end-to-end evaluation runs with low temperature against `ModelGateway`.
+  - Implemented database models `DBModelEvaluation` and `DBModelBenchmarkResult` in `packages/database/src/database/models/evaluation.py` with full PostgreSQL/SQLite parity.
+  - Implemented `ModelEvaluationRepository` in `packages/database/src/database/repositories/evaluation_repo.py` supporting evaluation CRUD, latest-per-model queries, and test case relationship queries.
+  - Created REST API endpoints in `apps/api/src/api/routes/evaluation.py`:
+    - `POST /api/v1/models/evaluate`: Triggers evaluation runs.
+    - `GET /api/v1/models/evaluations`: Lists historical evaluation runs.
+    - `GET /api/v1/models/evaluations/{id}`: Retrieves detailed sample test case breakdown.
+    - `DELETE /api/v1/models/evaluations/{id}`: Deletes evaluation run.
+    - `GET /api/v1/models/leaderboard`: Returns aggregated competitive leaderboard with Pareto optimal badges.
+  - Created interactive React Leaderboard Studio `ModelEvaluationPage.tsx` with ranking table, benchmark runner modal, score progress bars, and test case breakdown drawer.
+  - Added unit, database repository, and integration test suites in `packages/ai/tests/test_model_evaluator.py`, `packages/database/tests/test_evaluation_repo.py`, and `apps/api/tests/test_model_evaluation_api.py`, achieving 100% pass rate across 291 monorepo tests.
+  - Formalized **ADR 021** (Automated Model Evaluation System with Golden Benchmark Harness and Competitive Leaderboard).
+
+---
+
+## [1.4.0] - 2026-09-13 (Generation 5 Milestone 1: Phase 20 - Intelligent Model Ecosystem)
+
+### Added
+- **Phase 20: Intelligent Model Ecosystem**:
+  - Implemented `ModelEcosystemOptimizer` in `packages/ai/src/ai/router/optimizer.py` with multi-parameter utility scoring formula: $\text{Score}(M) = w_q \cdot Q(M) + w_s \cdot S(M) + w_c \cdot C(M) + w_l \cdot L(M)$.
+  - Implemented non-dominated Pareto-frontier sorting across Quality, Speed, and Cost Efficiency dimensions.
+  - Defined preset `OptimizationProfile` schemas (`Balanced`, `Cost Minimized`, `Speed Maximized`, `Quality & Reasoning Maximized`, `Custom`).
+  - Integrated routing profile awareness into `ModelRouter` (`packages/ai/src/ai/providers/router.py`) and `ModelGateway` (`packages/ai/src/ai/gateway/model_gateway.py`), attaching `routing_profile` to execution telemetry.
+  - Implemented REST API endpoints in `apps/api/src/api/routes/models.py`:
+    - `GET /api/v1/models/profiles`: Returns preset optimization profiles with normalized weight breakdowns.
+    - `POST /api/v1/models/optimize`: Simulates candidate model ranking, Pareto-frontier identification, and itemized trade-off rationale.
+  - Upgraded `NewResearch.tsx` with interactive profile selector cards and live simulation preview.
+  - Formalized **ADR 020** (Intelligent Model Ecosystem with Multi-Parameter Routing Optimization and Pareto-Frontier Selection).
+  - Added unit and integration test suites in `packages/ai/tests/test_model_ecosystem_optimizer.py` and `apps/api/tests/test_model_optimization_api.py`, achieving 100% pass rate across 283 monorepo tests.
+
+---
+
+## [1.3.0] - 2026-09-13 (Generation 4 Milestone 2: Phase 19 - Team Collaboration)
+
+### Added
+- **Phase 19: Team Collaboration**:
+  - Implemented `DBWorkspaceInvite`, `DBReportAnnotation`, and `DBWorkspaceActivity` database models in `packages/database/src/database/models/collaboration.py` with URL-safe crypto token generation, 7-day expiration, and dialect-safe `GUID`/`JSONType`.
+  - Implemented `WorkspaceInviteRepository`, `ReportAnnotationRepository`, and `WorkspaceActivityRepository` in `packages/database/src/database/repositories/collaboration_repo.py` supporting token redemption, multi-role membership upgrade, threaded report annotations with quotes and resolution tracking, and chronological activity auditing.
+  - Created REST API endpoints in `apps/api/src/api/routes/collaboration.py`:
+    - `/api/v1/workspaces/{id}/invites` (POST, GET)
+    - `/api/v1/invites/{token}` (GET)
+    - `/api/v1/invites/{token}/accept` (POST)
+    - `/api/v1/invites/{id}` (DELETE)
+    - `/api/v1/reports/{id}/annotations` (POST, GET)
+    - `/api/v1/annotations/{id}/resolve` (PATCH)
+    - `/api/v1/annotations/{id}` (DELETE)
+    - `/api/v1/workspaces/{id}/activities` (GET)
+    - `/api/v1/projects/{id}/activities` (GET)
+  - Built React collaboration components:
+    - `WorkspaceMembersModal.tsx`: Real-time member roster, role badges, email invitation modal, invite link copy button, and pending invite revocation.
+    - `ReportAnnotationsDrawer.tsx`: Slide-over review drawer on `ResearchDetail.tsx` with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution.
+    - Integrated team access modal into `ProjectsPage.tsx` and review notes trigger into `ResearchDetail.tsx`.
+  - Formalized **ADR 019** (Team Collaboration, Workspace Invites, Report Annotations, and Activity Feed).
+  - Added unit and integration test suites in `packages/database/tests/test_collaboration_repo.py` and `apps/api/tests/test_collaboration_api.py`, achieving 100% pass rate across all 276 monorepo tests.
+
+---
+
+## [1.2.0] - 2026-09-13 (Generation 4 Milestone 1: Phase 18)
+
+### Added
+- **Phase 18: Projects & Workspaces**:
+  - Implemented `DBWorkspace`, `DBWorkspaceMember`, and `DBProject` database models in `packages/database/src/database/models/workspace.py` with cross-database dialect-safe `GUID`, `JSONType`, multi-role membership (`owner`, `admin`, `researcher`, `member`, `viewer`), and collision-resistant slug generation.
+  - Extended existing models (`ResearchJob`, `Document`, `DBResearchMemory`, `DBKnowledgeEntity`) with `workspace_id` and `project_id` foreign keys and compound indexes for full tenant isolation.
+  - Implemented `WorkspaceRepository` and `ProjectRepository` in `packages/database/src/database/repositories/` with auto-provisioning of personal workspaces and default projects, membership RBAC queries, and aggregate statistical overview queries (`total_jobs`, `total_documents`, `total_memories`, `total_graph_entities`).
+  - Created complete FastAPI REST API endpoints in `apps/api/src/api/routes/workspaces.py` and `apps/api/src/api/routes/projects.py` with dependency injection in `dependencies.py` and registration in `main.py`.
+  - Upgraded `ResearchPipeline` and `IngestionPipeline` to accept, propagate, and filter by `workspace_id` and `project_id`.
+  - Built `WorkspaceContext.tsx` global provider, `WorkspaceSelector.tsx` dropdown in sidebar navigation, and dedicated `ProjectsPage.tsx` management dashboard in `apps/web`.
+  - Formalized **ADR 018** (Multi-Tenant Workspace & Project Hierarchy).
+  - Added unit and integration test suites in `packages/database/tests/test_workspace_project_repo.py` and `apps/api/tests/test_workspaces_projects_api.py`, achieving 100% pass rate across all 270 monorepo tests.
+
+---
+
+## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
+
+### Added
+- **Phase 17: Long-Term Knowledge Graph**:
+  - Implemented `DBKnowledgeEntity` and `DBKnowledgeRelation` database models in `packages/database/src/database/models/graph.py` with cross-database dialect-safe `GUID`, `JSONType`, entity categories (`concept`, `person`, `organization`, `technology`, `methodology`, `finding`, `dataset`, `metric`, `other`), aliases, and properties.
+  - Implemented `KnowledgeGraphRepository` in `packages/database/src/database/repositories/graph_repo.py` supporting CRUD, entity name canonicalization, batch triplet upserting, $k$-hop BFS neighborhood extraction (`get_k_hop_subgraph`), and shortest-path multi-hop traversal (`find_shortest_path`).
+  - Implemented `KnowledgeGraphEngine` in `packages/research/src/research/graph/engine.py` orchestrating automated triplet extraction from research findings, LLM fallback parsing, Graph-Augmented RAG (`GraphRAG`), and semantic pathfinding.
+  - Added Agent graph tools in `packages/tools/src/tools/definitions/graph.py`: `QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, and `FindRelationPathTool` with lazy loading to prevent circular import chains.
+  - Created complete FastAPI REST API endpoints in `apps/api/src/api/routes/graph.py` (`/nodes`, `/edges`, `/subgraph`, `/paths`, `/extract`, `/stats`) wired in `dependencies.py` and `main.py`.
+  - Added WebSocket real-time events: `GRAPH_ENTITIES_EXTRACTED` and `GRAPH_RELATIONS_EXTRACTED`.
+  - Developed interactive React network studio `KnowledgeGraphViewer.tsx` and `KnowledgeGraphPage.tsx` with dynamic SVG force layouts, node dragging, pan/zoom, type color badges, multi-hop pathfinding explorer, and direct integration into `ResearchDetail.tsx` and `Layout.tsx`.
+  - Formalized **ADR 017** (Long-Term Knowledge Graph & GraphRAG via In-Database Adjacency vs External Graph DBs).
+  - Added unit test suites across all layers (`test_knowledge_graph_repository.py`, `test_knowledge_graph_engine.py`, `test_knowledge_graph_tools.py`, `test_graph_api.py`), achieving 100% pass rate (265/265 tests).
+- **Phase 16: Research Memory**:
+  - Implemented `DBResearchMemory` database model in `packages/database/src/database/models/memory.py` supporting dialect-safe JSON/GUID types, memory types (`concept`, `finding`, `hypothesis`, `methodology`, `fact`), tagging, confidence scores, provenance, and access statistics (`access_count`, `last_accessed_at`).
+  - Implemented `MemoryRepository` in `packages/database/src/database/repositories/memory_repository.py` providing transactional async CRUD, keyword/text search across titles/content/tags, access incrementing, and count aggregations.
+  - Implemented `ResearchMemoryManager` in `packages/research/src/research/memory/manager.py` with `recall_memories()`, prompt formatting, and `store_memories_from_report()` for automated post-synthesis persistence of distilled findings, methodologies, and hypotheses.
+  - Integrated research memory recall into `PlannerAgent` context in `packages/research/src/research/pipeline.py` and `packages/agents/src/agents/planner/planner_agent.py`.
+  - Added `RecallMemoryTool` and `StoreMemoryTool` in `packages/tools/src/tools/definitions/memory.py` allowing autonomous agents to query and persist memory items during research execution.
+  - Created FastAPI REST endpoints in `apps/api/src/api/routes/memory.py` (`GET /`, `POST /`, `GET /search`, `GET /{id}`, `PATCH /{id}`, `DELETE /{id}`) with dependency injection in `apps/api/src/api/dependencies.py`.
+  - Added `MEMORY_RECALLED` and `MEMORY_STORED` WebSocket domain events in `ResearchEventType`.
+  - Built interactive `ResearchMemoryViewer.tsx` React component with rich dark theme, type filtering, confidence gauges, tag filtering, access stats, and manual creation modals.
+  - Added dedicated `/memory` route in `apps/web/src/App.tsx`, nav link in `apps/web/src/components/Layout.tsx`, and a Memories tab in `apps/web/src/pages/ResearchDetail.tsx`.
+  - Added unit test suites in `packages/database/tests/test_memory_repository.py`, `packages/research/tests/test_research_memory.py`, `packages/tools/tests/test_memory_tools.py`, and `apps/api/tests/test_memory_api.py`, achieving 100% pass rate across all 256 monorepo tests.
+- **Phase 15: Deep Research Engine**:
+  - Implemented `DeepResearchEngine` in `packages/research/src/research/deep_research.py` orchestrating autonomous multi-round recursive research loops, iterative hypothesis formulation, and dynamic DAG subtask rescheduling.
+  - Added `DeepResearchConfig` and `ResearchIteration` data structures in `packages/research/src/research/models.py` tracking iteration index, hypothesis formulation, targeted subtasks, and quantitative confidence progression.
+  - Upgraded `CriticAgent` in `packages/agents/src/agents/critic/critic_agent.py` to audit evidence coverage, isolate unresolved gaps (`gap_queries`), and formulate testable `suggested_hypotheses`.
+  - Enhanced `PlannerAgent.replan()` in `packages/agents/src/agents/planner/planner_agent.py` to accept deep iteration indices and transform gap queries and hypotheses into prioritized investigation subtasks.
+  - Enforced 3 strict convergence guardrails: target confidence threshold ($\tau \ge 0.85$), maximum iteration ceiling (`max_iterations`, default: 3, max: 5), and diminishing returns cutoff ($\Delta \tau < 0.02$ across rounds).
+  - Defined real-time deep research event types (`DEEP_RESEARCH_STARTED`, `RESEARCH_ITERATION_STARTED`, `HYPOTHESIS_FORMULATED`, `RESEARCH_ITERATION_COMPLETED`, `DEEP_RESEARCH_CONVERGED`, `DEEP_RESEARCH_TERMINATED`) with live WebSocket broadcasting.
+  - Built `DeepResearchTracker.tsx` in `apps/web/src/components/` with multi-round iteration stepper, confidence convergence gauge, hypothesis status badges, and gap resolution explorer.
+  - Added unit test suites in `packages/research/tests/test_deep_research.py` and `packages/agents/tests/test_deep_critic.py`, achieving 100% pass rate across all 247 tests.
+- **Phase 14: Document & Paper Intelligence**:
+  - Implemented `AcademicPaperParser` in `packages/ingestion/src/ingestion/parsers/academic.py` extracting hierarchical section trees (`PaperSection`), metadata (title, authors, affiliations, abstract), LaTeX/markdown formulas, and explicit limitations.
+  - Implemented `BibEntry` bibliographic extraction and citation anchoring, mapping inline references (`[1]`, `(Author et al., 2024)`) directly to bibliography entries with DOI and arXiv metadata.
+  - Enhanced `SemanticChunker` with academic section-aware boundary chunking, preserving section titles and types (`methodology`, `results`, `limitations`) for fine-grained hybrid RAG retrieval.
+  - Created `PaperAnalysisTool` and `MethodologyComparisonTool` in `packages/tools/src/tools/definitions/paper_analysis.py` for automated extraction of research dimensions and multi-paper comparative matrices.
+  - Equipped `DocumentAnalysisAgent` with academic paper parsing and comparative analysis tools.
+  - Created `PaperViewer.tsx` (interactive section navigation tree, citation popovers, limitations card) and `ComparisonMatrix.tsx` (cross-paper methodology diffs) in `apps/web`.
+  - Added unit test suites in `packages/ingestion/tests/test_academic_parser.py` and `packages/tools/tests/test_paper_analysis.py`.
+- **Phase 13: Dataset & Data Analysis Intelligence**:
+  - Implemented `TabularParser` in `packages/ingestion/src/ingestion/parsers/tabular.py` supporting `.csv`, `.tsv`, `.xlsx`, `.xls`, and `.json` datasets with automated delimiter sniffing, schema type inference, column distribution profiling (mean, median, std dev, min/max, nulls, unique count), and Markdown summary table formatting.
+  - Implemented `DataAnalysisTool` in `packages/tools/src/tools/definitions/data_analysis.py` providing deterministic calculations for descriptive statistics, multi-column group-by aggregations (`sum`, `mean`, `median`, `min`, `max`, `count`), Pearson correlation coefficients, linear regression modeling (slope, intercept, $R^2$), and relational record filtering.
+  - Implemented `DeterministicMathTool` enforcing **ADR 007** and **ADR 013** zero-hallucination standards via safe recursive Python Abstract Syntax Tree (AST) expression evaluation.
+  - Equipped `DocumentAnalysisAgent` with `DataAnalysisTool` and `DeterministicMathTool` for autonomous investigation of structured data files.
+  - Enhanced `SemanticChunker` with dataset profile chunking, making column metadata, statistics, and sample rows searchable via dense vector and BM25 RRF hybrid retrieval.
+  - Whitelisted dataset formats (`CSV`, `TSV`, `EXCEL`, `JSON`) in `DocumentFormat`, `SourceType`, and the FastAPI document upload route.
+  - Developed `DatasetViewer.tsx` React component with interactive tabbed views for dataset summaries, column metrics, and raw sample records.
+  - Added unit test suites in `packages/ingestion/tests/test_tabular_parser.py` and `packages/tools/tests/test_data_analysis_tool.py`.
+- **Phase 12: Advanced Multimodal Research**:
+  - Extended `CitationCoordinates` with `timestamp_start`, `timestamp_end`, `media_type`, `speaker`, and `chart_data` across models and schemas.
+  - Implemented `AudioParser` for speech audio formats (`.mp3`, `.wav`, `.m4a`, `.flac`, `.ogg`, `.aac`) extracting timestamped dialogue segments (`[MM:SS - MM:SS]`) and speaker attribution.
+  - Implemented `VideoParser` for video media (`.mp4`, `.mov`, `.avi`, `.mkv`, `.webm`) creating synchronized chronological timeline transcripts, visual events, and keyframe metadata.
+  - Upgraded `ImageParser` to detect scientific figures and plots, producing structured `ChartRef` models with JSON data series and Markdown data tables.
+  - Enhanced `SemanticChunker` with multimodal segmentation, generating timestamp-bounded audio/video chunks and structured chart chunks for vector and BM25 RRF indexing.
+  - Whitelisted audio and video MIME types and file extensions in FastAPI document upload endpoints.
+  - Created `MultimodalEvidenceViewer.tsx` studio component in React frontend for interactive inspection of media citations, timestamp ranges, speakers, and chart data series.
+  - Added unit test suite in `packages/ingestion/tests/test_multimodal_audio_video.py`.
+- **Phase 11: Advanced Research Planning**:
+  - Implemented hierarchical Subquestion Decomposition and Query Trees (`QueryTreeNode`) for multi-level strategic planning.
+  - Added quantitative ambiguity evaluation (`ambiguity_score`) and autonomous parameterization of research boundaries (`InferredScope`).
+  - Added dynamic agent role and capability matching, mapping sub-inquiries to specialized agent personas with execution contracts.
+  - Implemented closed-loop Adaptive Replanning (`PlannerAgent.replan()`) triggered dynamically when `CriticAgent` detects evidentiary gaps or critical contradictions during execution.
+  - Extended `ResearchTask` and `DBResearchTask` with `parent_task_id`, `is_dynamic`, and `depth` metadata.
+  - Added `plan_decomposed`, `task_spawned`, and `dag_replanned` WebSocket events to `ResearchEventType`.
+  - Created interactive `QueryTreeViewer.tsx` React component in `apps/web` with branch expand/collapse, ambiguity indicators, and live execution status.
+  - Added unit test suite in `packages/agents/tests/test_planner_advanced_planning.py`.
+- **Phase 10: Evidence & Citation Intelligence**:
+  - Implemented fine-grained claim extraction and coordinate anchoring (`CitationCoordinates`) mapping claims to exact document coordinates (`page_number`, `paragraph_index`, `table_row`, `table_col`, `char_start`, `char_end`, `exact_quote`).
+  - Added structured `Citation` and `Contradiction` models with SQLite and PostgreSQL 16 JSONB cross-compatibility.
+  - Implemented pairwise Contradiction Detection Engine in `CriticAgent` with classification taxonomy (`direct_conflict`, `numerical_discrepancy`, `methodological_divergence`).
+  - Upgraded `ReportAgent` to synthesize nested citations per finding, preserve the contradictions matrix, and calculate an overall quantitative factual confidence score (`confidence_score`).
+  - Integrated full end-to-end evidence citation flow across `ResearchPipeline`, database models, and API serialization.
+  - Added TypeScript interfaces in `apps/web/src/types/research.ts` (`Citation`, `CitationCoordinates`, `Contradiction`).
+  - Added comprehensive test suites: `test_citation_intelligence.py`, `test_critic_contradiction_detection.py`, and `test_report_citation_synthesis.py`.
+- **Phase 9: Intelligent Knowledge Automation**:
+  - Automated zero-touch ingestion and dual-indexing (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index $\rightarrow$ Ready`).
+  - Added document processing status lifecycle (`pending` $\rightarrow$ `processing` $\rightarrow$ `ready` / `failed`) in `Document` model and repository.
+  - Integrated `KnowledgeIndexer` into `IngestionPipeline` for immediate `VectorStore` (embeddings) and `BM25Index` (lexical tokens) population.
+  - Enhanced `PlannerAgent` with knowledge-base awareness, enabling the planner to inspect available domain documents before decomposing inquiries into the Task DAG.
+  - Enhanced `DocumentAnalysisAgent` to support hybrid semantic retrieval (`KnowledgeSearchTool`) alongside direct document reading.
+  - Added REST endpoints for knowledge base operations: `GET /api/v1/documents/search`, `POST /api/v1/documents/{id}/reindex`, and cascading `DELETE /api/v1/documents/{id}`.
+- **Phase 8B: Persistent Usage & Quota Subsystem** (`commit: a603114`):
+  - Added `UserQuota` model supporting configurable token and cost limits (`NULL` = unlimited).
+  - Added `UsageRecord` model capturing per-inference telemetry (`input_tokens`, `output_tokens`, `total_tokens`, `estimated_cost`, `latency_ms`).
+  - Added `UsageRepository` with transactional row-level locking (`SELECT ... FOR UPDATE`) to prevent race conditions during concurrent agent calls.
+  - Verified concurrency guarantees with test suite (10 concurrent workers @ 20 tokens against 50-token quota resulting in 0 oversubscription).
+  - Added quota-aware model fallback routing.
+  - Propagated authenticated `user_id` from JWT auth down into `ResearchPipeline`, `AgentOrchestrator`, and `AgentContext`.
+- **Comprehensive Documentation Architecture** (`commit: a00949e`):
+  - Established synchronized documentation across `/README.md`, `/AGENTS.md`, `/docs/` (PRD, TRD, ARCHITECTURE, backend-schema, flow, decisions, CHANGELOG), `/design/ui-ux.md`, and `/TODO.md`.
+  - Formalized 6-generation product roadmap spanning Phases 9 to 26.
+- **Phase 8A: Intelligent Model Routing & Multi-Provider Gateway** (`commit: 88ac57d`):
+  - Created `ModelRegistry` dynamic capability catalog (`STREAMING_RESPONSE`, `VISION_ANALYSIS`, `FACTUAL_EXTRACTION`, `SYNTHESIS`).
+  - Created `ProviderRegistry` for active provider lifecycle and health monitoring.
+  - Created `ModelRouter` for multi-criteria task matching and priority scoring.
+  - Created `ModelGateway` for unified completion, streaming, vision invocation, and automated rate limit/error fallback failover.
+
+---
+
+## [1.0.0] - 2026-09-08
+
+### Added
+- **Phase 7: Application Maturity & Authentication Completion**:
+  - Phase 7.1: Fixed research job response mapping in web dashboard.
+  - Phase 7.2: Added persistent PostgreSQL `users` table, Alembic migration (`001_create_users_table.py`), and PBKDF2 password hashing.
+  - Phase 7.3: Migrated to official Google Gemini SDK (`ai.providers.gemini.GeminiProvider`); deleted legacy unofficial `GeminiWeb2API`.
+  - Added authenticated real-time WebSocket streaming (`/api/v1/research/{id}/ws`) with initial state snapshot hydration.
+- **Phase 6: Production & Security**:
+  - Added JWT access/refresh token lifecycle and RBAC (`Admin`, `Researcher`, `Viewer`).
+  - Added SSRF protection in `WebFetchTool` with strict private IP and metadata endpoint filtering.
+  - Added Prometheus metrics exposition (`/metrics`) and Kubernetes deployment manifests.
+- **Phase 5: Hybrid RAG & Knowledge Layer**:
+  - Implemented Reciprocal Rank Fusion (RRF) combining dense ChromaDB vector search and sparse BM25 lexical search.
+  - Added document chunking with metadata preservation.
+- **Phase 4: Agentic System Core**:
+  - Built autonomous agent hierarchy: `PlannerAgent`, `WebResearchAgent`, `DocumentAnalysisAgent`, `CriticAgent`, and `ReportAgent`.
+  - Added DAG execution engine with topological dependency resolution.
+- **Phase 3: Multimodal Ingestion Pipeline**:
+  - Added native PDF extraction with table detection (`pdfplumber`).
+  - Added DOCX extraction (`python-docx`).
+  - Added Image extraction via Vision LLMs (`Pillow`).
+- **Phase 2: Research MVP**:
+  - Implemented initial end-to-end research workflow from inquiry formulation to report generation.
+- **Phase 1: Foundation**:
+  - Established modular monorepo structure with FastAPI backend, SQLAlchemy 2.0 Async, and React 18 / Vite frontend.

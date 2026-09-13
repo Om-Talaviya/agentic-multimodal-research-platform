@@ -1,10 +1,49 @@
-"""Database models."""
-
-from database.models.research_job import ResearchJob, ResearchTask
-from database.models.source import Source, Evidence
-from database.models.document import Document, DocumentChunk
-from database.models.report import Report
+from database.models.agent_evaluation import DBAgentEvaluation, DBAgentStepMetric
 from database.models.agent_run import AgentRun, ModelCall
+from database.models.collaboration import (
+    DBReportAnnotation,
+    DBWorkspaceActivity,
+    DBWorkspaceInvite,
+)
+from database.models.document import Document, DocumentChunk
+from database.models.evaluation import DBModelBenchmarkResult, DBModelEvaluation
+from database.models.graph import DBKnowledgeEntity, DBKnowledgeRelation
+from database.models.memory import DBResearchMemory
+from database.models.report import Report
+from database.models.research_job import ResearchJob, ResearchTask
+from database.models.infrastructure import DBStorageObject, DBWorkerNode
+from database.models.api_key import DBApiKey
+from database.models.automation import DBAutomationAlert, DBResearchSweepResult, DBScheduledResearch
+from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
+from database.models.source import Evidence, Source
+from database.models.usage_record import UsageRecord
+from database.models.user import User
+from database.models.user_quota import UserQuota
+from database.models.workspace import DBProject, DBWorkspace, DBWorkspaceMember
+
+# Aliases for standard naming
+ResearchMemory = DBResearchMemory
+KnowledgeEntity = DBKnowledgeEntity
+KnowledgeRelation = DBKnowledgeRelation
+Workspace = DBWorkspace
+WorkspaceMember = DBWorkspaceMember
+Project = DBProject
+WorkspaceInvite = DBWorkspaceInvite
+ReportAnnotation = DBReportAnnotation
+WorkspaceActivity = DBWorkspaceActivity
+ModelEvaluation = DBModelEvaluation
+ModelBenchmarkResult = DBModelBenchmarkResult
+AgentEvaluation = DBAgentEvaluation
+AgentStepMetric = DBAgentStepMetric
+SecurityAuditLog = DBSecurityAuditLog
+EncryptedSecret = DBEncryptedSecret
+SecurityPolicy = DBSecurityPolicy
+WorkerNodeModel = DBWorkerNode
+StorageObject = DBStorageObject
+ApiKey = DBApiKey
+ScheduledResearch = DBScheduledResearch
+ResearchSweepResult = DBResearchSweepResult
+AutomationAlert = DBAutomationAlert
 
 __all__ = [
     "ResearchJob",
@@ -16,4 +55,51 @@ __all__ = [
     "Report",
     "AgentRun",
     "ModelCall",
+    "User",
+    "UsageRecord",
+    "UserQuota",
+    "DBResearchMemory",
+    "ResearchMemory",
+    "DBKnowledgeEntity",
+    "DBKnowledgeRelation",
+    "KnowledgeEntity",
+    "KnowledgeRelation",
+    "DBWorkspace",
+    "DBWorkspaceMember",
+    "DBProject",
+    "Workspace",
+    "WorkspaceMember",
+    "Project",
+    "DBWorkspaceInvite",
+    "DBReportAnnotation",
+    "DBWorkspaceActivity",
+    "WorkspaceInvite",
+    "ReportAnnotation",
+    "WorkspaceActivity",
+    "DBModelEvaluation",
+    "DBModelBenchmarkResult",
+    "ModelEvaluation",
+    "ModelBenchmarkResult",
+    "DBAgentEvaluation",
+    "DBAgentStepMetric",
+    "AgentEvaluation",
+    "AgentStepMetric",
+    "DBSecurityAuditLog",
+    "SecurityAuditLog",
+    "DBEncryptedSecret",
+    "EncryptedSecret",
+    "DBSecurityPolicy",
+    "SecurityPolicy",
+    "DBWorkerNode",
+    "WorkerNodeModel",
+    "DBStorageObject",
+    "StorageObject",
+    "DBApiKey",
+    "ApiKey",
+    "DBScheduledResearch",
+    "ScheduledResearch",
+    "DBResearchSweepResult",
+    "ResearchSweepResult",
+    "DBAutomationAlert",
+    "AutomationAlert",
 ]

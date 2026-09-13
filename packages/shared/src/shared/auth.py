@@ -70,6 +70,19 @@ class User(BaseModel):
         perms = ROLE_PERMISSIONS.get(self.role, set())
         return permission in perms
 
+    @classmethod
+    def from_db(cls, db_user: Any) -> "User":
+        """Convert a SQLAlchemy User database model to a Pydantic User entity."""
+        return cls(
+            id=str(db_user.id),
+            username=db_user.username,
+            email=db_user.email,
+            role=UserRole(db_user.role) if isinstance(db_user.role, str) else db_user.role,
+            is_active=db_user.is_active,
+            hashed_password=getattr(db_user, "password_hash", None) or getattr(db_user, "hashed_password", None),
+            created_at=db_user.created_at if hasattr(db_user, "created_at") and db_user.created_at else datetime.now(timezone.utc),
+        )
+
 
 class TokenPayload(BaseModel):
     """Decoded JWT claims payload."""
@@ -189,7 +202,11 @@ def verify_token(
     """Verify and decode JWT token."""
     key = secret_key or settings.secret_key
     try:
-        payload_dict = jwt.decode(token, key, algorithms=[JWT_ALGORITHM])
+        payload_dict = jwt.decode(token, key, algorithms=[JWT_ALGORITHM], options={"verify_exp": False})
+        exp = payload_dict.get("exp")
+        if exp is not None and datetime.now(timezone.utc).timestamp() > exp:
+            raise JWTError("Signature has expired.")
+
         token_type = payload_dict.get("type", "access")
         if token_type != expected_type:
             raise AuthenticationError(f"Invalid token type: expected '{expected_type}', got '{token_type}'")

@@ -1,5 +1,4 @@
 """Model router for capability and task-based provider selection."""
-
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 from ai.providers.base import (
     EmbeddingProvider,
@@ -9,6 +8,13 @@ from ai.providers.base import (
 )
 from ai.registry.model_registry import ModelDefinition, ModelRegistry
 from ai.registry.provider_registry import ProviderRegistry
+from ai.router.optimizer import (
+    ModelEcosystemOptimizer,
+    OptimizationProfile,
+    OptimizationResult,
+    PRESET_PROFILES,
+    ProfileType,
+)
 from ai.router.tasks import TaskType, get_required_capabilities, normalize_task
 from ai.schemas import ModelCapabilities, ModelCapability, ProviderHealth
 from shared.exceptions import ModelNotFoundError, ProviderError
@@ -19,7 +25,6 @@ logger = get_logger(__name__)
 
 class NoSuitableModelError(Exception):
     """Raised when no provider or model supports required capabilities."""
-
     pass
 
 
@@ -78,12 +83,32 @@ class ModelRouter:
         exclude_providers: Optional[List[str]] = None,
         requires_vision: bool = False,
         requires_streaming: bool = False,
+        user_id: Optional[str] = None,
+        routing_profile: Optional[Union[str, OptimizationProfile, ProfileType]] = None,
     ) -> Tuple[ModelDefinition, LLMProvider]:
-        """Select best matching (ModelDefinition, LLMProvider) pair."""
+        """Select best matching (ModelDefinition, LLMProvider) pair.
+
+        Routing logic (in order of application):
+        1. Explicit model selection takes highest precedence (backward compatible)
+        2. Determine target capabilities from task or explicit parameter
+        3. Query candidate models from registry, filtered by:
+           - Required capabilities
+           - Vision support
+           - Streaming support
+           - Tier preference (FREE first if no task-specific policy)
+           - Exclude models/providers
+        4. Health/availability filtering
+        5. Context window compatibility filtering
+        6. Deterministic / Multi-parameter optimization ranking
+        7. Return selected (ModelDefinition, LLMProvider)
+        """
+
         exclude_models = exclude_models or []
         exclude_providers = exclude_providers or []
 
-        # 1. Explicit model selection takes highest precedence
+        # =========================================================================
+        # 1. Explicit model selection takes highest precedence (backward compatible)
+        # =========================================================================
         if requested_model:
             model_def = self.model_registry.get(requested_model)
             if not model_def:
@@ -112,18 +137,29 @@ class ModelRouter:
                         is_local=provider.is_local,
                     )
                 else:
-                    raise ModelNotFoundError("router", f"Requested model '{requested_model}' not found in registry")
+                    raise ModelNotFoundError(
+                        "router", f"Requested model '{requested_model}' not found in registry"
+                    )
 
             provider = self.provider_registry.get_llm(model_def.provider_name)
             if not provider:
                 raise NoSuitableModelError(
                     f"Provider '{model_def.provider_name}' for model '{requested_model}' is not registered"
                 )
+            logger.debug(
+                "Selected model and provider (explicit request)",
+                model=model_def.model_id,
+                provider=provider.name,
+                task=task,
+            )
             return model_def, provider
 
-        # 2. Determine capabilities based on task or explicit parameter
+        # =========================================================================
+        # 2. Determine target capabilities based on task or explicit parameter
+        # =========================================================================
         target_caps: Set[ModelCapability] = set(required_capabilities or set())
         task_type_str: Optional[str] = None
+
         if task:
             normalized = normalize_task(task)
             task_type_str = normalized.value
@@ -132,8 +168,11 @@ class ModelRouter:
         if requires_vision:
             target_caps.add(ModelCapability.VISION)
 
-        # 3. Query candidate models from registry
+        # =========================================================================
+        # 3. Query candidate models from registry, apply capability filtering
+        # =========================================================================
         all_models = self.model_registry.list_models()
+
         if not all_models:
             # If model registry is empty, construct candidates from provider registry
             for p in self.llm_providers:
@@ -152,19 +191,26 @@ class ModelRouter:
                                 supports_vision=isinstance(p, VisionProvider),
                             )
                         )
+        else:
+            # Filter out excluded models/providers from the registry list
+            filtered: List[ModelDefinition] = []
+            for m in all_models:
+                if m.model_id in exclude_models:
+                    continue
+                if m.provider_name in exclude_providers:
+                    continue
+                filtered.append(m)
+            all_models = filtered
 
+        # Capability filtering: model must support all required capabilities
         candidates: List[ModelDefinition] = []
         for m in all_models:
-            if m.model_id in exclude_models:
-                continue
-            if m.provider_name in exclude_providers:
-                continue
             if target_caps and not target_caps.issubset(m.capabilities):
-                continue
+                continue  # Model lacks required capability
             if requires_vision and not m.supports_vision:
-                continue
+                continue  # Model doesn't support vision
             if requires_streaming and not m.supports_streaming:
-                continue
+                continue  # Model doesn't support streaming
             candidates.append(m)
 
         if not candidates:
@@ -173,14 +219,97 @@ class ModelRouter:
                 f"Available: {[m.model_id for m in all_models]}"
             )
 
-        # 4. Rank candidates by (task_suitability, is_local if preferred, priority)
-        def score_candidate(m: ModelDefinition) -> Tuple[int, int, int]:
-            task_match = 1 if (task_type_str and task_type_str in m.task_suitability) else 0
-            local_match = 1 if (prefer_local and m.is_local) else 0
-            return (task_match, local_match, m.priority)
+        # =========================================================================
+        # 4. Tier preference filtering (FREE first, then PAID)
+        # =========================================================================
+        # If a specific routing profile is provided (e.g. QUALITY_MAXIMIZED), allow paid models
+        active_opt_profile: Optional[OptimizationProfile] = None
+        if isinstance(routing_profile, OptimizationProfile):
+            active_opt_profile = routing_profile
+        elif isinstance(routing_profile, ProfileType):
+            active_opt_profile = PRESET_PROFILES.get(routing_profile)
+        elif isinstance(routing_profile, str):
+            try:
+                active_opt_profile = PRESET_PROFILES.get(ProfileType(routing_profile))
+            except ValueError:
+                active_opt_profile = None
 
-        sorted_candidates = sorted(candidates, key=score_candidate, reverse=True)
-        selected_model = sorted_candidates[0]
+        if active_opt_profile and active_opt_profile.profile_type == ProfileType.QUALITY_MAXIMIZED:
+            filtered_by_tier = candidates
+        else:
+            free_candidates = [m for m in candidates if m.is_free()]
+            paid_candidates = [m for m in candidates if m.is_paid()]
+            if free_candidates:
+                filtered_by_tier = free_candidates
+            else:
+                filtered_by_tier = paid_candidates
+
+            if not filtered_by_tier:
+                filtered_by_tier = candidates
+
+        # =========================================================================
+        # 5. Health/availability filtering (Uses ProviderRegistry cached health)
+        # =========================================================================
+        healthy_candidates = [
+            m for m in filtered_by_tier
+            if self.provider_registry.is_provider_healthy(m.provider_name)
+        ]
+
+        if healthy_candidates:
+            final_candidates = healthy_candidates
+        else:
+            # If no providers are cached healthy, fall back to all candidates (degraded mode)
+            final_candidates = filtered_by_tier
+
+        if not final_candidates:
+            raise NoSuitableModelError(
+                f"No suitable model found for task={task}, capabilities={target_caps}. "
+                f"Available: {[m.model_id for m in all_models]}"
+            )
+
+        # =========================================================================
+        # 6. Context window compatibility filtering
+        # =========================================================================
+        min_context = self._derive_min_context_for_task(task_type_str) if task_type_str else None
+
+        context_filtered: List[ModelDefinition] = []
+        for m in final_candidates:
+            if min_context is None:
+                context_filtered.append(m)
+            elif m.context_window and m.context_window >= min_context:
+                context_filtered.append(m)
+            elif m.context_window is None:
+                context_filtered.append(m)
+
+        if not context_filtered:
+            context_filtered = final_candidates
+
+        # =========================================================================
+        # 7. Model Selection: Multi-Parameter Optimizer or Deterministic Ranking
+        # =========================================================================
+        if active_opt_profile:
+            opt_result = ModelEcosystemOptimizer.optimize(
+                candidates=context_filtered,
+                profile=active_opt_profile,
+                task=task_type_str,
+                required_capabilities=target_caps,
+            )
+            selected_model_id = opt_result.selected_model_id
+            selected_model = next((m for m in context_filtered if m.model_id == selected_model_id), context_filtered[0])
+            rationale_msg = opt_result.tradeoff_analysis
+        else:
+            def ranking_key(m: ModelDefinition) -> Tuple[int, int, int, int, int]:
+                task_match_val = 0 if (task_type_str and task_type_str in m.task_suitability) else 1
+                local_match_val = 0 if (prefer_local and m.is_local) else 1
+                tier_priority_val = 0 if m.is_free() else 1
+                cost_priority_val = 0 if (m.input_cost == 0 and m.output_cost == 0) else 1
+                model_priority_val = -m.priority
+                return (task_match_val, local_match_val, tier_priority_val, cost_priority_val, model_priority_val)
+
+            sorted_candidates = sorted(context_filtered, key=ranking_key)
+            selected_model = sorted_candidates[0]
+            rationale_msg = self._routing_rationale(selected_model, task_type_str, context_filtered)
+
         selected_provider = self.provider_registry.get_llm(selected_model.provider_name)
 
         if not selected_provider:
@@ -193,8 +322,105 @@ class ModelRouter:
             model=selected_model.model_id,
             provider=selected_provider.name,
             task=task,
+            profile=active_opt_profile.name if active_opt_profile else "deterministic",
+            rationale=rationale_msg,
         )
         return selected_model, selected_provider
+
+    def optimize_routing(
+        self,
+        task: Optional[Union[str, TaskType]] = None,
+        profile: Optional[Union[str, OptimizationProfile, ProfileType]] = None,
+        required_capabilities: Optional[Set[ModelCapability]] = None,
+    ) -> OptimizationResult:
+        """Simulate and rank candidate models using multi-parameter optimization."""
+        all_models = self.model_registry.list_models()
+        if not all_models:
+            for p in self.llm_providers:
+                for m_id in (p.models or [p.name]):
+                    all_models.append(
+                        ModelDefinition(
+                            model_id=m_id,
+                            provider_name=p.name,
+                            capabilities=set(p.capabilities),
+                            is_local=p.is_local,
+                            priority=5,
+                            supports_streaming=True,
+                            supports_vision=isinstance(p, VisionProvider),
+                        )
+                    )
+
+        opt_profile: Optional[OptimizationProfile] = None
+        if isinstance(profile, OptimizationProfile):
+            opt_profile = profile
+        elif isinstance(profile, ProfileType):
+            opt_profile = PRESET_PROFILES.get(profile)
+        elif isinstance(profile, str):
+            try:
+                opt_profile = PRESET_PROFILES.get(ProfileType(profile))
+            except ValueError:
+                opt_profile = None
+
+        opt_profile = opt_profile or PRESET_PROFILES[ProfileType.BALANCED]
+        task_str = normalize_task(task).value if task else None
+
+        return ModelEcosystemOptimizer.optimize(
+            candidates=all_models,
+            profile=opt_profile,
+            task=task_str,
+            required_capabilities=required_capabilities,
+        )
+
+    def _derive_min_context_for_task(
+        self, task_type_str: Optional[str]
+    ) -> Optional[int]:
+        """Derive minimum context window needed for a task type."""
+        # Task-specific context requirements (tokens)
+        context_map = {
+            TaskType.LONG_FORM_RESEARCH.value: 100000,  # long research needs lots of context
+            TaskType.VISION_ANALYSIS.value: 8192,  # vision typically moderate context
+            TaskType.DEEP_REASONING.value: 32000,  # reasoning may need substantial context
+        }
+        if task_type_str and task_type_str in context_map:
+            return context_map[task_type_str]
+        return None
+
+    def _routing_rationale(
+        self, selected: ModelDefinition, task_type_str: Optional[str], all_candidates: List[ModelDefinition]
+    ) -> str:
+        """Generate a human-readable explanation of the routing decision."""
+        reasons: List[str] = []
+
+        if task_type_str and task_type_str in selected.task_suitability:
+            reasons.append(f"supports task '{task_type_str}'")
+
+        if ModelCapability.VISION in selected.capabilities:
+            if selected.supports_vision:
+                reasons.append("supports vision capability")
+
+        if selected.is_free():
+            reasons.append("free tier preference")
+        else:
+            reasons.append("paid tier")
+
+        if selected.context_window:
+            reasons.append(f"context window {selected.context_window // 1024}K tokens")
+
+        if selected.priority:
+            reasons.append(f"priority {selected.priority}")
+
+        # Explain against what was filtered
+        if all_candidates:
+            reason_parts = []
+            for c in all_candidates[:3]:  # Top 3 for context
+                if c.is_free() and not selected.is_free():
+                    reason_parts.append(f"chose over {c.model_id} (free→paid policy)")
+                if c.task_suitability and task_type_str not in c.task_suitability:
+                    reason_parts.append(f"filtered by task suitability (needs {task_type_str})")
+            if reason_parts:
+                reasons.append("; ".join(reason_parts))
+
+        return "; ".join(reasons) if reasons else "model selected by default ranking"
 
     def select_llm(
         self,
@@ -219,7 +445,8 @@ class ModelRouter:
         except Exception:
             # Fall back to legacy provider capability lookup
             candidates = [
-                p for p in self.llm_providers
+                p
+                for p in self.llm_providers
                 if p.name not in exclude
                 and (not caps_set or caps_set.issubset(p.capabilities))
             ]

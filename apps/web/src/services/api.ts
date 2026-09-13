@@ -11,6 +11,13 @@ const api = axios.create({
 api.interceptors.request.use(config => {
   const requestId = crypto.randomUUID()
   config.headers['X-Request-ID'] = requestId
+
+  // Automatically inject Bearer token if authenticated
+  const token = localStorage.getItem('token')
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
   return config
 })
 
@@ -27,5 +34,13 @@ api.interceptors.response.use(
     return Promise.reject(new Error(message))
   }
 )
+
+export function getResearchWebSocketUrl(jobId: string): string {
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
+  const host = window.location.host
+  const token = localStorage.getItem('token') || ''
+  const query = token ? `?token=${encodeURIComponent(token)}` : ''
+  return `${protocol}//${host}/api/v1/research/${jobId}/ws${query}`
+}
 
 export { api }

@@ -61,15 +61,53 @@ def sanitize_text(text: str, max_length: int = 10000) -> str:
 
 
 def is_safe_filename(filename: str) -> bool:
-    """Validate filename against directory traversal attacks."""
-    if not filename:
+    """Validate filename against directory traversal attacks and forbidden characters."""
+    if not filename or not isinstance(filename, str):
         return False
-    if ".." in filename or filename.startswith("/") or filename.startswith("\\"):
+    from pathlib import Path
+    # Reject relative traversal markers or path separators
+    if ".." in filename or "/" in filename or "\\" in filename:
         return False
-    # Check for reserved characters
-    if any(c in filename for c in '<>:"|?*\x00'):
+    # Ensure pure basename equality
+    if Path(filename).name != filename:
+        return False
+    # Check for reserved filesystem and control characters
+    if any(c in filename for c in '<>:"|?*\x00\r\n\t'):
         return False
     return True
+
+
+def is_safe_url(url: str) -> bool:
+    """Check if a URL is safe from SSRF (public scheme, resolved public IP)."""
+    if not url or not isinstance(url, str):
+        return False
+    import ipaddress
+    import socket
+    from urllib.parse import urlparse
+
+    parsed = urlparse(url)
+    if parsed.scheme.lower() not in ("http", "https"):
+        return False
+    hostname = parsed.hostname
+    if not hostname:
+        return False
+
+    clean_host = hostname.strip("[]")
+    try:
+        ip = ipaddress.ip_address(clean_host)
+        return not (ip.is_loopback or ip.is_private or ip.is_link_local or ip.is_reserved or ip.is_unspecified or ip.is_multicast)
+    except ValueError:
+        pass
+
+    try:
+        infos = socket.getaddrinfo(clean_host, None, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM)
+        for info in infos:
+            ip = ipaddress.ip_address(info[4][0])
+            if ip.is_loopback or ip.is_private or ip.is_link_local or ip.is_reserved or ip.is_unspecified or ip.is_multicast:
+                return False
+        return True
+    except (socket.gaierror, ValueError):
+        return False
 
 
 def sanitize_log_dict(data: Dict[str, Any]) -> Dict[str, Any]:

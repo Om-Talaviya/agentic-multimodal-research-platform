@@ -35,14 +35,14 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://localhost:11434"
     openai_api_key: Optional[str] = None
     anthropic_api_key: Optional[str] = None
-    gemini_web2api_base_url: str = "http://127.0.0.1:8081/v1"
-    gemini_web2api_api_key: Optional[str] = None
-    gemini_web2api_timeout: float = 60.0
-    gemini_web2api_max_retries: int = 2
+    gemini_api_key: Optional[str] = None
+    gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai"
+    gemini_timeout: float = 60.0
+    gemini_max_retries: int = 2
 
     # Default Models
     default_llm_model: str = "llama3.1"
-    gemini_default_model: str = "gemini-3.7-flash"
+    gemini_default_model: str = "gemini-2.0-flash"
     default_vision_model: str = "llava"
     default_embedding_model: str = "nomic-embed-text"
     default_reranker_model: str = "bge-reranker-base"

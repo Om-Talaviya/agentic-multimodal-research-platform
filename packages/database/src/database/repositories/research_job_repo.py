@@ -2,12 +2,16 @@
 
 from typing import Optional, List
 from uuid import UUID
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update, func
 from sqlalchemy.orm import selectinload
 from database.models import ResearchJob, ResearchTask, Source, Evidence
 from shared.types import TaskStatus, JobStatus
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class ResearchJobRepository:
@@ -47,15 +51,16 @@ class ResearchJobRepository:
         status: JobStatus, 
         error: str | None = None
     ) -> None:
-        values = {"status": status.value, "updated_at": datetime.utcnow()}
+        now = utc_now()
+        values = {"status": status.value, "updated_at": now}
         if error:
             values["error_message"] = error
         if status == JobStatus.RUNNING:
-            values["started_at"] = datetime.utcnow()
+            values["started_at"] = now
         elif status == JobStatus.COMPLETED:
-            values["completed_at"] = datetime.utcnow()
+            values["completed_at"] = now
         elif status == JobStatus.FAILED:
-            values["completed_at"] = datetime.utcnow()
+            values["completed_at"] = now
         
         await self.session.execute(
             update(ResearchJob).where(ResearchJob.id == job_id).values(**values)
@@ -66,19 +71,40 @@ class ResearchJobRepository:
         self, 
         limit: int = 50, 
         offset: int = 0,
-        status: JobStatus | None = None
+        status: JobStatus | None = None,
+        user_id: UUID | None = None,
+        workspace_id: UUID | None = None,
+        project_id: UUID | None = None,
     ) -> List[ResearchJob]:
         query = select(ResearchJob).order_by(ResearchJob.created_at.desc())
         if status:
             query = query.where(ResearchJob.status == status.value)
+        if user_id:
+            query = query.where(ResearchJob.user_id == user_id)
+        if workspace_id:
+            query = query.where(ResearchJob.workspace_id == workspace_id)
+        if project_id:
+            query = query.where(ResearchJob.project_id == project_id)
         query = query.limit(limit).offset(offset)
         result = await self.session.execute(query)
         return list(result.scalars().all())
     
-    async def count_jobs(self, status: JobStatus | None = None) -> int:
+    async def count_jobs(
+        self,
+        status: JobStatus | None = None,
+        user_id: UUID | None = None,
+        workspace_id: UUID | None = None,
+        project_id: UUID | None = None,
+    ) -> int:
         query = select(func.count(ResearchJob.id))
         if status:
             query = query.where(ResearchJob.status == status.value)
+        if user_id:
+            query = query.where(ResearchJob.user_id == user_id)
+        if workspace_id:
+            query = query.where(ResearchJob.workspace_id == workspace_id)
+        if project_id:
+            query = query.where(ResearchJob.project_id == project_id)
         result = await self.session.execute(query)
         return result.scalar_one()
 
@@ -121,10 +147,11 @@ class TaskRepository:
         result: dict | None = None
     ) -> None:
         values = {"status": status.value}
+        now = utc_now()
         if status == TaskStatus.RUNNING:
-            values["started_at"] = datetime.utcnow()
+            values["started_at"] = now
         elif status in (TaskStatus.COMPLETED, TaskStatus.FAILED):
-            values["completed_at"] = datetime.utcnow()
+            values["completed_at"] = now
         if error:
             values["error_message"] = error
         if result:

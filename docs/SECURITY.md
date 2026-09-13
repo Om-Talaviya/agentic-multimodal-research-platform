@@ -293,23 +293,27 @@ app.add_middleware(
 )
 ```
 
-## Future: Authentication
+## Authentication & RBAC (Implemented)
+
+JWT-based authentication and role-based access control are implemented in `packages/shared/auth.py` and `apps/api/src/api/routes/auth.py`:
 
 ```python
-# packages/shared/auth.py (placeholder for Phase 6)
-from fastapi import Depends, HTTPException
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+# packages/shared/auth.py & apps/api/src/api/dependencies.py
+from fastapi import Depends, Security
+from shared.auth import User, UserRole
+from api.dependencies import get_current_user, require_role
 
-security = HTTPBearer()
+# Protect route with authenticated user dependency
+@app.get("/api/v1/auth/me")
+async def get_me(user: User = Depends(get_current_user)):
+    return {"user_id": user.id, "role": user.role.value}
 
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    # Validate JWT token
-    # Return user object
+# Enforce specific RBAC role
+@app.post("/api/v1/admin/reset", dependencies=[Security(require_role([UserRole.ADMIN]))])
+async def admin_endpoint():
     pass
-
-# Apply to routes:
-# @app.post("/api/v1/research", dependencies=[Depends(get_current_user)])
 ```
+
 
 ---
 

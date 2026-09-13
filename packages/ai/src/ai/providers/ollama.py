@@ -154,13 +154,17 @@ class OllamaProvider(LLMProvider, VisionProvider, EmbeddingProvider):
         
         async with self._client.stream("POST", "/api/chat", json=payload, timeout=self.timeout) as response:
             response.raise_for_status()
-            async for line in response.aiter_lines():
-                if line.strip():
-                    data = json.loads(line)
-                    if "message" in data and "content" in data["message"]:
-                        yield data["message"]["content"]
-                    if data.get("done"):
-                        break
+            lines = response.aiter_lines()
+            try:
+                async for line in lines:
+                    if line.strip():
+                        data = json.loads(line)
+                        if "message" in data and "content" in data["message"]:
+                            yield data["message"]["content"]
+                        if data.get("done"):
+                            break
+            finally:
+                await lines.aclose()
     
     async def analyze(self, request: VisionRequest) -> VisionResponse:
         model = request.model or settings.default_vision_model

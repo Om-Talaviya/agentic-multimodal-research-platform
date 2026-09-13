@@ -1,11 +1,16 @@
 """Agent run repository."""
 
+import inspect
 from typing import Optional, List
 from uuid import UUID
-from datetime import datetime
+from datetime import UTC, datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update
 from database.models import AgentRun, ModelCall
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class AgentRunRepository:
@@ -15,7 +20,9 @@ class AgentRunRepository:
         self.session = session
     
     async def create(self, run: AgentRun) -> AgentRun:
-        self.session.add(run)
+        res = self.session.add(run)
+        if inspect.isawaitable(res):
+            await res
         await self.session.flush()
         return run
     
@@ -51,7 +58,7 @@ class AgentRunRepository:
     ) -> None:
         values = {
             "success": success,
-            "completed_at": datetime.utcnow(),
+            "completed_at": utc_now(),
         }
         if output:
             values["output"] = output
@@ -73,12 +80,16 @@ class ModelCallRepository:
         self.session = session
     
     async def create(self, call: ModelCall) -> ModelCall:
-        self.session.add(call)
+        res = self.session.add(call)
+        if inspect.isawaitable(res):
+            await res
         await self.session.flush()
         return call
     
     async def create_batch(self, calls: List[ModelCall]) -> List[ModelCall]:
-        self.session.add_all(calls)
+        res = self.session.add_all(calls)
+        if inspect.isawaitable(res):
+            await res
         await self.session.flush()
         return calls
     

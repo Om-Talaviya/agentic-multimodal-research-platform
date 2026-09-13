@@ -14,7 +14,9 @@ export function Dashboard() {
     try {
       setLoading(true)
       const response = await api.get('/research', { params: { limit: 20 } })
-      setJobs(response.data.items || response.data)
+      const data = response.data
+      const jobsList = Array.isArray(data) ? data : (data?.jobs || data?.items || [])
+      setJobs(jobsList)
       setError(null)
     } catch (err) {
       setError('Failed to load research jobs')

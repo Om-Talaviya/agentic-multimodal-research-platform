@@ -12,7 +12,7 @@ RESTful API for the research platform with clear resource-oriented endpoints.
 
 ## Authentication
 
-Future: JWT Bearer tokens. Phase 1: No auth (local development).
+JWT Bearer tokens are implemented in `packages/shared/auth.py` and `apps/api/src/api/routes/auth.py` with Role-Based Access Control (`Admin`, `Researcher`, `Viewer`). Endpoints support bearer authorization headers.
 
 ## Endpoints
 
@@ -222,7 +222,18 @@ Response:
 }
 ```
 
+#### Research Progress WebSocket Stream
+```http
+GET /api/v1/research/{job_id}/ws?token={access_token}
+```
+
+Frames:
+1. **Initial Snapshot** (`type: "snapshot"`): Delivers full job state, tasks, sources, evidence, and report.
+2. **Live Events** (`type: "event"`): Streams real-time task progress, evidence discovery, and verification events.
+3. **Heartbeat** (`type: "heartbeat"`): Periodic keep-alive frames on idle connections.
+
 ### Documents
+
 
 #### Upload Document
 ```http

@@ -1,6 +1,6 @@
 """Database package."""
 
-from database.connection import get_session, init_db, close_db
+from database.connection import get_session, get_db_session, init_db, close_db
 from database.models import (
     ResearchJob, ResearchTask,
     Source, Evidence,
@@ -17,7 +17,7 @@ from database.repositories import (
 )
 
 __all__ = [
-    "get_session", "init_db", "close_db",
+    "get_session", "get_db_session", "init_db", "close_db",
     "ResearchJob", "ResearchTask",
     "Source", "Evidence",
     "Document", "DocumentChunk",

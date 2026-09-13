@@ -1,6 +1,10 @@
 from typing import List, Optional, Sequence
+from fastapi import Depends, HTTPException, Security, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from sqlalchemy.ext.asyncio import AsyncSession
+from database.connection import get_db_session
 from ai.gateway.model_gateway import ModelGateway
-from ai.providers.gemini_web2api import GeminiWeb2APIProvider
+from ai.providers.gemini import GeminiProvider
 from ai.providers.ollama import OllamaProvider
 from ai.providers.openai_compatible import OpenAICompatibleProvider
 from ai.providers.router import ModelRouter
@@ -10,13 +14,30 @@ from ai.factory import DEFAULT_GEMINI_MODEL_DEFINITIONS
 from agents.orchestrator import AgentOrchestrator
 from agents.registry import AgentRegistry, registry as agent_registry
 from tools.registry import ToolRegistry, tool_registry
-from tools.definitions.web_search import WebSearchTool, WebFetchTool
+from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 from tools.definitions.document_read import DocumentReadTool
+from tools.definitions.graph import ExtractGraphTripletsTool, FindRelationPathTool, QueryKnowledgeGraphTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
+from tools.definitions.memory import RecallMemoryTool, StoreMemoryTool
+from tools.definitions.paper_analysis import MethodologyComparisonTool, PaperAnalysisTool
+from tools.definitions.web_fetch import WebFetchTool
+from tools.definitions.web_search import WebSearchTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
+from agents.research.report_agent import ReportAgent
 from agents.critic.critic_agent import CriticAgent
+from research.graph.engine import KnowledgeGraphEngine
+from research.memory.manager import ResearchMemoryManager
+from database.repositories import (
+    KnowledgeGraphRepository,
+    MemoryRepository,
+    ProjectRepository,
+    ReportAnnotationRepository,
+    WorkspaceActivityRepository,
+    WorkspaceInviteRepository,
+    WorkspaceRepository,
+)
 from retrieval.bm25 import BM25Index
 from retrieval.embedder import Embedder
 from retrieval.in_memory_store import InMemoryVectorStore
@@ -25,6 +46,7 @@ from retrieval.retriever import HybridRetriever
 from retrieval.vector_store import VectorStore
 from shared.config import settings
 from shared.logging import get_logger
+from research.events import ResearchEventBus, research_event_bus
 
 logger = get_logger(__name__)
 
@@ -37,6 +59,7 @@ _embedder: Optional[Embedder] = None
 _bm25_index: Optional[BM25Index] = None
 _retriever: Optional[HybridRetriever] = None
 _indexer: Optional[KnowledgeIndexer] = None
+_memory_manager: Optional[ResearchMemoryManager] = None
 
 
 async def init_providers() -> None:
@@ -55,17 +78,17 @@ async def init_providers() -> None:
     providers_embedding = [ollama]
     providers_reranker = []
 
-    # Initialize Gemini Web2API provider
-    if settings.gemini_web2api_base_url:
-        gemini = GeminiWeb2APIProvider(
-            base_url=settings.gemini_web2api_base_url,
-            api_key=settings.gemini_web2api_api_key,
+    # Initialize Official Gemini provider
+    if settings.gemini_api_key or settings.gemini_base_url:
+        gemini = GeminiProvider(
+            base_url=settings.gemini_base_url,
+            api_key=settings.gemini_api_key,
             default_model=settings.gemini_default_model,
         )
         try:
             await gemini._load_models()
         except Exception as e:
-            logger.warning("Failed to load Gemini Web2API models on startup", error=str(e))
+            logger.warning("Failed to load Gemini models on startup", error=str(e))
         providers_llm.append(gemini)
         providers_vision.append(gemini)
     
@@ -99,7 +122,7 @@ async def init_providers() -> None:
     for p in providers_reranker:
         provider_registry.register_reranker(p)
 
-    if settings.gemini_web2api_base_url:
+    if settings.gemini_api_key or settings.gemini_base_url:
         for model_def in DEFAULT_GEMINI_MODEL_DEFINITIONS:
             model_registry.register(model_def)
 
@@ -135,18 +158,33 @@ async def init_providers() -> None:
     agent_registry.register("web_research", WebResearchAgent)
     agent_registry.register("document_analysis", DocumentAnalysisAgent)
     agent_registry.register("critic", CriticAgent)
+    agent_registry.register("report", ReportAgent)
     
+    # Initialize Research Memory Manager
+    global _memory_manager
+    _memory_manager = ResearchMemoryManager(retriever=_retriever)
+
     # Register tools
     tool_registry.register(WebSearchTool())
     tool_registry.register(WebFetchTool())
     tool_registry.register(DocumentReadTool())
     tool_registry.register(KnowledgeSearchTool(retriever=_retriever))
+    tool_registry.register(DataAnalysisTool())
+    tool_registry.register(DeterministicMathTool())
+    tool_registry.register(PaperAnalysisTool())
+    tool_registry.register(MethodologyComparisonTool())
+    tool_registry.register(RecallMemoryTool(memory_manager=_memory_manager))
+    tool_registry.register(StoreMemoryTool(memory_manager=_memory_manager))
+    tool_registry.register(QueryKnowledgeGraphTool())
+    tool_registry.register(ExtractGraphTripletsTool())
+    tool_registry.register(FindRelationPathTool())
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(
         agent_registry=agent_registry,
         tool_registry=tool_registry,
         model_router=_model_router,
+        model_gateway=_model_gateway,
     )
     
     logger.info("Providers initialized", 
@@ -205,24 +243,70 @@ async def get_tool_registry() -> ToolRegistry:
     return tool_registry
 
 
+async def get_memory_manager() -> ResearchMemoryManager:
+    if _memory_manager is None:
+        await init_providers()
+    return _memory_manager
+
+
+async def get_memory_repository(session: AsyncSession = Depends(get_db_session)) -> MemoryRepository:
+    return MemoryRepository(session)
+
+
+async def get_graph_repository(session: AsyncSession = Depends(get_db_session)) -> KnowledgeGraphRepository:
+    return KnowledgeGraphRepository(session)
+
+
+async def get_graph_engine(repo: KnowledgeGraphRepository = Depends(get_graph_repository)) -> KnowledgeGraphEngine:
+    return KnowledgeGraphEngine(repo)
+
+
+async def get_workspace_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceRepository:
+    return WorkspaceRepository(session)
+
+
+async def get_project_repository(session: AsyncSession = Depends(get_db_session)) -> ProjectRepository:
+    return ProjectRepository(session)
+
+
+async def get_workspace_invite_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceInviteRepository:
+    return WorkspaceInviteRepository(session)
+
+
+async def get_report_annotation_repository(session: AsyncSession = Depends(get_db_session)) -> ReportAnnotationRepository:
+    return ReportAnnotationRepository(session)
+
+
+async def get_workspace_activity_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceActivityRepository:
+    return WorkspaceActivityRepository(session)
+
+
+async def get_research_event_bus() -> ResearchEventBus:
+    return research_event_bus
+
+
 # --- Authentication & Authorization Dependencies ---
-from fastapi import HTTPException, Security, status
+from uuid import UUID
+from fastapi import Depends, HTTPException, Security, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from sqlalchemy.ext.asyncio import AsyncSession
+from database.connection import get_db_session
+from database.repositories import UserRepository
 from shared.auth import User, UserRole, user_registry, verify_token
 from shared.exceptions import AuthenticationError, AuthorizationError
 
 security = HTTPBearer(auto_error=False)
 
 
+
 async def get_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
+    session: AsyncSession = Depends(get_db_session),
 ) -> User:
-    """Validate bearer JWT token and return authenticated User."""
+    """Validate bearer JWT token and return authenticated User from database."""
+    repo = UserRepository(session)
+
     if not credentials or not credentials.credentials:
-        # Check default system user if running in dev without explicit token
-        admin = user_registry.get_by_username("admin")
-        if admin and settings.debug and not credentials:
-            return admin
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Authentication credentials were not provided",
@@ -232,13 +316,30 @@ async def get_current_user(
     token = credentials.credentials
     try:
         payload = verify_token(token, expected_type="access")
-        user = user_registry.get_by_id(payload.sub)
-        if not user or not user.is_active:
+        db_user = None
+        try:
+            try:
+                db_user = await repo.get_by_id(UUID(payload.sub))
+            except (ValueError, TypeError):
+                db_user = await repo.get_by_username(payload.username)
+        except Exception:
+            db_user = None
+
+        if db_user:
+            if not db_user.is_active:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="User inactive or does not exist",
+                )
+            return User.from_db(db_user)
+
+        mem_user = user_registry.get_by_id(payload.sub) or user_registry.get_by_username(payload.username)
+        if not mem_user or not mem_user.is_active:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="User inactive or does not exist",
             )
-        return user
+        return mem_user
     except AuthenticationError as auth_err:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -249,12 +350,13 @@ async def get_current_user(
 
 async def get_optional_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(security),
+    session: AsyncSession = Depends(get_db_session),
 ) -> Optional[User]:
     """Optionally validate bearer JWT token if present."""
     if not credentials or not credentials.credentials:
         return None
     try:
-        return await get_current_user(credentials)
+        return await get_current_user(credentials, session)
     except Exception:
         return None
 

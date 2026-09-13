@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from database.connection import get_session
+from database.connection import get_db_session
 from database.repositories import ResearchJobRepository
 from ai.providers.router import ModelRouter
 from shared.config import settings
@@ -14,7 +14,7 @@ logger = get_logger(__name__)
 
 @router.get("/health")
 async def health_check(
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_db_session),
 ):
     """Health check endpoint."""
     checks = {}

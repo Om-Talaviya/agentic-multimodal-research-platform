@@ -2,14 +2,18 @@
 
 from typing import BinaryIO, List, Optional, Union
 from ai.gateway.model_gateway import ModelGateway
-from ai.providers.base import VisionProvider
+from ai.providers.base import LLMProvider, VisionProvider
 from ai.providers.router import ModelRouter
 from ingestion.detection import detect_format
+from ingestion.parsers.academic import AcademicPaperParser
+from ingestion.parsers.audio import AudioParser
 from ingestion.parsers.base import DocumentParser, ParsedDocument
 from ingestion.parsers.docx import DocxParser
 from ingestion.parsers.image import ImageParser
 from ingestion.parsers.pdf import PDFParser
+from ingestion.parsers.tabular import TabularParser
 from ingestion.parsers.text import TextParser
+from ingestion.parsers.video import VideoParser
 from shared.exceptions import ValidationError
 from shared.logging import get_logger
 from shared.types import DocumentFormat
@@ -23,13 +27,19 @@ class ParserRegistry:
     def __init__(
         self,
         vision_source: Optional[Union[ModelGateway, ModelRouter, VisionProvider]] = None,
+        ai_source: Optional[Union[ModelGateway, ModelRouter, VisionProvider, LLMProvider]] = None,
         custom_parsers: Optional[List[DocumentParser]] = None,
     ) -> None:
+        ai_src = ai_source or vision_source
         self._parsers: List[DocumentParser] = custom_parsers if custom_parsers is not None else [
             TextParser(),
+            AcademicPaperParser(),
             PDFParser(),
             DocxParser(),
+            TabularParser(),
             ImageParser(vision_source=vision_source),
+            AudioParser(ai_source=ai_src),
+            VideoParser(ai_source=ai_src),
         ]
 
     def register_parser(self, parser: DocumentParser) -> None:
