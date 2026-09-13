@@ -359,6 +359,39 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.13 Production Infrastructure & Cluster Topology Studio (Phase 24)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  ⚡ Production Infrastructure & Cluster Studio    [ 🔄 Refresh ] [ 💓 Pulse Heartbeat ] [ ➕ Enqueue ]    │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🖥️ Cluster Topology ]    [ 📥 Distributed Task Queue ]    [ 🗄️ S3/MinIO Blob Vault ]                 │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  CLUSTER HEALTH & AGGREGATE LOAD:                                                                       │
+│  ┌─────────────────────────┬─────────────────────────┬─────────────────────────┬─────────────────────┐  │
+│  │ Total Cluster Nodes: 4  │ Active Executions: 6    │ Queue Backlog: 2 Tasks  │ Storage: 418.2 MB   │  │
+│  └─────────────────────────┴─────────────────────────┴─────────────────────────┴─────────────────────┘  │
+│                                                                                                         │
+│  WORKER INSTANCES:                                                                                      │
+│  ┌────────────────────────────┬───────────┬──────────────┬──────────────────────────┬────────────────┐  │
+│  │ NODE ID / HOST             │ STATUS    │ CPU / RAM    │ CAPABILITIES             │ ACTIONS        │  │
+│  ├────────────────────────────┼───────────┼──────────────┼──────────────────────────┼────────────────┤  │
+│  │ 🟢 worker-alpha (k8s-node1) │ ready     │ 24% / 48%    │ `web_search`, `pdf_parse`│ [ 🛑 Drain ]   │  │
+│  │ 🟢 worker-beta (k8s-node2)  │ busy      │ 78% / 62%    │ `multimodal`, `vision`   │ [ 🛑 Drain ]   │  │
+│  └────────────────────────────┴───────────┴──────────────┴──────────────────────────┴────────────────┘  │
+│                                                                                                         │
+│  UNIFIED S3/MINIO OBJECT BLOB VAULT:                                                                    │
+│  ┌─────────────────────────────┬───────────┬──────────────┬───────────────┬──────────────────────────┐  │
+│  │ OBJECT KEY                  │ BUCKET    │ SIZE         │ CONTENT TYPE  │ ACTIONS                  │  │
+│  ├─────────────────────────────┼───────────┼──────────────┼───────────────┼──────────────────────────┤  │
+│  │ `reports/job_401_final.pdf` │ artifacts │ 4.82 MB      │ `app/pdf`     │ [ 🔗 Presigned URL ] [ 🗑]│  │
+│  │ `datasets/market_2026.csv`  │ datasets  │ 142.50 MB    │ `text/csv`    │ [ 🔗 Presigned URL ] [ 🗑]│  │
+│  └─────────────────────────────┴───────────┴──────────────┴───────────────┴──────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -372,5 +405,7 @@ This document defines the complete visual design system, interaction patterns, u
 | **Model Leaderboard Studio** | Ranked tabular scoreboard with score meters, Pareto badges, and test case audit drawer | Instant click / modal slide |
 | **Agent Observability Studio** | KPI metrics cards, per-agent health indicators, evaluation scorecards, and sequential step telemetry inspector drawer | Instant click / slide drawer |
 | **Enterprise Security Studio** | Tabbed compliance cards, KMS secret creation modal, SHA-256 hash-anchored log explorer, and confirmation-gated GDPR purge modal | Instant tab switch / animated drawer |
+| **Production Infrastructure Studio** | Tabbed cluster topology, live CPU/RAM load bars, heartbeat pulse simulator, priority task enqueue modal, and S3 presigned URL generator | Instant tab switch / modal overlay |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
+

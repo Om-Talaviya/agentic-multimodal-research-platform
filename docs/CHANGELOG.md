@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.8.0] - 2026-09-13 (Generation 6 Milestone 2: Phase 24 - Production Scale Infrastructure)
+
+### Added
+- **Phase 24: Production Infrastructure, Priority Task Queue & Blob Storage Vault**:
+  - Implemented asynchronous priority task queue and worker node engine in `packages/research/src/research/workers/task_queue.py` (`AsyncTaskQueue`, `QueuedTask`, `WorkerNode`, `TaskPriority`, and `global_task_queue`) supporting 4 priority levels (`CRITICAL`, `HIGH`, `DEFAULT`, `LOW`), concurrency throttling, retry counters, and task leases.
+  - Implemented unified multi-provider object storage client in `packages/shared/src/shared/storage.py` (`ObjectStorageClient`, `StorageBackendType`, `StorageObjectMetadata`) supporting AWS S3, MinIO, and local filesystem backends with presigned URL generation, MD5/SHA-256 checksumming, and aggregate bucket usage telemetry.
+  - Implemented database models `DBWorkerNode` and `DBStorageObject` in `packages/database/src/database/models/infrastructure.py` with full PostgreSQL/SQLite parity.
+  - Implemented `InfrastructureRepository` in `packages/database/src/database/repositories/infrastructure_repo.py` supporting worker node registration, heartbeat leasing, task assignment, blob recording, and storage usage calculations.
+  - Implemented REST API endpoints in `apps/api/src/api/routes/system_infra.py`:
+    - `GET /api/v1/system/workers`: Lists cluster worker nodes with heartbeat health.
+    - `POST /api/v1/system/workers/heartbeat`: Worker pulse registering CPU/RAM load and active tasks.
+    - `GET /api/v1/system/queue/status`: Returns priority queue length, latency, and throughput metrics.
+    - `POST /api/v1/system/queue/tasks`: Enqueues research tasks with priority.
+    - `GET /api/v1/system/storage/objects`: Queries stored object blobs.
+    - `POST /api/v1/system/storage/presigned-url`: Generates secure presigned download/upload links.
+    - `GET /api/v1/system/storage/usage`: Computes total byte and object count storage metrics.
+  - Created interactive Production Infrastructure Studio in `apps/web/src/pages/ProductionInfrastructurePage.tsx` with Cluster Topology dashboard, Distributed Task Queue manager, S3/MinIO Blob Storage browser, Heartbeat simulator modal, Task enqueue modal, and Presigned URL generator modal.
+  - Mounted `/infrastructure` route in `App.tsx` and added `Infrastructure` navigation link in `Layout.tsx`.
+  - Added test suites in `packages/research/tests/test_async_task_queue.py`, `packages/shared/tests/test_object_storage.py`, `packages/database/tests/test_infrastructure_repo.py`, and `apps/api/tests/test_system_infra_api.py`, achieving 100% pass rate (319/319 tests passing across monorepo).
+  - Formalized **ADR 024** (Distributed Priority Task Queue, Asynchronous Worker Clusters, and S3/MinIO Blob Vault Architecture).
+
+---
+
 ## [1.7.0] - 2026-09-13 (Generation 6 Milestone 1: Phase 23 - Enterprise Security & Compliance Platform)
 
 ### Added

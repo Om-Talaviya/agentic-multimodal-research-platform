@@ -865,4 +865,59 @@ Workspace security constraints, retention lifecycles, and compliance rules.
 - `POST /api/v1/security/gdpr/purge`: Execute GDPR Right-to-be-Forgotten cascade data purge.
 - `GET /api/v1/security/compliance/status`: Retrieve SOC 2 and GDPR compliance scorecard.
 
+---
+
+## 8. Production Infrastructure Schema & Contracts (Phase 24)
+
+### 8.1 Table: `worker_nodes`
+Tracks distributed worker node health, active tasks, heartbeat leases, and node capabilities.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `node_id` | `VARCHAR(100)` | `PRIMARY KEY` | Unique worker instance identifier |
+| `hostname` | `VARCHAR(255)` | `NOT NULL` | Node network host name |
+| `status` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'ready', INDEX` | Lifecycle state (`ready`, `busy`, `draining`, `offline`) |
+| `current_task_id` | `VARCHAR(100)` | `NULLABLE, INDEX` | Currently assigned task ID |
+| `concurrency_limit` | `INTEGER` | `NOT NULL, DEFAULT 4` | Maximum parallel execution threads |
+| `active_task_count` | `INTEGER` | `NOT NULL, DEFAULT 0` | Current active execution count |
+| `capabilities` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Worker specializations (`["web_search", "multimodal", "pdf_parsing"]`) |
+| `metrics` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | System load (CPU, RAM, task completed count) |
+| `last_heartbeat` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW(), INDEX` | Last heartbeat pulse timestamp |
+| `started_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Node boot timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last status update timestamp |
+
+---
+
+### 8.2 Table: `storage_objects`
+Metadata repository for unified object blob storage across Local, MinIO, and AWS S3 backends.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `object_id` | `VARCHAR(100)` | `PRIMARY KEY` | Unique blob identifier |
+| `bucket_name` | `VARCHAR(100)` | `NOT NULL, INDEX` | Target storage bucket / namespace |
+| `object_key` | `VARCHAR(500)` | `NOT NULL, INDEX` | Path / key inside bucket |
+| `content_type` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'application/octet-stream'` | MIME type |
+| `size_bytes` | `BIGINT` | `NOT NULL, DEFAULT 0` | File size in bytes |
+| `etag` | `VARCHAR(100)` | `NULLABLE` | S3 / MinIO ETag or MD5 digest |
+| `storage_class` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'STANDARD'` | Storage tier (`STANDARD`, `INFREQUENT_ACCESS`, `ARCHIVE`) |
+| `backend_type` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'local'` | Storage driver (`s3`, `minio`, `local`) |
+| `metadata_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | User and system object metadata |
+| `uploaded_by` | `UUID` | `FOREIGN KEY (users.id ON DELETE SET NULL), NULLABLE` | Uploading user ID |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE SET NULL), NULLABLE` | Scoped tenant workspace ID |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW(), INDEX` | Object creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last metadata update timestamp |
+
+---
+
+### 8.3 REST Endpoints (Phase 24)
+
+- `GET /api/v1/system/workers`: List registered worker nodes in the cluster with heartbeat telemetry.
+- `POST /api/v1/system/workers/heartbeat`: Worker pulse endpoint registering node load, CPU, RAM, and active tasks.
+- `GET /api/v1/system/queue/status`: Query distributed queue length, priority distributions, and latency metrics.
+- `POST /api/v1/system/queue/tasks`: Enqueue research tasks with priority (`CRITICAL`, `HIGH`, `DEFAULT`, `LOW`).
+- `GET /api/v1/system/storage/objects`: Query stored object blobs with workspace filtering and MIME search.
+- `POST /api/v1/system/storage/presigned-url`: Generate presigned upload/download URLs for S3/MinIO blobs.
+- `GET /api/v1/system/storage/usage`: Compute aggregate blob storage utilization, bucket byte totals, and object counts.
+
+
 

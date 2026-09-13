@@ -539,5 +539,61 @@ sequenceDiagram
     end
 ```
 
+---
+
+## 14. Distributed Worker Task Queue & Blob Storage Flow (Phase 24)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Researcher / System
+    participant UI as ProductionInfrastructurePage.tsx
+    participant API as FastAPI (/api/v1/system)
+    participant Queue as AsyncTaskQueue (Priority Heap)
+    participant Worker as WorkerNode (Distributed Agent Pool)
+    participant Storage as ObjectStorageClient (S3 / MinIO / Local)
+    participant Repo as InfrastructureRepository
+    participant DB as PostgreSQL / SQLite (worker_nodes, storage_objects)
+
+    rect rgb(20, 30, 45)
+        Note over User, DB: 1. Priority Task Enqueueing & Worker Dispatch
+        User->>UI: Enqueues Heavy Research Task (Priority: CRITICAL)
+        UI->>API: POST /api/v1/system/queue/tasks {task_name, payload, priority: "CRITICAL"}
+        API->>Queue: enqueue(task_name, payload, priority=Priority.CRITICAL)
+        Queue->>Queue: Push to Priority Min-Heap (CRITICAL -> HIGH -> DEFAULT -> LOW)
+        Queue-->>API: QueuedTask (task_id, status="queued")
+        API-->>UI: 201 Created (task_id)
+
+        Worker->>Queue: dequeue()
+        Queue-->>Worker: Dispatches QueuedTask
+        Worker->>Repo: update_worker_heartbeat(node_id, status="busy", current_task_id=task_id)
+        Repo->>DB: UPDATE worker_nodes SET status='busy', active_task_count=active_task_count+1
+    end
+
+    rect rgb(20, 45, 30)
+        Note over Worker, Storage: 2. Multimodal Artifact Persistence (Object Storage Vault)
+        Worker->>Worker: Executes Task & Generates Large Report / PDF / Dataset Artifact
+        Worker->>Storage: put_object(bucket="research-artifacts", key="reports/job_99.pdf", data)
+        Storage->>Storage: Compute MD5 & SHA-256 Checksums
+        Storage->>Storage: Write to S3 / MinIO / Local FS
+        Storage-->>Worker: StorageObjectMetadata (etag, size_bytes, backend_type)
+        Worker->>Repo: record_storage_object(object_id, bucket, key, content_type, size, etag)
+        Repo->>DB: INSERT into storage_objects
+        Worker->>Queue: mark_completed(task_id, result_summary)
+        Worker->>Repo: update_worker_heartbeat(node_id, status="ready", current_task_id=None)
+    end
+
+    rect rgb(45, 30, 20)
+        Note over User, Storage: 3. Secure Presigned Retrieval
+        User->>UI: Requests Download Link for Artifact
+        UI->>API: POST /api/v1/system/storage/presigned-url {bucket, key, method: "GET"}
+        API->>Storage: generate_presigned_url(bucket, key, method="GET", expires_in=3600)
+        Storage-->>API: Presigned Signed URL with Expiry
+        API-->>UI: {url: "https://minio.local/research-artifacts/reports/job_99.pdf?..."}
+        UI-->>User: Initiates direct secure stream download
+    end
+```
+
+
 
 
