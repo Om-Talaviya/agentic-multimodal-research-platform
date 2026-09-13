@@ -38,11 +38,17 @@ async def get_db_session() -> AsyncSession:
         try:
             yield session
             await session.commit()
-        except Exception:
-            await session.rollback()
+        except BaseException:
+            try:
+                await session.rollback()
+            except Exception:
+                pass
             raise
         finally:
-            await session.close()
+            try:
+                await session.close()
+            except Exception:
+                pass
 
 
 get_session = asynccontextmanager(get_db_session)
