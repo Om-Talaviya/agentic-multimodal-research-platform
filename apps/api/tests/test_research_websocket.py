@@ -181,15 +181,15 @@ def test_ws_authentication_with_all_roles(event_bus, viewer_token, researcher_to
         mock_evidence_repo.return_value.get_by_job = AsyncMock(return_value=[])
         mock_report_repo.return_value.get_by_job = AsyncMock(return_value=None)
 
-        client = TestClient(app)
-
         # Viewer role
-        with client.websocket_connect(f"/api/v1/research/{sample_job_id}/ws?token={viewer_token}") as ws:
+        client1 = TestClient(app)
+        with client1.websocket_connect(f"/api/v1/research/{sample_job_id}/ws?token={viewer_token}") as ws:
             msg = ws.receive_json()
             assert msg["type"] == "snapshot"
 
         # Researcher role
-        with client.websocket_connect(f"/api/v1/research/{sample_job_id}/ws?token={researcher_token}") as ws:
+        client2 = TestClient(app)
+        with client2.websocket_connect(f"/api/v1/research/{sample_job_id}/ws?token={researcher_token}") as ws:
             msg = ws.receive_json()
             assert msg["type"] == "snapshot"
 
@@ -218,7 +218,12 @@ def test_ws_unknown_job_returns_error_and_closes(admin_token, sample_job_id, eve
                 msg = ws.receive_json()
                 assert msg["type"] == "error"
                 assert msg["error"]["code"] == "NOT_FOUND"
-                ws.receive_text()
+                # Closing from server triggers disconnect
+                try:
+                    while True:
+                        ws.receive_json()
+                except WebSocketDisconnect:
+                    raise
 
         assert exc_info.value.code == 1008
 
@@ -281,3 +286,4 @@ def test_ws_multi_client_fan_out_and_isolation(event_bus, admin_token, mock_job_
             assert msg2["event"]["job_id"] == str(job_1)
 
     app.dependency_overrides.clear()
+
