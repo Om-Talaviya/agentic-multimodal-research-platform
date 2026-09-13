@@ -594,6 +594,59 @@ sequenceDiagram
     end
 ```
 
+---
+
+## 15. Developer API Gateway & Key Authentication Flow (Phase 25)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as Third-Party Developer / Client App
+    participant GW as FastAPI Public Gateway (/api/v1/developer/*)
+    participant RateLimiter as ApiKeyRepository (Sliding Window)
+    participant Auth as ApiKeyAuthenticator
+    participant DB as PostgreSQL / SQLite (api_keys)
+    participant Pipe as ResearchPipeline & WorkerPool
+
+    rect rgb(20, 30, 45)
+        Note over Dev, DB: 1. API Key Provisioning (Developer Studio UI)
+        Dev->>GW: POST /api/v1/developer/keys {name: "Backend Bot", tier: "pro", scopes: ["research:write"]}
+        GW->>GW: Generate Secret `amrp_live_<48_hex>` & Extract Prefix `amrp_live_...`
+        GW->>GW: Compute Cryptographic SHA-256 Digest
+        GW->>DB: INSERT into api_keys (key_prefix, key_hash, scopes, rate_limit_rpm=300)
+        DB-->>GW: DBApiKey Record
+        GW-->>Dev: 201 Created {secret_key: "amrp_live_...", key_prefix: "...", scopes: [...]} (One-time reveal)
+    end
+
+    rect rgb(20, 45, 30)
+        Note over Dev, Pipe: 2. Programmatic Research Invocation & Rate Limit Verification
+        Dev->>GW: POST /api/v1/developer/research (Header: X-API-Key: amrp_live_...)
+        GW->>Auth: authenticate_api_key(raw_key, required_scope="research:write")
+        Auth->>Auth: Extract Prefix -> SHA-256(raw_key)
+        Auth->>DB: SELECT * FROM api_keys WHERE key_prefix = ... AND key_hash = ... AND is_active = True
+        DB-->>Auth: DBApiKey Record
+        Auth->>Auth: Verify required_scope in scopes
+        Auth->>RateLimiter: check_rate_limit(key_id, limit_rpm=300)
+        RateLimiter->>RateLimiter: Sliding 60-second request window check
+        RateLimiter-->>Auth: (Allowed=True, Remaining=299, Reset=58s)
+        Auth-->>GW: Authenticated Key Context (user_id, workspace_id, tier)
+
+        GW->>Pipe: Enqueue autonomous research job
+        Pipe-->>GW: JobQueued (job_id, status="pending")
+        GW-->>Dev: 200 OK {job_id, status: "pending", poll_url: "/api/v1/developer/research/:id"}
+    end
+
+    rect rgb(45, 30, 20)
+        Note over Dev, GW: 3. Programmatic Report Retrieval
+        Dev->>GW: GET /api/v1/developer/research/{job_id} (Header: X-API-Key)
+        GW->>Auth: authenticate_api_key(raw_key, required_scope="research:read")
+        Auth-->>GW: Key Authenticated
+        GW->>DB: Query research_jobs and reports
+        DB-->>GW: DBReport Record
+        GW-->>Dev: 200 OK {job_id, status: "completed", report: {title, findings, citations}}
+    end
+```
+
 
 
 

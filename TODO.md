@@ -223,17 +223,25 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Active Sprint: Phase 25 — Public API & Developer Platform
+- [x] **Phase 25: Public API & Developer Platform**
+  - [x] Public developer REST API gateway (`/api/v1/developer/*` with `X-API-Key` authentication).
+  - [x] API key management, generation, and SHA-256 secret hashing (`DBApiKey`, `ApiKeyRepository`).
+  - [x] Granular permission scopes (`research:read`, `research:write`, `documents:read`, `documents:write`, `memory:read`, `graph:read`).
+  - [x] Sliding-window tier-based rate limiting (Free: 60 rpm, Pro: 300 rpm, Enterprise: 1,200 rpm).
+  - [x] Interactive Developer Platform & API Key Studio UI in `apps/web/src/pages/DeveloperPlatformPage.tsx` with one-time secret reveal modal and live cURL / Python `requests` / TypeScript `axios` SDK code generators.
+  - [x] Frontend routing & navigation: Registered route `/developer` in `App.tsx` and added `Developer API` navigation link in `Layout.tsx`.
+  - [x] Comprehensive test suites in `packages/database/tests/test_api_key_repo.py` and `apps/api/tests/test_developer_api.py`, achieving 100% pass rate.
+
+---
+
+## 🟡 Immediate Active Sprint: Phase 26 — Research Automation (Final Milestone of Generation 6)
 
 ### Generation 6: Production Product
-- [ ] **Phase 25: Public API & Developer Platform**
-  - [ ] Public developer REST API gateway (`/api/v1/developer/*`).
-  - [ ] API key management, generation, and SHA-256 secret hashing (`DBApiKey`, `ApiKeyRepository`).
-  - [ ] Granular permission scopes (`read:research`, `write:research`, `read:documents`, `write:documents`, `read:memory`, `read:graph`).
-  - [ ] Tier-based rate limiting (Free: 60 rpm, Pro: 300 rpm, Enterprise: 1200 rpm).
-  - [ ] Official Python & TypeScript SDK code examples and quickstart documentation.
-  - [ ] Interactive Developer Platform & API Key Studio UI in `apps/web/src/pages/DeveloperPlatformPage.tsx`.
-
 - [ ] **Phase 26: Research Automation**
-  - [ ] Recurring scheduled research sweeps, topic monitoring, and automated alerting on new discoveries.
+  - [ ] Scheduled research sweeps engine (`DBScheduledResearch`, `ResearchAutomationEngine`) with standard 5-part cron expressions, interval scheduling, and automatic DAG dispatch.
+  - [ ] Autonomous source diffing & change detection across academic archives (arXiv, Semantic Scholar), web feeds, and document indexes.
+  - [ ] Multi-channel alert & notification dispatcher (webhooks, email alerts, Slack payloads) triggered on novelty/confidence score thresholds.
+  - [ ] Database persistence models (`DBScheduledResearch`, `DBAutomationAlert`, `DBResearchSweepResult`, `AutomationRepository`).
+  - [ ] Research Automation REST APIs (`/api/v1/automation/schedules`, `/api/v1/automation/sweeps`, `/api/v1/automation/alerts`).
+  - [ ] Interactive Research Automation & Sweep Studio in `apps/web/src/pages/ResearchAutomationPage.tsx`.
 

@@ -12,7 +12,7 @@ from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
 from database.connection import init_db, close_db
-from api.routes import agent_evaluations, auth, collaboration, documents, evaluation, graph, health, memory, metrics, models, projects, research, security, system_infra, workspaces
+from api.routes import agent_evaluations, auth, collaboration, developer, documents, evaluation, graph, health, memory, metrics, models, projects, research, security, system_infra, workspaces
 from api import websocket
 from api.middleware.metrics import PrometheusMiddleware
 
@@ -108,6 +108,7 @@ app.include_router(evaluation.router, prefix=settings.api_prefix)
 app.include_router(agent_evaluations.router, prefix=settings.api_prefix)
 app.include_router(security.router, prefix=settings.api_prefix)
 app.include_router(system_infra.router, prefix=settings.api_prefix)
+app.include_router(developer.router, prefix=settings.api_prefix)
 app.include_router(metrics.router, prefix=settings.api_prefix)
 app.include_router(metrics.router)  # Also expose directly on /metrics
 

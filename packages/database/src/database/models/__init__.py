@@ -12,6 +12,7 @@ from database.models.memory import DBResearchMemory
 from database.models.report import Report
 from database.models.research_job import ResearchJob, ResearchTask
 from database.models.infrastructure import DBStorageObject, DBWorkerNode
+from database.models.api_key import DBApiKey
 from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
 from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
@@ -38,6 +39,7 @@ EncryptedSecret = DBEncryptedSecret
 SecurityPolicy = DBSecurityPolicy
 WorkerNodeModel = DBWorkerNode
 StorageObject = DBStorageObject
+ApiKey = DBApiKey
 
 __all__ = [
     "ResearchJob",
@@ -88,4 +90,6 @@ __all__ = [
     "WorkerNodeModel",
     "DBStorageObject",
     "StorageObject",
+    "DBApiKey",
+    "ApiKey",
 ]

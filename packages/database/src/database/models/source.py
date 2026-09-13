@@ -3,9 +3,10 @@
 import uuid
 from datetime import UTC, datetime
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Index, Float
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+from database.models.memory import GUID
 
 
 def utc_now() -> datetime:
@@ -17,8 +18,8 @@ class Source(Base):
     
     __tablename__ = "sources"
     
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    job_id = Column(GUID(), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
     type = Column(String(50), nullable=False)
     url = Column(Text)
     title = Column(Text, nullable=False)
@@ -36,9 +37,9 @@ class Evidence(Base):
     
     __tablename__ = "evidence"
     
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
-    source_id = Column(PG_UUID(as_uuid=True), ForeignKey("sources.id", ondelete="CASCADE"), nullable=False, index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    job_id = Column(GUID(), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
+    source_id = Column(GUID(), ForeignKey("sources.id", ondelete="CASCADE"), nullable=False, index=True)
     claim = Column(Text, nullable=False)
     supporting_text = Column(Text, nullable=False, default="")
     confidence = Column(Float, nullable=False, default=0.5)

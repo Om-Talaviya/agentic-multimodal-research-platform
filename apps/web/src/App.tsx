@@ -12,6 +12,7 @@ import { ModelEvaluationPage } from './pages/ModelEvaluationPage'
 import { AgentEvaluationPage } from './pages/AgentEvaluationPage'
 import { EnterpriseSecurityPage } from './pages/EnterpriseSecurityPage'
 import { ProductionInfrastructurePage } from './pages/ProductionInfrastructurePage'
+import { DeveloperPlatformPage } from './pages/DeveloperPlatformPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -58,12 +59,13 @@ function App() {
             localStorage.removeItem('refresh_token')
             setIsAuthenticated(false)
           }
+        }).finally(() => {
+          setIsLoading(false)
         })
       })
     } else {
-      setIsAuthenticated(false)
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }, [])
 
   const handleLogout = () => {
@@ -95,6 +97,7 @@ function App() {
           <Route path="agents/evaluations" element={<AgentEvaluationPage />} />
           <Route path="security" element={<EnterpriseSecurityPage />} />
           <Route path="infrastructure" element={<ProductionInfrastructurePage />} />
+          <Route path="developer" element={<DeveloperPlatformPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

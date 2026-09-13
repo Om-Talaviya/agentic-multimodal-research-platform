@@ -3,9 +3,10 @@
 import uuid
 from datetime import UTC, datetime
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer, Index, Boolean
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+from database.models.memory import GUID
 
 
 def utc_now() -> datetime:
@@ -17,11 +18,11 @@ class ResearchJob(Base):
     
     __tablename__ = "research_jobs"
     
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    request_id = Column(PG_UUID(as_uuid=True), nullable=False, index=True)
-    user_id = Column(PG_UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
-    workspace_id = Column(PG_UUID(as_uuid=True), ForeignKey("workspaces.id", ondelete="SET NULL"), nullable=True, index=True)
-    project_id = Column(PG_UUID(as_uuid=True), ForeignKey("projects.id", ondelete="SET NULL"), nullable=True, index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    request_id = Column(GUID(), nullable=False, index=True)
+    user_id = Column(GUID(), ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
+    workspace_id = Column(GUID(), ForeignKey("workspaces.id", ondelete="SET NULL"), nullable=True, index=True)
+    project_id = Column(GUID(), ForeignKey("projects.id", ondelete="SET NULL"), nullable=True, index=True)
     question = Column(Text, nullable=False)
     objective = Column(Text, nullable=False)
     domain = Column(String(255))
@@ -54,9 +55,9 @@ class ResearchTask(Base):
     
     __tablename__ = "research_tasks"
     
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
-    parent_task_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_tasks.id", ondelete="SET NULL"), nullable=True, index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    job_id = Column(GUID(), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
+    parent_task_id = Column(GUID(), ForeignKey("research_tasks.id", ondelete="SET NULL"), nullable=True, index=True)
     is_dynamic = Column(Boolean, default=False, nullable=False)
     depth = Column(Integer, default=0, nullable=False)
     type = Column(String(100), nullable=False)

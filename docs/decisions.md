@@ -432,6 +432,34 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Scalable object storage for heavy multimodal media and enterprise reports.
   - Positive: Foundation ready for public developer API platform (Phase 25) and recurring research automation (Phase 26).
 
+---
+
+## ADR 025: Public API Gateway, SHA-256 Hashed API Keys, and Sliding Window Rate Limiting (Phase 25)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Enabling external platforms, autonomous bots, developer CLI tools, and enterprise integrations to harness the AI Research OS requires a standardized, secure programmatic API. The platform requires cryptographically secure API key management (never storing raw keys), fine-grained permission scopes to enforce the principle of least privilege, tier-based sliding window rate limiting to prevent abuse, and developer-friendly interactive playgrounds with ready-to-copy cURL, Python, and TypeScript SDK snippets.
+- **Decision**:
+  1. Implement `DBApiKey` in `packages/database/src/database/models/api_key.py`:
+     - Secure storage with `key_prefix` (`amrp_live_...` for fast indexing) and `key_hash` (SHA-256 digest of secret token).
+     - Granular permission scopes (`research:read`, `research:write`, `documents:read`, `documents:write`, `memory:read`, `graph:read`).
+     - Tier and rate limit attributes (`rate_limit_tier`: `free`, `pro`, `enterprise`; `rate_limit_rpm`: 60, 300, 1,200).
+     - Expiration tracking (`expires_at`) and last activity timestamp (`last_used_at`).
+  2. Implement `ApiKeyRepository` in `packages/database/src/database/repositories/api_key_repo.py`:
+     - Constant-time SHA-256 authentication (`authenticate_api_key`) and required scope verification.
+     - Sliding 60-second window rate limiter (`check_rate_limit`) computing allowed status, remaining requests, and window reset seconds.
+     - Key lifecycle management: `create_api_key`, `list_api_keys`, `get_api_key`, `revoke_api_key`, `delete_api_key`.
+  3. Implement Public Developer REST API in `apps/api/src/api/routes/developer.py`:
+     - Key management: `GET /api/v1/developer/keys`, `POST /api/v1/developer/keys`, `GET /api/v1/developer/keys/{id}`, `PATCH /api/v1/developer/keys/{id}/revoke`, `DELETE /api/v1/developer/keys/{id}`.
+     - Public endpoints: `POST /api/v1/developer/research` (enqueue research), `GET /api/v1/developer/research/{id}` (poll progress and get reports), `POST /api/v1/developer/documents` (ingest text/documents), `GET /api/v1/developer/usage` (inspect token consumption).
+  4. Build React Interface in `apps/web/src/pages/DeveloperPlatformPage.tsx`:
+     - API Keys Vault tab (create key modal with scope/tier/expiration selection, one-time reveal modal for generated secret key, active keys table with revoke/delete actions).
+     - API Playground & SDK tab (interactive endpoint selector, live cURL / Python `requests` / TypeScript `axios` SDK code generators, one-click copy).
+     - Rate Limits & Quotas tab (tier comparison cards, rate limit parameters, enterprise SLA specifications).
+- **Consequences**:
+  - Positive: Safe programmatic access without risk of leaking plaintext secrets in database dumps or telemetry logs.
+  - Positive: Sliding window rate limiting prevents denial-of-service and model quota exhaustion.
+  - Positive: Frictionless developer experience with copy-paste SDK snippets and instant playground testing.
+  - Positive: Enables Phase 26 (Research Automation) to invoke internal and public APIs seamlessly.
+
 
 
 
