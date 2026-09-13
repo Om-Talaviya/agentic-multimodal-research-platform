@@ -274,6 +274,32 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.10 Model Evaluation & Benchmark Leaderboard Studio (Phase 21)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🏆 Model Benchmark Leaderboard                       [ 🔄 Refresh ]  [ ▶️ Run Benchmark ]              │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ACTIVE MODEL RANKINGS:                                                                                 │
+│  ┌──────┬─────────────────────┬───────────────┬────────────┬───────────┬───────────┬──────────────┐    │
+│  │ RANK │ MODEL               │ OVERALL SCORE │ FACTUALITY │ REASONING │ LATENCY   │ STATUS       │    │
+│  ├──────┼─────────────────────┼───────────────┼────────────┼───────────┼───────────┼──────────────┤    │
+│  │  🥇1 │ gemini-2.0-flash    │ ████████ 89%  │ 94.0%      │ 88.5%     │ 320 ms    │ [ ⚡ Pareto ] │    │
+│  │  🥈2 │ gemini-1.5-pro      │ ███████  86%  │ 92.0%      │ 91.0%     │ 650 ms    │ [ Standard ] │    │
+│  │  🥉3 │ gpt-4o-mini         │ ███████  84%  │ 89.0%      │ 85.0%     │ 410 ms    │ [ Standard ] │    │
+│  │   4  │ llama3:8b (Ollama)  │ █████    68%  │ 72.0%      │ 65.0%     │ 180 ms    │ [ ⚡ Pareto ] │    │
+│  └──────┴─────────────────────┴───────────────┴────────────┴───────────┴───────────┴──────────────┘    │
+│                                                                                                         │
+│  RECENT BENCHMARK RUNS (Click to inspect test cases):                                                   │
+│  ┌─────────────────────────────────────────────────────────────────────────────┬─────────────────────┐ │
+│  │ 🔍 gemini-2.0-flash  •  2026-09-13 15:30  •  5 Samples • Pass Rate: 100%   │ Score: 89.2%    [ > ] │ │
+│  │ 🔍 llama3:8b         •  2026-09-13 14:15  •  5 Samples • Pass Rate: 80%    │ Score: 68.0%    [ > ] │ │
+│  └─────────────────────────────────────────────────────────────────────────────┴─────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -284,5 +310,6 @@ This document defines the complete visual design system, interaction patterns, u
 | **Explainability Modal** | Glassmorphic slide-out drawer revealing exact document slice and table coordinates | Slide-left 250ms |
 | **Report Review Drawer** | Slide-over drawer on synthesized report view with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution | Slide-left 200ms ease-out |
 | **Routing Profile Selector** | Interactive 4-card grid with active border glow, icon badge, and live Pareto-optimal simulation pill | Instant selection & async fetch |
+| **Model Leaderboard Studio** | Ranked tabular scoreboard with score meters, Pareto badges, and test case audit drawer | Instant click / modal slide |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

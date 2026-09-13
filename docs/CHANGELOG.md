@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-09-13 (Generation 5 Milestone 2: Phase 21 - Model Evaluation System)
+
+### Added
+- **Phase 21: Model Evaluation System**:
+  - Implemented standardized golden benchmark suite in `packages/ai/src/ai/eval/schemas.py` (`BenchmarkCategory`, `BenchmarkSample`, `BenchmarkDataset`, and `DEFAULT_RESEARCH_BENCHMARK`).
+  - Implemented `EvaluationMetricsEngine` in `packages/ai/src/ai/eval/metrics.py` computing quantitative scores across Factual Accuracy, Reasoning Depth, Retrieval Faithfulness, Citation Precision, Latency, and Cost.
+  - Implemented `ModelEvaluator` in `packages/ai/src/ai/eval/evaluator.py` orchestrating end-to-end evaluation runs with low temperature against `ModelGateway`.
+  - Implemented database models `DBModelEvaluation` and `DBModelBenchmarkResult` in `packages/database/src/database/models/evaluation.py` with full PostgreSQL/SQLite parity.
+  - Implemented `ModelEvaluationRepository` in `packages/database/src/database/repositories/evaluation_repo.py` supporting evaluation CRUD, latest-per-model queries, and test case relationship queries.
+  - Created REST API endpoints in `apps/api/src/api/routes/evaluation.py`:
+    - `POST /api/v1/models/evaluate`: Triggers evaluation runs.
+    - `GET /api/v1/models/evaluations`: Lists historical evaluation runs.
+    - `GET /api/v1/models/evaluations/{id}`: Retrieves detailed sample test case breakdown.
+    - `DELETE /api/v1/models/evaluations/{id}`: Deletes evaluation run.
+    - `GET /api/v1/models/leaderboard`: Returns aggregated competitive leaderboard with Pareto optimal badges.
+  - Created interactive React Leaderboard Studio `ModelEvaluationPage.tsx` with ranking table, benchmark runner modal, score progress bars, and test case breakdown drawer.
+  - Added unit, database repository, and integration test suites in `packages/ai/tests/test_model_evaluator.py`, `packages/database/tests/test_evaluation_repo.py`, and `apps/api/tests/test_model_evaluation_api.py`, achieving 100% pass rate across 291 monorepo tests.
+  - Formalized **ADR 021** (Automated Model Evaluation System with Golden Benchmark Harness and Competitive Leaderboard).
+
+---
+
 ## [1.4.0] - 2026-09-13 (Generation 5 Milestone 1: Phase 20 - Intelligent Model Ecosystem)
 
 ### Added

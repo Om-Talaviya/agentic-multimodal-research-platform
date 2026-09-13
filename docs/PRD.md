@@ -206,9 +206,9 @@ The output is a structured intelligence dossier:
 #### Generation 5 — AI Platform Intelligence
 - **Phase 20: Intelligent Model Ecosystem (COMPLETE)**:
   - Multi-parameter utility routing optimization (`ModelEcosystemOptimizer`), Pareto-frontier sorting across Quality, Speed, Cost, and Locality, preset optimization profiles (Balanced, Cost, Speed, Quality), and `/models/profiles` + `/models/optimize` REST endpoints (**ADR 020**).
-- **Phase 21: Model Evaluation System (NEXT MILESTONE)**:
-  - Automated continuous evaluation of model outputs for accuracy, relevance, citation precision, and cost-efficiency.
-- **Phase 22: Agent Evaluation**:
+- **Phase 21: Model Evaluation System (COMPLETE)**:
+  - Automated continuous evaluation of model outputs for factual accuracy, reasoning depth, retrieval faithfulness, citation precision, latency, and cost-efficiency. Includes standard golden research benchmark dataset, automated metrics engine, PostgreSQL persistence, and interactive competitive Model Leaderboard UI (**ADR 021**).
+- **Phase 22: Agent Evaluation (NEXT MILESTONE)**:
   - Observability dashboard tracking agent reasoning quality, hallucination rates, token efficiency, and execution durations.
 
 #### Generation 6 — Production Product

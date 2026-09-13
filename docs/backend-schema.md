@@ -602,3 +602,94 @@ Simulates candidate model evaluation, calculates Pareto-optimal frontier, and re
   "tradeoff_analysis": "Selected 'gemini-2.5-pro' via Balanced Ecosystem (Score: 0.825). Model is on the non-dominated Pareto frontier."
 }
 ```
+
+---
+
+## 5. Model Evaluation System Schemas & REST APIs (Phase 21)
+
+### 5.1 Table: `model_evaluations`
+Tracks top-level offline benchmark runs evaluating model performance against golden datasets.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique evaluation run ID |
+| `model_id` | `VARCHAR(100)` | `NOT NULL, INDEX` | Evaluated model ID |
+| `provider_name` | `VARCHAR(50)` | `NOT NULL` | AI Provider name |
+| `benchmark_name` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'research_core_eval_v1'` | Benchmark dataset identifier |
+| `total_samples` | `INTEGER` | `NOT NULL, DEFAULT 0` | Total test cases in run |
+| `passed_samples` | `INTEGER` | `NOT NULL, DEFAULT 0` | Test cases meeting pass threshold |
+| `pass_rate` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Proportion of passed samples [0.0 - 1.0] |
+| `overall_score` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Weighted composite score [0.0 - 1.0] |
+| `mean_accuracy` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Mean factual keyword accuracy |
+| `mean_reasoning` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Mean multi-step reasoning score |
+| `mean_faithfulness`| `FLOAT` | `NOT NULL, DEFAULT 0.0` | Mean retrieval context faithfulness |
+| `mean_citation_precision` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Mean citation match precision |
+| `mean_latency_ms`| `FLOAT` | `NOT NULL, DEFAULT 0.0` | Average response latency (ms) |
+| `total_cost_usd` | `NUMERIC(10, 6)` | `NOT NULL, DEFAULT 0.000000` | Cumulative execution cost in USD |
+| `category_scores`| `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Category-level aggregated score map |
+| `triggered_by` | `UUID` | `FOREIGN KEY (users.id), NULLABLE` | Triggering user identifier |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Run execution timestamp |
+
+---
+
+### 5.2 Table: `model_benchmark_results`
+Individual sample test case outputs and diagnostic breakdowns for an evaluation run.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Test case result ID |
+| `evaluation_id` | `UUID` | `FOREIGN KEY (model_evaluations.id ON DELETE CASCADE), NOT NULL` | Parent evaluation run |
+| `sample_id` | `VARCHAR(100)` | `NOT NULL` | Benchmark sample case ID |
+| `category` | `VARCHAR(50)` | `NOT NULL` | Category (reasoning, factual, etc.) |
+| `prompt` | `TEXT` | `NOT NULL` | Input prompt presented to model |
+| `response_text` | `TEXT` | `NOT NULL` | Generated model completion |
+| `passed` | `BOOLEAN` | `NOT NULL, DEFAULT TRUE` | Sample passed indicator |
+| `score` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Sample composite score |
+| `metrics` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Dimensional metrics breakdown |
+| `latency_ms` | `INTEGER` | `NOT NULL, DEFAULT 0` | Sample execution latency |
+| `prompt_tokens` | `INTEGER` | `NOT NULL, DEFAULT 0` | Prompt token count |
+| `completion_tokens` | `INTEGER` | `NOT NULL, DEFAULT 0` | Output token count |
+| `cost_usd` | `NUMERIC(10, 6)` | `NOT NULL, DEFAULT 0.000000` | Sample cost in USD |
+| `error` | `TEXT` | `NULLABLE` | Error message if failed |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+
+---
+
+### 5.3 REST Endpoints (Phase 21)
+
+#### `POST /api/v1/models/evaluate`
+Triggers an automated benchmark evaluation run across golden test cases.
+
+**Request:**
+```json
+{
+  "model_id": "gemini-2.0-flash",
+  "benchmark_name": "research_core_eval_v1"
+}
+```
+
+#### `GET /api/v1/models/leaderboard`
+Returns an aggregated competitive model leaderboard ranked by overall score with Pareto frontier flags.
+
+**Response:**
+```json
+[
+  {
+    "rank": 1,
+    "model_id": "gemini-2.0-flash",
+    "provider_name": "gemini",
+    "overall_score": 0.892,
+    "factual_accuracy": 0.940,
+    "reasoning_depth": 0.885,
+    "retrieval_faithfulness": 0.920,
+    "citation_precision": 0.850,
+    "mean_latency_ms": 320.0,
+    "cost_per_1k_usd": 0.00015,
+    "tier": "paid",
+    "is_local": false,
+    "is_pareto_optimal": true,
+    "last_evaluated": "2026-09-13T10:00:00Z"
+  }
+]
+```
+

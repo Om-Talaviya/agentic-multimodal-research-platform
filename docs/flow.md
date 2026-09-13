@@ -403,3 +403,47 @@ sequenceDiagram
     GW->>Opt: Route agent requests using active profile weights
 ```
 
+---
+
+## 11. Model Evaluation & Benchmark Leaderboard Flow (Phase 21)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Admin as AI Engineer / Admin
+    participant UI as ModelEvaluationPage.tsx
+    participant API as FastAPI (/api/v1/models/evaluate)
+    participant Evaluator as ModelEvaluator
+    participant GW as ModelGateway
+    participant Metrics as EvaluationMetricsEngine
+    participant Repo as ModelEvaluationRepository
+    participant DB as PostgreSQL / SQLite (model_evaluations, model_benchmark_results)
+
+    Admin->>UI: Selects Model & clicks "Run Benchmark"
+    UI->>API: POST /api/v1/models/evaluate {model_id: "gemini-2.0-flash"}
+    API->>Evaluator: evaluate_model(model_id, DEFAULT_RESEARCH_BENCHMARK)
+    
+    loop For Each Golden Benchmark Sample (Reasoning, Factual, Faithfulness, Citations)
+        Evaluator->>GW: complete(LLMRequest(prompt, context))
+        GW-->>Evaluator: LLMResponse(content, latency_ms, tokens, cost_usd)
+        Evaluator->>Metrics: evaluate_sample(response, sample)
+        Metrics->>Metrics: Compute Factuality, Reasoning Depth, Faithfulness, Citations
+        Metrics-->>Evaluator: SampleEvaluationResult(metrics, passed, score)
+    end
+
+    Evaluator->>Evaluator: Aggregate Mean Scores, Pass Rate, Total Cost, Category Scores
+    Evaluator-->>API: EvaluationReport
+    API->>Repo: create_evaluation(report, sample_results)
+    Repo->>DB: INSERT into model_evaluations & model_benchmark_results
+    DB-->>Repo: Saved records
+    Repo-->>API: Persisted DBModelEvaluation
+    API-->>UI: 201 Created (EvaluationSummary)
+    
+    UI->>API: GET /api/v1/models/leaderboard
+    API->>Repo: get_latest_evaluations_per_model()
+    API->>API: Compute Pareto frontier flags on leaderboard models
+    API-->>UI: Ranked competitive leaderboard with Pareto badges
+    UI-->>Admin: Displays updated ranking table & test case breakdown drawer
+```
+
+

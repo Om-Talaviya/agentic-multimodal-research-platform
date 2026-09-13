@@ -182,8 +182,8 @@ flowchart TD
 
 ### Generation 5: AI Platform Intelligence
 - **Phase 20 (Model Ecosystem - COMPLETE)**: Cost/latency/quality Pareto frontier multi-parameter utility optimization engine (`ModelEcosystemOptimizer`), preset profiles (Balanced, Cost, Speed, Quality), `/models/profiles` and `/models/optimize` REST APIs, and live frontend preview simulation.
-- **Phase 21 (Model Evaluation - NEXT MILESTONE)**: Automated offline eval harness comparing model responses against golden research benchmarks.
-- **Phase 22 (Agent Evaluation)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
+- **Phase 21 (Model Evaluation - COMPLETE)**: Automated offline eval harness comparing model responses against golden research benchmarks (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`), multi-metric scoring (`EvaluationMetricsEngine`), persistence (`DBModelEvaluation`, `ModelEvaluationRepository`), REST endpoints (`/models/evaluate`, `/models/evaluations`, `/models/leaderboard`), and competitive Leaderboard studio (`ModelEvaluationPage.tsx`).
+- **Phase 22 (Agent Evaluation - NEXT MILESTONE)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
 
 ### Generation 6: Production Product
 - **Phase 23 (Enterprise Security)**: Audit log streaming, KMS envelope encryption, and SOC 2 compliance readiness.
