@@ -114,8 +114,9 @@ Phase 17: Long-Term Knowledge Graph  [██████████████
 Phase 18: Projects & Workspaces      [████████████████████] 100%
 Phase 19: Team Collaboration         [████████████████████] 100%
 Phase 20: Intelligent Model Ecosystem [████████████████████] 100%
+Phase 21: Model Evaluation System    [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 21: Model Evaluation System    [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 22: Agent Evaluation           [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -143,8 +144,8 @@ Phase 21: Model Evaluation System    [░░░░░░░░░░░░░░
 
 ### Generation 5: AI Platform Intelligence
 - **Phase 20: Intelligent Model Ecosystem (COMPLETE)**: Multi-parameter utility routing optimization (`ModelEcosystemOptimizer`, Pareto frontier sorting across Quality, Speed, Cost, and Locality), preset optimization profiles (Balanced, Cost, Speed, Quality), `/models/profiles` and `/models/optimize` REST APIs, and live frontend routing simulation preview.
-- **Phase 21: Model Evaluation System (NEXT MILESTONE)**: Automated benchmarking for accuracy, relevance, latency, cost, and reasoning quality.
-- **Phase 22: Agent Evaluation**: Observability framework tracking research quality, evidence coverage, hallucination rate, and execution efficiency.
+- **Phase 21: Model Evaluation System (COMPLETE)**: Ground-truth benchmark harness (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`), automated multi-dimensional scoring (`EvaluationMetricsEngine` - factuality, reasoning, faithfulness, citations, latency, cost), persistence (`DBModelEvaluation`, `ModelEvaluationRepository`), REST APIs (`/models/evaluate`, `/models/evaluations`, `/models/leaderboard`), and competitive Leaderboard UI (`ModelEvaluationPage.tsx`).
+- **Phase 22: Agent Evaluation (NEXT MILESTONE)**: Observability framework tracking research quality, evidence coverage, hallucination rate, and execution efficiency.
 
 ### Generation 6: Production Product
 - **Phase 23: Enterprise Security**: SOC 2 & GDPR compliance, workspace isolation, immutable audit logging, data retention policies, and secret management.

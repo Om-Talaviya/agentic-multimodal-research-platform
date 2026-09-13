@@ -175,12 +175,12 @@ npm run lint
 - **Phase 18 (Projects & Workspaces)**: 🟢 COMPLETE (`DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, `/api/v1/workspaces` & `/api/v1/projects` REST APIs, `WorkspaceSelector.tsx` & `ProjectsPage.tsx` UI)
 - **Phase 19 (Team Collaboration)**: 🟢 COMPLETE (`DBWorkspaceInvite`, `DBReportAnnotation`, `DBWorkspaceActivity`, `WorkspaceInviteRepository`, `ReportAnnotationRepository`, `WorkspaceActivityRepository`, `/api/v1/workspaces/{id}/invites`, `/api/v1/invites/{token}`, `/api/v1/reports/{id}/annotations`, `WorkspaceMembersModal.tsx`, `ReportAnnotationsDrawer.tsx` UI)
 - **Phase 20 (Intelligent Model Ecosystem)**: 🟢 COMPLETE (`ModelEcosystemOptimizer`, Pareto-frontier sorting, multi-parameter scoring across Quality/Speed/Cost/Locality, `/api/v1/models/profiles`, `/api/v1/models/optimize`, live simulation preview UI)
+- **Phase 21 (Model Evaluation System)**: 🟢 COMPLETE (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`, `EvaluationMetricsEngine`, `ModelEvaluator`, `DBModelEvaluation`, `DBModelBenchmarkResult`, `ModelEvaluationRepository`, `/api/v1/models/evaluate`, `/api/v1/models/evaluations`, `/api/v1/models/leaderboard`, `ModelEvaluationPage.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The Generations Ahead (Phases 21 – 26):
+### The Generations Ahead (Phases 22 – 26):
 - **Generation 5 — AI Platform Intelligence**:
-  - **Phase 21**: Model Evaluation System (🟡 **IMMEDIATE NEXT MILESTONE**: Automated model benchmarking, ground-truth dataset evals, retrieval precision & reasoning scoring)
-  - **Phase 22**: Agent Evaluation (Automated agent quality, evidence sufficiency, and hallucination tracking)
+  - **Phase 22**: Agent Evaluation (🟡 **IMMEDIATE NEXT MILESTONE**: Automated agent quality, evidence sufficiency, citation faithfulness, and hallucination tracking)
 - **Generation 6 — Production Product**:
   - **Phase 23**: Enterprise Security (SOC 2, GDPR, audit logs, secret management)
   - **Phase 24**: Production Infrastructure (Distributed queues, worker pools, object storage, autoscaling)

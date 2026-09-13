@@ -5,6 +5,7 @@ from database.repositories.collaboration_repo import (
     WorkspaceInviteRepository,
 )
 from database.repositories.document_repo import DocumentChunkRepository, DocumentRepository
+from database.repositories.evaluation_repo import ModelEvaluationRepository
 from database.repositories.graph_repo import KnowledgeGraphRepository
 from database.repositories.memory_repository import MemoryRepository
 from database.repositories.project_repo import ProjectRepository
@@ -40,4 +41,5 @@ __all__ = [
     "WorkspaceInviteRepository",
     "ReportAnnotationRepository",
     "WorkspaceActivityRepository",
+    "ModelEvaluationRepository",
 ]

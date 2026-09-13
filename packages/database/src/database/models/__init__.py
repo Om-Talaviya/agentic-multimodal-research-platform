@@ -5,6 +5,7 @@ from database.models.collaboration import (
     DBWorkspaceInvite,
 )
 from database.models.document import Document, DocumentChunk
+from database.models.evaluation import DBModelBenchmarkResult, DBModelEvaluation
 from database.models.graph import DBKnowledgeEntity, DBKnowledgeRelation
 from database.models.memory import DBResearchMemory
 from database.models.report import Report
@@ -25,6 +26,8 @@ Project = DBProject
 WorkspaceInvite = DBWorkspaceInvite
 ReportAnnotation = DBReportAnnotation
 WorkspaceActivity = DBWorkspaceActivity
+ModelEvaluation = DBModelEvaluation
+ModelBenchmarkResult = DBModelBenchmarkResult
 
 __all__ = [
     "ResearchJob",
@@ -57,4 +60,8 @@ __all__ = [
     "WorkspaceInvite",
     "ReportAnnotation",
     "WorkspaceActivity",
+    "DBModelEvaluation",
+    "DBModelBenchmarkResult",
+    "ModelEvaluation",
+    "ModelBenchmarkResult",
 ]

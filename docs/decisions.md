@@ -296,5 +296,41 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Transparent explainability with Pareto-frontier verification for why each model was selected.
   - Positive: Sets the foundation for Phase 21 (Model Evaluation System: Automated Ground-Truth Benchmarking).
 
+---
+
+## ADR 021: Automated Model Evaluation System with Golden Benchmark Harness and Competitive Leaderboard (Phase 21)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: In Phase 20, we built multi-parameter utility optimization and Pareto-frontier routing across models based on static catalog ratings and token costs. However, evaluating whether a model actually delivers high-quality reasoning, avoids hallucinations, accurately cites references, and follows multi-step logic requires an empirical, offline benchmark harness with ground-truth test cases. Without an automated evaluation framework, model upgrades and new provider integrations cannot be quantitatively verified for research fidelity.
+- **Decision**:
+  1. Implement a standardized multi-category golden benchmark suite in `packages/ai/src/ai/eval/schemas.py`:
+     - `BenchmarkCategory`: `REASONING`, `FACTUAL_RETRIEVAL`, `SYNTHESIS`, `CITATION_ACCURACY`, `CODING`.
+     - `BenchmarkSample`: Individual test cases containing inputs, reference contexts, expected keywords, reasoning step requirements, and expected citation keys.
+     - `DEFAULT_RESEARCH_BENCHMARK`: Built-in 5-task multi-domain research benchmark dataset.
+  2. Build `EvaluationMetricsEngine` in `packages/ai/src/ai/eval/metrics.py` computing deterministic quantitative metrics [0.0 - 1.0]:
+     - Factual Accuracy: Keyword recall and precision against expected factual anchors.
+     - Reasoning Depth: Step-marker regex density and deductive elaboration structure.
+     - Retrieval Faithfulness: Context grounding vs. hallucination word ratio.
+     - Citation Precision: Source tag match percentage.
+     - Overall Composite Score: Weighted average ($35\%$ Factuality, $30\%$ Reasoning, $20\%$ Faithfulness, $15\%$ Citations).
+  3. Implement `ModelEvaluator` (`packages/ai/src/ai/eval/evaluator.py`) to orchestrate benchmark runs through `ModelGateway` with temperature=0.1, timing latency, recording token counts, and generating `EvaluationReport`.
+  4. Create database persistence layer in `packages/database/src/database/models/evaluation.py` and `packages/database/src/database/repositories/evaluation_repo.py`:
+     - `DBModelEvaluation`: Stores top-level benchmark run summaries, mean metrics, pass rate, latency, and cost.
+     - `DBModelBenchmarkResult`: Stores per-sample prompt, output, metrics breakdown, and failure diagnostic messages.
+  5. Implement REST API endpoints in `apps/api/src/api/routes/evaluation.py`:
+     - `POST /api/v1/models/evaluate`: Triggers an automated evaluation run on target model.
+     - `GET /api/v1/models/evaluations`: Lists historical evaluation runs.
+     - `GET /api/v1/models/evaluations/{id}`: Retrieves detailed test case breakdowns.
+     - `DELETE /api/v1/models/evaluations/{id}`: Deletes evaluation run.
+     - `GET /api/v1/models/leaderboard`: Aggregates active model rankings, scores, latencies, and Pareto-frontier flags.
+  6. Build React interface in `apps/web/src/pages/ModelEvaluationPage.tsx`:
+     - Competitive leaderboard table with score progress bars and Pareto optimal badges.
+     - "Run Benchmark" modal to trigger runs against registered models.
+     - Evaluation test case breakdown drawer showing prompts, completions, and ground-truth targets.
+- **Consequences**:
+  - Positive: Ground-truth empirical scoring of all models replaces subjective guesswork.
+  - Positive: Seamless verification of new local/cloud LLMs before promoting them to production research pipelines.
+  - Positive: Establishes the foundation for Phase 22 (Agent Evaluation).
+
+
 
 
