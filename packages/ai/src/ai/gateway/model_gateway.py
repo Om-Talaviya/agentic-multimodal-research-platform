@@ -137,6 +137,7 @@ class ModelGateway:
         request: LLMRequest,
         task: Optional[Union[str, TaskType]] = None,
         fallback_enabled: bool = True,
+        routing_profile: Optional[Union[str, Any]] = None,
     ) -> LLMResponse:
         """Execute text completion with capability routing, safe fallback, and telemetry."""
         start_time = time.perf_counter()
@@ -147,10 +148,11 @@ class ModelGateway:
         attempted_providers: List[str] = []
         last_error: Optional[Exception] = None
 
-        # Extract user_id and job_id from request metadata if present
+        # Extract user_id, job_id, and routing_profile from request metadata if present
         req_meta = getattr(request, "metadata", {}) or {}
         user_id_raw = req_meta.get("user_id")
         job_id_raw = req_meta.get("job_id")
+        effective_profile = routing_profile or req_meta.get("routing_profile")
 
         user_id: Optional[UUID] = None
         if user_id_raw:
@@ -175,6 +177,7 @@ class ModelGateway:
                 task=task,
                 requires_streaming=False,
                 user_id=str(user_id) if user_id else None,
+                routing_profile=effective_profile,
             )
         except Exception as e:
             logger.error(
@@ -203,6 +206,7 @@ class ModelGateway:
                         required_capabilities=model_def.capabilities,
                         exclude_models=attempted_models,
                         exclude_providers=attempted_providers,
+                        routing_profile=effective_profile,
                     )
                     model_def = fallback_def
                     target_model = fallback_def.model_id
@@ -257,6 +261,7 @@ class ModelGateway:
                     "model": response.model or target_model,
                     "requested_model": requested_model,
                     "requested_task": str(task) if task else None,
+                    "routing_profile": str(effective_profile) if effective_profile else "default",
                     "latency_ms": latency_ms,
                     "prompt_tokens": prompt_tokens,
                     "completion_tokens": completion_tokens,
@@ -271,6 +276,7 @@ class ModelGateway:
                 response.metadata["fallback_occurred"] = fallback_occurred
                 response.metadata["cost_usd"] = cost_usd
                 response.metadata["total_tokens"] = total_tokens
+                response.metadata["routing_profile"] = str(effective_profile) if effective_profile else "default"
                 if fallback_occurred:
                     response.metadata["original_model"] = original_model_id
                     if last_error:
@@ -359,14 +365,18 @@ class ModelGateway:
         request: LLMRequest,
         task: Optional[Union[str, TaskType]] = None,
         fallback_enabled: bool = True,
+        routing_profile: Optional[Union[str, Any]] = None,
     ) -> AsyncIterator[str]:
         """Stream completion tokens through the model gateway."""
         requested_model = request.model
+        req_meta = getattr(request, "metadata", {}) or {}
+        effective_profile = routing_profile or req_meta.get("routing_profile")
 
         model_def, provider = self.router.select_model_and_provider(
             requested_model=requested_model,
             task=task or TaskType.STREAMING_RESPONSE,
             requires_streaming=True,
+            routing_profile=effective_profile,
         )
 
         current_request = request.model_copy(update={"model": model_def.model_id})
@@ -391,6 +401,7 @@ class ModelGateway:
                     exclude_models=[model_def.model_id],
                     exclude_providers=[provider.name],
                     requires_streaming=True,
+                    routing_profile=effective_profile,
                 )
                 fallback_req = request.model_copy(update={"model": fallback_def.model_id})
                 async for token in fallback_provider.stream_complete(fallback_req):

@@ -181,8 +181,8 @@ flowchart TD
 - **Phase 19 (Collaboration - COMPLETE)**: Granular workspace RBAC (`owner`, `admin`, `researcher`, `analyst`, `reviewer`, `viewer`), cryptographic email invitation lifecycle (`DBWorkspaceInvite`, `WorkspaceInviteRepository`), threaded report annotations with quotes and 1-click resolution (`DBReportAnnotation`, `ReportAnnotationsDrawer.tsx`), and collaborative audit activity logs (`DBWorkspaceActivity`).
 
 ### Generation 5: AI Platform Intelligence
-- **Phase 20 (Model Ecosystem - NEXT MILESTONE)**: Cost/latency Pareto frontier optimization algorithm for model selection.
-- **Phase 21 (Model Evaluation)**: Automated offline eval harness comparing model responses against golden research benchmarks.
+- **Phase 20 (Model Ecosystem - COMPLETE)**: Cost/latency/quality Pareto frontier multi-parameter utility optimization engine (`ModelEcosystemOptimizer`), preset profiles (Balanced, Cost, Speed, Quality), `/models/profiles` and `/models/optimize` REST APIs, and live frontend preview simulation.
+- **Phase 21 (Model Evaluation - NEXT MILESTONE)**: Automated offline eval harness comparing model responses against golden research benchmarks.
 - **Phase 22 (Agent Evaluation)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
 
 ### Generation 6: Production Product

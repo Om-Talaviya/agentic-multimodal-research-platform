@@ -44,6 +44,7 @@ class ResearchRequest(BaseModel):
     user_id: Optional[str] = None
     workspace_id: Optional[str] = None
     project_id: Optional[str] = None
+    routing_profile: Optional[str] = "balanced"
 
 
 class ResearchJob(BaseModel):
@@ -59,6 +60,7 @@ class ResearchJob(BaseModel):
     constraints: List[str] = Field(default_factory=list)
     expected_output: str = "report"
     status: JobStatus = JobStatus.PENDING
+    routing_profile: Optional[str] = "balanced"
     created_at: datetime = Field(default_factory=utc_now)
     updated_at: datetime = Field(default_factory=utc_now)
     completed_at: Optional[datetime] = None

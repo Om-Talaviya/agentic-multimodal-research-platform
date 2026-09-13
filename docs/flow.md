@@ -371,5 +371,35 @@ sequenceDiagram
     API->>DB: Update status = "resolved", resolved_by = Alice, resolved_at = NOW()
     API-->>UI: Drawer updates comment state with resolution badge
 ```
+
+---
+
+## 10. Intelligent Model Ecosystem Optimization Flow (Phase 20)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Researcher
+    participant UI as NewResearch.tsx (Profile Selector)
+    participant API as FastAPI (/api/v1/models/optimize)
+    participant Opt as ModelEcosystemOptimizer
+    participant Reg as ModelRegistry
+    participant GW as ModelGateway
+
+    User->>UI: Selects Routing Profile (e.g., "Deep Quality" or "Cost Efficient")
+    UI->>API: POST /api/v1/models/optimize {profile, task: "long_form_research"}
+    API->>Reg: Query candidate models for task capabilities
+    Reg-->>API: Candidate ModelDefinitions
+    API->>Opt: optimize(candidates, profile, task)
+    Opt->>Opt: 1. Calculate Quality, Speed, Cost, Locality utility scores
+    Opt->>Opt: 2. Compute non-dominated Pareto frontier
+    Opt->>Opt: 3. Apply profile weights & rank candidates
+    Opt-->>API: OptimizationResult (selected model, ranking, Pareto status, rationale)
+    API-->>UI: Return live preview simulation data
+    UI-->>User: Renders live routing target badge and Pareto analysis
+
+    User->>UI: Submits research inquiry
+    UI->>GW: Execute pipeline with routing_profile
+    GW->>Opt: Route agent requests using active profile weights
 ```
 

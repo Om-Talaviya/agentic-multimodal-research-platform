@@ -256,6 +256,24 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.9 Intelligent Model Ecosystem & Routing Profile Selector (Phase 20)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  ⚙️ Intelligent Model Routing Profile:                                                                   │
+│  ┌────────────────────┐ ┌────────────────────┐ ┌────────────────────┐ ┌───────────────────────────────┐ │
+│  │ ⚖️ Balanced        │ │ 🏆 Deep Quality    │ │ ⚡ Ultra Fast      │ │ 💰 Cost Efficient             │ │
+│  │ Quality, speed, &  │ │ Frontier reasoning │ │ Low latency &      │ │ Free tier & budget-first      │ │
+│  │ cost balance.      │ │ & deep synthesis.  │ │ local inference.   │ │ model allocation.             │ │
+│  │   [ SELECTED ]     │ │                    │ │                    │ │                               │ │
+│  └────────────────────┘ └────────────────────┘ └────────────────────┘ └───────────────────────────────┘ │
+│                                                                                                         │
+│  ℹ️ Routing Target: gemini-2.5-pro (gemini)  [ Pareto Optimal ]  •  Quality: 0.95 | Speed: 0.70 | Cost: Free│
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -265,5 +283,6 @@ This document defines the complete visual design system, interaction patterns, u
 | **Evidence Hover** | Elevation increase, amber badge for contradictions, green badge for high confidence | 150ms ease-out hover |
 | **Explainability Modal** | Glassmorphic slide-out drawer revealing exact document slice and table coordinates | Slide-left 250ms |
 | **Report Review Drawer** | Slide-over drawer on synthesized report view with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution | Slide-left 200ms ease-out |
+| **Routing Profile Selector** | Interactive 4-card grid with active border glow, icon badge, and live Pareto-optimal simulation pill | Instant selection & async fetch |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

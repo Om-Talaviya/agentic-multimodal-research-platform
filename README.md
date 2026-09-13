@@ -113,8 +113,9 @@ Phase 16: Research Memory            [██████████████
 Phase 17: Long-Term Knowledge Graph  [████████████████████] 100%
 Phase 18: Projects & Workspaces      [████████████████████] 100%
 Phase 19: Team Collaboration         [████████████████████] 100%
+Phase 20: Intelligent Model Ecosystem [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 20: Intelligent Model Ecosystem [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 21: Model Evaluation System    [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -141,8 +142,8 @@ Phase 20: Intelligent Model Ecosystem [░░░░░░░░░░░░░�
 - **Phase 19: Team Collaboration (COMPLETE)**: Workspace role-based sharing (Owner, Researcher, Analyst, Reviewer, Viewer), cryptographic email invitations (`DBWorkspaceInvite`), threaded report annotations (`DBReportAnnotation`, `ReportAnnotationsDrawer.tsx`), and collaborative audit activity logging (`DBWorkspaceActivity`).
 
 ### Generation 5: AI Platform Intelligence
-- **Phase 20: Intelligent Model Ecosystem**: Multi-variable routing optimization (Task, Quality, Latency, Cost budget, Context size, Provider health, Quotas).
-- **Phase 21: Model Evaluation System**: Automated benchmarking for accuracy, relevance, latency, cost, and reasoning quality.
+- **Phase 20: Intelligent Model Ecosystem (COMPLETE)**: Multi-parameter utility routing optimization (`ModelEcosystemOptimizer`, Pareto frontier sorting across Quality, Speed, Cost, and Locality), preset optimization profiles (Balanced, Cost, Speed, Quality), `/models/profiles` and `/models/optimize` REST APIs, and live frontend routing simulation preview.
+- **Phase 21: Model Evaluation System (NEXT MILESTONE)**: Automated benchmarking for accuracy, relevance, latency, cost, and reasoning quality.
 - **Phase 22: Agent Evaluation**: Observability framework tracking research quality, evidence coverage, hallucination rate, and execution efficiency.
 
 ### Generation 6: Production Product

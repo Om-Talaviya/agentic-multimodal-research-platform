@@ -34,6 +34,7 @@ class ResearchJobCreate(BaseModel):
     preferred_sources: list[str] = []
     workspace_id: Optional[UUID] = None
     project_id: Optional[UUID] = None
+    routing_profile: Optional[str] = "balanced"
 
 
 class ResearchJobResponse(BaseModel):
@@ -188,6 +189,7 @@ async def create_research_job(
         user_id=user_id_str,
         workspace_id=str(request.workspace_id) if request.workspace_id else None,
         project_id=str(request.project_id) if request.project_id else None,
+        routing_profile=request.routing_profile or "balanced",
     )
     
     job = await pipeline.create_job(research_request)

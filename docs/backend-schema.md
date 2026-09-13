@@ -503,31 +503,102 @@ JSONType = JSON().with_variant(JSONB, "postgresql")
 
 ---
 
-## 4. Planned Schema Extensions (Generations 5 – 6)
+---
 
-### Generation 4 (Phases 18 – 19): Workspaces & Collaboration
-```sql
-CREATE TABLE workspaces (
-    id UUID PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    owner_id UUID REFERENCES users(id) ON DELETE CASCADE,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+## 4. Model Ecosystem Optimization API Contracts (Phase 20)
 
-CREATE TABLE workspace_members (
-    id UUID PRIMARY KEY,
-    workspace_id UUID REFERENCES workspaces(id) ON DELETE CASCADE,
-    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-    role VARCHAR(30) NOT NULL DEFAULT 'Researcher', -- Owner, Researcher, Analyst, Reviewer, Viewer
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    UNIQUE(workspace_id, user_id)
-);
+### 4.1 GET `/api/v1/models/profiles`
+Returns all preset routing optimization profiles and their constituent weight vectors.
 
-CREATE TABLE projects (
-    id UUID PRIMARY KEY,
-    workspace_id UUID REFERENCES workspaces(id) ON DELETE CASCADE,
-    name VARCHAR(150) NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+**Response (200 OK):**
+```json
+{
+  "balanced": {
+    "name": "Balanced Ecosystem",
+    "profile_type": "balanced",
+    "quality_weight": 0.35,
+    "speed_weight": 0.25,
+    "cost_weight": 0.30,
+    "locality_weight": 0.10,
+    "prefer_local": true,
+    "description": "Even trade-off between reasoning quality, execution speed, and token cost."
+  },
+  "cost_minimized": {
+    "name": "Cost Minimized",
+    "profile_type": "cost_minimized",
+    "quality_weight": 0.20,
+    "speed_weight": 0.15,
+    "cost_weight": 0.55,
+    "locality_weight": 0.10,
+    "prefer_local": true,
+    "description": "Prioritizes free tiers and low-cost models to maximize budget efficiency."
+  },
+  "speed_maximized": {
+    "name": "Speed Maximized",
+    "profile_type": "speed_maximized",
+    "quality_weight": 0.20,
+    "speed_weight": 0.55,
+    "cost_weight": 0.10,
+    "locality_weight": 0.15,
+    "prefer_local": true,
+    "description": "Prioritizes fast inference, lightweight models, and local low-latency engines."
+  },
+  "quality_maximized": {
+    "name": "Quality & Reasoning Maximized",
+    "profile_type": "quality_maximized",
+    "quality_weight": 0.75,
+    "speed_weight": 0.10,
+    "cost_weight": 0.10,
+    "locality_weight": 0.05,
+    "prefer_local": false,
+    "description": "Selects the highest capability frontier models for deep reasoning and synthesis."
+  }
+}
+```
+
+### 4.2 POST `/api/v1/models/optimize`
+Simulates candidate model evaluation, calculates Pareto-optimal frontier, and returns ranked utility scores.
+
+**Request Body:**
+```json
+{
+  "task": "long_form_research",
+  "profile": "balanced",
+  "required_capabilities": ["reasoning", "summarization"]
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "selected_model_id": "gemini-2.5-pro",
+  "selected_provider": "gemini",
+  "profile_used": {
+    "name": "Balanced Ecosystem",
+    "profile_type": "balanced",
+    "quality_weight": 0.35,
+    "speed_weight": 0.25,
+    "cost_weight": 0.30,
+    "locality_weight": 0.10
+  },
+  "ranked_candidates": [
+    {
+      "model_id": "gemini-2.5-pro",
+      "provider_name": "gemini",
+      "total_score": 0.825,
+      "quality_score": 0.95,
+      "speed_score": 0.70,
+      "cost_score": 0.65,
+      "locality_score": 0.30,
+      "is_pareto_optimal": true,
+      "rank": 1,
+      "tier": "paid",
+      "is_local": false,
+      "estimated_cost_per_1k": 0.003125,
+      "rationale": "Pareto-optimal trade-off, Specialized for 'long_form_research', High reasoning score"
+    }
+  ],
+  "pareto_frontier": ["gemini-2.5-pro", "ollama-llama3.3:70b"],
+  "tradeoff_analysis": "Selected 'gemini-2.5-pro' via Balanced Ecosystem (Score: 0.825). Model is on the non-dominated Pareto frontier."
+}
 ```

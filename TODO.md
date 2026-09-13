@@ -166,16 +166,28 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Next Milestone: Phase 20 — Intelligent Model Ecosystem
+- [x] **Phase 20: Intelligent Model Ecosystem**
+  - [x] Multi-parameter utility routing optimizer: Implemented `ModelEcosystemOptimizer` in `packages/ai/src/ai/router/optimizer.py` with normalized weighted scoring formula across Quality, Speed, Cost, and Locality.
+  - [x] Pareto-frontier selection: Implemented non-dominated sorting across Quality, Speed, and Cost Efficiency dimensions.
+  - [x] Preset optimization profiles: Defined `Balanced`, `Cost Minimized`, `Speed Maximized`, `Quality & Reasoning Maximized`, and `Custom` profiles in `OptimizationProfile`.
+  - [x] Router & Gateway integration: Upgraded `ModelRouter` and `ModelGateway` to accept `routing_profile`, apply Pareto optimization, and record profile telemetry.
+  - [x] REST API endpoints: Created `/api/v1/models/profiles` and `/api/v1/models/optimize` routes in `apps/api/src/api/routes/models.py`.
+  - [x] Interactive UI: Enhanced `NewResearch.tsx` with routing profile selection cards and live Pareto simulation preview.
+  - [x] Automated test suites: Added `test_model_ecosystem_optimizer.py` and `test_model_optimization_api.py`, achieving 100% pass rate across 283 monorepo tests.
+
+---
+
+## 🟡 Immediate Active Milestone: Phase 21 — Model Evaluation System
 
 ### Generation 5: AI Platform Intelligence
-- [ ] **Phase 20: Intelligent Model Ecosystem**
-  - [ ] Multi-variable routing optimization (Task, Quality, Latency, Cost budget, Context size, Provider health, Quota).
-  - [ ] Dynamic Pareto-frontier model selector with configurable cost/speed preferences.
 - [ ] **Phase 21: Model Evaluation System**
-  - [ ] Automated benchmarking measuring model output accuracy, citation precision, and cost.
+  - [ ] Automated model benchmarking engine against golden research datasets (`packages/ai/src/ai/eval/`).
+  - [ ] Metrics collection: factual accuracy, retrieval precision, citation faithfulness, reasoning depth, latency, and token cost.
+  - [ ] Continuous evaluation harness with automated regression alerts.
+  - [ ] Model leaderboard REST APIs (`/api/v1/models/evaluations`, `/api/v1/models/leaderboard`).
+  - [ ] Interactive Model Benchmark & Evaluation Dashboard UI in `apps/web`.
 - [ ] **Phase 22: Agent Evaluation**
-  - [ ] Observability dashboard tracking agent reasoning quality, hallucination rate, and execution efficiency.
+  - [ ] Observability framework tracking agent reasoning quality, hallucination rate, and execution efficiency.
 
 ### Generation 6: Production Product
 - [ ] **Phase 23: Enterprise Security**
