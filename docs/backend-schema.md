@@ -1040,5 +1040,89 @@ Dispatched change detection and novelty alerts for user review.
 - `PATCH /api/v1/automation/alerts/{id}/acknowledge`: Mark an alert as acknowledged and read.
 - `GET /api/v1/automation/metrics`: Retrieve aggregate automation metrics (active schedules, total sweeps, pending alerts, avg novelty score).
 
+---
+
+## 11. Adversarial Multi-Agent Debate Schema & REST Endpoints (Phase 27)
+
+### 11.1 Table: `agent_debates`
+Multi-agent dialectical debate sessions between affirmative thesis defense (`proposer`) and adversarial scrutiny (`opposer`).
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique debate session ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE CASCADE), NOT NULL, INDEX` | Creator / owning user |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), NULLABLE, INDEX` | Scoped workspace |
+| `project_id` | `UUID` | `FOREIGN KEY (projects.id ON DELETE SET NULL), NULLABLE, INDEX` | Scoped project |
+| `topic` | `VARCHAR(500)` | `NOT NULL` | Debate subject / topic |
+| `initial_thesis` | `TEXT` | `NOT NULL` | Affirmative proposition defended by Proposer |
+| `counter_thesis` | `TEXT` | `NULLABLE` | Opposing antithesis defended by Opposer |
+| `status` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'active', INDEX` | State (`active`, `concluded`, `abandoned`) |
+| `max_rounds` | `INTEGER` | `NOT NULL, DEFAULT 3` | Maximum dialectical interaction rounds |
+| `current_round` | `INTEGER` | `NOT NULL, DEFAULT 0` | Current completed round index |
+| `proposer_model` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'gemini-2.5-pro'` | Model backing ProposerAgent |
+| `opposer_model` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'gemini-2.5-pro'` | Model backing OpposerAgent |
+| `arbiter_model` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'gemini-2.5-pro'` | Model backing ConsensusArbiter |
+| `proposer_elo` | `FLOAT` | `NOT NULL, DEFAULT 1500.0` | Proposer argument strength Elo rating |
+| `opposer_elo` | `FLOAT` | `NOT NULL, DEFAULT 1500.0` | Opposer argument strength Elo rating |
+| `config_json` | `JSONB / JSON` | `NULLABLE` | Configuration parameters (k-factor, temperature) |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last modification timestamp |
+
+---
+
+### 11.2 Table: `debate_rounds`
+Sequential dialectical rounds capturing arguments, rebuttals, citations, arbiter critiques, and round Elo shifts.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique debate round ID |
+| `debate_id` | `UUID` | `FOREIGN KEY (agent_debates.id ON DELETE CASCADE), NOT NULL, INDEX` | Parent debate ID |
+| `round_number` | `INTEGER` | `NOT NULL` | Chronological round index (1-based) |
+| `proposer_argument` | `TEXT` | `NOT NULL` | Affirmative argument text with deductions |
+| `opposer_argument` | `TEXT` | `NOT NULL` | Adversarial counterargument and rebuttal |
+| `proposer_citations`| `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Empirical citations supporting proposer |
+| `opposer_citations` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Evidence supporting counterarguments |
+| `proposer_score` | `FLOAT` | `NOT NULL, DEFAULT 0.8` | Arbiter round quality score for proposer $\in [0, 1]$ |
+| `opposer_score` | `FLOAT` | `NOT NULL, DEFAULT 0.8` | Arbiter round quality score for opposer $\in [0, 1]$ |
+| `arbiter_critique` | `TEXT` | `NOT NULL` | Impartial arbiter reasoning and evaluation |
+| `round_winner` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'draw'` | Outcome (`proposer`, `opposer`, `draw`) |
+| `elo_delta` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Rating shift applied to winner/loser |
+| `round_telemetry` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Claims extracted, flaws, and concessions |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Round timestamp |
+
+---
+
+### 11.3 Table: `debate_consensus`
+Synthesized dialectical consensus reconciling opposing viewpoints into verified empirical claims, concessions, and residual uncertainties.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique consensus ID |
+| `debate_id` | `UUID` | `FOREIGN KEY (agent_debates.id ON DELETE CASCADE), NOT NULL, UNIQUE, INDEX` | Parent debate session |
+| `consensus_statement` | `TEXT` | `NOT NULL` | Unified balanced scientific consensus |
+| `accepted_claims` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Claims surviving adversarial scrutiny |
+| `refuted_claims` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Claims invalidated or constrained |
+| `concessions` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Mutual concessions made during rounds |
+| `remaining_uncertainties` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Open empirical questions for future inquiry |
+| `overall_confidence`| `FLOAT` | `NOT NULL, DEFAULT 0.85` | Factual confidence rating $\in [0, 1]$ |
+| `winner_overall` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'balanced_consensus'` | Overall verdict (`proposer_favored`, `opposer_favored`, `balanced_consensus`) |
+| `final_proposer_elo`| `FLOAT` | `NOT NULL` | Concluding Elo of proposer |
+| `final_opposer_elo` | `FLOAT` | `NOT NULL` | Concluding Elo of opposer |
+| `synthesis_metadata`| `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Arbiter telemetry and round summary stats |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Synthesis timestamp |
+
+---
+
+### 11.4 REST Endpoints (Phase 27)
+
+- `POST /api/v1/debates`: Launch a new adversarial multi-agent debate session with custom models, max rounds, topic, and thesis.
+- `GET /api/v1/debates`: List debates with optional filtering by status, workspace, and project.
+- `GET /api/v1/debates/{id}`: Retrieve comprehensive details of a debate including all chronological rounds and final consensus.
+- `POST /api/v1/debates/{id}/rounds`: Execute the next dialectical round or trigger autonomous execution to completion (`run_to_completion: true`).
+- `GET /api/v1/debates/{id}/rounds`: Retrieve full chronological transcript and citations for all rounds of a debate.
+- `GET /api/v1/debates/{id}/consensus`: Fetch synthesized dialectical consensus statement and accepted/refuted claim lists.
+- `GET /api/v1/debates/metrics`: Retrieve aggregate debate statistics (total debates, active debates, mean consensus confidence, average Proposer/Opposer Elo).
+- `DELETE /api/v1/debates/{id}`: Permanently delete a debate session and all child round and consensus records.
+
 
 

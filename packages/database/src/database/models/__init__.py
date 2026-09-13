@@ -14,6 +14,7 @@ from database.models.research_job import ResearchJob, ResearchTask
 from database.models.infrastructure import DBStorageObject, DBWorkerNode
 from database.models.api_key import DBApiKey
 from database.models.automation import DBAutomationAlert, DBResearchSweepResult, DBScheduledResearch
+from database.models.debate import DBAgentDebate, DBDebateConsensus, DBDebateRound
 from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
 from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
@@ -44,6 +45,9 @@ ApiKey = DBApiKey
 ScheduledResearch = DBScheduledResearch
 ResearchSweepResult = DBResearchSweepResult
 AutomationAlert = DBAutomationAlert
+AgentDebate = DBAgentDebate
+DebateRound = DBDebateRound
+DebateConsensus = DBDebateConsensus
 
 __all__ = [
     "ResearchJob",
@@ -102,4 +106,10 @@ __all__ = [
     "ResearchSweepResult",
     "DBAutomationAlert",
     "AutomationAlert",
+    "DBAgentDebate",
+    "AgentDebate",
+    "DBDebateRound",
+    "DebateRound",
+    "DBDebateConsensus",
+    "DebateConsensus",
 ]

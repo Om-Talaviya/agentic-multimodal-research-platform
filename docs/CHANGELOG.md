@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] - 2026-09-13 (Generation 7 Milestone 1: Phase 27 - Adversarial Multi-Agent Debate & Consensus Engine)
+
+### Added
+- **Phase 27: Adversarial Multi-Agent Debate, Elo Robustness Scoring & Dialectical Consensus Synthesis**:
+  - Implemented database models in `packages/database/src/database/models/debate.py` (`DBAgentDebate`, `DBDebateRound`, `DBDebateConsensus`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `DebateRepository` in `packages/database/src/database/repositories/debate_repo.py` supporting debate lifecycle (`create_debate`, `get_debate`, `list_debates`, `update_debate_status`, `add_debate_round`, `list_debate_rounds`, `record_consensus`, `get_consensus`, `get_debate_metrics`, `delete_debate`).
+  - Implemented specialized debate agents in `packages/agents/src/agents/debate/`:
+    - `ProposerAgent`: Affirmative evidence-grounded thesis defense, deduction formulation, citation tracking, and honest concession reporting.
+    - `OpposerAgent`: Adversarial counterarguments, edge case stress testing, methodology criticism, and fallacy detection.
+    - `ConsensusArbiter`: Impartial round evaluation, argument scoring, critique generation, and dialectical consensus synthesis.
+  - Implemented `DebateEngine` in `packages/research/src/research/debate/engine.py` with standard Elo rating shift updates ($\Delta R = K \times (S - E)$ with $K=32.0$), round-by-round orchestration, autonomous full debate runs, and automatic consensus recording.
+  - Implemented REST API routes in `apps/api/src/api/routes/debate.py`:
+    - `POST /api/v1/debates`: Launch new debate session.
+    - `GET /api/v1/debates`: List debates with workspace/project/status filters.
+    - `GET /api/v1/debates/{id}`: Retrieve debate with rounds and consensus.
+    - `POST /api/v1/debates/{id}/rounds`: Execute next round or full debate run.
+    - `GET /api/v1/debates/{id}/rounds`: List chronological round transcripts and citations.
+    - `GET /api/v1/debates/{id}/consensus`: Retrieve synthesized consensus.
+    - `GET /api/v1/debates/metrics`: Query aggregate debate statistics.
+    - `DELETE /api/v1/debates/{id}`: Delete debate and cascade child records.
+  - Created interactive Debate Arena Studio in `apps/web/src/pages/DebateArenaPage.tsx`:
+    - Active Debates tab (grid of active/concluded debates, Elo rating pills, round counters, launch debate modal).
+    - Split-Screen Dialectical Arena Inspector (side-by-side Proposer vs Opposer transcript viewer, claim cards, citations, Arbiter critique card with round winner and Elo delta indicator).
+    - Synthesized Consensus Vault tab (high-confidence consensus statement card, accepted empirical claims with confidence bars, refuted claims, mutual concessions, and residual uncertainties).
+  - Mounted `/debates` in `App.tsx` and added `Debate Arena` link in `Layout.tsx` with `Swords` icon.
+  - Added test suites in `packages/database/tests/test_debate_repo.py`, `packages/research/tests/test_debate_engine.py`, and `apps/api/tests/test_debate_api.py`, achieving 100% pass rate (333/333 tests passing across entire monorepo).
+  - Formalized **ADR 027** (Adversarial Multi-Agent Debate, Elo Robustness Scoring, and Dialectical Consensus Synthesis).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 1 is 100% complete, tested, and active!
+
+---
+
 ## [2.0.0] - 2026-09-13 (Generation 6 Milestone 4 & 6-Generation Product Roadmap Completion: Phase 26 - Research Automation)
 
 ### Added

@@ -221,6 +221,12 @@ The output is a structured intelligence dossier:
 - **Phase 26: Research Automation (COMPLETE)**:
   - Cron-based and interval recurring research jobs, automated change and novelty detection across academic archives and web sources, semantic claim diff analysis engine (`ResearchAutomationEngine`), and multi-channel webhook / in-app alert notification dispatchers (`DBScheduledResearch`, `DBResearchSweepResult`, `DBAutomationAlert`, `AutomationRepository`, `ResearchAutomationPage.tsx`) (**ADR 026**).
 
+#### Generation 7 — Scientific & Meta-Intelligence (ACTIVE)
+- **Phase 27: Adversarial Multi-Agent Debate & Consensus Engine (COMPLETE)**:
+  - Dialectical multi-agent scientific debate architecture: `ProposerAgent` (affirmative evidence-grounded thesis defense) vs `OpposerAgent` (adversarial counterarguments, edge case stress testing, fallacy identification) evaluated by `ConsensusArbiter` (round scoring, critique generation, dynamic Elo shifts $\Delta R = K \times (S - E)$).
+  - Dialectical consensus synthesis: Automatically reconciles opposing positions into unified consensus statements, accepted empirical claims, refuted claims, mutual concessions, and open uncertainties with factual confidence ratings.
+  - Persistent storage (`DBAgentDebate`, `DBDebateRound`, `DBDebateConsensus`), `DebateRepository`, REST APIs (`/api/v1/debates/*`), and `DebateArenaPage.tsx` React studio (**ADR 027**).
+
 ---
 
 ## 8. Architectural Anti-Patterns ("What We Should NOT Do")

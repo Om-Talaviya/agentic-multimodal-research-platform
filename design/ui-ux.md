@@ -448,6 +448,34 @@ This document defines the complete visual design system, interaction patterns, u
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### 3.16 Adversarial Debate Arena & Dialectical Consensus Studio (Phase 27)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  ⚔️ Adversarial Debate Arena & Consensus Studio         [ 🔄 Refresh ] [ ➕ Launch Debate ]             │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ ⚔️ Active Debates (2) ]     [ 🏛️ Dialectical Arena Inspector ]     [ 📜 Consensus Vault (1) ]        │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  SPLIT-SCREEN DIALECTICAL ARENA (Round 2 of 3):                                                         │
+│  ┌───────────────────────────────────────────────┬───────────────────────────────────────────────────┐  │
+│  │ 🟢 PROPOSER (Thesis Defense) — Elo: 1516.0    │ 🔴 OPPOSER (Critical Antithesis) — Elo: 1484.0    │  │
+│  ├───────────────────────────────────────────────┼───────────────────────────────────────────────────┤  │
+│  │ Thesis: "Shor's algorithm with logical qubits │ Counter: "Physical error rates and syndrome cycle │  │
+│  │ achieves polynomial-time factorization."      │ latency impose insurmountable scaling limits."    │  │
+│  │                                               │                                                   │  │
+│  │ Key Claim: "Surface-7 code achieves 1e-12 P_L"│ Flaw Identified: "Assumes zero crosstalk noise"   │  │
+│  │ 🔗 Citation: PhysRevX.14.021004 (Rel: 0.95)   │ 🔗 Citation: Quantum Sci. Tech. 9 (Rel: 0.92)    │  │
+│  └───────────────────────────────────────────────┴───────────────────────────────────────────────────┘  │
+│                                                                                                         │
+│  ⚖️ ARBITER EVALUATION & ELO SHIFT:                                                                     │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ Verdict: Proposer favored (Score: 0.88 vs 0.82) | Elo Delta: +16.0 Proposer / -16.0 Opposer        │  │
+│  │ Arbiter Critique: "Proposer provided rigorous error budget calculations; Opposer successfully     │  │
+│  │ constrained the operational temperature threshold to <15mK."                                     │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
 ---
 
 ## 4. UI Interaction States
@@ -466,6 +494,7 @@ This document defines the complete visual design system, interaction patterns, u
 | **Production Infrastructure Studio** | Tabbed cluster topology, live CPU/RAM load bars, heartbeat pulse simulator, priority task enqueue modal, and S3 presigned URL generator | Instant tab switch / modal overlay |
 | **Developer Platform Studio** | Tabbed API key management, one-time plaintext key reveal modal, interactive code snippets (cURL/Python/TS), and tier rate limit cards | Instant tab switch / modal overlay |
 | **Research Automation Studio** | Tabbed cron sweeps, countdown badges, diff explorer with novel/contradictory highlight tags, novelty gauge, and alert cards | Instant tab switch / modal overlay |
+| **Debate Arena Studio** | Split-screen dialectical arena, dynamic Elo delta pills, round stepper tabs, accepted/refuted claim cards, and consensus vault | Instant tab switch / modal overlay |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
 
