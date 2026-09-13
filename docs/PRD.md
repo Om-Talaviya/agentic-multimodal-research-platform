@@ -211,10 +211,10 @@ The output is a structured intelligence dossier:
 - **Phase 22: Agent Evaluation & Observability (COMPLETE)**:
   - Multi-metric autonomous agent evaluation engine (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`), plan precision scoring, tool invocation accuracy, evidence grounding coverage, sentence-level hallucination rate detection, database persistence (`DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`), REST APIs (`/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`), and interactive Agent Observability Studio (`AgentEvaluationPage.tsx`) (**ADR 022**).
 
-#### Generation 6 — Production Product (NEXT GENERATION - Phase 23 Active)
-- **Phase 23: Enterprise Security (🟡 IMMEDIATE NEXT MILESTONE)**:
-  - Enterprise compliance (SOC 2, GDPR), encryption at rest and in transit, secret management, immutable audit logs, and data retention policies.
-- **Phase 24: Production Scale Infrastructure**:
+#### Generation 6 — Production Product (ACTIVE GENERATION - Phase 24 Next)
+- **Phase 23: Enterprise Security (COMPLETE)**:
+  - Enterprise compliance (SOC 2, GDPR), KMS two-tier envelope encryption (AES-256-GCM DEK/KEK), secret vault management, immutable tamper-evident SHA-256 audit log hash chains, automated GDPR Article 17 cascade purge, and `EnterpriseSecurityPage.tsx` React studio (**ADR 023**).
+- **Phase 24: Production Scale Infrastructure (🟡 IMMEDIATE NEXT MILESTONE)**:
   - Distributed background task queues (Celery/Redis/RabbitMQ), worker autoscaling, S3/MinIO object storage, and PostgreSQL replication.
 - **Phase 25: Public API & Developer Platform**:
   - Public developer REST API, API key provisioning, rate limiting, and official Python/TypeScript SDKs.

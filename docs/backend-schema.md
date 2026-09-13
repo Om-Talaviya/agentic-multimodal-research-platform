@@ -786,4 +786,83 @@ Retrieves detailed scorecard and full sequential step telemetry history.
 #### `GET /api/v1/agents/metrics/summary`
 Returns system-wide aggregated agent metrics (mean score, plan precision, tool accuracy, evidence coverage, hallucination rate, total tokens, total cost).
 
+---
+
+## 7. Enterprise Security, KMS Secret Vault & Audit Trail Schemas (Phase 23)
+
+### 7.1 Table: `security_audit_logs`
+Immutable, tamper-evident audit logs with cryptographic SHA-256 hash chaining forming a verifiable Merkle sequence:
+$$\text{CurrentHash} = \text{SHA256}(\text{PreviousHash} \parallel \text{Timestamp} \parallel \text{EventType} \parallel \text{ActorId} \parallel \text{ResourceId} \parallel \text{Details})$$
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique audit log ID |
+| `event_type` | `VARCHAR(100)` | `NOT NULL, INDEX` | Event category (`user.login`, `secret.access`, `gdpr.purge`) |
+| `severity` | `VARCHAR(30)` | `NOT NULL, DEFAULT 'INFO'` | Event severity (`INFO`, `WARNING`, `CRITICAL`) |
+| `actor_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE SET NULL), NULLABLE` | Triggering actor ID |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE SET NULL), NULLABLE` | Associated tenant workspace |
+| `resource_type` | `VARCHAR(100)` | `NULLABLE` | Targeted resource entity type |
+| `resource_id` | `VARCHAR(255)` | `NULLABLE` | Targeted resource ID |
+| `action` | `VARCHAR(100)` | `NOT NULL` | Specific action taken |
+| `details` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Serialized contextual payload |
+| `ip_address` | `VARCHAR(45)` | `NULLABLE` | Client IPv4 / IPv6 address |
+| `user_agent` | `TEXT` | `NULLABLE` | Client browser / CLI user agent string |
+| `previous_hash` | `VARCHAR(64)` | `NOT NULL, INDEX` | SHA-256 hash of previous record (or Genesis) |
+| `current_hash` | `VARCHAR(64)` | `NOT NULL, INDEX` | SHA-256 hash chaining record data |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW(), INDEX` | Immutable timestamp |
+
+---
+
+### 7.2 Table: `encrypted_secrets`
+KMS Two-Tier Envelope Encrypted Secrets Vault (AES-256-GCM DEK/KEK architecture).
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique secret record ID |
+| `name` | `VARCHAR(100)` | `NOT NULL, INDEX` | Human-readable secret label |
+| `secret_type` | `VARCHAR(50)` | `NOT NULL` | Secret classification (`api_key`, `oauth_token`, `database_uri`) |
+| `provider` | `VARCHAR(50)` | `NOT NULL, INDEX` | Target provider (`gemini`, `openai`, `anthropic`, `custom`) |
+| `key_version` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'v1-aes256gcm'` | KMS key version identifier |
+| `encrypted_payload`| `TEXT` | `NOT NULL` | Base64-encoded AES-256-GCM ciphertext payload |
+| `encrypted_dek` | `TEXT` | `NOT NULL` | Base64-encoded DEK wrapped by KEK |
+| `masked_preview` | `VARCHAR(50)` | `NOT NULL` | Masked identifier string for display (e.g. `AIz...8877`) |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), NULLABLE` | Scoped workspace |
+| `created_by` | `UUID` | `FOREIGN KEY (users.id ON DELETE SET NULL), NULLABLE` | Owning user ID |
+| `is_revoked` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE` | Vault revocation flag |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+---
+
+### 7.3 Table: `security_policies`
+Workspace security constraints, retention lifecycles, and compliance rules.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique policy ID |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), UNIQUE` | Scoped workspace ID |
+| `retention_days` | `INTEGER` | `NOT NULL, DEFAULT 365` | Data retention lifespan in days |
+| `enforce_mfa` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE` | Multi-Factor Authentication requirement |
+| `ip_whitelist` | `JSONB / JSON` | `NOT NULL, DEFAULT '{"allowed_cidrs": []}'` | Allowed CIDR IP whitelist |
+| `allowed_providers` | `JSONB / JSON` | `NOT NULL, DEFAULT '{"providers": ["gemini", "ollama", "openai"]}'` | Whitelisted LLM providers |
+| `gdpr_anonymize_on_delete` | `BOOLEAN` | `NOT NULL, DEFAULT TRUE` | Automated anonymization on deletion |
+| `data_classification` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'CONFIDENTIAL'` | Classification (`PUBLIC`, `INTERNAL`, `CONFIDENTIAL`, `RESTRICTED`) |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last modification timestamp |
+
+---
+
+### 7.4 REST Endpoints (Phase 23)
+
+- `POST /api/v1/security/audit-logs`: Record an immutable, hash-chained security audit log entry.
+- `GET /api/v1/security/audit-logs`: Query historical security audit logs with filtering.
+- `GET /api/v1/security/audit-logs/verify`: Cryptographically verify SHA-256 hash chain integrity of audit logs.
+- `POST /api/v1/security/secrets`: Store encrypted credentials into KMS envelope vault.
+- `GET /api/v1/security/secrets`: List vaulted secrets metadata with masked previews.
+- `PATCH /api/v1/security/secrets/{id}/revoke`: Revoke credentials in vault.
+- `DELETE /api/v1/security/secrets/{id}`: Permanently delete credentials from vault.
+- `GET /api/v1/security/policy`: Retrieve workspace security policy and retention rules.
+- `PATCH /api/v1/security/policy`: Update workspace security policy, MFA, and CIDR whitelist.
+- `POST /api/v1/security/gdpr/purge`: Execute GDPR Right-to-be-Forgotten cascade data purge.
+- `GET /api/v1/security/compliance/status`: Retrieve SOC 2 and GDPR compliance scorecard.
+
 

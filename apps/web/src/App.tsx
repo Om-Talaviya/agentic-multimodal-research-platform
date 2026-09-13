@@ -10,6 +10,7 @@ import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ModelEvaluationPage } from './pages/ModelEvaluationPage'
 import { AgentEvaluationPage } from './pages/AgentEvaluationPage'
+import { EnterpriseSecurityPage } from './pages/EnterpriseSecurityPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -91,6 +92,7 @@ function App() {
           <Route path="graph" element={<KnowledgeGraphPage />} />
           <Route path="evaluations" element={<ModelEvaluationPage />} />
           <Route path="agents/evaluations" element={<AgentEvaluationPage />} />
+          <Route path="security" element={<EnterpriseSecurityPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

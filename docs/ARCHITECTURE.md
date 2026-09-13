@@ -222,9 +222,9 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 21 (Model Evaluation System - COMPLETE)**: Ground-truth benchmark harness (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`), automated multi-dimensional scoring (`EvaluationMetricsEngine` - factuality, reasoning, faithfulness, citations, latency, cost), persistence (`DBModelEvaluation`, `ModelEvaluationRepository`), REST APIs (`/models/evaluate`, `/models/evaluations`, `/models/leaderboard`), and competitive Leaderboard studio (`ModelEvaluationPage.tsx`) (**ADR 021**).
 - **Phase 22 (Agent Evaluation - COMPLETE)**: Autonomous multi-metric agent evaluation engine (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`), plan precision scoring, tool invocation accuracy, evidence grounding coverage, sentence-level hallucination rate detection, database persistence (`DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`), REST APIs (`/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`), and interactive Agent Observability Studio (`AgentEvaluationPage.tsx`) (**ADR 022**).
 
-### Generation 6: Production Product (Phases 23 – 26) (NEXT GENERATION - Phase 23 Active)
-- **Phase 23 (Enterprise Security - 🟡 IMMEDIATE NEXT MILESTONE)**: Audit log streaming, KMS envelope encryption, secret management, and SOC 2 / GDPR compliance readiness.
-- **Phase 24 (Production Scale Infrastructure)**: Celery/Redis distributed task queues, MinIO/S3 object storage, and read-replica routing.
+### Generation 6: Production Product (Phases 23 – 26) (ACTIVE GENERATION - Phase 24 Next)
+- **Phase 23 (Enterprise Security - COMPLETE)**: KMS two-tier envelope encryption (AES-256-GCM DEK/KEK with PBKDF2 salt derivation), tamper-evident SHA-256 cryptographic audit hash chaining (`AuditHashChainer`), workspace security & data retention policies (`DBSecurityPolicy`), automated GDPR Article 17 cascade purge (`execute_gdpr_data_purge`), SOC 2 compliance scorecard APIs, and `EnterpriseSecurityPage.tsx` React studio (**ADR 023**).
+- **Phase 24 (Production Scale Infrastructure - 🟡 IMMEDIATE NEXT MILESTONE)**: Celery/Redis distributed task queues, MinIO/S3 object storage, and read-replica routing.
 - **Phase 25 (Public API & Developer Platform)**: Public OpenAPI 3.1 gateway, SDK generation, and developer API keys.
 - **Phase 26 (Research Automation)**: Cron-based research workers with automated web/academic change detection.
 

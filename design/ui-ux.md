@@ -330,6 +330,35 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.12 Enterprise Security, KMS Secret Vault & Compliance Studio (Phase 23)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🛡️ Enterprise Security & Compliance Studio           [ 🔄 Refresh ]  [ 🔒 Verify Audit Chain ]         │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🛡️ Compliance Status ]  [ 🔑 KMS Secret Vault ]  [ 📜 Immutable Audit Logs ]  [ ⏳ Retention & GDPR ] │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  COMPLIANCE SCORECARD OVERVIEW:                                                                         │
+│  ┌──────────────────────────────────────────────┐  ┌──────────────────────────────────────────────┐     │
+│  │ 🛡️ SOC 2 Type II Compliance       [ ACTIVE ] │  │ ⚖️ GDPR Data Privacy             [ ACTIVE ] │     │
+│  │ • CC6.1 Access Control: RBAC Enforced        │  │ • Article 17: Right-to-be-Forgotten Ready   │     │
+│  │ • CC6.6 Encryption: AES-256-GCM Envelope     │  │ • Article 25: Tenant Isolation & Anonymize   │     │
+│  │ • CC7.2 Audit Trail: Merkle Hash Chained     │  │ • Article 32: KMS Wrapped Security           │     │
+│  │ Status: 🟢 COMPLIANT                         │  │ Status: 🟢 COMPLIANT                         │     │
+│  └──────────────────────────────────────────────┘  └──────────────────────────────────────────────┘     │
+│                                                                                                         │
+│  KMS ENCRYPTED SECRETS VAULT:                                                                           │
+│  ┌────────────────────────────────┬────────────┬──────────────┬──────────────────┬───────────────────┐  │
+│  │ SECRET NAME                    │ PROVIDER   │ TYPE         │ MASKED PREVIEW   │ ACTIONS           │  │
+│  ├────────────────────────────────┼────────────┼──────────────┼──────────────────┼───────────────────┤  │
+│  │ Production Gemini API Key      │ Gemini     │ API Key      │ `AIz...8877`     │ [ 🚫 Revoke ] [ 🗑]│  │
+│  │ Enterprise Anthropic Key       │ Anthropic  │ API Key      │ `sk-...1122`     │ [ 🚫 Revoke ] [ 🗑]│  │
+│  └────────────────────────────────┴────────────┴──────────────┴──────────────────┴───────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -342,5 +371,6 @@ This document defines the complete visual design system, interaction patterns, u
 | **Routing Profile Selector** | Interactive 4-card grid with active border glow, icon badge, and live Pareto-optimal simulation pill | Instant selection & async fetch |
 | **Model Leaderboard Studio** | Ranked tabular scoreboard with score meters, Pareto badges, and test case audit drawer | Instant click / modal slide |
 | **Agent Observability Studio** | KPI metrics cards, per-agent health indicators, evaluation scorecards, and sequential step telemetry inspector drawer | Instant click / slide drawer |
+| **Enterprise Security Studio** | Tabbed compliance cards, KMS secret creation modal, SHA-256 hash-anchored log explorer, and confirmation-gated GDPR purge modal | Instant tab switch / animated drawer |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

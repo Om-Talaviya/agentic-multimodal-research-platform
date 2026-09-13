@@ -199,20 +199,29 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Active Milestone: Phase 23 — Enterprise Security
+- [x] **Phase 23: Enterprise Security**
+  - [x] Enterprise compliance readiness (SOC 2, GDPR controls).
+  - [x] Workspace data isolation & tenant access validation policies (`DBSecurityPolicy`).
+  - [x] Immutable security audit logging with cryptographic SHA-256 hash chaining (`DBSecurityAuditLog`, `AuditHashChainer`).
+  - [x] Secret management & KMS envelope encryption (AES-256-GCM DEK/KEK) for API keys and stored credentials (`KMSEnvelopeEncryption`, `DBEncryptedSecret`).
+  - [x] Data retention and automated GDPR right-to-be-forgotten cascade purge (`execute_gdpr_data_purge`).
+  - [x] Enterprise Security REST APIs (`/api/v1/security/audit-logs`, `/api/v1/security/audit-logs/verify`, `/api/v1/security/secrets`, `/api/v1/security/policy`, `/api/v1/security/gdpr/purge`, `/api/v1/security/compliance/status`).
+  - [x] Interactive Enterprise Security & Audit Studio UI in `apps/web/src/pages/EnterpriseSecurityPage.tsx`.
+  - [x] Comprehensive test suites in `test_kms_encryption.py`, `test_security_repo.py`, and `test_security_api.py`, achieving 100% pass rate (309/309 tests passing across monorepo).
+
+---
+
+## 🟡 Immediate Active Milestone: Phase 24 — Production Infrastructure
 
 ### Generation 6: Production Product
-- [ ] **Phase 23: Enterprise Security**
-  - [ ] Enterprise compliance readiness (SOC 2, GDPR controls).
-  - [ ] Workspace data isolation & tenant access validation policies.
-  - [ ] Immutable security audit logging with cryptographic hash chaining (`DBSecurityAuditLog`).
-  - [ ] Secret management & KMS envelope encryption for API keys and stored provider credentials.
-  - [ ] Data retention, soft deletion, and GDPR right-to-be-forgotten purge policies.
-  - [ ] Enterprise Security REST APIs (`/api/v1/security/audit-logs`, `/api/v1/security/retention`, `/api/v1/security/compliance`).
-  - [ ] Interactive Enterprise Security & Audit Studio UI in `apps/web`.
-
 - [ ] **Phase 24: Production Infrastructure**
-  - [ ] Distributed task queues (Celery/Redis), worker autoscaling, S3/MinIO storage, and DB replication.
+  - [ ] Distributed task queues & asynchronous workers (Celery/Redis worker pools for long-running research jobs).
+  - [ ] S3 / MinIO compatible object storage integration for multimodal raw file blobs and artifact persistence.
+  - [ ] Background worker health monitoring and task heartbeats.
+  - [ ] Database read-replica configuration & connection pooling resilience.
+  - [ ] Production Infrastructure REST endpoints (`/api/v1/system/workers`, `/api/v1/system/storage`).
+  - [ ] Infrastructure Monitoring & Worker Cluster Studio UI in `apps/web`.
+
 - [ ] **Phase 25: Public API & Developer Platform**
   - [ ] Public developer REST API, API key provisioning, rate limiting, and Python/TypeScript SDKs.
 - [ ] **Phase 26: Research Automation**

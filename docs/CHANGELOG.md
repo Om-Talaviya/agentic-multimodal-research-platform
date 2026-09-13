@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.7.0] - 2026-09-13 (Generation 6 Milestone 1: Phase 23 - Enterprise Security & Compliance Platform)
+
+### Added
+- **Phase 23: Enterprise Security, KMS Secret Vault & Cryptographic Audit Trails**:
+  - Implemented military-grade two-tier envelope encryption engine `KMSEnvelopeEncryption` in `packages/shared/src/shared/kms.py` using PBKDF2-HMAC-SHA256 derived Key Encryption Key (KEK) and ephemeral 256-bit Data Encryption Key (DEK) with AES-256-GCM authenticated ciphertext.
+  - Implemented blockchain-like tamper-evident cryptographic SHA-256 audit hash chaining `AuditHashChainer` in `packages/shared/src/shared/kms.py` calculating deterministic hashes linked to preceding records with `verify_chain_integrity()` validation.
+  - Implemented database models `DBSecurityAuditLog`, `DBEncryptedSecret`, and `DBSecurityPolicy` in `packages/database/src/database/models/security.py` with full PostgreSQL/SQLite parity.
+  - Implemented `SecurityRepository` in `packages/database/src/database/repositories/security_repo.py` supporting hash-chained audit event creation, integrity verification, secret vaulting/revocation, security policy management, and GDPR Article 17 automated cascade data purge (`execute_gdpr_data_purge`).
+  - Implemented REST API endpoints in `apps/api/src/api/routes/security.py`:
+    - `POST /api/v1/security/audit-logs`: Records hash-chained security event.
+    - `GET /api/v1/security/audit-logs`: Queries audit trails with filtering.
+    - `GET /api/v1/security/audit-logs/verify`: Cryptographically verifies SHA-256 hash chain integrity.
+    - `POST /api/v1/security/secrets` & `GET /api/v1/security/secrets`: Vaults and lists secrets with masked previews.
+    - `PATCH /api/v1/security/secrets/{id}/revoke` & `DELETE /api/v1/security/secrets/{id}`: Secret lifecycle and revocation.
+    - `GET /api/v1/security/policy` & `PATCH /api/v1/security/policy`: Workspace security policy and retention rules.
+    - `POST /api/v1/security/gdpr/purge`: GDPR Right-to-be-Forgotten cascade data purge.
+    - `GET /api/v1/security/compliance/status`: Real-time SOC 2 Type II and GDPR compliance scorecard.
+  - Created interactive Enterprise Security Studio in `apps/web/src/pages/EnterpriseSecurityPage.tsx` with Compliance Scorecard, KMS Secret Vault manager, Tamper-Evident Audit Log explorer, and Retention & GDPR purge controls.
+  - Mounted `/security` route in `App.tsx` and added `Enterprise Security` navigation link in `Layout.tsx`.
+  - Added test suites in `packages/shared/tests/test_kms_encryption.py`, `packages/database/tests/test_security_repo.py`, and `apps/api/tests/test_security_api.py`, achieving 100% pass rate (309/309 tests passing across monorepo).
+  - Formalized **ADR 023** (Enterprise KMS Envelope Encryption, Cryptographic Audit Chains, and GDPR Data Lifecycle Controls).
+
+---
+
 ## [1.6.0] - 2026-09-13 (Generation 5 Milestone 3: Phase 22 - Agent Evaluation Engine & Observability Platform)
 
 ### Added
