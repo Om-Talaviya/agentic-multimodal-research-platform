@@ -14,12 +14,6 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12"]
 
-    env:
-      PYTHONPATH: ${{ github.workspace }}/packages/shared/src:${{ github.workspace }}/packages/ai/src:${{ github.workspace }}/packages/database/src:${{ github.workspace }}/packages/tools/src:${{ github.workspace }}/packages/agents/src:${{ github.workspace }}/packages/research/src:${{ github.workspace }}/packages/ingestion/src:${{ github.workspace }}/packages/retrieval/src:${{ github.workspace }}/apps/api/src
-      DATABASE_URL: sqlite+aiosqlite:///:memory:
-      SECRET_KEY: ci-secret-key-for-testing-only-32-chars-long
-      TESTING: "true"
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -35,6 +29,11 @@ jobs:
           pip install pytest pytest-asyncio pytest-cov httpx pydantic pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite asyncpg greenlet rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
 
       - name: Run Pytest Suite (333 tests)
+        env:
+          PYTHONPATH: packages/shared/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src
+          DATABASE_URL: sqlite+aiosqlite:///:memory:
+          SECRET_KEY: ci-secret-key-for-testing-only-32-chars-long
+          TESTING: "true"
         run: |
           pytest -v packages/ apps/api/tests/
 
@@ -55,5 +54,3 @@ jobs:
         run: |
           npm install
           npm run build
-
-
