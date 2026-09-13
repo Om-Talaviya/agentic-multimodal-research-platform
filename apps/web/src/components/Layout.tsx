@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2 } from 'lucide-react'
+import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio } from 'lucide-react'
 import { WorkspaceSelector } from './WorkspaceSelector'
 
 export function Layout() {
@@ -14,6 +14,7 @@ export function Layout() {
     { path: '/security', label: 'Enterprise Security', icon: ShieldCheck },
     { path: '/infrastructure', label: 'Infrastructure', icon: Server },
     { path: '/developer', label: 'Developer API', icon: Code2 },
+    { path: '/automation', label: 'Research Automation', icon: Radio },
     { path: '/settings', label: 'Settings', icon: Settings },
   ]
 

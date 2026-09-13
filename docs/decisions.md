@@ -460,6 +460,39 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Frictionless developer experience with copy-paste SDK snippets and instant playground testing.
   - Positive: Enables Phase 26 (Research Automation) to invoke internal and public APIs seamlessly.
 
+---
+
+## ADR 026: Autonomous Research Automation, Cron Scheduling, and Novelty-Triggered Multi-Channel Alerting (Phase 26)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Autonomous intelligence in enterprise and scientific domains requires proactive topic monitoring rather than passive user prompt-and-response. Users need to schedule recurring research sweeps across academic repositories (arXiv), web sources, and local document collections; automatically detect emerging changes, new claims, or contradictions relative to prior research sweeps; and receive notifications via in-app feeds and third-party webhooks only when significant novelty or contradictory claims are detected.
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/automation.py`:
+     - `DBScheduledResearch`: Persistent schedule entity with query topic, cron expressions (e.g. `0 9 * * 1`), interval frequencies (e.g. `86400`), source filters (`["web", "arxiv", "documents"]`), routing profile (`balanced`, `cost_minimized`, etc.), novelty threshold $\tau_{\text{novel}} \in [0, 1]$, and alert channels (`["in_app", "email", "webhook"]`).
+     - `DBResearchSweepResult`: Historical record of completed sweeps capturing findings summaries, novel claims, contradictory claims, sources crawled, computed novelty scores, and token execution metrics.
+     - `DBAutomationAlert`: Dispatched alerts linking schedule, sweep result, recipient user ID, alert type (`novel_finding`, `contradiction`, `schedule_error`), and read/acknowledgment status.
+  2. Implement `AutomationRepository` in `packages/database/src/database/repositories/automation_repo.py`:
+     - Full CRUD for schedules: `create_schedule`, `get_schedule`, `list_schedules`, `update_schedule`, `pause_schedule`, `resume_schedule`, `delete_schedule`.
+     - Sweep tracking and history: `record_sweep_result`, `list_sweep_results`.
+     - Alert lifecycle: `create_alert`, `list_alerts`, `acknowledge_alert`.
+     - Real-time aggregate KPI metrics: `get_automation_metrics`.
+  3. Implement `ResearchAutomationEngine` in `packages/research/src/research/automation/engine.py`:
+     - `compute_next_run(cron_expression, interval_seconds, from_time)`: Robust next-timestamp computation supporting standard 5-field cron parsing and interval offsets.
+     - `detect_novelty(current_claims, prior_claims)`: Semantic claim normalization and diffing engine that extracts new claims, isolates contradictions, and computes normalized novelty intensity $\text{score} \in [0.0, 1.0]$.
+     - `execute_scheduled_sweep(schedule_id)`: Autonomous sweep execution pipeline that retrieves prior sweep memory, compares findings, updates `last_run_at`/`next_run_at`, and dispatches alerts via in-app feeds and external webhooks when $\text{novelty} \ge \tau_{\text{novel}}$.
+  4. Implement REST APIs in `apps/api/src/api/routes/automation.py`:
+     - Schedules: `POST /api/v1/automation/schedules`, `GET /api/v1/automation/schedules`, `GET /api/v1/automation/schedules/{id}`, `PATCH /api/v1/automation/schedules/{id}/pause`, `PATCH /api/v1/automation/schedules/{id}/resume`, `DELETE /api/v1/automation/schedules/{id}`, `POST /api/v1/automation/schedules/{id}/trigger`.
+     - Sweeps: `GET /api/v1/automation/schedules/{id}/sweeps`.
+     - Alerts: `GET /api/v1/automation/alerts`, `PATCH /api/v1/automation/alerts/{id}/acknowledge`.
+     - Metrics: `GET /api/v1/automation/metrics`.
+  5. Build React Studio in `apps/web/src/pages/ResearchAutomationPage.tsx`:
+     - Sweeps & Cron Schedules tab (active/paused cards, next run countdown badges, trigger sweep on-demand, pause/resume/delete actions, new schedule modal with frequency/profile/novelty sliders).
+     - Sweep History & Diff Explorer tab (chronological sweep timeline, novel claim tags with green highlight, contradictory claim tags with red highlight, sources crawled, novelty score gauge).
+     - Dispatched Alerts & Webhooks tab (unread alert cards, novelty score badges, 1-click acknowledge button, webhook test dispatcher).
+- **Consequences**:
+  - Positive: Transforms the platform from a reactive tool into a proactive autonomous research intelligence engine.
+  - Positive: Prevents alert fatigue by triggering notifications only when newly discovered findings exceed the configured novelty threshold.
+  - Positive: Concludes the final milestone (Phase 26) of Generation 6 and the entire 6-Generation Product Roadmap!
+
 
 
 

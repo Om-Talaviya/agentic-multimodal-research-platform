@@ -647,6 +647,61 @@ sequenceDiagram
     end
 ```
 
+---
 
+## 16. Research Automation, Scheduled Sweeps & Novelty Alerting Flow (Phase 26)
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Researcher / Lead
+    participant UI as ResearchAutomationPage.tsx
+    participant API as FastAPI (/api/v1/automation)
+    participant Engine as ResearchAutomationEngine
+    participant Repo as AutomationRepository
+    participant DB as PostgreSQL / SQLite (scheduled_research, research_sweep_results, automation_alerts)
+    participant Webhook as Third-Party Webhook Receiver
 
+    rect rgb(20, 30, 45)
+        Note over User, DB: 1. Schedule Creation & Next Run Calculation
+        User->>UI: Configures Scheduled Sweep (Cron / Interval, Sources, Novelty Threshold)
+        UI->>API: POST /api/v1/automation/schedules {title, query, cron_expression, novelty_threshold: 0.35, alert_channels: ["in_app", "webhook"]}
+        API->>Engine: compute_next_run(cron_expression, interval_seconds)
+        Engine-->>API: next_run_at timestamp
+        API->>Repo: create_schedule(user_id, title, query, cron, interval, novelty_threshold, next_run_at, ...)
+        Repo->>DB: INSERT into scheduled_research
+        DB-->>Repo: DBScheduledResearch
+        Repo-->>API: Persisted Schedule Record
+        API-->>UI: 201 Created (Schedule Active)
+    end
+
+    rect rgb(20, 45, 30)
+        Note over Engine, DB: 2. Autonomous Sweep Execution & Semantic Claim Diffing
+        Note over Engine: Scheduled Trigger Fired / On-Demand Manual Trigger
+        API->>Engine: execute_scheduled_sweep(schedule_id)
+        Engine->>Repo: get_schedule(schedule_id)
+        Repo-->>Engine: DBScheduledResearch
+        Engine->>Engine: Run autonomous research pipeline (retrieve papers, web findings, citations)
+        Engine->>Repo: list_sweep_results(schedule_id, limit=5)
+        Repo-->>Engine: Historical Prior Sweeps
+        Engine->>Engine: detect_novelty(current_claims, prior_claims)
+        Note over Engine: Computes novel_claims, contradictory_claims, and novelty_score in [0.0, 1.0]
+        Engine->>Repo: record_sweep_result(schedule_id, findings_summary, novel_claims, contradictory_claims, novelty_score, ...)
+        Repo->>DB: INSERT into research_sweep_results & UPDATE scheduled_research.last_run_at
+        DB-->>Repo: DBResearchSweepResult
+    end
+
+    rect rgb(45, 30, 20)
+        Note over Engine, Webhook: 3. Novelty Threshold Alerting & Webhook Dispatch
+        alt novelty_score >= novelty_threshold OR contradictory_claims detected
+            Engine->>Repo: create_alert(schedule_id, sweep_id, user_id, alert_type="novel_finding", title, summary, novelty_score, channel="in_app")
+            Repo->>DB: INSERT into automation_alerts
+            alt "webhook" in alert_channels AND webhook_url is configured
+                Engine->>Webhook: POST webhook_url {event: "automation.alert", schedule_title, novel_claims, novelty_score}
+                Webhook-->>Engine: 200 OK
+            end
+        end
+        Engine-->>API: Sweep Execution Summary
+        API-->>UI: Live Alert Count & Sweep Timeline Updated
+    end
+```

@@ -1,6 +1,7 @@
 from database.repositories.agent_evaluation_repo import AgentEvaluationRepository
 from database.repositories.agent_run_repo import AgentRunRepository, ModelCallRepository
 from database.repositories.api_key_repo import ApiKeyRepository
+from database.repositories.automation_repo import AutomationRepository
 from database.repositories.collaboration_repo import (
     ReportAnnotationRepository,
     WorkspaceActivityRepository,
@@ -50,4 +51,5 @@ __all__ = [
     "SecurityRepository",
     "InfrastructureRepository",
     "ApiKeyRepository",
+    "AutomationRepository",
 ]

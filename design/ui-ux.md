@@ -422,6 +422,32 @@ This document defines the complete visual design system, interaction patterns, u
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### 3.15 Research Automation & Scheduled Sweeps Studio (Phase 26)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  📡 Research Automation & Scheduled Sweeps              [ 🔄 Refresh ] [ ➕ Create Schedule ]           │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ ⏰ Sweeps & Schedules (3) ]   [ 📜 Sweep History & Diff Explorer ]   [ 🔔 Dispatched Alerts (4) ]     │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  SCHEDULED TOPIC SWEEPS:                                                                                │
+│  ┌─────────────────────────────────────┬───────────────────┬───────────────┬─────────────────────────┐  │
+│  │ SCHEDULE TITLE                      │ FREQUENCY / CRON  │ NOVELTY THRESH│ ACTIONS                 │  │
+│  ├─────────────────────────────────────┼───────────────────┼───────────────┼─────────────────────────┤  │
+│  │ Quantum Computing Quantum Supremacy │ Every 24 hours    │ 0.35 (Medium) │ [⚡ Run Now] [⏸] [🗑]   │  │
+│  │ Solid-State Battery Breakthroughs   │ `0 9 * * 1` (Mon) │ 0.40 (High)   │ [⚡ Run Now] [⏸] [🗑]   │  │
+│  └─────────────────────────────────────┴───────────────────┴───────────────┴─────────────────────────┘  │
+│                                                                                                         │
+│  SEMANTIC DIFF & NOVELTY EXPLORER:                                                                      │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ Sweep: Solid-State Battery (Executed 10 mins ago) — Novelty Score: 0.72 [HIGH NOVELTY]             │  │
+│  │ 🟢 Novel Claim: "Solid-state electrolyte achieves 98% retention after 1,500 fast-charge cycles."   │  │
+│  │ 🔴 Contradiction: "Rebuts 2024 assumption of severe dendritic degradation at >4C charging rate."  │  │
+│  │ 🔗 Sources Crawled: arXiv:2609.04112, nature.com/articles/s41586-026-0012                        │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
 ---
 
 ## 4. UI Interaction States
@@ -439,6 +465,7 @@ This document defines the complete visual design system, interaction patterns, u
 | **Enterprise Security Studio** | Tabbed compliance cards, KMS secret creation modal, SHA-256 hash-anchored log explorer, and confirmation-gated GDPR purge modal | Instant tab switch / animated drawer |
 | **Production Infrastructure Studio** | Tabbed cluster topology, live CPU/RAM load bars, heartbeat pulse simulator, priority task enqueue modal, and S3 presigned URL generator | Instant tab switch / modal overlay |
 | **Developer Platform Studio** | Tabbed API key management, one-time plaintext key reveal modal, interactive code snippets (cURL/Python/TS), and tier rate limit cards | Instant tab switch / modal overlay |
+| **Research Automation Studio** | Tabbed cron sweeps, countdown badges, diff explorer with novel/contradictory highlight tags, novelty gauge, and alert cards | Instant tab switch / modal overlay |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
 
