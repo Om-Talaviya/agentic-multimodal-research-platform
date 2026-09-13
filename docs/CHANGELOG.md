@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.0] - 2026-09-13 (Generation 5 Milestone 1: Phase 20 - Intelligent Model Ecosystem)
+
+### Added
+- **Phase 20: Intelligent Model Ecosystem**:
+  - Implemented `ModelEcosystemOptimizer` in `packages/ai/src/ai/router/optimizer.py` with multi-parameter utility scoring formula: $\text{Score}(M) = w_q \cdot Q(M) + w_s \cdot S(M) + w_c \cdot C(M) + w_l \cdot L(M)$.
+  - Implemented non-dominated Pareto-frontier sorting across Quality, Speed, and Cost Efficiency dimensions.
+  - Defined preset `OptimizationProfile` schemas (`Balanced`, `Cost Minimized`, `Speed Maximized`, `Quality & Reasoning Maximized`, `Custom`).
+  - Integrated routing profile awareness into `ModelRouter` (`packages/ai/src/ai/providers/router.py`) and `ModelGateway` (`packages/ai/src/ai/gateway/model_gateway.py`), attaching `routing_profile` to execution telemetry.
+  - Implemented REST API endpoints in `apps/api/src/api/routes/models.py`:
+    - `GET /api/v1/models/profiles`: Returns preset optimization profiles with normalized weight breakdowns.
+    - `POST /api/v1/models/optimize`: Simulates candidate model ranking, Pareto-frontier identification, and itemized trade-off rationale.
+  - Upgraded `NewResearch.tsx` with interactive profile selector cards and live simulation preview.
+  - Formalized **ADR 020** (Intelligent Model Ecosystem with Multi-Parameter Routing Optimization and Pareto-Frontier Selection).
+  - Added unit and integration test suites in `packages/ai/tests/test_model_ecosystem_optimizer.py` and `apps/api/tests/test_model_optimization_api.py`, achieving 100% pass rate across 283 monorepo tests.
+
+---
+
 ## [1.3.0] - 2026-09-13 (Generation 4 Milestone 2: Phase 19 - Team Collaboration)
 
 ### Added

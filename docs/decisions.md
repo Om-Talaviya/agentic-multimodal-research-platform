@@ -265,5 +265,36 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Seamless multi-user peer review and team expansion without manual database interventions.
   - Positive: Complete auditability through immutable collaborative activity logs.
 
+---
+
+## ADR 020: Intelligent Model Ecosystem with Multi-Parameter Routing Optimization and Pareto-Frontier Selection (Phase 20)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: In a multi-model environment combining local offline engines (Ollama) and cloud frontier models (Google Gemini 2.5 Pro/Flash, OpenAI), simple hardcoded tier preferences or naive priority ordering are insufficient for diverse research workflows. Certain tasks require extreme speed and zero latency (interactive querying, streaming), others require budget-first cost minimization, while deep synthesis tasks demand maximum frontier reasoning and million-token context windows. Selecting models without considering multi-parameter trade-offs leads to suboptimal resource allocation and budget waste.
+- **Decision**:
+  1. Implement `ModelEcosystemOptimizer` in `packages/ai/src/ai/router/optimizer.py` featuring:
+     - Multi-parameter utility scoring formula:
+       $$\text{Score}(M) = w_q \cdot Q(M) + w_s \cdot S(M) + w_c \cdot C(M) + w_l \cdot L(M)$$
+       where $Q(M)$ is the reasoning/quality score, $S(M)$ is the execution speed score, $C(M)$ is the cost efficiency score, and $L(M)$ is the locality score.
+     - Non-dominated Pareto frontier sorting across 3 key continuous dimensions (Quality, Speed, Cost Efficiency) to identify models offering strictly optimal trade-offs.
+     - Hard constraint filtering (latency SLA ceilings `max_latency_ms`, cost ceilings `max_cost_per_1k`, `require_local`, and mandatory capabilities).
+     - Automated trade-off explanation generation providing human-readable justification for the winning model.
+  2. Define preset `OptimizationProfile` configurations in `PRESET_PROFILES`:
+     - `BALANCED`: $w_q=0.35, w_s=0.25, w_c=0.30, w_l=0.10$
+     - `COST_MINIMIZED`: $w_q=0.20, w_s=0.15, w_c=0.55, w_l=0.10$
+     - `SPEED_MAXIMIZED`: $w_q=0.20, w_s=0.55, w_c=0.10, w_l=0.15$
+     - `QUALITY_MAXIMIZED`: $w_q=0.75, w_s=0.10, w_c=0.10, w_l=0.05$
+     - `CUSTOM`: Arbitrary user-defined weights.
+  3. Upgrade `ModelRouter` (`packages/ai/src/ai/providers/router.py`) and `ModelGateway` (`packages/ai/src/ai/gateway/model_gateway.py`) to accept `routing_profile` parameters, pass profiles through completion/streaming, and include `routing_profile` metadata in observability telemetry.
+  4. Implement REST API endpoints in `apps/api/src/api/routes/models.py`:
+     - `GET /api/v1/models/profiles`: Returns preset profile weights and descriptions.
+     - `POST /api/v1/models/optimize`: Simulates candidate model ranking, Pareto-frontier identification, and itemized rationale for a given task and profile.
+  5. Build frontend UI in `apps/web/src/pages/NewResearch.tsx`:
+     - Interactive profile selection cards (Balanced ⚖️, Deep Quality 🏆, Ultra Fast ⚡, Cost Efficient 💰).
+     - Real-time simulation preview showing the estimated winning model, Pareto-optimal badge, and trade-off summary before launching research.
+- **Consequences**:
+  - Positive: Optimal allocation of inference budgets and compute resources across heterogeneous tasks.
+  - Positive: Transparent explainability with Pareto-frontier verification for why each model was selected.
+  - Positive: Sets the foundation for Phase 21 (Model Evaluation System: Automated Ground-Truth Benchmarking).
+
 
 

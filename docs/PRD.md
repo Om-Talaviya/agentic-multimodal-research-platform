@@ -204,10 +204,9 @@ The output is a structured intelligence dossier:
   - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), workspace invitations, shared project knowledge, inline report annotations, and collaborative audit activity logs (**ADR 019**).
 
 #### Generation 5 — AI Platform Intelligence
-- **Phase 20: Intelligent Model Ecosystem (NEXT MILESTONE)**:
-  - Multi-variable routing optimization factoring in task complexity, latency SLA, cost budget, context window, vision requirement, provider health, and user quota.
-  - Multi-variable routing optimization factoring in task complexity, latency SLA, cost budget, context window, vision requirement, provider health, and user quota.
-- **Phase 21: Model Evaluation System**:
+- **Phase 20: Intelligent Model Ecosystem (COMPLETE)**:
+  - Multi-parameter utility routing optimization (`ModelEcosystemOptimizer`), Pareto-frontier sorting across Quality, Speed, Cost, and Locality, preset optimization profiles (Balanced, Cost, Speed, Quality), and `/models/profiles` + `/models/optimize` REST endpoints (**ADR 020**).
+- **Phase 21: Model Evaluation System (NEXT MILESTONE)**:
   - Automated continuous evaluation of model outputs for accuracy, relevance, citation precision, and cost-efficiency.
 - **Phase 22: Agent Evaluation**:
   - Observability dashboard tracking agent reasoning quality, hallucination rates, token efficiency, and execution durations.

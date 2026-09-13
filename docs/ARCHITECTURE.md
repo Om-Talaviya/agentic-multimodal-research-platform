@@ -218,8 +218,8 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 19 (Team Collaboration - COMPLETE)**: Granular workspace RBAC (`owner`, `admin`, `researcher`, `analyst`, `reviewer`, `viewer`), cryptographic email invitation lifecycle (`DBWorkspaceInvite`, `WorkspaceInviteRepository`), threaded report annotations with quotes and 1-click resolution (`DBReportAnnotation`, `ReportAnnotationsDrawer.tsx`), and collaborative audit activity logs (`DBWorkspaceActivity`).
 
 ### Generation 5: AI Platform Intelligence (Phases 20 – 22)
-- **Phase 20 (Intelligent Model Ecosystem - NEXT MILESTONE)**: Multi-parameter optimization across cost, latency, quality, and context size.
-- **Phase 21 (Model Evaluation System)**: Automated benchmarking measuring model output fidelity against golden datasets.
+- **Phase 20 (Intelligent Model Ecosystem - COMPLETE)**: Multi-parameter utility routing optimization engine (`ModelEcosystemOptimizer`), Pareto-frontier non-dominated sorting across Quality, Speed, Cost, and Locality, preset optimization profiles (Balanced, Cost, Speed, Quality), and `/models/profiles` + `/models/optimize` REST endpoints (**ADR 020**).
+- **Phase 21 (Model Evaluation System - NEXT MILESTONE)**: Automated benchmarking measuring model output fidelity against golden datasets.
 - **Phase 22 (Agent Evaluation)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
 
 ### Generation 6: Production Product (Phases 23 – 26)
