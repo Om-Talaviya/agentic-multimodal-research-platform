@@ -236,4 +236,34 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Zero-breakage backward compatibility via nullable foreign keys and automated default workspace provisioning.
   - Positive: Sets the foundation for Phase 19 (Team Collaboration: Granular RBAC, Invitations, Shared Reports & Annotations).
 
+---
+
+## ADR 019: Team Collaboration, Workspace Invites, Report Annotations, and Activity Feed (Phase 19)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: While Phase 18 established the physical workspace and project boundaries, researchers working in teams need streamlined invitation workflows (email tokens, role assignments), contextual peer review (inline paragraph annotations and thread resolution on synthesized reports), and an immutable collaborative activity audit log.
+- **Decision**:
+  1. Introduce `DBWorkspaceInvite`, `DBReportAnnotation`, and `DBWorkspaceActivity` database models in `packages/database/src/database/models/collaboration.py` with URL-safe crypto token generation (`generate_invite_token()`), expiration timestamps (7-day default), dialect-safe `GUID` and `JSONType`, and compound performance indexes (`ix_workspace_invites_ws_email`, `ix_report_annotations_report_status`, `ix_ws_activities_ws_created`).
+  2. Implement `WorkspaceInviteRepository`, `ReportAnnotationRepository`, and `WorkspaceActivityRepository` in `packages/database/src/database/repositories/collaboration_repo.py` supporting:
+     - Cryptographic invite generation, token lookup, idempotent token acceptance (upgrading/adding membership in `workspace_members`), and invite revocation.
+     - Threaded report annotations with section indices, selected text quotes, resolution tracking (`resolved_by`, `resolved_at`), and author-only/admin deletion security guardrails.
+     - Chronological activity stream logging and querying across workspaces and specific projects.
+  3. Implement REST API endpoints in `apps/api/src/api/routes/collaboration.py`:
+     - `/api/v1/workspaces/{id}/invites` (POST, GET)
+     - `/api/v1/invites/{token}` (GET)
+     - `/api/v1/invites/{token}/accept` (POST)
+     - `/api/v1/invites/{id}` (DELETE)
+     - `/api/v1/reports/{id}/annotations` (POST, GET)
+     - `/api/v1/annotations/{id}/resolve` (PATCH)
+     - `/api/v1/annotations/{id}` (DELETE)
+     - `/api/v1/workspaces/{id}/activities` (GET)
+     - `/api/v1/projects/{id}/activities` (GET)
+  4. Build React collaboration interfaces:
+     - `WorkspaceMembersModal.tsx`: Real-time member roster, role badges, email invitation form, invite link copy button, and pending invite revocation.
+     - `ReportAnnotationsDrawer.tsx`: Slide-over review drawer on `ResearchDetail.tsx` with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution.
+     - Integrated team access modal into `ProjectsPage.tsx`.
+- **Consequences**:
+  - Positive: Seamless multi-user peer review and team expansion without manual database interventions.
+  - Positive: Complete auditability through immutable collaborative activity logs.
+
+
 

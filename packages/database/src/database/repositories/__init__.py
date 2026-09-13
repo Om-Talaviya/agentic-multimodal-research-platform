@@ -1,4 +1,9 @@
 from database.repositories.agent_run_repo import AgentRunRepository, ModelCallRepository
+from database.repositories.collaboration_repo import (
+    ReportAnnotationRepository,
+    WorkspaceActivityRepository,
+    WorkspaceInviteRepository,
+)
 from database.repositories.document_repo import DocumentChunkRepository, DocumentRepository
 from database.repositories.graph_repo import KnowledgeGraphRepository
 from database.repositories.memory_repository import MemoryRepository
@@ -32,4 +37,7 @@ __all__ = [
     "KnowledgeGraphRepository",
     "WorkspaceRepository",
     "ProjectRepository",
+    "WorkspaceInviteRepository",
+    "ReportAnnotationRepository",
+    "WorkspaceActivityRepository",
 ]

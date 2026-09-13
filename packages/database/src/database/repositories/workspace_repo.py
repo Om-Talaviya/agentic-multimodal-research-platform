@@ -192,6 +192,8 @@ class WorkspaceRepository:
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 
+    get_member = get_user_membership
+
     async def ensure_default_workspace(self, user_id: uuid.UUID, username: str) -> DBWorkspace:
         """Ensure a user has at least one personal workspace, creating one if not found."""
         workspaces = await self.list_for_user(user_id)

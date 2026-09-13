@@ -11,10 +11,12 @@ import {
   Trash2,
   Archive,
   RefreshCw,
+  Users,
 } from 'lucide-react'
 import { useWorkspace } from '../context/WorkspaceContext'
 import { workspaceApi } from '../services/workspaceApi'
 import { Project, ProjectMetrics } from '../types/workspace'
+import { WorkspaceMembersModal } from '../components/WorkspaceMembersModal'
 
 export const ProjectsPage: React.FC = () => {
   const { currentWorkspace, currentProject, setCurrentProject, projects, refreshProjects, createProject } = useWorkspace()
@@ -23,6 +25,7 @@ export const ProjectsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [filterStatus, setFilterStatus] = useState<string>('all')
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isTeamModalOpen, setIsTeamModalOpen] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -105,25 +108,46 @@ export const ProjectsPage: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsModalOpen(true)}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            background: 'var(--color-primary)',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 'var(--radius-md)',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-          }}
-        >
-          <Plus size={16} />
-          New Project
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <button
+            onClick={() => setIsTeamModalOpen(true)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '10px 16px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-md)',
+              color: 'var(--color-text)',
+              fontWeight: 500,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            <Users size={16} color="var(--color-primary)" />
+            Team & Access
+          </button>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '10px 18px',
+              background: 'var(--color-primary)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 'var(--radius-md)',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            <Plus size={16} />
+            New Project
+          </button>
+        </div>
       </div>
 
       {/* Controls: Search & Filters */}
@@ -427,6 +451,15 @@ export const ProjectsPage: React.FC = () => {
             </form>
           </div>
         </div>
+      )}
+
+      {currentWorkspace && (
+        <WorkspaceMembersModal
+          workspaceId={currentWorkspace.id}
+          workspaceName={currentWorkspace.name}
+          isOpen={isTeamModalOpen}
+          onClose={() => setIsTeamModalOpen(false)}
+        />
       )}
     </div>
   )

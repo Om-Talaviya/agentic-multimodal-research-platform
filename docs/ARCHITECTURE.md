@@ -213,12 +213,12 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 16 (Research Memory - COMPLETE)**: Cross-session persistent research memory (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`), semantic conceptual indexing, agent memory tools (`RecallMemoryTool`, `StoreMemoryTool`), REST API (`/api/v1/memory`), and interactive `ResearchMemoryViewer` UI.
 - **Phase 17 (Long-Term Knowledge Graph - COMPLETE)**: Relational entity-relationship adjacency persistence (`DBKnowledgeEntity`, `DBKnowledgeRelation`, `KnowledgeGraphRepository`), `KnowledgeGraphEngine` (triplet extraction from findings/reports, Graph-Augmented RAG `GraphRAG`), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
-### Generation 4: Collaboration Platform (Phases 18 – 19)
+### Generation 4: Collaboration Platform (Phases 18 – 19) (COMPLETE)
 - **Phase 18 (Projects & Workspaces - COMPLETE)**: Hierarchical tenant isolation (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`), `DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, REST APIs (`/workspaces`, `/projects`), `WorkspaceSelector` and `ProjectsPage` UI.
-- **Phase 19 (Team Collaboration - NEXT)**: Granular workspace roles, member invitations, shared knowledge pools, and collaborative report editing with inline annotations.
+- **Phase 19 (Team Collaboration - COMPLETE)**: Granular workspace RBAC (`owner`, `admin`, `researcher`, `analyst`, `reviewer`, `viewer`), cryptographic email invitation lifecycle (`DBWorkspaceInvite`, `WorkspaceInviteRepository`), threaded report annotations with quotes and 1-click resolution (`DBReportAnnotation`, `ReportAnnotationsDrawer.tsx`), and collaborative audit activity logs (`DBWorkspaceActivity`).
 
 ### Generation 5: AI Platform Intelligence (Phases 20 – 22)
-- **Phase 20 (Intelligent Model Ecosystem)**: Multi-parameter optimization across cost, latency, quality, and context size.
+- **Phase 20 (Intelligent Model Ecosystem - NEXT MILESTONE)**: Multi-parameter optimization across cost, latency, quality, and context size.
 - **Phase 21 (Model Evaluation System)**: Automated benchmarking measuring model output fidelity against golden datasets.
 - **Phase 22 (Agent Evaluation)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
 

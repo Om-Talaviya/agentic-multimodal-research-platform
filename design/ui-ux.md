@@ -229,6 +229,33 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.8 Team Collaboration, Workspace Invitations & Report Review Drawer (Phase 19)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  👥 Team & Access Control: BioTech Research Labs                           [ ✖ Close ]                  │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  INVITE NEW TEAM MEMBER:                                                                                │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ [ ✉️ colleague@domain.com            ]  [ Role: Researcher ▾ ]  [ 🚀 Send Invite ]                │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                                         │
+│  ACTIVE MEMBERS (3):                                                                                    │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ (AL) Alice Admin (alice@domain.com)        Joined 2026-09-10                       [ OWNER ]      │  │
+│  │ (BO) Bob Analyst (bob@domain.com)          Joined 2026-09-12                       [ RESEARCHER ] │  │
+│  │ (CA) Carol Reviewer (carol@domain.com)     Joined 2026-09-13                       [ REVIEWER ]   │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                                         │
+│  PENDING INVITATIONS (1):                                                                               │
+│  ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│  │ ✉️ david@domain.com  •  Role: Analyst  •  Expires in 6 days    [ 📋 Copy Link ]  [ 🗑️ Revoke ]      │  │
+│  └───────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -237,5 +264,6 @@ This document defines the complete visual design system, interaction patterns, u
 | **Stream Processing** | Pulsing emerald step nodes, animated progress bars, live markdown token streaming | WebSocket event triggered |
 | **Evidence Hover** | Elevation increase, amber badge for contradictions, green badge for high confidence | 150ms ease-out hover |
 | **Explainability Modal** | Glassmorphic slide-out drawer revealing exact document slice and table coordinates | Slide-left 250ms |
+| **Report Review Drawer** | Slide-over drawer on synthesized report view with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution | Slide-left 200ms ease-out |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

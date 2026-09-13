@@ -424,6 +424,59 @@ erDiagram
 
 ---
 
+### 2.12 Table: `workspace_invites` (Phase 19)
+- Managed via `packages/database/src/database/models/collaboration.py`.
+- Stores pending and accepted email invitations to workspaces.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID / CHAR(36)` | `PRIMARY KEY` | Unique invitation ID |
+| `workspace_id` | `UUID / CHAR(36)` | `NOT NULL, FK -> workspaces.id CASCADE, INDEX` | Target workspace |
+| `email` | `VARCHAR(255)` | `NOT NULL, INDEX` | Recipient email address |
+| `role` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'researcher'` | Assigned role (`admin`, `researcher`, `analyst`, `reviewer`, `viewer`) |
+| `token` | `VARCHAR(128)` | `UNIQUE, NOT NULL, INDEX` | URL-safe cryptographic redemption token |
+| `invited_by` | `UUID / CHAR(36)` | `NULLABLE, FK -> users.id SET NULL` | Inviting user ID |
+| `is_accepted` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE, INDEX` | Acceptance flag |
+| `expires_at` | `TIMESTAMP WITH TZ` | `NOT NULL` | Expiration timestamp (default +7 days) |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+
+---
+
+### 2.13 Table: `report_annotations` (Phase 19)
+- Stores collaborative inline review comments on generated research reports.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID / CHAR(36)` | `PRIMARY KEY` | Unique annotation ID |
+| `report_id` | `UUID / CHAR(36)` | `NOT NULL, FK -> reports.id CASCADE, INDEX` | Research report ID |
+| `user_id` | `UUID / CHAR(36)` | `NOT NULL, FK -> users.id CASCADE, INDEX` | Author user ID |
+| `section_index` | `INTEGER` | `NULLABLE` | Index of findings section or paragraph |
+| `selected_text` | `TEXT` | `NULLABLE` | Highlighted/quoted text snippet |
+| `comment_text` | `TEXT` | `NOT NULL` | Review note or recommendation |
+| `status` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'open', INDEX` | Status: `open`, `resolved` |
+| `resolved_by` | `UUID / CHAR(36)` | `NULLABLE, FK -> users.id SET NULL` | User who resolved the comment |
+| `resolved_at` | `TIMESTAMP WITH TZ` | `NULLABLE` | Resolution timestamp |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last modification timestamp |
+
+---
+
+### 2.14 Table: `workspace_activities` (Phase 19)
+- Immutable chronological audit activity feed for workspaces and projects.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID / CHAR(36)` | `PRIMARY KEY` | Unique activity event ID |
+| `workspace_id` | `UUID / CHAR(36)` | `NOT NULL, FK -> workspaces.id CASCADE, INDEX` | Target workspace ID |
+| `project_id` | `UUID / CHAR(36)` | `NULLABLE, FK -> projects.id SET NULL, INDEX` | Associated project ID |
+| `user_id` | `UUID / CHAR(36)` | `NULLABLE, FK -> users.id SET NULL, INDEX` | Triggering user ID |
+| `action` | `VARCHAR(100)` | `NOT NULL, INDEX` | Action identifier (`member_invited`, `member_joined`, `job_created`, `doc_uploaded`, etc.) |
+| `entity_id` | `UUID / CHAR(36)` | `NULLABLE` | Target entity ID |
+| `details_json` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Arbitrary structured event metadata |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW(), INDEX` | Event timestamp |
+
+---
+
 ## 3. Database Cross-Compatibility Strategy
 
 To ensure seamless production deployment on PostgreSQL 16 while supporting fast, zero-dependency in-memory testing with SQLite, all model definitions use SQLAlchemy dialect-agnostic variants:
@@ -450,7 +503,7 @@ JSONType = JSON().with_variant(JSONB, "postgresql")
 
 ---
 
-## 4. Planned Schema Extensions (Generations 4 – 6)
+## 4. Planned Schema Extensions (Generations 5 – 6)
 
 ### Generation 4 (Phases 18 – 19): Workspaces & Collaboration
 ```sql

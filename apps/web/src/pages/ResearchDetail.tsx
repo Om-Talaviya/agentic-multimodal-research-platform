@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, Brain, Share2 } from 'lucide-react'
+import { ArrowLeft, Loader2, Clock, CheckCircle, AlertCircle, FileText, Search, FlaskConical, Layers, FileCheck, Brain, Share2, MessageSquare } from 'lucide-react'
 import { api, getResearchWebSocketUrl } from '../services/api'
 import type { ResearchJob, ResearchTask, Source, Evidence, ResearchReport, ResearchPlan } from '../types/research'
 import type { MemoryItem } from '../types/memory'
@@ -10,6 +10,7 @@ import { MultimodalEvidenceViewer } from '../components/MultimodalEvidenceViewer
 import { DeepResearchTracker } from '../components/DeepResearchTracker'
 import { ResearchMemoryViewer } from '../components/ResearchMemoryViewer'
 import { KnowledgeGraphViewer } from '../components/KnowledgeGraphViewer'
+import { ReportAnnotationsDrawer } from '../components/ReportAnnotationsDrawer'
 
 export function ResearchDetail() {
   const { id } = useParams<{ id: string }>()
@@ -24,6 +25,8 @@ export function ResearchDetail() {
   const [graphRelations, setGraphRelations] = useState<KnowledgeRelation[]>([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'overview' | 'plan' | 'tasks' | 'sources' | 'evidence' | 'report' | 'memories' | 'graph'>('overview')
+  const [isAnnotationsDrawerOpen, setIsAnnotationsDrawerOpen] = useState(false)
+  const [openAnnotationCount, setOpenAnnotationCount] = useState(0)
   const socketRef = useRef<WebSocket | null>(null)
   const reconnectTimeoutRef = useRef<any>(null)
 
@@ -430,11 +433,32 @@ export function ResearchDetail() {
           <div style={{ maxWidth: '800px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-sm)', flexWrap: 'wrap', gap: 'var(--spacing-sm)' }}>
               <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{report.title}</h2>
-              {report.confidence_score !== undefined && (
-                <span className="badge badge-primary" style={{ fontSize: '0.875rem', padding: 'var(--spacing-xs) var(--spacing-sm)' }}>
-                  Grounding Index: {Math.round(report.confidence_score * 100)}%
-                </span>
-              )}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {report.confidence_score !== undefined && (
+                  <span className="badge badge-primary" style={{ fontSize: '0.875rem', padding: 'var(--spacing-xs) var(--spacing-sm)' }}>
+                    Grounding Index: {Math.round(report.confidence_score * 100)}%
+                  </span>
+                )}
+                <button
+                  onClick={() => setIsAnnotationsDrawerOpen(true)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 12px',
+                    backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                    border: '1px solid rgba(99, 102, 241, 0.3)',
+                    borderRadius: 'var(--radius-md)',
+                    color: '#818cf8',
+                    fontSize: '0.85rem',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <MessageSquare size={15} />
+                  Review Notes {openAnnotationCount > 0 && `(${openAnnotationCount})`}
+                </button>
+              </div>
             </div>
             <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-lg)' }}>
               Generated: {new Date(report.generated_at).toLocaleString()}
@@ -560,6 +584,15 @@ export function ResearchDetail() {
           />
         )}
       </div>
+
+      {report && (
+        <ReportAnnotationsDrawer
+          reportId={report.id}
+          isOpen={isAnnotationsDrawerOpen}
+          onClose={() => setIsAnnotationsDrawerOpen(false)}
+          onAnnotationCountChange={setOpenAnnotationCount}
+        />
+      )}
     </div>
   )
 }

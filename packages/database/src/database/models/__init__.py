@@ -1,4 +1,9 @@
 from database.models.agent_run import AgentRun, ModelCall
+from database.models.collaboration import (
+    DBReportAnnotation,
+    DBWorkspaceActivity,
+    DBWorkspaceInvite,
+)
 from database.models.document import Document, DocumentChunk
 from database.models.graph import DBKnowledgeEntity, DBKnowledgeRelation
 from database.models.memory import DBResearchMemory
@@ -17,6 +22,9 @@ KnowledgeRelation = DBKnowledgeRelation
 Workspace = DBWorkspace
 WorkspaceMember = DBWorkspaceMember
 Project = DBProject
+WorkspaceInvite = DBWorkspaceInvite
+ReportAnnotation = DBReportAnnotation
+WorkspaceActivity = DBWorkspaceActivity
 
 __all__ = [
     "ResearchJob",
@@ -43,4 +51,10 @@ __all__ = [
     "Workspace",
     "WorkspaceMember",
     "Project",
+    "DBWorkspaceInvite",
+    "DBReportAnnotation",
+    "DBWorkspaceActivity",
+    "WorkspaceInvite",
+    "ReportAnnotation",
+    "WorkspaceActivity",
 ]

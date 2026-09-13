@@ -1,6 +1,6 @@
 """API routes package."""
 
-from api.routes import auth, documents, graph, health, memory, metrics, models, projects, research, workspaces
+from api.routes import auth, collaboration, documents, graph, health, memory, metrics, models, projects, research, workspaces
 
 __all__ = [
     "health",
@@ -13,4 +13,5 @@ __all__ = [
     "graph",
     "workspaces",
     "projects",
+    "collaboration",
 ]
