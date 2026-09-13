@@ -2,9 +2,15 @@ name: CI Test Suite
 
 on:
   push:
-    branches: [ "master", "main", "develop/v1.1" ]
+    branches:
+      - "master"
+      - "main"
+      - "develop/v1.1"
   pull_request:
-    branches: [ "master", "main", "develop/v1.1" ]
+    branches:
+      - "master"
+      - "main"
+      - "develop/v1.1"
 
 jobs:
   backend-tests:
@@ -30,9 +36,9 @@ jobs:
 
       - name: Run Pytest Suite (333 tests)
         env:
-          PYTHONPATH: packages/shared/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src
-          DATABASE_URL: sqlite+aiosqlite:///:memory:
-          SECRET_KEY: ci-secret-key-for-testing-only-32-chars-long
+          PYTHONPATH: "packages/shared/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src"
+          DATABASE_URL: "sqlite+aiosqlite:///:memory:"
+          SECRET_KEY: "ci-secret-key-for-testing-only-32-chars-long"
           TESTING: "true"
         run: |
           pytest -v packages/ apps/api/tests/
