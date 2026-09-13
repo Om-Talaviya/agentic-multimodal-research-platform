@@ -14,6 +14,9 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12"]
 
+    env:
+      PYTHONPATH: ${{ github.workspace }}/packages/shared/src:${{ github.workspace }}/packages/ai/src:${{ github.workspace }}/packages/database/src:${{ github.workspace }}/packages/tools/src:${{ github.workspace }}/packages/agents/src:${{ github.workspace }}/packages/research/src:${{ github.workspace }}/packages/ingestion/src:${{ github.workspace }}/packages/retrieval/src:${{ github.workspace }}/apps/api/src
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -23,16 +26,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Base Dependencies
+      - name: Install Base Dependencies & Build Tools
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel hatchling
           pip install pytest pytest-asyncio pytest-cov httpx pydantic pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
 
-      - name: Install Local Monorepo Packages
-        run: |
-          pip install -e packages/shared -e packages/ai -e packages/database -e packages/tools -e packages/agents -e packages/research -e packages/ingestion -e packages/retrieval -e apps/api --no-deps
-
-      - name: Run Pytest Suite (329 tests)
+      - name: Run Pytest Suite (333 tests)
         run: |
           pytest -v packages/ apps/api/tests/
 
@@ -51,6 +50,7 @@ jobs:
       - name: Install and Build Frontend
         working-directory: apps/web
         run: |
-          npm ci || npm install
+          npm install
           npm run build
+
 
