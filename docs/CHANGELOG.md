@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.6.0] - 2026-09-13 (Generation 5 Milestone 3: Phase 22 - Agent Evaluation Engine & Observability Platform)
+
+### Added
+- **Phase 22: Agent Evaluation & Observability Platform**:
+  - Implemented multi-metric autonomous agent evaluation engine in `packages/ai/src/ai/eval/agent_evaluator.py` (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, `AgentEvaluationMetric`).
+  - Added deterministic scoring functions: Plan Precision (`evaluate_plan_precision`), Tool Accuracy (`evaluate_tool_accuracy`), Evidence Coverage (`evaluate_evidence_coverage`), and sentence-level Hallucination Rate (`evaluate_hallucination_rate`).
+  - Implemented database models `DBAgentEvaluation` and `DBAgentStepMetric` in `packages/database/src/database/models/agent_evaluation.py` with full PostgreSQL/SQLite parity.
+  - Implemented `AgentEvaluationRepository` in `packages/database/src/database/repositories/agent_evaluation_repo.py` supporting evaluation scorecard persistence, step telemetry inspection, and aggregate KPI calculation.
+  - Implemented REST API endpoints in `apps/api/src/api/routes/agent_evaluations.py`:
+    - `POST /api/v1/agents/evaluate`: Evaluates an agent execution run or research job.
+    - `GET /api/v1/agents/evaluations`: Lists historical evaluations with agent and job filters.
+    - `GET /api/v1/agents/evaluations/{id}`: Retrieves detailed evaluation scorecard and sequential step telemetry.
+    - `DELETE /api/v1/agents/evaluations/{id}`: Deletes evaluation run.
+    - `GET /api/v1/agents/metrics/summary`: Returns system-wide quality, evidence coverage, hallucination rate, token usage, and cost aggregates.
+  - Created interactive Agent Observability Studio in `apps/web/src/pages/AgentEvaluationPage.tsx` with KPI scorecards, per-agent architecture badges, historical evaluation runs table, run audit modal, and sequential step telemetry inspector drawer.
+  - Integrated `/agents/evaluations` route into `App.tsx` and added `Agent Observability` navigation link to `Layout.tsx`.
+  - Added comprehensive test suites in `packages/ai/tests/test_agent_evaluator.py`, `packages/database/tests/test_agent_evaluation_repo.py`, and `apps/api/tests/test_agent_evaluation_api.py`, achieving 100% pass rate (299/299 tests passing).
+  - Formalized **ADR 022** (Autonomous Agent Evaluation and Hallucination Observability Engine).
+
+---
+
 ## [1.5.0] - 2026-09-13 (Generation 5 Milestone 2: Phase 21 - Model Evaluation System)
 
 ### Added

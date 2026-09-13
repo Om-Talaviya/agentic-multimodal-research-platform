@@ -274,6 +274,8 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+---
+
 ### 3.10 Model Evaluation & Benchmark Leaderboard Studio (Phase 21)
 
 ```
@@ -300,6 +302,34 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.11 Agent Observability & Evaluation Studio (Phase 22)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  ⚡ Agent Observability Studio                         [ 🔄 Refresh ]  [ ▶️ Evaluate Agent ]            │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  SYSTEM-WIDE METRICS SUMMARY:                                                                           │
+│  ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┬───────────────────────┐  │
+│  │ Overall Quality  │ Plan Precision   │ Tool Accuracy    │ Grounded Coverage│ Hallucination Rate    │  │
+│  │     94.2%        │     92.5%        │     98.0%        │      91.4%       │        2.8%           │  │
+│  └──────────────────┴──────────────────┴──────────────────┴──────────────────┴───────────────────────┘  │
+│                                                                                                         │
+│  SPECIALIZED AGENT ARCHITECTURE HEALTH:                                                                 │
+│  ┌────────────────────┬────────────────────┬────────────────────┬────────────────────┬───────────────┐  │
+│  │ PlannerAgent       │ WebResearchAgent   │ DocumentReaderAgent│ CriticAgent        │ ReportAgent   │  │
+│  │ [ 🟢 Active ]      │ [ 🟢 Active ]      │ [ 🟢 Active ]      │ [ 🟢 Active ]      │ [ 🟢 Active ] │  │
+│  └────────────────────┴────────────────────┴────────────────────┴────────────────────┴───────────────┘  │
+│                                                                                                         │
+│  AGENT EVALUATION RUNS (Click to inspect step telemetry & hallucinations):                              │
+│  ┌─────────────────────────────────────────────────────────────────────────────┬─────────────────────┐  │
+│  │ ⚡ ResearchPipeline  •  12 Steps • 100% Tools • 0.0% Hallucination         │ Score: 96.5%    [ > ] │  │
+│  │ ⚡ WebResearchAgent  •   6 Steps • 100% Tools • 3.2% Hallucination         │ Score: 92.0%    [ > ] │  │
+│  └─────────────────────────────────────────────────────────────────────────────┴─────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |
@@ -311,5 +341,6 @@ This document defines the complete visual design system, interaction patterns, u
 | **Report Review Drawer** | Slide-over drawer on synthesized report view with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution | Slide-left 200ms ease-out |
 | **Routing Profile Selector** | Interactive 4-card grid with active border glow, icon badge, and live Pareto-optimal simulation pill | Instant selection & async fetch |
 | **Model Leaderboard Studio** | Ranked tabular scoreboard with score meters, Pareto badges, and test case audit drawer | Instant click / modal slide |
+| **Agent Observability Studio** | KPI metrics cards, per-agent health indicators, evaluation scorecards, and sequential step telemetry inspector drawer | Instant click / slide drawer |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |

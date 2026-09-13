@@ -1,3 +1,4 @@
+from database.models.agent_evaluation import DBAgentEvaluation, DBAgentStepMetric
 from database.models.agent_run import AgentRun, ModelCall
 from database.models.collaboration import (
     DBReportAnnotation,
@@ -28,6 +29,8 @@ ReportAnnotation = DBReportAnnotation
 WorkspaceActivity = DBWorkspaceActivity
 ModelEvaluation = DBModelEvaluation
 ModelBenchmarkResult = DBModelBenchmarkResult
+AgentEvaluation = DBAgentEvaluation
+AgentStepMetric = DBAgentStepMetric
 
 __all__ = [
     "ResearchJob",
@@ -64,4 +67,8 @@ __all__ = [
     "DBModelBenchmarkResult",
     "ModelEvaluation",
     "ModelBenchmarkResult",
+    "DBAgentEvaluation",
+    "DBAgentStepMetric",
+    "AgentEvaluation",
+    "AgentStepMetric",
 ]

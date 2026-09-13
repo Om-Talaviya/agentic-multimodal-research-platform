@@ -176,13 +176,12 @@ npm run lint
 - **Phase 19 (Team Collaboration)**: 🟢 COMPLETE (`DBWorkspaceInvite`, `DBReportAnnotation`, `DBWorkspaceActivity`, `WorkspaceInviteRepository`, `ReportAnnotationRepository`, `WorkspaceActivityRepository`, `/api/v1/workspaces/{id}/invites`, `/api/v1/invites/{token}`, `/api/v1/reports/{id}/annotations`, `WorkspaceMembersModal.tsx`, `ReportAnnotationsDrawer.tsx` UI)
 - **Phase 20 (Intelligent Model Ecosystem)**: 🟢 COMPLETE (`ModelEcosystemOptimizer`, Pareto-frontier sorting, multi-parameter scoring across Quality/Speed/Cost/Locality, `/api/v1/models/profiles`, `/api/v1/models/optimize`, live simulation preview UI)
 - **Phase 21 (Model Evaluation System)**: 🟢 COMPLETE (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`, `EvaluationMetricsEngine`, `ModelEvaluator`, `DBModelEvaluation`, `DBModelBenchmarkResult`, `ModelEvaluationRepository`, `/api/v1/models/evaluate`, `/api/v1/models/evaluations`, `/api/v1/models/leaderboard`, `ModelEvaluationPage.tsx` UI)
+- **Phase 22 (Agent Evaluation)**: 🟢 COMPLETE (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, plan precision, tool accuracy, evidence coverage, hallucination rate scoring, `DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`, `/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`, `AgentEvaluationPage.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The Generations Ahead (Phases 22 – 26):
-- **Generation 5 — AI Platform Intelligence**:
-  - **Phase 22**: Agent Evaluation (🟡 **IMMEDIATE NEXT MILESTONE**: Automated agent quality, evidence sufficiency, citation faithfulness, and hallucination tracking)
+### The Generation Ahead (Phases 23 – 26):
 - **Generation 6 — Production Product**:
-  - **Phase 23**: Enterprise Security (SOC 2, GDPR, audit logs, secret management)
+  - **Phase 23**: Enterprise Security (🟡 **IMMEDIATE NEXT MILESTONE**: SOC 2, GDPR, audit logs, secret management, workspace isolation)
   - **Phase 24**: Production Infrastructure (Distributed queues, worker pools, object storage, autoscaling)
   - **Phase 25**: Public API / Developer Platform (Developer REST endpoints, SDKs, API keys)
   - **Phase 26**: Research Automation (Recurring scheduled research sweeps, change detection alerts)

@@ -217,13 +217,13 @@ Authenticated requests flow through the entire system with complete user attribu
 - **Phase 18 (Projects & Workspaces - COMPLETE)**: Hierarchical tenant isolation (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`), `DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, REST APIs (`/workspaces`, `/projects`), `WorkspaceSelector` and `ProjectsPage` UI.
 - **Phase 19 (Team Collaboration - COMPLETE)**: Granular workspace RBAC (`owner`, `admin`, `researcher`, `analyst`, `reviewer`, `viewer`), cryptographic email invitation lifecycle (`DBWorkspaceInvite`, `WorkspaceInviteRepository`), threaded report annotations with quotes and 1-click resolution (`DBReportAnnotation`, `ReportAnnotationsDrawer.tsx`), and collaborative audit activity logs (`DBWorkspaceActivity`).
 
-### Generation 5: AI Platform Intelligence (Phases 20 – 22)
+### Generation 5: AI Platform Intelligence (Phases 20 – 22) (COMPLETE)
 - **Phase 20 (Intelligent Model Ecosystem - COMPLETE)**: Multi-parameter utility routing optimization engine (`ModelEcosystemOptimizer`), Pareto-frontier non-dominated sorting across Quality, Speed, Cost, and Locality, preset optimization profiles (Balanced, Cost, Speed, Quality), and `/models/profiles` + `/models/optimize` REST endpoints (**ADR 020**).
 - **Phase 21 (Model Evaluation System - COMPLETE)**: Ground-truth benchmark harness (`BenchmarkDataset`, `DEFAULT_RESEARCH_BENCHMARK`), automated multi-dimensional scoring (`EvaluationMetricsEngine` - factuality, reasoning, faithfulness, citations, latency, cost), persistence (`DBModelEvaluation`, `ModelEvaluationRepository`), REST APIs (`/models/evaluate`, `/models/evaluations`, `/models/leaderboard`), and competitive Leaderboard studio (`ModelEvaluationPage.tsx`) (**ADR 021**).
-- **Phase 22 (Agent Evaluation - NEXT MILESTONE)**: Tracing telemetry measuring token efficiency, hallucination frequency, and agent decision accuracy.
+- **Phase 22 (Agent Evaluation - COMPLETE)**: Autonomous multi-metric agent evaluation engine (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`), plan precision scoring, tool invocation accuracy, evidence grounding coverage, sentence-level hallucination rate detection, database persistence (`DBAgentEvaluation`, `DBAgentStepMetric`, `AgentEvaluationRepository`), REST APIs (`/api/v1/agents/evaluate`, `/api/v1/agents/evaluations`, `/api/v1/agents/metrics/summary`), and interactive Agent Observability Studio (`AgentEvaluationPage.tsx`) (**ADR 022**).
 
-### Generation 6: Production Product (Phases 23 – 26)
-- **Phase 23 (Enterprise Security)**: Audit log streaming, KMS envelope encryption, and SOC 2 / GDPR compliance readiness.
+### Generation 6: Production Product (Phases 23 – 26) (NEXT GENERATION - Phase 23 Active)
+- **Phase 23 (Enterprise Security - 🟡 IMMEDIATE NEXT MILESTONE)**: Audit log streaming, KMS envelope encryption, secret management, and SOC 2 / GDPR compliance readiness.
 - **Phase 24 (Production Scale Infrastructure)**: Celery/Redis distributed task queues, MinIO/S3 object storage, and read-replica routing.
 - **Phase 25 (Public API & Developer Platform)**: Public OpenAPI 3.1 gateway, SDK generation, and developer API keys.
 - **Phase 26 (Research Automation)**: Cron-based research workers with automated web/academic change detection.

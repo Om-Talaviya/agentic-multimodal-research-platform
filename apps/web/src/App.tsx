@@ -9,6 +9,7 @@ import { MemoryPage } from './pages/MemoryPage'
 import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ModelEvaluationPage } from './pages/ModelEvaluationPage'
+import { AgentEvaluationPage } from './pages/AgentEvaluationPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -89,6 +90,7 @@ function App() {
           <Route path="memory" element={<MemoryPage />} />
           <Route path="graph" element={<KnowledgeGraphPage />} />
           <Route path="evaluations" element={<ModelEvaluationPage />} />
+          <Route path="agents/evaluations" element={<AgentEvaluationPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
