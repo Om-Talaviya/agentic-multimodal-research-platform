@@ -11,6 +11,7 @@ from database.models.graph import DBKnowledgeEntity, DBKnowledgeRelation
 from database.models.memory import DBResearchMemory
 from database.models.report import Report
 from database.models.research_job import ResearchJob, ResearchTask
+from database.models.infrastructure import DBStorageObject, DBWorkerNode
 from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
 from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
@@ -35,6 +36,8 @@ AgentStepMetric = DBAgentStepMetric
 SecurityAuditLog = DBSecurityAuditLog
 EncryptedSecret = DBEncryptedSecret
 SecurityPolicy = DBSecurityPolicy
+WorkerNodeModel = DBWorkerNode
+StorageObject = DBStorageObject
 
 __all__ = [
     "ResearchJob",
@@ -81,4 +84,8 @@ __all__ = [
     "EncryptedSecret",
     "DBSecurityPolicy",
     "SecurityPolicy",
+    "DBWorkerNode",
+    "WorkerNodeModel",
+    "DBStorageObject",
+    "StorageObject",
 ]

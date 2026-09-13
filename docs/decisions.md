@@ -401,6 +401,38 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Secure multi-tenant credential vaulting without plaintext exposure in database or network payloads.
   - Positive: Sets the security baseline for Phase 24 (Production Scale Infrastructure).
 
+---
+
+## ADR 024: Distributed Priority Task Queue, Asynchronous Worker Clusters, and S3/MinIO Blob Vault Architecture (Phase 24)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Scaling agentic multimodal research requires background asynchronous task processing capable of handling long-running multi-step research DAGs, heavy PDF/video/audio ingestion, and large dataset profiling without blocking HTTP request threads. Furthermore, large binary artifacts (multimodal evidence, high-resolution scientific charts, tabular datasets, generated PDF reports) require durable, presigned object storage rather than database storage.
+- **Decision**:
+  1. Implement `AsyncTaskQueue` & `WorkerNode` in `packages/research/src/research/workers/task_queue.py`:
+     - Asynchronous priority min-heap queue supporting 4 priority levels (`CRITICAL`, `HIGH`, `DEFAULT`, `LOW`).
+     - Task tracking with retry counters, error payloads, execution latency tracking, and timeout leases.
+     - Worker node abstraction with capability tagging (`web_search`, `pdf_parsing`, `multimodal`, etc.), heartbeat leasing, and dynamic concurrency limits.
+  2. Implement `ObjectStorageClient` in `packages/shared/src/shared/storage.py`:
+     - Unified multi-provider abstraction supporting AWS S3, MinIO, and local filesystem backends.
+     - Presigned URL generator for secure time-limited client upload/download (`generate_presigned_url`).
+     - Automatic MD5 and SHA-256 checksum calculation, MIME type detection, and aggregate bucket usage telemetry.
+  3. Implement Database Persistence in `packages/database/src/database/models/infrastructure.py` and `packages/database/src/database/repositories/infrastructure_repo.py`:
+     - `DBWorkerNode`: Persistent cluster node registry with status (`ready`, `busy`, `draining`, `offline`), CPU/RAM metrics, and heartbeat leases.
+     - `DBStorageObject`: Persistent metadata index for stored blobs with workspace scoping, storage class, ETag, and byte size.
+  4. Implement REST APIs in `apps/api/src/api/routes/system_infra.py`:
+     - `GET /api/v1/system/workers`: Cluster node listing and health statuses.
+     - `POST /api/v1/system/workers/heartbeat`: Worker pulse and load telemetry.
+     - `GET /api/v1/system/queue/status` & `POST /api/v1/system/queue/tasks`: Distributed priority task queue management.
+     - `GET /api/v1/system/storage/objects`, `POST /api/v1/system/storage/presigned-url`, and `GET /api/v1/system/storage/usage`: Blob storage operations.
+  5. Build React Interface in `apps/web/src/pages/ProductionInfrastructurePage.tsx`:
+     - Cluster Topology tab (active nodes, CPU/RAM bars, heartbeat pulse simulator, drain/delete node actions).
+     - Distributed Task Queue tab (queue metrics, priority breakdown, task enqueue modal, retry triggers).
+     - S3/MinIO Blob Vault tab (object browser, storage class badges, presigned URL generator modal, aggregate storage usage cards).
+- **Consequences**:
+  - Positive: High-throughput background execution decoupled from HTTP request loops.
+  - Positive: Scalable object storage for heavy multimodal media and enterprise reports.
+  - Positive: Foundation ready for public developer API platform (Phase 25) and recurring research automation (Phase 26).
+
+
 
 
 

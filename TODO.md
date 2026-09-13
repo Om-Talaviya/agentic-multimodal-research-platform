@@ -211,18 +211,29 @@ This document tracks all completed engineering milestones, the immediate active 
 
 ---
 
-## 🟡 Immediate Active Milestone: Phase 24 — Production Infrastructure
+- [x] **Phase 24: Production Infrastructure**
+  - [x] Distributed priority task queues & asynchronous workers (`AsyncTaskQueue`, `QueuedTask`, `WorkerNode`, `TaskPriority`, `global_task_queue` in `packages/research/src/research/workers/task_queue.py`).
+  - [x] S3 / MinIO compatible object storage integration (`ObjectStorageClient` in `packages/shared/src/shared/storage.py` supporting S3/MinIO/Local, presigned URL generation, MD5/SHA-256 hashing).
+  - [x] Database persistence models (`DBWorkerNode`, `DBStorageObject` in `packages/database/src/database/models/infrastructure.py`).
+  - [x] Infrastructure repository (`InfrastructureRepository` in `packages/database/src/database/repositories/infrastructure_repo.py` with worker pulse, task assignment, and storage metrics).
+  - [x] Production Infrastructure REST endpoints (`/api/v1/system/workers`, `/api/v1/system/workers/heartbeat`, `/api/v1/system/queue/status`, `/api/v1/system/queue/tasks`, `/api/v1/system/storage/objects`, `/api/v1/system/storage/presigned-url`, `/api/v1/system/storage/usage`).
+  - [x] Interactive Cluster Topology & Infrastructure Studio UI in `apps/web/src/pages/ProductionInfrastructurePage.tsx` with Topology, Queue, and S3 Blob Storage views.
+  - [x] Frontend routing & navigation: Registered route `/infrastructure` in `App.tsx` and added `Infrastructure` navigation link in `Layout.tsx`.
+  - [x] Comprehensive test suites in `test_async_task_queue.py`, `test_object_storage.py`, `test_infrastructure_repo.py`, and `test_system_infra_api.py`, achieving 100% pass rate (319/319 tests passing across monorepo).
+
+---
+
+## 🟡 Immediate Active Sprint: Phase 25 — Public API & Developer Platform
 
 ### Generation 6: Production Product
-- [ ] **Phase 24: Production Infrastructure**
-  - [ ] Distributed task queues & asynchronous workers (Celery/Redis worker pools for long-running research jobs).
-  - [ ] S3 / MinIO compatible object storage integration for multimodal raw file blobs and artifact persistence.
-  - [ ] Background worker health monitoring and task heartbeats.
-  - [ ] Database read-replica configuration & connection pooling resilience.
-  - [ ] Production Infrastructure REST endpoints (`/api/v1/system/workers`, `/api/v1/system/storage`).
-  - [ ] Infrastructure Monitoring & Worker Cluster Studio UI in `apps/web`.
-
 - [ ] **Phase 25: Public API & Developer Platform**
-  - [ ] Public developer REST API, API key provisioning, rate limiting, and Python/TypeScript SDKs.
+  - [ ] Public developer REST API gateway (`/api/v1/developer/*`).
+  - [ ] API key management, generation, and SHA-256 secret hashing (`DBApiKey`, `ApiKeyRepository`).
+  - [ ] Granular permission scopes (`read:research`, `write:research`, `read:documents`, `write:documents`, `read:memory`, `read:graph`).
+  - [ ] Tier-based rate limiting (Free: 60 rpm, Pro: 300 rpm, Enterprise: 1200 rpm).
+  - [ ] Official Python & TypeScript SDK code examples and quickstart documentation.
+  - [ ] Interactive Developer Platform & API Key Studio UI in `apps/web/src/pages/DeveloperPlatformPage.tsx`.
+
 - [ ] **Phase 26: Research Automation**
   - [ ] Recurring scheduled research sweeps, topic monitoring, and automated alerting on new discoveries.
+

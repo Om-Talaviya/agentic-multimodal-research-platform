@@ -8,6 +8,7 @@ from database.repositories.collaboration_repo import (
 from database.repositories.document_repo import DocumentChunkRepository, DocumentRepository
 from database.repositories.evaluation_repo import ModelEvaluationRepository
 from database.repositories.graph_repo import KnowledgeGraphRepository
+from database.repositories.infrastructure_repo import InfrastructureRepository
 from database.repositories.memory_repository import MemoryRepository
 from database.repositories.project_repo import ProjectRepository
 from database.repositories.quota_repo import UserQuotaRepository
@@ -46,4 +47,5 @@ __all__ = [
     "ModelEvaluationRepository",
     "AgentEvaluationRepository",
     "SecurityRepository",
+    "InfrastructureRepository",
 ]
