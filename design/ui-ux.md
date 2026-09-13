@@ -204,6 +204,31 @@ This document defines the complete visual design system, interaction patterns, u
 
 ---
 
+### 3.7 Workspace & Projects Management Studio (Phase 18)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🏢 BioTech Research Labs  /  📁 CRISPR Therapeutics               [ ➕ New Project ] [ 🔄 Refresh ]   │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🔍 Search projects...                     ]   [ Status: All ▾ ]                                      │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  PROJECT CARDS:                                                                                         │
+│                                                                                                         │
+│  ┌──────────────────────────────────────────────┐  ┌──────────────────────────────────────────────┐     │
+│  │ 📁 CRISPR Therapeutics            [ ACTIVE ] │  │ 📁 mRNA Vaccine Delivery         [ ACTIVE ] │     │
+│  │ Gene editing literature review and CAS9      │  │ Lipid nanoparticle carrier analysis         │     │
+│  │ guide RNA optimization.                      │  │ and cellular uptake metrics.                 │     │
+│  │                                              │  │                                              │     │
+│  │ 🧪 8 Jobs  •  📄 24 Docs  •  🧠 12 Memories   │  │ 🧪 4 Jobs  •  📄 16 Docs  •  🧠 7 Memories   │     │
+│  │ 🕸️ 38 Graph Entities                         │  │ 🕸️ 19 Graph Entities                         │     │
+│  │ ──────────────────────────────────────────── │  │ ──────────────────────────────────────────── │     │
+│  │ [ 🗑️ Delete ] [ 📦 Archive ]   [ ✓ SELECTED ] │  │ [ 🗑️ Delete ] [ 📦 Archive ] [ Switch Project]│     │
+│  └──────────────────────────────────────────────┘  └──────────────────────────────────────────────┘     │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 4. UI Interaction States
 
 | State | Visual Treatment | Transition |

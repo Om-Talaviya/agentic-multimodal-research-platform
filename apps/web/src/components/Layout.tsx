@@ -1,9 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2 } from 'lucide-react'
+import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban } from 'lucide-react'
+import { WorkspaceSelector } from './WorkspaceSelector'
 
 export function Layout() {
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/projects', label: 'Projects', icon: FolderKanban },
     { path: '/research/new', label: 'New Research', icon: Plus },
     { path: '/memory', label: 'Memory', icon: Brain },
     { path: '/graph', label: 'Knowledge Graph', icon: Share2 },
@@ -13,7 +15,7 @@ export function Layout() {
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       <aside style={{
-        width: '260px',
+        width: '270px',
         background: 'var(--color-surface)',
         borderRight: '1px solid var(--color-border)',
         padding: 'var(--spacing-lg)',
@@ -24,7 +26,7 @@ export function Layout() {
           display: 'flex',
           alignItems: 'center',
           gap: 'var(--spacing-sm)',
-          marginBottom: 'var(--spacing-xl)',
+          marginBottom: 'var(--spacing-lg)',
           fontSize: '1.25rem',
           fontWeight: 600,
           color: 'var(--color-primary)',
@@ -32,6 +34,9 @@ export function Layout() {
           <FlaskConical size={28} />
           <span>Research Platform</span>
         </div>
+
+        {/* Workspace & Project Selector */}
+        <WorkspaceSelector />
         
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-xs)' }}>
           {navItems.map(item => (

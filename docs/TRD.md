@@ -177,8 +177,8 @@ flowchart TD
 - **Phase 17 (Knowledge Graph - COMPLETE)**: Relational entity-relationship adjacency persistence (`DBKnowledgeEntity`, `DBKnowledgeRelation`, `KnowledgeGraphRepository`), `KnowledgeGraphEngine` (triplet extraction from findings/reports, Graph-Augmented RAG `GraphRAG`), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
 ### Generation 4: Collaboration Platform
-- **Phase 18 (Workspaces - NEXT)**: Database schema migration introducing `workspaces`, `workspace_members`, and `projects`.
-- **Phase 19 (Collaboration)**: Operational Transformation (OT) or CRDT-based collaborative report editing and threaded comments.
+- **Phase 18 (Workspaces - COMPLETE)**: Multi-tenant workspace and project isolation (`DBWorkspace`, `DBWorkspaceMember`, `DBProject`), scoped repositories, `/workspaces` and `/projects` REST APIs, and `WorkspaceSelector` / `ProjectsPage` UI.
+- **Phase 19 (Collaboration - NEXT)**: Granular workspace RBAC, member invitations, shared report annotations, and team activity telemetry.
 
 ### Generation 5: AI Platform Intelligence
 - **Phase 20 (Model Ecosystem)**: Cost/latency Pareto frontier optimization algorithm for model selection.

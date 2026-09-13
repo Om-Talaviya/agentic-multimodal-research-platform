@@ -197,10 +197,10 @@ The output is a structured intelligence dossier:
   - Structured graph representation of entities, authors, technologies, companies, claims, and datasets for graph-augmented reasoning (**ADR 017**).
 
 #### Generation 4 — Collaboration Platform
-- **Phase 18: Projects & Workspaces (NEXT MILESTONE)**:
-  - Hierarchical workspace hierarchy: `User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Research & Knowledge`.
-- **Phase 19: Team Collaboration**:
-  - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), shared project knowledge, inline annotations, and report co-editing.
+- **Phase 18: Projects & Workspaces (COMPLETE)**:
+  - Hierarchical workspace hierarchy: `User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Research & Knowledge` (**ADR 018**).
+- **Phase 19: Team Collaboration (NEXT MILESTONE)**:
+  - Granular team roles (Owner, Researcher, Analyst, Reviewer, Viewer), workspace invitations, shared project knowledge, inline annotations, and report co-editing.
 
 #### Generation 5 — AI Platform Intelligence
 - **Phase 20: Intelligent Model Ecosystem**:

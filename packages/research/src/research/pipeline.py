@@ -84,10 +84,26 @@ class ResearchPipeline:
             except Exception:
                 user_uuid = None
 
+        workspace_uuid = None
+        if request.workspace_id:
+            try:
+                workspace_uuid = UUID(str(request.workspace_id))
+            except Exception:
+                workspace_uuid = None
+
+        project_uuid = None
+        if request.project_id:
+            try:
+                project_uuid = UUID(str(request.project_id))
+            except Exception:
+                project_uuid = None
+
         db_job = DBResearchJob(
             id=job_uuid,
             request_id=req_uuid,
             user_id=user_uuid,
+            workspace_id=workspace_uuid,
+            project_id=project_uuid,
             question=request.question,
             objective=request.question,
             constraints=request.constraints,
@@ -102,6 +118,8 @@ class ResearchPipeline:
             id=str(job_uuid),
             request_id=str(req_uuid),
             user_id=str(user_uuid) if user_uuid else (str(request.user_id) if request.user_id else None),
+            workspace_id=str(workspace_uuid) if workspace_uuid else (str(request.workspace_id) if request.workspace_id else None),
+            project_id=str(project_uuid) if project_uuid else (str(request.project_id) if request.project_id else None),
             question=request.question,
             objective=request.question,
             constraints=request.constraints,

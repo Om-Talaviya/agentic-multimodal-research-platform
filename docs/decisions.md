@@ -219,9 +219,21 @@ This document records the key architectural, engineering, and product design dec
   5. Build and register agent graph tools in `packages/tools/src/tools/definitions/graph.py` (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`).
   6. Implement FastAPI REST routes (`/api/v1/graph`) supporting node/edge CRUD, k-hop subgraph extraction, multi-hop path queries, triplet extraction, and graph stats.
   7. Develop `KnowledgeGraphViewer.tsx` and `KnowledgeGraphPage.tsx` with interactive force-layout SVG network visualization, entity type color palettes, node inspector drawer, multi-hop pathfinder, and triplet extraction studio.
+---
+
+## ADR 018: Multi-Tenant Workspace & Project Hierarchy (Phase 18)
+- **Status**: Accepted & Implemented (September 2026)
+- **Context**: Multi-tenant research platforms require hierarchical resource isolation (`User -> Workspace -> Projects -> {Research Jobs, Documents, Memory, Knowledge Graph}`). Without workspace and project boundaries, documents, persistent memories, knowledge graphs, and research jobs from disparate domains or client engagements clash in flat global namespaces, creating risk of data contamination and preventing granular team access controls.
+- **Decision**:
+  1. Introduce `DBWorkspace`, `DBWorkspaceMember`, and `DBProject` database models in `packages/database/src/database/models/workspace.py` with dialect-safe `GUID`, `JSONType`, membership roles (`owner`, `admin`, `researcher`, `member`, `viewer`), and URL-safe collision-resistant slug generation.
+  2. Extend existing models (`ResearchJob`, `Document`, `DBResearchMemory`, `DBKnowledgeEntity`) with `workspace_id` and `project_id` foreign keys and compound indexes.
+  3. Implement `WorkspaceRepository` and `ProjectRepository` in `packages/database/src/database/repositories/` with automatic provisioning of personal default workspaces and projects, membership checks, and aggregated statistical overview queries (`total_jobs`, `total_documents`, `total_memories`, `total_graph_entities`).
+  4. Implement dedicated REST API endpoints under `/api/v1/workspaces` and `/api/v1/projects` in `apps/api/src/api/routes/`.
+  5. Upgrade `ResearchPipeline`, `IngestionPipeline`, and API routes (`/research`, `/documents`) to accept, propagate, and filter by `workspace_id` and `project_id`.
+  6. Build `WorkspaceContext.tsx`, `WorkspaceSelector.tsx` dropdown switcher in the sidebar, and `ProjectsPage.tsx` management studio in `apps/web`.
 - **Consequences**:
-  - Positive: Multi-hop reasoning and relational discovery across hundreds of documents without external graph database dependencies.
-  - Positive: Graph-Augmented RAG significantly improves factual precision and reduces hallucination on complex cross-entity questions.
-  - Positive: High-performance SQLite in-memory test compatibility alongside PostgreSQL 16 production parity.
+  - Positive: Clean hierarchical multi-tenancy and data isolation across all research artifacts.
+  - Positive: Zero-breakage backward compatibility via nullable foreign keys and automated default workspace provisioning.
+  - Positive: Sets the foundation for Phase 19 (Team Collaboration: Granular RBAC, Invitations, Shared Reports & Annotations).
 
 

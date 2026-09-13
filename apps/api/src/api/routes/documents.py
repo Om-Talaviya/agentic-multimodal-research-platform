@@ -18,6 +18,8 @@ from ai.gateway.model_gateway import ModelGateway
 from shared.config import settings
 from shared.logging import get_logger
 from shared.exceptions import ValidationError
+from shared.auth import User
+from api.dependencies import get_optional_current_user
 
 router = APIRouter(prefix="/documents", tags=["documents"])
 logger = get_logger(__name__)
@@ -86,6 +88,8 @@ class DocumentResponse(BaseModel):
     mime_type: str
     file_size: int
     file_path: str
+    workspace_id: Optional[UUID] = None
+    project_id: Optional[UUID] = None
     status: str = "ingested"
     created_at: str
 
@@ -190,6 +194,9 @@ async def save_upload(content: bytes, filename: str, job_id: Optional[str] = Non
 async def upload_document(
     file: UploadFile = File(...),
     research_job_id: Optional[str] = Form(None),
+    workspace_id: Optional[UUID] = Form(None),
+    project_id: Optional[UUID] = Form(None),
+    current_user: Optional[User] = Depends(get_optional_current_user),
     session: AsyncSession = Depends(get_db_session),
     gateway: Optional[ModelGateway] = Depends(get_model_gateway),
     indexer: Optional[Any] = Depends(get_knowledge_indexer),
@@ -207,6 +214,13 @@ async def upload_document(
         indexer=indexer,
     )
     
+    user_uuid = None
+    if current_user and hasattr(current_user, "id") and current_user.id:
+        try:
+            user_uuid = UUID(str(current_user.id))
+        except (ValueError, TypeError):
+            user_uuid = None
+
     doc_id: Optional[UUID] = None
     file_io = io.BytesIO(content)
     try:
@@ -218,6 +232,15 @@ async def upload_document(
             file_path=file_path,
         )
         doc_id = UUID(result.document_id)
+        
+        # Attach workspace_id, project_id, user_id
+        doc_entity = await repo.get(doc_id)
+        if doc_entity:
+            doc_entity.workspace_id = workspace_id
+            doc_entity.project_id = project_id
+            doc_entity.user_id = user_uuid
+            await session.commit()
+
         logger.info(
             "Document uploaded and ingested with knowledge auto-indexing",
             doc_id=result.document_id,
@@ -235,6 +258,9 @@ async def upload_document(
             file_size=len(content),
             file_path=file_path,
             job_id=UUID(research_job_id) if research_job_id else None,
+            user_id=user_uuid,
+            workspace_id=workspace_id,
+            project_id=project_id,
             content="",
             status="failed",
             doc_metadata={"ingestion_error": str(e)},
@@ -254,6 +280,8 @@ async def upload_document(
         mime_type=doc.mime_type,
         file_size=doc.file_size or len(content),
         file_path=doc.file_path or file_path,
+        workspace_id=doc.workspace_id,
+        project_id=doc.project_id,
         status=getattr(doc, "status", "ready"),
         created_at=created_str,
     )
@@ -367,11 +395,13 @@ async def delete_document(
 @router.get("", response_model=list[DocumentResponse])
 async def list_documents(
     job_id: Optional[str] = None,
+    workspace_id: Optional[UUID] = None,
+    project_id: Optional[UUID] = None,
     limit: int = 20,
     offset: int = 0,
     session: AsyncSession = Depends(get_db_session),
 ):
-    """List documents with optional job_id filtering and pagination."""
+    """List documents with optional job_id, workspace_id, project_id filtering and pagination."""
     repo = DocumentRepository(session)
     
     if job_id:
@@ -382,7 +412,12 @@ async def list_documents(
         except (ValueError, TypeError):
             docs = []
     else:
-        docs = await repo.list_all(limit=limit, offset=offset)
+        docs = await repo.list_all(
+            limit=limit,
+            offset=offset,
+            workspace_id=workspace_id,
+            project_id=project_id,
+        )
     
     return [
         DocumentResponse(
@@ -391,6 +426,8 @@ async def list_documents(
             mime_type=d.mime_type,
             file_size=d.file_size or 0,
             file_path=d.file_path or "",
+            workspace_id=d.workspace_id,
+            project_id=d.project_id,
             status=getattr(d, "status", "ready"),
             created_at=d.created_at.isoformat() if d.created_at else utc_now().isoformat(),
         )

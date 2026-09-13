@@ -7,8 +7,10 @@ import { ResearchDetail } from './pages/ResearchDetail'
 import { Settings } from './pages/Settings'
 import { MemoryPage } from './pages/MemoryPage'
 import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage'
+import { ProjectsPage } from './pages/ProjectsPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
+import { WorkspaceProvider } from './context/WorkspaceContext'
 import { Loader2 } from 'lucide-react'
 
 function App() {
@@ -74,44 +76,46 @@ function App() {
     )
   }
 
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        {isAuthenticated ? (
+  const authenticatedRoutes = (
+    <WorkspaceProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
-        ) : (
-          <Route index element={<Navigate to="/login" replace />} />
-        )}
-      </Route>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="research/new" element={<NewResearch />} />
+          <Route path="research/:id" element={<ResearchDetail />} />
+          <Route path="memory" element={<MemoryPage />} />
+          <Route path="graph" element={<KnowledgeGraphPage />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
 
-      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />} />
-      <Route path="research/new" element={isAuthenticated ? <NewResearch /> : <Navigate to="/login" replace />} />
-      <Route path="research/:id" element={isAuthenticated ? <ResearchDetail /> : <Navigate to="/login" replace />} />
-      <Route path="memory" element={isAuthenticated ? <MemoryPage /> : <Navigate to="/login" replace />} />
-      <Route path="graph" element={isAuthenticated ? <KnowledgeGraphPage /> : <Navigate to="/login" replace />} />
-      <Route path="settings" element={isAuthenticated ? <Settings /> : <Navigate to="/login" replace />} />
+        {/* Fallbacks & Auth Redirects */}
+        <Route path="/login" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/register" element={<Navigate to="/dashboard" replace />} />
+        <Route
+          path="/logout"
+          element={
+            <>
+              {handleLogout()}
+              <Navigate to="/login" replace />
+            </>
+          }
+        />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </WorkspaceProvider>
+  )
 
-      {/* Auth routes - only when not authenticated */}
-      <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/dashboard" replace />} />
-      <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/login" replace />} />
-
-      {/* Protected auth routes with logout */}
-      <Route
-        path="/logout"
-        element={isAuthenticated ? (
-          <>
-            {handleLogout()}
-            <Navigate to="/login" replace />
-          </>
-        ) : (
-          <Navigate to="/login" replace />
-        )}
-      />
-
-      {/* Expiration warning */}
-      <Route path="/token-expired" element={!isAuthenticated ? <Login /> : <Navigate to="/login" replace />} />
+  const unauthenticatedRoutes = (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )
+
+  return isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes
 }
 
 export default App

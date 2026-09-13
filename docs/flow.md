@@ -288,3 +288,44 @@ sequenceDiagram
     GraphRepo-->>UI: {nodes, edges, center_id} (Render force layout canvas)
 ```
 
+---
+
+## 8. Multi-Tenant Workspace & Project Hierarchy Flow (Phase 18)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Researcher
+    participant UI as WorkspaceSelector & App.tsx
+    participant Ctx as WorkspaceContext
+    participant API as FastAPI (/api/v1/workspaces, /api/v1/projects)
+    participant DB as PostgreSQL / SQLite (workspaces, projects, members)
+    participant Pipe as ResearchPipeline & Ingestion
+
+    Note over User, DB: 1. Workspace & Project Auto-Hydration
+    User->>UI: Logs in to platform
+    UI->>Ctx: Hydrate active workspace from localStorage or API
+    Ctx->>API: GET /api/v1/workspaces
+    API->>DB: Query user workspaces & membership
+    alt No workspace exists
+        API->>DB: Provision default "Username's Workspace" & "General Research" project
+    end
+    DB-->>API: Workspaces list
+    API-->>Ctx: Set currentWorkspace & currentProject
+    Ctx-->>UI: Populate WorkspaceSelector dropdown
+
+    Note over User, DB: 2. Scoped Research Job Submission
+    User->>UI: Submit inquiry with active project selected
+    UI->>API: POST /api/v1/research {question, workspace_id, project_id}
+    API->>DB: Validate user membership in workspace
+    API->>Pipe: Initialize job tagged with workspace_id & project_id
+    Pipe->>DB: Persist job, sources, evidence scoped to project
+    DB-->>UI: Return scoped job stream
+
+    Note over User, DB: 3. Scoped Document & Knowledge Isolation
+    User->>UI: Upload multimodal PDF/audio/dataset
+    UI->>API: POST /api/v1/documents {file, workspace_id, project_id}
+    API->>Pipe: Chunk, extract, index chunks with project metadata
+    API->>DB: Persist Document with workspace_id & project_id foreign keys
+```
+

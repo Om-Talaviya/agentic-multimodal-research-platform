@@ -56,6 +56,7 @@ class DBResearchMemory(Base):
     job_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         GUID, ForeignKey("research_jobs.id", ondelete="SET NULL"), nullable=True, index=True
     )
+    workspace_id: Mapped[Optional[str]] = mapped_column(String(100), nullable=True, index=True)
     project_id: Mapped[Optional[str]] = mapped_column(String(100), nullable=True, index=True)
 
     # Memory classification: fact, concept, hypothesis, finding, preference, contradiction

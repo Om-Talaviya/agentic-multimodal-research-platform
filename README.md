@@ -111,8 +111,9 @@ Phase 14: Document & Paper Intel     [██████████████
 Phase 15: Deep Research Engine       [████████████████████] 100%
 Phase 16: Research Memory            [████████████████████] 100%
 Phase 17: Long-Term Knowledge Graph  [████████████████████] 100%
+Phase 18: Projects & Workspaces      [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-Phase 18: Projects & Workspaces      [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
+Phase 19: Team Collaboration         [░░░░░░░░░░░░░░░░░░░░] NEXT MILESTONE
 ```
 
 ---
@@ -135,8 +136,8 @@ Phase 18: Projects & Workspaces      [░░░░░░░░░░░░░░
 - **Phase 17: Long-Term Knowledge Graph (COMPLETE)**: Entity-relationship graph database models (`DBKnowledgeEntity`, `DBKnowledgeRelation`), `KnowledgeGraphRepository` (subgraph extraction, shortest path BFS), `KnowledgeGraphEngine` (triplet extraction from findings/reports, Graph-Augmented RAG `GraphRAG`), agent tools (`QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`), REST API (`/api/v1/graph`), and interactive React network visualization studio (`KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx`).
 
 ### Generation 4: Collaboration Platform
-- **Phase 18: Projects & Workspaces (NEXT)**: Multi-tiered workspace organization (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`).
-- **Phase 19: Team Collaboration**: Workspace role-based sharing (Owner, Researcher, Analyst, Reviewer, Viewer), inline comments, and collaborative reports.
+- **Phase 18: Projects & Workspaces (COMPLETE)**: Multi-tiered workspace organization (`User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research`), `DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, `/workspaces` and `/projects` REST APIs, and `WorkspaceSelector` / `ProjectsPage` UI.
+- **Phase 19: Team Collaboration (NEXT)**: Workspace role-based sharing (Owner, Researcher, Analyst, Reviewer, Viewer), member invitations, inline annotations, and collaborative report editing.
 
 ### Generation 5: AI Platform Intelligence
 - **Phase 20: Intelligent Model Ecosystem**: Multi-variable routing optimization (Task, Quality, Latency, Cost budget, Context size, Provider health, Quotas).

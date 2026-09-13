@@ -18,6 +18,9 @@ class Document(Base):
     __tablename__ = "documents"
     
     id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(PG_UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
+    workspace_id = Column(PG_UUID(as_uuid=True), ForeignKey("workspaces.id", ondelete="SET NULL"), nullable=True, index=True)
+    project_id = Column(PG_UUID(as_uuid=True), ForeignKey("projects.id", ondelete="SET NULL"), nullable=True, index=True)
     job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="SET NULL"), index=True)
     filename = Column(String(500), nullable=False)
     mime_type = Column(String(100), nullable=False)

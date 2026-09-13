@@ -39,10 +39,23 @@ class DocumentRepository:
         )
         return list(result.scalars().all())
 
-    async def list_all(self, limit: int = 50, offset: int = 0) -> List[Document]:
-        result = await self.session.execute(
-            select(Document).order_by(Document.created_at.desc()).offset(offset).limit(limit)
-        )
+    async def list_all(
+        self,
+        limit: int = 50,
+        offset: int = 0,
+        user_id: Optional[UUID] = None,
+        workspace_id: Optional[UUID] = None,
+        project_id: Optional[UUID] = None,
+    ) -> List[Document]:
+        query = select(Document).order_by(Document.created_at.desc())
+        if user_id:
+            query = query.where(Document.user_id == user_id)
+        if workspace_id:
+            query = query.where(Document.workspace_id == workspace_id)
+        if project_id:
+            query = query.where(Document.project_id == project_id)
+        query = query.offset(offset).limit(limit)
+        result = await self.session.execute(query)
         return list(result.scalars().all())
     
     async def update_status(

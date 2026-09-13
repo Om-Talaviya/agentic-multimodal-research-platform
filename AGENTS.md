@@ -172,12 +172,12 @@ npm run lint
 - **Phase 15 (Deep Research Engine)**: 🟢 COMPLETE (`DeepResearchEngine`, recursive hypothesis formulation, Critic gap audits, dynamic DAG subtask rescheduling, convergence guardrails $\tau \ge 0.85$, WebSocket iteration telemetry, `DeepResearchTracker.tsx` UI)
 - **Phase 16 (Research Memory)**: 🟢 COMPLETE (`DBResearchMemory`, `MemoryRepository`, `ResearchMemoryManager`, auto-consolidation from reports, `RecallMemoryTool`, `StoreMemoryTool`, `/api/v1/memory` REST API, `ResearchMemoryViewer.tsx` & `MemoryPage.tsx` UI)
 - **Phase 17 (Long-Term Knowledge Graph)**: 🟢 COMPLETE (`DBKnowledgeEntity`, `DBKnowledgeRelation`, `KnowledgeGraphRepository`, `KnowledgeGraphEngine`, GraphRAG, `QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, `FindRelationPathTool`, `/api/v1/graph` REST API, `KnowledgeGraphViewer.tsx` & `KnowledgeGraphPage.tsx` UI)
+- **Phase 18 (Projects & Workspaces)**: 🟢 COMPLETE (`DBWorkspace`, `DBWorkspaceMember`, `DBProject`, `WorkspaceRepository`, `ProjectRepository`, `/api/v1/workspaces` & `/api/v1/projects` REST APIs, `WorkspaceSelector.tsx` & `ProjectsPage.tsx` UI)
 - **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1`)
 
-### The 3 Generations Ahead (Phases 18 – 26):
+### The 3 Generations Ahead (Phases 19 – 26):
 - **Generation 4 — Collaboration Platform**:
-  - **Phase 18**: Projects & Workspaces (🟡 **IMMEDIATE NEXT MILESTONE**: User $\rightarrow$ Workspace $\rightarrow$ Projects $\rightarrow$ Knowledge & Research)
-  - **Phase 19**: Team Collaboration (Roles, permissions, shared reports, inline comments)
+  - **Phase 19**: Team Collaboration (🟡 **IMMEDIATE NEXT MILESTONE**: Roles, permissions, workspace invites, shared reports, inline comments)
 - **Generation 5 — AI Platform Intelligence**:
   - **Phase 20**: Intelligent Model Ecosystem (Multi-parameter routing optimization)
   - **Phase 21**: Model Evaluation System (Automated model benchmarking)
