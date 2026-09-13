@@ -31,7 +31,7 @@ export const WorkspaceProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       setWorkspaces(list)
 
       const savedWsId = localStorage.getItem('active_workspace_id')
-      let activeWs = list.find(w => w.id === savedWsId) || list[0] || null
+      const activeWs = list.find(w => w.id === savedWsId) || list[0] || null
 
       if (activeWs) {
         setCurrentWorkspaceState(activeWs)
@@ -56,7 +56,7 @@ export const WorkspaceProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       setProjects(projList)
 
       const savedProjId = localStorage.getItem(`active_project_id_${currentWorkspace.id}`)
-      let activeProj = projList.find(p => p.id === savedProjId) || projList[0] || null
+      const activeProj = projList.find(p => p.id === savedProjId) || projList[0] || null
 
       if (activeProj) {
         setCurrentProjectState(activeProj)
