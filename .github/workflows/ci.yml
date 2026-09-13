@@ -16,6 +16,9 @@ jobs:
 
     env:
       PYTHONPATH: ${{ github.workspace }}/packages/shared/src:${{ github.workspace }}/packages/ai/src:${{ github.workspace }}/packages/database/src:${{ github.workspace }}/packages/tools/src:${{ github.workspace }}/packages/agents/src:${{ github.workspace }}/packages/research/src:${{ github.workspace }}/packages/ingestion/src:${{ github.workspace }}/packages/retrieval/src:${{ github.workspace }}/apps/api/src
+      DATABASE_URL: sqlite+aiosqlite:///:memory:
+      SECRET_KEY: ci-secret-key-for-testing-only-32-chars-long
+      TESTING: "true"
 
     steps:
       - name: Checkout Code
@@ -29,7 +32,7 @@ jobs:
       - name: Install Base Dependencies & Build Tools
         run: |
           python -m pip install --upgrade pip setuptools wheel hatchling
-          pip install pytest pytest-asyncio pytest-cov httpx pydantic pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
+          pip install pytest pytest-asyncio pytest-cov httpx pydantic pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite asyncpg greenlet rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
 
       - name: Run Pytest Suite (333 tests)
         run: |
