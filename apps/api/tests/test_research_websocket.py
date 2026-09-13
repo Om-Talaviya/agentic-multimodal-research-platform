@@ -155,6 +155,8 @@ def test_ws_snapshot_and_live_event_stream(event_bus, admin_token, sample_job_id
             asyncio.run(event_bus.publish(live_event))
 
             event_msg = ws.receive_json()
+            while event_msg.get("type") == "heartbeat":
+                event_msg = ws.receive_json()
             assert event_msg["type"] == "event"
             assert event_msg["job_id"] == str(sample_job_id)
             assert event_msg["event"]["type"] == ResearchEventType.TASK_COMPLETED.value
@@ -216,8 +218,7 @@ def test_ws_unknown_job_returns_error_and_closes(admin_token, sample_job_id, eve
                 msg = ws.receive_json()
                 assert msg["type"] == "error"
                 assert msg["error"]["code"] == "NOT_FOUND"
-                # Next receive will raise WebSocketDisconnect
-                ws.receive_json()
+                ws.receive_text()
 
         assert exc_info.value.code == 1008
 
@@ -243,11 +244,13 @@ def test_ws_multi_client_fan_out_and_isolation(event_bus, admin_token, mock_job_
         mock_evidence_repo.return_value.get_by_job = AsyncMock(return_value=[])
         mock_report_repo.return_value.get_by_job = AsyncMock(return_value=None)
 
-        client = TestClient(app)
+        client1 = TestClient(app)
+        client2 = TestClient(app)
+        client3 = TestClient(app)
 
-        with client.websocket_connect(f"/api/v1/research/{job_1}/ws?token={admin_token}") as ws1_job1, \
-             client.websocket_connect(f"/api/v1/research/{job_1}/ws?token={admin_token}") as ws2_job1, \
-             client.websocket_connect(f"/api/v1/research/{job_2}/ws?token={admin_token}") as ws_job2:
+        with client1.websocket_connect(f"/api/v1/research/{job_1}/ws?token={admin_token}") as ws1_job1, \
+             client2.websocket_connect(f"/api/v1/research/{job_1}/ws?token={admin_token}") as ws2_job1, \
+             client3.websocket_connect(f"/api/v1/research/{job_2}/ws?token={admin_token}") as ws_job2:
 
             # Drain initial snapshots
             assert ws1_job1.receive_json()["type"] == "snapshot"
@@ -265,7 +268,13 @@ def test_ws_multi_client_fan_out_and_isolation(event_bus, admin_token, mock_job_
 
             # Both Job 1 clients should receive the event
             msg1 = ws1_job1.receive_json()
+            while msg1.get("type") == "heartbeat":
+                msg1 = ws1_job1.receive_json()
+
             msg2 = ws2_job1.receive_json()
+            while msg2.get("type") == "heartbeat":
+                msg2 = ws2_job1.receive_json()
+
             assert msg1["type"] == "event"
             assert msg1["event"]["job_id"] == str(job_1)
             assert msg2["type"] == "event"

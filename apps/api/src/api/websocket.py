@@ -257,18 +257,40 @@ async def research_job_websocket(
                     {"type": "snapshot", "job_id": job_id_str, "data": snapshot},
                 )
 
-                while True:
+                async def _receive_loop() -> None:
                     try:
-                        event = await asyncio.wait_for(queue.get(), timeout=30)
-                        await connection_manager.send_json(
-                            websocket,
-                            {"type": "event", "job_id": job_id_str, "event": event.to_payload()},
+                        while True:
+                            await websocket.receive()
+                    except (WebSocketDisconnect, Exception):
+                        pass
+
+                receive_task = asyncio.create_task(_receive_loop())
+
+                try:
+                    while not receive_task.done():
+                        get_event_task = asyncio.create_task(queue.get())
+                        done, _ = await asyncio.wait(
+                            [get_event_task, receive_task],
+                            timeout=5.0,
+                            return_when=asyncio.FIRST_COMPLETED,
                         )
-                    except TimeoutError:
-                        await connection_manager.send_json(
-                            websocket,
-                            {"type": "heartbeat", "job_id": job_id_str},
-                        )
+                        if receive_task in done:
+                            get_event_task.cancel()
+                            break
+                        if get_event_task in done:
+                            event = get_event_task.result()
+                            await connection_manager.send_json(
+                                websocket,
+                                {"type": "event", "job_id": job_id_str, "event": event.to_payload()},
+                            )
+                        else:
+                            get_event_task.cancel()
+                            await connection_manager.send_json(
+                                websocket,
+                                {"type": "heartbeat", "job_id": job_id_str},
+                            )
+                finally:
+                    receive_task.cancel()
         except WebSocketDisconnect:
             pass
         except Exception as exc:
