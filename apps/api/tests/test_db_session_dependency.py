@@ -46,6 +46,13 @@ async def test_live_health_check_with_real_session_executes_db():
     db_conn.engine = test_engine
     db_conn.async_session_maker = test_session_maker
 
+    from unittest.mock import AsyncMock, MagicMock
+    from api.dependencies import get_model_router
+
+    mock_router = MagicMock()
+    mock_router.health_check_all = AsyncMock(return_value={"gemini": MagicMock(healthy=True, error=None)})
+    app.dependency_overrides[get_model_router] = lambda: mock_router
+
     try:
         transport = ASGITransport(app=app)
         async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -56,6 +63,7 @@ async def test_live_health_check_with_real_session_executes_db():
         assert "checks" in data
         assert data["checks"]["database"] == "healthy"
     finally:
+        app.dependency_overrides.pop(get_model_router, None)
         db_conn.engine = orig_engine
         db_conn.async_session_maker = orig_maker
         await test_engine.dispose()

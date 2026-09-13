@@ -82,7 +82,7 @@ class ResearchEventBus:
 
         for queue in subscribers:
             try:
-                loop = getattr(queue, "_loop", None)
+                loop = getattr(queue, "_custom_loop", None)
                 curr_loop = None
                 try:
                     curr_loop = asyncio.get_running_loop()
@@ -113,7 +113,9 @@ class ResearchEventBus:
 
     @asynccontextmanager
     async def subscribe(self, job_id: str) -> AsyncIterator[asyncio.Queue[ResearchEvent]]:
+        loop = asyncio.get_running_loop()
         queue: asyncio.Queue[ResearchEvent] = asyncio.Queue(maxsize=self.max_queue_size)
+        setattr(queue, "_custom_loop", loop)
         with self._lock:
             self._subscribers[job_id].add(queue)
 
