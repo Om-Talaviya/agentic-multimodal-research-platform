@@ -7,7 +7,6 @@ from database.models.dataset_synthesis import (
     DBSyntheticDataset,
 )
 from database.models.collaboration import (
-
     DBReportAnnotation,
     DBWorkspaceActivity,
     DBWorkspaceInvite,
@@ -15,6 +14,12 @@ from database.models.collaboration import (
 from database.models.document import Document, DocumentChunk
 from database.models.evaluation import DBModelBenchmarkResult, DBModelEvaluation
 from database.models.graph import DBKnowledgeEntity, DBKnowledgeRelation
+from database.models.grant_proposal import (
+    DBGrantBudgetItem,
+    DBGrantProposal,
+    DBGrantReviewScorecard,
+    DBGrantSpecificAim,
+)
 from database.models.memory import DBResearchMemory
 from database.models.report import Report
 from database.models.research_job import ResearchJob, ResearchTask
@@ -109,7 +114,10 @@ PatentDocument = DBPatentDocument
 PatentClaim = DBPatentClaim
 PriorArtEvaluation = DBPriorArtEvaluation
 FreedomToOperateReport = DBFreedomToOperateReport
-
+GrantProposal = DBGrantProposal
+GrantSpecificAim = DBGrantSpecificAim
+GrantBudgetItem = DBGrantBudgetItem
+GrantReviewScorecard = DBGrantReviewScorecard
 
 __all__ = [
     "ResearchJob",
@@ -224,6 +232,12 @@ __all__ = [
     "PriorArtEvaluation",
     "DBFreedomToOperateReport",
     "FreedomToOperateReport",
+    "DBGrantProposal",
+    "GrantProposal",
+    "DBGrantSpecificAim",
+    "GrantSpecificAim",
+    "DBGrantBudgetItem",
+    "GrantBudgetItem",
+    "DBGrantReviewScorecard",
+    "GrantReviewScorecard",
 ]
-
-

@@ -1261,6 +1261,28 @@ Master systematic literature review (SLR) study records tracking search strings,
 - `GET /api/v1/patents/metrics`: Query platform patent KPIs.
 - `DELETE /api/v1/patents/corpora/{id}`: Delete corpus.
 
+---
+
+## 19. Autonomous Scientific Grant Proposal Synthesizer Schema & REST Endpoints (Phase 35)
+
+### 19.1 Tables: `grant_proposals`, `grant_specific_aims`, `grant_budget_items`, `grant_review_scorecards`
+- `grant_proposals`: Master grant proposal project (`title`, `funding_agency`, `grant_mechanism`, `target_call_number`, `project_duration_years`, `total_requested_budget_usd`, `indirect_cost_rate_percent`, `status`, `executive_abstract`, `significance_narrative`, `innovation_narrative`, `approach_narrative`, `preliminary_data_summary`, `mock_panel_overall_score`, `percentile_estimate`, `metadata_json`).
+- `grant_specific_aims`: Specific Aim work packages (`aim_number`, `title`, `hypothesis`, `experimental_design`, `expected_outcomes`, `potential_pitfalls_and_alternatives`, `milestones_json`, `allocated_effort_percent`).
+- `grant_budget_items`: Itemized financial lines (`year_number`, `category`, `item_name`, `cost_usd`, `justification`, `is_direct_cost`).
+- `grant_review_scorecards`: Mock study section reviews (`reviewer_persona`, `significance_score`, `investigators_score`, `innovation_score`, `approach_score`, `environment_score`, `overall_impact_score`, `recommendation`, `critique_strengths`, `critique_weaknesses`, `summary_statement`).
+
+### 19.2 REST Endpoints (Phase 35)
+- `POST /api/v1/grants/proposals`: Create grant proposal project and synthesize baseline aims and budget.
+- `GET /api/v1/grants/proposals`: List grant proposals.
+- `GET /api/v1/grants/proposals/{id}`: Fetch complete proposal with aims, budget, and mock reviews.
+- `POST /api/v1/grants/proposals/{id}/synthesize-aims`: Synthesize Specific Aims from research topic.
+- `POST /api/v1/grants/proposals/{id}/calculate-budget`: Recalculate multi-year institutional budget.
+- `POST /api/v1/grants/proposals/{id}/mock-review`: Run autonomous study section peer review simulation.
+- `GET /api/v1/grants/proposals/{id}/export-latex`: Export proposal as compilable LaTeX document.
+- `GET /api/v1/grants/metrics`: Query platform grant funding metrics.
+- `DELETE /api/v1/grants/proposals/{id}`: Delete proposal.
+
+
 
 
 
