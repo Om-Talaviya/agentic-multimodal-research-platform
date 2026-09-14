@@ -29,6 +29,13 @@ from database.models.literature import (
     DBMetaAnalysisReport,
     DBRiskOfBiasAssessment,
 )
+from database.models.patent import (
+    DBFreedomToOperateReport,
+    DBPatentClaim,
+    DBPatentCorpus,
+    DBPatentDocument,
+    DBPriorArtEvaluation,
+)
 from database.models.peer_review import (
     DBManuscriptRevision,
     DBPeerReviewManuscript,

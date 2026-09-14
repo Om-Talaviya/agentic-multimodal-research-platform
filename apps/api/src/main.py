@@ -12,7 +12,7 @@ from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
 from database.connection import init_db, close_db
-from api.routes import agent_evaluations, auth, automation, canvas, collaboration, dataset_synthesis, debate, developer, documents, evaluation, graph, health, literature, memory, metrics, models, peer_review, presentations, projects, reproducibility, research, security, system_infra, workspaces
+from api.routes import agent_evaluations, auth, automation, canvas, collaboration, dataset_synthesis, debate, developer, documents, evaluation, graph, health, literature, memory, metrics, models, patents, peer_review, presentations, projects, reproducibility, research, security, system_infra, workspaces
 from api import websocket
 
 
@@ -119,6 +119,7 @@ app.include_router(presentations.router, prefix=settings.api_prefix)
 app.include_router(peer_review.router, prefix=settings.api_prefix)
 app.include_router(canvas.router, prefix=settings.api_prefix)
 app.include_router(dataset_synthesis.router, prefix=settings.api_prefix)
+app.include_router(patents.router, prefix=settings.api_prefix)
 app.include_router(metrics.router, prefix=settings.api_prefix)
 app.include_router(metrics.router)  # Also expose directly on /metrics
 

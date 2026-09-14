@@ -748,6 +748,42 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Multi-format adapters enable instant fine-tuning on HuggingFace, Unsloth, Axolotl, and LLaMA-Factory.
   - Positive: Completes Generation 8 Milestone 3 (Phase 33).
 
+---
+
+### ADR 034: Autonomous Patent Landscape Analysis, 35 U.S.C. 102/103 Claim Charts, and Freedom-to-Operate (FTO) Engine
+
+- **Status**: Accepted
+- **Context**: Groundbreaking scientific and agentic inventions must be protected against infringement while ensuring freedom to operate within existing intellectual property (IP) landscapes. Manually conducting prior art searches and constructing limitation-by-limitation claim charts across thousands of USPTO, EPO, and WIPO patents is extraordinarily labor-intensive. The platform requires an autonomous patent landscape engine capable of decomposing patent claims into atomic preambles, transitional phrases, and limitations, evaluating 35 U.S.C. 102 (Anticipation) and 103 (Non-Obviousness) prior art claim overlap, synthesizing Freedom-To-Operate (FTO) clearance reports, and uncovering white-space patentability opportunities with automated design-around recommendations.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/patent.py`:
+     - `DBPatentCorpus`: Master patent landscape study (title, technology_domain, cpc_classification, jurisdiction: `USPTO`, `EPO`, `WIPO`, `JPO`, `CNIPA`, `GLOBAL`, status, total_patents_indexed, freedom_to_operate_verdict: `clear`, `caution`, `high_risk`, `blocked`, metadata_json).
+     - `DBPatentDocument`: Patent asset record (patent_number, title, abstract, assignee, filing_date, publication_date, cpc_classes, status: `granted`, `pending`, `expired`, claims_count, citations_count, full_text_url).
+     - `DBPatentClaim`: Granular claim record (claim_number, claim_type: `independent`, `dependent`, parent_claim_number, claim_text, parsed_elements_json, infringement_risk_score).
+     - `DBPriorArtEvaluation`: 102/103 prior art evaluation trace (target_invention_claim, novelty_score, obviousness_score, overlap_ratio, verdict: `anticipates_102`, `obvious_103`, `distinguishable`, `non_infringing`, detailed_rationale, mitigation_strategy).
+     - `DBFreedomToOperateReport`: FTO clearance dossier (total_examined_patents, high_risk_claims_count, medium_risk_claims_count, fto_clearance_percentage, summary_assessment, white_space_opportunities, claim_chart_matrices).
+  2. Implement `PatentRepository` in `packages/database/src/database/repositories/patent_repo.py`:
+     - Full async CRUD lifecycle: `create_corpus`, `get_corpus`, `list_corpora`, `add_patent`, `batch_add_patents`, `add_claim`, `record_prior_art_evaluation`, `save_fto_report`, `delete_corpus`, `get_patent_metrics`.
+  3. Implement Patent Prior Art Engine in `packages/research/src/research/patents/prior_art.py`:
+     - `PatentPriorArtEngine`: Decomposes claims into atomic limitations, evaluates 35 U.S.C. 102 anticipation and 103 obviousness with limitation-by-limitation claim charts, computes FTO clearance percentages, and synthesizes white-space opportunities and design-around mitigations.
+  4. Implement REST APIs in `apps/api/src/api/routes/patents.py`:
+     - `POST /api/v1/patents/corpora`: Create patent landscape corpus and index baseline prior art patents.
+     - `GET /api/v1/patents/metrics`: Query platform patent metrics.
+     - `GET /api/v1/patents/corpora`: List patent corpora.
+     - `GET /api/v1/patents/corpora/{id}`: Fetch complete corpus with patents, claims, evaluations, and FTO reports.
+     - `POST /api/v1/patents/corpora/{id}/evaluate-claim`: Run 102/103 prior art evaluation against target invention claim.
+     - `POST /api/v1/patents/corpora/{id}/fto-report`: Generate Freedom to Operate clearance report and white space map.
+     - `DELETE /api/v1/patents/corpora/{id}`: Delete corpus.
+  5. Build React Studio in `apps/web/src/pages/PatentLandscapePage.tsx`:
+     - Patent Landscape Explorer with CPC classifications and global jurisdiction filters (`USPTO`, `EPO`, `WIPO`).
+     - Interactive 35 U.S.C. 102/103 Claim Chart Studio with atomic limitation breakdown and color-coded status badges (`Anticipated (102)`, `Obvious Variant (103)`, `Novel Distinction`).
+     - Freedom to Operate Clearance Gauge and White-Space Innovation Opportunities Studio.
+     - New Landscape Study Creator Modal.
+- **Consequences**:
+  - Positive: Empowers research teams with institutional IP intelligence, avoiding patent infringement and accelerating novel patent filings.
+  - Positive: Automated claim charts provide rigorous legal/technical evidence for commercialization clearance.
+  - Positive: Completes Generation 8 Milestone 4 (Phase 34) — Generation 8 is 100% COMPLETE!
+
+
 
 
 

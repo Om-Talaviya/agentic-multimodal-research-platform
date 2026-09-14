@@ -17,6 +17,7 @@ from database.repositories.graph_repo import KnowledgeGraphRepository
 from database.repositories.infrastructure_repo import InfrastructureRepository
 from database.repositories.literature_repo import LiteratureRepository
 from database.repositories.memory_repository import MemoryRepository
+from database.repositories.patent_repo import PatentRepository
 from database.repositories.peer_review_repo import PeerReviewRepository
 from database.repositories.presentation_repo import PresentationRepository
 from database.repositories.project_repo import ProjectRepository

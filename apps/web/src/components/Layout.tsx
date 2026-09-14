@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio, Swords, BookOpenCheck, Cpu, Presentation, Award, Network, Database } from 'lucide-react'
+import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio, Swords, BookOpenCheck, Cpu, Presentation, Award, Network, Database, Scale } from 'lucide-react'
 import { WorkspaceSelector } from './WorkspaceSelector'
 
 export function Layout() {
@@ -8,6 +8,7 @@ export function Layout() {
     { path: '/projects', label: 'Projects', icon: FolderKanban },
     { path: '/canvas', label: 'Research Canvas', icon: Network },
     { path: '/datasets', label: 'Dataset Synthesis', icon: Database },
+    { path: '/patents', label: 'Patent Landscape', icon: Scale },
     { path: '/research/new', label: 'New Research', icon: Plus },
     { path: '/debates', label: 'Debate Arena', icon: Swords },
     { path: '/literature', label: 'Literature Reviews', icon: BookOpenCheck },
