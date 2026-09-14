@@ -44,7 +44,8 @@ class AddCriterionPayload(BaseModel):
 
 
 class AddCandidatesPayload(BaseModel):
-    studies: List[Dict[str, Any]] = Field(..., min_items=1)
+    studies: List[Dict[str, Any]] = Field(..., min_length=1)
+
 
 
 class ScreenCandidatePayload(BaseModel):
