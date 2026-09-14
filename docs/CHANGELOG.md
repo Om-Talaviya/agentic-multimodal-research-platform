@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.6.0] - 2026-09-14 (Generation 8 Milestone 2: Phase 32 - Real-Time Collaborative Research Canvas & Visual Ideation Studio)
+
+### Added
+- **Phase 32: Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio**:
+  - Implemented database models in `packages/database/src/database/models/canvas.py` (`DBCanvasBoard`, `DBCanvasNode`, `DBCanvasEdge`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `CanvasRepository` in `packages/database/src/database/repositories/canvas_repo.py` supporting board lifecycle, node/edge additions, coordinate updates, batch additions, metrics (`get_canvas_metrics`), and cascade deletion.
+  - Implemented Research Canvas Engine in `packages/research/src/research/canvas/ideation.py`:
+    - `CanvasIdeationEngine.generate_canvas_from_research`: Synthesizes structured 2D topological DAG layouts from findings, evidence, and conclusions.
+    - `CanvasIdeationEngine.synthesize_agent_brainstorm_nodes`: Generates multi-agent brainstorming nodes (counter-hypotheses and orthogonal inquiries).
+    - `CanvasIdeationEngine.detect_canvas_clusters`: Computes connected subgraph clusters across canvas nodes.
+  - Implemented REST API routes in `apps/api/src/api/routes/canvas.py`:
+    - `POST /api/v1/canvas/boards`: Create research canvas board.
+    - `GET /api/v1/canvas/metrics`: Query platform canvas & node metrics.
+    - `GET /api/v1/canvas/boards`: List canvas boards.
+    - `GET /api/v1/canvas/boards/{board_id}`: Fetch complete board with nodes and edges.
+    - `POST /api/v1/canvas/boards/{board_id}/generate`: Auto-generate 2D DAG from research findings.
+    - `POST /api/v1/canvas/boards/{board_id}/nodes`: Add visual research node.
+    - `PATCH /api/v1/canvas/boards/{board_id}/nodes/{node_id}`: Update node position and status.
+    - `POST /api/v1/canvas/boards/{board_id}/edges`: Add relational edge.
+    - `POST /api/v1/canvas/boards/{board_id}/brainstorm`: Trigger AI agent brainstorming expansion.
+    - `DELETE /api/v1/canvas/boards/{board_id}`: Delete board.
+  - Created interactive Research Canvas Studio in `apps/web/src/pages/ResearchCanvasPage.tsx`:
+    - Infinite 2D interactive canvas viewport with smooth zooming, panning, and customizable background grid (dots, lines, crosses, clean).
+    - Visual node-graph renderer with type-specific color accents, status badges, drag/drop interaction, and connecting SVG relation lines.
+    - AI Brainstorming Trigger and Auto-Generate from Research dossier modal.
+    - Node detail drawer with confidence scores, relations, and metadata.
+  - Mounted `/canvas` route in `App.tsx` and added `Research Canvas` navigation link with `Network` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_canvas_repo.py`, `packages/research/tests/test_canvas_ideation.py`, and `apps/api/tests/test_canvas_api.py`.
+  - Formalized **ADR 032** (Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio).
+  - **MILESTONE COMPLETED**: Generation 8 Milestone 2 (Phase 32) is 100% complete, tested, and active!
+
+---
+
 ## [2.5.0] - 2026-09-14 (Generation 8 Milestone 1: Phase 31 - Autonomous Scientific Peer Review & Journal Publishing Pipeline)
 
 ### Added
