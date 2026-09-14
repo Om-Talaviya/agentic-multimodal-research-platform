@@ -7,6 +7,261 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.0] - 2026-09-14 (Generation 8 Milestone 4: Phase 34 - Autonomous Patent Landscape Analysis & Prior Art Search Engine)
+
+### Added
+- **Phase 34: Autonomous Patent Landscape Analysis & Prior Art Search Engine**:
+  - Implemented database models in `packages/database/src/database/models/patent.py` (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `PatentRepository` in `packages/database/src/database/repositories/patent_repo.py` supporting corpus lifecycle, patent/claim indexing, prior art evaluations, FTO clearance reporting, and platform patent metrics (`get_patent_metrics`).
+  - Implemented Patent Prior Art Engine in `packages/research/src/research/patents/prior_art.py`:
+    - `PatentPriorArtEngine.decompose_claim_limitations`: Decomposes patent claims into preamble, transition, and numbered atomic limitations.
+    - `PatentPriorArtEngine.evaluate_prior_art_anticipation`: Evaluates 35 U.S.C. 102 anticipation and 103 obviousness against prior art citations with limitation-by-limitation claim charts and design-around mitigations.
+    - `PatentPriorArtEngine.generate_fto_assessment`: Synthesizes Freedom-to-Operate clearance scores, identifies high/medium risk claims, and maps white-space innovation opportunities.
+    - `PatentPriorArtEngine.synthesize_baseline_corpus`: Synthesizes structured baseline patent assets conforming to USPTO/EPO/WIPO specifications.
+  - Implemented REST API routes in `apps/api/src/api/routes/patents.py`:
+    - `POST /api/v1/patents/corpora`: Create patent landscape study and index baseline prior art patents.
+    - `GET /api/v1/patents/metrics`: Query platform patent KPIs.
+    - `GET /api/v1/patents/corpora`: List patent landscape corpora.
+    - `GET /api/v1/patents/corpora/{corpus_id}`: Fetch complete corpus with patents, claims, evaluations, and FTO reports.
+    - `POST /api/v1/patents/corpora/{corpus_id}/evaluate-claim`: Run 102/103 prior art evaluation against target claim.
+    - `POST /api/v1/patents/corpora/{corpus_id}/fto-report`: Generate Freedom to Operate clearance report and white-space map.
+    - `DELETE /api/v1/patents/corpora/{corpus_id}`: Delete corpus.
+  - Created interactive Patent Landscape Studio in `apps/web/src/pages/PatentLandscapePage.tsx`:
+    - Patent Landscape Explorer with CPC classifications and global jurisdiction filters (`USPTO`, `EPO`, `WIPO`).
+    - Interactive 35 U.S.C. 102/103 Claim Chart Studio with atomic limitation breakdown and color-coded status badges (`Anticipated (102)`, `Obvious Variant (103)`, `Novel Distinction`).
+    - Freedom to Operate Clearance Gauge and White-Space Innovation Opportunities Studio.
+    - New Landscape Study Creator Modal.
+  - Mounted `/patents` route in `App.tsx` and added `Patent Landscape` navigation link with `Scale` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_patent_repo.py`, `packages/research/tests/test_patent_prior_art.py`, and `apps/api/tests/test_patents_api.py`.
+  - Formalized **ADR 034** (Autonomous Patent Landscape Analysis, 35 U.S.C. 102/103 Claim Charts, and Freedom-to-Operate (FTO) Engine).
+  - **GENERATION 8 MILESTONE COMPLETED**: Generation 8 (Phases 31, 32, 33, 34) is 100% complete, tested, and active!
+
+---
+
+## [2.7.0] - 2026-09-14 (Generation 8 Milestone 3: Phase 33 - Synthetic Instruction Dataset Generation & Active Learning Engine)
+
+### Added
+- **Phase 33: Synthetic Instruction Dataset Generation & Active Learning Engine**:
+  - Implemented database models in `packages/database/src/database/models/dataset_synthesis.py` (`DBSyntheticDataset`, `DBInstructionSample`, `DBAlignmentExport`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `DatasetSynthesisRepository` in `packages/database/src/database/repositories/dataset_synthesis_repo.py` supporting dataset lifecycle, sample batch addition, active learning curation updates, export recording, and platform synthesis metrics (`get_synthesis_metrics`).
+  - Implemented Instruction Synthesizer Engine in `packages/research/src/research/datasets/synthesizer.py`:
+    - `InstructionDatasetSynthesizer.synthesize_from_research_findings`: Generates high-entropy instruction-response samples or DPO pairs from research findings.
+    - `InstructionDatasetSynthesizer.evolve_instruction`: Evol-Instruct prompt mutator supporting `in_depth_expansion`, `in_breadth_variation`, `constraint_hardening`, `adversarial_redteaming`, and `cot_decomposition`.
+    - `InstructionDatasetSynthesizer.format_dataset`: Converts samples to Alpaca SFT, ShareGPT Multi-Turn, DPO Preference Pairs, or CoT formats.
+    - `InstructionDatasetSynthesizer.calculate_quality_metrics`: Deterministic quality, toxicity, hallucination risk, and SHA-256 deduplication hashing.
+  - Implemented REST API routes in `apps/api/src/api/routes/dataset_synthesis.py`:
+    - `POST /api/v1/datasets/synthesize`: Synthesize instruction tuning dataset from research findings.
+    - `GET /api/v1/datasets/metrics`: Query platform dataset metrics.
+    - `GET /api/v1/datasets`: List synthetic datasets.
+    - `GET /api/v1/datasets/{dataset_id}`: Fetch complete dataset with samples and export history.
+    - `PATCH /api/v1/datasets/{dataset_id}/samples/{sample_id}`: Human/Active-learning curation.
+    - `POST /api/v1/datasets/{dataset_id}/export`: Export dataset into standardized fine-tuning JSONL format.
+    - `DELETE /api/v1/datasets/{dataset_id}`: Delete dataset.
+  - Created interactive Dataset Synthesis Studio in `apps/web/src/pages/DatasetSynthesisPage.tsx`:
+    - Dataset Catalog & Format Selector (`Alpaca SFT`, `ShareGPT`, `DPO Preference Pairs`, `Chain-of-Thought`).
+    - Instruction Sample Inspector & Active Learning Curation Studio with side-by-side chosen vs. rejected responses and CoT reasoning traces.
+    - Evol-Instruct Strategy badges and quality score gauges.
+    - One-click Standardized Alignment JSONL Exporter with live clipboard copy and file download.
+  - Mounted `/datasets` route in `App.tsx` and added `Dataset Synthesis` navigation link with `Database` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_dataset_synthesis_repo.py`, `packages/research/tests/test_dataset_synthesizer.py`, and `apps/api/tests/test_dataset_synthesis_api.py`.
+  - Formalized **ADR 033** (Synthetic Instruction Dataset Generation, Evol-Instruct Mutations, and Active Learning Alignment Engine).
+  - **MILESTONE COMPLETED**: Generation 8 Milestone 3 (Phase 33) is 100% complete, tested, and active!
+
+---
+
+## [2.6.0] - 2026-09-14 (Generation 8 Milestone 2: Phase 32 - Real-Time Collaborative Research Canvas & Visual Ideation Studio)
+
+### Added
+- **Phase 32: Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio**:
+  - Implemented database models in `packages/database/src/database/models/canvas.py` (`DBCanvasBoard`, `DBCanvasNode`, `DBCanvasEdge`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `CanvasRepository` in `packages/database/src/database/repositories/canvas_repo.py` supporting board lifecycle, node/edge additions, coordinate updates, batch additions, metrics (`get_canvas_metrics`), and cascade deletion.
+  - Implemented Research Canvas Engine in `packages/research/src/research/canvas/ideation.py`:
+    - `CanvasIdeationEngine.generate_canvas_from_research`: Synthesizes structured 2D topological DAG layouts from findings, evidence, and conclusions.
+    - `CanvasIdeationEngine.synthesize_agent_brainstorm_nodes`: Generates multi-agent brainstorming nodes (counter-hypotheses and orthogonal inquiries).
+    - `CanvasIdeationEngine.detect_canvas_clusters`: Computes connected subgraph clusters across canvas nodes.
+  - Implemented REST API routes in `apps/api/src/api/routes/canvas.py`:
+    - `POST /api/v1/canvas/boards`: Create research canvas board.
+    - `GET /api/v1/canvas/metrics`: Query platform canvas & node metrics.
+    - `GET /api/v1/canvas/boards`: List canvas boards.
+    - `GET /api/v1/canvas/boards/{board_id}`: Fetch complete board with nodes and edges.
+    - `POST /api/v1/canvas/boards/{board_id}/generate`: Auto-generate 2D DAG from research findings.
+    - `POST /api/v1/canvas/boards/{board_id}/nodes`: Add visual research node.
+    - `PATCH /api/v1/canvas/boards/{board_id}/nodes/{node_id}`: Update node position and status.
+    - `POST /api/v1/canvas/boards/{board_id}/edges`: Add relational edge.
+    - `POST /api/v1/canvas/boards/{board_id}/brainstorm`: Trigger AI agent brainstorming expansion.
+    - `DELETE /api/v1/canvas/boards/{board_id}`: Delete board.
+  - Created interactive Research Canvas Studio in `apps/web/src/pages/ResearchCanvasPage.tsx`:
+    - Infinite 2D interactive canvas viewport with smooth zooming, panning, and customizable background grid (dots, lines, crosses, clean).
+    - Visual node-graph renderer with type-specific color accents, status badges, drag/drop interaction, and connecting SVG relation lines.
+    - AI Brainstorming Trigger and Auto-Generate from Research dossier modal.
+    - Node detail drawer with confidence scores, relations, and metadata.
+  - Mounted `/canvas` route in `App.tsx` and added `Research Canvas` navigation link with `Network` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_canvas_repo.py`, `packages/research/tests/test_canvas_ideation.py`, and `apps/api/tests/test_canvas_api.py`.
+  - Formalized **ADR 032** (Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio).
+  - **MILESTONE COMPLETED**: Generation 8 Milestone 2 (Phase 32) is 100% complete, tested, and active!
+
+---
+
+## [2.5.0] - 2026-09-14 (Generation 8 Milestone 1: Phase 31 - Autonomous Scientific Peer Review & Journal Publishing Pipeline)
+
+### Added
+- **Phase 31: Autonomous Multi-Agent Blinded Peer Review & Academic Publishing Pipeline**:
+  - Implemented database models in `packages/database/src/database/models/peer_review.py` (`DBPeerReviewManuscript`, `DBPeerReviewReport`, `DBManuscriptRevision`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `PeerReviewRepository` in `packages/database/src/database/repositories/peer_review_repo.py` supporting manuscript submission, referee reports saving, composite score aggregation, author revisions, camera-ready publishing, and platform metrics (`get_peer_review_metrics`).
+  - Implemented Multi-Agent Peer Review and Publishing Engine in `packages/research/src/research/publishing/peer_review.py`:
+    - `PeerReviewEngine.evaluate_manuscript`: Multi-agent double-blind evaluation simulating 3 specialized referee personas (`methodology_critic`, `statistical_auditor`, `domain_specialist`) with weighted metrics across originality, methodological rigor, empirical soundness, and clarity.
+    - `PublicationFormatter`: Generates camera-ready academic preprints (LaTeX source conforming to Nature / IEEE / ACM guidelines), BibTeX citation blocks, and canonical DOI identifiers.
+    - `AuthorRebuttalGenerator`: Synthesizes point-by-point author rebuttal letters addressing referee critique items.
+  - Implemented REST API routes in `apps/api/src/api/routes/peer_review.py`:
+    - `POST /api/v1/publishing/manuscripts`: Submit manuscript for peer review.
+    - `GET /api/v1/publishing/metrics`: Query platform peer review and publication statistics.
+    - `GET /api/v1/publishing/manuscripts`: List manuscripts with filters.
+    - `GET /api/v1/publishing/manuscripts/{id}`: Fetch manuscript details with referee reports and author revisions.
+    - `POST /api/v1/publishing/manuscripts/{id}/review`: Trigger multi-agent double-blind peer review simulation.
+    - `POST /api/v1/publishing/manuscripts/{id}/revisions`: Submit author rebuttal and revision round.
+    - `POST /api/v1/publishing/manuscripts/{id}/publish`: Generate camera-ready preprint, BibTeX, and formal DOI.
+    - `DELETE /api/v1/publishing/manuscripts/{id}`: Delete manuscript.
+  - Created interactive Peer Review & Publishing Studio in `apps/web/src/pages/PeerReviewPage.tsx`:
+    - Blind Referee Panel & Scorecard (radar/bar breakdowns across Originality, Methodological Rigor, Empirical Soundness, Clarity, detailed comments and recommendations).
+    - Author Rebuttal & Revision Studio (rebuttal letters, point-by-point response tracking).
+    - Camera-Ready Preprint & Publishing Studio (LaTeX source viewer, BibTeX copy block, DOI badge).
+    - Submit Manuscript modal with multi-venue format selector (`Nature`, `IEEE`, `ACM`, `arXiv`).
+  - Mounted `/publishing` route in `App.tsx` and added `Peer Review & Publishing` navigation link with `Award` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_peer_review_repo.py`, `packages/research/tests/test_peer_review_engine.py`, and `apps/api/tests/test_peer_review_api.py`.
+  - Formalized **ADR 031** (Autonomous Multi-Agent Blinded Peer Review, Author Rebuttals, and Camera-Ready Academic Preprint Publishing Pipeline).
+  - **MILESTONE COMPLETED**: Generation 8 Milestone 1 (Phase 31) is 100% complete, tested, and active!
+
+---
+
+## [2.4.0] - 2026-09-14 (Generation 7 Milestone 4: Phase 30 - Multimodal Scientific Presentation & Executive Podcasting Briefing Generator)
+
+### Added
+- **Phase 30: Multimodal Scientific Presentation Decks & Multi-Speaker Executive Podcasting Briefing Generator**:
+  - Implemented database models in `packages/database/src/database/models/presentation.py` (`DBSynthesisPresentation`, `DBPresentationSlide`, `DBPodcastBriefing`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `PresentationRepository` in `packages/database/src/database/repositories/presentation_repo.py` supporting presentation lifecycle (`create_presentation`, `get_presentation`, `list_presentations`, `delete_presentation`), slide operations (`save_slides`, `get_slides`), podcast briefings (`create_podcast_briefing`, `get_podcast_briefing`, `list_podcast_briefings`), and platform-wide presentation metrics (`get_presentation_metrics`).
+  - Implemented `PresentationGenerator` and `PodcastBriefingSynthesizer` in `packages/research/src/research/presentation/synthesizer.py`:
+    - `PresentationGenerator.generate_presentation(title, topic, summary, findings, target_audience, slide_count)`: Generates structured scientific slide decks with layouts (`title_slide`, `key_findings`, `architecture_flow`, `comparative_analysis`, `conclusion_next_steps`), bullet assertions, visual cards, charts, and detailed speaker script notes.
+    - `PodcastBriefingSynthesizer.generate_podcast(title, topic, key_points, findings, style, target_duration_minutes)`: Generates structured multi-speaker dialogue scripts (`Host (Alex)` & `Domain Specialist (Dr. Rowan)`) with tone cues (`engaging_inquisitive`, `authoritative_analytical`, `balanced_synthesis`), duration calculation, and automated chapter timestamps.
+  - Implemented REST API routes in `apps/api/src/api/routes/presentations.py`:
+    - `POST /api/v1/presentations/generate`: Synthesize structured presentation slide deck.
+    - `GET /api/v1/presentations`: List synthesized presentations.
+    - `GET /api/v1/presentations/{id}`: Fetch presentation details with full slide deck.
+    - `POST /api/v1/presentations/podcasts/generate`: Synthesize multi-speaker podcast briefing.
+    - `GET /api/v1/presentations/podcasts`: List generated podcast briefings.
+    - `GET /api/v1/presentations/podcasts/{id}`: Fetch podcast briefing dialogue.
+    - `GET /api/v1/presentations/metrics`: Query platform presentation and podcast metrics.
+    - `DELETE /api/v1/presentations/{id}`: Delete presentation deck.
+  - Created interactive Multimodal Presentation & Podcast Studio in `apps/web/src/pages/PresentationStudioPage.tsx`:
+    - Slide Deck Presenter tab (live slide stage with full-screen toggle, layout-aware card rendering, slide navigation bar, and expandable presenter speaker notes).
+    - Slide List & Hierarchy tab (compact grid overview of all deck slides with bullet points, visuals, and timing).
+    - Executive Podcast Player & Transcript tab (audio player simulation, multi-speaker dialogue view with speaker avatar badges, duration/word-count badges, and timestamped chapter markers).
+    - Synthesize New Deck & Generate Podcast modals.
+  - Mounted `/presentations` route in `App.tsx` and added `Presentation Studio` navigation link with `Tv` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_presentation_repo.py`, `packages/research/tests/test_presentation_synthesizer.py`, and `apps/api/tests/test_presentation_api.py`.
+  - Formalized **ADR 030** (Multimodal Scientific Presentation Decks and Multi-Speaker Executive Podcasting Briefing Generator).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 4 (Phase 30) is 100% complete, tested, and active!
+
+---
+
+## [2.3.0] - 2026-09-14 (Generation 7 Milestone 3: Phase 29 - In-Silico Experimentation, Computational Reproducibility & Code Verification)
+
+### Added
+- **Phase 29: In-Silico Experimentation, Computational Reproducibility & Empirical Claim Verification Engine**:
+  - Implemented database models in `packages/database/src/database/models/reproducibility.py` (`DBExperimentProtocol`, `DBReproducibilityRun`, `DBClaimVerificationTrace`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `ReproducibilityRepository` in `packages/database/src/database/repositories/reproducibility_repo.py` supporting computational protocol lifecycle (`create_protocol`, `get_protocol`, `list_protocols`, `update_protocol_status`, `delete_protocol`), in-silico execution runs (`record_reproducibility_run`, `get_run`, `list_runs`), claim verification traces (`record_verification_trace`, `list_verification_traces`), and aggregate platform metrics (`get_reproducibility_metrics`).
+  - Implemented `ReproducibilityEngine` in `packages/research/src/research/reproducibility/engine.py`:
+    - `validate_code_ast(code)`: AST tree security parser screening against prohibited modules (`os`, `sys`, `subprocess`, `socket`, `requests`, `eval`, `exec`, `open`).
+    - `execute_protocol(code, parameters)`: Sandboxed runtime scope with pre-loaded mathematical modules (`math`, `random`, `statistics`), stdout terminal interceptor, and numerical output metric extraction.
+    - `verify_claims(claimed_metrics, reproduced_metrics, tolerance)`: Relative delta error calculator ($\delta = \frac{|M_{\text{claimed}} - M_{\text{reproduced}}|}{\max(|M_{\text{claimed}}|, 1e-6)}$), tolerance-based verdict categorization (`reproduced`, `discrepant`, `refuted`, `inconclusive`), and composite reproducibility score $\kappa \in [0.0, 1.0]$.
+  - Implemented REST API routes in `apps/api/src/api/routes/reproducibility.py`:
+    - `POST /api/v1/reproducibility/protocols`: Register computational protocol.
+    - `GET /api/v1/reproducibility/protocols`: List protocols with filtering.
+    - `GET /api/v1/reproducibility/protocols/{id}`: Fetch protocol with runs and claim verification traces.
+    - `POST /api/v1/reproducibility/protocols/{id}/execute`: Trigger in-silico simulation run and automated claim verification.
+    - `GET /api/v1/reproducibility/metrics`: Query platform reproducibility metrics.
+    - `DELETE /api/v1/reproducibility/protocols/{id}`: Delete protocol.
+  - Created interactive In-Silico Experimentation & Reproducibility Studio in `apps/web/src/pages/ReproducibilityPage.tsx`:
+    - Protocols & Code Studio tab (protocol selector, paper reference badge, claimed benchmark metrics grid, AST-sandboxed code editor).
+    - Simulation Console & Telemetry tab (live stdout terminal output, execution duration gauge, peak heap memory telemetry, computed output metrics grid, re-run trigger).
+    - Claim Verification Matrix tab (granular claim vs. reproduced comparison table, relative delta error percentages, tolerance thresholds, and verdict badges).
+    - Run History & Scorecard tab (chronological historical runs and composite reproducibility scores).
+    - Register Protocol modal with template script.
+  - Mounted `/reproducibility` route in `App.tsx` and added `In-Silico Verification` navigation link with `Cpu` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_reproducibility_repo.py`, `packages/research/tests/test_reproducibility_engine.py`, and `apps/api/tests/test_reproducibility_api.py`.
+  - Formalized **ADR 029** (In-Silico Experimentation, Sandboxed Computational Reproducibility, and Claim Discrepancy Verification).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 3 (Phase 29) is 100% complete, tested, and active!
+
+---
+
+## [2.2.0] - 2026-09-14 (Generation 7 Milestone 2: Phase 28 - Autonomous Systematic Literature Review & PRISMA Meta-Analysis)
+
+### Added
+- **Phase 28: Autonomous Systematic Literature Review, PRISMA 2020 Protocol Flow & Quantitative Meta-Analysis**:
+  - Implemented database models in `packages/database/src/database/models/literature.py` (`DBLiteratureReview`, `DBSLRCriterion`, `DBSLRStudyCandidate`, `DBMetaAnalysisReport`, `DBRiskOfBiasAssessment`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `LiteratureRepository` in `packages/database/src/database/repositories/literature_repo.py` supporting SLR review lifecycle (`create_literature_review`, `get_literature_review`, `list_literature_reviews`, `update_review_phase`, `recalculate_review_counts`, `delete_literature_review`), criteria management (`add_criterion`, `list_criteria`), candidate study screening (`add_candidate_studies`, `get_candidate_study`, `update_candidate_screening`, `list_candidate_studies`), Risk of Bias auditing (`save_risk_of_bias`), and quantitative meta-analysis saving (`save_meta_analysis_report`, `get_meta_analysis_report`, `get_slr_metrics`).
+  - Implemented deterministic Meta-Analysis & SLR Engine in `packages/research/src/research/literature/meta_analysis.py`:
+    - `EffectSizeCalculator`: Deterministic computation of Cohen's $d$, small-sample bias corrected Hedges' $g$, and natural log Odds Ratios with 95% confidence intervals.
+    - `HeterogeneityEngine`: Cochrane's $Q$ statistic, degrees of freedom, $I^2$ inconsistency index ($0-100\%$), DerSimonian-Laird between-study variance $\tau^2$, and chi-square approximation $p$-value.
+    - `PooledEffectEstimator`: Fixed-effect (Inverse-Variance) and Random-Effects (DerSimonian-Laird) model pooling with coordinates for forest plots.
+    - `PRISMAFlowTracker`: 4-box PRISMA 2020 identification, screening, eligibility, and included funnel telemetry with study attrition metrics.
+    - `RiskOfBiasEvaluator`: Multi-domain Cochrane RoB 2 / ROBINS-I criteria evaluation across Selection, Confounding, Measurement, and Reporting bias.
+    - `SLROrchestrator`: Full SLR review and quantitative meta-analysis synthesis pipeline.
+  - Implemented REST API routes in `apps/api/src/api/routes/literature.py`:
+    - `POST /api/v1/literature/reviews`: Create new Systematic Literature Review.
+    - `GET /api/v1/literature/reviews`: List reviews with workspace/project/phase filtering.
+    - `GET /api/v1/literature/reviews/{id}`: Fetch review details with criteria, candidate studies, and meta-analyses.
+    - `POST /api/v1/literature/reviews/{id}/criteria`: Add inclusion/exclusion criterion.
+    - `POST /api/v1/literature/reviews/{id}/candidates`: Batch add candidate studies.
+    - `PATCH /api/v1/literature/reviews/{id}/candidates/{cand_id}`: Screen candidate study and record effect metrics.
+    - `POST /api/v1/literature/reviews/{id}/meta-analysis`: Run quantitative meta-analysis calculation.
+    - `POST /api/v1/literature/reviews/{id}/risk-of-bias`: Record study Risk of Bias evaluation.
+    - `GET /api/v1/literature/reviews/{id}/prisma-flow`: Fetch PRISMA 2020 flow report.
+    - `GET /api/v1/literature/metrics`: Query platform SLR metrics.
+    - `DELETE /api/v1/literature/reviews/{id}`: Delete SLR and cascade child records.
+  - Created interactive Systematic Literature Review & Meta-Analysis Studio in `apps/web/src/pages/LiteratureReviewPage.tsx`:
+    - PRISMA 2020 Flow & Overview tab (interactive 4-box flowchart, live attrition rate, review selector, PICO framework breakdown, criteria summary pills).
+    - Screening Queue & Triage tab (candidate cards with methodology badges, 1-click Include / Exclude action buttons, exclusion reason taxonomy, sample size / effect size badges).
+    - Quantitative Meta-Analysis & Forest Plot Studio (run meta-analysis modal, pooled effect size & 95% CI summary cards, $I^2$ heterogeneity metric, visual Forest Plot with study confidence intervals, weights, and pooled diamond summary).
+    - Risk of Bias (RoB 2) Matrix Heatmap tab (domain-level quality table across Selection, Confounding, Measurement, and Reporting bias with color-coded Low Risk / Some Concerns / High Risk badges).
+    - Create SLR Review modal with PICO framework fields.
+  - Mounted `/literature` route in `App.tsx` and added `Literature Reviews` navigation link with `BookOpenCheck` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_literature_repo.py`, `packages/research/tests/test_meta_analysis.py`, and `apps/api/tests/test_literature_api.py`.
+  - Formalized **ADR 028** (Autonomous Systematic Literature Review, PRISMA 2020 Protocol Flow, and Quantitative Meta-Analysis).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 2 (Phase 28) is 100% complete, tested, and active!
+
+---
+
+## [2.1.0] - 2026-09-13 (Generation 7 Milestone 1: Phase 27 - Adversarial Multi-Agent Debate & Consensus Engine)
+
+### Added
+- **Phase 27: Adversarial Multi-Agent Debate, Elo Robustness Scoring & Dialectical Consensus Synthesis**:
+  - Implemented database models in `packages/database/src/database/models/debate.py` (`DBAgentDebate`, `DBDebateRound`, `DBDebateConsensus`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `DebateRepository` in `packages/database/src/database/repositories/debate_repo.py` supporting debate lifecycle (`create_debate`, `get_debate`, `list_debates`, `update_debate_status`, `add_debate_round`, `list_debate_rounds`, `record_consensus`, `get_consensus`, `get_debate_metrics`, `delete_debate`).
+  - Implemented specialized debate agents in `packages/agents/src/agents/debate/`:
+    - `ProposerAgent`: Affirmative evidence-grounded thesis defense, deduction formulation, citation tracking, and honest concession reporting.
+    - `OpposerAgent`: Adversarial counterarguments, edge case stress testing, methodology criticism, and fallacy detection.
+    - `ConsensusArbiter`: Impartial round evaluation, argument scoring, critique generation, and dialectical consensus synthesis.
+  - Implemented `DebateEngine` in `packages/research/src/research/debate/engine.py` with standard Elo rating shift updates ($\Delta R = K \times (S - E)$ with $K=32.0$), round-by-round orchestration, autonomous full debate runs, and automatic consensus recording.
+  - Implemented REST API routes in `apps/api/src/api/routes/debate.py`:
+    - `POST /api/v1/debates`: Launch new debate session.
+    - `GET /api/v1/debates`: List debates with workspace/project/status filters.
+    - `GET /api/v1/debates/{id}`: Retrieve debate with rounds and consensus.
+    - `POST /api/v1/debates/{id}/rounds`: Execute next round or full debate run.
+    - `GET /api/v1/debates/{id}/rounds`: List chronological round transcripts and citations.
+    - `GET /api/v1/debates/{id}/consensus`: Retrieve synthesized consensus.
+    - `GET /api/v1/debates/metrics`: Query aggregate debate statistics.
+    - `DELETE /api/v1/debates/{id}`: Delete debate and cascade child records.
+  - Created interactive Debate Arena Studio in `apps/web/src/pages/DebateArenaPage.tsx`:
+    - Active Debates tab (grid of active/concluded debates, Elo rating pills, round counters, launch debate modal).
+    - Split-Screen Dialectical Arena Inspector (side-by-side Proposer vs Opposer transcript viewer, claim cards, citations, Arbiter critique card with round winner and Elo delta indicator).
+    - Synthesized Consensus Vault tab (high-confidence consensus statement card, accepted empirical claims with confidence bars, refuted claims, mutual concessions, and residual uncertainties).
+  - Mounted `/debates` in `App.tsx` and added `Debate Arena` link in `Layout.tsx` with `Swords` icon.
+  - Added test suites in `packages/database/tests/test_debate_repo.py`, `packages/research/tests/test_debate_engine.py`, and `apps/api/tests/test_debate_api.py`, achieving 100% pass rate (333/333 tests passing across entire monorepo).
+  - Formalized **ADR 027** (Adversarial Multi-Agent Debate, Elo Robustness Scoring, and Dialectical Consensus Synthesis).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 1 is 100% complete, tested, and active!
+
+---
+
 ## [2.0.0] - 2026-09-13 (Generation 6 Milestone 4 & 6-Generation Product Roadmap Completion: Phase 26 - Research Automation)
 
 ### Added

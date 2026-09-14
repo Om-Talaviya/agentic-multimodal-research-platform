@@ -5,11 +5,12 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2026%20Complete%20(All%206%20Generations%20100%25)-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Phase%2034%20Complete%20(Generation%208%20Active)-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Tests-376%20Passing-brightgreen?style=flat-square" alt="Tests" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
-An enterprise-grade, local-first **AI Research Operating System** that conducts autonomous, verifiable, and evidence-grounded investigations across multiple modalities (text, academic PDFs, DOCX, datasets, images, speech/audio, video, and the live web).
+An enterprise-grade, local-first **AI Research Operating System** that conducts autonomous, verifiable, and evidence-grounded investigations across multiple modalities (text, academic PDFs, DOCX, datasets, images, speech/audio, video, patents, codebases, and the live web).
 
 > **This isn't just a chatbot.**  
 > The platform enables AI to **Plan $\rightarrow$ Investigate $\rightarrow$ Retrieve $\rightarrow$ Reason $\rightarrow$ Critique $\rightarrow$ Synthesize $\rightarrow$ Report**, while managing multi-user authentication, quota allocation, multi-provider model routing, persistent storage, and real-time streaming progress.
@@ -82,6 +83,14 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 | **Model Coupling** | Locked to a single proprietary API | **Model-Agnostic Routing**: Dynamically routes tasks to optimal fast, vision, or reasoning models with automated failover |
 | **Evidence & Provenance** | Unverifiable assertions & frequent hallucinations | **Strict Claim $\rightarrow$ Evidence Mapping**: Every claim links to verified sources, document page numbers, audio/video timestamps, and confidence metrics |
 | **Critic & Verification** | No verification loop | Independent `CriticAgent` detects contradictions, audits sufficiency, and triggers iterative research loops |
+| **Adversarial Multi-Agent Debates** | Monolithic agreement / echo chamber | `ProposerAgent` vs `OpposerAgent` structured dialectics with Elo rating shifts and `ConsensusArbiter` synthesis |
+| **Systematic Literature Reviews** | Surface-level summaries | PRISMA 2020 flow tracking, Cochrane Risk of Bias (RoB 2), and quantitative meta-analysis (Forest plots, Cohen's $d$, Hedges' $g$) |
+| **In-Silico Reproducibility** | Untested code snippets | AST-sandboxed computational execution, statistical delta scoring, and deterministic replication verification |
+| **Multimodal Presentations & Podcasts** | Static text dumps | Autonomous 16:9 presentation slide decks and multi-speaker podcast audio briefings with conversational banter |
+| **Peer Review & Academic Publishing** | Manual formatting | Double-blind referee panels, point-by-point author rebuttals, and camera-ready LaTeX/BibTeX preprint generation |
+| **Research Canvas & Ideation** | Rigid linear lists | Infinite 2D interactive spatial canvas, visual DAG layout, and agentic brainstorming nodes |
+| **Synthetic Dataset Generation** | Manual prompt labeling | Evol-Instruct evolutionary mutation engine, Alpaca/ShareGPT/DPO/CoT adapters, and active learning curation |
+| **Patent Landscape Analysis** | High legal/IP search friction | Autonomous 35 U.S.C. 102/103 prior art claim charts, FTO clearance scoring, and white-space opportunity mapping |
 | **Data Ingestion** | Raw text only | Native extraction for multi-page PDFs with tables, DOCX, images, audio speech tracks, and video timelines |
 | **Long-Term Memory & Graph** | Session-only context | Persistent cross-session research memory and relational Knowledge Graph with Graph-Augmented RAG (`GraphRAG`) |
 | **Multi-Tenancy & Quotas** | Simple API keys or no quotas | Persistent RBAC, transactional row-locking token/cost quotas, and per-user usage attribution |
@@ -90,7 +99,7 @@ An enterprise-grade, local-first **AI Research Operating System** that conducts 
 
 ## Current Status & Evolution
 
-The project is currently at **Phase 26 Complete — All 6 Generations 100% Complete** on the stable branch `develop/v1.1`.
+The project is currently at **Phase 34 Complete — Generation 8 Active & Fully Delivered** on the stable branch `develop/v1.1` (376/376 unit & integration tests passing).
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -120,13 +129,21 @@ Phase 23: Enterprise Security        [██████████████
 Phase 24: Production Infrastructure  [████████████████████] 100%
 Phase 25: Public API & Dev Platform  [████████████████████] 100%
 Phase 26: Research Automation        [████████████████████] 100%
+Phase 27: Multi-Agent Debate Engine  [████████████████████] 100%
+Phase 28: Systematic Literature Rev  [████████████████████] 100%
+Phase 29: In-Silico Reproducibility  [████████████████████] 100%
+Phase 30: Multimodal Presentation    [████████████████████] 100%
+Phase 31: Peer Review & Publishing   [████████████████████] 100%
+Phase 32: Research Canvas Studio     [████████████████████] 100%
+Phase 33: Synthetic Dataset Gen      [████████████████████] 100%
+Phase 34: Patent Landscape & FTO     [████████████████████] 100%
 ─────────────────────────────────────────────────────────────────────────────────
-ALL 26 PHASES COMPLETED — PRODUCTION PLATFORM READY
+ALL 34 PHASES (GENERATIONS 1 - 8) COMPLETED & FULLY ACTIVE (376 TESTS PASSING)
 ```
 
 ---
 
-## 6-Generation Product Roadmap (Phases 9 – 26)
+## 8-Generation Product Architecture (Phases 1 – 34)
 
 ### Generation 1: Intelligent Research Core (100% COMPLETE)
 - **Phase 9: Intelligent Knowledge Automation (COMPLETE)**: Automated end-to-end ingestion (`Upload $\rightarrow$ Validate $\rightarrow$ Extract $\rightarrow$ Normalize $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Index`) and autonomous planner retrieval integration.
@@ -157,6 +174,18 @@ ALL 26 PHASES COMPLETED — PRODUCTION PLATFORM READY
 - **Phase 24: Production Infrastructure (COMPLETE)**: Distributed asynchronous priority task queues (`AsyncTaskQueue`), worker cluster node telemetry (`WorkerNode`, `DBWorkerNode`), S3/MinIO/Local blob vault (`ObjectStorageClient`, `DBStorageObject`), presigned URL generation, and `ProductionInfrastructurePage.tsx` React studio.
 - **Phase 25: Public API & Developer Platform (COMPLETE)**: Public REST gateway (`/api/v1/developer/*`), cryptographically secure SHA-256 hashed API keys (`DBApiKey`, `ApiKeyRepository`), granular permission scopes (`research:read/write`, `documents:read/write`, `memory:read`, `graph:read`), sliding window rate limiting tiers (Free, Pro, Enterprise), interactive API Playground with live cURL / Python / TypeScript SDK snippets, and `DeveloperPlatformPage.tsx` React studio.
 - **Phase 26: Research Automation (COMPLETE)**: Autonomous recurring research sweeps, cron and interval scheduling (`compute_next_run`), semantic claim diff engine, novelty scoring ($\text{novelty} \in [0.0, 1.0]$), threshold-triggered multi-channel alerts (in-app, email, webhooks), database models (`DBScheduledResearch`, `DBResearchSweepResult`, `DBAutomationAlert`), `AutomationRepository`, `/api/v1/automation/*` REST endpoints, and `ResearchAutomationPage.tsx` React studio.
+
+### Generation 7: Scientific & Meta-Intelligence (100% COMPLETE)
+- **Phase 27: Adversarial Multi-Agent Debate & Consensus Engine (COMPLETE)**: Multi-agent dialectical debate studio (`ProposerAgent` vs `OpposerAgent`), dynamic Elo rating shift tracking ($\Delta R = K \times (S - E)$), impartial arbitration and round critique (`ConsensusArbiter`), dialectical consensus synthesis (accepted claims, refuted claims, mutual concessions, residual uncertainties, factual confidence), database models (`DBAgentDebate`, `DBDebateRound`, `DBDebateConsensus`), `DebateRepository`, `/api/v1/debates/*` REST API, and `DebateArenaPage.tsx` React studio.
+- **Phase 28: Systematic Literature Review & Meta-Analysis Engine (COMPLETE)**: PRISMA 2020 four-stage study flow tracking, Cochrane Risk of Bias 2.0 (RoB 2) multi-domain quality scoring, quantitative meta-analysis statistical pooling (Forest plot generation, Cohen's $d$, Hedges' $g$, inverse-variance weighting, Cochran's $Q$, Higgins $I^2$ heterogeneity index), database models (`DBLiteratureReview`, `DBSLRCriterion`, `DBSLRStudyCandidate`, `DBMetaAnalysisReport`, `DBRiskOfBiasAssessment`), `LiteratureRepository`, `/api/v1/literature/*` REST API, and `LiteratureReviewPage.tsx` React studio.
+- **Phase 29: In-Silico Experimentation & Computational Reproducibility Engine (COMPLETE)**: AST-sandboxed computational code execution, empirical claim verification traces, numerical and statistical delta scoring ($\Delta \le \epsilon$), replication pass/fail status determination, database models (`DBExperimentProtocol`, `DBReproducibilityRun`, `DBClaimVerificationTrace`), `ReproducibilityRepository`, `ReproducibilityEngine`, `/api/v1/reproducibility/*` REST API, and `ReproducibilityPage.tsx` React studio.
+- **Phase 30: Multimodal Scientific Presentation & Executive Podcasting Generator (COMPLETE)**: Autonomous structured presentation slide deck generator (16:9 slides, Markdown speaker notes, visual card grids, key takeaways), multi-speaker executive podcast audio script synthesizer (Host & Analyst roles, conversational dialogue banter, tone markers), database models (`DBSynthesisPresentation`, `DBPresentationSlide`, `DBPodcastBriefing`), `PresentationRepository`, `PresentationGenerator`, `PodcastBriefingSynthesizer`, `/api/v1/presentations/*` REST API, and `PresentationStudioPage.tsx` React studio.
+
+### Generation 8: Autonomous Meta-Science & Publishing Ecosystem (100% COMPLETE)
+- **Phase 31: Autonomous Scientific Peer Review & Journal Publishing Pipeline (COMPLETE)**: Multi-agent double-blind academic peer review simulator (Methodology, Statistical, and Domain Specialist reviewer personas), weighted scorecards, author rebuttals with point-by-point response tracking, camera-ready academic publishing generator (Nature, IEEE, ACM, arXiv LaTeX source, BibTeX entries, and DOI minting), database models (`DBPeerReviewManuscript`, `DBPeerReviewReport`, `DBManuscriptRevision`), `PeerReviewRepository`, `PeerReviewEngine`, `PublicationFormatter`, `AuthorRebuttalGenerator`, `/api/v1/publishing/*` REST API, and `PeerReviewPage.tsx` React studio.
+- **Phase 32: Real-Time Collaborative Research Canvas & Visual Ideation Studio (COMPLETE)**: Infinite 2D spatial canvas, node-link visual DAG representations (`DBCanvasBoard`, `DBCanvasNode`, `DBCanvasEdge`), automated DAG layout from research dossiers, real-time agentic brainstorming nodes, clustering by entity type, `CanvasRepository`, `CanvasIdeationEngine`, `/api/v1/canvas/*` REST API, and `ResearchCanvasPage.tsx` React studio.
+- **Phase 33: Synthetic Instruction Dataset Generation & Active Learning Engine (COMPLETE)**: Evolutionary prompt mutator (`InstructionDatasetSynthesizer` with `in_depth_expansion`, `in_breadth_variation`, `constraint_hardening`, `adversarial_redteaming`, `cot_decomposition`), format adapters (Alpaca SFT, ShareGPT Multi-Turn, DPO Preference Pairs, Chain-of-Thought), deterministic quality/toxicity/hallucination/dedup scoring, active learning human-in-the-loop curation studio, database models (`DBSyntheticDataset`, `DBInstructionSample`, `DBAlignmentExport`), `DatasetSynthesisRepository`, `/api/v1/datasets/*` REST API, and `DatasetSynthesisPage.tsx` React studio.
+- **Phase 34: Autonomous Patent Landscape Analysis & Prior Art Search Engine (COMPLETE)**: Decomposition of patent claims into atomic preambles, transitional phrases, and limitations, 35 U.S.C. 102 (Anticipation) and 103 (Non-Obviousness) prior art claim charts, Freedom-to-Operate (FTO) clearance percentage scoring, white-space patentability opportunity discovery, automated design-around mitigations, database models (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`), `PatentRepository`, `PatentPriorArtEngine`, `/api/v1/patents/*` REST API, and `PatentLandscapePage.tsx` React studio.
 
 ---
 

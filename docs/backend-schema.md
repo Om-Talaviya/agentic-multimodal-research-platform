@@ -1040,5 +1040,227 @@ Dispatched change detection and novelty alerts for user review.
 - `PATCH /api/v1/automation/alerts/{id}/acknowledge`: Mark an alert as acknowledged and read.
 - `GET /api/v1/automation/metrics`: Retrieve aggregate automation metrics (active schedules, total sweeps, pending alerts, avg novelty score).
 
+---
+
+## 11. Adversarial Multi-Agent Debate Schema & REST Endpoints (Phase 27)
+
+### 11.1 Table: `agent_debates`
+Multi-agent dialectical debate sessions between affirmative thesis defense (`proposer`) and adversarial scrutiny (`opposer`).
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique debate session ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE CASCADE), NOT NULL, INDEX` | Creator / owning user |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), NULLABLE, INDEX` | Scoped workspace |
+| `project_id` | `UUID` | `FOREIGN KEY (projects.id ON DELETE SET NULL), NULLABLE, INDEX` | Scoped project |
+| `topic` | `VARCHAR(500)` | `NOT NULL` | Debate subject / topic |
+| `initial_thesis` | `TEXT` | `NOT NULL` | Affirmative proposition defended by Proposer |
+| `counter_thesis` | `TEXT` | `NULLABLE` | Opposing antithesis defended by Opposer |
+| `status` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'active', INDEX` | State (`active`, `concluded`, `abandoned`) |
+| `max_rounds` | `INTEGER` | `NOT NULL, DEFAULT 3` | Maximum dialectical interaction rounds |
+| `current_round` | `INTEGER` | `NOT NULL, DEFAULT 0` | Current completed round index |
+| `proposer_model` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'gemini-2.5-pro'` | Model backing ProposerAgent |
+| `opposer_model` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'gemini-2.5-pro'` | Model backing OpposerAgent |
+| `arbiter_model` | `VARCHAR(100)` | `NOT NULL, DEFAULT 'gemini-2.5-pro'` | Model backing ConsensusArbiter |
+| `proposer_elo` | `FLOAT` | `NOT NULL, DEFAULT 1500.0` | Proposer argument strength Elo rating |
+| `opposer_elo` | `FLOAT` | `NOT NULL, DEFAULT 1500.0` | Opposer argument strength Elo rating |
+| `config_json` | `JSONB / JSON` | `NULLABLE` | Configuration parameters (k-factor, temperature) |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last modification timestamp |
+
+---
+
+### 11.2 Table: `debate_rounds`
+Sequential dialectical rounds capturing arguments, rebuttals, citations, arbiter critiques, and round Elo shifts.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique debate round ID |
+| `debate_id` | `UUID` | `FOREIGN KEY (agent_debates.id ON DELETE CASCADE), NOT NULL, INDEX` | Parent debate ID |
+| `round_number` | `INTEGER` | `NOT NULL` | Chronological round index (1-based) |
+| `proposer_argument` | `TEXT` | `NOT NULL` | Affirmative argument text with deductions |
+| `opposer_argument` | `TEXT` | `NOT NULL` | Adversarial counterargument and rebuttal |
+| `proposer_citations`| `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Empirical citations supporting proposer |
+| `opposer_citations` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Evidence supporting counterarguments |
+| `proposer_score` | `FLOAT` | `NOT NULL, DEFAULT 0.8` | Arbiter round quality score for proposer $\in [0, 1]$ |
+| `opposer_score` | `FLOAT` | `NOT NULL, DEFAULT 0.8` | Arbiter round quality score for opposer $\in [0, 1]$ |
+| `arbiter_critique` | `TEXT` | `NOT NULL` | Impartial arbiter reasoning and evaluation |
+| `round_winner` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'draw'` | Outcome (`proposer`, `opposer`, `draw`) |
+| `elo_delta` | `FLOAT` | `NOT NULL, DEFAULT 0.0` | Rating shift applied to winner/loser |
+| `round_telemetry` | `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Claims extracted, flaws, and concessions |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Round timestamp |
+
+---
+
+### 11.3 Table: `debate_consensus`
+Synthesized dialectical consensus reconciling opposing viewpoints into verified empirical claims, concessions, and residual uncertainties.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique consensus ID |
+| `debate_id` | `UUID` | `FOREIGN KEY (agent_debates.id ON DELETE CASCADE), NOT NULL, UNIQUE, INDEX` | Parent debate session |
+| `consensus_statement` | `TEXT` | `NOT NULL` | Unified balanced scientific consensus |
+| `accepted_claims` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Claims surviving adversarial scrutiny |
+| `refuted_claims` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Claims invalidated or constrained |
+| `concessions` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Mutual concessions made during rounds |
+| `remaining_uncertainties` | `JSONB / JSON` | `NOT NULL, DEFAULT '[]'` | Open empirical questions for future inquiry |
+| `overall_confidence`| `FLOAT` | `NOT NULL, DEFAULT 0.85` | Factual confidence rating $\in [0, 1]$ |
+| `winner_overall` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'balanced_consensus'` | Overall verdict (`proposer_favored`, `opposer_favored`, `balanced_consensus`) |
+| `final_proposer_elo`| `FLOAT` | `NOT NULL` | Concluding Elo of proposer |
+| `final_opposer_elo` | `FLOAT` | `NOT NULL` | Concluding Elo of opposer |
+| `synthesis_metadata`| `JSONB / JSON` | `NOT NULL, DEFAULT '{}'` | Arbiter telemetry and round summary stats |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Synthesis timestamp |
+
+---
+
+### 11.4 REST Endpoints (Phase 27)
+
+- `POST /api/v1/debates`: Launch a new adversarial multi-agent debate session with custom models, max rounds, topic, and thesis.
+- `GET /api/v1/debates`: List debates with optional filtering by status, workspace, and project.
+- `GET /api/v1/debates/{id}`: Retrieve comprehensive details of a debate including all chronological rounds and final consensus.
+- `POST /api/v1/debates/{id}/rounds`: Execute the next dialectical round or trigger autonomous execution to completion (`run_to_completion: true`).
+- `GET /api/v1/debates/{id}/rounds`: Retrieve full chronological transcript and citations for all rounds of a debate.
+- `GET /api/v1/debates/{id}/consensus`: Fetch synthesized dialectical consensus statement and accepted/refuted claim lists.
+- `GET /api/v1/debates/metrics`: Retrieve aggregate debate statistics (total debates, active debates, mean consensus confidence, average Proposer/Opposer Elo).
+- `DELETE /api/v1/debates/{id}`: Permanently delete a debate session and all child round and consensus records.
+
+---
+
+## 12. Systematic Literature Review & PRISMA Meta-Analysis Schema & REST Endpoints (Phase 28)
+
+### 12.1 Table: `literature_reviews`
+Master systematic literature review (SLR) study records tracking search strings, PRISMA stages, and overall review status.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique review ID |
+| `user_id` | `UUID` | `FOREIGN KEY (users.id ON DELETE CASCADE), NOT NULL, INDEX` | Creator / owning user |
+| `workspace_id` | `UUID` | `FOREIGN KEY (workspaces.id ON DELETE CASCADE), NULLABLE, INDEX` | Scoped workspace |
+| `project_id` | `UUID` | `FOREIGN KEY (projects.id ON DELETE SET NULL), NULLABLE, INDEX` | Scoped project |
+| `title` | `VARCHAR(500)` | `NOT NULL` | Systematic review title |
+| `search_query` | `TEXT` | `NOT NULL` | Formal search syntax / boolean query |
+| `status` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'draft', INDEX` | State (`draft`, `screening`, `meta_analysis`, `completed`) |
+| `prisma_stage` | `VARCHAR(50)` | `NOT NULL, DEFAULT 'identification'` | Current PRISMA 2020 stage |
+| `metadata_json` | `JSONB / JSON` | `NULLABLE` | Review protocol details |
+| `created_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Creation timestamp |
+| `updated_at` | `TIMESTAMP WITH TZ` | `NOT NULL, DEFAULT NOW()` | Last update timestamp |
+
+### 12.2 Tables: `slr_criteria`, `slr_study_candidates`, `meta_analysis_reports`, `risk_of_bias_assessments`
+- `slr_criteria`: Inclusion and exclusion eligibility criteria (`criterion_type`, `description`, `field_target`).
+- `slr_study_candidates`: Candidate papers evaluated against PRISMA flow (`title`, `authors`, `abstract`, `screening_status`, `exclusion_reason`, `effect_size`).
+- `meta_analysis_reports`: Statistical pooling results (Cohen's $d$, Hedges' $g$, inverse-variance weights, Forest plot data points, Cochran's $Q$, $I^2$ heterogeneity).
+- `risk_of_bias_assessments`: Cochrane RoB 2 multi-domain scores (`randomization_bias`, `deviations_bias`, `missing_data_bias`, `measurement_bias`, `reporting_bias`, `overall_bias`).
+
+### 12.3 REST Endpoints (Phase 28)
+- `POST /api/v1/literature/reviews`: Create systematic review protocol.
+- `GET /api/v1/literature/reviews`: List reviews.
+- `GET /api/v1/literature/reviews/{id}`: Fetch review with candidates, criteria, and meta-analysis.
+- `POST /api/v1/literature/reviews/{id}/studies`: Add candidate studies.
+- `POST /api/v1/literature/reviews/{id}/meta-analysis`: Run statistical pooling.
+- `GET /api/v1/literature/metrics`: Query platform literature KPIs.
+
+---
+
+## 13. In-Silico Experimentation & Reproducibility Schema & REST Endpoints (Phase 29)
+
+### 13.1 Tables: `experiment_protocols`, `reproducibility_runs`, `claim_verification_traces`
+- `experiment_protocols`: Scientific computational experiments (`code_snippet`, `target_hypothesis`, `runtime_environment`, `allowed_modules`, `timeout_seconds`).
+- `reproducibility_runs`: Sandboxed execution runs (`execution_status`, `stdout_output`, `stderr_output`, `return_value_json`, `execution_time_ms`, `replication_verdict`).
+- `claim_verification_traces`: Exact claim vs execution comparisons (`target_claim`, `expected_value`, `observed_value`, `delta_metric`, `tolerance_threshold`, `passed_verification`).
+
+### 13.2 REST Endpoints (Phase 29)
+- `POST /api/v1/reproducibility/protocols`: Create experiment protocol.
+- `POST /api/v1/reproducibility/protocols/{id}/execute`: Run sandboxed in-silico replication.
+- `GET /api/v1/reproducibility/runs/{id}`: Fetch detailed replication trace and console logs.
+- `GET /api/v1/reproducibility/metrics`: Query platform reproducibility metrics.
+
+---
+
+## 14. Multimodal Presentation & Executive Podcasting Schema & REST Endpoints (Phase 30)
+
+### 14.1 Tables: `synthesis_presentations`, `presentation_slides`, `podcast_briefings`
+- `synthesis_presentations`: Presentation slide deck records (`title`, `topic`, `target_audience`, `aspect_ratio`, `theme_palette`, `total_slides`).
+- `presentation_slides`: Individual 16:9 slides (`slide_number`, `slide_type`, `title`, `headline`, `bullets_json`, `visual_cards_json`, `speaker_notes`).
+- `podcast_briefings`: Executive audio dialogue scripts (`title`, `host_name`, `analyst_name`, `dialogue_script_json`, `duration_estimated_seconds`).
+
+### 14.2 REST Endpoints (Phase 30)
+- `POST /api/v1/presentations`: Generate structured 16:9 presentation deck.
+- `GET /api/v1/presentations/{id}`: Fetch presentation with slides.
+- `POST /api/v1/presentations/podcasts`: Generate multi-speaker podcast audio script.
+- `GET /api/v1/presentations/metrics`: Query presentation and briefing metrics.
+
+---
+
+## 15. Autonomous Peer Review & Academic Publishing Schema & REST Endpoints (Phase 31)
+
+### 15.1 Tables: `peer_review_manuscripts`, `peer_review_reports`, `manuscript_revisions`
+- `peer_review_manuscripts`: Academic manuscripts (`title`, `abstract`, `full_manuscript_text`, `manuscript_type`, `editorial_status`, `doi_identifier`, `latex_source`, `bibtex_entries`).
+- `peer_review_reports`: Double-blind referee scorecards (`reviewer_persona`, `overall_recommendation`, `soundness_score`, `novelty_score`, `clarity_score`, `reproducibility_score`, `detailed_comments`).
+- `manuscript_revisions`: Author revision cycles and rebuttals (`revision_number`, `author_rebuttal_letter`, `point_by_point_responses_json`, `diff_summary`).
+
+### 15.2 REST Endpoints (Phase 31)
+- `POST /api/v1/publishing/manuscripts`: Submit manuscript for peer review.
+- `POST /api/v1/publishing/manuscripts/{id}/review`: Run double-blind referee review panel.
+- `POST /api/v1/publishing/manuscripts/{id}/revisions`: Submit author revision & point-by-point rebuttal.
+- `POST /api/v1/publishing/manuscripts/{id}/publish`: Generate camera-ready preprint (LaTeX, BibTeX, DOI).
+- `GET /api/v1/publishing/metrics`: Query platform publishing KPIs.
+
+---
+
+## 16. Real-Time Collaborative Research Canvas Schema & REST Endpoints (Phase 32)
+
+### 16.1 Tables: `canvas_boards`, `canvas_nodes`, `canvas_edges`
+- `canvas_boards`: 2D spatial canvas boards (`title`, `description`, `viewport_settings_json`, `grid_type`).
+- `canvas_nodes`: Visual canvas node elements (`node_type`, `label`, `content`, `position_x`, `position_y`, `width`, `height`, `confidence_score`, `color_accent`, `metadata_json`).
+- `canvas_edges`: Relational edge connectors (`source_node_id`, `target_node_id`, `relation_type`, `label`, `weight`, `is_directed`).
+
+### 16.2 REST Endpoints (Phase 32)
+- `POST /api/v1/canvas/boards`: Create canvas board.
+- `GET /api/v1/canvas/boards/{id}`: Fetch complete board with nodes and edges.
+- `POST /api/v1/canvas/boards/{id}/generate`: Auto-generate 2D DAG layout from research findings.
+- `POST /api/v1/canvas/boards/{id}/nodes`: Add visual node.
+- `PATCH /api/v1/canvas/boards/{id}/nodes/{node_id}`: Update node position and content.
+- `POST /api/v1/canvas/boards/{id}/edges`: Add relational edge connector.
+- `POST /api/v1/canvas/boards/{id}/brainstorm`: Trigger AI agent brainstorming expansion.
+- `GET /api/v1/canvas/metrics`: Query platform canvas metrics.
+
+---
+
+## 17. Synthetic Instruction Dataset Generation Schema & REST Endpoints (Phase 33)
+
+### 17.1 Tables: `synthetic_datasets`, `instruction_samples`, `alignment_exports`
+- `synthetic_datasets`: Fine-tuning instruction dataset records (`name`, `dataset_format`, `domain_field`, `target_model_family`, `total_samples`, `quality_filter_threshold`, `status`).
+- `instruction_samples`: Instruction sample records (`sample_index`, `system_prompt`, `instruction`, `input_context`, `chosen_response`, `rejected_response`, `cot_reasoning_trace`, `evolution_strategy`, `quality_score`, `curation_verdict`).
+- `alignment_exports`: Standardized fine-tuning export files (`export_format`, `sample_count`, `file_size_bytes`, `exported_at`).
+
+### 17.2 REST Endpoints (Phase 33)
+- `POST /api/v1/datasets/synthesize`: Synthesize instruction dataset from research findings.
+- `GET /api/v1/datasets`: List synthetic datasets.
+- `GET /api/v1/datasets/{id}`: Fetch dataset with instruction samples and exports.
+- `PATCH /api/v1/datasets/{id}/samples/{sample_id}`: Active learning human curation (accept, reject, edit).
+- `POST /api/v1/datasets/{id}/export`: Standardized JSONL export.
+- `GET /api/v1/datasets/metrics`: Query platform dataset metrics.
+
+---
+
+## 18. Autonomous Patent Landscape Analysis & Prior Art Schema & REST Endpoints (Phase 34)
+
+### 18.1 Tables: `patent_corpora`, `patent_documents`, `patent_claims`, `prior_art_evaluations`, `fto_reports`
+- `patent_corpora`: Master patent landscape study (`title`, `technology_domain`, `cpc_classification`, `jurisdiction`, `status`, `freedom_to_operate_verdict`).
+- `patent_documents`: Patent asset records (`patent_number`, `title`, `abstract`, `assignee`, `filing_date`, `publication_date`, `cpc_classes`, `status`).
+- `patent_claims`: Granular claim breakdown (`claim_number`, `claim_type`, `parent_claim_number`, `claim_text`, `parsed_elements_json`, `infringement_risk_score`).
+- `prior_art_evaluations`: 35 U.S.C. 102/103 evaluation traces (`target_invention_claim`, `novelty_score`, `obviousness_score`, `verdict`, `detailed_rationale`, `mitigation_strategy`).
+- `fto_reports`: Freedom-to-Operate clearance dossiers (`total_examined_patents`, `fto_clearance_percentage`, `summary_assessment`, `white_space_opportunities`, `claim_chart_matrices`).
+
+### 18.2 REST Endpoints (Phase 34)
+- `POST /api/v1/patents/corpora`: Create patent landscape study and index baseline prior art patents.
+- `GET /api/v1/patents/corpora`: List patent corpora.
+- `GET /api/v1/patents/corpora/{id}`: Fetch complete corpus with patents, claims, evaluations, and FTO reports.
+- `POST /api/v1/patents/corpora/{id}/evaluate-claim`: Run 102/103 prior art evaluation against target invention claim.
+- `POST /api/v1/patents/corpora/{id}/fto-report`: Generate Freedom to Operate clearance report and white-space map.
+- `GET /api/v1/patents/metrics`: Query platform patent KPIs.
+- `DELETE /api/v1/patents/corpora/{id}`: Delete corpus.
+
+
 
 

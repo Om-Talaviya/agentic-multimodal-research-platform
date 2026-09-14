@@ -2,19 +2,28 @@ from database.repositories.agent_evaluation_repo import AgentEvaluationRepositor
 from database.repositories.agent_run_repo import AgentRunRepository, ModelCallRepository
 from database.repositories.api_key_repo import ApiKeyRepository
 from database.repositories.automation_repo import AutomationRepository
+from database.repositories.canvas_repo import CanvasRepository
+from database.repositories.dataset_synthesis_repo import DatasetSynthesisRepository
 from database.repositories.collaboration_repo import (
+
     ReportAnnotationRepository,
     WorkspaceActivityRepository,
     WorkspaceInviteRepository,
 )
+from database.repositories.debate_repo import DebateRepository
 from database.repositories.document_repo import DocumentChunkRepository, DocumentRepository
 from database.repositories.evaluation_repo import ModelEvaluationRepository
 from database.repositories.graph_repo import KnowledgeGraphRepository
 from database.repositories.infrastructure_repo import InfrastructureRepository
+from database.repositories.literature_repo import LiteratureRepository
 from database.repositories.memory_repository import MemoryRepository
+from database.repositories.patent_repo import PatentRepository
+from database.repositories.peer_review_repo import PeerReviewRepository
+from database.repositories.presentation_repo import PresentationRepository
 from database.repositories.project_repo import ProjectRepository
 from database.repositories.quota_repo import UserQuotaRepository
 from database.repositories.report_repo import ReportRepository
+from database.repositories.reproducibility_repo import ReproducibilityRepository
 from database.repositories.research_job_repo import (
     EvidenceRepository,
     ResearchJobRepository,
@@ -52,4 +61,11 @@ __all__ = [
     "InfrastructureRepository",
     "ApiKeyRepository",
     "AutomationRepository",
+    "DebateRepository",
+    "LiteratureRepository",
+    "ReproducibilityRepository",
+    "PresentationRepository",
+    "PeerReviewRepository",
+    "CanvasRepository",
 ]
+

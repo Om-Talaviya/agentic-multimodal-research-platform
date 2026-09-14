@@ -33,6 +33,9 @@ from agents.runtime import (
 )
 
 from agents.critic.critic_agent import CriticAgent
+from agents.debate.proposer_agent import ProposerAgent
+from agents.debate.opposer_agent import OpposerAgent
+from agents.debate.consensus_arbiter import ConsensusArbiter
 from agents.memory import AgentMemory, MemoryItem
 from agents.tracing import AgentTrace, ToolCallTrace, ModelCallTrace
 from agents.planner.planner_agent import PlannerAgent
@@ -52,6 +55,9 @@ __all__ = [
     "PlannerAgent",
     "WebResearchAgent",
     "DocumentAnalysisAgent",
+    "ProposerAgent",
+    "OpposerAgent",
+    "ConsensusArbiter",
     "AgentTrace",
     "ToolCallTrace",
     "ModelCallTrace",

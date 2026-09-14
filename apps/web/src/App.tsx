@@ -14,7 +14,16 @@ import { EnterpriseSecurityPage } from './pages/EnterpriseSecurityPage'
 import { ProductionInfrastructurePage } from './pages/ProductionInfrastructurePage'
 import { DeveloperPlatformPage } from './pages/DeveloperPlatformPage'
 import { ResearchAutomationPage } from './pages/ResearchAutomationPage'
+import { DebateArenaPage } from './pages/DebateArenaPage'
+import { LiteratureReviewPage } from './pages/LiteratureReviewPage'
+import { ReproducibilityPage } from './pages/ReproducibilityPage'
+import { PresentationStudioPage } from './pages/PresentationStudioPage'
+import { PeerReviewPage } from './pages/PeerReviewPage'
+import { ResearchCanvasPage } from './pages/ResearchCanvasPage'
+import { DatasetSynthesisPage } from './pages/DatasetSynthesisPage'
+import { PatentLandscapePage } from './pages/PatentLandscapePage'
 import { Login } from './pages/Login'
+
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
 import { Loader2 } from 'lucide-react'
@@ -100,7 +109,16 @@ function App() {
           <Route path="infrastructure" element={<ProductionInfrastructurePage />} />
           <Route path="developer" element={<DeveloperPlatformPage />} />
           <Route path="automation" element={<ResearchAutomationPage />} />
+          <Route path="debates" element={<DebateArenaPage />} />
+          <Route path="literature" element={<LiteratureReviewPage />} />
+          <Route path="reproducibility" element={<ReproducibilityPage />} />
+          <Route path="presentations" element={<PresentationStudioPage />} />
+          <Route path="publishing" element={<PeerReviewPage />} />
+          <Route path="canvas" element={<ResearchCanvasPage />} />
+          <Route path="datasets" element={<DatasetSynthesisPage />} />
+          <Route path="patents" element={<PatentLandscapePage />} />
           <Route path="settings" element={<Settings />} />
+
         </Route>
 
         {/* Fallbacks & Auth Redirects */}

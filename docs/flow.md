@@ -705,3 +705,315 @@ sequenceDiagram
         API-->>UI: Live Alert Count & Sweep Timeline Updated
     end
 ```
+
+---
+
+## 17. Adversarial Multi-Agent Debate & Dialectical Consensus Synthesis Flow (Phase 27)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Researcher as Lead Researcher
+    participant UI as DebateArenaPage.tsx
+    participant API as FastAPI (/api/v1/debates)
+    participant Engine as DebateEngine
+    participant Proposer as ProposerAgent (Affirmative Thesis)
+    participant Opposer as OpposerAgent (Adversarial Counter)
+    participant Arbiter as ConsensusArbiter (Judge & Synthesizer)
+    participant Repo as DebateRepository
+    participant DB as PostgreSQL / SQLite (agent_debates, debate_rounds, debate_consensus)
+
+    rect rgb(20, 30, 45)
+        Note over Researcher, DB: 1. Launch Multi-Agent Debate Arena
+        Researcher->>UI: Configures Debate Topic, Initial Thesis, Counter-Thesis, Max Rounds (3)
+        UI->>API: POST /api/v1/debates {topic, initial_thesis, counter_thesis, max_rounds: 3, proposer_model, opposer_model, arbiter_model}
+        API->>Repo: create_debate(user_id, topic, initial_thesis, counter_thesis, max_rounds, ...)
+        Repo->>DB: INSERT into agent_debates (proposer_elo=1500, opposer_elo=1500, status='active')
+        DB-->>Repo: DBAgentDebate Record
+        Repo-->>API: Persisted Debate Metadata
+        API-->>UI: 201 Created (Debate Active, Round 0/3)
+    end
+
+    rect rgb(20, 45, 30)
+        Note over Engine, DB: 2. Dialectical Round Execution & Dynamic Elo Scoring
+        Researcher->>UI: Clicks "Execute Round" or "Run Full Debate"
+        UI->>API: POST /api/v1/debates/{id}/rounds {run_to_completion: false}
+        API->>Engine: execute_round(debate_id, context)
+        Engine->>Repo: get_debate(debate_id, include_rounds=True)
+        Repo-->>Engine: DBAgentDebate + previous rounds
+
+        Note over Engine, Proposer: Proposer Turn: Evidence-Grounded Thesis Defense
+        Engine->>Proposer: execute(topic, thesis, round_number, opposer_prior_argument, history)
+        Proposer-->>Engine: ProposerTurn {argument_text, key_claims, citations, persuasiveness_self_score}
+
+        Note over Engine, Opposer: Opposer Turn: Adversarial Counterargument & Edge Cases
+        Engine->>Opposer: execute(topic, thesis, counter_thesis, round_number, proposer_argument, claims, history)
+        Opposer-->>Engine: OpposerTurn {argument_text, counter_claims, citations, flaws_identified}
+
+        Note over Engine, Arbiter: Arbiter Turn: Round Scoring & Critique
+        Engine->>Arbiter: evaluate_round(topic, round_number, proposer_turn, opposer_turn)
+        Arbiter-->>Engine: RoundEvaluation {proposer_score: 0.88, opposer_score: 0.82, round_winner: "proposer", critique}
+
+        Note over Engine: Compute Elo Shift: ΔR = K * (S_A - E_A)
+        Engine->>Engine: compute_elo_shift(proposer_elo, opposer_elo, p_score, o_score, k_factor=32)
+        Engine->>Repo: add_debate_round(debate_id, round_num, p_arg, o_arg, p_score, o_score, critique, winner, elo_delta, ...)
+        Repo->>DB: INSERT into debate_rounds
+        Engine->>Repo: update_debate_status(debate_id, current_round, new_p_elo, new_o_elo)
+        Repo->>DB: UPDATE agent_debates SET current_round=1, proposer_elo=1516, opposer_elo=1484
+    end
+
+    rect rgb(45, 30, 20)
+        Note over Engine, DB: 3. Dialectical Consensus Synthesis (Round 3 Reached)
+        alt current_round >= max_rounds
+            Engine->>Arbiter: synthesize_consensus(topic, initial_thesis, complete_rounds_history)
+            Arbiter-->>Engine: ConsensusPayload {consensus_statement, accepted_claims, refuted_claims, concessions, remaining_uncertainties, overall_confidence: 0.90, winner_overall}
+            Engine->>Repo: record_consensus(debate_id, consensus_statement, accepted_claims, refuted_claims, concessions, remaining_uncertainties, overall_confidence, winner_overall, final_elos)
+            Repo->>DB: INSERT into debate_consensus
+            Repo->>DB: UPDATE agent_debates SET status='concluded'
+        end
+        Engine-->>API: Round & Consensus Execution Summary
+        API-->>UI: Live Split-Screen Arena Transcripts, Elo Badges & Consensus Vault Updated
+    end
+```
+
+---
+
+## 18. Systematic Literature Review & PRISMA Meta-Analysis Flow (Phase 28)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Researcher as Systematic Reviewer
+    participant UI as LiteratureReviewPage.tsx
+    participant API as FastAPI (/api/v1/literature)
+    participant Engine as MetaAnalysisEngine
+    participant Repo as LiteratureRepository
+    participant DB as PostgreSQL / SQLite
+
+    Researcher->>UI: Defines PICO Review Protocol & Eligibility Criteria
+    UI->>API: POST /api/v1/literature/reviews {title, search_query, criteria}
+    API->>Repo: create_review(title, search_query, criteria)
+    Repo->>DB: INSERT into literature_reviews & slr_criteria
+    API-->>UI: 201 Created (PRISMA Stage: Identification)
+
+    Researcher->>UI: Clicks "Import Candidate Studies"
+    UI->>API: POST /api/v1/literature/reviews/{id}/studies {studies: [...]}
+    API->>Repo: add_candidate_studies(review_id, studies)
+    Repo->>DB: INSERT into slr_study_candidates
+
+    Researcher->>UI: Clicks "Run Meta-Analysis & RoB 2 Assessment"
+    UI->>API: POST /api/v1/literature/reviews/{id}/meta-analysis
+    API->>Engine: pool_effect_sizes(included_studies)
+    Engine->>Engine: calculate_cohens_d() & compute_heterogeneity_i2()
+    Engine->>Repo: save_meta_analysis_report(review_id, pooled_effect, forest_plot_data, i2_index)
+    Repo->>DB: INSERT into meta_analysis_reports & risk_of_bias_assessments
+    API-->>UI: 200 OK (PRISMA Flowchart, Forest Plot & RoB 2 Matrix Rendered)
+```
+
+---
+
+## 19. In-Silico Experimentation & Reproducibility Flow (Phase 29)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Scientist as Empirical Scientist
+    participant UI as ReproducibilityPage.tsx
+    participant API as FastAPI (/api/v1/reproducibility)
+    participant Sandbox as AST ReproducibilityEngine
+    participant Repo as ReproducibilityRepository
+    participant DB as PostgreSQL / SQLite
+
+    Scientist->>UI: Submits Code Snippet & Target Claims
+    UI->>API: POST /api/v1/reproducibility/protocols {code_snippet, target_claims, tolerance_eps}
+    API->>Repo: create_protocol(protocol_data)
+    Repo->>DB: INSERT into experiment_protocols
+    
+    Scientist->>UI: Clicks "Execute Replication Run"
+    UI->>API: POST /api/v1/reproducibility/protocols/{id}/execute
+    API->>Sandbox: execute_in_sandbox(code_snippet, timeout=30s)
+    Sandbox->>Sandbox: AST verification & safe eval execution
+    Sandbox->>Sandbox: verify_claims(observed_output, expected_claims, tolerance_eps)
+    Sandbox->>Repo: record_run_result(protocol_id, stdout, stderr, claim_traces, replication_verdict)
+    Repo->>DB: INSERT into reproducibility_runs & claim_verification_traces
+    API-->>UI: 200 OK (Console Output, Claim Trace Table & Replication Badge)
+```
+
+---
+
+## 20. Multimodal Presentation & Podcast Generation Flow (Phase 30)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Presenter as Executive Presenter
+    participant UI as PresentationStudioPage.tsx
+    participant API as FastAPI (/api/v1/presentations)
+    participant Gen as PresentationGenerator
+    participant Pod as PodcastBriefingSynthesizer
+    participant Repo as PresentationRepository
+    participant DB as PostgreSQL / SQLite
+
+    Presenter->>UI: Selects Research Dossier & Output Format
+    UI->>API: POST /api/v1/presentations {topic, target_audience, aspect_ratio: "16:9"}
+    API->>Gen: generate_deck(topic, research_findings)
+    Gen->>Gen: decompose_into_slides(title, cards, bullet_points, speaker_notes)
+    Gen->>Repo: save_presentation(presentation_record, slides)
+    Repo->>DB: INSERT into synthesis_presentations & presentation_slides
+    API-->>UI: 201 Created (Interactive 16:9 Presentation Studio Rendered)
+
+    Presenter->>UI: Clicks "Generate Executive Podcast Briefing"
+    UI->>API: POST /api/v1/presentations/podcasts {topic, host_name, analyst_name}
+    API->>Pod: synthesize_dialogue(topic, findings)
+    Pod->>Repo: save_podcast_briefing(briefing_record)
+    Repo->>DB: INSERT into podcast_briefings
+    API-->>UI: 201 Created (Multi-Speaker Audio Dialogue Player Active)
+```
+
+---
+
+## 21. Autonomous Peer Review & Academic Publishing Flow (Phase 31)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Author as Academic Author
+    participant UI as PeerReviewPage.tsx
+    participant API as FastAPI (/api/v1/publishing)
+    participant Engine as PeerReviewEngine
+    participant Repo as PeerReviewRepository
+    participant DB as PostgreSQL / SQLite
+
+    Author->>UI: Submits Academic Manuscript
+    UI->>API: POST /api/v1/publishing/manuscripts {title, abstract, text, format}
+    API->>Repo: create_manuscript(manuscript_data)
+    Repo->>DB: INSERT into peer_review_manuscripts (status='submitted')
+
+    Author->>UI: Clicks "Run Double-Blind Review Panel"
+    UI->>API: POST /api/v1/publishing/manuscripts/{id}/review
+    API->>Engine: run_referee_panel(manuscript)
+    Note over Engine: Referees: Methodology, Statistical & Domain Specialists
+    Engine->>Repo: save_review_reports(manuscript_id, scorecards)
+    Repo->>DB: INSERT into peer_review_reports & UPDATE status='revisions_requested'
+    API-->>UI: 200 OK (Referee Scorecards & Reviewer Feedback Drawer)
+
+    Author->>UI: Submits Author Rebuttal Letter & Point-by-Point Responses
+    UI->>API: POST /api/v1/publishing/manuscripts/{id}/revisions {rebuttal_letter, responses}
+    API->>Repo: record_revision(manuscript_id, rebuttal_data)
+    Repo->>DB: INSERT into manuscript_revisions
+
+    Author->>UI: Clicks "Publish Camera-Ready Preprint"
+    UI->>API: POST /api/v1/publishing/manuscripts/{id}/publish {journal_template: "Nature"}
+    API->>Engine: format_publication(manuscript, template)
+    Engine->>Repo: update_publication_data(manuscript_id, latex_source, bibtex, minted_doi)
+    Repo->>DB: UPDATE peer_review_manuscripts SET status='published'
+    API-->>UI: 200 OK (Camera-Ready LaTeX Viewer, BibTeX Copy & DOI Badge)
+```
+
+---
+
+## 22. Collaborative Research Canvas & 2D Ideation Flow (Phase 32)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Researcher as Visual Researcher
+    participant UI as ResearchCanvasPage.tsx
+    participant API as FastAPI (/api/v1/canvas)
+    participant Engine as CanvasIdeationEngine
+    participant Repo as CanvasRepository
+    participant DB as PostgreSQL / SQLite
+
+    Researcher->>UI: Opens Infinite 2D Research Canvas
+    UI->>API: POST /api/v1/canvas/boards {title: "Quantum Battery Ideation"}
+    API->>Repo: create_board(board_data)
+    Repo->>DB: INSERT into canvas_boards
+    
+    Researcher->>UI: Clicks "Auto-Generate DAG from Research Dossier"
+    UI->>API: POST /api/v1/canvas/boards/{id}/generate {research_job_id}
+    API->>Engine: convert_findings_to_nodes(research_dossier)
+    Engine->>Repo: batch_create_nodes_and_edges(board_id, nodes, edges)
+    Repo->>DB: INSERT into canvas_nodes & canvas_edges
+    API-->>UI: 200 OK (2D Node-Link Visual Graph Rendered)
+
+    Researcher->>UI: Selects Node & Clicks "AI Brainstorm Expansion"
+    UI->>API: POST /api/v1/canvas/boards/{id}/brainstorm {node_id, prompt}
+    API->>Engine: expand_ideation(node, prompt)
+    Engine->>Repo: add_brainstorm_nodes(board_id, new_nodes, new_edges)
+    Repo->>DB: INSERT into canvas_nodes & canvas_edges
+    API-->>UI: 200 OK (Brainstormed Sub-Nodes Animated on Canvas)
+```
+
+---
+
+## 23. Synthetic Instruction Dataset Generation & Active Learning Flow (Phase 33)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Engineer as AI Alignment Engineer
+    participant UI as DatasetSynthesisPage.tsx
+    participant API as FastAPI (/api/v1/datasets)
+    participant Engine as InstructionDatasetSynthesizer
+    participant Repo as DatasetSynthesisRepository
+    participant DB as PostgreSQL / SQLite
+
+    Engineer->>UI: Configures Dataset Generation (Format: DPO Preference Pairs)
+    UI->>API: POST /api/v1/datasets/synthesize {name, format: "dpo_preference", domain, findings}
+    API->>Engine: synthesize_from_research_findings(findings, format)
+    Engine->>Engine: evolve_instruction(strategy="in_depth_expansion")
+    Engine->>Engine: calculate_quality_metrics()
+    Engine->>Repo: create_dataset_with_samples(dataset_meta, instruction_samples)
+    Repo->>DB: INSERT into synthetic_datasets & instruction_samples
+    API-->>UI: 201 Created (Sample Inspector & Active Learning Studio Rendered)
+
+    Engineer->>UI: Curates Sample (Verdict: "Accepted", Edits Chosen Response)
+    UI->>API: PATCH /api/v1/datasets/{id}/samples/{sample_id} {verdict: "accepted", chosen_response: "..."}
+    API->>Repo: update_sample_curation(sample_id, verdict, edited_response)
+    Repo->>DB: UPDATE instruction_samples SET curation_verdict='accepted'
+    API-->>UI: 200 OK (Curation Badge Updated)
+
+    Engineer->>UI: Clicks "Export Fine-Tuning JSONL"
+    UI->>API: POST /api/v1/datasets/{id}/export {format: "jsonl"}
+    API->>Repo: record_export(dataset_id, format)
+    Repo->>DB: INSERT into alignment_exports
+    API-->>UI: 200 OK (Instant JSONL Download & Clipboard Copy)
+```
+
+---
+
+## 24. Autonomous Patent Landscape Analysis & Prior Art Search Flow (Phase 34)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor IPAnalyst as Patent Attorney / Researcher
+    participant UI as PatentLandscapePage.tsx
+    participant API as FastAPI (/api/v1/patents)
+    participant Engine as PatentPriorArtEngine
+    participant Repo as PatentRepository
+    participant DB as PostgreSQL / SQLite
+
+    IPAnalyst->>UI: Creates Patent Landscape Corpus (Domain: Solid-State Electrolytes)
+    UI->>API: POST /api/v1/patents/corpora {title, domain, cpc_classification: "H01M 10/0562", jurisdiction: "GLOBAL"}
+    API->>Engine: synthesize_baseline_corpus(domain, cpc)
+    Engine->>Repo: create_corpus_with_patents(corpus_meta, patent_assets)
+    Repo->>DB: INSERT into patent_corpora, patent_documents & patent_claims
+    API-->>UI: 201 Created (Indexed Patents & CPC Distribution Rendered)
+
+    IPAnalyst->>UI: Enters Target Invention Claim for 102/103 Clearance
+    UI->>API: POST /api/v1/patents/corpora/{id}/evaluate-claim {target_claim: "..."}
+    API->>Engine: decompose_claim_limitations(target_claim)
+    Engine->>Engine: evaluate_prior_art_anticipation(claim_limitations, corpus_patents)
+    Engine->>Repo: record_prior_art_evaluation(corpus_id, eval_trace)
+    Repo->>DB: INSERT into prior_art_evaluations
+    API-->>UI: 200 OK (102/103 Claim Chart & Design-Around Mitigations Rendered)
+
+    IPAnalyst->>UI: Clicks "Generate Freedom-To-Operate (FTO) Clearance Report"
+    UI->>API: POST /api/v1/patents/corpora/{id}/fto-report
+    API->>Engine: generate_fto_assessment(corpus_id)
+    Engine->>Repo: save_fto_report(corpus_id, fto_dossier)
+    Repo->>DB: INSERT into fto_reports & UPDATE patent_corpora SET freedom_to_operate_verdict='clear'
+    API-->>UI: 200 OK (FTO Clearance Gauge 88% & White-Space Innovation Map)
+```
+

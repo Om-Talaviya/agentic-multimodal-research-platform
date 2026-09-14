@@ -12,8 +12,10 @@ from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
 from database.connection import init_db, close_db
-from api.routes import agent_evaluations, auth, automation, collaboration, developer, documents, evaluation, graph, health, memory, metrics, models, projects, research, security, system_infra, workspaces
+from api.routes import agent_evaluations, auth, automation, canvas, collaboration, dataset_synthesis, debate, developer, documents, evaluation, graph, health, literature, memory, metrics, models, patents, peer_review, presentations, projects, reproducibility, research, security, system_infra, workspaces
 from api import websocket
+
+
 from api.middleware.metrics import PrometheusMiddleware
 
 logger = get_logger(__name__)
@@ -110,8 +112,18 @@ app.include_router(security.router, prefix=settings.api_prefix)
 app.include_router(system_infra.router, prefix=settings.api_prefix)
 app.include_router(developer.router, prefix=settings.api_prefix)
 app.include_router(automation.router, prefix=settings.api_prefix)
+app.include_router(debate.router, prefix=settings.api_prefix)
+app.include_router(literature.router, prefix=settings.api_prefix)
+app.include_router(reproducibility.router, prefix=settings.api_prefix)
+app.include_router(presentations.router, prefix=settings.api_prefix)
+app.include_router(peer_review.router, prefix=settings.api_prefix)
+app.include_router(canvas.router, prefix=settings.api_prefix)
+app.include_router(dataset_synthesis.router, prefix=settings.api_prefix)
+app.include_router(patents.router, prefix=settings.api_prefix)
 app.include_router(metrics.router, prefix=settings.api_prefix)
 app.include_router(metrics.router)  # Also expose directly on /metrics
+
+
 
 
 @app.get("/")

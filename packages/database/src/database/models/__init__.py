@@ -1,6 +1,13 @@
 from database.models.agent_evaluation import DBAgentEvaluation, DBAgentStepMetric
 from database.models.agent_run import AgentRun, ModelCall
+from database.models.canvas import DBCanvasBoard, DBCanvasEdge, DBCanvasNode
+from database.models.dataset_synthesis import (
+    DBAlignmentExport,
+    DBInstructionSample,
+    DBSyntheticDataset,
+)
 from database.models.collaboration import (
+
     DBReportAnnotation,
     DBWorkspaceActivity,
     DBWorkspaceInvite,
@@ -14,6 +21,36 @@ from database.models.research_job import ResearchJob, ResearchTask
 from database.models.infrastructure import DBStorageObject, DBWorkerNode
 from database.models.api_key import DBApiKey
 from database.models.automation import DBAutomationAlert, DBResearchSweepResult, DBScheduledResearch
+from database.models.debate import DBAgentDebate, DBDebateConsensus, DBDebateRound
+from database.models.literature import (
+    DBLiteratureReview,
+    DBSLRCriterion,
+    DBSLRStudyCandidate,
+    DBMetaAnalysisReport,
+    DBRiskOfBiasAssessment,
+)
+from database.models.patent import (
+    DBFreedomToOperateReport,
+    DBPatentClaim,
+    DBPatentCorpus,
+    DBPatentDocument,
+    DBPriorArtEvaluation,
+)
+from database.models.peer_review import (
+    DBManuscriptRevision,
+    DBPeerReviewManuscript,
+    DBPeerReviewReport,
+)
+from database.models.presentation import (
+    DBPodcastBriefing,
+    DBPresentationSlide,
+    DBSynthesisPresentation,
+)
+from database.models.reproducibility import (
+    DBClaimVerificationTrace,
+    DBExperimentProtocol,
+    DBReproducibilityRun,
+)
 from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
 from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
@@ -44,6 +81,35 @@ ApiKey = DBApiKey
 ScheduledResearch = DBScheduledResearch
 ResearchSweepResult = DBResearchSweepResult
 AutomationAlert = DBAutomationAlert
+AgentDebate = DBAgentDebate
+DebateRound = DBDebateRound
+DebateConsensus = DBDebateConsensus
+LiteratureReview = DBLiteratureReview
+SLRCriterion = DBSLRCriterion
+SLRStudyCandidate = DBSLRStudyCandidate
+MetaAnalysisReport = DBMetaAnalysisReport
+RiskOfBiasAssessment = DBRiskOfBiasAssessment
+ExperimentProtocol = DBExperimentProtocol
+ReproducibilityRun = DBReproducibilityRun
+ClaimVerificationTrace = DBClaimVerificationTrace
+SynthesisPresentation = DBSynthesisPresentation
+PresentationSlide = DBPresentationSlide
+PodcastBriefing = DBPodcastBriefing
+PeerReviewManuscript = DBPeerReviewManuscript
+PeerReviewReport = DBPeerReviewReport
+ManuscriptRevision = DBManuscriptRevision
+CanvasBoard = DBCanvasBoard
+CanvasNode = DBCanvasNode
+CanvasEdge = DBCanvasEdge
+SyntheticDataset = DBSyntheticDataset
+InstructionSample = DBInstructionSample
+AlignmentExport = DBAlignmentExport
+PatentCorpus = DBPatentCorpus
+PatentDocument = DBPatentDocument
+PatentClaim = DBPatentClaim
+PriorArtEvaluation = DBPriorArtEvaluation
+FreedomToOperateReport = DBFreedomToOperateReport
+
 
 __all__ = [
     "ResearchJob",
@@ -102,4 +168,62 @@ __all__ = [
     "ResearchSweepResult",
     "DBAutomationAlert",
     "AutomationAlert",
+    "DBAgentDebate",
+    "AgentDebate",
+    "DBDebateRound",
+    "DebateRound",
+    "DBDebateConsensus",
+    "DebateConsensus",
+    "DBLiteratureReview",
+    "LiteratureReview",
+    "DBSLRCriterion",
+    "SLRCriterion",
+    "DBSLRStudyCandidate",
+    "SLRStudyCandidate",
+    "DBMetaAnalysisReport",
+    "MetaAnalysisReport",
+    "DBRiskOfBiasAssessment",
+    "RiskOfBiasAssessment",
+    "DBExperimentProtocol",
+    "ExperimentProtocol",
+    "DBReproducibilityRun",
+    "ReproducibilityRun",
+    "DBClaimVerificationTrace",
+    "ClaimVerificationTrace",
+    "DBSynthesisPresentation",
+    "SynthesisPresentation",
+    "DBPresentationSlide",
+    "PresentationSlide",
+    "DBPodcastBriefing",
+    "PodcastBriefing",
+    "DBPeerReviewManuscript",
+    "PeerReviewManuscript",
+    "DBPeerReviewReport",
+    "PeerReviewReport",
+    "DBManuscriptRevision",
+    "ManuscriptRevision",
+    "DBCanvasBoard",
+    "CanvasBoard",
+    "DBCanvasNode",
+    "CanvasNode",
+    "DBCanvasEdge",
+    "CanvasEdge",
+    "DBSyntheticDataset",
+    "SyntheticDataset",
+    "DBInstructionSample",
+    "InstructionSample",
+    "DBAlignmentExport",
+    "AlignmentExport",
+    "DBPatentCorpus",
+    "PatentCorpus",
+    "DBPatentDocument",
+    "PatentDocument",
+    "DBPatentClaim",
+    "PatentClaim",
+    "DBPriorArtEvaluation",
+    "PriorArtEvaluation",
+    "DBFreedomToOperateReport",
+    "FreedomToOperateReport",
 ]
+
+

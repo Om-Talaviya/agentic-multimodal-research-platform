@@ -202,3 +202,14 @@ async def get_storage_usage(
         "database_catalog_summary": db_usage,
         "local_storage_metrics": bucket_metrics,
     }
+
+
+@router.post("/seed", response_model=Dict[str, Any])
+async def seed_demo_environment(
+    session: AsyncSession = Depends(get_db_session),
+):
+    """Populates the database with realistic demo research data across all 34 phases."""
+    from src.scripts.seed_demo_data import seed_all_demo_data
+    result = await seed_all_demo_data(session)
+    return result
+
