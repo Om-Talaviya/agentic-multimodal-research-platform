@@ -101,10 +101,17 @@ ManuscriptRevision = DBManuscriptRevision
 CanvasBoard = DBCanvasBoard
 CanvasNode = DBCanvasNode
 CanvasEdge = DBCanvasEdge
+SyntheticDataset = DBSyntheticDataset
+InstructionSample = DBInstructionSample
+AlignmentExport = DBAlignmentExport
+PatentCorpus = DBPatentCorpus
+PatentDocument = DBPatentDocument
+PatentClaim = DBPatentClaim
+PriorArtEvaluation = DBPriorArtEvaluation
+FreedomToOperateReport = DBFreedomToOperateReport
 
 
 __all__ = [
-
     "ResearchJob",
     "ResearchTask",
     "Source",
@@ -201,5 +208,22 @@ __all__ = [
     "CanvasNode",
     "DBCanvasEdge",
     "CanvasEdge",
+    "DBSyntheticDataset",
+    "SyntheticDataset",
+    "DBInstructionSample",
+    "InstructionSample",
+    "DBAlignmentExport",
+    "AlignmentExport",
+    "DBPatentCorpus",
+    "PatentCorpus",
+    "DBPatentDocument",
+    "PatentDocument",
+    "DBPatentClaim",
+    "PatentClaim",
+    "DBPriorArtEvaluation",
+    "PriorArtEvaluation",
+    "DBFreedomToOperateReport",
+    "FreedomToOperateReport",
 ]
+
 
