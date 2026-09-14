@@ -22,6 +22,11 @@ from database.models.literature import (
     DBMetaAnalysisReport,
     DBRiskOfBiasAssessment,
 )
+from database.models.peer_review import (
+    DBManuscriptRevision,
+    DBPeerReviewManuscript,
+    DBPeerReviewReport,
+)
 from database.models.presentation import (
     DBPodcastBriefing,
     DBPresentationSlide,
@@ -76,6 +81,10 @@ ClaimVerificationTrace = DBClaimVerificationTrace
 SynthesisPresentation = DBSynthesisPresentation
 PresentationSlide = DBPresentationSlide
 PodcastBriefing = DBPodcastBriefing
+PeerReviewManuscript = DBPeerReviewManuscript
+PeerReviewReport = DBPeerReviewReport
+ManuscriptRevision = DBManuscriptRevision
+
 
 __all__ = [
     "ResearchJob",
@@ -162,4 +171,10 @@ __all__ = [
     "PresentationSlide",
     "DBPodcastBriefing",
     "PodcastBriefing",
-]
+    "DBPeerReviewManuscript",
+    "PeerReviewManuscript",
+    "DBPeerReviewReport",
+    "PeerReviewReport",
+    "DBManuscriptRevision",
+    "ManuscriptRevision",
+]
