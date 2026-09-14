@@ -1,5 +1,5 @@
 """Repository for Enterprise Security Audit Logs, KMS Secrets, and Compliance Policies (Phase 23)."""
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 from uuid import UUID
 from sqlalchemy import desc, func, select, delete
@@ -39,16 +39,25 @@ class SecurityRepository:
         """Create an immutable security audit log entry with SHA-256 hash chaining."""
         event_details = details or {}
         now = datetime.now(UTC)
-        now_iso = now.isoformat()
 
-        # 1. Fetch latest audit log record hash for chaining
+        # 1. Fetch latest audit log record hash for chaining with monotonic timestamp guarantee
         latest_stmt = (
-            select(DBSecurityAuditLog.current_hash)
-            .order_by(desc(DBSecurityAuditLog.created_at), desc(DBSecurityAuditLog.id))
+            select(DBSecurityAuditLog.current_hash, DBSecurityAuditLog.created_at)
+            .order_by(desc(DBSecurityAuditLog.created_at))
             .limit(1)
         )
         latest_res = await self.session.execute(latest_stmt)
-        previous_hash = latest_res.scalar_one_or_none() or AuditHashChainer.GENESIS_HASH
+        latest_row = latest_res.first()
+        if latest_row:
+            previous_hash = latest_row[0]
+            last_dt = latest_row[1]
+            if last_dt:
+                if last_dt.tzinfo is None:
+                    last_dt = last_dt.replace(tzinfo=UTC)
+                if now <= last_dt:
+                    now = last_dt + timedelta(microseconds=1000)
+        else:
+            previous_hash = AuditHashChainer.GENESIS_HASH
 
         # 2. Compute cryptographically chained SHA-256 current hash
         current_hash = AuditHashChainer.compute_record_hash(
