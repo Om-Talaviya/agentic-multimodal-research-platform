@@ -63,6 +63,7 @@ class GrantProposalRepository:
                 selectinload(DBGrantProposal.budget_items),
                 selectinload(DBGrantProposal.review_scorecards),
             )
+            .execution_options(populate_existing=True)
             .where(DBGrantProposal.id == proposal_id)
         )
         res = await self.session.execute(stmt)
@@ -82,6 +83,7 @@ class GrantProposalRepository:
                 selectinload(DBGrantProposal.aims),
                 selectinload(DBGrantProposal.budget_items),
             )
+            .execution_options(populate_existing=True)
             .order_by(DBGrantProposal.created_at.desc())
             .limit(limit)
             .offset(offset)
@@ -106,7 +108,9 @@ class GrantProposalRepository:
         preliminary_data_summary: Optional[str] = None,
         status: Optional[str] = None,
     ) -> Optional[DBGrantProposal]:
-        proposal = await self.get_proposal(proposal_id)
+        stmt = select(DBGrantProposal).where(DBGrantProposal.id == proposal_id)
+        res = await self.session.execute(stmt)
+        proposal = res.scalar_one_or_none()
         if not proposal:
             return None
 

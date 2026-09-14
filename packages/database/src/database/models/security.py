@@ -15,6 +15,7 @@ class DBSecurityAuditLog(Base):
     __tablename__ = "security_audit_logs"
 
     id: Mapped[UUID] = mapped_column(GUID(), primary_key=True, default=uuid4)
+    sequence_id: Mapped[Optional[int]] = mapped_column(Integer, autoincrement=True, nullable=True, index=True)
     event_type: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
     severity: Mapped[str] = mapped_column(String(30), nullable=False, default="INFO")  # INFO, WARNING, CRITICAL
     actor_id: Mapped[Optional[UUID]] = mapped_column(GUID(), ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
