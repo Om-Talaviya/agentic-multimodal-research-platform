@@ -22,7 +22,9 @@ import { PeerReviewPage } from './pages/PeerReviewPage'
 import { ResearchCanvasPage } from './pages/ResearchCanvasPage'
 import { DatasetSynthesisPage } from './pages/DatasetSynthesisPage'
 import { PatentLandscapePage } from './pages/PatentLandscapePage'
+import { GrantProposalStudioPage } from './pages/GrantProposalStudioPage'
 import { Login } from './pages/Login'
+
 
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -117,7 +119,9 @@ function App() {
           <Route path="canvas" element={<ResearchCanvasPage />} />
           <Route path="datasets" element={<DatasetSynthesisPage />} />
           <Route path="patents" element={<PatentLandscapePage />} />
+          <Route path="grants" element={<GrantProposalStudioPage />} />
           <Route path="settings" element={<Settings />} />
+
 
         </Route>
 

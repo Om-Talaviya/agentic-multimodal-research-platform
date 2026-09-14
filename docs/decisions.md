@@ -783,6 +783,45 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Automated claim charts provide rigorous legal/technical evidence for commercialization clearance.
   - Positive: Completes Generation 8 Milestone 4 (Phase 34) — Generation 8 is 100% COMPLETE!
 
+---
+
+### ADR 035: Autonomous Scientific Grant Proposal Synthesizer, Institutional Budget Calculation, and Mock Study Section Peer Review Engine
+
+- **Status**: Accepted
+- **Context**: Securing competitive extramural research funding (NIH R01/R21, NSF CAREER, Horizon Europe ERC, DARPA BAA) requires synthesizing intricate multi-year Specific Aims, significance and innovation narratives, and rigorous institutional financial budgets adhering to Modified Total Direct Cost (MTDC) rules, fringe benefits, annual cost escalations, and negotiated Facilities & Administrative (F&A) indirect cost rates. Furthermore, principal investigators require rigorous pre-submission peer evaluation to simulate NIH/NSF study sections (1.0 exceptional to 9.0 poor scoring) and identify potential methodology weaknesses before formal submission.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/grant_proposal.py`:
+     - `DBGrantProposal`: Master grant proposal project (title, funding_agency: `NIH`, `NSF`, `HORIZON_EUROPE`, `DARPA`, `DOE`, grant_mechanism: `R01`, `R21`, `CAREER`, `ERC_ADVANCED`, `BAA`, project_duration_years, total_requested_budget_usd, indirect_cost_rate_percent, status: `draft`, `synthesizing`, `review_ready`, `submitted`, executive_abstract, significance_narrative, innovation_narrative, approach_narrative, preliminary_data_summary, mock_panel_overall_score, percentile_estimate, metadata_json).
+     - `DBGrantSpecificAim`: Specific Aim / Work Package record (aim_number, title, hypothesis, experimental_design, expected_outcomes, potential_pitfalls_and_alternatives, milestones_json, allocated_effort_percent).
+     - `DBGrantBudgetItem`: Itemized cost record (year_number, category: `personnel`, `equipment`, `compute_cloud`, `supplies`, `travel`, `publication`, item_name, cost_usd, justification, is_direct_cost).
+     - `DBGrantReviewScorecard`: Autonomous mock study section review (reviewer_persona, significance_score, investigators_score, innovation_score, approach_score, environment_score, overall_impact_score, recommendation: `high_priority_fund`, `fundable`, `discuss_only`, `triaged`, critique_strengths, critique_weaknesses, summary_statement).
+  2. Implement `GrantProposalRepository` in `packages/database/src/database/repositories/grant_proposal_repo.py`:
+     - Full async CRUD lifecycle: `create_proposal`, `get_proposal`, `list_proposals`, `add_specific_aim`, `add_budget_item`, `record_review_scorecard`, `delete_proposal`, `get_grant_metrics`.
+  3. Implement Grant Proposal Synthesizer & Budget Calculator in `packages/research/src/research/grants/synthesizer.py`:
+     - `InstitutionalBudgetCalculator`: Calculates multi-year line-item budgets with PI effort, postdoc/grad student stipends, fringe benefits, 3% escalation factor, MTDC base exclusions (equipment), and F&A indirect cost recovery.
+     - `GrantProposalSynthesizer`: Synthesizes Specific Aims, Executive Abstract, Significance, Innovation, Approach, and Preliminary Data narratives; simulates NIH/NSF study section peer review panels with 1.0-9.0 scoring; and formats compilable LaTeX scientific grant proposals.
+  4. Implement REST APIs in `apps/api/src/api/routes/grant_proposals.py`:
+     - `POST /api/v1/grants/proposals`: Create proposal and synthesize baseline aims and budget.
+     - `GET /api/v1/grants/metrics`: Query platform grant funding metrics.
+     - `GET /api/v1/grants/proposals`: List grant proposals.
+     - `GET /api/v1/grants/proposals/{id}`: Fetch complete proposal with aims, budget, and mock reviews.
+     - `POST /api/v1/grants/proposals/{id}/synthesize-aims`: Synthesize Specific Aims from research topic.
+     - `POST /api/v1/grants/proposals/{id}/calculate-budget`: Recalculate multi-year institutional budget.
+     - `POST /api/v1/grants/proposals/{id}/mock-review`: Run autonomous study section peer review simulation.
+     - `GET /api/v1/grants/proposals/{id}/export-latex`: Export proposal as compilable LaTeX document.
+     - `DELETE /api/v1/grants/proposals/{id}`: Delete proposal.
+  5. Build React Studio in `apps/web/src/pages/GrantProposalStudioPage.tsx`:
+     - Proposal Catalog & Metrics Overview (`Total Active Proposals`, `Total Funding Pipeline`, `Mean Impact Score`, `High Priority Percentile`).
+     - Specific Aims Interactive Editor with hypothesis, experimental design, milestones, and effort allocations.
+     - Multi-Year Institutional Budget Calculator with real-time MTDC breakdown and indirect cost estimation.
+     - Mock Study Section Review Scorecard with 1.0-9.0 criterion ratings, critique strengths/weaknesses, and fundability badge.
+     - LaTeX Exporter with one-click copy and download functionality.
+- **Consequences**:
+  - Positive: Automates labor-intensive scientific grant proposal drafting with verified institutional budgeting.
+  - Positive: Pre-submission mock study section review surfaces methodological pitfalls early, maximizing award probability.
+  - Positive: Inaugurates Generation 9 (Autonomous Scientific Grant & Research Funding Proposal Studio) on `develop/v1.1`.
+
+
 
 
 
