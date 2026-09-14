@@ -185,5 +185,7 @@ npm run lint
 - **Phase 28 (Systematic Literature Review & Meta-Analysis Engine)**: 🟢 COMPLETE (`DBLiteratureReview`, `DBSLRCriterion`, `DBSLRStudyCandidate`, `DBMetaAnalysisReport`, `DBRiskOfBiasAssessment`, `LiteratureRepository`, `EffectSizeCalculator`, `HeterogeneityEngine`, `PooledEffectEstimator`, `PRISMAFlowTracker`, `/api/v1/literature/*` REST API, `LiteratureReviewPage.tsx` UI)
 - **Phase 29 (In-Silico Experimentation & Computational Reproducibility Engine)**: 🟢 COMPLETE (`DBExperimentProtocol`, `DBReproducibilityRun`, `DBClaimVerificationTrace`, `ReproducibilityRepository`, `ReproducibilityEngine`, AST sandboxing, `/api/v1/reproducibility/*` REST API, `ReproducibilityPage.tsx` UI)
 - **Phase 30 (Multimodal Scientific Presentation & Executive Podcasting Briefing Generator)**: 🟢 COMPLETE (`DBSynthesisPresentation`, `DBPresentationSlide`, `DBPodcastBriefing`, `PresentationRepository`, `PresentationGenerator`, `PodcastBriefingSynthesizer`, `/api/v1/presentations/*` REST API, `PresentationStudioPage.tsx` UI)
-- **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1` — Generation 7 Complete & Active!)
+- **Phase 31 (Autonomous Scientific Peer Review & Journal Publishing Pipeline)**: 🟢 COMPLETE (`DBPeerReviewManuscript`, `DBPeerReviewReport`, `DBManuscriptRevision`, `PeerReviewRepository`, `PeerReviewEngine`, `PublicationFormatter`, `AuthorRebuttalGenerator`, `/api/v1/publishing/*` REST API, `PeerReviewPage.tsx` UI)
+- **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1` — Generation 8 Active!)
+
 

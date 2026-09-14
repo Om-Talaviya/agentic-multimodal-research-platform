@@ -392,6 +392,20 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
+## Phase 31: Autonomous Scientific Peer Review & Journal Publishing Pipeline
+**Status**: 🟢 COMPLETE (Generation 8: Autonomous Meta-Science & Publishing Ecosystem)
+
+**Goal**: Simulate multi-agent double-blind academic peer review with specialized reviewer personas (Methodology, Statistical, Domain Specialist), weighted scorecards, author rebuttals, point-by-point response tracking, and camera-ready academic publishing generator (Nature / IEEE / ACM / arXiv LaTeX source, BibTeX entries, and DOI minting) (**ADR 031**).
+
+### Deliverables:
+- [x] Database Models & Repositories: Created `DBPeerReviewManuscript`, `DBPeerReviewReport`, `DBManuscriptRevision` models and `PeerReviewRepository` supporting submission, reviews, revisions, publishing, and aggregate platform metrics.
+- [x] Multi-Agent Publishing Engine: Implemented `PeerReviewEngine`, `PublicationFormatter`, and `AuthorRebuttalGenerator` in `packages/research/src/research/publishing/peer_review.py`.
+- [x] REST API Endpoints: Created `/api/v1/publishing/manuscripts`, `/api/v1/publishing/manuscripts/{id}/review`, `/api/v1/publishing/manuscripts/{id}/revisions`, `/api/v1/publishing/manuscripts/{id}/publish`, and `/api/v1/publishing/metrics`.
+- [x] Interactive Peer Review Studio UI: Built `PeerReviewPage.tsx` with blind referee scorecard panel, author rebuttal tracking, and camera-ready preprint generator.
+- [x] Comprehensive Test Suites: Added `test_peer_review_repo.py`, `test_peer_review_engine.py`, and `test_peer_review_api.py`.
+
+---
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
@@ -401,6 +415,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 28** | Systematic Literature Review & Meta-Analysis | 🟢 COMPLETE | PRISMA 2020, RoB 2, Forest Plots, LiteratureReview UI |
 | **Phase 29** | In-Silico Reproducibility & Code Verification | 🟢 COMPLETE | Computational AST sandbox & claim verification |
 | **Phase 30** | Multimodal Scientific Presentation & Briefing | 🟢 COMPLETE | Slide deck generator & executive podcast dialogue synthesizer |
+| **Phase 31** | Autonomous Peer Review & Journal Publishing | 🟢 COMPLETE | Double-blind referee panel, author rebuttals, camera-ready preprint |
 
-### Generation 7 Complete
-All 4 milestones across Generation 7 (Phases 27, 28, 29, and 30) are 100% complete, tested, and active!
+### Generation 8 Active
+Milestone 1 (Phase 31) is 100% complete, tested, and active!
+

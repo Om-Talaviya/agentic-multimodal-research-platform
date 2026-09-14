@@ -643,6 +643,43 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Multi-modal delivery empowers rapid stakeholder alignment and cross-team knowledge sharing.
   - Positive: Completes Generation 7 Milestone 4 (Phase 30).
 
+---
+
+### ADR 031: Autonomous Multi-Agent Blinded Peer Review, Author Rebuttals, and Camera-Ready Academic Preprint Publishing Pipeline
+
+- **Status**: Accepted
+- **Context**: Transitioning agentic multimodal research into formal scientific literature requires rigorous, automated peer review pipelines adhering to academic publishing standards. Single-prompt evaluations lack multi-perspective auditing. The platform needs an autonomous multi-agent double-blind review architecture simulating specialized referee personas (Senior Methodologist, Statistical Auditor, Principal Domain Specialist), scoring across originality, methodological rigor, empirical soundness, and clarity. Furthermore, the platform requires point-by-point author rebuttal generation and camera-ready publication formatting (Nature / IEEE / ACM / arXiv LaTeX templates, BibTeX entries, and canonical DOI minting).
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/peer_review.py`:
+     - `DBPeerReviewManuscript`: Manuscript record (title, abstract, field_of_study, venue_format, status: `submitted`, `under_review`, `revisions_requested`, `accepted`, `rejected`, `published`, claimed_contributions, keywords, overall_score, camera_ready_doi, published_latex, bibtex_citation).
+     - `DBPeerReviewReport`: Independent referee report (reviewer_persona, reviewer_title, originality_score, methodology_score, empirical_soundness, clarity_score, composite_score, recommendation: `accept`, `minor_revision`, `major_revision`, `reject`, summary_verdict, strengths, weaknesses, detailed_critique, required_revisions).
+     - `DBManuscriptRevision`: Author revision round (revision_round, rebuttal_letter, diff_summary, point_by_point_responses, status).
+  2. Implement `PeerReviewRepository` in `packages/database/src/database/repositories/peer_review_repo.py`:
+     - Async CRUD lifecycle: `create_manuscript`, `get_manuscript`, `list_manuscripts`, `update_manuscript_status`, `save_peer_review_reports`, `add_manuscript_revision`, `publish_manuscript`, `delete_manuscript`, `get_peer_review_metrics`.
+  3. Implement Multi-Agent Publishing Engine in `packages/research/src/research/publishing/peer_review.py`:
+     - `PeerReviewEngine`: Simulates double-blind peer review using 3 specialized reviewer personas with weighted scoring models, strength/weakness extraction, and editorial decision synthesis.
+     - `PublicationFormatter`: Formats accepted research dossiers into academic camera-ready formats (Nature / IEEE / ACM LaTeX source, BibTeX blocks, and DOI minting).
+     - `AuthorRebuttalGenerator`: Synthesizes point-by-point author responses against referee critiques and action items.
+  4. Implement REST APIs in `apps/api/src/api/routes/peer_review.py`:
+     - `POST /api/v1/publishing/manuscripts`: Submit manuscript for peer review.
+     - `GET /api/v1/publishing/manuscripts`: List manuscripts with filtering.
+     - `GET /api/v1/publishing/manuscripts/{id}`: Fetch manuscript with full reports and revisions.
+     - `POST /api/v1/publishing/manuscripts/{id}/review`: Trigger multi-agent peer review simulation.
+     - `POST /api/v1/publishing/manuscripts/{id}/revisions`: Submit revision round and author rebuttal.
+     - `POST /api/v1/publishing/manuscripts/{id}/publish`: Generate camera-ready publication (LaTeX, BibTeX, DOI).
+     - `GET /api/v1/publishing/metrics`: Query platform peer review & publication metrics.
+     - `DELETE /api/v1/publishing/manuscripts/{id}`: Delete manuscript.
+  5. Build React Studio in `apps/web/src/pages/PeerReviewPage.tsx`:
+     - Manuscript Selector & Archive sidebar.
+     - Blind Referee Panel & Scorecard (persona cards, radar/metric breakdowns, verdict, strengths, weaknesses, required revisions).
+     - Author Rebuttal & Revision Studio (rebuttal letters, point-by-point responses).
+     - Camera-Ready Preprint & Publishing Studio (BibTeX copy block, LaTeX source preview, DOI badge).
+     - Submit Manuscript Modal with multi-venue format selector (`Nature`, `IEEE`, `ACM`, `arXiv`).
+- **Consequences**:
+  - Positive: Brings end-to-end academic peer review rigor and publication automation to the AI Research OS.
+  - Positive: Completes Generation 8 Milestone 1 (Phase 31).
+
+
 
 
 

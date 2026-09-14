@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.0] - 2026-09-14 (Generation 8 Milestone 1: Phase 31 - Autonomous Scientific Peer Review & Journal Publishing Pipeline)
+
+### Added
+- **Phase 31: Autonomous Multi-Agent Blinded Peer Review & Academic Publishing Pipeline**:
+  - Implemented database models in `packages/database/src/database/models/peer_review.py` (`DBPeerReviewManuscript`, `DBPeerReviewReport`, `DBManuscriptRevision`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `PeerReviewRepository` in `packages/database/src/database/repositories/peer_review_repo.py` supporting manuscript submission, referee reports saving, composite score aggregation, author revisions, camera-ready publishing, and platform metrics (`get_peer_review_metrics`).
+  - Implemented Multi-Agent Peer Review and Publishing Engine in `packages/research/src/research/publishing/peer_review.py`:
+    - `PeerReviewEngine.evaluate_manuscript`: Multi-agent double-blind evaluation simulating 3 specialized referee personas (`methodology_critic`, `statistical_auditor`, `domain_specialist`) with weighted metrics across originality, methodological rigor, empirical soundness, and clarity.
+    - `PublicationFormatter`: Generates camera-ready academic preprints (LaTeX source conforming to Nature / IEEE / ACM guidelines), BibTeX citation blocks, and canonical DOI identifiers.
+    - `AuthorRebuttalGenerator`: Synthesizes point-by-point author rebuttal letters addressing referee critique items.
+  - Implemented REST API routes in `apps/api/src/api/routes/peer_review.py`:
+    - `POST /api/v1/publishing/manuscripts`: Submit manuscript for peer review.
+    - `GET /api/v1/publishing/metrics`: Query platform peer review and publication statistics.
+    - `GET /api/v1/publishing/manuscripts`: List manuscripts with filters.
+    - `GET /api/v1/publishing/manuscripts/{id}`: Fetch manuscript details with referee reports and author revisions.
+    - `POST /api/v1/publishing/manuscripts/{id}/review`: Trigger multi-agent double-blind peer review simulation.
+    - `POST /api/v1/publishing/manuscripts/{id}/revisions`: Submit author rebuttal and revision round.
+    - `POST /api/v1/publishing/manuscripts/{id}/publish`: Generate camera-ready preprint, BibTeX, and formal DOI.
+    - `DELETE /api/v1/publishing/manuscripts/{id}`: Delete manuscript.
+  - Created interactive Peer Review & Publishing Studio in `apps/web/src/pages/PeerReviewPage.tsx`:
+    - Blind Referee Panel & Scorecard (radar/bar breakdowns across Originality, Methodological Rigor, Empirical Soundness, Clarity, detailed comments and recommendations).
+    - Author Rebuttal & Revision Studio (rebuttal letters, point-by-point response tracking).
+    - Camera-Ready Preprint & Publishing Studio (LaTeX source viewer, BibTeX copy block, DOI badge).
+    - Submit Manuscript modal with multi-venue format selector (`Nature`, `IEEE`, `ACM`, `arXiv`).
+  - Mounted `/publishing` route in `App.tsx` and added `Peer Review & Publishing` navigation link with `Award` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_peer_review_repo.py`, `packages/research/tests/test_peer_review_engine.py`, and `apps/api/tests/test_peer_review_api.py`.
+  - Formalized **ADR 031** (Autonomous Multi-Agent Blinded Peer Review, Author Rebuttals, and Camera-Ready Academic Preprint Publishing Pipeline).
+  - **MILESTONE COMPLETED**: Generation 8 Milestone 1 (Phase 31) is 100% complete, tested, and active!
+
+---
+
 ## [2.4.0] - 2026-09-14 (Generation 7 Milestone 4: Phase 30 - Multimodal Scientific Presentation & Executive Podcasting Briefing Generator)
 
 ### Added

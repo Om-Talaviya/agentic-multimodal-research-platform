@@ -18,7 +18,9 @@ import { DebateArenaPage } from './pages/DebateArenaPage'
 import { LiteratureReviewPage } from './pages/LiteratureReviewPage'
 import { ReproducibilityPage } from './pages/ReproducibilityPage'
 import { PresentationStudioPage } from './pages/PresentationStudioPage'
+import { PeerReviewPage } from './pages/PeerReviewPage'
 import { Login } from './pages/Login'
+
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
 import { Loader2 } from 'lucide-react'
@@ -108,7 +110,9 @@ function App() {
           <Route path="literature" element={<LiteratureReviewPage />} />
           <Route path="reproducibility" element={<ReproducibilityPage />} />
           <Route path="presentations" element={<PresentationStudioPage />} />
+          <Route path="publishing" element={<PeerReviewPage />} />
           <Route path="settings" element={<Settings />} />
+
         </Route>
 
         {/* Fallbacks & Auth Redirects */}

@@ -12,10 +12,14 @@ from database.repositories.document_repo import DocumentChunkRepository, Documen
 from database.repositories.evaluation_repo import ModelEvaluationRepository
 from database.repositories.graph_repo import KnowledgeGraphRepository
 from database.repositories.infrastructure_repo import InfrastructureRepository
+from database.repositories.literature_repo import LiteratureRepository
 from database.repositories.memory_repository import MemoryRepository
+from database.repositories.peer_review_repo import PeerReviewRepository
+from database.repositories.presentation_repo import PresentationRepository
 from database.repositories.project_repo import ProjectRepository
 from database.repositories.quota_repo import UserQuotaRepository
 from database.repositories.report_repo import ReportRepository
+from database.repositories.reproducibility_repo import ReproducibilityRepository
 from database.repositories.research_job_repo import (
     EvidenceRepository,
     ResearchJobRepository,
@@ -54,4 +58,8 @@ __all__ = [
     "ApiKeyRepository",
     "AutomationRepository",
     "DebateRepository",
-]
+    "LiteratureRepository",
+    "ReproducibilityRepository",
+    "PresentationRepository",
+    "PeerReviewRepository",
+]
