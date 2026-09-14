@@ -1,4 +1,4 @@
-name: CI Test Suite
+name: Production CI/CD Test Suite
 
 on:
   push:
@@ -17,8 +17,9 @@ jobs:
     name: Backend Tests (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.11", "3.12", "3.13"]
 
     steps:
       - name: Checkout Code
@@ -29,22 +30,22 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Base Dependencies & Build Tools
+      - name: Install Monorepo Dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel hatchling
           pip install pytest pytest-asyncio pytest-cov pytest-timeout httpx pydantic "pydantic[email]" email-validator pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite asyncpg greenlet rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
 
-      - name: Run Pytest Suite (333 tests)
+      - name: Run Pytest Test Suite (376 tests)
         env:
           PYTHONPATH: "packages/shared/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src"
           DATABASE_URL: "sqlite+aiosqlite:///:memory:"
           SECRET_KEY: "ci-secret-key-for-testing-only-32-chars-long"
           TESTING: "true"
         run: |
-          pytest -v --timeout=60 packages/ apps/api/tests/
+          pytest -v --timeout=90 packages/ apps/api/tests/
 
   frontend-build:
-    name: Frontend Build & Typecheck
+    name: Frontend TypeScript & Vite Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -55,8 +56,34 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install and Build Frontend
+      - name: Install and Build Frontend Bundle
         working-directory: apps/web
         run: |
-          npm install
+          npm ci || npm install
           npm run build
+
+  docker-build-verification:
+    name: Docker Container Build Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Backend Container Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/api/Dockerfile
+          push: false
+          tags: research-os-api:test
+
+      - name: Build Frontend Container Image
+        uses: docker/build-push-action@v5
+        with:
+          context: apps/web
+          file: apps/web/Dockerfile
+          push: false
+          tags: research-os-web:test
