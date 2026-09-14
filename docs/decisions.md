@@ -609,6 +609,41 @@ This document records the key architectural, engineering, and product design dec
   - Positive: AST sandboxing ensures zero security risk during arbitrary Python protocol execution.
   - Positive: Completes Generation 7 Milestone 3 (Phase 29).
 
+---
+
+### ADR 030: Multimodal Scientific Presentation Decks & Multi-Speaker Executive Podcasting Briefing Engine
+
+- **Status**: Accepted
+- **Context**: Disseminating complex agentic research, dialectical debate consensus, systematic review forest plots, and in-silico code traces to non-technical stakeholders or busy executives requires rich multimodal communication formats beyond static markdown text. To make research truly accessible and impactful, the platform requires an automated generator capable of synthesizing 16:9 structured presentation decks with layout-aware slides and presenter notes, alongside dialectical multi-speaker audio podcast briefing dialogues (Host + Domain Specialist) featuring conversational turn-taking, timing coordinates, and natural acoustic cues.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/presentation.py`:
+     - `DBSynthesisPresentation`: Master presentation record (title, subtitle, target_audience: `executive`, `scientific`, `technical`, `general`, theme, estimated_duration_min, total_slides).
+     - `DBPresentationSlide`: Individual slide records (slide_number, layout_type: `title`, `bullet_points`, `two_column`, `chart_comparison`, `callout_quote`, headline, bullet_points, speaker_notes, visual_metadata).
+     - `DBPodcastBriefing`: Multi-speaker audio briefing (title, episode_topic, host_name, expert_name, total_duration_sec, total_dialogue_turns, dialogue_transcript_json, audio_url, status).
+  2. Implement `PresentationRepository` in `packages/database/src/database/repositories/presentation_repo.py`:
+     - Full async CRUD lifecycle: `create_presentation`, `get_presentation`, `list_presentations`, `add_presentation_slides_batch`, `delete_presentation`, `create_podcast_briefing`, `get_podcast_briefing`, `list_podcast_briefings`, `delete_podcast_briefing`, `get_presentation_metrics`.
+  3. Implement Presentation & Podcast Synthesizer in `packages/research/src/research/presentation/synthesizer.py`:
+     - `PresentationGenerator`: Formulates multi-slide decks with executive summaries, methodology breakdowns, empirical findings, and strategic horizon recommendations.
+     - `PodcastBriefingSynthesizer`: Constructs dialectical dialogues with acoustic cues (`[warm intro]`, `[enthusiastic]`, `[thoughtful pause]`, `[clears throat]`) and turn timestamps.
+  4. Implement REST APIs in `apps/api/src/api/routes/presentations.py`:
+     - `POST /api/v1/presentations`: Generate slide deck from research.
+     - `GET /api/v1/presentations`: List decks.
+     - `GET /api/v1/presentations/{id}`: Fetch deck with slides and speaker notes.
+     - `POST /api/v1/presentations/podcasts`: Generate podcast briefing.
+     - `GET /api/v1/presentations/podcasts`: List podcast episodes.
+     - `GET /api/v1/presentations/podcasts/{id}`: Fetch podcast details with dialogue transcript.
+     - `GET /api/v1/presentations/metrics`: Query platform presentation KPIs.
+     - `DELETE /api/v1/presentations/{id}` & `DELETE /api/v1/presentations/podcasts/{id}`.
+  5. Build React Studio in `apps/web/src/pages/PresentationStudioPage.tsx`:
+     - Interactive Slide Deck Player: 16:9 canvas with glow accents, previous/next controls, layout-aware rendering (Title, Two-Column, Bullet Cards, Callout Quotes), and collapsible presenter speaker notes drawer.
+     - Multi-Speaker Podcast Studio: Audio player with progress bar simulation, playback speed selector (1.0x to 1.5x), speaker avatar badges (Host vs Specialist), and synchronized live dialogue transcript cards.
+     - Synthesis Modals for Instant Deck & Podcast Generation.
+- **Consequences**:
+  - Positive: Transforms dense academic syntheses into executive-ready slide decks and conversational audio briefings.
+  - Positive: Multi-modal delivery empowers rapid stakeholder alignment and cross-team knowledge sharing.
+  - Positive: Completes Generation 7 Milestone 4 (Phase 30).
+
+
 
 
 

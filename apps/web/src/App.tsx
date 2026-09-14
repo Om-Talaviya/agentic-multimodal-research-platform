@@ -17,6 +17,7 @@ import { ResearchAutomationPage } from './pages/ResearchAutomationPage'
 import { DebateArenaPage } from './pages/DebateArenaPage'
 import { LiteratureReviewPage } from './pages/LiteratureReviewPage'
 import { ReproducibilityPage } from './pages/ReproducibilityPage'
+import { PresentationStudioPage } from './pages/PresentationStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -106,6 +107,7 @@ function App() {
           <Route path="debates" element={<DebateArenaPage />} />
           <Route path="literature" element={<LiteratureReviewPage />} />
           <Route path="reproducibility" element={<ReproducibilityPage />} />
+          <Route path="presentations" element={<PresentationStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

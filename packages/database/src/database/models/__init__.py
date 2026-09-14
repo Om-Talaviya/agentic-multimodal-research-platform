@@ -22,6 +22,11 @@ from database.models.literature import (
     DBMetaAnalysisReport,
     DBRiskOfBiasAssessment,
 )
+from database.models.presentation import (
+    DBPodcastBriefing,
+    DBPresentationSlide,
+    DBSynthesisPresentation,
+)
 from database.models.reproducibility import (
     DBClaimVerificationTrace,
     DBExperimentProtocol,
@@ -68,6 +73,9 @@ RiskOfBiasAssessment = DBRiskOfBiasAssessment
 ExperimentProtocol = DBExperimentProtocol
 ReproducibilityRun = DBReproducibilityRun
 ClaimVerificationTrace = DBClaimVerificationTrace
+SynthesisPresentation = DBSynthesisPresentation
+PresentationSlide = DBPresentationSlide
+PodcastBriefing = DBPodcastBriefing
 
 __all__ = [
     "ResearchJob",
@@ -148,4 +156,10 @@ __all__ = [
     "ReproducibilityRun",
     "DBClaimVerificationTrace",
     "ClaimVerificationTrace",
+    "DBSynthesisPresentation",
+    "SynthesisPresentation",
+    "DBPresentationSlide",
+    "PresentationSlide",
+    "DBPodcastBriefing",
+    "PodcastBriefing",
 ]
