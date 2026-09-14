@@ -28,11 +28,17 @@ RUN pip install --no-cache-dir \
     uvicorn[standard] \
     pydantic \
     pydantic-settings \
+    "pydantic[email]" \
+    email-validator \
+    passlib \
+    python-multipart \
+    slowapi \
     sqlalchemy[asyncio] \
     asyncpg \
     aiosqlite \
     structlog \
     python-jose[cryptography] \
+    cryptography \
     httpx \
     numpy \
     scipy \
@@ -40,18 +46,19 @@ RUN pip install --no-cache-dir \
     chromadb \
     pdfplumber \
     python-docx \
-    pillow
+    pillow \
+    google-genai
 
-# Install local monorepo packages in editable mode
-RUN pip install -e /build/packages/shared && \
-    pip install -e /build/packages/database && \
-    pip install -e /build/packages/ai && \
-    pip install -e /build/packages/tools && \
-    pip install -e /build/packages/ingestion && \
-    pip install -e /build/packages/retrieval && \
-    pip install -e /build/packages/research && \
-    pip install -e /build/packages/agents && \
-    pip install -e /build/apps/api
+# Install local monorepo packages in editable mode with --no-deps
+RUN pip install --no-deps -e /build/packages/shared && \
+    pip install --no-deps -e /build/packages/database && \
+    pip install --no-deps -e /build/packages/ai && \
+    pip install --no-deps -e /build/packages/tools && \
+    pip install --no-deps -e /build/packages/ingestion && \
+    pip install --no-deps -e /build/packages/retrieval && \
+    pip install --no-deps -e /build/packages/research && \
+    pip install --no-deps -e /build/packages/agents && \
+    pip install --no-deps -e /build/apps/api
 
 # ==============================================================================
 # Final Runner Stage
