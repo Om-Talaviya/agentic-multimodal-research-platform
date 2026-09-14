@@ -369,33 +369,30 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
+## Phase 27: Adversarial Multi-Agent Debate & Consensus Engine
+**Status**: 🟢 COMPLETE (Generation 7: Scientific & Meta-Intelligence)
+
+## Phase 28: Autonomous Systematic Literature Review & PRISMA Meta-Analysis
+**Status**: 🟢 COMPLETE (Generation 7: Scientific & Meta-Intelligence)
+
+## Phase 29: In-Silico Experimentation, Computational Reproducibility & Code Verification
+**Status**: 🔄 IN PROGRESS / NEXT TARGET (Generation 7: Scientific & Meta-Intelligence)
+
+## Phase 30: Multimodal Scientific Presentation & Executive Podcasting Briefing
+**Status**: 📋 QUEUED (Generation 7: Scientific & Meta-Intelligence)
+
+---
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
 | :--- | :--- | :--- | :--- |
-| **Phase 1** | Foundation | 🟢 COMPLETE | Full backend, DB, API & test infra |
-| **Phase 2** | Research MVP | 🟢 COMPLETE | DAG, agents, synthesis, report, WebSocket streaming |
-| **Phase 3** | Multimodal Ingestion | 🟢 COMPLETE | Text, PDF, DOCX, Vision Image parsing & chunking |
-| **Phase 4** | Agentic System | 🟢 COMPLETE | Tools, SSRF defense, Critic, tracing, retries |
-| **Phase 5** | RAG / Knowledge Layer | 🟢 COMPLETE | Hybrid RRF, Embedder, BM25, Chroma adapter |
-| **Phase 6** | Production & Security | 🟢 COMPLETE | JWT, RBAC, Prometheus metrics, K8s manifests |
-| **Phase 7** | Application Maturity | 🟢 COMPLETE | Persistent DB users, official Gemini SDK, auth WebSockets |
-| **Phase 8A**| Intelligent Model Routing | 🟢 COMPLETE | ModelRegistry, ProviderRegistry, ModelRouter, ModelGateway |
-| **Phase 8B**| Usage & Quotas Subsystem | 🟢 COMPLETE | UserQuota, row-locking concurrency, quota-aware fallback |
-| **Phase 9** | Intelligent Knowledge Auto| 🟢 COMPLETE | Dual-indexing (Dense+BM25), document lifecycle, Planner KB |
-| **Phase 10**| Evidence & Citation Intel | 🟢 COMPLETE | Coordinate anchoring, contradiction taxonomy, confidence score |
-| **Phase 11**| Advanced Research Planning| 🟢 COMPLETE | Query trees, ambiguity score, dynamic capability & replanning |
-| **Phase 12**| Advanced Multimodal Intel | 🟢 COMPLETE | Audio/video timestamps, ChartRef data series, Multimodal studio |
-| **Phase 13**| Dataset & Data Analysis   | 🟢 COMPLETE | TabularParser, DataAnalysisTool, DeterministicMathTool, UI |
-| **Phase 14**| Document & Paper Intel    | 🟢 COMPLETE | AcademicPaperParser, section trees, BibEntry, PaperViewer |
-| **Phase 15**| Deep Research Engine      | 🟢 COMPLETE | DeepResearchEngine, recursive loops, Critic gap audits, UI |
-| **Phase 16**| Research Memory           | 🟢 COMPLETE | DBResearchMemory, MemoryRepository, ResearchMemoryManager, UI |
+| **Phase 1-26** | Generations 1 - 6 Foundations & Production | 🟢 COMPLETE | Complete core, RAG, DAG, Collab, Security, Platform |
+| **Phase 27** | Adversarial Multi-Agent Debate & Consensus | 🟢 COMPLETE | Proposer, Opposer, Arbiter, Elo scoring, DebateArena UI |
+| **Phase 28** | Systematic Literature Review & Meta-Analysis | 🟢 COMPLETE | PRISMA 2020, RoB 2, Forest Plots, LiteratureReview UI |
+| **Phase 29** | In-Silico Reproducibility & Code Verification | 🔄 IN PROGRESS | Computational validation & benchmark reproducibility |
+| **Phase 30** | Multimodal Scientific Presentation & Briefing | 📋 QUEUED | Slide generation & scientific audio podcasting |
 
 ### Immediate Focus Areas
-1. **Phase 17: Long-Term Knowledge Graph** (Entity-relationship reasoning, cross-document graph ontology).
-2. **Phase 18: Projects & Workspaces** (Multi-tenant workspace hierarchy).
-earch Engine      | 🟢 COMPLETE | DeepResearchEngine, recursive loops, Critic gap audits, UI |
-
-### Immediate Focus Areas
-1. **Phase 16: Research Memory** (Cross-session persistent project memory, conceptual indexing, query history recall).
-2. **Phase 17: Long-Term Knowledge Graph** (Entity-relationship reasoning, cross-document graph ontology).
+1. **Phase 29: In-Silico Experimentation & Computational Reproducibility Engine**.
+2. **Phase 30: Multimodal Scientific Presentation & Executive Briefing Generator**.

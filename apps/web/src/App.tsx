@@ -15,6 +15,7 @@ import { ProductionInfrastructurePage } from './pages/ProductionInfrastructurePa
 import { DeveloperPlatformPage } from './pages/DeveloperPlatformPage'
 import { ResearchAutomationPage } from './pages/ResearchAutomationPage'
 import { DebateArenaPage } from './pages/DebateArenaPage'
+import { LiteratureReviewPage } from './pages/LiteratureReviewPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -102,6 +103,7 @@ function App() {
           <Route path="developer" element={<DeveloperPlatformPage />} />
           <Route path="automation" element={<ResearchAutomationPage />} />
           <Route path="debates" element={<DebateArenaPage />} />
+          <Route path="literature" element={<LiteratureReviewPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

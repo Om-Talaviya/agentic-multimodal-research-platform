@@ -533,6 +533,49 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Produces higher-order synthesized scientific consensus with nuanced boundary constraints.
   - Positive: Inaugurates Generation 7 (Scientific & Meta-Intelligence) on `develop/v1.1`.
 
+---
+
+### ADR 028: Autonomous Systematic Literature Review (SLR), PRISMA 2020 Protocol Flow, and Quantitative Meta-Analysis
+
+- **Status**: Accepted
+- **Context**: Rigorous scientific synthesis requires reproducible, protocol-driven literature exploration following standard PRISMA 2020 guidelines (Preferred Reporting Items for Systematic Reviews and Meta-Analyses). Traditional single-paper queries fail to assess cross-study consistency, statistical heterogeneity ($I^2$), or methodological Risk of Bias (RoB 2). To produce publishable-grade scientific syntheses, the platform requires an autonomous SLR pipeline managing the 4-phase PRISMA lifecycle (`IDENTIFIED` $\rightarrow$ `SCREENING` $\rightarrow$ `ELIGIBILITY` $\rightarrow$ `INCLUDED`), deterministic effect size and variance calculations (Hedges' $g$, Cohen's $d$, lnOR), DerSimonian-Laird random-effects pooling, and visual forest plot generation.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/literature.py`:
+     - `DBLiteratureReview`: Master SLR entity with research question, PICO framework, protocol type, PRISMA stage, and aggregate study counts.
+     - `DBSLRCriterion`: Inclusion and exclusion criteria with categorical taxonomy.
+     - `DBSLRStudyCandidate`: Candidate papers with screening status, exclusion reasons, extracted effect sizes, sample sizes, and variances.
+     - `DBMetaAnalysisReport`: Quantitative meta-analysis records storing pooled effect sizes, 95% CIs, $I^2$ heterogeneity, and forest plot datasets.
+     - `DBRiskOfBiasAssessment`: Per-study quality auditing across Selection, Confounding, Measurement, and Reporting bias domains.
+  2. Implement `LiteratureRepository` in `packages/database/src/database/repositories/literature_repo.py`:
+     - Full async CRUD lifecycle: `create_literature_review`, `get_literature_review`, `list_literature_reviews`, `update_review_phase`, `recalculate_review_counts`, `add_criterion`, `add_candidate_studies`, `update_candidate_screening`, `save_risk_of_bias`, `save_meta_analysis_report`, `get_slr_metrics`.
+  3. Implement Deterministic Meta-Analysis Engine in `packages/research/src/research/literature/meta_analysis.py`:
+     - `EffectSizeCalculator`: Computes Cohen's $d$, Hedges' $g$ small-sample correction, and log Odds Ratios.
+     - `HeterogeneityEngine`: Evaluates Cochrane's $Q$, degrees of freedom, $I^2$ inconsistency percentage, and $\tau^2$ between-study variance.
+     - `PooledEffectEstimator`: Fixed-effect (Inverse-Variance) and Random-Effects (DerSimonian-Laird) model pooling with forest plot coordinates.
+     - `PRISMAFlowTracker`: Generates 4-box PRISMA 2020 flow metrics and study attrition rates.
+     - `RiskOfBiasEvaluator`: Heuristic and expert domain evaluation (Low Risk, Some Concerns, High Risk).
+  4. Implement REST APIs in `apps/api/src/api/routes/literature.py`:
+     - `POST /api/v1/literature/reviews`: Create SLR review.
+     - `GET /api/v1/literature/reviews`: List reviews.
+     - `GET /api/v1/literature/reviews/{id}`: Detailed review with criteria and candidates.
+     - `POST /api/v1/literature/reviews/{id}/criteria`: Add inclusion/exclusion criteria.
+     - `POST /api/v1/literature/reviews/{id}/candidates`: Batch add candidate studies.
+     - `PATCH /api/v1/literature/reviews/{id}/candidates/{cand_id}`: Screen study and update effect metrics.
+     - `POST /api/v1/literature/reviews/{id}/meta-analysis`: Run quantitative synthesis.
+     - `POST /api/v1/literature/reviews/{id}/risk-of-bias`: Record study RoB evaluation.
+     - `GET /api/v1/literature/reviews/{id}/prisma-flow`: Fetch PRISMA 2020 flow report.
+     - `GET /api/v1/literature/metrics`: Query platform SLR metrics.
+  5. Build React Studio in `apps/web/src/pages/LiteratureReviewPage.tsx`:
+     - PRISMA 2020 Interactive Flow Diagram with live study counts and attrition rate.
+     - Screening Queue with 1-click Include/Exclude triage and exclusion taxonomy.
+     - Quantitative Forest Plot Studio with study error bars, weights, and pooled diamond summary.
+     - Risk of Bias (RoB 2) Matrix Heatmap.
+- **Consequences**:
+  - Positive: Guarantees reproducible, standards-compliant scientific literature synthesis.
+  - Positive: Deterministic statistical calculations eliminate hallucinated effect sizes or fake statistics.
+  - Positive: Completes Generation 7 Milestone 2 (Phase 28).
+
+
 
 
 
