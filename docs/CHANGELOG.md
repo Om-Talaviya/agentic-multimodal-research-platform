@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.0] - 2026-09-14 (Generation 8 Milestone 4: Phase 34 - Autonomous Patent Landscape Analysis & Prior Art Search Engine)
+
+### Added
+- **Phase 34: Autonomous Patent Landscape Analysis & Prior Art Search Engine**:
+  - Implemented database models in `packages/database/src/database/models/patent.py` (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `PatentRepository` in `packages/database/src/database/repositories/patent_repo.py` supporting corpus lifecycle, patent/claim indexing, prior art evaluations, FTO clearance reporting, and platform patent metrics (`get_patent_metrics`).
+  - Implemented Patent Prior Art Engine in `packages/research/src/research/patents/prior_art.py`:
+    - `PatentPriorArtEngine.decompose_claim_limitations`: Decomposes patent claims into preamble, transition, and numbered atomic limitations.
+    - `PatentPriorArtEngine.evaluate_prior_art_anticipation`: Evaluates 35 U.S.C. 102 anticipation and 103 obviousness against prior art citations with limitation-by-limitation claim charts and design-around mitigations.
+    - `PatentPriorArtEngine.generate_fto_assessment`: Synthesizes Freedom-to-Operate clearance scores, identifies high/medium risk claims, and maps white-space innovation opportunities.
+    - `PatentPriorArtEngine.synthesize_baseline_corpus`: Synthesizes structured baseline patent assets conforming to USPTO/EPO/WIPO specifications.
+  - Implemented REST API routes in `apps/api/src/api/routes/patents.py`:
+    - `POST /api/v1/patents/corpora`: Create patent landscape study and index baseline prior art patents.
+    - `GET /api/v1/patents/metrics`: Query platform patent KPIs.
+    - `GET /api/v1/patents/corpora`: List patent landscape corpora.
+    - `GET /api/v1/patents/corpora/{corpus_id}`: Fetch complete corpus with patents, claims, evaluations, and FTO reports.
+    - `POST /api/v1/patents/corpora/{corpus_id}/evaluate-claim`: Run 102/103 prior art evaluation against target claim.
+    - `POST /api/v1/patents/corpora/{corpus_id}/fto-report`: Generate Freedom to Operate clearance report and white-space map.
+    - `DELETE /api/v1/patents/corpora/{corpus_id}`: Delete corpus.
+  - Created interactive Patent Landscape Studio in `apps/web/src/pages/PatentLandscapePage.tsx`:
+    - Patent Landscape Explorer with CPC classifications and global jurisdiction filters (`USPTO`, `EPO`, `WIPO`).
+    - Interactive 35 U.S.C. 102/103 Claim Chart Studio with atomic limitation breakdown and color-coded status badges (`Anticipated (102)`, `Obvious Variant (103)`, `Novel Distinction`).
+    - Freedom to Operate Clearance Gauge and White-Space Innovation Opportunities Studio.
+    - New Landscape Study Creator Modal.
+  - Mounted `/patents` route in `App.tsx` and added `Patent Landscape` navigation link with `Scale` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_patent_repo.py`, `packages/research/tests/test_patent_prior_art.py`, and `apps/api/tests/test_patents_api.py`.
+  - Formalized **ADR 034** (Autonomous Patent Landscape Analysis, 35 U.S.C. 102/103 Claim Charts, and Freedom-to-Operate (FTO) Engine).
+  - **GENERATION 8 MILESTONE COMPLETED**: Generation 8 (Phases 31, 32, 33, 34) is 100% complete, tested, and active!
+
+---
+
 ## [2.7.0] - 2026-09-14 (Generation 8 Milestone 3: Phase 33 - Synthetic Instruction Dataset Generation & Active Learning Engine)
 
 ### Added
