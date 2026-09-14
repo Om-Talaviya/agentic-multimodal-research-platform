@@ -7,6 +7,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.0] - 2026-09-14 (Generation 7 Milestone 2: Phase 28 - Autonomous Systematic Literature Review & PRISMA Meta-Analysis)
+
+### Added
+- **Phase 28: Autonomous Systematic Literature Review, PRISMA 2020 Protocol Flow & Quantitative Meta-Analysis**:
+  - Implemented database models in `packages/database/src/database/models/literature.py` (`DBLiteratureReview`, `DBSLRCriterion`, `DBSLRStudyCandidate`, `DBMetaAnalysisReport`, `DBRiskOfBiasAssessment`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `LiteratureRepository` in `packages/database/src/database/repositories/literature_repo.py` supporting SLR review lifecycle (`create_literature_review`, `get_literature_review`, `list_literature_reviews`, `update_review_phase`, `recalculate_review_counts`, `delete_literature_review`), criteria management (`add_criterion`, `list_criteria`), candidate study screening (`add_candidate_studies`, `get_candidate_study`, `update_candidate_screening`, `list_candidate_studies`), Risk of Bias auditing (`save_risk_of_bias`), and quantitative meta-analysis saving (`save_meta_analysis_report`, `get_meta_analysis_report`, `get_slr_metrics`).
+  - Implemented deterministic Meta-Analysis & SLR Engine in `packages/research/src/research/literature/meta_analysis.py`:
+    - `EffectSizeCalculator`: Deterministic computation of Cohen's $d$, small-sample bias corrected Hedges' $g$, and natural log Odds Ratios with 95% confidence intervals.
+    - `HeterogeneityEngine`: Cochrane's $Q$ statistic, degrees of freedom, $I^2$ inconsistency index ($0-100\%$), DerSimonian-Laird between-study variance $\tau^2$, and chi-square approximation $p$-value.
+    - `PooledEffectEstimator`: Fixed-effect (Inverse-Variance) and Random-Effects (DerSimonian-Laird) model pooling with coordinates for forest plots.
+    - `PRISMAFlowTracker`: 4-box PRISMA 2020 identification, screening, eligibility, and included funnel telemetry with study attrition metrics.
+    - `RiskOfBiasEvaluator`: Multi-domain Cochrane RoB 2 / ROBINS-I criteria evaluation across Selection, Confounding, Measurement, and Reporting bias.
+    - `SLROrchestrator`: Full SLR review and quantitative meta-analysis synthesis pipeline.
+  - Implemented REST API routes in `apps/api/src/api/routes/literature.py`:
+    - `POST /api/v1/literature/reviews`: Create new Systematic Literature Review.
+    - `GET /api/v1/literature/reviews`: List reviews with workspace/project/phase filtering.
+    - `GET /api/v1/literature/reviews/{id}`: Fetch review details with criteria, candidate studies, and meta-analyses.
+    - `POST /api/v1/literature/reviews/{id}/criteria`: Add inclusion/exclusion criterion.
+    - `POST /api/v1/literature/reviews/{id}/candidates`: Batch add candidate studies.
+    - `PATCH /api/v1/literature/reviews/{id}/candidates/{cand_id}`: Screen candidate study and record effect metrics.
+    - `POST /api/v1/literature/reviews/{id}/meta-analysis`: Run quantitative meta-analysis calculation.
+    - `POST /api/v1/literature/reviews/{id}/risk-of-bias`: Record study Risk of Bias evaluation.
+    - `GET /api/v1/literature/reviews/{id}/prisma-flow`: Fetch PRISMA 2020 flow report.
+    - `GET /api/v1/literature/metrics`: Query platform SLR metrics.
+    - `DELETE /api/v1/literature/reviews/{id}`: Delete SLR and cascade child records.
+  - Created interactive Systematic Literature Review & Meta-Analysis Studio in `apps/web/src/pages/LiteratureReviewPage.tsx`:
+    - PRISMA 2020 Flow & Overview tab (interactive 4-box flowchart, live attrition rate, review selector, PICO framework breakdown, criteria summary pills).
+    - Screening Queue & Triage tab (candidate cards with methodology badges, 1-click Include / Exclude action buttons, exclusion reason taxonomy, sample size / effect size badges).
+    - Quantitative Meta-Analysis & Forest Plot Studio (run meta-analysis modal, pooled effect size & 95% CI summary cards, $I^2$ heterogeneity metric, visual Forest Plot with study confidence intervals, weights, and pooled diamond summary).
+    - Risk of Bias (RoB 2) Matrix Heatmap tab (domain-level quality table across Selection, Confounding, Measurement, and Reporting bias with color-coded Low Risk / Some Concerns / High Risk badges).
+    - Create SLR Review modal with PICO framework fields.
+  - Mounted `/literature` route in `App.tsx` and added `Literature Reviews` navigation link with `BookOpenCheck` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_literature_repo.py`, `packages/research/tests/test_meta_analysis.py`, and `apps/api/tests/test_literature_api.py`.
+  - Formalized **ADR 028** (Autonomous Systematic Literature Review, PRISMA 2020 Protocol Flow, and Quantitative Meta-Analysis).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 2 (Phase 28) is 100% complete, tested, and active!
+
+---
+
 ## [2.1.0] - 2026-09-13 (Generation 7 Milestone 1: Phase 27 - Adversarial Multi-Agent Debate & Consensus Engine)
 
 ### Added

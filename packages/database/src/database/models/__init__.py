@@ -15,6 +15,13 @@ from database.models.infrastructure import DBStorageObject, DBWorkerNode
 from database.models.api_key import DBApiKey
 from database.models.automation import DBAutomationAlert, DBResearchSweepResult, DBScheduledResearch
 from database.models.debate import DBAgentDebate, DBDebateConsensus, DBDebateRound
+from database.models.literature import (
+    DBLiteratureReview,
+    DBSLRCriterion,
+    DBSLRStudyCandidate,
+    DBMetaAnalysisReport,
+    DBRiskOfBiasAssessment,
+)
 from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
 from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
@@ -48,6 +55,11 @@ AutomationAlert = DBAutomationAlert
 AgentDebate = DBAgentDebate
 DebateRound = DBDebateRound
 DebateConsensus = DBDebateConsensus
+LiteratureReview = DBLiteratureReview
+SLRCriterion = DBSLRCriterion
+SLRStudyCandidate = DBSLRStudyCandidate
+MetaAnalysisReport = DBMetaAnalysisReport
+RiskOfBiasAssessment = DBRiskOfBiasAssessment
 
 __all__ = [
     "ResearchJob",
@@ -112,4 +124,14 @@ __all__ = [
     "DebateRound",
     "DBDebateConsensus",
     "DebateConsensus",
+    "DBLiteratureReview",
+    "LiteratureReview",
+    "DBSLRCriterion",
+    "SLRCriterion",
+    "DBSLRStudyCandidate",
+    "SLRStudyCandidate",
+    "DBMetaAnalysisReport",
+    "MetaAnalysisReport",
+    "DBRiskOfBiasAssessment",
+    "RiskOfBiasAssessment",
 ]
