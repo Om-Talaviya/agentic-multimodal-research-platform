@@ -3,6 +3,7 @@ from database.repositories.agent_run_repo import AgentRunRepository, ModelCallRe
 from database.repositories.api_key_repo import ApiKeyRepository
 from database.repositories.automation_repo import AutomationRepository
 from database.repositories.canvas_repo import CanvasRepository
+from database.repositories.dataset_synthesis_repo import DatasetSynthesisRepository
 from database.repositories.collaboration_repo import (
 
     ReportAnnotationRepository,

@@ -715,6 +715,39 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Automated layout algorithms convert complex text findings into intuitive 2D knowledge graphs.
   - Positive: Completes Generation 8 Milestone 2 (Phase 32).
 
+---
+
+### ADR 033: Synthetic Instruction Dataset Generation, Evol-Instruct Mutations, and Active Learning Alignment Engine
+
+- **Status**: Accepted
+- **Context**: Fine-tuning proprietary or open-weights foundation models on domain-specific scientific findings requires high-entropy, clean instruction-tuning datasets and preference pairs. Manually labeling thousands of prompt-response pairs is cost-prohibitive, while naive synthetic generation produces repetitive, low-complexity outputs. The platform requires an automated instruction synthesis engine leveraging evolutionary prompting mutations (In-Depth Expansion, In-Breadth Variation, Constraint Hardening, Adversarial Red-Teaming, CoT Decomposition) to convert research reports and knowledge graph findings directly into fine-tuning-ready formats (Alpaca SFT, ShareGPT Multi-Turn, DPO Preference Pairs, Chain-of-Thought) with active-learning human-in-the-loop curation and standardized JSONL exports.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/dataset_synthesis.py`:
+     - `DBSyntheticDataset`: Dataset record (name, description, dataset_format: `alpaca_sft`, `sharegpt`, `dpo_preference`, `rl_trajectory`, `cot_reasoning`, domain_field, target_model_family, total_samples, quality_filter_threshold, status: `draft`, `synthesizing`, `curated`, `exported`, `archived`, stats_metadata).
+     - `DBInstructionSample`: Instruction sample record (sample_index, system_prompt, instruction, input_context, chosen_response, rejected_response for DPO, cot_reasoning_trace, evolution_strategy, quality_score, toxicity_score, hallucination_risk, dedup_hash, curation_verdict: `accepted`, `rejected`, `edited`, metadata_json).
+     - `DBAlignmentExport`: Export job record (export_format: `jsonl`, `parquet`, `huggingface_arrow`, `csv`, sample_count, file_size_bytes, exported_at).
+  2. Implement `DatasetSynthesisRepository` in `packages/database/src/database/repositories/dataset_synthesis_repo.py`:
+     - Full async CRUD lifecycle: `create_dataset`, `get_dataset`, `list_datasets`, `update_dataset_status`, `add_sample`, `batch_add_samples`, `update_sample_curation`, `record_export`, `delete_dataset`, `get_synthesis_metrics`.
+  3. Implement Instruction Synthesizer Engine in `packages/research/src/research/datasets/synthesizer.py`:
+     - `InstructionDatasetSynthesizer`: Evolutionary prompt mutators (`in_depth_expansion`, `in_breadth_variation`, `constraint_hardening`, `adversarial_redteaming`, `cot_decomposition`), format adapters (`alpaca_sft`, `sharegpt`, `dpo_preference`, `cot_reasoning`), and deterministic quality, toxicity, hallucination, and SHA-256 deduplication scoring.
+  4. Implement REST APIs in `apps/api/src/api/routes/dataset_synthesis.py`:
+     - `POST /api/v1/datasets/synthesize`: Synthesize instruction dataset from research findings.
+     - `GET /api/v1/datasets`: List synthetic datasets.
+     - `GET /api/v1/datasets/{id}`: Fetch dataset with instruction samples and exports.
+     - `PATCH /api/v1/datasets/{id}/samples/{sample_id}`: Active learning curation (accept, reject, edit).
+     - `POST /api/v1/datasets/{id}/export`: Standardized JSONL export.
+     - `GET /api/v1/datasets/metrics`: Query platform dataset metrics.
+     - `DELETE /api/v1/datasets/{id}`: Delete dataset.
+  5. Build React Studio in `apps/web/src/pages/DatasetSynthesisPage.tsx`:
+     - Dataset Catalog & Format Selector (`Alpaca SFT`, `ShareGPT`, `DPO Preference Pairs`, `Chain-of-Thought`).
+     - Instruction Sample Inspector & Active Learning Curation Studio with side-by-side chosen vs. rejected response cards and CoT reasoning traces.
+     - Evol-Instruct Strategy Pills and Quality Score gauges.
+     - One-click Standardized Alignment JSONL Exporter with live clipboard copy and file download.
+- **Consequences**:
+  - Positive: Bridges autonomous scientific research directly into foundation model alignment and domain adaptation.
+  - Positive: Multi-format adapters enable instant fine-tuning on HuggingFace, Unsloth, Axolotl, and LLaMA-Factory.
+  - Positive: Completes Generation 8 Milestone 3 (Phase 33).
+
 
 
 
