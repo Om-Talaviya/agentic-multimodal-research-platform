@@ -1,6 +1,8 @@
 from database.models.agent_evaluation import DBAgentEvaluation, DBAgentStepMetric
 from database.models.agent_run import AgentRun, ModelCall
+from database.models.canvas import DBCanvasBoard, DBCanvasEdge, DBCanvasNode
 from database.models.collaboration import (
+
     DBReportAnnotation,
     DBWorkspaceActivity,
     DBWorkspaceInvite,
@@ -84,9 +86,13 @@ PodcastBriefing = DBPodcastBriefing
 PeerReviewManuscript = DBPeerReviewManuscript
 PeerReviewReport = DBPeerReviewReport
 ManuscriptRevision = DBManuscriptRevision
+CanvasBoard = DBCanvasBoard
+CanvasNode = DBCanvasNode
+CanvasEdge = DBCanvasEdge
 
 
 __all__ = [
+
     "ResearchJob",
     "ResearchTask",
     "Source",
@@ -177,4 +183,11 @@ __all__ = [
     "PeerReviewReport",
     "DBManuscriptRevision",
     "ManuscriptRevision",
-]
+    "DBCanvasBoard",
+    "CanvasBoard",
+    "DBCanvasNode",
+    "CanvasNode",
+    "DBCanvasEdge",
+    "CanvasEdge",
+]
+

@@ -679,10 +679,41 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Brings end-to-end academic peer review rigor and publication automation to the AI Research OS.
   - Positive: Completes Generation 8 Milestone 1 (Phase 31).
 
+---
 
+### ADR 032: Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio
 
-
-
+- **Status**: Accepted
+- **Context**: Linear textual representations of scientific hypotheses and complex multi-agent reasoning obscure topological dependencies, evidence linkages, and cross-domain serendipity. Researchers require an infinite 2D spatial workspace (Research Canvas) to visually construct, organize, manipulate, and explore directed acyclic graph (DAG) representations of hypotheses, empirical findings, literature evidence, agent thoughts, and conclusions. The platform requires real-time graph auto-generation from research runs, autonomous multi-agent brainstorming (proposing counter-claims and orthogonal directions), and spatial clustering analysis.
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/canvas.py`:
+     - `DBCanvasBoard`: Canvas board record (title, description, viewport_state {zoom, pan_x, pan_y}, background_grid {dots, lines, crosses, clean}, status).
+     - `DBCanvasNode`: Visual node record (node_type: `hypothesis`, `evidence`, `paper`, `agent_thought`, `data_series`, `conclusion`, `counter_claim`, title, content, confidence_score, status, position_x, position_y, width, height, color_accent, metadata_json).
+     - `DBCanvasEdge`: Relational link record (source_node_id, target_node_id, relation_type: `supports`, `refutes`, `derives_from`, `correlates_with`, `branches_to`, `questions`, label, weight, metadata_json).
+  2. Implement `CanvasRepository` in `packages/database/src/database/repositories/canvas_repo.py`:
+     - Full async CRUD lifecycle: `create_board`, `get_board`, `list_boards`, `update_board_viewport`, `add_node`, `update_node`, `add_edge`, `batch_add_nodes_and_edges`, `delete_board`, `get_canvas_metrics`.
+  3. Implement Research Canvas Engine in `packages/research/src/research/canvas/ideation.py`:
+     - `CanvasIdeationEngine`: Auto-generates structured 2D topological graph layouts from research findings/evidence, synthesizes AI brainstorming nodes (counter-hypotheses and orthogonal directions), and computes connected subgraph clusters.
+  4. Implement REST APIs in `apps/api/src/api/routes/canvas.py`:
+     - `POST /api/v1/canvas/boards`: Create new canvas board.
+     - `GET /api/v1/canvas/boards`: List canvas boards.
+     - `GET /api/v1/canvas/boards/{board_id}`: Fetch complete board with nodes and edges.
+     - `POST /api/v1/canvas/boards/{board_id}/generate`: Auto-generate 2D DAG from research findings.
+     - `POST /api/v1/canvas/boards/{board_id}/nodes`: Add visual node.
+     - `PATCH /api/v1/canvas/boards/{board_id}/nodes/{node_id}`: Update node position and confidence.
+     - `POST /api/v1/canvas/boards/{board_id}/edges`: Add relational edge.
+     - `POST /api/v1/canvas/boards/{board_id}/brainstorm`: Trigger AI agent brainstorming expansion.
+     - `GET /api/v1/canvas/metrics`: Query platform canvas metrics.
+     - `DELETE /api/v1/canvas/boards/{board_id}`: Delete board and cascade nodes/edges.
+  5. Build React Studio in `apps/web/src/pages/ResearchCanvasPage.tsx`:
+     - Infinite 2D interactive canvas viewport with smooth zooming, panning, and customizable background grid (dots, grid lines, clean).
+     - Visual node-graph renderer with type-specific color accents, status badges, drag/drop interaction, and connecting SVG relation lines.
+     - AI Brainstorming Trigger and Auto-Generate from Research dossier modal.
+     - Node detail drawer with confidence scores, relations, and metadata.
+- **Consequences**:
+  - Positive: Empowers researchers with spatial visual thinking, unblocking non-linear insights and cross-domain connections.
+  - Positive: Automated layout algorithms convert complex text findings into intuitive 2D knowledge graphs.
+  - Positive: Completes Generation 8 Milestone 2 (Phase 32).
 
 
 
