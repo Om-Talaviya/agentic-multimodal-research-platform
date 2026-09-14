@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.0] - 2026-09-14 (Generation 9 Milestone 1: Phase 35 - Autonomous Scientific Grant & Research Funding Proposal Synthesizer)
+
+### Added
+- **Phase 35: Autonomous Scientific Grant & Research Funding Proposal Synthesizer**:
+  - Implemented database models in `packages/database/src/database/models/grant_proposal.py` (`DBGrantProposal`, `DBGrantSpecificAim`, `DBGrantBudgetItem`, `DBGrantReviewScorecard`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `GrantProposalRepository` in `packages/database/src/database/repositories/grant_proposal_repo.py` supporting proposal lifecycle, specific aims tracking, multi-year budget itemization, mock review scorecard recording, and platform grant metrics (`get_grant_metrics`).
+  - Implemented Grant Proposal Synthesizer Engine in `packages/research/src/research/grants/synthesizer.py`:
+    - `InstitutionalBudgetCalculator.calculate_multiyear_budget`: Computes institutional multi-year budgets including PI effort, postdoc/student salaries, fringe benefits (28.5%), annual cost escalation (3%), Modified Total Direct Costs (MTDC), and Facilities & Administrative (F&A) indirect cost rates (52%).
+    - `GrantProposalSynthesizer.synthesize_proposal_narratives`: Generates Specific Aims, Executive Abstract, Significance, Innovation, Approach, and Preliminary Data narratives for NIH (R01/R21), NSF (CAREER), and Horizon Europe grants.
+    - `GrantProposalSynthesizer.conduct_mock_study_section_review`: Simulates study section peer review panels with 1.0 (exceptional) to 9.0 (poor) scoring, percentile rankings, critique strengths/weaknesses, and funding recommendations.
+    - `GrantProposalSynthesizer.export_proposal_latex`: Generates complete, compilable LaTeX scientific grant proposals with formal section hierarchies and itemized financial tables.
+  - Implemented REST API routes in `apps/api/src/api/routes/grant_proposals.py`:
+    - `POST /api/v1/grants/proposals`: Create grant proposal project and synthesize baseline aims and budget.
+    - `GET /api/v1/grants/metrics`: Query platform grant funding metrics.
+    - `GET /api/v1/grants/proposals`: List grant proposals.
+    - `GET /api/v1/grants/proposals/{proposal_id}`: Fetch complete proposal with aims, budget items, and mock review scorecards.
+    - `POST /api/v1/grants/proposals/{proposal_id}/synthesize-aims`: Synthesize Specific Aims from research topic.
+    - `POST /api/v1/grants/proposals/{proposal_id}/calculate-budget`: Recalculate multi-year institutional budget.
+    - `POST /api/v1/grants/proposals/{proposal_id}/mock-review`: Run autonomous study section peer review simulation.
+    - `GET /api/v1/grants/proposals/{proposal_id}/export-latex`: Export proposal as compilable LaTeX document.
+    - `DELETE /api/v1/grants/proposals/{proposal_id}`: Delete proposal.
+  - Created interactive Grant Proposal Studio in `apps/web/src/pages/GrantProposalStudioPage.tsx`:
+    - Proposal Catalog & Metrics Overview (`Total Active Proposals`, `Total Funding Pipeline`, `Mean Impact Score`, `High Priority Percentile`).
+    - Specific Aims Interactive Editor with hypothesis, experimental design, milestones, and effort allocations.
+    - Multi-Year Institutional Budget Calculator with real-time MTDC breakdown and indirect cost estimation.
+    - Mock Study Section Review Scorecard with 1.0-9.0 criterion ratings, critique strengths/weaknesses, and fundability badge.
+    - LaTeX Exporter with one-click copy and download functionality.
+  - Mounted `/grants` route in `App.tsx` and added `Grant Proposals` navigation link with `Landmark` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_grant_proposal_repo.py`, `packages/research/tests/test_grant_proposal_synthesizer.py`, and `apps/api/tests/test_grant_proposals_api.py`.
+  - Formalized **ADR 035** (Autonomous Scientific Grant Proposal Synthesizer, Institutional Budget Calculation, and Mock Study Section Peer Review Engine).
+  - **GENERATION 9 MILESTONE 1 COMPLETED**: Phase 35 is 100% complete, verified, and active!
+
+---
+
 ## [2.8.0] - 2026-09-14 (Generation 8 Milestone 4: Phase 34 - Autonomous Patent Landscape Analysis & Prior Art Search Engine)
 
 ### Added
