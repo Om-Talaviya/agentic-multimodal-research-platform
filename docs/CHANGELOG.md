@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.0] - 2026-09-14 (Generation 7 Milestone 4: Phase 30 - Multimodal Scientific Presentation & Executive Podcasting Briefing Generator)
+
+### Added
+- **Phase 30: Multimodal Scientific Presentation Decks & Multi-Speaker Executive Podcasting Briefing Generator**:
+  - Implemented database models in `packages/database/src/database/models/presentation.py` (`DBSynthesisPresentation`, `DBPresentationSlide`, `DBPodcastBriefing`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `PresentationRepository` in `packages/database/src/database/repositories/presentation_repo.py` supporting presentation lifecycle (`create_presentation`, `get_presentation`, `list_presentations`, `delete_presentation`), slide operations (`save_slides`, `get_slides`), podcast briefings (`create_podcast_briefing`, `get_podcast_briefing`, `list_podcast_briefings`), and platform-wide presentation metrics (`get_presentation_metrics`).
+  - Implemented `PresentationGenerator` and `PodcastBriefingSynthesizer` in `packages/research/src/research/presentation/synthesizer.py`:
+    - `PresentationGenerator.generate_presentation(title, topic, summary, findings, target_audience, slide_count)`: Generates structured scientific slide decks with layouts (`title_slide`, `key_findings`, `architecture_flow`, `comparative_analysis`, `conclusion_next_steps`), bullet assertions, visual cards, charts, and detailed speaker script notes.
+    - `PodcastBriefingSynthesizer.generate_podcast(title, topic, key_points, findings, style, target_duration_minutes)`: Generates structured multi-speaker dialogue scripts (`Host (Alex)` & `Domain Specialist (Dr. Rowan)`) with tone cues (`engaging_inquisitive`, `authoritative_analytical`, `balanced_synthesis`), duration calculation, and automated chapter timestamps.
+  - Implemented REST API routes in `apps/api/src/api/routes/presentations.py`:
+    - `POST /api/v1/presentations/generate`: Synthesize structured presentation slide deck.
+    - `GET /api/v1/presentations`: List synthesized presentations.
+    - `GET /api/v1/presentations/{id}`: Fetch presentation details with full slide deck.
+    - `POST /api/v1/presentations/podcasts/generate`: Synthesize multi-speaker podcast briefing.
+    - `GET /api/v1/presentations/podcasts`: List generated podcast briefings.
+    - `GET /api/v1/presentations/podcasts/{id}`: Fetch podcast briefing dialogue.
+    - `GET /api/v1/presentations/metrics`: Query platform presentation and podcast metrics.
+    - `DELETE /api/v1/presentations/{id}`: Delete presentation deck.
+  - Created interactive Multimodal Presentation & Podcast Studio in `apps/web/src/pages/PresentationStudioPage.tsx`:
+    - Slide Deck Presenter tab (live slide stage with full-screen toggle, layout-aware card rendering, slide navigation bar, and expandable presenter speaker notes).
+    - Slide List & Hierarchy tab (compact grid overview of all deck slides with bullet points, visuals, and timing).
+    - Executive Podcast Player & Transcript tab (audio player simulation, multi-speaker dialogue view with speaker avatar badges, duration/word-count badges, and timestamped chapter markers).
+    - Synthesize New Deck & Generate Podcast modals.
+  - Mounted `/presentations` route in `App.tsx` and added `Presentation Studio` navigation link with `Tv` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_presentation_repo.py`, `packages/research/tests/test_presentation_synthesizer.py`, and `apps/api/tests/test_presentation_api.py`.
+  - Formalized **ADR 030** (Multimodal Scientific Presentation Decks and Multi-Speaker Executive Podcasting Briefing Generator).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 4 (Phase 30) is 100% complete, tested, and active!
+
+---
+
 ## [2.3.0] - 2026-09-14 (Generation 7 Milestone 3: Phase 29 - In-Silico Experimentation, Computational Reproducibility & Code Verification)
 
 ### Added

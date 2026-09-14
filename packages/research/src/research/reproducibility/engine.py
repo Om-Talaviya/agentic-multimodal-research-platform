@@ -13,8 +13,20 @@ from shared.logging import get_logger
 
 logger = get_logger(__name__)
 
+ALLOWED_MODULES = {"math", "random", "statistics", "datetime", "json", "collections", "itertools", "re", "decimal"}
+
+
+def safe_import(name: str, globals: Any = None, locals: Any = None, fromlist: Any = (), level: int = 0) -> Any:
+    """Safe import interceptor restricting runtime access to whitelisted numerical/utility libraries."""
+    root = name.split(".")[0]
+    if root not in ALLOWED_MODULES:
+        raise ImportError(f"Import of module '{name}' is forbidden in in-silico sandbox")
+    return __import__(name, globals, locals, fromlist, level)
+
+
 # Whitelisted built-in functions for safe in-silico execution
 SAFE_BUILTINS = {
+    "__import__": safe_import,
     "abs": abs,
     "all": all,
     "any": any,
@@ -57,6 +69,7 @@ SAFE_BUILTINS = {
     "type": type,
     "zip": zip,
 }
+
 
 
 class ReproducibilityEngine:
@@ -220,14 +233,15 @@ class ReproducibilityEngine:
 
         reproducibility_score = round(sum(scores) / max(1, len(scores)), 4) if scores else 0.0
 
-        if reproducibility_score >= 0.90:
+        if traces and all(t["verdict"] == "reproduced" for t in traces):
             overall_status = "fully_reproduced"
-        elif reproducibility_score >= 0.50:
-            overall_status = "partially_reproduced"
-        elif scores and any(t["verdict"] == "refuted" for t in traces):
+        elif any(t["verdict"] in ("discrepant", "refuted") for t in traces):
             overall_status = "discrepant"
+        elif any(t["verdict"] == "inconclusive" for t in traces):
+            overall_status = "inconclusive"
         else:
             overall_status = "failed"
+
 
         return {
             "traces": traces,
