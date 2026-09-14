@@ -1,6 +1,11 @@
 from database.models.agent_evaluation import DBAgentEvaluation, DBAgentStepMetric
 from database.models.agent_run import AgentRun, ModelCall
 from database.models.canvas import DBCanvasBoard, DBCanvasEdge, DBCanvasNode
+from database.models.dataset_synthesis import (
+    DBAlignmentExport,
+    DBInstructionSample,
+    DBSyntheticDataset,
+)
 from database.models.collaboration import (
 
     DBReportAnnotation,

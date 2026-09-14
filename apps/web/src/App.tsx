@@ -20,6 +20,7 @@ import { ReproducibilityPage } from './pages/ReproducibilityPage'
 import { PresentationStudioPage } from './pages/PresentationStudioPage'
 import { PeerReviewPage } from './pages/PeerReviewPage'
 import { ResearchCanvasPage } from './pages/ResearchCanvasPage'
+import { DatasetSynthesisPage } from './pages/DatasetSynthesisPage'
 import { Login } from './pages/Login'
 
 import { Register } from './pages/Register'
@@ -113,6 +114,7 @@ function App() {
           <Route path="presentations" element={<PresentationStudioPage />} />
           <Route path="publishing" element={<PeerReviewPage />} />
           <Route path="canvas" element={<ResearchCanvasPage />} />
+          <Route path="datasets" element={<DatasetSynthesisPage />} />
           <Route path="settings" element={<Settings />} />
 
         </Route>

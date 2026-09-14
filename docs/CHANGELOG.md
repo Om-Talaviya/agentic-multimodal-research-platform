@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.7.0] - 2026-09-14 (Generation 8 Milestone 3: Phase 33 - Synthetic Instruction Dataset Generation & Active Learning Engine)
+
+### Added
+- **Phase 33: Synthetic Instruction Dataset Generation & Active Learning Engine**:
+  - Implemented database models in `packages/database/src/database/models/dataset_synthesis.py` (`DBSyntheticDataset`, `DBInstructionSample`, `DBAlignmentExport`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `DatasetSynthesisRepository` in `packages/database/src/database/repositories/dataset_synthesis_repo.py` supporting dataset lifecycle, sample batch addition, active learning curation updates, export recording, and platform synthesis metrics (`get_synthesis_metrics`).
+  - Implemented Instruction Synthesizer Engine in `packages/research/src/research/datasets/synthesizer.py`:
+    - `InstructionDatasetSynthesizer.synthesize_from_research_findings`: Generates high-entropy instruction-response samples or DPO pairs from research findings.
+    - `InstructionDatasetSynthesizer.evolve_instruction`: Evol-Instruct prompt mutator supporting `in_depth_expansion`, `in_breadth_variation`, `constraint_hardening`, `adversarial_redteaming`, and `cot_decomposition`.
+    - `InstructionDatasetSynthesizer.format_dataset`: Converts samples to Alpaca SFT, ShareGPT Multi-Turn, DPO Preference Pairs, or CoT formats.
+    - `InstructionDatasetSynthesizer.calculate_quality_metrics`: Deterministic quality, toxicity, hallucination risk, and SHA-256 deduplication hashing.
+  - Implemented REST API routes in `apps/api/src/api/routes/dataset_synthesis.py`:
+    - `POST /api/v1/datasets/synthesize`: Synthesize instruction tuning dataset from research findings.
+    - `GET /api/v1/datasets/metrics`: Query platform dataset metrics.
+    - `GET /api/v1/datasets`: List synthetic datasets.
+    - `GET /api/v1/datasets/{dataset_id}`: Fetch complete dataset with samples and export history.
+    - `PATCH /api/v1/datasets/{dataset_id}/samples/{sample_id}`: Human/Active-learning curation.
+    - `POST /api/v1/datasets/{dataset_id}/export`: Export dataset into standardized fine-tuning JSONL format.
+    - `DELETE /api/v1/datasets/{dataset_id}`: Delete dataset.
+  - Created interactive Dataset Synthesis Studio in `apps/web/src/pages/DatasetSynthesisPage.tsx`:
+    - Dataset Catalog & Format Selector (`Alpaca SFT`, `ShareGPT`, `DPO Preference Pairs`, `Chain-of-Thought`).
+    - Instruction Sample Inspector & Active Learning Curation Studio with side-by-side chosen vs. rejected responses and CoT reasoning traces.
+    - Evol-Instruct Strategy badges and quality score gauges.
+    - One-click Standardized Alignment JSONL Exporter with live clipboard copy and file download.
+  - Mounted `/datasets` route in `App.tsx` and added `Dataset Synthesis` navigation link with `Database` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_dataset_synthesis_repo.py`, `packages/research/tests/test_dataset_synthesizer.py`, and `apps/api/tests/test_dataset_synthesis_api.py`.
+  - Formalized **ADR 033** (Synthetic Instruction Dataset Generation, Evol-Instruct Mutations, and Active Learning Alignment Engine).
+  - **MILESTONE COMPLETED**: Generation 8 Milestone 3 (Phase 33) is 100% complete, tested, and active!
+
+---
+
 ## [2.6.0] - 2026-09-14 (Generation 8 Milestone 2: Phase 32 - Real-Time Collaborative Research Canvas & Visual Ideation Studio)
 
 ### Added
