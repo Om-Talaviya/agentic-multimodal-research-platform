@@ -376,10 +376,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 **Status**: 🟢 COMPLETE (Generation 7: Scientific & Meta-Intelligence)
 
 ## Phase 29: In-Silico Experimentation, Computational Reproducibility & Code Verification
-**Status**: 🔄 IN PROGRESS / NEXT TARGET (Generation 7: Scientific & Meta-Intelligence)
+**Status**: 🟢 COMPLETE (Generation 7: Scientific & Meta-Intelligence)
 
 ## Phase 30: Multimodal Scientific Presentation & Executive Podcasting Briefing
-**Status**: 📋 QUEUED (Generation 7: Scientific & Meta-Intelligence)
+**Status**: 🔄 IN PROGRESS / NEXT TARGET (Generation 7: Scientific & Meta-Intelligence)
 
 ---
 
@@ -390,9 +390,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 | **Phase 1-26** | Generations 1 - 6 Foundations & Production | 🟢 COMPLETE | Complete core, RAG, DAG, Collab, Security, Platform |
 | **Phase 27** | Adversarial Multi-Agent Debate & Consensus | 🟢 COMPLETE | Proposer, Opposer, Arbiter, Elo scoring, DebateArena UI |
 | **Phase 28** | Systematic Literature Review & Meta-Analysis | 🟢 COMPLETE | PRISMA 2020, RoB 2, Forest Plots, LiteratureReview UI |
-| **Phase 29** | In-Silico Reproducibility & Code Verification | 🔄 IN PROGRESS | Computational validation & benchmark reproducibility |
-| **Phase 30** | Multimodal Scientific Presentation & Briefing | 📋 QUEUED | Slide generation & scientific audio podcasting |
+| **Phase 29** | In-Silico Reproducibility & Code Verification | 🟢 COMPLETE | Computational AST sandbox & claim verification |
+| **Phase 30** | Multimodal Scientific Presentation & Briefing | 🔄 IN PROGRESS | Slide generation & scientific audio podcasting |
 
 ### Immediate Focus Areas
-1. **Phase 29: In-Silico Experimentation & Computational Reproducibility Engine**.
-2. **Phase 30: Multimodal Scientific Presentation & Executive Briefing Generator**.
+1. **Phase 30: Multimodal Scientific Presentation & Executive Briefing Generator**.

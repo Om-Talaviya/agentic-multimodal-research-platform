@@ -575,6 +575,41 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Deterministic statistical calculations eliminate hallucinated effect sizes or fake statistics.
   - Positive: Completes Generation 7 Milestone 2 (Phase 28).
 
+---
+
+### ADR 029: In-Silico Experimentation, Sandboxed Computational Reproducibility, and Claim Discrepancy Verification
+
+- **Status**: Accepted
+- **Context**: Scientific claims in preprints and research papers frequently suffer from non-reproducibility due to hidden assumptions, numerical instabilities, or unstated hyperparameters. To ensure uncompromising empirical truth, the platform requires an in-silico computational reproducibility engine that can parse executable protocols, validate AST security boundaries against unauthorized system/network access, execute numerical simulations in a sandboxed runtime scope, and automatically verify published baseline metrics against reproduced metrics with tolerance threshold delta scoring ($\delta = \frac{|M_{\text{claimed}} - M_{\text{reproduced}}|}{\max(|M_{\text{claimed}}|, 1e-6)}$).
+- **Decision**:
+  1. Implement Database Persistence in `packages/database/src/database/models/reproducibility.py`:
+     - `DBExperimentProtocol`: Master computational protocol record (name, source paper/DOI, runtime language, executable code, default parameters, dependencies, claimed metrics, verification status).
+     - `DBReproducibilityRun`: Individual in-silico execution run (status, execution time in ms, peak heap memory in MB, reproduced metrics, reproducibility score, runtime stdout logs, error messages).
+     - `DBClaimVerificationTrace`: Granular metric-by-metric comparison trace (claimed value, reproduced value, relative delta error, tolerance threshold, categorical verdict: `reproduced`, `discrepant`, `refuted`, `inconclusive`).
+  2. Implement `ReproducibilityRepository` in `packages/database/src/database/repositories/reproducibility_repo.py`:
+     - Full async CRUD lifecycle: `create_protocol`, `get_protocol`, `list_protocols`, `update_protocol_status`, `delete_protocol`, `record_reproducibility_run`, `get_run`, `list_runs`, `record_verification_trace`, `list_verification_traces`, `get_reproducibility_metrics`.
+  3. Implement `ReproducibilityEngine` in `packages/research/src/research/reproducibility/engine.py`:
+     - `validate_code_ast(code)`: AST tree parser blocking forbidden OS, socket, subprocess, and dynamic reflection calls.
+     - `execute_protocol(code, parameters)`: Sandboxed execution scope with math/random/statistics modules, stdout interceptor, and numerical output metric extraction.
+     - `verify_claims(claimed_metrics, reproduced_metrics, tolerance)`: Tolerance-aware delta error calculator and composite reproducibility score $\kappa \in [0.0, 1.0]$.
+  4. Implement REST APIs in `apps/api/src/api/routes/reproducibility.py`:
+     - `POST /api/v1/reproducibility/protocols`: Register experiment protocol.
+     - `GET /api/v1/reproducibility/protocols`: List protocols with filters.
+     - `GET /api/v1/reproducibility/protocols/{id}`: Fetch protocol with historical runs and claim traces.
+     - `POST /api/v1/reproducibility/protocols/{id}/execute`: Trigger in-silico simulation run and claim verification.
+     - `GET /api/v1/reproducibility/metrics`: Query platform reproducibility metrics.
+     - `DELETE /api/v1/reproducibility/protocols/{id}`: Delete protocol.
+  5. Build React Studio in `apps/web/src/pages/ReproducibilityPage.tsx`:
+     - Protocols & Code Studio: Protocol selector sidebar, paper reference metadata, claimed metrics cards, and AST-sandboxed code viewer.
+     - In-Silico Simulation Console & Telemetry: Live execution terminal, execution duration, peak heap memory, and computed metrics grid.
+     - Empirical Claim Verification Matrix: Granular claim vs. reproduced comparison table with relative delta error percentages and color-coded status badges.
+     - Historical Runs & Scorecard feed.
+- **Consequences**:
+  - Positive: Prevents scientific hallucination by providing programmatic proof of computational claims.
+  - Positive: AST sandboxing ensures zero security risk during arbitrary Python protocol execution.
+  - Positive: Completes Generation 7 Milestone 3 (Phase 29).
+
+
 
 
 

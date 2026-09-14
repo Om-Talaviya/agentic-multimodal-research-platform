@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.0] - 2026-09-14 (Generation 7 Milestone 3: Phase 29 - In-Silico Experimentation, Computational Reproducibility & Code Verification)
+
+### Added
+- **Phase 29: In-Silico Experimentation, Computational Reproducibility & Empirical Claim Verification Engine**:
+  - Implemented database models in `packages/database/src/database/models/reproducibility.py` (`DBExperimentProtocol`, `DBReproducibilityRun`, `DBClaimVerificationTrace`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
+  - Implemented `ReproducibilityRepository` in `packages/database/src/database/repositories/reproducibility_repo.py` supporting computational protocol lifecycle (`create_protocol`, `get_protocol`, `list_protocols`, `update_protocol_status`, `delete_protocol`), in-silico execution runs (`record_reproducibility_run`, `get_run`, `list_runs`), claim verification traces (`record_verification_trace`, `list_verification_traces`), and aggregate platform metrics (`get_reproducibility_metrics`).
+  - Implemented `ReproducibilityEngine` in `packages/research/src/research/reproducibility/engine.py`:
+    - `validate_code_ast(code)`: AST tree security parser screening against prohibited modules (`os`, `sys`, `subprocess`, `socket`, `requests`, `eval`, `exec`, `open`).
+    - `execute_protocol(code, parameters)`: Sandboxed runtime scope with pre-loaded mathematical modules (`math`, `random`, `statistics`), stdout terminal interceptor, and numerical output metric extraction.
+    - `verify_claims(claimed_metrics, reproduced_metrics, tolerance)`: Relative delta error calculator ($\delta = \frac{|M_{\text{claimed}} - M_{\text{reproduced}}|}{\max(|M_{\text{claimed}}|, 1e-6)}$), tolerance-based verdict categorization (`reproduced`, `discrepant`, `refuted`, `inconclusive`), and composite reproducibility score $\kappa \in [0.0, 1.0]$.
+  - Implemented REST API routes in `apps/api/src/api/routes/reproducibility.py`:
+    - `POST /api/v1/reproducibility/protocols`: Register computational protocol.
+    - `GET /api/v1/reproducibility/protocols`: List protocols with filtering.
+    - `GET /api/v1/reproducibility/protocols/{id}`: Fetch protocol with runs and claim verification traces.
+    - `POST /api/v1/reproducibility/protocols/{id}/execute`: Trigger in-silico simulation run and automated claim verification.
+    - `GET /api/v1/reproducibility/metrics`: Query platform reproducibility metrics.
+    - `DELETE /api/v1/reproducibility/protocols/{id}`: Delete protocol.
+  - Created interactive In-Silico Experimentation & Reproducibility Studio in `apps/web/src/pages/ReproducibilityPage.tsx`:
+    - Protocols & Code Studio tab (protocol selector, paper reference badge, claimed benchmark metrics grid, AST-sandboxed code editor).
+    - Simulation Console & Telemetry tab (live stdout terminal output, execution duration gauge, peak heap memory telemetry, computed output metrics grid, re-run trigger).
+    - Claim Verification Matrix tab (granular claim vs. reproduced comparison table, relative delta error percentages, tolerance thresholds, and verdict badges).
+    - Run History & Scorecard tab (chronological historical runs and composite reproducibility scores).
+    - Register Protocol modal with template script.
+  - Mounted `/reproducibility` route in `App.tsx` and added `In-Silico Verification` navigation link with `Cpu` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_reproducibility_repo.py`, `packages/research/tests/test_reproducibility_engine.py`, and `apps/api/tests/test_reproducibility_api.py`.
+  - Formalized **ADR 029** (In-Silico Experimentation, Sandboxed Computational Reproducibility, and Claim Discrepancy Verification).
+  - **MILESTONE COMPLETED**: Generation 7 Milestone 3 (Phase 29) is 100% complete, tested, and active!
+
+---
+
 ## [2.2.0] - 2026-09-14 (Generation 7 Milestone 2: Phase 28 - Autonomous Systematic Literature Review & PRISMA Meta-Analysis)
 
 ### Added

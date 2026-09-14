@@ -22,6 +22,11 @@ from database.models.literature import (
     DBMetaAnalysisReport,
     DBRiskOfBiasAssessment,
 )
+from database.models.reproducibility import (
+    DBClaimVerificationTrace,
+    DBExperimentProtocol,
+    DBReproducibilityRun,
+)
 from database.models.security import DBEncryptedSecret, DBSecurityAuditLog, DBSecurityPolicy
 from database.models.source import Evidence, Source
 from database.models.usage_record import UsageRecord
@@ -60,6 +65,9 @@ SLRCriterion = DBSLRCriterion
 SLRStudyCandidate = DBSLRStudyCandidate
 MetaAnalysisReport = DBMetaAnalysisReport
 RiskOfBiasAssessment = DBRiskOfBiasAssessment
+ExperimentProtocol = DBExperimentProtocol
+ReproducibilityRun = DBReproducibilityRun
+ClaimVerificationTrace = DBClaimVerificationTrace
 
 __all__ = [
     "ResearchJob",
@@ -134,4 +142,10 @@ __all__ = [
     "MetaAnalysisReport",
     "DBRiskOfBiasAssessment",
     "RiskOfBiasAssessment",
+    "DBExperimentProtocol",
+    "ExperimentProtocol",
+    "DBReproducibilityRun",
+    "ReproducibilityRun",
+    "DBClaimVerificationTrace",
+    "ClaimVerificationTrace",
 ]
