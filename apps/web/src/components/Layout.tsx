@@ -92,6 +92,7 @@ export function Layout() {
       </main>
     </div>
   )
-        { label: "Generative Therapeutics", href: "/chemistry", icon: FlaskConical },
+            { label: "Knowledge Super-Graph", href: "/supergraph", icon: Network },
+{ label: "Generative Therapeutics", href: "/chemistry", icon: FlaskConical },
 { label: "Spatial Multi-Omics", href: "/spatial", icon: Layers },
 }
