@@ -5,6 +5,20 @@ All notable changes to the **Agentic Multimodal Research Platform** will be docu
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.18.0] - 2026-09-15 (Generation 17: Phase 44 - Autonomous Multi-Modal Scientific Knowledge Super-Graph & Hypothesis Discovery Engine)
+
+### Added
+- **Phase 44: Autonomous Multi-Modal Scientific Knowledge Super-Graph & Hypothesis Discovery Engine**:
+  - Implemented database models in `packages/database/src/database/models/super_graph.py` (`DBSuperGraphNode`, `DBSuperGraphEdge`, `DBCausalHypothesis`).
+  - Implemented `SuperGraphRepository` in `packages/database/src/database/repositories/super_graph_repo.py`.
+  - Implemented `SuperGraphHypothesisEngine` in `packages/research/src/research/super_graph_engine.py`.
+  - Implemented REST API routes in `apps/api/src/api/routes/super_graph.py`.
+  - Created interactive Super-Graph Studio in `apps/web/src/pages/SuperGraphStudioPage.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_super_graph_repo.py`, `packages/research/tests/test_super_graph_engine.py`, and `apps/api/tests/test_super_graph_api.py`.
+  - Formalized **ADR 044** in `docs/decisions.md`.
+
+---
+
 ## [2.17.0] - 2026-09-15 (Generation 16: Phase 43 - Autonomous De Novo Generative Molecule & Antibody Design Studio)
 
 ### Added

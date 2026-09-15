@@ -1,3 +1,4 @@
+import SuperGraphStudioPage from './pages/SuperGraphStudioPage';
 import GenerativeChemistryPage from './pages/GenerativeChemistryPage';
 import SpatialTranscriptomicsPage from './pages/SpatialTranscriptomicsPage';
 import { useEffect, useState } from 'react'
@@ -154,6 +155,7 @@ function App() {
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 <Route path="/spatial" element={<SpatialTranscriptomicsPage />} />
           <Route path="/chemistry" element={<GenerativeChemistryPage />} />
+          <Route path="/supergraph" element={<SuperGraphStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )

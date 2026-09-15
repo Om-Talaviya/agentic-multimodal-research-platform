@@ -1077,3 +1077,21 @@ Accelerating therapeutic lead discovery requires multi-objective optimization ac
 
 ### Consequences
 Enables automated in-silico drug candidate generation and biotherapeutic optimization directly inside the platform.
+
+---
+
+## ADR 044: Autonomous Multi-Modal Scientific Knowledge Super-Graph & Causal Hypothesis Discovery Engine
+
+### Status
+Accepted (Phase 44)
+
+### Context
+Scientific discoveries increasingly require synthesizing disparate multi-omics datasets, molecular structures, disease models, and literature into a unified graph capable of performing transitive inference and generating novel causal hypotheses.
+
+### Decision
+1. Implemented `DBSuperGraphNode`, `DBSuperGraphEdge`, and `DBCausalHypothesis` with PostgreSQL 16 / SQLite compatibility.
+2. Built `SuperGraphHypothesisEngine` for GNN link prediction and multi-step mechanistic hypothesis generation.
+3. Created interactive `SuperGraphStudioPage.tsx` with 2D graph canvas and causal hypothesis cards.
+
+### Consequences
+Empowers researchers to uncover novel biological mechanisms and prioritize high-value experimental validation campaigns.

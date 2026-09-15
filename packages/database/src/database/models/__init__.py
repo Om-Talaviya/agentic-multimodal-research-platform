@@ -355,3 +355,9 @@ from database.models.generative_chemistry import (
     DBADMETProfile,
     DBAntibodyCandidate,
 )
+
+from database.models.super_graph import (
+    DBSuperGraphNode,
+    DBSuperGraphEdge,
+    DBCausalHypothesis,
+)

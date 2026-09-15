@@ -533,6 +533,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_generative_chemistry_repo.py`, `packages/research/tests/test_generative_chemistry_engine.py`, and `apps/api/tests/test_generative_chemistry_api.py`.
 - [x] Formalized **ADR 043**.
 
+
+---
+
+## Phase 44: Autonomous Multi-Modal Scientific Knowledge Super-Graph & Hypothesis Discovery Engine
+**Status**: 🟢 COMPLETE (Generation 17: Scientific Meta-Intelligence & Causal Discovery)
+
+**Goal**: Cross-domain fusion of spatial transcriptomics, molecular structures, drug candidates, CRISPR guides, and literature into a unified biomedical Super-Graph with GNN link prediction, autonomous causal scientific hypothesis synthesis, database models (`DBSuperGraphNode`, `DBSuperGraphEdge`, `DBCausalHypothesis`), `SuperGraphRepository`, `SuperGraphHypothesisEngine`, `/api/v1/supergraph/*` REST API, and `SuperGraphStudioPage.tsx` React studio (**ADR 044**).
+
+### Deliverables:
+- [x] Multi-modal cross-domain entity unification (Gene, Disease, Chemical, Pathway, CellType).
+- [x] Graph Neural Network (GNN) transitive link prediction and PageRank / Degree centrality scoring.
+- [x] Autonomous causal scientific hypothesis formulation with multi-step mechanistic chains and falsifiability indexes.
+- [x] Experimental validation protocol recommendation per hypothesis.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/supergraph/init-seed`, `/api/v1/supergraph/nodes`, `/api/v1/supergraph/edges`, `/api/v1/supergraph/hypotheses/formulate`, `/api/v1/supergraph/hypotheses`).
+- [x] Interactive UI Studio with 2D Super-Graph visualizer, GNN predicted link toggles, and hypothesis cards in `apps/web/src/pages/SuperGraphStudioPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_super_graph_repo.py`, `packages/research/tests/test_super_graph_engine.py`, and `apps/api/tests/test_super_graph_api.py`.
+- [x] Formalized **ADR 044**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
