@@ -715,6 +715,29 @@ This document defines the complete visual design system, interaction patterns, u
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### 3.25 Molecular Dynamics & Quantum Chemistry Studio (`MolecularDynamicsPage.tsx`) (Phase 39)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [⚛️ MD & QUANTUM STUDIO]  PCSK9 Catalytic Subdomain (100ns AMBER14SB)                   [⚡ Run MD Sim] │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🎬 3D Trajectory Player ]  [ 📈 RMSD Convergence ]  [ 📊 RMSF Flexibility ]  [ ⚛️ Quantum DFT Studio ] │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  TARGET: PCSK9 Complex | Duration: 100.0 ns | Equil RMSD: 1.45Å | Ensemble: NPT (300K, 1.013 bar)      │
+│  ┌───────────────────────────────────────────────────┬───────────────────────────────────────────────┐  │
+│  │ 3D TIME-LAPSE CANVAS (Rotating Backbone & Solvent) │ INSTANTANEOUS TELEMETRY                       │  │
+│  │                                                   │ • Timestep: 45.00 ns (Frame #14/30)           │  │
+│  │        ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ )                │ • Instant RMSD: 1.42 Å                        │  │
+│  │     ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ )             │ • Potential Energy: -464,800 kJ/mol           │  │
+│  │        ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ )                │ • Temperature: 300.2 K                        │  │
+│  │                                                   ├───────────────────────────────────────────────┤  │
+│  │   [ ▶️ Play / ⏸️ Pause ] [ 1.0x ] [ 0ns ──●── 100ns]│ QUANTUM DFT ORBITALS (B3LYP/6-31G*)          │  │
+│  │   [ 🎨 Flexibility RMSF ] [ 🔄 Rotate 25° ]       │ • LUMO: -2.15 eV | HOMO: -6.39 eV             │  │
+│  │   [ ⬇️ Download Multi-Model Trajectory PDB ]       │ • Bandgap ΔE: 4.24 eV | Dipole: 3.84 Debye    │  │
+│  └───────────────────────────────────────────────────┴───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
 ---
 
 ## 4. UI Interaction States
@@ -745,8 +768,10 @@ This document defines the complete visual design system, interaction patterns, u
 | **Clinical Trials Studio** | PICO inclusion/exclusion cards, LOINC biomarker tags, drug repurposing screens, and eCTD IND dossier meters | Instant tab switch / modal overlay |
 | **Lab Automation Studio** | Interactive 12-slot deck visualizer, microfluidic pipetting table, collision warning cards, and Opentrons/PyLabRobot code export | Instant tab switch / modal overlay |
 | **Molecular Structure Studio** | 3D AlphaFold/ESMFold protein canvas, pLDDT spectrum color tags, pocket cards, in-silico ligand docking table, and mutational stability scan form | Instant tab switch / 3D render update |
+| **Molecular Dynamics Studio** | 3D Trajectory time-lapse player with Play/Pause, speed multiplier, scrubber slider, RMSD convergence chart, RMSF loop bar graph, and DFT orbital bandgap meter | Instant tab switch / animated time scrub |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
+
 
 
 

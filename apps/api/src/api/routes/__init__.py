@@ -19,6 +19,7 @@ from api.routes import (
     metrics,
     models,
     molecular,
+    molecular_dynamics,
     patents,
     peer_review,
     presentations,

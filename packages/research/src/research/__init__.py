@@ -36,6 +36,13 @@ from research.structure_engine import (
     DockingResult,
     MutationStabilityResult,
 )
+from research.molecular_dynamics_engine import (
+    MolecularDynamicsEngine,
+    SimulationResult,
+    TrajectoryFrameData,
+    ResidueFluctuationData,
+    QuantumPropertiesData,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -61,6 +68,11 @@ __all__ = [
     "BindingPocketSpec",
     "DockingResult",
     "MutationStabilityResult",
+    "MolecularDynamicsEngine",
+    "SimulationResult",
+    "TrajectoryFrameData",
+    "ResidueFluctuationData",
+    "QuantumPropertiesData",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",

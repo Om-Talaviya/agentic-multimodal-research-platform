@@ -1149,4 +1149,36 @@ sequenceDiagram
     StructuralBio->>UI: Clicks "Export PDB" -> Downloads "PCSK9_Q9BYF1.pdb"
 ```
 
+---
+
+## 29. Autonomous Molecular Dynamics & Quantum Chemistry Simulation Flow (Phase 39)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Biophysicist as Computational Biophysicist / Chemist
+    participant UI as MolecularDynamicsPage.tsx
+    participant API as FastAPI (/api/v1/md)
+    participant Engine as MolecularDynamicsEngine
+    participant Repo as MolecularDynamicsRepository
+    participant DB as PostgreSQL / SQLite (md_simulations, md_trajectory_frames, md_residue_fluctuations, md_quantum_properties)
+
+    Biophysicist->>UI: Configures Target (PCSK9), Forcefield (AMBER14SB), Solvent (TIP3P), Ensemble (NPT), 100ns
+    UI->>API: POST /api/v1/md/simulate {uniprot_id: "Q9BYF1", system_name: "PCSK9 Solvated Box", forcefield: "AMBER14SB", solvent_model: "TIP3P", ensemble: "NPT", total_duration_ns: 100}
+    API->>Engine: simulate_trajectory(uniprot_id="Q9BYF1", forcefield="AMBER14SB", duration_ns=100)
+    Engine->>Engine: Velocity Verlet atomic coordinate integration & multi-frame PDB generation
+    Engine->>Engine: Backbone Cα RMSD asymptotic equilibrium convergence profiling
+    Engine->>Engine: Per-residue RMSF flexibility curve & dynamic loop gating detection
+    Engine->>Engine: B3LYP/6-31G* DFT quantum electronic orbital & HOMO/LUMO bandgap calculation
+    API->>Repo: create_simulation() + add_trajectory_frames() + add_residue_fluctuations() + set_quantum_properties()
+    Repo->>DB: INSERT into md_simulations, md_trajectory_frames, md_residue_fluctuations, md_quantum_properties
+    API-->>UI: 201 Created (3D Time-Lapse Player, RMSD Convergence, RMSF Bar Chart & DFT Orbitals Rendered)
+
+    Biophysicist->>UI: Clicks "Play" in 3D Canvas (Scrubs animated 100ns trajectory frames at 1.0x speed)
+    Biophysicist->>UI: Inspects "Per-Residue RMSF Flexibility" (Identifies flexible loop hinges > 1.5Å)
+    Biophysicist->>UI: Inspects "Quantum Chemistry & DFT Orbitals" (Analyzes ΔE = 4.24 eV HOMO/LUMO bandgap)
+    Biophysicist->>UI: Clicks "Download Trajectory (.PDB)" -> Downloads multi-model concatenated trajectory file
+```
+
+
 

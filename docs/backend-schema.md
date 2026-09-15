@@ -1334,6 +1334,24 @@ Master systematic literature review (SLR) study records tracking search strings,
 - `POST /api/v1/molecular/structures/{id}/mutate`: Execute thermodynamic mutational stability scan ($\Delta\Delta G$).
 - `GET /api/v1/molecular/structures/{id}/export-pdb`: Download 3D PDB coordinate file.
 
+---
+
+## 23. Autonomous Molecular Dynamics & Quantum Chemistry Schema & REST Endpoints (Phase 39)
+
+### 23.1 Tables: `md_simulations`, `md_trajectory_frames`, `md_residue_fluctuations`, `md_quantum_properties`
+- `md_simulations`: Master atomistic molecular dynamics simulation run (`id`, `user_id`, `workspace_id`, `project_id`, `uniprot_id`, `system_name`, `organism`, `forcefield`, `solvent_model`, `ensemble`, `total_frames`, `timestep_ps`, `total_duration_ns`, `temperature_kelvin`, `pressure_bar`, `equilibrium_rmsd_angstrom`, `thermodynamic_data_json`, `created_at`, `updated_at`).
+- `md_trajectory_frames`: Time-series coordinate checkpoints (`id`, `simulation_id`, `frame_index`, `timestamp_ps`, `rmsd_angstrom`, `radius_of_gyration_angstrom`, `potential_energy_kj_mol`, `kinetic_energy_kj_mol`, `total_energy_kj_mol`, `temperature_kelvin`, `frame_pdb_coordinates`).
+- `md_residue_fluctuations`: Per-residue dynamic flexibility profile (`id`, `simulation_id`, `residue_number`, `residue_name`, `rmsf_angstrom`, `b_factor_equivalent`, `is_flexible_loop`, `secondary_structure_type`).
+- `md_quantum_properties`: Density Functional Theory (DFT) quantum electronic orbital descriptors (`id`, `simulation_id`, `dft_method`, `homo_energy_ev`, `lumo_energy_ev`, `bandgap_energy_ev`, `dipole_moment_debye`, `polarizability_angstrom3`, `total_scf_energy_hartree`, `mulliken_partial_charges_json`, `electrostatic_potential_surface_json`, `created_at`).
+
+### 23.2 REST Endpoints (Phase 39)
+- `POST /api/v1/md/simulate`: Execute all-atom MD trajectory integration, calculate RMSD convergence, RMSF flexibility, and DFT HOMO/LUMO bandgap.
+- `GET /api/v1/md/simulations`: List simulations with summary stats and bandgaps.
+- `GET /api/v1/md/simulations/{id}`: Detailed simulation inspection with full trajectory frames, fluctuations, and quantum properties.
+- `GET /api/v1/md/simulations/{id}/frames/{frame_index}`: Fetch single coordinate snapshot.
+- `GET /api/v1/md/simulations/{id}/export-trajectory`: Download concatenated multi-model PDB trajectory file.
+
+
 
 
 

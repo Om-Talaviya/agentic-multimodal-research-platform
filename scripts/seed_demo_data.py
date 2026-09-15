@@ -100,6 +100,10 @@ from database.models import (
     DBBindingPocket,
     DBDockingPose,
     DBMutationStability,
+    DBMolecularDynamicsSimulation,
+    DBTrajectoryFrame,
+    DBResidueFluctuation,
+    DBQuantumChemistryProperty,
 )
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from shared.auth import hash_password
@@ -1099,10 +1103,94 @@ We demonstrate 94.8\\% in-vivo hepatic silencing with zero genomic cleavage.
         )
         session.add_all([mut1, mut2])
 
+        # --- Phase 39: Autonomous Molecular Dynamics & Quantum Chemistry Simulation Studio ---
+        from research.molecular_dynamics_engine import MolecularDynamicsEngine
+        md_engine = MolecularDynamicsEngine()
+        sim_res = md_engine.simulate_trajectory(
+            uniprot_id="Q9BYF1",
+            system_name="PCSK9 Catalytic Subdomain & LNP Envelope Solvated Complex",
+            organism="Homo sapiens",
+            forcefield="AMBER14SB",
+            solvent_model="TIP3P",
+            ensemble="NPT",
+            total_duration_ns=100.0,
+            total_frames=30,
+            temperature_kelvin=300.0,
+            pressure_bar=1.013,
+        )
+
+        md_sim_id = uuid.uuid4()
+        md_sim = DBMolecularDynamicsSimulation(
+            id=md_sim_id,
+            user_id=user_id,
+            workspace_id=workspace_id,
+            project_id=project_id,
+            uniprot_id=sim_res.uniprot_id,
+            system_name=sim_res.system_name,
+            organism=sim_res.organism,
+            forcefield=sim_res.forcefield,
+            solvent_model=sim_res.solvent_model,
+            ensemble=sim_res.ensemble,
+            total_frames=sim_res.total_frames,
+            timestep_ps=sim_res.timestep_ps,
+            total_duration_ns=sim_res.total_duration_ns,
+            temperature_kelvin=sim_res.temperature_kelvin,
+            pressure_bar=sim_res.pressure_bar,
+            equilibrium_rmsd_angstrom=sim_res.equilibrium_rmsd_angstrom,
+            thermodynamic_data_json=sim_res.thermodynamic_data_json,
+        )
+        session.add(md_sim)
+
+        for frame in sim_res.trajectory_frames:
+            db_frame = DBTrajectoryFrame(
+                id=uuid.uuid4(),
+                simulation_id=md_sim_id,
+                frame_index=frame.frame_index,
+                timestamp_ps=frame.timestamp_ps,
+                rmsd_angstrom=frame.rmsd_angstrom,
+                radius_of_gyration_angstrom=frame.radius_of_gyration_angstrom,
+                potential_energy_kj_mol=frame.potential_energy_kj_mol,
+                kinetic_energy_kj_mol=frame.kinetic_energy_kj_mol,
+                total_energy_kj_mol=frame.total_energy_kj_mol,
+                temperature_kelvin=frame.temperature_kelvin,
+                frame_pdb_coordinates=frame.frame_pdb_coordinates,
+            )
+            session.add(db_frame)
+
+        for fluc in sim_res.residue_fluctuations:
+            db_fluc = DBResidueFluctuation(
+                id=uuid.uuid4(),
+                simulation_id=md_sim_id,
+                residue_number=fluc.residue_number,
+                residue_name=fluc.residue_name,
+                rmsf_angstrom=fluc.rmsf_angstrom,
+                b_factor_equivalent=fluc.b_factor_equivalent,
+                is_flexible_loop=fluc.is_flexible_loop,
+                secondary_structure_type=fluc.secondary_structure_type,
+            )
+            session.add(db_fluc)
+
+        qp = sim_res.quantum_properties
+        db_qp = DBQuantumChemistryProperty(
+            id=uuid.uuid4(),
+            simulation_id=md_sim_id,
+            dft_method=qp.dft_method,
+            homo_energy_ev=qp.homo_energy_ev,
+            lumo_energy_ev=qp.lumo_energy_ev,
+            bandgap_energy_ev=qp.bandgap_energy_ev,
+            dipole_moment_debye=qp.dipole_moment_debye,
+            polarizability_angstrom3=qp.polarizability_angstrom3,
+            total_scf_energy_hartree=qp.total_scf_energy_hartree,
+            mulliken_partial_charges_json=qp.mulliken_partial_charges_json,
+            electrostatic_potential_surface_json=qp.electrostatic_potential_surface_json,
+        )
+        session.add(db_qp)
+
         await session.commit()
         print("[SUCCESS] FULL DEMO DATABASE SUCCESSFULLY SEEDED!")
         print("[SUCCESS] Flagship Project: 'Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery'")
         print("[SUCCESS] Bio-Molecular Models: AlphaFold3 PCSK9 & Cas9_Sp with catalytic pocket docking & D374Y scan")
+        print("[SUCCESS] MD Simulation: 100ns AMBER14SB atomistic trajectory with RMSF loop detection & B3LYP DFT")
         print("[SUCCESS] Robotic Protocol: 'Automated CRISPR-Cas9 Epigenetic LNP Microfluidic Synthesis & Plating'")
         print("[SUCCESS] Admin Credentials: researcher@deepmind.internal / Antigravity2026!")
         print("[SUCCESS] API Key: os_live_demo_9847192837192837198273")
