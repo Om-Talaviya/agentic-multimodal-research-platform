@@ -514,6 +514,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_spatial_repo.py`, `packages/research/tests/test_spatial_engine.py`, and `apps/api/tests/test_spatial_api.py`.
 - [x] Formalized **ADR 042**.
 
+
+---
+
+## Phase 43: Autonomous De Novo Generative Molecule & Antibody Design Studio
+**Status**: 🟢 COMPLETE (Generation 16: Spatial Multi-Omics & De Novo Molecular Therapeutics)
+
+**Goal**: De novo small molecule generative design with SMILES/Mol2 validation, QED drug-likeness ($\ge 0.85$), Synthetic Accessibility (SA Score $\le 3.5$), Lipinski Rule of 5 filtering, targeted antibody CDR-H3 affinity maturation ($	ext{Kd} \le 1.0	ext{ nM}$), ADMET pharmacokinetic safety prediction, database models (`DBGenerativeMolecule`, `DBADMETProfile`, `DBAntibodyCandidate`), `GenerativeChemistryRepository`, `GenerativeChemistryEngine`, `/api/v1/chemistry/*` REST API, and `GenerativeChemistryPage.tsx` React studio (**ADR 043**).
+
+### Deliverables:
+- [x] De novo small molecule generative expansion from lead scaffolds with binding affinity optimization ($\Delta G \le -9.0	ext{ kcal/mol}$).
+- [x] Quantitative Estimate of Drug-likeness (QED) and Synthetic Accessibility (SA) score calculation.
+- [x] Comprehensive ADMET prediction matrix (Human Intestinal Absorption, BBB permeability, CYP450 inhibition, hERG cardiotoxicity).
+- [x] Antibody CDR-H3 loop affinity maturation and paratope structural stability scoring.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/chemistry/generate-molecules`, `/api/v1/chemistry/optimize-antibody`, `/api/v1/chemistry/molecules`, `/api/v1/chemistry/antibodies`).
+- [x] Interactive UI Studio with Molecule Generation cards, ADMET safety heatmap, and CDR-H3 engineering canvas in `apps/web/src/pages/GenerativeChemistryPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_generative_chemistry_repo.py`, `packages/research/tests/test_generative_chemistry_engine.py`, and `apps/api/tests/test_generative_chemistry_api.py`.
+- [x] Formalized **ADR 043**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |

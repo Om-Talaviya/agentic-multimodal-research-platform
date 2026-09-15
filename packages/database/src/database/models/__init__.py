@@ -349,3 +349,9 @@ from database.models.spatial_transcriptomics import (
     DBCellCommunicationPair,
     DBSpatialDomain,
 )
+
+from database.models.generative_chemistry import (
+    DBGenerativeMolecule,
+    DBADMETProfile,
+    DBAntibodyCandidate,
+)

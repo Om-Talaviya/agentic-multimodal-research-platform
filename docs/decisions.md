@@ -1059,3 +1059,21 @@ Single-cell transcriptomics resolves cellular heterogeneity but disrupts spatial
 
 ### Consequences
 Enables researchers to map spatial tumor microenvironments and paracrine interactions in-silico with zero external dependencies.
+
+---
+
+## ADR 043: Autonomous De Novo Generative Molecule & Antibody Design Studio
+
+### Status
+Accepted (Phase 43)
+
+### Context
+Accelerating therapeutic lead discovery requires multi-objective optimization across binding potency, drug-likeness (QED), synthetic accessibility (SA score), and pharmacokinetic safety (ADMET). Similarly, antibody biotherapeutics require automated affinity maturation of CDR loops.
+
+### Decision
+1. Implemented `DBGenerativeMolecule`, `DBADMETProfile`, and `DBAntibodyCandidate` with PostgreSQL 16 / SQLite compatibility.
+2. Built `GenerativeChemistryEngine` supporting de novo small molecule fragment synthesis, Lipinski filtering, and CDR-H3 affinity maturation.
+3. Created interactive `GenerativeChemistryPage.tsx` with side-by-side small molecule and antibody design canvases.
+
+### Consequences
+Enables automated in-silico drug candidate generation and biotherapeutic optimization directly inside the platform.

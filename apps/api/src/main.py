@@ -1,3 +1,4 @@
+from api.routes.generative_chemistry import router as chemistry_router
 from api.routes.spatial import router as spatial_router
 """FastAPI application entry point."""
 
@@ -96,6 +97,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(chemistry_router, prefix="/api/v1")
 app.include_router(spatial_router, prefix="/api/v1")
 app.include_router(health.router, prefix=settings.api_prefix)
 app.include_router(auth.router, prefix=settings.api_prefix)

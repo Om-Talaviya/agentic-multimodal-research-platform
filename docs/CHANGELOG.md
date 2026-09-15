@@ -5,6 +5,20 @@ All notable changes to the **Agentic Multimodal Research Platform** will be docu
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.17.0] - 2026-09-15 (Generation 16: Phase 43 - Autonomous De Novo Generative Molecule & Antibody Design Studio)
+
+### Added
+- **Phase 43: Autonomous De Novo Generative Molecule & Antibody Design Studio**:
+  - Implemented database models in `packages/database/src/database/models/generative_chemistry.py` (`DBGenerativeMolecule`, `DBADMETProfile`, `DBAntibodyCandidate`).
+  - Implemented `GenerativeChemistryRepository` in `packages/database/src/database/repositories/generative_chemistry_repo.py`.
+  - Implemented `GenerativeChemistryEngine` in `packages/research/src/research/generative_chemistry_engine.py`.
+  - Implemented REST API routes in `apps/api/src/api/routes/generative_chemistry.py`.
+  - Created interactive Generative Chemistry Studio in `apps/web/src/pages/GenerativeChemistryPage.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_generative_chemistry_repo.py`, `packages/research/tests/test_generative_chemistry_engine.py`, and `apps/api/tests/test_generative_chemistry_api.py`.
+  - Formalized **ADR 043** in `docs/decisions.md`.
+
+---
+
 ## [2.16.0] - 2026-09-15 (Generation 16: Phase 42 - Autonomous Spatial Transcriptomics & Tissue Microenvironment Studio)
 
 ### Added
