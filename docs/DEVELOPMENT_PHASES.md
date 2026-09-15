@@ -646,6 +646,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_pharmacovigilance_repo.py`, `packages/research/tests/test_pharmacovigilance_engine.py`, and `apps/api/tests/test_pharmacovigilance_api.py`.
 - [x] Formalized **ADR 049**.
 
+
+---
+
+## Phase 50: Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine
+**Status**: 🟢 COMPLETE (Generation 20: Fully Autonomous Meta-Discovery)
+
+**Goal**: Full closed-loop autonomous AI Scientist that generates scientific hypotheses, plans computational experiments, executes in-silico validations, reflects on unexpected anomalies, iterates research programs autonomously, and publishes peer-reviewed style whitepapers, database models (`DBAutonomousScientistProgram`, `DBResearchIterationCycle`, `DBDiscoveryBreakthrough`), `AutonomousScientistRepository`, `AutonomousScientistEngine`, `/api/v1/ai-scientist/*` REST API, and `AIScientistStudioPage.tsx` React studio (**ADR 050**).
+
+### Deliverables:
+- [x] Closed-loop autonomous research program orchestration (Hypothesis -> In-Silico Protocol -> Execution -> Reflection -> Breakthrough).
+- [x] Metacognitive self-reflection traces identifying unexpected feedback rebounds and paradigm shifts.
+- [x] Quantitative Breakthrough Scorecard with Novelty Score ($\ge 0.90$), Empirical Validity, and Falsifiability Indexes.
+- [x] Camera-ready whitepaper summary and automated discovery formalization.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/ai-scientist/run`, `/api/v1/ai-scientist/programs`, `/api/v1/ai-scientist/programs/{id}`).
+- [x] Interactive UI Studio with Discovery banner, multi-cycle research timeline, and reflection cards in `apps/web/src/pages/AIScientistStudioPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_ai_scientist_repo.py`, `packages/research/tests/test_ai_scientist_engine.py`, and `apps/api/tests/test_ai_scientist_api.py`.
+- [x] Formalized **ADR 050**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |

@@ -544,3 +544,6 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 
 - [x] **Phase 49: Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector** <!-- id: 49 -->
   - **Goal**: RWE post-market adverse event mining, PRR/ROR disproportionality, BCPNN IC025, WHO-UMC causality, database models (`DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`), `PharmacovigilanceRepository`, `PharmacovigilanceEngine`, `/api/v1/pharmacovigilance/*` REST API, and `PharmacovigilanceStudioPage.tsx` React studio (**ADR 049**).
+
+- [x] **Phase 50: Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine** <!-- id: 50 -->
+  - **Goal**: Autonomous closed-loop scientific discovery, metacognitive self-reflection, breakthrough scorecards, database models (`DBAutonomousScientistProgram`, `DBResearchIterationCycle`, `DBDiscoveryBreakthrough`), `AutonomousScientistRepository`, `AutonomousScientistEngine`, `/api/v1/ai-scientist/*` REST API, and `AIScientistStudioPage.tsx` React studio (**ADR 050**).

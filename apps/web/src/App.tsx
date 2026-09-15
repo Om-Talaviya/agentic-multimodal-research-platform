@@ -162,6 +162,7 @@ function App() {
         <Route path="/cryoem" element={<CryoEMStudioPage />} />
         <Route path="/pathways" element={<PathwaySimulatorPage />} />
         <Route path="/pharmacovigilance" element={<PharmacovigilanceStudioPage />} />
+        <Route path="/ai-scientist" element={<AIScientistStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
