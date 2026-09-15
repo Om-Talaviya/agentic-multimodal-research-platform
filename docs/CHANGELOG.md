@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.13.0] - 2026-09-15 (Generation 13: Phase 39 - Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio)
+
+### Added
+- **Phase 39: Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio**:
+  - Implemented database models in `packages/database/src/database/models/molecular_dynamics.py` (`DBMolecularDynamicsSimulation`, `DBTrajectoryFrame`, `DBResidueFluctuation`, `DBQuantumChemistryProperty`) with cross-dialect `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `MolecularDynamicsRepository` in `packages/database/src/database/repositories/molecular_dynamics_repo.py` supporting time-series simulations, multi-frame snapshots, per-residue RMSF flexibility curves, and quantum DFT properties.
+  - Implemented `MolecularDynamicsEngine` in `packages/research/src/research/molecular_dynamics_engine.py`:
+    - All-atom Velocity Verlet trajectory simulator generating standard PDB multi-model frames with thermal noise and harmonic atomic oscillations.
+    - Asymptotic Backbone C$\alpha$ RMSD convergence profiling and equilibrium plateau detection ($\tau \sim 1.45 \text{ \AA}$).
+    - Per-residue Root Mean Square Fluctuation (RMSF) dynamic flexibility mapping with flexible loop gating detection.
+    - Quantum Density Functional Theory (DFT B3LYP/6-31G*) electronic orbital calculation (HOMO/LUMO levels, bandgap energy $\Delta E$, dipole moment, chemical hardness $\eta$, and Mulliken charges).
+  - Implemented REST API routes in `apps/api/src/api/routes/molecular_dynamics.py`:
+    - `POST /api/v1/md/simulate`: Execute all-atom MD trajectory with quantum DFT analysis.
+    - `GET /api/v1/md/simulations`: List simulations with summary stats and bandgaps.
+    - `GET /api/v1/md/simulations/{id}`: Detailed simulation inspection with full trajectory frames and fluctuations.
+    - `GET /api/v1/md/simulations/{id}/frames/{frame_index}`: Fetch single coordinate snapshot.
+    - `GET /api/v1/md/simulations/{id}/export-trajectory`: Download concatenated multi-model PDB trajectory file.
+  - Created interactive Molecular Dynamics & Quantum Chemistry Studio in `apps/web/src/pages/MolecularDynamicsPage.tsx`:
+    - 3D Animated Canvas Trajectory Time-Lapse Player with Play/Pause, speed control ($0.5\times - 2.0\times$), time scrubber slider, and dynamic flexibility/structure color coding.
+    - Live simulation telemetry (Instantaneous potential energy, temperature, RMSD, timestep).
+    - RMSD & Thermodynamic Equilibrium line chart with convergence plateau reference.
+    - Per-Residue RMSF Flexibility bar chart with high-flexibility loop badges.
+    - Quantum Chemistry & DFT Orbitals Studio with HOMO/LUMO level diagrams, $\Delta E$ bandgap indicator, and reactivity indexes.
+    - Frame Snapshots table and Multi-Model PDB export.
+  - Mounted `/dynamics` route in `App.tsx` and added `MD Trajectory & Quantum` navigation link with `Atom` icon in `Layout.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_molecular_dynamics_repo.py`, `packages/research/tests/test_molecular_dynamics_engine.py`, and `apps/api/tests/test_molecular_dynamics_api.py` (404/404 total tests passing).
+  - Updated `scripts/seed_demo_data.py` with 100ns AMBER14SB PCSK9 simulation and B3LYP DFT quantum properties.
+  - Formalized **ADR 039** in `docs/decisions.md`.
+
+---
+
 ## [2.12.0] - 2026-09-15 (Generation 12: Phase 38 - Autonomous Bio-Molecular Structure & Protein Folding Visualizer)
 
 ### Added

@@ -24,6 +24,12 @@ from database.models.molecular import (
     DBDockingPose,
     DBMutationStability,
 )
+from database.models.molecular_dynamics import (
+    DBMolecularDynamicsSimulation,
+    DBTrajectoryFrame,
+    DBResidueFluctuation,
+    DBQuantumChemistryProperty,
+)
 from database.models.collaboration import (
     DBReportAnnotation,
     DBWorkspaceActivity,
@@ -148,6 +154,10 @@ MolecularStructure = DBMolecularStructure
 BindingPocket = DBBindingPocket
 DockingPose = DBDockingPose
 MutationStability = DBMutationStability
+MolecularDynamicsSimulation = DBMolecularDynamicsSimulation
+TrajectoryFrame = DBTrajectoryFrame
+ResidueFluctuation = DBResidueFluctuation
+QuantumChemistryProperty = DBQuantumChemistryProperty
 
 __all__ = [
     "ResearchJob",
@@ -294,4 +304,12 @@ __all__ = [
     "DockingPose",
     "DBMutationStability",
     "MutationStability",
+    "DBMolecularDynamicsSimulation",
+    "MolecularDynamicsSimulation",
+    "DBTrajectoryFrame",
+    "TrajectoryFrame",
+    "DBResidueFluctuation",
+    "ResidueFluctuation",
+    "DBQuantumChemistryProperty",
+    "QuantumChemistryProperty",
 ]

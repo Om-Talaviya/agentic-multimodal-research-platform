@@ -925,6 +925,43 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Equips the AI Research OS with bio-molecular structure prediction and computational biophysics capabilities.
   - Positive: Inaugurates Generation 12 (Autonomous Bio-Molecular Structure & Protein Folding Visualizer) on `develop/v1.1`.
 
+---
+
+### ADR 039: Autonomous Molecular Dynamics (MD) Trajectory & Quantum Chemistry Simulation Studio (All-Atom Time-Series Integrator, Backbone RMSD Convergence, RMSF Flexibility & DFT HOMO/LUMO Bandgaps)
+
+- **Status**: Accepted & Implemented (Phase 39 - Generation 13)
+- **Context**: Structural snapshots from Phase 38 provide static representations, but biological macromolecular complexes and target ligands undergo continuous nanosecond-scale thermal fluctuations, conformational transitions, flexible loop gating, and quantum electronic orbital rearrangements. Researchers need to model all-atom time-dependent trajectories, evaluate Backbone C$\alpha$ Root Mean Square Deviation (RMSD) equilibrium convergence, map per-residue Root Mean Square Fluctuation (RMSF) dynamic flexibility, and compute Density Functional Theory (DFT B3LYP/6-31G*) frontier molecular orbital energies (HOMO/LUMO bandgap $\Delta E$, dipole moments, and chemical hardness).
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/molecular_dynamics.py`:
+     - `DBMolecularDynamicsSimulation`: Simulation metadata (uniprot_id, system_name, organism, forcefield: `AMBER14SB`, `CHARMM36m`, `OPLS_AA`, solvent_model: `TIP3P`, `OPC`, `implicit_GB`, ensemble: `NPT`, `NVT`, `NVE`, total_duration_ns, total_frames, timestep_ps, temperature_kelvin, pressure_bar, equilibrium_rmsd_angstrom, thermodynamic_data_json).
+     - `DBTrajectoryFrame`: Time-series coordinate checkpoints (simulation_id, frame_index, timestamp_ps, rmsd_angstrom, radius_of_gyration_angstrom, potential_energy_kj_mol, kinetic_energy_kj_mol, total_energy_kj_mol, temperature_kelvin, frame_pdb_coordinates).
+     - `DBResidueFluctuation`: Per-residue flexibility profile (simulation_id, residue_number, residue_name, rmsf_angstrom, b_factor_equivalent, is_flexible_loop, secondary_structure_type).
+     - `DBQuantumChemistryProperty`: Quantum DFT electronic descriptors (simulation_id, dft_method, homo_energy_ev, lumo_energy_ev, bandgap_energy_ev, dipole_moment_debye, polarizability_angstrom3, total_scf_energy_hartree, mulliken_partial_charges_json, electrostatic_potential_surface_json).
+  2. Implement `MolecularDynamicsRepository` in `packages/database/src/database/repositories/molecular_dynamics_repo.py`:
+     - Async methods: `create_simulation`, `get_simulation`, `list_simulations`, `add_trajectory_frames`, `add_residue_fluctuations`, `set_quantum_properties`.
+  3. Implement `MolecularDynamicsEngine` in `packages/research/src/research/molecular_dynamics_engine.py`:
+     - Generates time-dependent harmonic conformational trajectory coordinates with Velocity Verlet physics.
+     - Profiles asymptotic Backbone C$\alpha$ RMSD convergence and radius of gyration ($R_g$).
+     - Maps per-residue RMSF flexibility curves and identifies dynamic loop gating.
+     - Computes quantum DFT electronic properties (B3LYP/6-31G* HOMO/LUMO energies, bandgap $\Delta E$, dipole moment, and chemical reactivity indexes).
+  4. Implement REST APIs in `apps/api/src/api/routes/molecular_dynamics.py`:
+     - `POST /api/v1/md/simulate`: Run and persist MD trajectory with DFT quantum analysis.
+     - `GET /api/v1/md/simulations`: List simulations with summary stats.
+     - `GET /api/v1/md/simulations/{id}`: Fetch simulation details, frames, fluctuations, and quantum properties.
+     - `GET /api/v1/md/simulations/{id}/frames/{frame_index}`: Fetch single coordinate snapshot.
+     - `GET /api/v1/md/simulations/{id}/export-trajectory`: Download concatenated multi-model PDB trajectory stream.
+  5. Build React Studio in `apps/web/src/pages/MolecularDynamicsPage.tsx`:
+     - 3D Animated Canvas Trajectory Time-Lapse Player (Play/Pause, speed $0.5\times - 2.0\times$, scrubber slider $0 \rightarrow N$ ns, rotation angle, flexibility/structure color coding).
+     - Live simulation telemetry (Instantaneous potential energy, temperature, RMSD, timestep).
+     - RMSD & Thermodynamic Equilibrium line chart with convergence plateau line.
+     - Per-Residue RMSF Flexibility bar chart with high-flexibility loop badges.
+     - Quantum Chemistry & DFT Orbitals Studio (HOMO/LUMO level diagrams, $\Delta E$ bandgap indicator, dipole moment, chemical hardness/electronegativity).
+     - Frame Snapshots table and Multi-Model PDB export.
+- **Consequences**:
+  - Positive: Completes Generation 13 (Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio).
+  - Positive: Provides researchers with full time-resolved atomistic biophysical insight and electronic quantum orbital intelligence on `develop/v1.1`.
+
+
 
 
 
