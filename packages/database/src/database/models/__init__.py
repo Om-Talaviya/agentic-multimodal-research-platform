@@ -361,3 +361,9 @@ from database.models.super_graph import (
     DBSuperGraphEdge,
     DBCausalHypothesis,
 )
+
+from database.models.drug_synergy import (
+    DBDrugRepurposingScreen,
+    DBRepurposedCandidate,
+    DBDrugCombinationSynergy,
+)

@@ -1095,3 +1095,21 @@ Scientific discoveries increasingly require synthesizing disparate multi-omics d
 
 ### Consequences
 Empowers researchers to uncover novel biological mechanisms and prioritize high-value experimental validation campaigns.
+
+---
+
+## ADR 045: Autonomous High-Throughput Drug Repurposing & Combination Synergy Simulator
+
+### Status
+Accepted (Phase 45)
+
+### Context
+Overcoming drug resistance in complex malignancies and chronic diseases demands multi-target combination therapies. Screening thousands of approved drugs in-silico via transcriptomic signature inversion combined with quantitative ZIP/Loewe synergy scoring accelerates the discovery of synergistic drug cocktails.
+
+### Decision
+1. Implemented `DBDrugRepurposingScreen`, `DBRepurposedCandidate`, and `DBDrugCombinationSynergy` with PostgreSQL 16 / SQLite compatibility.
+2. Built `DrugSynergyEngine` for CMap connectivity scoring and 2D ZIP delta matrix calculation.
+3. Created interactive `DrugSynergyStudioPage.tsx` with 4x4 interactive synergy heatmap and dose-reduction gauges.
+
+### Consequences
+Provides researchers with a quantitative workbench for in-silico drug repositioning and combination synergy optimization.
