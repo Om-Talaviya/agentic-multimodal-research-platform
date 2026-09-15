@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.14.0] - 2026-09-15 (Generation 14: Phase 40 - Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio)
+
+### Added
+- **Phase 40: Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio**:
+  - Implemented database models in `packages/database/src/database/models/crispr.py` (`DBCRISPRDesign`, `DBGuideRNA`, `DBOffTargetSite`, `DBBaseEditingProfile`) with cross-dialect `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `CRISPRRepository` in `packages/database/src/database/repositories/crispr_repo.py` supporting targeting campaign lifecycle, candidate gRNA ranking, genome-wide off-target mismatch loci, and precision base editing profiles.
+  - Implemented `CRISPRGuideDesignEngine` in `packages/research/src/research/crispr_engine.py`:
+    - PAM scanning across nucleases: SpCas9 (`NGG`), Cas12a/Cpf1 (`TTTV`), xCas9 (`NG`), SaCas9 (`NNGRRT`), and Cas9-HF1.
+    - Azimuth 2.0 / Rule Set 2 on-target cleavage efficiency scoring (0–100%) incorporating positional base preferences and GC penalty windows.
+    - Cutting Frequency Determination (CFD) off-target positional mismatch matrix scoring against genome-wide loci.
+    - Precision Base Editing deamination activity window profiling (positions 4–8 for ABE $A \rightarrow G$ and CBE $C \rightarrow T$) with bystander mutation risk classification.
+    - Golden Gate cloning oligonucleotide generation with BsmBI/BsaI sticky overhangs (`5'-CACC-[Spacer]-3'` and `5'-AAAC-[RevComp]-3'`) and duplex annealing thermocycler protocols.
+  - Implemented REST API routes in `apps/api/src/api/routes/crispr.py`:
+    - `POST /api/v1/crispr/design`: Design candidate gRNAs, off-target analysis, base editing profiles, and cloning oligos.
+    - `GET /api/v1/crispr/designs`: List targeting campaigns with filtering.
+    - `GET /api/v1/crispr/designs/{id}`: Detailed campaign inspection with full candidate guides, off-targets, and base editing profiles.
+    - `GET /api/v1/crispr/guides/{id}/oligos`: Retrieve ready-to-order Golden Gate cloning oligos and annealing protocol.
+    - `GET /api/v1/crispr/designs/{id}/export-genbank`: Download annotated GenBank (.gb) format sequence file.
+    - `DELETE /api/v1/crispr/designs/{id}`: Delete targeting campaign and cascaded records.
+  - Created interactive CRISPR & Synthetic Biology Studio in `apps/web/src/pages/CRISPRStudioPage.tsx`:
+    - Protospacer Sequence Map Visualizer with highlighted PAM sites and active guide footprints.
+    - Candidate gRNA Ranked Table with Azimuth efficiency, CFD specificity, GC%, and Quality Tier badges.
+    - Genome-Wide Off-Target Inspector with mismatch counts and exonic vs intergenic risk tags.
+    - Precision Base Editing Window Visualizer for ABE8e and CBE deamination windows.
+    - Golden Gate BsmBI/BsaI Cloning Oligo ordering sheet with 1-click clipboard copy and GenBank download.
+    - Preloaded therapeutic targeting presets (PCSK9 Exon 1, BCL11A Enhancer, VEGFA Exon 3).
+  - Mounted `/crispr` route in `App.tsx` and added `CRISPR & Synthetic Bio` navigation link with `Scissors` icon in `Layout.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_crispr_repo.py`, `packages/research/tests/test_crispr_engine.py`, and `apps/api/tests/test_crispr_api.py` (407/407 monorepo tests passing).
+  - Updated `scripts/seed_demo_data.py` with PCSK9 Exon 1 targeting campaign.
+  - Formalized **ADR 040** in `docs/decisions.md`.
+
+---
+
 ## [2.13.0] - 2026-09-15 (Generation 13: Phase 39 - Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio)
 
 ### Added

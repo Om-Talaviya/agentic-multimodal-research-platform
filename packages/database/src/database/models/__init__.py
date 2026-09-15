@@ -30,6 +30,12 @@ from database.models.molecular_dynamics import (
     DBResidueFluctuation,
     DBQuantumChemistryProperty,
 )
+from database.models.crispr import (
+    DBCRISPRDesign,
+    DBGuideRNA,
+    DBOffTargetSite,
+    DBBaseEditingProfile,
+)
 from database.models.collaboration import (
     DBReportAnnotation,
     DBWorkspaceActivity,
@@ -158,6 +164,10 @@ MolecularDynamicsSimulation = DBMolecularDynamicsSimulation
 TrajectoryFrame = DBTrajectoryFrame
 ResidueFluctuation = DBResidueFluctuation
 QuantumChemistryProperty = DBQuantumChemistryProperty
+CRISPRDesign = DBCRISPRDesign
+GuideRNA = DBGuideRNA
+OffTargetSite = DBOffTargetSite
+BaseEditingProfile = DBBaseEditingProfile
 
 __all__ = [
     "ResearchJob",
@@ -312,4 +322,12 @@ __all__ = [
     "ResidueFluctuation",
     "DBQuantumChemistryProperty",
     "QuantumChemistryProperty",
+    "DBCRISPRDesign",
+    "CRISPRDesign",
+    "DBGuideRNA",
+    "GuideRNA",
+    "DBOffTargetSite",
+    "OffTargetSite",
+    "DBBaseEditingProfile",
+    "BaseEditingProfile",
 ]

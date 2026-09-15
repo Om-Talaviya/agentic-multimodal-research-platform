@@ -43,6 +43,13 @@ from research.molecular_dynamics_engine import (
     ResidueFluctuationData,
     QuantumPropertiesData,
 )
+from research.crispr_engine import (
+    CRISPRGuideDesignEngine,
+    CRISPRDesignResult,
+    GuideRNAResult,
+    OffTargetSiteResult,
+    BaseEditingProfileResult,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -73,6 +80,11 @@ __all__ = [
     "TrajectoryFrameData",
     "ResidueFluctuationData",
     "QuantumPropertiesData",
+    "CRISPRGuideDesignEngine",
+    "CRISPRDesignResult",
+    "GuideRNAResult",
+    "OffTargetSiteResult",
+    "BaseEditingProfileResult",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",
