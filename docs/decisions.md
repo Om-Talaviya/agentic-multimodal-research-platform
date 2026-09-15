@@ -890,9 +890,40 @@ This document records the key architectural, engineering, and product design dec
      - Transfer Steps table with pipetting sequence, volume, and liquid class badges.
      - Virtual Physics & Collision Telemetry with warning cards and step-by-step logs.
      - Executable Code viewer with copy/download options across Opentrons, PyLabRobot, and Autoprotocol formats.
+### ADR 038: Autonomous Bio-Molecular Structure & Protein Folding Visualizer (AlphaFold3 / ESMFold 3D Viewer, Binding Pocket Cavity Detection & In-Silico Ligand Docking)
+
+- **Status**: Accepted & Implemented (Phase 38 - Generation 12)
+- **Context**: Structural biology and biophysical drug discovery require high-resolution 3D structural models, confidence spectrum evaluations (per-residue pLDDT), binding pocket cavity detection, in-silico ligand docking simulations (AutoDock-Vina/DiffDock), and thermodynamic mutational stability scans ($\Delta\Delta G$). The platform needs an interactive, local-first structural biology studio enabling researchers to fold target sequences, visualize secondary structures and confidence envelopes, locate druggable active sites, dock candidate small molecules, and evaluate pathogenic/stabilizing point mutations.
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/molecular.py`:
+     - `DBMolecularStructure`: 3D structure specification (uniprot_id, gene_name, organism, sequence, mean_plddt_score, resolution_angstrom, structure_source: `AlphaFold3`, `ESMFold`, `PDB_Experimental`, pdb_coordinate_data, secondary_structure_summary).
+     - `DBBindingPocket`: Predicted binding pocket (pocket_index, druggability_score, volume_cubic_angstrom, surface_area_angstrom2, key_residues_json, center_coordinates_json).
+     - `DBDockingPose`: Ligand docking pose (pocket_id, ligand_name, binding_affinity_kcal_mol, rmsd_angstrom, hydrogen_bonds_count, pi_stacking_interactions, pose_coordinates_json).
+     - `DBMutationStability`: Thermodynamic stability scan (wildtype_residue, position, mutant_residue, delta_delta_g_kcal_mol, stability_verdict: `stabilizing`, `destabilizing`, `neutral`, pathogenicity_score).
+  2. Implement `MolecularStructureRepository` in `packages/database/src/database/repositories/molecular_repo.py`:
+     - Async CRUD operations: `create_structure`, `get_structure`, `list_structures`, `add_binding_pocket`, `add_binding_pockets`, `add_docking_pose`, `add_mutation_stability`, `add_mutation_stabilities`.
+  3. Implement `StructurePredictionEngine` in `packages/research/src/research/structure_engine.py`:
+     - Predicts 3D coordinates adhering to PDB standard format with per-residue pLDDT embedded in the B-factor column.
+     - Detects druggable catalytic cavities and calculates volume/surface area.
+     - Simulates in-silico ligand docking with AutoDock-Vina/DiffDock binding affinity calculation ($\Delta G$), RMSD, and hydrogen bonding.
+     - Calculates thermodynamic folding free energy shifts ($\Delta\Delta G$) for point mutations with pathogenicity classification.
+  4. Implement REST APIs in `apps/api/src/api/routes/molecular.py`:
+     - `POST /api/v1/molecular/predict`: Predict 3D protein structure and binding pockets.
+     - `GET /api/v1/molecular/structures`: List structures filtered by user/workspace/project/uniprot.
+     - `GET /api/v1/molecular/structures/{id}`: Fetch complete structure details.
+     - `POST /api/v1/molecular/structures/{id}/dock`: Execute in-silico ligand docking.
+     - `POST /api/v1/molecular/structures/{id}/mutate`: Run mutational stability scan.
+     - `GET /api/v1/molecular/structures/{id}/export-pdb`: Download PDB coordinate file.
+  5. Build React Studio in `apps/web/src/pages/MolecularStructurePage.tsx`:
+     - Interactive 3D Canvas visualizer with ribbon/helix rendering and animated rotation.
+     - pLDDT confidence spectrum color scale (Very High $>90$, Confident $70-90$, Low $50-70$, Disordered $<50$).
+     - Binding Pocket Explorer with druggability scores and active site residues.
+     - In-silico Ligand Docking Studio with binding affinities (kcal/mol), RMSD, and hydrogen bonds.
+     - $\Delta\Delta G$ Mutational Stability Scanner with pathogenic hotspot warnings.
+     - PDB Export & Raw Sequence inspect viewer.
 - **Consequences**:
-  - Positive: Automates wet-lab experimental synthesis, directly executing computational hypotheses on physical robotic liquid handling platforms.
-  - Positive: Inaugurates Generation 11 (Autonomous Laboratory Automation & Cloud Biofoundry Integration) on `develop/v1.1`.
+  - Positive: Equips the AI Research OS with bio-molecular structure prediction and computational biophysics capabilities.
+  - Positive: Inaugurates Generation 12 (Autonomous Bio-Molecular Structure & Protein Folding Visualizer) on `develop/v1.1`.
 
 
 

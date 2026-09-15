@@ -7,6 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.0] - 2026-09-15 (Generation 12: Phase 38 - Autonomous Bio-Molecular Structure & Protein Folding Visualizer)
+
+### Added
+- **Phase 38: Autonomous Bio-Molecular Structure & Protein Folding Visualizer**:
+  - Implemented database persistence models in `packages/database/src/database/models/molecular.py` (`DBMolecularStructure`, `DBBindingPocket`, `DBDockingPose`, `DBMutationStability`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `MolecularStructureRepository` in `packages/database/src/database/repositories/molecular_repo.py` supporting 3D structure creation, active binding pocket management, in-silico ligand docking poses, and mutational stability scan queries.
+  - Implemented `StructurePredictionEngine` in `packages/research/src/research/structure_engine.py`:
+    - Generates standard PDB coordinate streams for AlphaFold3 / ESMFold predictions with per-residue pLDDT confidence embedded in the B-factor column.
+    - Druggable catalytic pocket and cavity detection with volume ($\text{Å}^3$) and surface area ($\text{Å}^2$) calculation.
+    - In-silico ligand docking simulator (AutoDock-Vina / DiffDock proxy) computing binding affinity ($\Delta G$), RMSD, and hydrogen bonding.
+    - Thermodynamic folding free energy scan ($\Delta\Delta G$ in $\text{kcal/mol}$) for point mutations with pathogenic classification.
+  - Implemented REST API routes in `apps/api/src/api/routes/molecular.py`:
+    - `POST /api/v1/molecular/predict`: Predict 3D protein structure and binding pockets.
+    - `GET /api/v1/molecular/structures`: List structures filtered by user/workspace/project/uniprot.
+    - `GET /api/v1/molecular/structures/{id}`: Detailed structure inspection with pockets, docking poses, and mutations.
+    - `POST /api/v1/molecular/structures/{id}/dock`: Execute in-silico ligand docking.
+    - `POST /api/v1/molecular/structures/{id}/mutate`: Run mutational stability scan.
+    - `GET /api/v1/molecular/structures/{id}/export-pdb`: Download PDB coordinate file.
+  - Created interactive Bio-Molecular Structure Studio in `apps/web/src/pages/MolecularStructurePage.tsx`:
+    - Interactive 3D Canvas visualizer with ribbon/helix rendering and animated rotation.
+    - pLDDT confidence spectrum color scale (Very High $>90$, Confident $70-90$, Low $50-70$, Disordered $<50$).
+    - Binding Pocket Explorer with druggability scores and active site residues.
+    - In-silico Ligand Docking Studio with binding affinities, RMSD, and hydrogen bonds.
+    - $\Delta\Delta G$ Mutational Stability Scanner with pathogenic hotspot warnings.
+    - PDB Export & Raw Sequence inspect viewer.
+  - Mounted `/molecular` route in `App.tsx` and added `Bio-Molecular Structure` navigation link with `Dna` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_molecular_repo.py`, `packages/research/tests/test_structure_engine.py`, and `apps/api/tests/test_molecular_api.py` (399/399 total tests passing).
+  - Updated `scripts/seed_demo_data.py` with AlphaFold3 PCSK9 & Cas9_Sp structural models.
+  - Formalized **ADR 038** in `docs/decisions.md`.
+
+---
+
 ## [2.11.0] - 2026-09-15 (Generation 11: Phase 37 - Autonomous Laboratory Automation & Robotic Protocol Generator)
 
 ### Added
