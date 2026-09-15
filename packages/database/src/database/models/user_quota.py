@@ -3,7 +3,7 @@
 import uuid
 from datetime import UTC, datetime
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID
+from database.models.memory import GUID
 from database.connection import Base
 
 
@@ -16,8 +16,8 @@ class UserQuota(Base):
 
     __tablename__ = "user_quotas"
 
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(PG_UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), unique=True, nullable=False, index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    user_id = Column(GUID(), ForeignKey("users.id", ondelete="CASCADE"), unique=True, nullable=False, index=True)
     daily_token_limit = Column(Integer, nullable=True)  # NULL = unlimited
     daily_cost_limit = Column(Float, nullable=True)     # NULL = unlimited
     tokens_used_today = Column(Integer, nullable=False, default=0)

@@ -1282,6 +1282,42 @@ Master systematic literature review (SLR) study records tracking search strings,
 - `GET /api/v1/grants/metrics`: Query platform grant funding metrics.
 - `DELETE /api/v1/grants/proposals/{id}`: Delete proposal.
 
+---
+
+## 20. Autonomous Clinical Trial Protocol & Drug Repurposing Schema & REST Endpoints (Phase 36)
+
+### 20.1 Tables: `clinical_protocols`, `clinical_cohort_criteria`, `clinical_drug_candidates`, `clinical_regulatory_packages`
+- `clinical_protocols`: Master clinical trial protocol (`id`, `user_id`, `workspace_id`, `project_id`, `protocol_title`, `phase_type`, `disease_indication`, `icd_code`, `investigational_agent`, `mechanism_of_action`, `target_gene_or_protein`, `primary_endpoint`, `secondary_endpoints`, `sample_size_planned`, `study_duration_weeks`, `adverse_risk_score`, `regulatory_status`, `full_protocol_json`, `created_at`, `updated_at`).
+- `clinical_cohort_criteria`: PICO patient eligibility criteria (`id`, `protocol_id`, `criterion_type`, `category`, `description`, `is_mandatory`, `loinc_code`).
+- `clinical_drug_candidates`: Repurposed drug screening candidate (`id`, `protocol_id`, `compound_name`, `smiles_string`, `current_approved_indication`, `repurposed_indication`, `binding_affinity_nm`, `bioavailability_pct`, `toxicity_risk_score`, `repurposing_rationale`, `created_at`).
+- `clinical_regulatory_packages`: eCTD IND / EMA CTD electronic regulatory submission dossier (`id`, `protocol_id`, `regulatory_agency`, `module_type`, `completeness_score`, `irb_readiness_verdict`, `validation_findings`, `generated_at`).
+
+### 20.2 REST Endpoints (Phase 36)
+- `POST /api/v1/clinical/protocols/generate`: Autonomous generation and persistence of clinical protocol, cohort criteria, candidate screens, and initial FDA IND package.
+- `GET /api/v1/clinical/protocols`: List clinical protocols with filters for workspace/project.
+- `GET /api/v1/clinical/protocols/{id}`: Retrieve detailed protocol with cohort criteria, drug candidates, and regulatory packages.
+- `POST /api/v1/clinical/protocols/{id}/criteria`: Add custom PICO cohort inclusion or exclusion criterion.
+- `POST /api/v1/clinical/protocols/{id}/regulatory-package`: Generate electronic regulatory module dossier.
+
+---
+
+## 21. Autonomous Laboratory Automation & Robotic Protocol Schema & REST Endpoints (Phase 37)
+
+### 21.1 Tables: `robotic_protocols`, `robotic_deck_slots`, `robotic_transfer_steps`, `robotic_execution_traces`
+- `robotic_protocols`: Master robotic protocol (`id`, `user_id`, `workspace_id`, `project_id`, `protocol_name`, `robot_platform`, `assay_type`, `deck_layout_json`, `total_runtime_minutes`, `liquid_waste_volume_ml`, `validation_status`, `protocol_python_code`, `autoprotocol_json`, `created_at`, `updated_at`).
+- `robotic_deck_slots`: Workstation 12-slot deck allocations (`id`, `protocol_id`, `slot_number`, `labware_type`, `reagent_name`, `initial_volume_ul`, `current_volume_ul`).
+- `robotic_transfer_steps`: Atomic pipetting transfers (`id`, `protocol_id`, `step_index`, `source_slot`, `source_well`, `target_slot`, `target_well`, `volume_ul`, `pipette_name`, `transfer_type`, `liquid_class`).
+- `robotic_execution_traces`: Virtual physics simulation & collision telemetry (`id`, `protocol_id`, `step_count`, `simulated_runtime_sec`, `estimated_tip_count`, `tip_waste_pct`, `collision_warnings`, `simulation_log`, `executed_at`).
+
+### 21.2 REST Endpoints (Phase 37)
+- `POST /api/v1/lab/protocols/compile`: Autonomous compilation, virtual collision check, and protocol persistence.
+- `GET /api/v1/lab/protocols`: List robotic protocols with filters for platform, workspace, and project.
+- `GET /api/v1/lab/protocols/{id}`: Retrieve detailed protocol with deck slots, transfer steps, and simulation traces.
+- `POST /api/v1/lab/protocols/{id}/simulate`: Dynamic simulation of custom pipetting sequences and collision evaluation.
+- `GET /api/v1/lab/protocols/{id}/export-code`: Multi-format robot code export (`opentrons_python`, `pylabrobot`, `autoprotocol`).
+
+
+
 
 
 

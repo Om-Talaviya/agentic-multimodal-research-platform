@@ -1,6 +1,8 @@
 """Unit tests for InMemoryVectorStore."""
 
+import shutil
 import tempfile
+import uuid
 from pathlib import Path
 import pytest
 from retrieval.in_memory_store import InMemoryVectorStore, cosine_similarity
@@ -70,8 +72,10 @@ async def test_in_memory_vector_store_crud_and_search():
 
 @pytest.mark.asyncio
 async def test_in_memory_persistence():
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        persist_file = Path(tmp_dir) / "vectors.json"
+    temp_dir = Path("./.test_vectors_tmp") / str(uuid.uuid4())
+    temp_dir.mkdir(parents=True, exist_ok=True)
+    persist_file = temp_dir / "vectors.json"
+    try:
         store1 = InMemoryVectorStore(persist_path=persist_file)
 
         doc = VectorDocument(
@@ -89,3 +93,5 @@ async def test_in_memory_persistence():
         retrieved = await store2.get("saved_doc")
         assert retrieved is not None
         assert retrieved.content == "Persistent knowledge chunk"
+    finally:
+        shutil.rmtree(temp_dir, ignore_errors=True)

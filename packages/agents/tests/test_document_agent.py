@@ -93,11 +93,16 @@ async def test_document_analysis_empty_doc_ids():
         inputs={"document_ids": []},
     )
 
+    mock_doc_tool = MagicMock()
+    mock_doc_tool.execute = AsyncMock(return_value="")
+    mock_kb_tool = MagicMock()
+    mock_kb_tool.execute = AsyncMock(return_value=[])
+
     context = AgentContext(
         research_job_id="job_2",
         task_id="task_doc_2",
         request_id="req_2",
-        tools={"document_read": MagicMock()},
+        tools={"document_read": mock_doc_tool, "knowledge_search": mock_kb_tool},
         memory=AgentMemory(),
         model_router=mock_router,
         config={},

@@ -22,6 +22,13 @@ from research.memory import (
     MemoryType,
     ResearchMemoryManager,
 )
+from research.robotic_protocol_compiler import (
+    RoboticProtocolCompiler,
+    CompiledRoboticProtocol,
+    LabwareSlotSpec,
+    TransferStepSpec,
+    ProtocolSimulationResult,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -37,6 +44,11 @@ __all__ = [
     "MemoryType",
     "MemorySearchRequest",
     "MemoryRecallResult",
+    "RoboticProtocolCompiler",
+    "CompiledRoboticProtocol",
+    "LabwareSlotSpec",
+    "TransferStepSpec",
+    "ProtocolSimulationResult",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",

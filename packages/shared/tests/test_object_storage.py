@@ -1,13 +1,14 @@
-"""Unit tests for S3/MinIO/Local ObjectStorageClient (Phase 24)."""
 import os
+from pathlib import Path
 import shutil
-import tempfile
+import uuid
 import pytest
 from shared.storage import ObjectStorageClient
 
 @pytest.fixture
 def temp_storage():
-    temp_dir = tempfile.mkdtemp()
+    temp_dir = os.path.join(os.getcwd(), ".storage_test_dir", str(uuid.uuid4()))
+    os.makedirs(temp_dir, exist_ok=True)
     client = ObjectStorageClient(base_storage_dir=temp_dir, default_bucket="test-bucket")
     yield client, temp_dir
     shutil.rmtree(temp_dir, ignore_errors=True)
