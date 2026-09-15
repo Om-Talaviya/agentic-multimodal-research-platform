@@ -535,3 +535,6 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 
 - [x] **Phase 46: Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier** <!-- id: 46 -->
   - **Goal**: Adaptive clinical trial protocol generation, inclusion/exclusion eligibility criteria rules, EHR cohort matching, Kaplan-Meier power calculations, synthetic control arm simulation, database models (`DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, `DBSyntheticControlArm`), `ClinicalTrialRepository`, `ClinicalTrialOptimizerEngine`, `/api/v1/clinical-trials/*` REST API, and `ClinicalTrialStudioPage.tsx` React studio (**ADR 046**).
+
+- [x] **Phase 47: Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling** <!-- id: 47 -->
+  - **Goal**: High-resolution Cryo-EM 3D density map fitting, FSC curve computation, MolProbity validation, macromolecular complex interface energetics, database models (`DBCryoEMDensityMap`, `DBDensityMapFitting`, `DBMacromolecularComplex`), `CryoEMRepository`, `CryoEMModelingEngine`, `/api/v1/cryoem/*` REST API, and `CryoEMStudioPage.tsx` React studio (**ADR 047**).
