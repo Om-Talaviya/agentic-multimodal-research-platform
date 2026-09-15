@@ -373,3 +373,5 @@ from database.models.clinical_trial import DBClinicalTrialProtocol, DBEligibilit
 from database.models.cryoem import DBCryoEMDensityMap, DBDensityMapFitting, DBMacromolecularComplex
 
 from database.models.pathway_perturbation import DBMultiOmicsExperiment, DBPathwayCascade, DBPerturbationSimulation
+
+from database.models.pharmacovigilance import DBPharmacovigilanceCorpus, DBSafetySignalReport, DBDisproportionalityMetric

@@ -1,4 +1,15 @@
 
+## [Phase 49] - Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector
+### Added
+- Database models: `DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`.
+- Repository `PharmacovigilanceRepository` for managing multi-source adverse event corpora and signal metrics.
+- Scientific `PharmacovigilanceEngine` for PRR, ROR 95% CI, BCPNN IC025, and WHO-UMC causality inference.
+- FastAPI routes at `/api/v1/pharmacovigilance/*`.
+- Interactive React studio `PharmacovigilanceStudioPage.tsx` with disproportionality gauges and safety signal cards.
+- Unit and integration tests in `packages/database/tests/test_pharmacovigilance_repo.py`, `packages/research/tests/test_pharmacovigilance_engine.py`, and `apps/api/tests/test_pharmacovigilance_api.py`.
+- Architecture Decision Record **ADR 049**.
+
+
 ## [Phase 48] - Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator
 ### Added
 - Database models: `DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`.

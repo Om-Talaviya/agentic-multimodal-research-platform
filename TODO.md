@@ -541,3 +541,6 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 
 - [x] **Phase 48: Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator** <!-- id: 48 -->
   - **Goal**: Multi-omics dynamic ODE kinetic signaling simulation, metabolic flux balance shifts, bypass resistance mechanisms, database models (`DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`), `PathwayPerturbationRepository`, `PathwayPerturbationEngine`, `/api/v1/pathways/*` REST API, and `PathwaySimulatorPage.tsx` React studio (**ADR 048**).
+
+- [x] **Phase 49: Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector** <!-- id: 49 -->
+  - **Goal**: RWE post-market adverse event mining, PRR/ROR disproportionality, BCPNN IC025, WHO-UMC causality, database models (`DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`), `PharmacovigilanceRepository`, `PharmacovigilanceEngine`, `/api/v1/pharmacovigilance/*` REST API, and `PharmacovigilanceStudioPage.tsx` React studio (**ADR 049**).
