@@ -28,6 +28,7 @@ import { LabAutomationPage } from './pages/LabAutomationPage'
 import { MolecularStructurePage } from './pages/MolecularStructurePage'
 import { MolecularDynamicsPage } from './pages/MolecularDynamicsPage'
 import { CRISPRStudioPage } from './pages/CRISPRStudioPage'
+import { SingleCellStudioPage } from './pages/SingleCellStudioPage'
 import { Login } from './pages/Login'
 
 
@@ -130,6 +131,7 @@ function App() {
           <Route path="molecular" element={<MolecularStructurePage />} />
           <Route path="dynamics" element={<MolecularDynamicsPage />} />
           <Route path="crispr" element={<CRISPRStudioPage />} />
+          <Route path="single-cell" element={<SingleCellStudioPage />} />
           <Route path="settings" element={<Settings />} />
 
 

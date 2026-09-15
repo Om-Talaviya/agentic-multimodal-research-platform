@@ -5,6 +5,39 @@ All notable changes to the **Agentic Multimodal Research Platform** will be docu
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.0] - 2026-09-15 (Generation 15: Phase 41 - Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio)
+
+### Added
+- **Phase 41: Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio**:
+  - Implemented database models in `packages/database/src/database/models/single_cell.py` (`DBSingleCellDataset`, `DBCellCluster`, `DBCellCoordinate`, `DBDifferentialGene`, `DBPathwayEnrichment`) with cross-dialect `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `SingleCellRepository` in `packages/database/src/database/repositories/single_cell_repo.py` supporting single-cell dataset lifecycles, cluster distributions, high-dimensional coordinates, marker gene discoveries, and GSEA pathway enrichments.
+  - Implemented `SingleCellTranscriptomicsEngine` in `packages/research/src/research/single_cell_engine.py`:
+    - Quality Control (QC) filtering pipeline on UMI library depth, detected gene count, and mitochondrial read percentage ($\le 15\%$).
+    - Graph-based Leiden community clustering and Principal Component Analysis (PCA) dimensionality reduction.
+    - 2D nonlinear embedding projection generating high-resolution coordinates for both Uniform Manifold Approximation and Projection (UMAP) and $t$-Distributed Stochastic Neighbor Embedding (t-SNE).
+    - Non-parametric Wilcoxon rank-sum differential expression testing with Benjamini-Hochberg False Discovery Rate (FDR) adjusted $p$-values and $\log_2\text{FC}$ effect sizes.
+    - Diffusion Pseudotime (DPT) cellular trajectory ordering ($0.0 \rightarrow 1.0$) mapping stem/quiescent state transitions toward lineage endpoints.
+    - Gene Set Enrichment Analysis (GSEA) over-representation scoring across MSigDB Hallmark, KEGG, and Reactome pathways with Normalized Enrichment Scores (NES).
+  - Implemented REST API routes in `apps/api/src/api/routes/single_cell.py`:
+    - `POST /api/v1/single-cell/analyze`: Run end-to-end single-cell transcriptomics analysis pipeline.
+    - `GET /api/v1/single-cell/datasets`: List scRNA-seq datasets with filtering.
+    - `GET /api/v1/single-cell/datasets/{id}`: Detailed dataset inspection with clusters and pathway enrichments.
+    - `GET /api/v1/single-cell/datasets/{id}/coordinates`: Fetch 2D UMAP/t-SNE coordinates with optional cluster filtering and downsampling.
+    - `GET /api/v1/single-cell/datasets/{id}/markers`: Fetch cluster-specific differential marker genes.
+    - `DELETE /api/v1/single-cell/datasets/{id}`: Delete dataset and cascaded records.
+  - Created interactive Single-Cell Transcriptomics Studio in `apps/web/src/pages/SingleCellStudioPage.tsx`:
+    - 2D UMAP/t-SNE Scatter Plot Canvas with cluster color-coding, cell-type gating, and interactive tooltips.
+    - Cell Cluster Composition Distribution cards with top distinguishing markers.
+    - Differential Expression Volcano Plot with fold change and FDR significance thresholds.
+    - Cluster-Specific Marker Genes Table with export and search.
+    - Diffusion Pseudotime Trajectory Bar Graphs showing differentiation progression.
+    - Gene Set Enrichment Analysis (GSEA) Pathway Waterfall.
+    - Preloaded single-cell study presets (Human Hepatocyte LNP Atlas, PBMC Immune Profiling, Neural Lineage Dynamics).
+  - Mounted `/single-cell` route in `App.tsx` and added `Single-Cell Multi-Omics` navigation link with `Microscope` icon in `Layout.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_single_cell_repo.py`, `packages/research/tests/test_single_cell_engine.py`, and `apps/api/tests/test_single_cell_api.py` (410/410 monorepo tests passing).
+  - Updated `scripts/seed_demo_data.py` with Human Primary Hepatocyte LNP-CRISPR scRNA-seq Atlas.
+  - Formalized **ADR 041** in `docs/decisions.md`.
+
 ---
 
 ## [2.14.0] - 2026-09-15 (Generation 14: Phase 40 - Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio)

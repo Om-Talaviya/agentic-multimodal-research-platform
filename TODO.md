@@ -437,15 +437,34 @@ This document tracks all completed engineering milestones, the immediate active 
   - [x] CRISPR Guide Design Engine: Built `CRISPRGuideDesignEngine` in `packages/research/src/research/crispr_engine.py`.
   - [x] REST API endpoints: Implemented `/api/v1/crispr/design`, `/api/v1/crispr/designs`, `/api/v1/crispr/designs/{id}`, `/api/v1/crispr/guides/{id}/oligos`, `/api/v1/crispr/designs/{id}/export-genbank`, `/api/v1/crispr/designs/{id}` in `apps/api/src/api/routes/crispr.py`.
   - [x] Interactive UI Studio: Built `CRISPRStudioPage.tsx` with Protospacer sequence map, candidate gRNA table, genome off-target inspector, precision base editing window visualizer, and Golden Gate oligo sheet. Registered `/crispr` route in `App.tsx` and navigation item with `Scissors` icon in `Layout.tsx`.
-  - [x] Comprehensive test suites in `packages/database/tests/test_crispr_repo.py`, `packages/research/tests/test_crispr_engine.py`, and `apps/api/tests/test_crispr_api.py` (407/407 monorepo tests passing).
+  - [x] Comprehensive test suites in `packages/database/tests/test_crispr_repo.py`, `packages/research/tests/test_crispr_engine.py`, and `apps/api/tests/test_crispr_api.py`.
   - [x] Production Demo Data Seeder updated with PCSK9 Exon 1 targeting campaign.
   - [x] Formalized **ADR 040**.
 
 ---
 
-## 🏆 Current Platform Status: 40 PHASES COMPLETE (407/407 Tests Passing)
+## 🔬 Generation 15: Multi-Omics & Single-Cell Transcriptomics Studio (100% COMPLETE)
 
-All 40 Phases across Generations 1 through 14 are fully implemented, verified, documented across all 10 core repository specifications, and active on `develop/v1.1`!
+- [x] **Phase 41: Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio (Generation 15 - COMPLETE)**
+  - [x] High-throughput Single-Cell Quality Control (QC): Cell filtering on total UMI counts, unique detected genes, and mitochondrial read percentage thresholds ($\le 15\%$).
+  - [x] Dimensionality Reduction & Graph Clustering: High-variance gene selection, Principal Component Analysis (PCA), graph-based Leiden community detection, and nonlinear 2D embeddings (UMAP & t-SNE).
+  - [x] Non-Parametric Differential Expression (DEG): Wilcoxon rank-sum statistical testing with Benjamini-Hochberg False Discovery Rate (FDR) adjusted $p$-values and $\log_2\text{FC}$ effect sizes.
+  - [x] Diffusion Pseudotime & Differentiation Trajectories: Continuous trajectory ordering ($0.0 \rightarrow 1.0$) mapping stem/quiescent state transitions toward lineage endpoints.
+  - [x] Gene Set Enrichment Analysis (GSEA): Over-representation analysis across MSigDB Hallmark, KEGG, and Reactome pathways with Normalized Enrichment Scores (NES).
+  - [x] Database persistence models: Implemented `DBSingleCellDataset`, `DBCellCluster`, `DBCellCoordinate`, `DBDifferentialGene`, `DBPathwayEnrichment` in `packages/database/src/database/models/single_cell.py`.
+  - [x] Single-Cell repository: Built `SingleCellRepository` in `packages/database/src/database/repositories/single_cell_repo.py`.
+  - [x] Single-Cell Transcriptomics Engine: Built `SingleCellTranscriptomicsEngine` in `packages/research/src/research/single_cell_engine.py`.
+  - [x] REST API endpoints: Implemented `/api/v1/single-cell/analyze`, `/api/v1/single-cell/datasets`, `/api/v1/single-cell/datasets/{id}`, `/api/v1/single-cell/datasets/{id}/coordinates`, `/api/v1/single-cell/datasets/{id}/markers`, `/api/v1/single-cell/datasets/{id}` in `apps/api/src/api/routes/single_cell.py`.
+  - [x] Interactive UI Studio: Built `SingleCellStudioPage.tsx` with 2D UMAP/t-SNE Scatter Plot Canvas, interactive cluster gating, Volcano Plot, Marker Genes Table, Diffusion Pseudotime bar graphs, and GSEA Pathway Waterfall. Registered `/single-cell` route in `App.tsx` and navigation item with `Microscope` icon in `Layout.tsx`.
+  - [x] Comprehensive test suites in `packages/database/tests/test_single_cell_repo.py`, `packages/research/tests/test_single_cell_engine.py`, and `apps/api/tests/test_single_cell_api.py` (410/410 monorepo tests passing).
+  - [x] Production Demo Data Seeder updated with Human Primary Hepatocyte LNP-CRISPR scRNA-seq Atlas.
+  - [x] Formalized **ADR 041**.
+
+---
+
+## 🏆 Current Platform Status: 41 PHASES COMPLETE (410/410 Tests Passing)
+
+All 41 Phases across Generations 1 through 15 are fully implemented, verified, documented across all core repository specifications, and active on `develop/v1.1`!
 
 
 

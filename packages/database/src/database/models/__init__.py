@@ -36,6 +36,13 @@ from database.models.crispr import (
     DBOffTargetSite,
     DBBaseEditingProfile,
 )
+from database.models.single_cell import (
+    DBSingleCellDataset,
+    DBCellCluster,
+    DBCellCoordinate,
+    DBDifferentialGene,
+    DBPathwayEnrichment,
+)
 from database.models.collaboration import (
     DBReportAnnotation,
     DBWorkspaceActivity,
@@ -330,4 +337,9 @@ __all__ = [
     "OffTargetSite",
     "DBBaseEditingProfile",
     "BaseEditingProfile",
+    "DBSingleCellDataset",
+    "DBCellCluster",
+    "DBCellCoordinate",
+    "DBDifferentialGene",
+    "DBPathwayEnrichment",
 ]
