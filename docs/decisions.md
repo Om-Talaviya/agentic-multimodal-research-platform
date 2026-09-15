@@ -1174,3 +1174,18 @@ Implement `DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, and `DBDisproport
 
 ### Consequences:
 - **Positive**: Automated detection of statistical reporting disproportionality ($PRR \ge 2.0$, $IC_{025} > 0$) paired with automated WHO-UMC causality grading.
+
+---
+
+## ADR 050: Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine
+
+### Status: ACCEPTED (Generation 20)
+
+### Context:
+Accelerating transformative scientific breakthroughs requires end-to-end autonomous research programs that self-formulate hypotheses, simulate in-silico protocols, reflect metacognitively on experimental failures, and iterate to formulate novel scientific paradigms.
+
+### Decision:
+Implement `DBAutonomousScientistProgram`, `DBResearchIterationCycle`, and `DBDiscoveryBreakthrough` managed via `AutonomousScientistRepository` and orchestrated by `AutonomousScientistEngine`. Expose REST endpoints under `/api/v1/ai-scientist/*` and interactive visualization in `AIScientistStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Enables autonomous closed-loop exploration resulting in breakthrough discoveries with quantitative novelty, validity, and falsifiability scorecards.

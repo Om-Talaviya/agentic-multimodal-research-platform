@@ -375,3 +375,5 @@ from database.models.cryoem import DBCryoEMDensityMap, DBDensityMapFitting, DBMa
 from database.models.pathway_perturbation import DBMultiOmicsExperiment, DBPathwayCascade, DBPerturbationSimulation
 
 from database.models.pharmacovigilance import DBPharmacovigilanceCorpus, DBSafetySignalReport, DBDisproportionalityMetric
+
+from database.models.ai_scientist import DBAutonomousScientistProgram, DBResearchIterationCycle, DBDiscoveryBreakthrough

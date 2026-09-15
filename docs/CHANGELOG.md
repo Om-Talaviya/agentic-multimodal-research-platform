@@ -1,4 +1,15 @@
 
+## [Phase 50] - Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine
+### Added
+- Database models: `DBAutonomousScientistProgram`, `DBResearchIterationCycle`, `DBDiscoveryBreakthrough`.
+- Repository `AutonomousScientistRepository` for managing self-evolving research programs, cycles, and breakthroughs.
+- Scientific `AutonomousScientistEngine` for executing closed-loop autonomous scientific meta-discovery.
+- FastAPI routes at `/api/v1/ai-scientist/*`.
+- Interactive React studio `AIScientistStudioPage.tsx` with Nobel-Turing class discovery scorecard, reflection timeline, and whitepaper generator.
+- Unit and integration tests in `packages/database/tests/test_ai_scientist_repo.py`, `packages/research/tests/test_ai_scientist_engine.py`, and `apps/api/tests/test_ai_scientist_api.py`.
+- Architecture Decision Record **ADR 050**.
+
+
 ## [Phase 49] - Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector
 ### Added
 - Database models: `DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`.
