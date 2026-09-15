@@ -692,6 +692,29 @@ This document defines the complete visual design system, interaction patterns, u
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### 3.27 Bio-Molecular Structure & Protein Folding Studio (Phase 38)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🧬 Bio-Molecular Structure & Protein Folding Studio    [ 🔄 Refresh ] [ ⚡ Predict 3D Structure ]      │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🌀 3D Helix Visualizer ]  [ 🔍 Binding Pockets (2) ]  [ 💊 Ligand Docking ]  [ ⚡ Mutational Scan ]    │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  TARGET: PCSK9 (UniProt: Q9BYF1 | Homo sapiens) | Model: AlphaFold3 | Resolution: 1.85Å                │
+│  pLDDT Mean: 91.2 (Very High) | α-Helix: 42.5% | β-Sheet: 28.0% | Pockets: 2 | Docking Affinity: -10.85 │
+│  ┌───────────────────────────────────────────────────┬───────────────────────────────────────────────┐  │
+│  │ 3D CANVAS VIEWPORT (Rotating Ribbon / Alpha Helix) │ ACTIVE BINDING POCKETS                        │  │
+│  │                                                   │ • Pocket 1: Catalytic Cavity (Druggability: 94)│  │
+│  │        ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ )                │   Residues: ASP374, PHE379, SER381            │  │
+│  │     ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ )             │ • Pocket 2: Allosteric Groove (Score: 76)      │  │
+│  │        ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ )                ├───────────────────────────────────────────────┤  │
+│  │                                                   │ IN-SILICO LIGAND DOCKING (Vina/DiffDock)      │  │
+│  │   [ pLDDT > 90: Cyan | 70-90: Sky | <50: Orange ] │ • Ligand: Evolocumab Mimetic (ΔG: -10.85 kcal)│  │
+│  │   [ 🔄 Rotate ] [ 🔍 Zoom ] [ ⬇️ Download PDB ]    │ • Mutational Scan: D374Y (ΔΔG: -2.60 kcal/mol)│  │
+│  └───────────────────────────────────────────────────┴───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
 ---
 
 ## 4. UI Interaction States
@@ -721,6 +744,7 @@ This document defines the complete visual design system, interaction patterns, u
 | **Grant Proposal Studio** | Specific Aims editor, real-time MTDC budget calculator, mock study section scorecards, and LaTeX download | Instant tab switch / copy snippet |
 | **Clinical Trials Studio** | PICO inclusion/exclusion cards, LOINC biomarker tags, drug repurposing screens, and eCTD IND dossier meters | Instant tab switch / modal overlay |
 | **Lab Automation Studio** | Interactive 12-slot deck visualizer, microfluidic pipetting table, collision warning cards, and Opentrons/PyLabRobot code export | Instant tab switch / modal overlay |
+| **Molecular Structure Studio** | 3D AlphaFold/ESMFold protein canvas, pLDDT spectrum color tags, pocket cards, in-silico ligand docking table, and mutational stability scan form | Instant tab switch / 3D render update |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
 

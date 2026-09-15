@@ -1106,4 +1106,47 @@ sequenceDiagram
     Bioengineer->>UI: Clicks "Executable Code" -> Downloads "crispr_lnp_opentrons.py" for immediate OT-2 execution
 ```
 
+---
+
+## 28. Autonomous Bio-Molecular Structure & Protein Folding Flow (Phase 38)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor StructuralBio as Structural Biologist / Drug Hunter
+    participant UI as MolecularStructurePage.tsx
+    participant API as FastAPI (/api/v1/molecular)
+    participant Engine as StructurePredictionEngine
+    participant Repo as MolecularStructureRepository
+    participant DB as PostgreSQL / SQLite (molecular_structures, binding_pockets, docking_poses, mutation_stabilities)
+
+    StructuralBio->>UI: Inputs UniProt ID (Q9BYF1 / PCSK9) & selects AlphaFold3
+    UI->>API: POST /api/v1/molecular/predict {uniprot_id: "Q9BYF1", gene_name: "PCSK9", structure_source: "AlphaFold3"}
+    API->>Engine: predict_structure("Q9BYF1", "PCSK9", structure_source: "AlphaFold3")
+    Engine->>Engine: generate_synthetic_pdb() (Alpha-carbon spiral backbone + pLDDT B-factors)
+    Engine->>Engine: compute_secondary_structure_summary() (Alpha-helix %, Beta-sheet %)
+    Engine->>Engine: detect_binding_pockets() (Active site catalytic cavities & druggability scores)
+    API->>Repo: create_structure() + add_binding_pockets()
+    Repo->>DB: INSERT into molecular_structures & binding_pockets
+    API-->>UI: 201 Created (3D Helix Canvas, pLDDT Spectrum & Pocket Cards Rendered)
+
+    StructuralBio->>UI: Selects Pocket 1 & triggers in-silico ligand docking
+    UI->>API: POST /api/v1/molecular/structures/{id}/dock {pocket_id, ligand_name: "Evolocumab Mimetic"}
+    API->>Engine: evaluate_docking(pocket_spec, ligand_name)
+    Engine->>Engine: AutoDock-Vina calculation (Affinity ΔG: -10.85 kcal/mol, RMSD 0.92Å, 5 H-bonds)
+    API->>Repo: add_docking_pose()
+    Repo->>DB: INSERT into docking_poses
+    API-->>UI: 200 OK (Docking table updated with binding affinity & contact residues)
+
+    StructuralBio->>UI: Runs mutational scan (D374Y gain-of-function)
+    UI->>API: POST /api/v1/molecular/structures/{id}/mutate {wildtype_residue: "D", position: 374, mutant_residue: "Y"}
+    API->>Engine: scan_mutational_stability("D", 374, "Y")
+    Engine->>Engine: calculate_thermodynamic_shift() (ΔΔG: -2.60 kcal/mol, verdict: "stabilizing")
+    API->>Repo: add_mutation_stability()
+    Repo->>DB: INSERT into mutation_stabilities
+    API-->>UI: 200 OK (Mutational scan table updated with pathogenicity risk alerts)
+
+    StructuralBio->>UI: Clicks "Export PDB" -> Downloads "PCSK9_Q9BYF1.pdb"
+```
+
 

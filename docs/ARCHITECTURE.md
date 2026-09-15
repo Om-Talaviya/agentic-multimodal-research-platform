@@ -249,6 +249,9 @@ Authenticated requests flow through the entire system with complete user attribu
 ### Generation 11: Laboratory Automation & Cloud Biofoundry Integration (Phase 37) (100% COMPLETE)
 - **Phase 37 (Autonomous Laboratory Automation & Robotic Protocol Generator - COMPLETE)**: Opentrons Protocol API v2 Python code generator (`requirements = {"robotType": "OT-2", "apiLevel": "2.15"}`), PyLabRobot Universal scripts, Autoprotocol JSON v1.0 specifications, 12-slot deck spatial modeling, microfluidic liquid class speed and droplet calibration (`viscous_glycerol`, `volatile_ethanol`, `aqueous`), 3D gantry collision check for tall labware, tip consumption optimization, database models (`DBRoboticProtocol`, `DBLabwareSlot`, `DBLiquidTransferStep`, `DBRoboticExecutionTrace`), `LabAutomationRepository`, `RoboticProtocolCompiler`, `/api/v1/lab/*` REST API, and `LabAutomationPage.tsx` React studio (**ADR 037**).
 
+### Generation 12: Structural Biology & Molecular Therapeutics (Phase 38) (100% COMPLETE)
+- **Phase 38 (Autonomous Bio-Molecular Structure & Protein Folding Visualizer - COMPLETE)**: AlphaFold3 & ESMFold 3D protein structure prediction with PDB coordinate stream generation, per-residue pLDDT confidence spectrum mapping, catalytic cavity detection with volume and surface area calculation, in-silico ligand docking simulator (AutoDock-Vina/DiffDock) computing binding affinities ($\text{kcal/mol}$), RMSD, and hydrogen bonds, thermodynamic $\Delta\Delta G$ mutational stability scanner with pathogenicity classification, database models (`DBMolecularStructure`, `DBBindingPocket`, `DBDockingPose`, `DBMutationStability`), `MolecularStructureRepository`, `StructurePredictionEngine`, `/api/v1/molecular/*` REST API, and `MolecularStructurePage.tsx` React 3D studio (**ADR 038**).
+
 
 ---
 
