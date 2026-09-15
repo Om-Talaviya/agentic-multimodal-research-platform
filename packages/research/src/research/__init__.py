@@ -29,6 +29,13 @@ from research.robotic_protocol_compiler import (
     TransferStepSpec,
     ProtocolSimulationResult,
 )
+from research.structure_engine import (
+    StructurePredictionEngine,
+    StructurePredictionResult,
+    BindingPocketSpec,
+    DockingResult,
+    MutationStabilityResult,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -49,6 +56,11 @@ __all__ = [
     "LabwareSlotSpec",
     "TransferStepSpec",
     "ProtocolSimulationResult",
+    "StructurePredictionEngine",
+    "StructurePredictionResult",
+    "BindingPocketSpec",
+    "DockingResult",
+    "MutationStabilityResult",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",

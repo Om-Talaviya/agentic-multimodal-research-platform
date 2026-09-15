@@ -25,6 +25,7 @@ import { PatentLandscapePage } from './pages/PatentLandscapePage'
 import { GrantProposalStudioPage } from './pages/GrantProposalStudioPage'
 import { ClinicalTrialsPage } from './pages/ClinicalTrialsPage'
 import { LabAutomationPage } from './pages/LabAutomationPage'
+import { MolecularStructurePage } from './pages/MolecularStructurePage'
 import { Login } from './pages/Login'
 
 
@@ -124,6 +125,7 @@ function App() {
           <Route path="grants" element={<GrantProposalStudioPage />} />
           <Route path="clinical" element={<ClinicalTrialsPage />} />
           <Route path="lab" element={<LabAutomationPage />} />
+          <Route path="molecular" element={<MolecularStructurePage />} />
           <Route path="settings" element={<Settings />} />
 
 

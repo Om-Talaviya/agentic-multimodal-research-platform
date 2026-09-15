@@ -18,6 +18,7 @@ from api.routes import (
     memory,
     metrics,
     models,
+    molecular,
     patents,
     peer_review,
     presentations,

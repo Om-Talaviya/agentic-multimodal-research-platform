@@ -96,6 +96,10 @@ from database.models import (
     DBRoboticExecutionTrace,
     DBWorkerNode,
     DBStorageObject,
+    DBMolecularStructure,
+    DBBindingPocket,
+    DBDockingPose,
+    DBMutationStability,
 )
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from shared.auth import hash_password
@@ -993,9 +997,112 @@ We demonstrate 94.8\\% in-vivo hepatic silencing with zero genomic cleavage.
         )
         session.add(trace1)
 
+        # --- Phase 38: Autonomous Bio-Molecular Structure & Protein Folding Visualizer ---
+        from research.structure_engine import StructurePredictionEngine
+        struct_engine = StructurePredictionEngine()
+        pcsk9_pred = struct_engine.predict_structure(uniprot_id="Q9BYF1", gene_name="PCSK9", structure_source="AlphaFold3")
+        cas9_pred = struct_engine.predict_structure(uniprot_id="Q99250", gene_name="Cas9_Sp", structure_source="AlphaFold3")
+
+        mol_struct1_id = uuid.uuid4()
+        mol_struct1 = DBMolecularStructure(
+            id=mol_struct1_id,
+            user_id=user_id,
+            workspace_id=workspace_id,
+            project_id=project_id,
+            uniprot_id="Q9BYF1",
+            gene_name="PCSK9",
+            organism="Homo sapiens",
+            sequence=pcsk9_pred.sequence,
+            mean_plddt_score=pcsk9_pred.mean_plddt_score,
+            resolution_angstrom=pcsk9_pred.resolution_angstrom,
+            structure_source="AlphaFold3",
+            pdb_coordinate_data=pcsk9_pred.pdb_coordinate_data,
+            secondary_structure_summary=pcsk9_pred.secondary_structure_summary,
+        )
+
+        mol_struct2_id = uuid.uuid4()
+        mol_struct2 = DBMolecularStructure(
+            id=mol_struct2_id,
+            user_id=user_id,
+            workspace_id=workspace_id,
+            project_id=project_id,
+            uniprot_id="Q99250",
+            gene_name="Cas9_Sp",
+            organism="Streptococcus pyogenes",
+            sequence=cas9_pred.sequence,
+            mean_plddt_score=cas9_pred.mean_plddt_score,
+            resolution_angstrom=cas9_pred.resolution_angstrom,
+            structure_source="AlphaFold3",
+            pdb_coordinate_data=cas9_pred.pdb_coordinate_data,
+            secondary_structure_summary=cas9_pred.secondary_structure_summary,
+        )
+        session.add_all([mol_struct1, mol_struct2])
+
+        # Pockets for PCSK9
+        p1_id = uuid.uuid4()
+        pocket1 = DBBindingPocket(
+            id=p1_id,
+            structure_id=mol_struct1_id,
+            pocket_index=1,
+            druggability_score=0.94,
+            volume_cubic_angstrom=845.0,
+            surface_area_angstrom2=520.0,
+            key_residues_json=["ASP374", "PHE379", "SER381", "LEU380", "ASN317"],
+            center_coordinates_json={"x": 18.42, "y": -12.15, "z": 45.30},
+        )
+        pocket2 = DBBindingPocket(
+            id=uuid.uuid4(),
+            structure_id=mol_struct1_id,
+            pocket_index=2,
+            druggability_score=0.76,
+            volume_cubic_angstrom=460.0,
+            surface_area_angstrom2=310.0,
+            key_residues_json=["ARG218", "ARG215", "GLU226", "TRP72"],
+            center_coordinates_json={"x": 5.10, "y": 8.75, "z": 22.40},
+        )
+        session.add_all([pocket1, pocket2])
+
+        # Docking Pose for PCSK9 Pocket 1
+        dock1 = DBDockingPose(
+            id=uuid.uuid4(),
+            structure_id=mol_struct1_id,
+            pocket_id=p1_id,
+            ligand_name="Evolocumab Small-Molecule Mimetic",
+            binding_affinity_kcal_mol=-10.85,
+            rmsd_angstrom=0.92,
+            hydrogen_bonds_count=5,
+            pi_stacking_interactions=2,
+            pose_coordinates_json={"center": {"x": 18.42, "y": -12.15, "z": 45.30}, "active_contacts": ["ASP374", "PHE379", "SER381"]},
+        )
+        session.add(dock1)
+
+        # Mutation Stability for PCSK9
+        mut1 = DBMutationStability(
+            id=uuid.uuid4(),
+            structure_id=mol_struct1_id,
+            wildtype_residue="D",
+            position=374,
+            mutant_residue="Y",
+            delta_delta_g_kcal_mol=-2.60,
+            stability_verdict="stabilizing",
+            pathogenicity_score=0.96,
+        )
+        mut2 = DBMutationStability(
+            id=uuid.uuid4(),
+            structure_id=mol_struct1_id,
+            wildtype_residue="R",
+            position=218,
+            mutant_residue="S",
+            delta_delta_g_kcal_mol=1.85,
+            stability_verdict="destabilizing",
+            pathogenicity_score=0.72,
+        )
+        session.add_all([mut1, mut2])
+
         await session.commit()
         print("[SUCCESS] FULL DEMO DATABASE SUCCESSFULLY SEEDED!")
         print("[SUCCESS] Flagship Project: 'Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery'")
+        print("[SUCCESS] Bio-Molecular Models: AlphaFold3 PCSK9 & Cas9_Sp with catalytic pocket docking & D374Y scan")
         print("[SUCCESS] Robotic Protocol: 'Automated CRISPR-Cas9 Epigenetic LNP Microfluidic Synthesis & Plating'")
         print("[SUCCESS] Admin Credentials: researcher@deepmind.internal / Antigravity2026!")
         print("[SUCCESS] API Key: os_live_demo_9847192837192837198273")

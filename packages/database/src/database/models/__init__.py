@@ -18,6 +18,12 @@ from database.models.lab_automation import (
     DBLiquidTransferStep,
     DBRoboticExecutionTrace,
 )
+from database.models.molecular import (
+    DBMolecularStructure,
+    DBBindingPocket,
+    DBDockingPose,
+    DBMutationStability,
+)
 from database.models.collaboration import (
     DBReportAnnotation,
     DBWorkspaceActivity,
@@ -138,6 +144,10 @@ RoboticProtocol = DBRoboticProtocol
 LabwareSlot = DBLabwareSlot
 LiquidTransferStep = DBLiquidTransferStep
 RoboticExecutionTrace = DBRoboticExecutionTrace
+MolecularStructure = DBMolecularStructure
+BindingPocket = DBBindingPocket
+DockingPose = DBDockingPose
+MutationStability = DBMutationStability
 
 __all__ = [
     "ResearchJob",
@@ -276,4 +286,12 @@ __all__ = [
     "LiquidTransferStep",
     "DBRoboticExecutionTrace",
     "RoboticExecutionTrace",
+    "DBMolecularStructure",
+    "MolecularStructure",
+    "DBBindingPocket",
+    "BindingPocket",
+    "DBDockingPose",
+    "DockingPose",
+    "DBMutationStability",
+    "MutationStability",
 ]
