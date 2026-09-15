@@ -608,6 +608,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_cryoem_repo.py`, `packages/research/tests/test_cryoem_engine.py`, and `apps/api/tests/test_cryoem_api.py`.
 - [x] Formalized **ADR 047**.
 
+
+---
+
+## Phase 48: Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator
+**Status**: 🟢 COMPLETE (Generation 19: Systems Biology)
+
+**Goal**: Integrating Transcriptomics, Proteomics, Metabolomics, and Epigenomics into multi-layer signaling cascades with Ordinary Differential Equation (ODE) kinetic modeling, metabolic flux balance shifts, bypass resistance route inference, database models (`DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`), `PathwayPerturbationRepository`, `PathwayPerturbationEngine`, `/api/v1/pathways/*` REST API, and `PathwaySimulatorPage.tsx` React studio (**ADR 048**).
+
+### Deliverables:
+- [x] Multi-omics experiment metadata management with support for transcriptomic, proteomic, and metabolomic layers.
+- [x] Receptor tyrosine kinase and MAPK/ERK / PI3K signaling cascade topology mapping with feedback loop tracking.
+- [x] Dynamic ODE kinetic concentration profiles (0 to 48 hours) simulating target knockdown and downstream phosphorylation changes.
+- [x] Compensatory bypass resistance mechanism prediction and synthetic lethal combination pairing.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/pathways/simulate`, `/api/v1/pathways/experiments`, `/api/v1/pathways/experiments/{id}`).
+- [x] Interactive UI Studio with Knockdown gauges, bypass resistance cards, and ODE kinetic trajectory time-series in `apps/web/src/pages/PathwaySimulatorPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_pathway_perturbation_repo.py`, `packages/research/tests/test_pathway_perturbation_engine.py`, and `apps/api/tests/test_pathway_perturbation_api.py`.
+- [x] Formalized **ADR 048**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |

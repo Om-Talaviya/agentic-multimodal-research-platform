@@ -1,4 +1,15 @@
 
+## [Phase 48] - Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator
+### Added
+- Database models: `DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`.
+- Repository `PathwayPerturbationRepository` for multi-omics experiment lifecycle and cascade topologies.
+- Scientific `PathwayPerturbationEngine` for solving ordinary differential equations of signaling pathways.
+- FastAPI routes at `/api/v1/pathways/*`.
+- Interactive React studio `PathwaySimulatorPage.tsx` with knockdown telemetry, bypass resistance cards, and ODE time-course trajectory viewer.
+- Unit and integration tests in `packages/database/tests/test_pathway_perturbation_repo.py`, `packages/research/tests/test_pathway_perturbation_engine.py`, and `apps/api/tests/test_pathway_perturbation_api.py`.
+- Architecture Decision Record **ADR 048**.
+
+
 ## [Phase 47] - Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling
 ### Added
 - Database models: `DBCryoEMDensityMap`, `DBDensityMapFitting`, `DBMacromolecularComplex`.
