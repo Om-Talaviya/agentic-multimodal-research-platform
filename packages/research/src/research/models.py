@@ -12,16 +12,47 @@ def utc_now() -> datetime:
     return datetime.now(UTC)
 
 
+class DeepResearchConfig(BaseModel):
+    """Configuration controls and convergence thresholds for autonomous recursive deep research."""
+    enabled: bool = True
+    max_iterations: int = Field(default=3, ge=1, le=5)
+    min_confidence_threshold: float = Field(default=0.85, ge=0.5, le=1.0)
+    max_spawned_per_round: int = Field(default=4, ge=1, le=8)
+    diminishing_returns_threshold: float = 0.02
+
+
+class ResearchIteration(BaseModel):
+    """Telemetry and state tracking for a single autonomous recursive research loop."""
+    iteration_index: int
+    hypotheses: List[str] = Field(default_factory=list)
+    unresolved_gaps: List[str] = Field(default_factory=list)
+    gap_queries: List[str] = Field(default_factory=list)
+    confidence_score: float = 0.0
+    confidence_delta: float = 0.0
+    spawned_task_count: int = 0
+    is_converged: bool = False
+    convergence_reason: Optional[str] = None
+    started_at: datetime = Field(default_factory=utc_now)
+    completed_at: Optional[datetime] = None
+
+
 class ResearchRequest(BaseModel):
     question: str = Field(..., min_length=10, max_length=5000)
     context: Optional[str] = Field(None, max_length=10000)
     constraints: List[str] = Field(default_factory=list, max_length=20)
     preferred_sources: List[str] = Field(default_factory=list, max_length=10)
+    user_id: Optional[str] = None
+    workspace_id: Optional[str] = None
+    project_id: Optional[str] = None
+    routing_profile: Optional[str] = "balanced"
 
 
 class ResearchJob(BaseModel):
     id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
     request_id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
+    user_id: Optional[str] = None
+    workspace_id: Optional[str] = None
+    project_id: Optional[str] = None
     question: str
     objective: str
     domain: Optional[str] = None
@@ -29,15 +60,42 @@ class ResearchJob(BaseModel):
     constraints: List[str] = Field(default_factory=list)
     expected_output: str = "report"
     status: JobStatus = JobStatus.PENDING
+    routing_profile: Optional[str] = "balanced"
     created_at: datetime = Field(default_factory=utc_now)
     updated_at: datetime = Field(default_factory=utc_now)
     completed_at: Optional[datetime] = None
     error_message: Optional[str] = None
+    iterations: List[ResearchIteration] = Field(default_factory=list)
+
+
+class QueryTreeNode(BaseModel):
+    """Hierarchical node in a strategic research query tree."""
+    id: str = Field(default_factory=lambda: str(uuid4()))
+    parent_id: Optional[str] = None
+    question: str
+    rationale: str = ""
+    domain_focus: str = "general"
+    depth: int = 0
+    assigned_agent: str = "web_research"
+    subqueries: List["QueryTreeNode"] = Field(default_factory=list)
+    status: str = "pending"
+
+
+class InferredScope(BaseModel):
+    """Scope, boundaries, and implicit constraints inferred from the research inquiry."""
+    domain: str = "general"
+    time_horizon: Optional[str] = None
+    geography: Optional[str] = None
+    key_entities: List[str] = Field(default_factory=list)
+    constraints: List[str] = Field(default_factory=list)
 
 
 class ResearchTask(BaseModel):
     id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
     job_id: UUIDStr
+    parent_task_id: Optional[UUIDStr] = None
+    is_dynamic: bool = False
+    depth: int = 0
     type: str
     objective: str
     context: Dict[str, Any] = Field(default_factory=dict)
@@ -60,12 +118,63 @@ class ResearchStep(BaseModel):
     inputs: Dict[str, Any] = Field(default_factory=dict)
     depends_on: List[str] = Field(default_factory=list)
     priority: int = 1
+    parent_id: Optional[str] = None
+    depth: int = 0
+    is_dynamic: bool = False
 
 
 class ResearchPlan(BaseModel):
     objective: str
     steps: List[ResearchStep] = Field(default_factory=list)
     expected_outputs: List[str] = Field(default_factory=list)
+    query_tree: Optional[QueryTreeNode] = None
+    ambiguity_score: float = 0.0
+    inferred_scope: Optional[InferredScope] = None
+    replan_count: int = 0
+    plan_explanation: str = ""
+    iterations: List[ResearchIteration] = Field(default_factory=list)
+    deep_research_config: Optional[DeepResearchConfig] = None
+
+
+class CitationCoordinates(BaseModel):
+    """Fine-grained physical coordinate and time-series anchors for grounding factual claims."""
+    page_number: Optional[int] = None
+    paragraph_index: Optional[int] = None
+    table_row: Optional[int] = None
+    table_col: Optional[int] = None
+    char_start: Optional[int] = None
+    char_end: Optional[int] = None
+    timestamp_start: Optional[float] = None
+    timestamp_end: Optional[float] = None
+    media_type: Optional[str] = None  # text, pdf, image, audio, video, chart
+    speaker: Optional[str] = None
+    chart_data: Optional[Dict[str, Any]] = None
+
+
+class Citation(BaseModel):
+    """Structured verifiable citation mapping a claim to its exact source and coordinates."""
+    id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
+    claim: str
+    source_id: Optional[UUIDStr] = None
+    document_id: Optional[str] = None
+    citation_text: str = ""
+    quote: str = ""
+    coordinates: Optional[CitationCoordinates] = None
+    confidence: float = 0.85
+    source_reliability: float = 1.0
+
+
+class Contradiction(BaseModel):
+    """Detected conflict or discrepancy between two sources or claims."""
+    id: UUIDStr = Field(default_factory=lambda: str(uuid4()))
+    topic: str
+    claim_a: str
+    source_a: str
+    claim_b: str
+    source_b: str
+    conflict_type: str = "direct_conflict"  # direct_conflict, numerical_discrepancy, methodological_divergence
+    explanation: str
+    severity: str = "medium"  # low, medium, high
 
 
 class Source(BaseModel):
@@ -86,6 +195,8 @@ class Evidence(BaseModel):
     confidence: float = 0.5
     verification_status: str = "unverified"
     verification_notes: Optional[str] = None
+    citations: List[Citation] = Field(default_factory=list)
+    coordinates: Optional[CitationCoordinates] = None
 
 
 class Finding(BaseModel):
@@ -93,7 +204,8 @@ class Finding(BaseModel):
     topic: str
     summary: str
     evidence_ids: List[UUIDStr] = Field(default_factory=list)
-    confidence: float
+    citations: List[Citation] = Field(default_factory=list)
+    confidence: float = 0.7
     uncertainty: Optional[str] = None
     assumptions: List[str] = Field(default_factory=list)
 
@@ -107,6 +219,9 @@ class ResearchReport(BaseModel):
     findings: List[Finding] = Field(default_factory=list)
     evidence: List[Evidence] = Field(default_factory=list)
     sources: List[Source] = Field(default_factory=list)
+    contradictions: List[Contradiction] = Field(default_factory=list)
+    confidence_score: float = 0.85
     conclusions: List[str] = Field(default_factory=list)
     limitations: List[str] = Field(default_factory=list)
+    iterations: List[ResearchIteration] = Field(default_factory=list)
     generated_at: datetime = Field(default_factory=utc_now)

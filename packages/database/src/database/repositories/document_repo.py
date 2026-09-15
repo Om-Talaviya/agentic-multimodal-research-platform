@@ -35,10 +35,56 @@ class DocumentRepository:
     
     async def get_by_job(self, job_id: UUID) -> List[Document]:
         result = await self.session.execute(
-            select(Document).where(Document.job_id == job_id)
+            select(Document).where(Document.job_id == job_id).order_by(Document.created_at.desc())
         )
         return list(result.scalars().all())
+
+    async def list_all(
+        self,
+        limit: int = 50,
+        offset: int = 0,
+        user_id: Optional[UUID] = None,
+        workspace_id: Optional[UUID] = None,
+        project_id: Optional[UUID] = None,
+    ) -> List[Document]:
+        query = select(Document).order_by(Document.created_at.desc())
+        if user_id:
+            query = query.where(Document.user_id == user_id)
+        if workspace_id:
+            query = query.where(Document.workspace_id == workspace_id)
+        if project_id:
+            query = query.where(Document.project_id == project_id)
+        query = query.offset(offset).limit(limit)
+        result = await self.session.execute(query)
+        return list(result.scalars().all())
     
+    async def update_status(
+        self,
+        doc_id: UUID,
+        status: str,
+        error_message: Optional[str] = None,
+    ) -> Optional[Document]:
+        """Update the processing status of a document."""
+        doc = await self.get(doc_id)
+        if not doc:
+            return None
+        doc.status = status
+        if error_message:
+            meta = dict(doc.doc_metadata or {})
+            meta["error"] = error_message
+            doc.doc_metadata = meta
+        await self.session.flush()
+        return doc
+
+    async def delete(self, doc_id: UUID) -> bool:
+        """Delete document by ID."""
+        doc = await self.get(doc_id)
+        if not doc:
+            return False
+        await self.session.delete(doc)
+        await self.session.flush()
+        return True
+
     async def create_chunks(self, chunks: List[DocumentChunk]) -> List[DocumentChunk]:
         self.session.add_all(chunks)
         await self.session.flush()

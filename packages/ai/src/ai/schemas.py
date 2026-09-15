@@ -62,10 +62,16 @@ class LLMRequest(BaseModel):
     metadata: JSONDict = Field(default_factory=dict)
 
 
+class TokenUsage(BaseModel):
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+    total_tokens: int = 0
+
+
 class LLMResponse(BaseModel):
     content: str
     model: str
-    usage: Optional[dict] = None
+    usage: Optional[Any] = None
     tool_calls: Optional[List[dict]] = None
     finish_reason: Optional[str] = None
     metadata: JSONDict = Field(default_factory=dict)

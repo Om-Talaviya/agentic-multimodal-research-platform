@@ -11,9 +11,11 @@ from slowapi.errors import RateLimitExceeded
 from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
-from database.connection import init_db, close_db
-from api.routes import health, research, documents, models, auth, metrics
+from api.routes import agent_evaluations, auth, automation, canvas, clinical, collaboration, crispr, dataset_synthesis, debate, developer, documents, evaluation, grant_proposals, graph, health, lab_automation, literature, memory, metrics, models, molecular, molecular_dynamics, patents, peer_review, presentations, projects, reproducibility, research, security, single_cell, system_infra, workspaces
 from api import websocket
+
+
+
 from api.middleware.metrics import PrometheusMiddleware
 
 logger = get_logger(__name__)
@@ -77,11 +79,12 @@ async def generic_error_handler(request: Request, exc: Exception):
         content={"error": {"code": "INTERNAL_ERROR", "message": "Internal server error"}},
     )
 
+from uuid import uuid4
+
 # Request ID middleware
 @app.middleware("http")
 async def add_request_id(request: Request, call_next):
-    import uuid
-    request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+    request_id = request.headers.get("X-Request-ID", str(uuid4()))
     request.state.request_id = request_id
     
     structlog.contextvars.clear_contextvars()
@@ -97,9 +100,38 @@ app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(research.router, prefix=settings.api_prefix)
 app.include_router(websocket.router, prefix=settings.api_prefix)
 app.include_router(documents.router, prefix=settings.api_prefix)
+app.include_router(workspaces.router, prefix=settings.api_prefix)
+app.include_router(projects.router, prefix=settings.api_prefix)
+app.include_router(collaboration.router, prefix=settings.api_prefix)
+app.include_router(memory.router, prefix=settings.api_prefix)
+app.include_router(graph.router, prefix=settings.api_prefix)
 app.include_router(models.router, prefix=settings.api_prefix)
+app.include_router(evaluation.router, prefix=settings.api_prefix)
+app.include_router(agent_evaluations.router, prefix=settings.api_prefix)
+app.include_router(security.router, prefix=settings.api_prefix)
+app.include_router(system_infra.router, prefix=settings.api_prefix)
+app.include_router(developer.router, prefix=settings.api_prefix)
+app.include_router(automation.router, prefix=settings.api_prefix)
+app.include_router(debate.router, prefix=settings.api_prefix)
+app.include_router(literature.router, prefix=settings.api_prefix)
+app.include_router(reproducibility.router, prefix=settings.api_prefix)
+app.include_router(presentations.router, prefix=settings.api_prefix)
+app.include_router(peer_review.router, prefix=settings.api_prefix)
+app.include_router(canvas.router, prefix=settings.api_prefix)
+app.include_router(dataset_synthesis.router, prefix=settings.api_prefix)
+app.include_router(patents.router, prefix=settings.api_prefix)
+app.include_router(grant_proposals.router, prefix=settings.api_prefix)
+app.include_router(clinical.router, prefix=settings.api_prefix)
+app.include_router(lab_automation.router, prefix=settings.api_prefix)
+app.include_router(molecular.router, prefix=settings.api_prefix)
+app.include_router(molecular_dynamics.router, prefix=settings.api_prefix)
+app.include_router(crispr.router, prefix=settings.api_prefix)
+app.include_router(single_cell.router, prefix=settings.api_prefix)
 app.include_router(metrics.router, prefix=settings.api_prefix)
 app.include_router(metrics.router)  # Also expose directly on /metrics
+
+
+
 
 
 @app.get("/")

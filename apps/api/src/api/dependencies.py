@@ -1,4 +1,8 @@
 from typing import List, Optional, Sequence
+from fastapi import Depends, HTTPException, Security, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from sqlalchemy.ext.asyncio import AsyncSession
+from database.connection import get_db_session
 from ai.gateway.model_gateway import ModelGateway
 from ai.providers.gemini import GeminiProvider
 from ai.providers.ollama import OllamaProvider
@@ -10,14 +14,30 @@ from ai.factory import DEFAULT_GEMINI_MODEL_DEFINITIONS
 from agents.orchestrator import AgentOrchestrator
 from agents.registry import AgentRegistry, registry as agent_registry
 from tools.registry import ToolRegistry, tool_registry
-from tools.definitions.web_search import WebSearchTool, WebFetchTool
+from tools.definitions.data_analysis import DataAnalysisTool, DeterministicMathTool
 from tools.definitions.document_read import DocumentReadTool
+from tools.definitions.graph import ExtractGraphTripletsTool, FindRelationPathTool, QueryKnowledgeGraphTool
 from tools.definitions.knowledge_search import KnowledgeSearchTool
+from tools.definitions.memory import RecallMemoryTool, StoreMemoryTool
+from tools.definitions.paper_analysis import MethodologyComparisonTool, PaperAnalysisTool
+from tools.definitions.web_fetch import WebFetchTool
+from tools.definitions.web_search import WebSearchTool
 from agents.planner.planner_agent import PlannerAgent
 from agents.research.web_agent import WebResearchAgent
 from agents.research.document_agent import DocumentAnalysisAgent
 from agents.research.report_agent import ReportAgent
 from agents.critic.critic_agent import CriticAgent
+from research.graph.engine import KnowledgeGraphEngine
+from research.memory.manager import ResearchMemoryManager
+from database.repositories import (
+    KnowledgeGraphRepository,
+    MemoryRepository,
+    ProjectRepository,
+    ReportAnnotationRepository,
+    WorkspaceActivityRepository,
+    WorkspaceInviteRepository,
+    WorkspaceRepository,
+)
 from retrieval.bm25 import BM25Index
 from retrieval.embedder import Embedder
 from retrieval.in_memory_store import InMemoryVectorStore
@@ -39,6 +59,7 @@ _embedder: Optional[Embedder] = None
 _bm25_index: Optional[BM25Index] = None
 _retriever: Optional[HybridRetriever] = None
 _indexer: Optional[KnowledgeIndexer] = None
+_memory_manager: Optional[ResearchMemoryManager] = None
 
 
 async def init_providers() -> None:
@@ -139,17 +160,31 @@ async def init_providers() -> None:
     agent_registry.register("critic", CriticAgent)
     agent_registry.register("report", ReportAgent)
     
+    # Initialize Research Memory Manager
+    global _memory_manager
+    _memory_manager = ResearchMemoryManager(retriever=_retriever)
+
     # Register tools
     tool_registry.register(WebSearchTool())
     tool_registry.register(WebFetchTool())
     tool_registry.register(DocumentReadTool())
     tool_registry.register(KnowledgeSearchTool(retriever=_retriever))
+    tool_registry.register(DataAnalysisTool())
+    tool_registry.register(DeterministicMathTool())
+    tool_registry.register(PaperAnalysisTool())
+    tool_registry.register(MethodologyComparisonTool())
+    tool_registry.register(RecallMemoryTool(memory_manager=_memory_manager))
+    tool_registry.register(StoreMemoryTool(memory_manager=_memory_manager))
+    tool_registry.register(QueryKnowledgeGraphTool())
+    tool_registry.register(ExtractGraphTripletsTool())
+    tool_registry.register(FindRelationPathTool())
     
     # Create orchestrator
     _orchestrator = AgentOrchestrator(
         agent_registry=agent_registry,
         tool_registry=tool_registry,
         model_router=_model_router,
+        model_gateway=_model_gateway,
     )
     
     logger.info("Providers initialized", 
@@ -208,6 +243,44 @@ async def get_tool_registry() -> ToolRegistry:
     return tool_registry
 
 
+async def get_memory_manager() -> ResearchMemoryManager:
+    if _memory_manager is None:
+        await init_providers()
+    return _memory_manager
+
+
+async def get_memory_repository(session: AsyncSession = Depends(get_db_session)) -> MemoryRepository:
+    return MemoryRepository(session)
+
+
+async def get_graph_repository(session: AsyncSession = Depends(get_db_session)) -> KnowledgeGraphRepository:
+    return KnowledgeGraphRepository(session)
+
+
+async def get_graph_engine(repo: KnowledgeGraphRepository = Depends(get_graph_repository)) -> KnowledgeGraphEngine:
+    return KnowledgeGraphEngine(repo)
+
+
+async def get_workspace_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceRepository:
+    return WorkspaceRepository(session)
+
+
+async def get_project_repository(session: AsyncSession = Depends(get_db_session)) -> ProjectRepository:
+    return ProjectRepository(session)
+
+
+async def get_workspace_invite_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceInviteRepository:
+    return WorkspaceInviteRepository(session)
+
+
+async def get_report_annotation_repository(session: AsyncSession = Depends(get_db_session)) -> ReportAnnotationRepository:
+    return ReportAnnotationRepository(session)
+
+
+async def get_workspace_activity_repository(session: AsyncSession = Depends(get_db_session)) -> WorkspaceActivityRepository:
+    return WorkspaceActivityRepository(session)
+
+
 async def get_research_event_bus() -> ResearchEventBus:
     return research_event_bus
 
@@ -219,7 +292,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 from database.connection import get_db_session
 from database.repositories import UserRepository
-from shared.auth import User, UserRole, verify_token
+from shared.auth import User, UserRole, user_registry, verify_token
 from shared.exceptions import AuthenticationError, AuthorizationError
 
 security = HTTPBearer(auto_error=False)

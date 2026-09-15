@@ -5,8 +5,35 @@ import { Dashboard } from './pages/Dashboard'
 import { NewResearch } from './pages/NewResearch'
 import { ResearchDetail } from './pages/ResearchDetail'
 import { Settings } from './pages/Settings'
+import { MemoryPage } from './pages/MemoryPage'
+import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage'
+import { ProjectsPage } from './pages/ProjectsPage'
+import { ModelEvaluationPage } from './pages/ModelEvaluationPage'
+import { AgentEvaluationPage } from './pages/AgentEvaluationPage'
+import { EnterpriseSecurityPage } from './pages/EnterpriseSecurityPage'
+import { ProductionInfrastructurePage } from './pages/ProductionInfrastructurePage'
+import { DeveloperPlatformPage } from './pages/DeveloperPlatformPage'
+import { ResearchAutomationPage } from './pages/ResearchAutomationPage'
+import { DebateArenaPage } from './pages/DebateArenaPage'
+import { LiteratureReviewPage } from './pages/LiteratureReviewPage'
+import { ReproducibilityPage } from './pages/ReproducibilityPage'
+import { PresentationStudioPage } from './pages/PresentationStudioPage'
+import { PeerReviewPage } from './pages/PeerReviewPage'
+import { ResearchCanvasPage } from './pages/ResearchCanvasPage'
+import { DatasetSynthesisPage } from './pages/DatasetSynthesisPage'
+import { PatentLandscapePage } from './pages/PatentLandscapePage'
+import { GrantProposalStudioPage } from './pages/GrantProposalStudioPage'
+import { ClinicalTrialsPage } from './pages/ClinicalTrialsPage'
+import { LabAutomationPage } from './pages/LabAutomationPage'
+import { MolecularStructurePage } from './pages/MolecularStructurePage'
+import { MolecularDynamicsPage } from './pages/MolecularDynamicsPage'
+import { CRISPRStudioPage } from './pages/CRISPRStudioPage'
+import { SingleCellStudioPage } from './pages/SingleCellStudioPage'
 import { Login } from './pages/Login'
+
+
 import { Register } from './pages/Register'
+import { WorkspaceProvider } from './context/WorkspaceContext'
 import { Loader2 } from 'lucide-react'
 
 function App() {
@@ -50,12 +77,13 @@ function App() {
             localStorage.removeItem('refresh_token')
             setIsAuthenticated(false)
           }
+        }).finally(() => {
+          setIsLoading(false)
         })
       })
     } else {
-      setIsAuthenticated(false)
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }, [])
 
   const handleLogout = () => {
@@ -72,42 +100,69 @@ function App() {
     )
   }
 
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        {isAuthenticated ? (
+  const authenticatedRoutes = (
+    <WorkspaceProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
-        ) : (
-          <Route index element={<Navigate to="/login" replace />} />
-        )}
-      </Route>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="research/new" element={<NewResearch />} />
+          <Route path="research/:id" element={<ResearchDetail />} />
+          <Route path="memory" element={<MemoryPage />} />
+          <Route path="graph" element={<KnowledgeGraphPage />} />
+          <Route path="evaluations" element={<ModelEvaluationPage />} />
+          <Route path="agents/evaluations" element={<AgentEvaluationPage />} />
+          <Route path="security" element={<EnterpriseSecurityPage />} />
+          <Route path="infrastructure" element={<ProductionInfrastructurePage />} />
+          <Route path="developer" element={<DeveloperPlatformPage />} />
+          <Route path="automation" element={<ResearchAutomationPage />} />
+          <Route path="debates" element={<DebateArenaPage />} />
+          <Route path="literature" element={<LiteratureReviewPage />} />
+          <Route path="reproducibility" element={<ReproducibilityPage />} />
+          <Route path="presentations" element={<PresentationStudioPage />} />
+          <Route path="publishing" element={<PeerReviewPage />} />
+          <Route path="canvas" element={<ResearchCanvasPage />} />
+          <Route path="datasets" element={<DatasetSynthesisPage />} />
+          <Route path="patents" element={<PatentLandscapePage />} />
+          <Route path="grants" element={<GrantProposalStudioPage />} />
+          <Route path="clinical" element={<ClinicalTrialsPage />} />
+          <Route path="lab" element={<LabAutomationPage />} />
+          <Route path="molecular" element={<MolecularStructurePage />} />
+          <Route path="dynamics" element={<MolecularDynamicsPage />} />
+          <Route path="crispr" element={<CRISPRStudioPage />} />
+          <Route path="single-cell" element={<SingleCellStudioPage />} />
+          <Route path="settings" element={<Settings />} />
 
-      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />} />
-      <Route path="research/new" element={isAuthenticated ? <NewResearch /> : <Navigate to="/login" replace />} />
-      <Route path="research/:id" element={isAuthenticated ? <ResearchDetail /> : <Navigate to="/login" replace />} />
-      <Route path="settings" element={isAuthenticated ? <Settings /> : <Navigate to="/login" replace />} />
 
-      {/* Auth routes - only when not authenticated */}
-      <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/dashboard" replace />} />
-      <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/login" replace />} />
+        </Route>
 
-      {/* Protected auth routes with logout */}
-      <Route
-        path="/logout"
-        element={isAuthenticated ? (
-          <>
-            {handleLogout()}
-            <Navigate to="/login" replace />
-          </>
-        ) : (
-          <Navigate to="/login" replace />
-        )}
-      />
+        {/* Fallbacks & Auth Redirects */}
+        <Route path="/login" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/register" element={<Navigate to="/dashboard" replace />} />
+        <Route
+          path="/logout"
+          element={
+            <>
+              {handleLogout()}
+              <Navigate to="/login" replace />
+            </>
+          }
+        />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </WorkspaceProvider>
+  )
 
-      {/* Expiration warning */}
-      <Route path="/token-expired" element={!isAuthenticated ? <Login /> : <Navigate to="/login" replace />} />
+  const unauthenticatedRoutes = (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )
+
+  return isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes
 }
 
 export default App

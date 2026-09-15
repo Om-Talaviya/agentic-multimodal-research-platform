@@ -57,22 +57,17 @@ class KnowledgeSearchTool(Tool):
         """Execute hybrid search query."""
         retriever = self._retriever
         if retriever is None:
-            # Try to obtain global/dependency retriever
-            try:
-                from api.dependencies import get_retriever
-                retriever = await get_retriever()
-            except Exception:
-                # Fallback to local in-memory retriever instance
-                from retrieval.bm25 import BM25Index
-                from retrieval.embedder import Embedder
-                from retrieval.in_memory_store import InMemoryVectorStore
-                from retrieval.retriever import HybridRetriever
+            # Fallback to local in-memory retriever instance if not injected
+            from retrieval.bm25 import BM25Index
+            from retrieval.embedder import Embedder
+            from retrieval.in_memory_store import InMemoryVectorStore
+            from retrieval.retriever import HybridRetriever
 
-                retriever = HybridRetriever(
-                    vector_store=InMemoryVectorStore(),
-                    bm25_index=BM25Index(),
-                    embedder=Embedder(),
-                )
+            retriever = HybridRetriever(
+                vector_store=InMemoryVectorStore(),
+                bm25_index=BM25Index(),
+                embedder=Embedder(),
+            )
 
         # Build filter
         filter_dict: Dict[str, Any] = {}

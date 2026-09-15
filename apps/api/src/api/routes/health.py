@@ -12,9 +12,13 @@ router = APIRouter(tags=["health"])
 logger = get_logger(__name__)
 
 
+from api.dependencies import get_model_router
+
+
 @router.get("/health")
 async def health_check(
     session: AsyncSession = Depends(get_db_session),
+    router: ModelRouter = Depends(get_model_router),
 ):
     """Health check endpoint."""
     checks = {}
@@ -29,8 +33,6 @@ async def health_check(
     
     # Model providers
     try:
-        from api.dependencies import get_model_router
-        router: ModelRouter = await get_model_router()
         health_results = await router.health_check_all()
         for name, health in health_results.items():
             checks[name] = "healthy" if health.healthy else f"unhealthy: {health.error}"

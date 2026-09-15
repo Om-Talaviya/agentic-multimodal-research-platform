@@ -45,15 +45,60 @@ class AgentMemory:
 @dataclass
 class AgentContext:
     """Shared context passed to agents during execution."""
-    research_job_id: UUIDStr
-    task_id: UUIDStr
-    request_id: UUIDStr
-    tools: dict[str, Any]  # Tool instances
-    memory: AgentMemory
-    model_router: ModelRouter
+    research_job_id: UUIDStr = "default-job"
+    task_id: UUIDStr = "default-task"
+    request_id: UUIDStr = "default-req"
+    tools: dict[str, Any] = field(default_factory=dict)
+    memory: AgentMemory = field(default_factory=AgentMemory)
+    model_router: Optional[ModelRouter] = None
+    model_gateway: Optional[Any] = None
     config: dict[str, Any] = field(default_factory=dict)
     metadata: JSONDict = field(default_factory=dict)
     permissions: set[str] = field(default_factory=set)
+    user_id: Optional[Any] = None
+    workspace_id: Optional[Any] = None
+    project_id: Optional[Any] = None
+
+    def to_dict(self) -> dict[str, Any]:
+        """Convert context summary to dictionary for logging and model dispatch."""
+        uid = self.user_id or self.metadata.get("user_id")
+        return {
+            "research_job_id": str(self.research_job_id),
+            "task_id": str(self.task_id),
+            "request_id": str(self.request_id),
+            "user_id": str(uid) if uid else None,
+            "workspace_id": str(self.workspace_id) if self.workspace_id else None,
+            "project_id": str(self.project_id) if self.project_id else None,
+            "config": self.config,
+            "metadata": self.metadata,
+        }
+
+    async def complete_llm(
+        self,
+        request: Any,
+        task: Optional[str] = None,
+    ) -> Any:
+        """Helper to invoke completion via gateway (with telemetry & user_id) or fallback to router."""
+        req_meta = dict(getattr(request, "metadata", {}) or {})
+        uid = self.user_id or self.metadata.get("user_id")
+        if "user_id" not in req_meta and uid:
+            req_meta["user_id"] = str(uid)
+        if "job_id" not in req_meta:
+            req_meta["job_id"] = str(self.research_job_id)
+        if "task_id" not in req_meta:
+            req_meta["task_id"] = str(self.task_id)
+
+        current_req = request.model_copy(update={"metadata": req_meta}) if hasattr(request, "model_copy") else request
+
+        if self.model_gateway:
+            return await self.model_gateway.complete(current_req, task=task)
+        elif self.model_router:
+            from ai.schemas import ModelCapabilities
+            caps = ModelCapabilities.for_task(task or "research") if task else None
+            llm = self.model_router.select_llm(caps)
+            return await llm.complete(current_req)
+        else:
+            raise ValueError("Neither model_gateway nor model_router is configured on AgentContext")
 
 
 @dataclass
@@ -64,6 +109,8 @@ class AgentResult:
     evidence: list[Any] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
     metadata: JSONDict = field(default_factory=dict)
+    task_id: Optional[str] = None
+    agent_name: Optional[str] = None
 
 
 class Agent(ABC):

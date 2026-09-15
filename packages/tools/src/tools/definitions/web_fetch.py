@@ -117,30 +117,42 @@ class WebFetchTool(Tool):
     )
 
     async def execute(self, url: str, max_length: int = 50000) -> str:
-        """Fetch URL content and extract clean text."""
+        """Fetch URL content and extract clean text with strict per-hop SSRF validation."""
         try:
-            parsed = urlparse(url)
-            if parsed.scheme not in ("http", "https"):
-                return "Error fetching URL: Only HTTP and HTTPS schemes are allowed"
-
-            hostname = parsed.hostname
-            if not hostname:
-                return "Error fetching URL: Invalid URL - no hostname"
-
-            await _resolve_and_validate_hostname(hostname)
+            from urllib.parse import urljoin
+            current_url = url
+            max_redirects = 5
 
             async with httpx.AsyncClient() as client:
-                response = await client.get(url, timeout=30.0, follow_redirects=True)
-                response.raise_for_status()
+                for _ in range(max_redirects):
+                    parsed = urlparse(current_url)
+                    if parsed.scheme not in ("http", "https"):
+                        return "Error fetching URL: Only HTTP and HTTPS schemes are allowed"
 
-                parser = TextExtractor()
-                parser.feed(response.text)
-                content = " ".join(parser.text)
+                    hostname = parsed.hostname
+                    if not hostname:
+                        return "Error fetching URL: Invalid URL - no hostname"
 
-                if len(content) > max_length:
-                    content = content[:max_length] + "... [truncated]"
+                    await _resolve_and_validate_hostname(hostname)
 
-                return content
+                    response = await client.get(current_url, timeout=30.0, follow_redirects=False)
+                    if response.is_redirect and "location" in response.headers:
+                        redirect_target = response.headers["location"]
+                        current_url = urljoin(current_url, redirect_target)
+                        continue
+
+                    response.raise_for_status()
+
+                    parser = TextExtractor()
+                    parser.feed(response.text)
+                    content = " ".join(parser.text)
+
+                    if len(content) > max_length:
+                        content = content[:max_length] + "... [truncated]"
+
+                    return content
+
+                return "Error fetching URL: Exceeded maximum redirects"
         except ValueError as e:
             logger.warning("Web fetch blocked by SSRF protection", url=url, error=str(e))
             return f"Error fetching URL: {str(e)}"
