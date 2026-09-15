@@ -1,3 +1,4 @@
+from api.routes.spatial import router as spatial_router
 """FastAPI application entry point."""
 
 from contextlib import asynccontextmanager
@@ -95,6 +96,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(spatial_router, prefix="/api/v1")
 app.include_router(health.router, prefix=settings.api_prefix)
 app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(research.router, prefix=settings.api_prefix)

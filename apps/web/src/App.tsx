@@ -1,3 +1,4 @@
+import SpatialTranscriptomicsPage from './pages/SpatialTranscriptomicsPage';
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
@@ -150,7 +151,8 @@ function App() {
           }
         />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
-      </Routes>
+                <Route path="/spatial" element={<SpatialTranscriptomicsPage />} />
+</Routes>
     </WorkspaceProvider>
   )
 

@@ -343,3 +343,9 @@ __all__ = [
     "DBDifferentialGene",
     "DBPathwayEnrichment",
 ]
+from database.models.spatial_transcriptomics import (
+    DBSpatialTissueDataset,
+    DBCellSpatialCoordinate,
+    DBCellCommunicationPair,
+    DBSpatialDomain,
+)

@@ -1041,3 +1041,21 @@ This document records the key architectural, engineering, and product design dec
 
 
 
+
+---
+
+## ADR 042: Autonomous Spatial Transcriptomics & Histological Tissue Microenvironment Studio
+
+### Status
+Accepted (Phase 42)
+
+### Context
+Single-cell transcriptomics resolves cellular heterogeneity but disrupts spatial morphology and tissue context. Spatial transcriptomics platforms (10x Visium, MERFISH, Xenium) preserve in-situ coordinates ($x, y, z$), enabling direct mapping of tumor-stroma boundaries and paracrine ligand-receptor cell-cell signaling.
+
+### Decision
+1. Implemented `DBSpatialTissueDataset`, `DBCellSpatialCoordinate`, `DBCellCommunicationPair`, and `DBSpatialDomain` with PostgreSQL 16 / SQLite compatibility.
+2. Built `SpatialTranscriptomicsEngine` to compute spatial neighborhood graphs, domain segmentation, and ligand-receptor communication scores.
+3. Created interactive `SpatialTranscriptomicsPage.tsx` with 2D SVG canvas spot renderer and crosstalk chords.
+
+### Consequences
+Enables researchers to map spatial tumor microenvironments and paracrine interactions in-silico with zero external dependencies.
