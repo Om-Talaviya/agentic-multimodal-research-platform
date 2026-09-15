@@ -5,6 +5,20 @@ All notable changes to the **Agentic Multimodal Research Platform** will be docu
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.16.0] - 2026-09-15 (Generation 16: Phase 42 - Autonomous Spatial Transcriptomics & Tissue Microenvironment Studio)
+
+### Added
+- **Phase 42: Autonomous Spatial Transcriptomics & Tissue Microenvironment Studio**:
+  - Implemented database models in `packages/database/src/database/models/spatial_transcriptomics.py` (`DBSpatialTissueDataset`, `DBCellSpatialCoordinate`, `DBCellCommunicationPair`, `DBSpatialDomain`).
+  - Implemented `SpatialTranscriptomicsRepository` in `packages/database/src/database/repositories/spatial_repo.py` supporting dataset CRUD, coordinate querying, and ligand-receptor crosstalk extraction.
+  - Implemented `SpatialTranscriptomicsEngine` in `packages/research/src/research/spatial_engine.py` simulating 2D histological coordinate grids, spatial domain partitioning, and CellChat/CellPhoneDB signaling pathways.
+  - Implemented REST API routes in `apps/api/src/api/routes/spatial.py`.
+  - Created interactive Spatial Transcriptomics Studio in `apps/web/src/pages/SpatialTranscriptomicsPage.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_spatial_repo.py`, `packages/research/tests/test_spatial_engine.py`, and `apps/api/tests/test_spatial_api.py`.
+  - Formalized **ADR 042** in `docs/decisions.md`.
+
+---
+
 ## [2.15.0] - 2026-09-15 (Generation 15: Phase 41 - Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio)
 
 ### Added

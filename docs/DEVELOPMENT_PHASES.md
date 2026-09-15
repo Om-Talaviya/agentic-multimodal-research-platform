@@ -495,6 +495,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ---
 
+
+---
+
+## Phase 42: Autonomous Spatial Transcriptomics & Tissue Microenvironment Studio
+**Status**: 🟢 COMPLETE (Generation 16: Spatial Multi-Omics & De Novo Molecular Therapeutics)
+
+**Goal**: 10x Visium / MERFISH histological coordinate mapping ($x, y, z$), spatial tumor-stroma microenvironment domain segmentation, CellChat/CellPhoneDB ligand-receptor signaling network inference, database models (`DBSpatialTissueDataset`, `DBCellSpatialCoordinate`, `DBCellCommunicationPair`, `DBSpatialDomain`), `SpatialTranscriptomicsRepository`, `SpatialTranscriptomicsEngine`, `/api/v1/spatial/*` REST API, and `SpatialTranscriptomicsPage.tsx` React studio (**ADR 042**).
+
+### Deliverables:
+- [x] Histological spatial coordinate mapping ($x, y, z$) with spot-level sequencing counts and gene detection depth.
+- [x] Spatial tumor microenvironment domain segmentation (`Tumor Core`, `Invasive Front`, `Cancer-Associated Stroma`, `Tertiary Lymphoid Structure`).
+- [x] Cell-cell ligand-receptor communication network inference across WNT, TGFb, VEGF, CXCL, and NOTCH signaling pathways.
+- [x] Spatial tumor proximity and immune infiltration gradient calculation.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/spatial/analyze`, `/api/v1/spatial/datasets`, `/api/v1/spatial/datasets/{id}/spots`, `/api/v1/spatial/datasets/{id}/domains`, `/api/v1/spatial/datasets/{id}/communications`).
+- [x] Interactive UI Studio with 2D spot canvas, domain gating, and crosstalk cards in `apps/web/src/pages/SpatialTranscriptomicsPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_spatial_repo.py`, `packages/research/tests/test_spatial_engine.py`, and `apps/api/tests/test_spatial_api.py`.
+- [x] Formalized **ADR 042**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
@@ -512,4 +531,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 ### ALL 34 PHASES COMPLETED (376/376 TESTS PASSING)
 Generations 1 through 8 are 100% active, fully verified, and production-ready on `develop/v1.1`!
 
-
+

@@ -1,6 +1,6 @@
-import { NavLink, Outlet } from 'react-router-dom'
-import { LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio, Swords, BookOpenCheck, Cpu, Presentation, Award, Network, Database, Scale, FileSpreadsheet, HeartPulse, Bot, Dna, Atom, Scissors, Microscope } from 'lucide-react'
-import { WorkspaceSelector } from './WorkspaceSelector'
+import { Layers, NavLink, Outlet } from 'react-router-dom'
+import { Layers, LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio, Swords, BookOpenCheck, Cpu, Presentation, Award, Network, Database, Scale, FileSpreadsheet, HeartPulse, Bot, Dna, Atom, Scissors, Microscope } from 'lucide-react'
+import { Layers, WorkspaceSelector } from './WorkspaceSelector'
 
 
 export function Layout() {
@@ -92,4 +92,5 @@ export function Layout() {
       </main>
     </div>
   )
+    { label: "Spatial Multi-Omics", href: "/spatial", icon: Layers },
 }
