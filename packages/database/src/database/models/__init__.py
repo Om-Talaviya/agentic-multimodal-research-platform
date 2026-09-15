@@ -367,3 +367,5 @@ from database.models.drug_synergy import (
     DBRepurposedCandidate,
     DBDrugCombinationSynergy,
 )
+
+from database.models.clinical_trial import DBClinicalTrialProtocol, DBEligibilityCriterion, DBCohortPatientMatch, DBSyntheticControlArm

@@ -532,3 +532,6 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 
 
 
+
+- [x] **Phase 46: Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier** <!-- id: 46 -->
+  - **Goal**: Adaptive clinical trial protocol generation, inclusion/exclusion eligibility criteria rules, EHR cohort matching, Kaplan-Meier power calculations, synthetic control arm simulation, database models (`DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, `DBSyntheticControlArm`), `ClinicalTrialRepository`, `ClinicalTrialOptimizerEngine`, `/api/v1/clinical-trials/*` REST API, and `ClinicalTrialStudioPage.tsx` React studio (**ADR 046**).

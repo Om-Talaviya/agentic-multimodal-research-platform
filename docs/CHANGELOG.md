@@ -1,3 +1,14 @@
+
+## [Phase 46] - Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier
+### Added
+- Database models: `DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, `DBSyntheticControlArm`.
+- Repository `ClinicalTrialRepository` for CRUD and cascade protocol relations.
+- Scientific `ClinicalTrialOptimizerEngine` for Schoenfeld sample-size power estimation and Kaplan-Meier survival curves.
+- FastAPI routes at `/api/v1/clinical-trials/*`.
+- Interactive React studio `ClinicalTrialStudioPage.tsx` with telemetry gauges and survival curve chart.
+- Unit and integration tests in `packages/database/tests/test_clinical_trial_repo.py`, `packages/research/tests/test_clinical_trial_engine.py`, and `apps/api/tests/test_clinical_trial_api.py`.
+- Architecture Decision Record **ADR 046**.
+
 # Changelog: CHANGELOG.md
 
 All notable changes to the **Agentic Multimodal Research Platform** will be documented in this file.

@@ -158,6 +158,7 @@ function App() {
           <Route path="/chemistry" element={<GenerativeChemistryPage />} />
           <Route path="/supergraph" element={<SuperGraphStudioPage />} />
           <Route path="/synergy" element={<DrugSynergyStudioPage />} />
+        <Route path="/clinical-trials" element={<ClinicalTrialStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
