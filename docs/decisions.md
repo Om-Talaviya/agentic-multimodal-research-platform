@@ -1159,3 +1159,18 @@ Implement `DBMultiOmicsExperiment`, `DBPathwayCascade`, and `DBPerturbationSimul
 
 ### Consequences:
 - **Positive**: Enables in-silico temporal trajectory tracking of target degradation, phosphorylation rebounds, and metabolic flux adjustments, driving rational combination therapy design.
+
+---
+
+## ADR 049: Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector
+
+### Status: ACCEPTED (Generation 19)
+
+### Context:
+Monitoring drug safety post-approval requires scalable, algorithmic analysis of unstructured EHRs and global spontaneous reporting systems (FAERS, VigiBase) to rapidly surface safety signals through disproportionality metrics.
+
+### Decision:
+Implement `DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, and `DBDisproportionalityMetric` managed via `PharmacovigilanceRepository` and computed by `PharmacovigilanceEngine`. Provide REST endpoints under `/api/v1/pharmacovigilance/*` and interactive visualization in `PharmacovigilanceStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated detection of statistical reporting disproportionality ($PRR \ge 2.0$, $IC_{025} > 0$) paired with automated WHO-UMC causality grading.

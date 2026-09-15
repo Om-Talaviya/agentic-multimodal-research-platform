@@ -1,3 +1,4 @@
+from api.routes.pharmacovigilance import router as pv_router
 from api.routes.pathway_perturbation import router as pathways_router
 from api.routes.cryoem import router as cryoem_router
 from api.routes.clinical_trials import router as clinical_trials_router
@@ -103,6 +104,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(pv_router, prefix="/api/v1")
 app.include_router(pathways_router, prefix="/api/v1")
 app.include_router(cryoem_router, prefix="/api/v1")
 app.include_router(clinical_trials_router, prefix="/api/v1")

@@ -627,6 +627,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_pathway_perturbation_repo.py`, `packages/research/tests/test_pathway_perturbation_engine.py`, and `apps/api/tests/test_pathway_perturbation_api.py`.
 - [x] Formalized **ADR 048**.
 
+
+---
+
+## Phase 49: Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector
+**Status**: 🟢 COMPLETE (Generation 19: Post-Market Surveillance)
+
+**Goal**: Mining real-world health claims, FAERS/VAERS adverse event reporting databases, electronic health records, and social medical literature for post-market safety signals with Proportional Reporting Ratio (PRR), Reporting Odds Ratio (ROR), and Bayesian Confidence Propagation Neural Network (BCPNN/IC025), WHO-UMC causality assessment, database models (`DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`), `PharmacovigilanceRepository`, `PharmacovigilanceEngine`, `/api/v1/pharmacovigilance/*` REST API, and `PharmacovigilanceStudioPage.tsx` React studio (**ADR 049**).
+
+### Deliverables:
+- [x] Multi-source real-world evidence surveillance corpus ingestion (FDA FAERS, WHO VigiBase, EudraVigilance, EHR).
+- [x] 2x2 contingency table disproportionality mining with PRR, ROR 95% confidence intervals, and Chi-square statistics.
+- [x] Bayesian Confidence Propagation Neural Network Information Component ($IC_{025}$) and Empirical Bayes Geometric Mean ($EBGM_{05}$) scoring.
+- [x] Automated WHO-UMC causality classification (Certain, Probable, Possible, Unlikely).
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/pharmacovigilance/detect`, `/api/v1/pharmacovigilance/corpora`, `/api/v1/pharmacovigilance/corpora/{id}`).
+- [x] Interactive UI Studio with PRR/ROR disproportionality gauges, WHO-UMC causality badges, and MedDRA signal list in `apps/web/src/pages/PharmacovigilanceStudioPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_pharmacovigilance_repo.py`, `packages/research/tests/test_pharmacovigilance_engine.py`, and `apps/api/tests/test_pharmacovigilance_api.py`.
+- [x] Formalized **ADR 049**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |
