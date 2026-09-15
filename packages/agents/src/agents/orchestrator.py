@@ -23,12 +23,14 @@ class AgentOrchestrator:
         agent_registry: AgentRegistry,
         tool_registry: ToolRegistry,
         model_router: ModelRouter,
+        model_gateway: Optional[Any] = None,
         max_retries: int = 2,
         retry_delay_seconds: float = 1.0,
     ):
         self.agents = agent_registry
         self.tools = tool_registry
         self.router = model_router
+        self.gateway = model_gateway
         self.max_retries = max_retries
         self.retry_delay_seconds = retry_delay_seconds
 
@@ -37,10 +39,14 @@ class AgentOrchestrator:
         job_id: str,
         task_id: str,
         request_id: str,
+        user_id: Optional[str] = None,
         permissions: Optional[Set[str]] = None,
         memory: Optional[AgentMemory] = None,
     ) -> AgentContext:
-        """Create execution context with tools, memory, and model routing."""
+        """Create execution context with tools, memory, model routing, and gateway."""
+        metadata = {}
+        if user_id:
+            metadata["user_id"] = str(user_id)
         return AgentContext(
             research_job_id=job_id,
             task_id=task_id,
@@ -48,7 +54,9 @@ class AgentOrchestrator:
             tools={t.schema.name: t for t in self.tools.get_all()},
             memory=memory or AgentMemory(),
             model_router=self.router,
+            model_gateway=self.gateway,
             config={},
+            metadata=metadata,
             permissions=permissions or {"web_access", "document_access"},
         )
 

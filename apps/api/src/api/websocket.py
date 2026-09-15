@@ -109,8 +109,10 @@ def _serialize_evidence(evidence: Any) -> dict[str, Any]:
         "claim": evidence.claim,
         "supporting_text": evidence.supporting_text,
         "confidence": evidence.confidence,
+        "source_reliability": getattr(evidence, "source_reliability", 1.0) or 1.0,
         "verification_status": evidence.verification_status,
         "verification_notes": evidence.verification_notes,
+        "citation_coordinates": getattr(evidence, "citation_coordinates", {}) or {},
     }
 
 
@@ -126,6 +128,8 @@ def _serialize_report(report: Any) -> dict[str, Any] | None:
         "findings": report.findings or [],
         "evidence": getattr(report, "evidence_ids", None) or getattr(report, "evidence", None) or [],
         "sources": getattr(report, "source_ids", None) or getattr(report, "sources", None) or [],
+        "contradictions": getattr(report, "contradictions", []) or [],
+        "confidence_score": getattr(report, "confidence_score", 0.85) or 0.85,
         "conclusions": report.conclusions or [],
         "limitations": report.limitations or [],
         "generated_at": report.generated_at.isoformat() if hasattr(report.generated_at, "isoformat") else str(report.generated_at),
@@ -226,49 +230,75 @@ async def research_job_websocket(
     job_id: UUID,
     event_bus: ResearchEventBus = Depends(get_research_event_bus),
 ) -> None:
+    job_id_str = str(job_id)
+    user = None
+    snapshot = None
+
     async with get_session() as session:
         user = await _authenticate_websocket(websocket, session)
         if user is None:
             return
+        snapshot = await _build_snapshot(session, job_id)
 
-        job_id_str = str(job_id)
-        await connection_manager.connect(job_id_str, websocket)
-        logger.info("Research WebSocket connected", job_id=job_id_str, user_id=user.id)
+    if snapshot is None:
+        await websocket.accept()
+        await connection_manager.send_json(
+            websocket,
+            {"type": "error", "error": {"code": "NOT_FOUND", "message": "Research job not found"}},
+        )
+        await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+        return
 
-        try:
-            # Subscribe before loading the snapshot to prevent race conditions with background execution
-            async with event_bus.subscribe(job_id_str) as queue:
-                snapshot = await _build_snapshot(session, job_id)
+    await connection_manager.connect(job_id_str, websocket)
+    logger.info("Research WebSocket connected", job_id=job_id_str, user_id=user.id)
 
-                if snapshot is None:
-                    await connection_manager.send_json(
-                        websocket,
-                        {"type": "error", "error": {"code": "NOT_FOUND", "message": "Research job not found"}},
+    try:
+        # Subscribe to event bus and stream live snapshot and events
+        async with event_bus.subscribe(job_id_str) as queue:
+            await connection_manager.send_json(
+                websocket,
+                {"type": "snapshot", "job_id": job_id_str, "data": snapshot},
+            )
+
+            async def _receive_loop() -> None:
+                try:
+                    while True:
+                        await websocket.receive()
+                except (WebSocketDisconnect, Exception):
+                    pass
+
+            receive_task = asyncio.create_task(_receive_loop())
+
+            try:
+                while not receive_task.done():
+                    get_event_task = asyncio.create_task(queue.get())
+                    done, _ = await asyncio.wait(
+                        [get_event_task, receive_task],
+                        timeout=5.0,
+                        return_when=asyncio.FIRST_COMPLETED,
                     )
-                    await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
-                    return
-
-                await connection_manager.send_json(
-                    websocket,
-                    {"type": "snapshot", "job_id": job_id_str, "data": snapshot},
-                )
-
-                while True:
-                    try:
-                        event = await asyncio.wait_for(queue.get(), timeout=30)
+                    if receive_task in done:
+                        get_event_task.cancel()
+                        break
+                    if get_event_task in done:
+                        event = get_event_task.result()
                         await connection_manager.send_json(
                             websocket,
                             {"type": "event", "job_id": job_id_str, "event": event.to_payload()},
                         )
-                    except TimeoutError:
+                    else:
+                        get_event_task.cancel()
                         await connection_manager.send_json(
                             websocket,
                             {"type": "heartbeat", "job_id": job_id_str},
                         )
-        except WebSocketDisconnect:
-            pass
-        except Exception as exc:
-            logger.warning("WebSocket error", job_id=job_id_str, error=str(exc))
-        finally:
-            connection_manager.disconnect(job_id_str, websocket)
-            logger.info("Research WebSocket disconnected", job_id=job_id_str, user_id=user.id)
+            finally:
+                receive_task.cancel()
+    except WebSocketDisconnect:
+        pass
+    except Exception as exc:
+        logger.warning("WebSocket error", job_id=job_id_str, error=str(exc))
+    finally:
+        connection_manager.disconnect(job_id_str, websocket)
+        logger.info("Research WebSocket disconnected", job_id=job_id_str, user_id=user.id)
+

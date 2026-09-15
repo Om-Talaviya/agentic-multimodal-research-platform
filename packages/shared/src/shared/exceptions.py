@@ -138,3 +138,10 @@ class AuthorizationError(ResearchError):
 
     def __init__(self, message: str = "Permission denied", details: dict | None = None):
         super().__init__(message, code="AUTHORIZATION_ERROR", details=details)
+
+
+class QuotaExceededError(ResearchError):
+    """Raised when a user's usage quota has been exceeded."""
+
+    def __init__(self, message: str = "Usage quota exceeded", details: dict | None = None):
+        super().__init__(message, code="QUOTA_EXCEEDED", details=details)

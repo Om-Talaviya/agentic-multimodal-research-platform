@@ -22,16 +22,29 @@ class ResearchEventType(str, Enum):
     JOB_STARTED = "job_started"
     PLANNING_STARTED = "planning_started"
     PLANNING_COMPLETED = "planning_completed"
+    PLAN_DECOMPOSED = "plan_decomposed"
     TASKS_CREATED = "tasks_created"
     TASK_STARTED = "task_started"
     TASK_COMPLETED = "task_completed"
     TASK_FAILED = "task_failed"
+    TASK_SPAWNED = "task_spawned"
+    DAG_REPLANNED = "dag_replanned"
     SOURCES_ADDED = "sources_added"
     EVIDENCE_ADDED = "evidence_added"
     VERIFICATION_STARTED = "verification_started"
     VERIFICATION_COMPLETED = "verification_completed"
+    DEEP_RESEARCH_STARTED = "deep_research_started"
+    RESEARCH_ITERATION_STARTED = "research_iteration_started"
+    HYPOTHESIS_FORMULATED = "hypothesis_formulated"
+    RESEARCH_ITERATION_COMPLETED = "research_iteration_completed"
+    DEEP_RESEARCH_CONVERGED = "deep_research_converged"
+    DEEP_RESEARCH_TERMINATED = "deep_research_terminated"
     REPORT_STARTED = "report_started"
     REPORT_GENERATED = "report_generated"
+    MEMORY_RECALLED = "memory_recalled"
+    MEMORY_STORED = "memory_stored"
+    GRAPH_ENTITIES_EXTRACTED = "graph_entities_extracted"
+    GRAPH_RELATIONS_EXTRACTED = "graph_relations_extracted"
     JOB_COMPLETED = "job_completed"
     JOB_FAILED = "job_failed"
 
@@ -49,46 +62,67 @@ class ResearchEvent(BaseModel):
         return self.model_dump(mode="json")
 
 
+import threading
+
+
 class ResearchEventBus:
     """Bounded async pub/sub grouped by research job ID."""
 
     def __init__(self, max_queue_size: int = 100) -> None:
         self.max_queue_size = max_queue_size
         self._subscribers: dict[str, set[asyncio.Queue[ResearchEvent]]] = defaultdict(set)
-        self._lock = asyncio.Lock()
+        self._lock = threading.Lock()
         self._sequence = 0
 
     async def publish(self, event: ResearchEvent) -> ResearchEvent:
-        async with self._lock:
+        with self._lock:
             self._sequence += 1
             event.sequence = self._sequence
             subscribers = list(self._subscribers.get(event.job_id, set()))
 
         for queue in subscribers:
             try:
-                queue.put_nowait(event)
-            except asyncio.QueueFull:
+                loop = getattr(queue, "_custom_loop", None)
+                curr_loop = None
                 try:
-                    queue.get_nowait()
-                except asyncio.QueueEmpty:
+                    curr_loop = asyncio.get_running_loop()
+                except RuntimeError:
                     pass
-                try:
-                    queue.put_nowait(event)
-                except asyncio.QueueFull:
-                    pass
+
+                def _do_put(q: asyncio.Queue[ResearchEvent], ev: ResearchEvent) -> None:
+                    try:
+                        q.put_nowait(ev)
+                    except asyncio.QueueFull:
+                        try:
+                            q.get_nowait()
+                        except asyncio.QueueEmpty:
+                            pass
+                        try:
+                            q.put_nowait(ev)
+                        except asyncio.QueueFull:
+                            pass
+
+                if loop and loop.is_running() and loop != curr_loop:
+                    loop.call_soon_threadsafe(_do_put, queue, event)
+                else:
+                    _do_put(queue, event)
+            except Exception:
+                pass
 
         return event
 
     @asynccontextmanager
     async def subscribe(self, job_id: str) -> AsyncIterator[asyncio.Queue[ResearchEvent]]:
+        loop = asyncio.get_running_loop()
         queue: asyncio.Queue[ResearchEvent] = asyncio.Queue(maxsize=self.max_queue_size)
-        async with self._lock:
+        setattr(queue, "_custom_loop", loop)
+        with self._lock:
             self._subscribers[job_id].add(queue)
 
         try:
             yield queue
         finally:
-            async with self._lock:
+            with self._lock:
                 subscribers = self._subscribers.get(job_id)
                 if subscribers is not None:
                     subscribers.discard(queue)
@@ -96,7 +130,7 @@ class ResearchEventBus:
                         self._subscribers.pop(job_id, None)
 
     async def subscriber_count(self, job_id: str) -> int:
-        async with self._lock:
+        with self._lock:
             return len(self._subscribers.get(job_id, set()))
 
 

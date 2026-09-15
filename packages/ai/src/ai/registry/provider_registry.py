@@ -21,6 +21,26 @@ class ProviderRegistry:
         self._vision_providers: Dict[str, VisionProvider] = {}
         self._embedding_providers: Dict[str, EmbeddingProvider] = {}
         self._reranker_providers: Dict[str, RerankerProvider] = {}
+        self._cached_health: Dict[str, ProviderHealth] = {}
+
+    def get_health(self, provider_name: str) -> Optional[ProviderHealth]:
+        """Get cached health status for a provider."""
+        return self._cached_health.get(provider_name)
+
+    def set_health(self, provider_name: str, health: ProviderHealth) -> None:
+        """Manually update cached health status for a provider."""
+        self._cached_health[provider_name] = health
+
+    def is_provider_healthy(self, provider_name: str) -> bool:
+        """Check if provider is healthy in cache (defaults to True if unprobed)."""
+        health = self._cached_health.get(provider_name)
+        if health is None:
+            # Also check if prefixed
+            for key in (f"llm:{provider_name}", f"vision:{provider_name}", f"embedding:{provider_name}"):
+                if key in self._cached_health:
+                    return self._cached_health[key].healthy
+            return True
+        return health.healthy
 
     def register_llm(self, provider: LLMProvider) -> None:
         """Register an LLM provider."""
@@ -122,6 +142,7 @@ class ProviderRegistry:
                 logger.warning("Reranker provider health check failed", provider=name, error=str(e))
                 results[key] = ProviderHealth(provider=name, healthy=False, error=str(e))
 
+        self._cached_health.update(results)
         return results
 
     def clear(self) -> None:
@@ -130,3 +151,4 @@ class ProviderRegistry:
         self._vision_providers.clear()
         self._embedding_providers.clear()
         self._reranker_providers.clear()
+        self._cached_health.clear()

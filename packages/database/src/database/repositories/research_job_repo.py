@@ -71,19 +71,40 @@ class ResearchJobRepository:
         self, 
         limit: int = 50, 
         offset: int = 0,
-        status: JobStatus | None = None
+        status: JobStatus | None = None,
+        user_id: UUID | None = None,
+        workspace_id: UUID | None = None,
+        project_id: UUID | None = None,
     ) -> List[ResearchJob]:
         query = select(ResearchJob).order_by(ResearchJob.created_at.desc())
         if status:
             query = query.where(ResearchJob.status == status.value)
+        if user_id:
+            query = query.where(ResearchJob.user_id == user_id)
+        if workspace_id:
+            query = query.where(ResearchJob.workspace_id == workspace_id)
+        if project_id:
+            query = query.where(ResearchJob.project_id == project_id)
         query = query.limit(limit).offset(offset)
         result = await self.session.execute(query)
         return list(result.scalars().all())
     
-    async def count_jobs(self, status: JobStatus | None = None) -> int:
+    async def count_jobs(
+        self,
+        status: JobStatus | None = None,
+        user_id: UUID | None = None,
+        workspace_id: UUID | None = None,
+        project_id: UUID | None = None,
+    ) -> int:
         query = select(func.count(ResearchJob.id))
         if status:
             query = query.where(ResearchJob.status == status.value)
+        if user_id:
+            query = query.where(ResearchJob.user_id == user_id)
+        if workspace_id:
+            query = query.where(ResearchJob.workspace_id == workspace_id)
+        if project_id:
+            query = query.where(ResearchJob.project_id == project_id)
         result = await self.session.execute(query)
         return result.scalar_one()
 

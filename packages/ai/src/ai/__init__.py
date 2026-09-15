@@ -13,6 +13,14 @@ from ai.providers import (
     ModelRouter, NoSuitableModelError,
 )
 from ai.registry import ModelDefinition, ModelRegistry, ProviderRegistry
+from ai.router.optimizer import (
+    ModelEcosystemOptimizer,
+    ModelScore,
+    OptimizationProfile,
+    OptimizationResult,
+    PRESET_PROFILES,
+    ProfileType,
+)
 from ai.router.tasks import TaskType
 from ai.gateway import ModelGateway, GatewayHealth
 from ai.factory import create_default_gateway
@@ -29,6 +37,8 @@ __all__ = [
     "GeminiProvider", "OllamaProvider", "OpenAICompatibleProvider",
     "ModelRouter", "NoSuitableModelError",
     "ModelDefinition", "ModelRegistry", "ProviderRegistry",
+    "ModelEcosystemOptimizer", "ModelScore", "OptimizationProfile",
+    "OptimizationResult", "PRESET_PROFILES", "ProfileType",
     "TaskType",
     "ModelGateway", "GatewayHealth",
     "create_default_gateway",

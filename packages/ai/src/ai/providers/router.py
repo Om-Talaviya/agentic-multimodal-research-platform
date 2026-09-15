@@ -8,6 +8,13 @@ from ai.providers.base import (
 )
 from ai.registry.model_registry import ModelDefinition, ModelRegistry
 from ai.registry.provider_registry import ProviderRegistry
+from ai.router.optimizer import (
+    ModelEcosystemOptimizer,
+    OptimizationProfile,
+    OptimizationResult,
+    PRESET_PROFILES,
+    ProfileType,
+)
 from ai.router.tasks import TaskType, get_required_capabilities, normalize_task
 from ai.schemas import ModelCapabilities, ModelCapability, ProviderHealth
 from shared.exceptions import ModelNotFoundError, ProviderError
@@ -77,6 +84,7 @@ class ModelRouter:
         requires_vision: bool = False,
         requires_streaming: bool = False,
         user_id: Optional[str] = None,
+        routing_profile: Optional[Union[str, OptimizationProfile, ProfileType]] = None,
     ) -> Tuple[ModelDefinition, LLMProvider]:
         """Select best matching (ModelDefinition, LLMProvider) pair.
 
@@ -91,7 +99,7 @@ class ModelRouter:
            - Exclude models/providers
         4. Health/availability filtering
         5. Context window compatibility filtering
-        6. Deterministic ranking
+        6. Deterministic / Multi-parameter optimization ranking
         7. Return selected (ModelDefinition, LLMProvider)
         """
 
@@ -214,52 +222,44 @@ class ModelRouter:
         # =========================================================================
         # 4. Tier preference filtering (FREE first, then PAID)
         # =========================================================================
-        # Configurable policy: prefer free models unless task requires paid
-        # This is a simple preference; deeper policy can be injected later
-        free_candidates = [m for m in candidates if m.is_free()]
-        paid_candidates = [m for m in candidates if m.is_paid()]
-
-        # If we have free candidates, use those; otherwise fall back to paid
-        filtered_by_tier: List[ModelDefinition]
-        if free_candidates:
-            filtered_by_tier = free_candidates
-        else:
-            filtered_by_tier = paid_candidates
-
-        if not filtered_by_tier:
-            # No candidates matching tier preference — fall back to all candidates
-            filtered_by_tier = candidates
-
-        # =========================================================================
-        # 5. Health/availability filtering
-        # =========================================================================
-        import asyncio
-
-        healthy_set: Set[str] = set()
-        for m in filtered_by_tier:
-            provider = self.provider_registry.get_llm(m.provider_name)
-            if provider is None:
-                continue
+        # If a specific routing profile is provided (e.g. QUALITY_MAXIMIZED), allow paid models
+        active_opt_profile: Optional[OptimizationProfile] = None
+        if isinstance(routing_profile, OptimizationProfile):
+            active_opt_profile = routing_profile
+        elif isinstance(routing_profile, ProfileType):
+            active_opt_profile = PRESET_PROFILES.get(routing_profile)
+        elif isinstance(routing_profile, str):
             try:
-                health = asyncio.run(provider.health_check())
-                if health.healthy:
-                    healthy_set.add(m.model_id)
-            except Exception:
-                pass  # Skip unhealthy models
+                active_opt_profile = PRESET_PROFILES.get(ProfileType(routing_profile))
+            except ValueError:
+                active_opt_profile = None
 
-        # Re-filter: only keep models with healthy providers
-        # But keep at least one candidate if nothing is healthy (degraded mode)
-        final_candidates: List[ModelDefinition] = []
-        for m in filtered_by_tier:
-            if m.model_id in healthy_set:
-                final_candidates.append(m)
-            elif not healthy_set and m in filtered_by_tier:
-                # No models healthy — include the least-unavailable as fallback
-                final_candidates.append(m)
+        if active_opt_profile and active_opt_profile.profile_type == ProfileType.QUALITY_MAXIMIZED:
+            filtered_by_tier = candidates
+        else:
+            free_candidates = [m for m in candidates if m.is_free()]
+            paid_candidates = [m for m in candidates if m.is_paid()]
+            if free_candidates:
+                filtered_by_tier = free_candidates
+            else:
+                filtered_by_tier = paid_candidates
 
-        if not final_candidates:
-            # If we have candidates that failed health check, use those as last resort
-            final_candidates = [m for m in filtered_by_tier if m not in final_candidates]
+            if not filtered_by_tier:
+                filtered_by_tier = candidates
+
+        # =========================================================================
+        # 5. Health/availability filtering (Uses ProviderRegistry cached health)
+        # =========================================================================
+        healthy_candidates = [
+            m for m in filtered_by_tier
+            if self.provider_registry.is_provider_healthy(m.provider_name)
+        ]
+
+        if healthy_candidates:
+            final_candidates = healthy_candidates
+        else:
+            # If no providers are cached healthy, fall back to all candidates (degraded mode)
+            final_candidates = filtered_by_tier
 
         if not final_candidates:
             raise NoSuitableModelError(
@@ -270,57 +270,46 @@ class ModelRouter:
         # =========================================================================
         # 6. Context window compatibility filtering
         # =========================================================================
-        # Determine the minimum context window needed for the task
         min_context = self._derive_min_context_for_task(task_type_str) if task_type_str else None
 
         context_filtered: List[ModelDefinition] = []
         for m in final_candidates:
             if min_context is None:
-                # No minimum context required — accept all
                 context_filtered.append(m)
             elif m.context_window and m.context_window >= min_context:
                 context_filtered.append(m)
             elif m.context_window is None:
-                # No context info — accept as possible fallback
                 context_filtered.append(m)
-            # else: context_window too small — skip
 
         if not context_filtered:
-            # If context filtering eliminated all candidates, relax the filter
             context_filtered = final_candidates
 
         # =========================================================================
-        # 7. Deterministic ranking (lower-is-better)
+        # 7. Model Selection: Multi-Parameter Optimizer or Deterministic Ranking
         # =========================================================================
-        def ranking_key(m: ModelDefinition) -> Tuple[int, int, int, int, int]:
-            """Ranking key: lower tuple = better rank.
+        if active_opt_profile:
+            opt_result = ModelEcosystemOptimizer.optimize(
+                candidates=context_filtered,
+                profile=active_opt_profile,
+                task=task_type_str,
+                required_capabilities=target_caps,
+            )
+            selected_model_id = opt_result.selected_model_id
+            selected_model = next((m for m in context_filtered if m.model_id == selected_model_id), context_filtered[0])
+            rationale_msg = opt_result.tradeoff_analysis
+        else:
+            def ranking_key(m: ModelDefinition) -> Tuple[int, int, int, int, int]:
+                task_match_val = 0 if (task_type_str and task_type_str in m.task_suitability) else 1
+                local_match_val = 0 if (prefer_local and m.is_local) else 1
+                tier_priority_val = 0 if m.is_free() else 1
+                cost_priority_val = 0 if (m.input_cost == 0 and m.output_cost == 0) else 1
+                model_priority_val = -m.priority
+                return (task_match_val, local_match_val, tier_priority_val, cost_priority_val, model_priority_val)
 
-            Components (lexicographic order, compared left-to-right):
-            0. task_match: 0 if model matches task suitability, 1 if not
-               (0 < 1, so matching models rank higher/better)
-            1. local_match: 0 if local model preferred and model is local, 1 if not
-            2. tier_priority: 0 if free (preferred), 1 if paid (fallback)
-            3. cost_priority: 0 if no cost, 1 if has cost (lower cost preferred)
-            4. model_priority: -m.priority (negate so higher numeric priority = better rank)
-            """
-            task_match_val = 0 if (task_type_str and task_type_str in m.task_suitability) else 1
-            # task_match_val = 0 means model matches task (better rank since lower-is-better)
-            # task_match_val = 1 means model does NOT match task (worse rank)
+            sorted_candidates = sorted(context_filtered, key=ranking_key)
+            selected_model = sorted_candidates[0]
+            rationale_msg = self._routing_rationale(selected_model, task_type_str, context_filtered)
 
-            local_match_val = 0 if (prefer_local and m.is_local) else 1
-
-            tier_priority_val = 0 if m.is_free() else 1  # FREE=0 better (preferred)
-
-            # Cost priority: 0 = no cost / free, 1 = has cost (higher cost = worse)
-            cost_priority_val = 0 if (m.input_cost == 0 and m.output_cost == 0) else 1
-
-            # Model priority: negate so higher numeric priority = better rank (lower number)
-            model_priority_val = -m.priority
-
-            return (task_match_val, local_match_val, tier_priority_val, cost_priority_val, model_priority_val)
-
-        sorted_candidates = sorted(candidates, key=ranking_key)
-        selected_model = sorted_candidates[0]
         selected_provider = self.provider_registry.get_llm(selected_model.provider_name)
 
         if not selected_provider:
@@ -333,11 +322,54 @@ class ModelRouter:
             model=selected_model.model_id,
             provider=selected_provider.name,
             task=task,
-            rationale=self._routing_rationale(
-                selected_model, task_type_str, candidates
-            ),
+            profile=active_opt_profile.name if active_opt_profile else "deterministic",
+            rationale=rationale_msg,
         )
         return selected_model, selected_provider
+
+    def optimize_routing(
+        self,
+        task: Optional[Union[str, TaskType]] = None,
+        profile: Optional[Union[str, OptimizationProfile, ProfileType]] = None,
+        required_capabilities: Optional[Set[ModelCapability]] = None,
+    ) -> OptimizationResult:
+        """Simulate and rank candidate models using multi-parameter optimization."""
+        all_models = self.model_registry.list_models()
+        if not all_models:
+            for p in self.llm_providers:
+                for m_id in (p.models or [p.name]):
+                    all_models.append(
+                        ModelDefinition(
+                            model_id=m_id,
+                            provider_name=p.name,
+                            capabilities=set(p.capabilities),
+                            is_local=p.is_local,
+                            priority=5,
+                            supports_streaming=True,
+                            supports_vision=isinstance(p, VisionProvider),
+                        )
+                    )
+
+        opt_profile: Optional[OptimizationProfile] = None
+        if isinstance(profile, OptimizationProfile):
+            opt_profile = profile
+        elif isinstance(profile, ProfileType):
+            opt_profile = PRESET_PROFILES.get(profile)
+        elif isinstance(profile, str):
+            try:
+                opt_profile = PRESET_PROFILES.get(ProfileType(profile))
+            except ValueError:
+                opt_profile = None
+
+        opt_profile = opt_profile or PRESET_PROFILES[ProfileType.BALANCED]
+        task_str = normalize_task(task).value if task else None
+
+        return ModelEcosystemOptimizer.optimize(
+            candidates=all_models,
+            profile=opt_profile,
+            task=task_str,
+            required_capabilities=required_capabilities,
+        )
 
     def _derive_min_context_for_task(
         self, task_type_str: Optional[str]

@@ -6,6 +6,7 @@ from sqlalchemy import Column, String, Text, DateTime, ForeignKey, JSON, Integer
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import relationship
 from database.connection import Base
+from database.models.memory import GUID
 
 
 def utc_now() -> datetime:
@@ -17,11 +18,11 @@ class AgentRun(Base):
     
     __tablename__ = "agent_runs"
     
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    job_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
-    task_id = Column(PG_UUID(as_uuid=True), ForeignKey("research_tasks.id", ondelete="SET NULL"), index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    job_id = Column(GUID(), ForeignKey("research_jobs.id", ondelete="CASCADE"), nullable=False, index=True)
+    task_id = Column(GUID(), ForeignKey("research_tasks.id", ondelete="SET NULL"), index=True)
     agent_name = Column(String(100), nullable=False)
-    request_id = Column(PG_UUID(as_uuid=True), nullable=False, index=True)
+    request_id = Column(GUID(), nullable=False, index=True)
     started_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     completed_at = Column(DateTime(timezone=True))
     success = Column(Boolean)
@@ -47,8 +48,8 @@ class ModelCall(Base):
     
     __tablename__ = "model_calls"
     
-    id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    agent_run_id = Column(PG_UUID(as_uuid=True), ForeignKey("agent_runs.id", ondelete="CASCADE"), index=True)
+    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    agent_run_id = Column(GUID(), ForeignKey("agent_runs.id", ondelete="CASCADE"), index=True)
     provider = Column(String(100), nullable=False)
     model = Column(String(100), nullable=False)
     request_type = Column(String(50), nullable=False)  # complete, stream, embed, vision, rerank

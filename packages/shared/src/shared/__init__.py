@@ -30,6 +30,7 @@ from shared.security import (
     check_prompt_injection,
     sanitize_text,
     is_safe_filename,
+    is_safe_url,
     sanitize_log_dict,
 )
 from shared.types import JSONDict, UUIDStr
@@ -61,5 +62,6 @@ __all__ = [
     "check_prompt_injection",
     "sanitize_text",
     "is_safe_filename",
+    "is_safe_url",
     "sanitize_log_dict",
 ]
