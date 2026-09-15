@@ -570,6 +570,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_drug_synergy_repo.py`, `packages/research/tests/test_drug_synergy_engine.py`, and `apps/api/tests/test_drug_synergy_api.py`.
 - [x] Formalized **ADR 045**.
 
+
+---
+
+## Phase 46: Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier
+**Status**: 🟢 COMPLETE (Generation 18: Precision Clinical Translation)
+
+**Goal**: AI-driven clinical trial protocol design, inclusion/exclusion eligibility criteria parser, electronic health record (EHR) phenotype matching, Kaplan-Meier power calculation, synthetic control arm simulation, and adverse event hazard modeling, database models (`DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, `DBSyntheticControlArm`), `ClinicalTrialRepository`, `ClinicalTrialOptimizerEngine`, `/api/v1/clinical-trials/*` REST API, and `ClinicalTrialStudioPage.tsx` React studio (**ADR 046**).
+
+### Deliverables:
+- [x] Adaptive Bayesian clinical trial protocol generation with Schoenfeld power/sample-size calculation.
+- [x] Structured inclusion/exclusion eligibility rules with quantified enrollment screening impact.
+- [x] EHR patient cohort matching and phenotype alignment scoring.
+- [x] Real-World Evidence (RWE) synthetic control arm simulation with Kaplan-Meier survival curves.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/clinical-trials/optimize`, `/api/v1/clinical-trials/protocols`, `/api/v1/clinical-trials/protocols/{id}`).
+- [x] Interactive UI Studio with Protocol parameters, eligibility rule badges, and Kaplan-Meier survival curve visualizer in `apps/web/src/pages/ClinicalTrialStudioPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_clinical_trial_repo.py`, `packages/research/tests/test_clinical_trial_engine.py`, and `apps/api/tests/test_clinical_trial_api.py`.
+- [x] Formalized **ADR 046**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |

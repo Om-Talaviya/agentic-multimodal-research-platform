@@ -1,3 +1,4 @@
+from api.routes.clinical_trials import router as clinical_trials_router
 from api.routes.drug_synergy import router as synergy_router
 from api.routes.super_graph import router as supergraph_router
 from api.routes.generative_chemistry import router as chemistry_router
@@ -15,6 +16,7 @@ from slowapi.errors import RateLimitExceeded
 from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
+from api.routes import clinical_trials
 from api.routes import agent_evaluations, auth, automation, canvas, clinical, collaboration, crispr, dataset_synthesis, debate, developer, documents, evaluation, grant_proposals, graph, health, lab_automation, literature, memory, metrics, models, molecular, molecular_dynamics, patents, peer_review, presentations, projects, reproducibility, research, security, single_cell, system_infra, workspaces
 from api import websocket
 
@@ -99,6 +101,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(clinical_trials_router, prefix="/api/v1")
 app.include_router(synergy_router, prefix="/api/v1")
 app.include_router(supergraph_router, prefix="/api/v1")
 app.include_router(chemistry_router, prefix="/api/v1")

@@ -1113,3 +1113,19 @@ Overcoming drug resistance in complex malignancies and chronic diseases demands 
 
 ### Consequences
 Provides researchers with a quantitative workbench for in-silico drug repositioning and combination synergy optimization.
+
+---
+
+## ADR 046: Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier
+
+### Status: ACCEPTED (Generation 18)
+
+### Context:
+Translating preclinical hypotheses into successful clinical trials requires rigorous Bayesian power modeling, inclusion/exclusion eligibility criteria stratification, and external control validation to reduce trial failures and accelerate patient recruitment.
+
+### Decision:
+Implement `DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, and `DBSyntheticControlArm` managed via `ClinicalTrialRepository` and computed by `ClinicalTrialOptimizerEngine`. Provide REST endpoints under `/api/v1/clinical-trials/*` and interactive visualization in `ClinicalTrialStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated sample size calculations, quantifiable eligibility screening bottleneck detection, and synthetic control arm survival probability curves.
+- **Security & Compliance**: Structured eligibility criteria follow GCP E6(R2) and 21 CFR 312 standards.
