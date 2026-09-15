@@ -5,6 +5,7 @@ from api.routes import (
     canvas,
     clinical,
     collaboration,
+    crispr,
     dataset_synthesis,
     debate,
     developer,
@@ -44,4 +45,5 @@ __all__ = [
     "projects",
     "collaboration",
     "grant_proposals",
+    "crispr",
 ]

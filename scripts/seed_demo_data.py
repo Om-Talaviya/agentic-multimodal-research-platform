@@ -104,6 +104,10 @@ from database.models import (
     DBTrajectoryFrame,
     DBResidueFluctuation,
     DBQuantumChemistryProperty,
+    DBCRISPRDesign,
+    DBGuideRNA,
+    DBOffTargetSite,
+    DBBaseEditingProfile,
 )
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from shared.auth import hash_password
@@ -1186,9 +1190,89 @@ We demonstrate 94.8\\% in-vivo hepatic silencing with zero genomic cleavage.
         )
         session.add(db_qp)
 
+        # --- Phase 40: Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio ---
+        from research.crispr_engine import CRISPRGuideDesignEngine
+        crispr_engine = CRISPRGuideDesignEngine()
+        crispr_res = crispr_engine.design_guides(
+            target_gene="PCSK9",
+            target_sequence="ATGGGCACCGTCAGCTCCAGGCGGTCCTGGTGGCCGCTGCCACTGCTGCTGCTGCTGCTGCTGCTCCTGGGTCCCGCGGGCGCCCGTGCGCAGGAGGACGAGGACGGCGACTACGAGGAGCTGGTGCTAGCCTTGCGTTCCGAGGAGGACGGCCTGGCCGAAGCACCCGAGCACGGAACCACAGCCACCTTCCACCGCTGCGCCAAGGATCCGTGGCGGTTGCCCGGCACCTAC",
+            organism="Homo sapiens",
+            cas_enzyme="SpCas9",
+            max_guides=6,
+        )
+
+        crispr_design_id = uuid.uuid4()
+        crispr_design = DBCRISPRDesign(
+            id=crispr_design_id,
+            user_id=user_id,
+            workspace_id=workspace_id,
+            project_id=project_id,
+            target_gene=crispr_res.target_gene,
+            genomic_locus=crispr_res.genomic_locus,
+            organism=crispr_res.organism,
+            cas_enzyme=crispr_res.cas_enzyme,
+            pam_motif=crispr_res.pam_motif,
+            target_strand=crispr_res.target_strand,
+            editing_modality=crispr_res.editing_modality,
+            target_sequence_fasta=crispr_res.target_sequence_fasta,
+            design_summary_json=crispr_res.design_summary_json,
+        )
+        session.add(crispr_design)
+
+        for g_res in crispr_res.guide_rnas:
+            db_guide = DBGuideRNA(
+                id=uuid.uuid4(),
+                design_id=crispr_design_id,
+                guide_name=g_res.guide_name,
+                spacer_sequence_20nt=g_res.spacer_sequence_20nt,
+                pam_sequence=g_res.pam_sequence,
+                genomic_position=g_res.genomic_position,
+                strand=g_res.strand,
+                cut_position_rel=g_res.cut_position_rel,
+                on_target_efficiency_score=g_res.on_target_efficiency_score,
+                off_target_cfd_score=g_res.off_target_cfd_score,
+                gc_content_pct=g_res.gc_content_pct,
+                secondary_structure_delta_g=g_res.secondary_structure_delta_g,
+                recommendation_tier=g_res.recommendation_tier,
+                oligo_forward_top=g_res.oligo_forward_top,
+                oligo_reverse_bottom=g_res.oligo_reverse_bottom,
+            )
+            session.add(db_guide)
+
+            for ot in g_res.off_target_sites:
+                db_ot = DBOffTargetSite(
+                    id=uuid.uuid4(),
+                    guide_id=db_guide.id,
+                    chromosome=ot.chromosome,
+                    genomic_coordinate=ot.genomic_coordinate,
+                    mismatched_sequence=ot.mismatched_sequence,
+                    mismatch_count=ot.mismatch_count,
+                    mismatch_positions_json=ot.mismatch_positions_json,
+                    cfd_cleavage_score=ot.cfd_cleavage_score,
+                    gene_annotation=ot.gene_annotation,
+                    is_exonic=ot.is_exonic,
+                )
+                session.add(db_ot)
+
+            for be in g_res.base_editing_profiles:
+                db_be = DBBaseEditingProfile(
+                    id=uuid.uuid4(),
+                    guide_id=db_guide.id,
+                    editing_type=be.editing_type,
+                    target_base=be.target_base,
+                    editing_window_start=be.editing_window_start,
+                    editing_window_end=be.editing_window_end,
+                    expected_product_sequence=be.expected_product_sequence,
+                    bystander_bases_count=be.bystander_bases_count,
+                    purity_score_pct=be.purity_score_pct,
+                    activity_score_pct=be.activity_score_pct,
+                )
+                session.add(db_be)
+
         await session.commit()
         print("[SUCCESS] FULL DEMO DATABASE SUCCESSFULLY SEEDED!")
         print("[SUCCESS] Flagship Project: 'Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery'")
+        print("[SUCCESS] CRISPR Guide RNA Studio: PCSK9 Exon 1 gRNA Candidates & Off-Target Specificity Profiling")
         print("[SUCCESS] Bio-Molecular Models: AlphaFold3 PCSK9 & Cas9_Sp with catalytic pocket docking & D374Y scan")
         print("[SUCCESS] MD Simulation: 100ns AMBER14SB atomistic trajectory with RMSF loop detection & B3LYP DFT")
         print("[SUCCESS] Robotic Protocol: 'Automated CRISPR-Cas9 Epigenetic LNP Microfluidic Synthesis & Plating'")

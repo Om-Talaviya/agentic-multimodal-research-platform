@@ -957,9 +957,41 @@ This document records the key architectural, engineering, and product design dec
      - Per-Residue RMSF Flexibility bar chart with high-flexibility loop badges.
      - Quantum Chemistry & DFT Orbitals Studio (HOMO/LUMO level diagrams, $\Delta E$ bandgap indicator, dipole moment, chemical hardness/electronegativity).
      - Frame Snapshots table and Multi-Model PDB export.
+### ADR 040: Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA (gRNA) Design & Off-Target Profiler Studio (PAM Scanning, Azimuth 2.0 Cleavage Efficiency, CFD Mismatch Matrix & Base Editing Windows)
+
+- **Status**: Accepted & Implemented (Phase 40 - Generation 14)
+- **Context**: Precision genomic editing, gene knockout therapeutics, epigenetic regulation, and base editing require designing optimal guide RNAs (gRNAs) that maximize on-target cutting efficiency while minimizing genome-wide off-target cleavage mutations and bystander deamination risks. Researchers need automated PAM scanning across multiple Cas nucleases (SpCas9, Cas12a/Cpf1, xCas9, SaCas9, Cas9-HF1), machine-learned Azimuth 2.0 / Rule Set 2 on-target efficiency scoring, Cutting Frequency Determination (CFD) off-target matrix analysis, precision base editing activity windows (positions 4–8 for ABE/CBE), and automated Golden Gate cloning oligo generation (BsmBI/BsaI).
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/crispr.py`:
+     - `DBCRISPRDesign`: Master targeting campaign metadata (target_gene, genomic_locus, organism, cas_enzyme, pam_motif, target_strand, editing_modality, target_sequence_fasta, design_summary_json).
+     - `DBGuideRNA`: Specific candidate gRNA (design_id, guide_name, spacer_sequence_20nt, pam_sequence, genomic_position, strand, cut_position_rel, on_target_efficiency_score, off_target_cfd_score, gc_content_pct, secondary_structure_delta_g, recommendation_tier, oligo_forward_top, oligo_reverse_bottom).
+     - `DBOffTargetSite`: Genome-wide predicted off-target loci (guide_id, chromosome, genomic_coordinate, mismatched_sequence, mismatch_count, mismatch_positions_json, cfd_cleavage_score, gene_annotation, is_exonic).
+     - `DBBaseEditingProfile`: Precision base editing window evaluation (guide_id, editing_type, target_base, editing_window_start, editing_window_end, expected_product_sequence, bystander_bases_count, purity_score_pct, activity_score_pct).
+  2. Implement `CRISPRRepository` in `packages/database/src/database/repositories/crispr_repo.py`:
+     - Async methods: `create_design`, `get_design`, `list_designs`, `add_guide_rnas`, `add_off_target_sites`, `add_base_editing_profiles`, `get_guide`, `delete_design`.
+  3. Implement `CRISPRGuideDesignEngine` in `packages/research/src/research/crispr_engine.py`:
+     - PAM scanning across SpCas9 (`NGG`), Cas12a (`TTTV`), xCas9 (`NG`), SaCas9 (`NNGRRT`), Cas9-HF1.
+     - Azimuth 2.0 / Rule Set 2 on-target cleavage scoring with nucleotide position biases and GC penalty curves.
+     - CFD off-target mismatch matrix calculation across genome-wide loci.
+     - Precision Base Editing (ABE8e $A \rightarrow G$ and CBE $C \rightarrow T$) activity and bystander deamination evaluation.
+     - Golden Gate cloning oligonucleotide generation with BsmBI/BsaI overhangs (`5'-CACC-[Spacer]-3'` and `5'-AAAC-[RevComp]-3'`) and thermocycler annealing protocol.
+  4. Implement REST APIs in `apps/api/src/api/routes/crispr.py`:
+     - `POST /api/v1/crispr/design`: Scan sequence, design guides, profile off-targets and base editing windows.
+     - `GET /api/v1/crispr/designs`: List targeting campaigns with filtering.
+     - `GET /api/v1/crispr/designs/{id}`: Detailed campaign inspection with full candidate guides.
+     - `GET /api/v1/crispr/guides/{id}/oligos`: Export ready-to-order Golden Gate cloning oligos and annealing protocol.
+     - `GET /api/v1/crispr/designs/{id}/export-genbank`: Download annotated GenBank (.gb) format sequence file.
+     - `DELETE /api/v1/crispr/designs/{id}`: Delete targeting campaign and cascaded records.
+  5. Build React Studio in `apps/web/src/pages/CRISPRStudioPage.tsx`:
+     - Protospacer Sequence Map Visualizer with highlighted PAM sites and active guide footprints.
+     - Candidate gRNA Ranked Table with Azimuth efficiency, CFD specificity, GC%, and Quality Tier badges.
+     - Genome-Wide Off-Target Inspector with mismatch counts and exonic vs intergenic risk tags.
+     - Precision Base Editing Window Visualizer for ABE8e and CBE deamination windows.
+     - Golden Gate BsmBI/BsaI Cloning Oligo ordering sheet with 1-click clipboard copy and GenBank download.
+     - Preloaded therapeutic targeting presets (PCSK9 Exon 1, BCL11A Enhancer, VEGFA Exon 3).
 - **Consequences**:
-  - Positive: Completes Generation 13 (Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio).
-  - Positive: Provides researchers with full time-resolved atomistic biophysical insight and electronic quantum orbital intelligence on `develop/v1.1`.
+  - Positive: Completes Generation 14 (Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio).
+  - Positive: Provides synthetic biologists and gene editing researchers with end-to-end guide design, off-target risk auditing, and cloning specifications directly in the research OS.
 
 
 
