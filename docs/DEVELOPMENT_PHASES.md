@@ -589,6 +589,25 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_clinical_trial_repo.py`, `packages/research/tests/test_clinical_trial_engine.py`, and `apps/api/tests/test_clinical_trial_api.py`.
 - [x] Formalized **ADR 046**.
 
+
+---
+
+## Phase 47: Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling
+**Status**: 🟢 COMPLETE (Generation 18: Structural Biology)
+
+**Goal**: High-resolution Cryo-EM 3D density map volumetric segmentation, atomic coordinates fitting (PDB/mmCIF), local resolution estimation (Fourier Shell Correlation FSC at 0.143 threshold), secondary structure annotation ($lpha$-helices, $eta$-sheets), macromolecular assembly interface scoring, database models (`DBCryoEMDensityMap`, `DBDensityMapFitting`, `DBMacromolecularComplex`), `CryoEMRepository`, `CryoEMModelingEngine`, `/api/v1/cryoem/*` REST API, and `CryoEMStudioPage.tsx` React studio (**ADR 047**).
+
+### Deliverables:
+- [x] Cryo-EM 3D volumetric density map metadata parsing (EMDB ID, nominal resolution $\le 2.4	ext{ Å}$, voxel grid dimensions).
+- [x] Fourier Shell Correlation (FSC) spatial frequency spectrum curve computation with 0.143 gold-standard cutoff.
+- [x] Real-space atomic coordinate refinement with Cross-Correlation Coefficient (CCC $\ge 0.85$) and MolProbity stereochemistry validation.
+- [x] Macromolecular multi-chain assembly interface buried surface area ($	ext{Å}^2$) and binding free energy ($\Delta G$) calculation.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/cryoem/fit-map`, `/api/v1/cryoem/maps`, `/api/v1/cryoem/maps/{id}`).
+- [x] Interactive UI Studio with Map parameters, CCC/Ramachandran telemetry gauges, interface hotspot cards, and FSC curve chart in `apps/web/src/pages/CryoEMStudioPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_cryoem_repo.py`, `packages/research/tests/test_cryoem_engine.py`, and `apps/api/tests/test_cryoem_api.py`.
+- [x] Formalized **ADR 047**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |

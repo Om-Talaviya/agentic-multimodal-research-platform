@@ -1,3 +1,4 @@
+from api.routes.cryoem import router as cryoem_router
 from api.routes.clinical_trials import router as clinical_trials_router
 from api.routes.drug_synergy import router as synergy_router
 from api.routes.super_graph import router as supergraph_router
@@ -101,6 +102,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(cryoem_router, prefix="/api/v1")
 app.include_router(clinical_trials_router, prefix="/api/v1")
 app.include_router(synergy_router, prefix="/api/v1")
 app.include_router(supergraph_router, prefix="/api/v1")

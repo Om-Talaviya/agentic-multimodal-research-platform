@@ -1129,3 +1129,18 @@ Implement `DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientM
 ### Consequences:
 - **Positive**: Automated sample size calculations, quantifiable eligibility screening bottleneck detection, and synthetic control arm survival probability curves.
 - **Security & Compliance**: Structured eligibility criteria follow GCP E6(R2) and 21 CFR 312 standards.
+
+---
+
+## ADR 047: Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling
+
+### Status: ACCEPTED (Generation 18)
+
+### Context:
+Determining atomic structures of complex biologics and protein complexes requires automating the fitting of 3D electron cryo-microscopy (Cryo-EM) density maps, calculating FSC resolution cutoffs, and evaluating interface binding thermodynamics.
+
+### Decision:
+Implement `DBCryoEMDensityMap`, `DBDensityMapFitting`, and `DBMacromolecularComplex` managed via `CryoEMRepository` and computed by `CryoEMModelingEngine`. Provide REST endpoints under `/api/v1/cryoem/*` and interactive visualization in `CryoEMStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated Fourier Shell Correlation at 0.143 threshold, real-space map cross-correlation scoring, Ramachandran favored stereochemistry analysis, and macromolecular interface hotspot calculation.

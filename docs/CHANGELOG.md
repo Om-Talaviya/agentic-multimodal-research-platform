@@ -1,4 +1,15 @@
 
+## [Phase 47] - Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling
+### Added
+- Database models: `DBCryoEMDensityMap`, `DBDensityMapFitting`, `DBMacromolecularComplex`.
+- Repository `CryoEMRepository` for managing 3D volumetric density maps, fittings, and complexes.
+- Scientific `CryoEMModelingEngine` for Fourier Shell Correlation (FSC) and real-space coordinate cross-correlation.
+- FastAPI routes at `/api/v1/cryoem/*`.
+- Interactive React studio `CryoEMStudioPage.tsx` with 3D map telemetry, FSC resolution spectrum chart, and interface hotspot cards.
+- Unit and integration tests in `packages/database/tests/test_cryoem_repo.py`, `packages/research/tests/test_cryoem_engine.py`, and `apps/api/tests/test_cryoem_api.py`.
+- Architecture Decision Record **ADR 047**.
+
+
 ## [Phase 46] - Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier
 ### Added
 - Database models: `DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, `DBSyntheticControlArm`.
