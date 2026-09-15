@@ -1,3 +1,4 @@
+import GenerativeChemistryPage from './pages/GenerativeChemistryPage';
 import SpatialTranscriptomicsPage from './pages/SpatialTranscriptomicsPage';
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
@@ -152,6 +153,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 <Route path="/spatial" element={<SpatialTranscriptomicsPage />} />
+          <Route path="/chemistry" element={<GenerativeChemistryPage />} />
 </Routes>
     </WorkspaceProvider>
   )
