@@ -36,6 +36,7 @@ from database.repositories.lab_automation_repo import LabAutomationRepository
 from database.repositories.molecular_repo import MolecularStructureRepository
 from database.repositories.molecular_dynamics_repo import MolecularDynamicsRepository
 from database.repositories.crispr_repo import CRISPRRepository
+from database.repositories.single_cell_repo import SingleCellRepository
 from database.repositories.security_repo import SecurityRepository
 from database.repositories.usage_repo import UsageRepository
 from database.repositories.user_repo import UserRepository
@@ -79,5 +80,6 @@ __all__ = [
     "MolecularStructureRepository",
     "MolecularDynamicsRepository",
     "CRISPRRepository",
+    "SingleCellRepository",
 ]
 

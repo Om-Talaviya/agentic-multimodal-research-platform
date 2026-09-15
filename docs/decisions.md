@@ -993,6 +993,46 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Completes Generation 14 (Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio).
   - Positive: Provides synthetic biologists and gene editing researchers with end-to-end guide design, off-target risk auditing, and cloning specifications directly in the research OS.
 
+### ADR 041: Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio (Quality Control, Leiden Graph Clustering, UMAP/t-SNE Embeddings, Wilcoxon DEG, Diffusion Pseudotime & GSEA Pathways)
+
+- **Status**: Accepted & Implemented (Phase 41 - Generation 15)
+- **Context**: Modern genomics, immunology, oncology, and precision medicine investigations rely heavily on high-throughput single-cell RNA sequencing (scRNA-seq) to uncover cellular heterogeneity, identify rare cell populations, map developmental differentiation trajectories, and discover differential expression biomarkers under therapeutic perturbations (e.g. LNP transfection, CRISPR epigenetic silencing, or immune checkpoint blockade). Researchers require an integrated, reproducible single-cell analytics engine that performs cell-level quality control (UMI depth, gene counts, mitochondrial read filtering), graph-based Leiden clustering, high-dimensional nonlinear manifold projections (2D UMAP and t-SNE), non-parametric Wilcoxon rank-sum differential gene expression with Benjamini-Hochberg False Discovery Rate (FDR) adjustments, diffusion pseudotime (DPT) trajectory alignment ($0.0 \rightarrow 1.0$), and Gene Set Enrichment Analysis (GSEA) pathway over-representation across MSigDB Hallmark, KEGG, and Reactome gene sets.
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/single_cell.py`:
+     - `DBSingleCellDataset`: Master single-cell dataset record (title, organism, tissue_type, sequencing_platform, sample_condition, total_cells, filtered_cells, total_genes, n_clusters, median_genes_per_cell, median_umi_per_cell, mean_mitochondrial_pct, leiden_resolution, status, qc_metrics_json, dimension_reduction_summary_json).
+     - `DBCellCluster`: Cluster definition and cell-type annotation (cluster_index, cell_type_annotation, cell_count, percentage_of_total, mean_pseudotime, top_markers_json, cluster_color_hex).
+     - `DBCellCoordinate`: Single-cell 2D coordinate embeddings and telemetry (cell_barcode, cluster_index, umap_1, umap_2, tsne_1, tsne_2, pseudotime, n_genes, n_umi, mito_pct).
+     - `DBDifferentialGene`: Cluster-specific marker gene discovery record (gene_symbol, cluster_index, log2_fold_change, p_value, p_val_adj, pct_in_cluster, pct_out_of_cluster, score, is_significant).
+     - `DBPathwayEnrichment`: GSEA pathway over-representation record (pathway_name, database_source, cluster_index, enrichment_score, normalized_enrichment_score, p_value, p_val_adj, leading_edge_genes_json).
+  2. Implement `SingleCellRepository` in `packages/database/src/database/repositories/single_cell_repo.py`:
+     - Async methods: `create_dataset`, `get_dataset`, `list_datasets`, `add_clusters`, `add_cell_coordinates`, `add_differential_genes`, `add_pathway_enrichments`, `get_cell_coordinates`, `get_differential_genes`, `delete_dataset`.
+  3. Implement `SingleCellTranscriptomicsEngine` in `packages/research/src/research/single_cell_engine.py`:
+     - Automated cell quality control (filtering by minimum genes per cell and maximum mitochondrial read fraction).
+     - Principal Component Analysis (PCA) variance decomposition and graph-based Leiden community clustering.
+     - 2D nonlinear embedding generators (UMAP and t-SNE coordinate spaces).
+     - Non-parametric Wilcoxon rank-sum differential gene discovery with Benjamini-Hochberg FDR correction.
+     - Diffusion Pseudotime (DPT) trajectory ordering along continuous differentiation axes ($0.0 \rightarrow 1.0$).
+     - GSEA pathway over-representation analysis scoring MSigDB, KEGG, and Reactome biological pathways.
+  4. Implement REST APIs in `apps/api/src/api/routes/single_cell.py`:
+     - `POST /api/v1/single-cell/analyze`: Execute end-to-end scRNA-seq analysis pipeline.
+     - `GET /api/v1/single-cell/datasets`: List scRNA-seq datasets with filtering.
+     - `GET /api/v1/single-cell/datasets/{id}`: Detailed dataset inspection with clusters and pathway enrichments.
+     - `GET /api/v1/single-cell/datasets/{id}/coordinates`: Fetch 2D UMAP/t-SNE coordinates with optional cluster filtering and downsampling.
+     - `GET /api/v1/single-cell/datasets/{id}/markers`: Fetch cluster-specific differential marker genes.
+     - `DELETE /api/v1/single-cell/datasets/{id}`: Delete dataset and cascaded records.
+  5. Build React Studio in `apps/web/src/pages/SingleCellStudioPage.tsx`:
+     - Interactive 2D UMAP/t-SNE Scatter Plot Canvas with cluster color-coding, cell-type gating, and interactive tooltips.
+     - Cell Cluster Composition Distribution cards with top distinguishing markers.
+     - Differential Expression Volcano Plot with fold change and FDR significance thresholds.
+     - Cluster-Specific Marker Genes Table with export and search.
+     - Diffusion Pseudotime Trajectory Bar Graphs showing differentiation progression.
+     - Gene Set Enrichment Analysis (GSEA) Pathway Waterfall.
+     - Preloaded single-cell study presets (Human Hepatocyte LNP Atlas, PBMC Immune Profiling, Neural Lineage Dynamics).
+- **Consequences**:
+  - Positive: Completes Generation 15 (Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio).
+  - Positive: Equips computational biologists and transcriptomics researchers with interactive cell atlas exploration, marker gene identification, and pathway validation directly within the research OS.
+
+
 
 
 

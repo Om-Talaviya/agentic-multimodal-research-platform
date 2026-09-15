@@ -28,6 +28,7 @@ from api.routes import (
     reproducibility,
     research,
     security,
+    single_cell,
     system_infra,
     workspaces,
 )
@@ -46,4 +47,5 @@ __all__ = [
     "collaboration",
     "grant_proposals",
     "crispr",
+    "single_cell",
 ]

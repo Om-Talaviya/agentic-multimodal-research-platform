@@ -50,6 +50,14 @@ from research.crispr_engine import (
     OffTargetSiteResult,
     BaseEditingProfileResult,
 )
+from research.single_cell_engine import (
+    SingleCellTranscriptomicsEngine,
+    SingleCellAnalysisResult,
+    CellClusterResult,
+    CellCoordinateResult,
+    DifferentialGeneResult,
+    PathwayEnrichmentResult,
+)
 from research.pipeline import ResearchPipeline
 
 __all__ = [
@@ -85,6 +93,12 @@ __all__ = [
     "GuideRNAResult",
     "OffTargetSiteResult",
     "BaseEditingProfileResult",
+    "SingleCellTranscriptomicsEngine",
+    "SingleCellAnalysisResult",
+    "CellClusterResult",
+    "CellCoordinateResult",
+    "DifferentialGeneResult",
+    "PathwayEnrichmentResult",
     "ResearchPipeline",
     "ResearchEvent", "ResearchEventBus", "ResearchEventType",
     "research_event_bus",

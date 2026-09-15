@@ -11,7 +11,7 @@ from slowapi.errors import RateLimitExceeded
 from shared.config import settings
 from shared.logging import setup_logging, get_logger
 from shared.exceptions import ResearchError
-from api.routes import agent_evaluations, auth, automation, canvas, clinical, collaboration, crispr, dataset_synthesis, debate, developer, documents, evaluation, grant_proposals, graph, health, lab_automation, literature, memory, metrics, models, molecular, molecular_dynamics, patents, peer_review, presentations, projects, reproducibility, research, security, system_infra, workspaces
+from api.routes import agent_evaluations, auth, automation, canvas, clinical, collaboration, crispr, dataset_synthesis, debate, developer, documents, evaluation, grant_proposals, graph, health, lab_automation, literature, memory, metrics, models, molecular, molecular_dynamics, patents, peer_review, presentations, projects, reproducibility, research, security, single_cell, system_infra, workspaces
 from api import websocket
 
 
@@ -126,6 +126,7 @@ app.include_router(lab_automation.router, prefix=settings.api_prefix)
 app.include_router(molecular.router, prefix=settings.api_prefix)
 app.include_router(molecular_dynamics.router, prefix=settings.api_prefix)
 app.include_router(crispr.router, prefix=settings.api_prefix)
+app.include_router(single_cell.router, prefix=settings.api_prefix)
 app.include_router(metrics.router, prefix=settings.api_prefix)
 app.include_router(metrics.router)  # Also expose directly on /metrics
 

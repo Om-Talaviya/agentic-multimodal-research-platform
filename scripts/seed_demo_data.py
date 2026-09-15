@@ -108,7 +108,13 @@ from database.models import (
     DBGuideRNA,
     DBOffTargetSite,
     DBBaseEditingProfile,
+    DBSingleCellDataset,
+    DBCellCluster,
+    DBCellCoordinate,
+    DBDifferentialGene,
+    DBPathwayEnrichment,
 )
+from research.single_cell_engine import SingleCellTranscriptomicsEngine
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from shared.auth import hash_password
 from shared.config import settings
@@ -1269,9 +1275,94 @@ We demonstrate 94.8\\% in-vivo hepatic silencing with zero genomic cleavage.
                 )
                 session.add(db_be)
 
+        print("[SINGLE-CELL] Seeding Single-Cell Transcriptomics & Differential Expression Atlas...")
+        sc_engine = SingleCellTranscriptomicsEngine()
+        sc_result = sc_engine.analyze_single_cell_dataset(
+            dataset_title="Human Primary Hepatocyte LNP-CRISPR scRNA-seq Atlas",
+            organism="Homo sapiens",
+            tissue="Liver (Primary Hepatocytes & Non-Parenchymal Cells)",
+            sequencing_platform="10x Chromium Single Cell 3' v3.1",
+            clustering_resolution=0.65,
+            total_cells_to_simulate=600,
+            custom_metadata={"sample_condition": "PCSK9-targeted LNP Transfection (48h post-dose)"},
+        )
+
+        sc_dataset_id = uuid.uuid4()
+        sc_dataset = DBSingleCellDataset(
+            id=sc_dataset_id,
+            user_id=uuid.UUID(user_id),
+            workspace_id=uuid.UUID(workspace_id) if workspace_id else None,
+            project_id=uuid.UUID(project_id) if project_id else None,
+            dataset_title=sc_result.dataset_title,
+            organism=sc_result.organism,
+            tissue=sc_result.tissue,
+            sequencing_platform=sc_result.sequencing_platform,
+            total_cells=sc_result.total_cells,
+            total_genes=sc_result.total_genes,
+            clustering_resolution=sc_result.clustering_resolution,
+            metadata_json=sc_result.metadata_json,
+        )
+        session.add(sc_dataset)
+
+        for cl in sc_result.clusters:
+            db_cl = DBCellCluster(
+                id=uuid.uuid4(),
+                dataset_id=sc_dataset_id,
+                cluster_index=cl.cluster_index,
+                cell_type_annotation=cl.cell_type_annotation,
+                cell_count=cl.cell_count,
+                percentage_of_total=cl.percentage_of_total,
+                top_markers_json=cl.top_markers_json,
+            )
+            session.add(db_cl)
+
+        for coord in sc_result.cell_coordinates[:300]:
+            db_coord = DBCellCoordinate(
+                id=uuid.uuid4(),
+                dataset_id=sc_dataset_id,
+                cell_barcode=coord.cell_barcode,
+                cluster_index=coord.cluster_index,
+                umap_x=coord.umap_x,
+                umap_y=coord.umap_y,
+                tsne_x=coord.tsne_x,
+                tsne_y=coord.tsne_y,
+                pseudotime_value=coord.pseudotime_value,
+                cell_type_annotation=coord.cell_type_annotation,
+            )
+            session.add(db_coord)
+
+        for deg in sc_result.differential_genes:
+            db_deg = DBDifferentialGene(
+                id=uuid.uuid4(),
+                dataset_id=sc_dataset_id,
+                cluster_index=deg.cluster_index,
+                gene_symbol=deg.gene_symbol,
+                log2_fold_change=deg.log2_fold_change,
+                p_value=deg.p_value,
+                p_val_adj=deg.p_val_adj,
+                pct_in_cluster=deg.pct_in_cluster,
+                pct_out_of_cluster=deg.pct_out_of_cluster,
+                is_significant=deg.is_significant,
+            )
+            session.add(db_deg)
+
+        for pw in sc_result.pathway_enrichments:
+            db_pw = DBPathwayEnrichment(
+                id=uuid.uuid4(),
+                dataset_id=sc_dataset_id,
+                cluster_index=pw.cluster_index,
+                pathway_name=pw.pathway_name,
+                database_source=pw.database_source,
+                normalized_enrichment_score=pw.normalized_enrichment_score,
+                p_val_adj=pw.p_val_adj,
+                leading_edge_genes_json=pw.leading_edge_genes_json,
+            )
+            session.add(db_pw)
+
         await session.commit()
         print("[SUCCESS] FULL DEMO DATABASE SUCCESSFULLY SEEDED!")
         print("[SUCCESS] Flagship Project: 'Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery'")
+        print("[SUCCESS] Single-Cell Multi-Omics: 'Human Primary Hepatocyte LNP-CRISPR scRNA-seq Atlas'")
         print("[SUCCESS] CRISPR Guide RNA Studio: PCSK9 Exon 1 gRNA Candidates & Off-Target Specificity Profiling")
         print("[SUCCESS] Bio-Molecular Models: AlphaFold3 PCSK9 & Cas9_Sp with catalytic pocket docking & D374Y scan")
         print("[SUCCESS] MD Simulation: 100ns AMBER14SB atomistic trajectory with RMSF loop detection & B3LYP DFT")
