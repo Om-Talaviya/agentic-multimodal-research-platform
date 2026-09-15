@@ -5,6 +5,20 @@ All notable changes to the **Agentic Multimodal Research Platform** will be docu
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.19.0] - 2026-09-15 (Generation 17: Phase 45 - Autonomous Drug Repurposing & Combination Synergy Simulator)
+
+### Added
+- **Phase 45: Autonomous Drug Repurposing & Combination Synergy Simulator**:
+  - Implemented database models in `packages/database/src/database/models/drug_synergy.py` (`DBDrugRepurposingScreen`, `DBRepurposedCandidate`, `DBDrugCombinationSynergy`).
+  - Implemented `DrugSynergyRepository` in `packages/database/src/database/repositories/drug_synergy_repo.py`.
+  - Implemented `DrugSynergyEngine` in `packages/research/src/research/drug_synergy_engine.py`.
+  - Implemented REST API routes in `apps/api/src/api/routes/drug_synergy.py`.
+  - Created interactive Drug Synergy Studio in `apps/web/src/pages/DrugSynergyStudioPage.tsx`.
+  - Added unit and integration test suites in `packages/database/tests/test_drug_synergy_repo.py`, `packages/research/tests/test_drug_synergy_engine.py`, and `apps/api/tests/test_drug_synergy_api.py`.
+  - Formalized **ADR 045** in `docs/decisions.md`.
+
+---
+
 ## [2.18.0] - 2026-09-15 (Generation 17: Phase 44 - Autonomous Multi-Modal Scientific Knowledge Super-Graph & Hypothesis Discovery Engine)
 
 ### Added

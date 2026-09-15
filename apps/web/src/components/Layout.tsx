@@ -1,6 +1,6 @@
-import { Layers, NavLink, Outlet } from 'react-router-dom'
-import { Layers, LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio, Swords, BookOpenCheck, Cpu, Presentation, Award, Network, Database, Scale, FileSpreadsheet, HeartPulse, Bot, Dna, Atom, Scissors, Microscope } from 'lucide-react'
-import { Layers, WorkspaceSelector } from './WorkspaceSelector'
+import { Pill, Layers, NavLink, Outlet } from 'react-router-dom'
+import { Pill, Layers, LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2, FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2, Radio, Swords, BookOpenCheck, Cpu, Presentation, Award, Network, Database, Scale, FileSpreadsheet, HeartPulse, Bot, Dna, Atom, Scissors, Microscope } from 'lucide-react'
+import { Pill, Layers, WorkspaceSelector } from './WorkspaceSelector'
 
 
 export function Layout() {
@@ -92,7 +92,8 @@ export function Layout() {
       </main>
     </div>
   )
-            { label: "Knowledge Super-Graph", href: "/supergraph", icon: Network },
+                { label: "Drug Synergy & Repurposing", href: "/synergy", icon: Pill },
+{ label: "Knowledge Super-Graph", href: "/supergraph", icon: Network },
 { label: "Generative Therapeutics", href: "/chemistry", icon: FlaskConical },
 { label: "Spatial Multi-Omics", href: "/spatial", icon: Layers },
 }

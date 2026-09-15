@@ -1,3 +1,4 @@
+from api.routes.drug_synergy import router as synergy_router
 from api.routes.super_graph import router as supergraph_router
 from api.routes.generative_chemistry import router as chemistry_router
 from api.routes.spatial import router as spatial_router
@@ -98,6 +99,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(synergy_router, prefix="/api/v1")
 app.include_router(supergraph_router, prefix="/api/v1")
 app.include_router(chemistry_router, prefix="/api/v1")
 app.include_router(spatial_router, prefix="/api/v1")

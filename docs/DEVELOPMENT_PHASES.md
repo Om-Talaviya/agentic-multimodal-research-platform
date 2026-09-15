@@ -552,6 +552,24 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Comprehensive test suites in `packages/database/tests/test_super_graph_repo.py`, `packages/research/tests/test_super_graph_engine.py`, and `apps/api/tests/test_super_graph_api.py`.
 - [x] Formalized **ADR 044**.
 
+
+---
+
+## Phase 45: Autonomous Drug Repurposing & Combination Synergy Simulator
+**Status**: 🟢 COMPLETE (Generation 17: Scientific Meta-Intelligence & Causal Discovery)
+
+**Goal**: High-throughput virtual connectivity map matching of 2,450+ approved drugs against disease transcriptomic signatures, Zero Interaction Potency (ZIP $\delta > 10.0$) and Loewe/Bliss synergy matrix modeling, dose reduction index calculation, database models (`DBDrugRepurposingScreen`, `DBRepurposedCandidate`, `DBDrugCombinationSynergy`), `DrugSynergyRepository`, `DrugSynergyEngine`, `/api/v1/synergy/*` REST API, and `DrugSynergyStudioPage.tsx` React studio (**ADR 045**).
+
+### Deliverables:
+- [x] Connectivity Map (CMap) transcriptomic inversion scoring against target disease indications.
+- [x] Zero Interaction Potency (ZIP), Bliss Independence, and Loewe Additivity synergy matrix calculation.
+- [x] Dose Reduction Index (DRI) and Drug-Drug Interaction (DDI) risk assessment.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (`/api/v1/synergy/screens/run`, `/api/v1/synergy/screens`, `/api/v1/synergy/screens/{id}/candidates`, `/api/v1/synergy/screens/{id}/synergies`).
+- [x] Interactive UI Studio with Candidate ranked cards, 2D 4x4 ZIP Synergy Heatmap, and combination telemetry in `apps/web/src/pages/DrugSynergyStudioPage.tsx`.
+- [x] Comprehensive test suites in `packages/database/tests/test_drug_synergy_repo.py`, `packages/research/tests/test_drug_synergy_engine.py`, and `apps/api/tests/test_drug_synergy_api.py`.
+- [x] Formalized **ADR 045**.
+
 ## Current Status Summary
 
 | Phase | Milestone | Status | Test Coverage |

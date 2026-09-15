@@ -1,3 +1,4 @@
+import DrugSynergyStudioPage from './pages/DrugSynergyStudioPage';
 import SuperGraphStudioPage from './pages/SuperGraphStudioPage';
 import GenerativeChemistryPage from './pages/GenerativeChemistryPage';
 import SpatialTranscriptomicsPage from './pages/SpatialTranscriptomicsPage';
@@ -156,6 +157,7 @@ function App() {
                 <Route path="/spatial" element={<SpatialTranscriptomicsPage />} />
           <Route path="/chemistry" element={<GenerativeChemistryPage />} />
           <Route path="/supergraph" element={<SuperGraphStudioPage />} />
+          <Route path="/synergy" element={<DrugSynergyStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
