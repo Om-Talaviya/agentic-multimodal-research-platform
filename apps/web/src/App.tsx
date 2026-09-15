@@ -160,6 +160,7 @@ function App() {
           <Route path="/synergy" element={<DrugSynergyStudioPage />} />
         <Route path="/clinical-trials" element={<ClinicalTrialStudioPage />} />
         <Route path="/cryoem" element={<CryoEMStudioPage />} />
+        <Route path="/pathways" element={<PathwaySimulatorPage />} />
 </Routes>
     </WorkspaceProvider>
   )

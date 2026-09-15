@@ -538,3 +538,6 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 
 - [x] **Phase 47: Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling** <!-- id: 47 -->
   - **Goal**: High-resolution Cryo-EM 3D density map fitting, FSC curve computation, MolProbity validation, macromolecular complex interface energetics, database models (`DBCryoEMDensityMap`, `DBDensityMapFitting`, `DBMacromolecularComplex`), `CryoEMRepository`, `CryoEMModelingEngine`, `/api/v1/cryoem/*` REST API, and `CryoEMStudioPage.tsx` React studio (**ADR 047**).
+
+- [x] **Phase 48: Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator** <!-- id: 48 -->
+  - **Goal**: Multi-omics dynamic ODE kinetic signaling simulation, metabolic flux balance shifts, bypass resistance mechanisms, database models (`DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`), `PathwayPerturbationRepository`, `PathwayPerturbationEngine`, `/api/v1/pathways/*` REST API, and `PathwaySimulatorPage.tsx` React studio (**ADR 048**).

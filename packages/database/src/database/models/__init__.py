@@ -371,3 +371,5 @@ from database.models.drug_synergy import (
 from database.models.clinical_trial import DBClinicalTrialProtocol, DBEligibilityCriterion, DBCohortPatientMatch, DBSyntheticControlArm
 
 from database.models.cryoem import DBCryoEMDensityMap, DBDensityMapFitting, DBMacromolecularComplex
+
+from database.models.pathway_perturbation import DBMultiOmicsExperiment, DBPathwayCascade, DBPerturbationSimulation

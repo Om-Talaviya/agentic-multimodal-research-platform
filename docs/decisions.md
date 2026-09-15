@@ -1144,3 +1144,18 @@ Implement `DBCryoEMDensityMap`, `DBDensityMapFitting`, and `DBMacromolecularComp
 
 ### Consequences:
 - **Positive**: Automated Fourier Shell Correlation at 0.143 threshold, real-space map cross-correlation scoring, Ramachandran favored stereochemistry analysis, and macromolecular interface hotspot calculation.
+
+---
+
+## ADR 048: Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator
+
+### Status: ACCEPTED (Generation 19)
+
+### Context:
+Understanding how cellular signaling networks respond dynamically to gene knockouts (CRISPR) or small molecule inhibition requires multi-omics integration and kinetic differential equation simulation to predict therapeutic bypass resistance.
+
+### Decision:
+Implement `DBMultiOmicsExperiment`, `DBPathwayCascade`, and `DBPerturbationSimulation` managed via `PathwayPerturbationRepository` and simulated by `PathwayPerturbationEngine`. Expose REST endpoints under `/api/v1/pathways/*` and visual telemetry in `PathwaySimulatorPage.tsx`.
+
+### Consequences:
+- **Positive**: Enables in-silico temporal trajectory tracking of target degradation, phosphorylation rebounds, and metabolic flux adjustments, driving rational combination therapy design.
