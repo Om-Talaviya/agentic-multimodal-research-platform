@@ -1316,6 +1316,24 @@ Master systematic literature review (SLR) study records tracking search strings,
 - `POST /api/v1/lab/protocols/{id}/simulate`: Dynamic simulation of custom pipetting sequences and collision evaluation.
 - `GET /api/v1/lab/protocols/{id}/export-code`: Multi-format robot code export (`opentrons_python`, `pylabrobot`, `autoprotocol`).
 
+---
+
+## 22. Autonomous Bio-Molecular Structure & Protein Folding Schema & REST Endpoints (Phase 38)
+
+### 22.1 Tables: `molecular_structures`, `binding_pockets`, `docking_poses`, `mutation_stabilities`
+- `molecular_structures`: Master 3D molecular structure specification (`id`, `user_id`, `workspace_id`, `project_id`, `uniprot_id`, `gene_name`, `organism`, `sequence`, `mean_plddt_score`, `resolution_angstrom`, `structure_source`, `pdb_coordinate_data`, `secondary_structure_summary`, `created_at`, `updated_at`).
+- `binding_pockets`: Predicted catalytic and allosteric active sites (`id`, `structure_id`, `pocket_index`, `druggability_score`, `volume_cubic_angstrom`, `surface_area_angstrom2`, `key_residues_json`, `center_coordinates_json`).
+- `docking_poses`: In-silico ligand docking results (`id`, `structure_id`, `pocket_id`, `ligand_name`, `binding_affinity_kcal_mol`, `rmsd_angstrom`, `hydrogen_bonds_count`, `pi_stacking_interactions`, `pose_coordinates_json`, `created_at`).
+- `mutation_stabilities`: Thermodynamic folding free energy shift scans ($\Delta\Delta G$) (`id`, `structure_id`, `wildtype_residue`, `position`, `mutant_residue`, `delta_delta_g_kcal_mol`, `stability_verdict`, `pathogenicity_score`, `created_at`).
+
+### 22.2 REST Endpoints (Phase 38)
+- `POST /api/v1/molecular/predict`: Predict 3D protein structure coordinates, pLDDT confidence spectrum, and binding pockets.
+- `GET /api/v1/molecular/structures`: List molecular structures with pocket counts and pLDDT scores.
+- `GET /api/v1/molecular/structures/{id}`: Retrieve full molecular structure with 3D coordinates, pockets, docking poses, and mutations.
+- `POST /api/v1/molecular/structures/{id}/dock`: Execute in-silico ligand docking against predicted binding pocket.
+- `POST /api/v1/molecular/structures/{id}/mutate`: Execute thermodynamic mutational stability scan ($\Delta\Delta G$).
+- `GET /api/v1/molecular/structures/{id}/export-pdb`: Download 3D PDB coordinate file.
+
 
 
 
