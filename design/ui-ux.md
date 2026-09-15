@@ -637,6 +637,58 @@ This document defines the complete visual design system, interaction patterns, u
 │  │ 3. Sintering at <900C        │ Sintering taught at 1150C    │ 15% Overlap  │ 🟢 Non-Obvious (103) │  │
 │  └──────────────────────────────┴──────────────────────────────┴──────────────┴──────────────────────┘  │
 │  Freedom-to-Operate Assessment: 🟢 Clear to Commercialize with Yttrium co-doping claims.                 │
+### 3.24 Autonomous Scientific Grant Proposal Studio (Phase 35)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  📑 Grant Proposal Studio & NIH Study Section Simulator  [ 🔄 Refresh ] [ ➕ New Proposal ]             │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🎯 Specific Aims & Narratives ]   [ 💰 Multi-Year Budget ($2.5M) ]   [ ⚖️ Mock Study Section (1.8) ]  │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  MOCK STUDY SECTION EVALUATION: 🟢 HIGH PRIORITY FUNDING (12th Percentile)                              │
+│  - Significance: 1.5 | Innovation: 1.8 | Approach: 2.1 | Investigators: 1.2 | Environment: 1.0         │
+│  - Reviewer 1: "Highly innovative epigenetic target strategy; budget is realistic with justified MTDC."│
+│  - Export: [ 📄 Download LaTeX Proposal (.tex) ] [ 📋 Copy Abstract ]                                   │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 3.25 Clinical Trial Protocol & Drug Repurposing Studio (Phase 36)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  ❤️ Clinical Trial Studio & Drug Repurposing Engine  [ 🔄 Refresh ] [ ⚡ Synthesize Protocol ]           │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 👥 Cohort Criteria (PICO) ]   [ 🧪 Drug Repositioning Screen ]   [ 🛡️ FDA IND / eCTD Dossier ]        │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  PROTOCOL: Phase I/IIa Study of LNP-dCas9-Epi in Familial Hypercholesterolemia (E78.01)                 │
+│  Planned Cohort: 48 Patients | Duration: 52 Weeks | Adverse Risk: 14% (Low) | Target: PCSK9            │
+│  ┌──────────────────────────────────────────────┬────────────────────────────────────────────────────┐  │
+│  │ 🟢 INCLUSION CRITERIA (PICO)                 │ 🔴 EXCLUSION CRITERIA (PICO)                       │  │
+│  ├──────────────────────────────────────────────┼────────────────────────────────────────────────────┤  │
+│  │ • Age 18-70 with confirmed FH diagnosis      │ • Active hepatic impairment (AST/ALT > 2.5x ULN)   │  │
+│  │ • Baseline LDL-C >= 130 mg/dL (LOINC 2089-1) │ • Concurrent investigational gene therapy <=28 days│  │
+│  └──────────────────────────────────────────────┴────────────────────────────────────────────────────┘  │
+│  eCTD Compliance Status: 🟢 96% Complete (IRB Verdict: READY FOR 21 CFR 312 SUBMISSION)                 │
+### 3.26 Robotic Lab Automation & Liquid Handling Studio (Phase 37)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  🤖 Robotic Lab Automation & Liquid Handling Studio     [ 🔄 Refresh Deck ] [ ⚡ Compile & Simulate ]   │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ 🗺️ 12-Slot Deck Visualizer ]  [ 🧪 Transfer Steps (4) ]  [ 🛡️ Physics Telemetry ]  [ 💻 Executable Code ] │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  PROTOCOL: Automated CRISPR-Cas9 Epigenetic LNP Microfluidic Synthesis & Plating (Opentrons OT-2)        │
+│  Runtime: 18.5 min | Liquid Waste: 2.40 mL | Slots Used: 4/12 | Safety & Collision: 🟢 Valid             │
+│  ┌─────────────────────────────────┬─────────────────────────────────┬─────────────────────────────────┐  │
+│  │ [Slot 10] Empty                 │ [Slot 11] Empty                 │ [Slot 12] Empty                 │  │
+│  ├─────────────────────────────────┼─────────────────────────────────┼─────────────────────────────────┤  │
+│  │ [Slot 7] Empty                  │ [Slot 8] Empty                  │ [Slot 9] Empty                  │  │
+│  ├─────────────────────────────────┼─────────────────────────────────┼─────────────────────────────────┤  │
+│  │ [Slot 4] 24-Tube Rack (Cas9-sg) │ [Slot 5] Empty                  │ [Slot 6] Empty                  │  │
+│  ├─────────────────────────────────┼─────────────────────────────────┼─────────────────────────────────┤  │
+│  │ [Slot 1] 300µL Tip Rack (96)    │ [Slot 2] 96-Well Plate (Target) │ [Slot 3] 12-Res (Lipid/Buffer)  │  │
+│  └─────────────────────────────────┴─────────────────────────────────┴─────────────────────────────────┘  │
+│  CODE EXPORT: [ Opentrons Python API v2 ]  [ PyLabRobot Universal ]  [ Autoprotocol JSON ]  [ ⬇️ Download ] │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -666,7 +718,12 @@ This document defines the complete visual design system, interaction patterns, u
 | **Research Canvas Studio** | Infinite 2D SVG canvas with pan/zoom, draggable node cards, and AI brainstorming expansion | Drag / pan / click expansion |
 | **Dataset Synthesis Studio** | Evol-Instruct strategy chips, side-by-side chosen/rejected preference cards, and 1-click JSONL export | Instant tab switch / copy snippet |
 | **Patent Landscape Studio** | 35 U.S.C. 102/103 limitation-by-limitation claim chart, FTO clearance gauge, and white-space opportunity map | Instant tab switch / modal overlay |
+| **Grant Proposal Studio** | Specific Aims editor, real-time MTDC budget calculator, mock study section scorecards, and LaTeX download | Instant tab switch / copy snippet |
+| **Clinical Trials Studio** | PICO inclusion/exclusion cards, LOINC biomarker tags, drug repurposing screens, and eCTD IND dossier meters | Instant tab switch / modal overlay |
+| **Lab Automation Studio** | Interactive 12-slot deck visualizer, microfluidic pipetting table, collision warning cards, and Opentrons/PyLabRobot code export | Instant tab switch / modal overlay |
 | **Memory Exploration** | Filter chips for finding/hypothesis/methodology, confidence bar, tag search | Instant client-side filter / API query |
 | **Error / Fallback** | Subtle amber notice indicating automatic failover to fallback model provider | Non-blocking toast notification |
+
+
 
 

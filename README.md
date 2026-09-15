@@ -5,12 +5,13 @@
   <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2034%20Complete%20(Generation%208%20Active)-success?style=flat-square" alt="Status" />
-  <img src="https://img.shields.io/badge/Tests-376%20Passing-brightgreen?style=flat-square" alt="Tests" />
+  <img src="https://img.shields.io/badge/Status-Phase%2037%20Complete%20(Generation%2011%20Active)-success?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Tests-392%20Passing-brightgreen?style=flat-square" alt="Tests" />
+  <img src="https://img.shields.io/badge/SDKs-Python%20%26%20TypeScript-blueviolet?style=flat-square" alt="SDKs" />
   <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
 </p>
 
-An enterprise-grade, local-first **AI Research Operating System** that conducts autonomous, verifiable, and evidence-grounded investigations across multiple modalities (text, academic PDFs, DOCX, datasets, images, speech/audio, video, patents, codebases, and the live web).
+An enterprise-grade, local-first **AI Research Operating System** that conducts autonomous, verifiable, and evidence-grounded investigations across multiple modalities (text, academic PDFs, DOCX, datasets, images, speech/audio, video, patents, clinical protocols, codebases, and the live web).
 
 > **This isn't just a chatbot.**  
 > The platform enables AI to **Plan $\rightarrow$ Investigate $\rightarrow$ Retrieve $\rightarrow$ Reason $\rightarrow$ Critique $\rightarrow$ Synthesize $\rightarrow$ Report**, while managing multi-user authentication, quota allocation, multi-provider model routing, persistent storage, and real-time streaming progress.
@@ -188,7 +189,12 @@ ALL 34 PHASES (GENERATIONS 1 - 8) COMPLETED & FULLY ACTIVE (376 TESTS PASSING)
 - **Phase 34: Autonomous Patent Landscape Analysis & Prior Art Search Engine (COMPLETE)**: Decomposition of patent claims into atomic preambles, transitional phrases, and limitations, 35 U.S.C. 102 (Anticipation) and 103 (Non-Obviousness) prior art claim charts, Freedom-to-Operate (FTO) clearance percentage scoring, white-space patentability opportunity discovery, automated design-around mitigations, database models (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`), `PatentRepository`, `PatentPriorArtEngine`, `/api/v1/patents/*` REST API, and `PatentLandscapePage.tsx` React studio.
 
 ### Generation 9: Autonomous Scientific Grant & Research Funding Studio (100% COMPLETE)
-- **Phase 35: Autonomous Scientific Grant & Research Funding Proposal Synthesizer (COMPLETE)**: Synthesis of Specific Aims and multi-year narrative modules (Executive Abstract, Significance, Innovation, Approach, Preliminary Data), institutional multi-year budget calculator (`InstitutionalBudgetCalculator` with Modified Total Direct Costs [MTDC], 28.5% fringe benefits, 3% escalation, and 52% F&A indirect cost recovery), mock study section peer review panel simulator with 1.0-9.0 criterion ratings, percentile estimations, and fundability recommendations, compilable LaTeX grant proposal generator, database models (`DBGrantProposal`, `DBGrantSpecificAim`, `DBGrantBudgetItem`, `DBGrantReviewScorecard`), `GrantProposalRepository`, `GrantProposalSynthesizer`, `/api/v1/grants/*` REST API, and `GrantProposalStudioPage.tsx` React studio.
+- **Phase 35: Autonomous Scientific Grant & Research Funding Proposal Synthesizer (COMPLETE)**: Specific Aims and narrative module generator, institutional multi-year budget calculator (`InstitutionalBudgetCalculator` with MTDC, fringe benefits, and 52% F&A indirect cost recovery), mock NIH study section peer review panel simulator with 1.0-9.0 criterion ratings, compilable LaTeX grant proposal generator, database models (`DBGrantProposal`, `DBGrantSpecificAim`, `DBGrantBudgetItem`, `DBGrantReviewScorecard`), `GrantProposalRepository`, `GrantProposalSynthesizer`, `/api/v1/grants/*` REST API, and `GrantProposalStudioPage.tsx` React studio.
+
+### Generation 10: Clinical Intelligence & Developer Ecosystem (100% COMPLETE)
+- **Phase 36: Autonomous Clinical Trial Protocol & Drug Repurposing Engine (COMPLETE)**: Autonomous PICO cohort eligibility criteria synthesizer, molecular target-affinity repurposing screen, adverse risk quantification, and eCTD FDA IND / EMA CTD electronic regulatory compliance dossier generator, database models (`DBClinicalProtocol`, `DBCohortCriterion`, `DBDrugCandidate`, `DBRegulatoryPackage`), `ClinicalRepository`, `ClinicalTrialEngine`, `/api/v1/clinical/*` REST API, and `ClinicalTrialsPage.tsx` React studio.
+- **Official Developer Platform SDKs (COMPLETE)**: Async Python developer SDK (`packages/sdk-python/ai_research_os`) and isomorphic TypeScript Client SDK (`apps/web/src/sdk/client.ts`) with typed models, polling helpers, rate limit handlers, and connection pooling.
+- **Production Demo Data Seeder (COMPLETE)**: Multi-modal, cross-studio sample dataset seeder (`scripts/seed_demo_data.py`) spanning all 36 platform studios with the flagship project *"Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery for Monogenic Hepatopathies"*.
 
 ---
 

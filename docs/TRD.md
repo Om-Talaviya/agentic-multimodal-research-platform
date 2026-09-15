@@ -1,8 +1,8 @@
 # Technical Requirements Document (TRD)
 
 ## Project: Agentic Multimodal Research Platform (AI Research OS)
-**Status**: Active / Production v1.1 (Phase 17 Complete, Preparing Phase 18)  
-**Architecture Version**: 1.1 (Phase 17 Complete, Preparing Phase 18)  
+**Status**: Active / Production v1.1 (Phase 36 Complete - Generation 10 Active)  
+**Architecture Version**: 1.1 (Generation 10 Active & Fully Completed)  
 **Last Updated**: September 2026  
 **Stable Branch**: `develop/v1.1`
 
@@ -202,4 +202,16 @@ flowchart TD
 - **Phase 32 (Real-Time Collaborative Research Canvas - COMPLETE)**: Infinite 2D spatial canvas, node-link visual DAG representations (`DBCanvasBoard`, `DBCanvasNode`, `DBCanvasEdge`), automated DAG layout from research dossiers, real-time agentic brainstorming nodes, clustering by entity type, `CanvasRepository`, `CanvasIdeationEngine`, `/api/v1/canvas/*` REST API, and `ResearchCanvasPage.tsx` React studio.
 - **Phase 33 (Synthetic Instruction Dataset Generation & Active Learning - COMPLETE)**: Evolutionary prompt mutator (`InstructionDatasetSynthesizer` with `in_depth_expansion`, `in_breadth_variation`, `constraint_hardening`, `adversarial_redteaming`, `cot_decomposition`), format adapters (Alpaca SFT, ShareGPT Multi-Turn, DPO Preference Pairs, Chain-of-Thought), deterministic quality/toxicity/hallucination/dedup scoring, active learning human-in-the-loop curation studio, database models (`DBSyntheticDataset`, `DBInstructionSample`, `DBAlignmentExport`), `DatasetSynthesisRepository`, `/api/v1/datasets/*` REST API, and `DatasetSynthesisPage.tsx` React studio.
 - **Phase 34 (Autonomous Patent Landscape Analysis & Prior Art - COMPLETE)**: Decomposition of patent claims into atomic preambles, transitional phrases, and limitations, 35 U.S.C. 102 (Anticipation) and 103 (Non-Obviousness) prior art claim charts, Freedom-to-Operate (FTO) clearance percentage scoring, white-space patentability opportunity discovery, automated design-around mitigations, database models (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`), `PatentRepository`, `PatentPriorArtEngine`, `/api/v1/patents/*` REST API, and `PatentLandscapePage.tsx` React studio.
+
+### Generation 9: Autonomous Scientific Grant & Funding Proposal Studio (100% COMPLETE)
+- **Phase 35 (Autonomous Scientific Grant & Research Funding Proposal Synthesizer - COMPLETE)**: Institutional multi-year budgeting engine (`InstitutionalBudgetCalculator` with salary, fringe benefits 28.5%, escalation 3%, MTDC, and F&A indirect cost 52%), Narrative synthesizer (`GrantProposalSynthesizer` for NIH R01/R21, NSF CAREER, Horizon Europe), mock study section peer review panel simulation with 1-9 scoring and percentile estimation, complete LaTeX proposal export, database models (`DBGrantProposal`, `DBGrantSpecificAim`, `DBGrantBudgetItem`, `DBGrantReviewScorecard`), `GrantProposalRepository`, `/api/v1/grants/*` REST API, and `GrantProposalStudioPage.tsx` React studio.
+
+### Generation 10: Clinical Intelligence & Developer Platform Ecosystem (100% COMPLETE)
+- **Phase 36 (Autonomous Clinical Trial Protocol & Drug Repurposing Engine - COMPLETE)**: GCP/FDA-compliant clinical trial protocol synthesis, PICO cohort eligibility criteria generation with LOINC coding, target-affinity drug repositioning screening ($K_d$ nanomolar affinities, bioavailability, toxicity scoring), eCTD FDA IND regulatory dossier compilation, database models (`DBClinicalProtocol`, `DBCohortCriterion`, `DBDrugCandidate`, `DBRegulatoryPackage`), `ClinicalRepository`, `ClinicalTrialEngine`, `/api/v1/clinical/*` REST API, and `ClinicalTrialsPage.tsx` React studio.
+- **Official Developer Platform SDKs**: Python async `ai-research-os` SDK (`packages/sdk-python/ai_research_os`) and isomorphic TypeScript SDK (`apps/web/src/sdk/client.ts`).
+- **Production Demo Data Seeder**: Full-system cross-studio seeder (`scripts/seed_demo_data.py`).
+
+### Generation 11: Laboratory Automation & Cloud Biofoundry Integration (100% COMPLETE)
+- **Phase 37 (Autonomous Laboratory Automation & Robotic Protocol Generator - COMPLETE)**: Opentrons Protocol API v2 Python code generation (`requirements = {"robotType": "OT-2", "apiLevel": "2.15"}`), PyLabRobot Universal liquid handling scripts, Autoprotocol JSON v1.0 specifications, 12-slot deck spatial layout modeling, microfluidic liquid class speed and droplet calibration (`viscous_glycerol`, `volatile_ethanol`, `aqueous`), 3D gantry collision check for tall labware, tip consumption optimization, database models (`DBRoboticProtocol`, `DBLabwareSlot`, `DBLiquidTransferStep`, `DBRoboticExecutionTrace`), `LabAutomationRepository`, `RoboticProtocolCompiler`, `/api/v1/lab/*` REST API, and `LabAutomationPage.tsx` React studio.
+
 

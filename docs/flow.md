@@ -1013,7 +1013,97 @@ sequenceDiagram
     UI->>API: POST /api/v1/patents/corpora/{id}/fto-report
     API->>Engine: generate_fto_assessment(corpus_id)
     Engine->>Repo: save_fto_report(corpus_id, fto_dossier)
-    Repo->>DB: INSERT into fto_reports & UPDATE patent_corpora SET freedom_to_operate_verdict='clear'
     API-->>UI: 200 OK (FTO Clearance Gauge 88% & White-Space Innovation Map)
 ```
+
+---
+
+## 25. Autonomous Scientific Grant Proposal Synthesizer Flow (Phase 35)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor PI as Principal Investigator
+    participant UI as GrantProposalStudioPage.tsx
+    participant API as FastAPI (/api/v1/grants)
+    participant Engine as GrantProposalSynthesizer
+    participant Calc as InstitutionalBudgetCalculator
+    participant Repo as GrantProposalRepository
+    participant DB as PostgreSQL / SQLite
+
+    PI->>UI: Defines Grant Opportunity (NIH R01, $2.5M, 5 Years)
+    UI->>API: POST /api/v1/grants/proposals {title, funding_agency: "NIH", mechanism: "R01", duration_years: 5}
+    API->>Engine: synthesize_proposal_narratives(title, agency, mechanism)
+    API->>Calc: calculate_multiyear_budget(base_salary, duration, fna_rate: 52%)
+    API->>Repo: create_proposal_with_aims_and_budget(proposal_data)
+    Repo->>DB: INSERT into grant_proposals, grant_specific_aims, grant_budget_items
+    API-->>UI: 201 Created (Narratives & MTDC Budget Breakdown Rendered)
+
+    PI->>UI: Clicks "Run Mock Study Section Peer Review"
+    UI->>API: POST /api/v1/grants/proposals/{id}/mock-review
+    API->>Engine: conduct_mock_study_section_review(proposal_data)
+    Engine->>Repo: record_review_scorecard(proposal_id, review_data)
+    Repo->>DB: INSERT into grant_review_scorecards
+    API-->>UI: 200 OK (1.0-9.0 Criterion Scores, Percentile & Fundability Badge)
+```
+
+---
+
+## 26. Autonomous Clinical Trial Protocol & Drug Repurposing Flow (Phase 36)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Clinician as Medical Oncologist / PI
+    participant UI as ClinicalTrialsPage.tsx
+    participant API as FastAPI (/api/v1/clinical)
+    participant Engine as ClinicalTrialEngine
+    participant Repo as ClinicalRepository
+    participant DB as PostgreSQL / SQLite
+
+    Clinician->>UI: Submits Clinical Indication & Investigational Agent
+    UI->>API: POST /api/v1/clinical/protocols/generate {disease_indication, investigational_agent, target_gene, phase_type}
+    API->>Engine: synthesize_protocol(disease_indication, investigational_agent, target_gene, phase_type)
+    Engine->>Engine: generate_pico_cohort_criteria()
+    Engine->>Engine: screen_repurposing_candidates(target_gene)
+    Engine->>Engine: generate_regulatory_package(agency: "FDA")
+    API->>Repo: create_protocol(protocol_data)
+    Repo->>DB: INSERT into clinical_protocols, clinical_cohort_criteria, clinical_drug_candidates, clinical_regulatory_packages
+    API-->>UI: 201 Created (Full Clinical Dossier Rendered)
+
+    Clinician->>UI: Inspects PICO Eligibility & LOINC Biomarker Assays
+    Clinician->>UI: Evaluates Drug Repositioning Adjuvants (Kd Affinity, Bioavailability %, Tox Score)
+    Clinician->>UI: Exports FDA IND eCTD Module 2 Dossier with 21 CFR 312 Validation Checklist
+```
+
+---
+
+## 27. Autonomous Laboratory Automation & Robotic Protocol Generator Flow (Phase 37)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Bioengineer as Automation / Wet-Lab Scientist
+    participant UI as LabAutomationPage.tsx
+    participant API as FastAPI (/api/v1/lab)
+    participant Compiler as RoboticProtocolCompiler
+    participant Repo as LabAutomationRepository
+    participant DB as PostgreSQL / SQLite (robotic_protocols, deck_slots, transfer_steps, execution_traces)
+
+    Bioengineer->>UI: Defines Protocol (CRISPR LNP Synthesis, Opentrons OT-2, 12-Slot Deck)
+    UI->>API: POST /api/v1/lab/protocols/compile {protocol_name, robot_platform, assay_type, deck_slots, transfer_steps}
+    API->>Compiler: compile_protocol(protocol_name, robot_platform, assay_type, deck_slots, transfer_steps)
+    Compiler->>Compiler: simulate_deck_execution() (volume tracking, tip consumption, gantry collision)
+    Compiler->>Compiler: generate_opentrons_python_code() (Protocol API v2)
+    Compiler->>Compiler: generate_pylabrobot_code() (Universal backend)
+    Compiler->>Compiler: generate_autoprotocol_json() (Autoprotocol v1.0)
+    API->>Repo: create_protocol(compiled_protocol)
+    Repo->>DB: INSERT into robotic_protocols, robotic_deck_slots, robotic_transfer_steps, robotic_execution_traces
+    API-->>UI: 201 Created (Interactive Deck Grid, Pipetting Steps & Telemetry Rendered)
+
+    Bioengineer->>UI: Selects Deck Slot 2 (Inspects 96-Well Plate Geometry & Reagents)
+    Bioengineer->>UI: Clicks "Physics & Collision Telemetry" (Replays microfluidic liquid class execution log)
+    Bioengineer->>UI: Clicks "Executable Code" -> Downloads "crispr_lnp_opentrons.py" for immediate OT-2 execution
+```
+
 

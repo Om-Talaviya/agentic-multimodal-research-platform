@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_tmp/
+.pytest_cache/
+.test_vectors_tmp/
+.storage_test_dir/
 
 # Virtual environments
 venv/

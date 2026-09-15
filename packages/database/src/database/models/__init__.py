@@ -6,6 +6,18 @@ from database.models.dataset_synthesis import (
     DBInstructionSample,
     DBSyntheticDataset,
 )
+from database.models.clinical import (
+    DBClinicalProtocol,
+    DBCohortCriterion,
+    DBDrugCandidate,
+    DBRegulatoryPackage,
+)
+from database.models.lab_automation import (
+    DBRoboticProtocol,
+    DBLabwareSlot,
+    DBLiquidTransferStep,
+    DBRoboticExecutionTrace,
+)
 from database.models.collaboration import (
     DBReportAnnotation,
     DBWorkspaceActivity,
@@ -118,6 +130,14 @@ GrantProposal = DBGrantProposal
 GrantSpecificAim = DBGrantSpecificAim
 GrantBudgetItem = DBGrantBudgetItem
 GrantReviewScorecard = DBGrantReviewScorecard
+ClinicalProtocol = DBClinicalProtocol
+CohortCriterion = DBCohortCriterion
+DrugCandidate = DBDrugCandidate
+RegulatoryPackage = DBRegulatoryPackage
+RoboticProtocol = DBRoboticProtocol
+LabwareSlot = DBLabwareSlot
+LiquidTransferStep = DBLiquidTransferStep
+RoboticExecutionTrace = DBRoboticExecutionTrace
 
 __all__ = [
     "ResearchJob",
@@ -240,4 +260,20 @@ __all__ = [
     "GrantBudgetItem",
     "DBGrantReviewScorecard",
     "GrantReviewScorecard",
+    "DBClinicalProtocol",
+    "ClinicalProtocol",
+    "DBCohortCriterion",
+    "CohortCriterion",
+    "DBDrugCandidate",
+    "DrugCandidate",
+    "DBRegulatoryPackage",
+    "RegulatoryPackage",
+    "DBRoboticProtocol",
+    "RoboticProtocol",
+    "DBLabwareSlot",
+    "LabwareSlot",
+    "DBLiquidTransferStep",
+    "LiquidTransferStep",
+    "DBRoboticExecutionTrace",
+    "RoboticExecutionTrace",
 ]

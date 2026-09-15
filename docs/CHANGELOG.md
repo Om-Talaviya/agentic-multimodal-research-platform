@@ -7,6 +7,69 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.11.0] - 2026-09-15 (Generation 11: Phase 37 - Autonomous Laboratory Automation & Robotic Protocol Generator)
+
+### Added
+- **Phase 37: Autonomous Laboratory Automation & Robotic Protocol Generator**:
+  - Implemented database models in `packages/database/src/database/models/lab_automation.py` (`DBRoboticProtocol`, `DBLabwareSlot`, `DBLiquidTransferStep`, `DBRoboticExecutionTrace`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `LabAutomationRepository` in `packages/database/src/database/repositories/lab_automation_repo.py` supporting protocol creation, 12-slot deck layout allocation, atomic pipetting transfer steps, execution trace logging, and multi-tenant filtering.
+  - Implemented `RoboticProtocolCompiler` in `packages/research/src/research/robotic_protocol_compiler.py`:
+    - Generates production-grade Opentrons Protocol API v2 Python code with metadata, hardware requirements (`OT-2` / `Flex`, API `2.15`), and `run(protocol: protocol_api.ProtocolContext)`.
+    - Generates universal PyLabRobot Python automation scripts.
+    - Generates standard Autoprotocol JSON specifications for cloud biofoundries.
+    - Deterministic deck simulation with reagent volume tracking, pipette capacity validation, liquid class speed adjustments (`aqueous`, `viscous_glycerol`, `volatile_ethanol`), liquid waste calculation, and 3D gantry collision detection for tall labware.
+  - Implemented REST API routes in `apps/api/src/api/routes/lab_automation.py`:
+    - `POST /api/v1/lab/protocols/compile`: Autonomous compilation, virtual collision check, and protocol persistence.
+    - `GET /api/v1/lab/protocols`: List robotic protocols filtered by user/workspace/project/platform.
+    - `GET /api/v1/lab/protocols/{id}`: Detailed protocol retrieval with slots, steps, and simulation traces.
+    - `POST /api/v1/lab/protocols/{id}/simulate`: Dynamic simulation of custom pipetting sequences.
+    - `GET /api/v1/lab/protocols/{id}/export-code`: Multi-format robot code export (`opentrons_python`, `pylabrobot`, `autoprotocol`).
+  - Created interactive Robotic Lab Automation Studio in `apps/web/src/pages/LabAutomationPage.tsx`:
+    - Interactive 12-Slot Deck Grid Visualizer with slot selection and reagent capacity monitoring.
+    - Microfluidic pipetting transfer steps table with liquid class badges.
+    - Physics & Collision Telemetry with spatial warning cards and step execution log.
+    - Executable code viewer with copy and download utilities.
+  - Mounted `/lab` route in `App.tsx` and added `Robotic Lab Automation` navigation link with `Bot` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_lab_automation_repo.py`, `packages/research/tests/test_robotic_protocol_compiler.py`, and `apps/api/tests/test_lab_automation_api.py` (392/392 total tests passing).
+  - Updated `scripts/seed_demo_data.py` with full lab automation protocol demo data.
+  - Formalized **ADR 037** in `docs/decisions.md`.
+
+---
+
+## [2.10.0] - 2026-09-15 (Generation 10: Phase 36 - Autonomous Clinical Trial Protocol & Drug Repurposing Engine + Official SDKs + Demo Seeder)
+
+### Added
+- **Phase 36: Autonomous Clinical Trial Protocol & Drug Repurposing Engine**:
+  - Implemented database models in `packages/database/src/database/models/clinical.py` (`DBClinicalProtocol`, `DBCohortCriterion`, `DBDrugCandidate`, `DBRegulatoryPackage`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
+  - Implemented `ClinicalRepository` in `packages/database/src/database/repositories/clinical_repo.py` supporting protocol creation, PICO cohort criteria management, drug repositioning screens, and eCTD regulatory package generation.
+  - Implemented `ClinicalTrialEngine` in `packages/research/src/research/clinical_trial_engine.py`:
+    - Protocol synthesizer evaluating disease indication, investigational modality, and target mechanisms.
+    - PICO structured cohort eligibility generator with standard LOINC clinical lab assay codes.
+    - Molecular target-affinity drug repositioning screen ($K_d$ nanomolar affinities, bioavailability %, and toxicity risk scores).
+    - eCTD FDA IND / EMA CTD electronic regulatory compliance checker and submission checklists.
+  - Implemented REST API routes in `apps/api/src/api/routes/clinical.py`:
+    - `POST /api/v1/clinical/protocols/generate`: Autonomous protocol generation and multi-module persistence.
+    - `GET /api/v1/clinical/protocols`: List protocols filtered by user/workspace/project.
+    - `GET /api/v1/clinical/protocols/{id}`: Detailed protocol inspection with criteria, candidates, and regulatory packages.
+    - `POST /api/v1/clinical/protocols/{id}/criteria`: Add custom PICO eligibility criteria.
+    - `POST /api/v1/clinical/protocols/{id}/regulatory-package`: Generate eCTD IND compliance package.
+  - Created interactive Clinical Trials Studio in `apps/web/src/pages/ClinicalTrialsPage.tsx`:
+    - Protocol Synthesizer & Active Protocols Catalog.
+    - Planned Cohort, Study Duration, Adverse Risk, and Molecular Target metrics grid.
+    - Primary & Secondary Endpoints view.
+    - Interactive Tabbed Explorer (PICO Cohort Criteria, Drug Repurposing Screen, FDA IND Dossier).
+  - Mounted `/clinical` route in `App.tsx` and added `Clinical Trials & Repurposing` navigation link with `HeartPulse` icon in `Layout.tsx`.
+  - Added test suites in `packages/database/tests/test_clinical_repo.py`, `packages/research/tests/test_clinical_trial_engine.py`, and `apps/api/tests/test_clinical_api.py`.
+  - Formalized **ADR 036** in `docs/decisions.md`.
+- **Official Developer Platform SDKs**:
+  - Python async SDK (`ai-research-os` in `packages/sdk-python/ai_research_os`) with `AIResearchClient`, research job submission, polling helpers, document ingestion, usage tracking, and Pydantic models.
+  - TypeScript SDK (`apps/web/src/sdk/client.ts`) with typed methods, SSE/WebSocket subscription handlers, and token auth.
+- **Production Demo Data Seeder**:
+  - Comprehensive seed script (`scripts/seed_demo_data.py`) spanning all 36 platform studios with the flagship project *"Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery for Monogenic Hepatopathies"*.
+- **GENERATION 10 COMPLETED**: Phase 36, Developer Platform SDKs, and Demo Seeder are 100% complete and verified!
+
+---
+
 ## [2.9.0] - 2026-09-14 (Generation 9 Milestone 1: Phase 35 - Autonomous Scientific Grant & Research Funding Proposal Synthesizer)
 
 ### Added

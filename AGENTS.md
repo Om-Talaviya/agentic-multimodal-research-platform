@@ -190,7 +190,11 @@ npm run lint
 - **Phase 33 (Synthetic Instruction Dataset Generation & Active Learning Engine)**: 🟢 COMPLETE (`DBSyntheticDataset`, `DBInstructionSample`, `DBAlignmentExport`, `DatasetSynthesisRepository`, `InstructionDatasetSynthesizer`, `/api/v1/datasets/*` REST API, `DatasetSynthesisPage.tsx` UI)
 - **Phase 34 (Autonomous Patent Landscape Analysis & Prior Art Search Engine)**: 🟢 COMPLETE (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`, `PatentRepository`, `PatentPriorArtEngine`, `/api/v1/patents/*` REST API, `PatentLandscapePage.tsx` UI)
 - **Phase 35 (Autonomous Scientific Grant & Research Funding Proposal Synthesizer)**: 🟢 COMPLETE (`DBGrantProposal`, `DBGrantSpecificAim`, `DBGrantBudgetItem`, `DBGrantReviewScorecard`, `GrantProposalRepository`, `GrantProposalSynthesizer`, `InstitutionalBudgetCalculator`, `/api/v1/grants/*` REST API, `GrantProposalStudioPage.tsx` UI)
-- **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1` — Generation 9 Active & Fully Completed!)
+- **Phase 36 (Autonomous Clinical Trial Protocol & Drug Repurposing Engine)**: 🟢 COMPLETE (`DBClinicalProtocol`, `DBCohortCriterion`, `DBDrugCandidate`, `DBRegulatoryPackage`, `ClinicalRepository`, `ClinicalTrialEngine`, `/api/v1/clinical/*` REST API, `ClinicalTrialsPage.tsx` UI)
+- **Phase 37 (Autonomous Laboratory Automation & Robotic Protocol Generator)**: 🟢 COMPLETE (`DBRoboticProtocol`, `DBLabwareSlot`, `DBLiquidTransferStep`, `DBRoboticExecutionTrace`, `LabAutomationRepository`, `RoboticProtocolCompiler` Opentrons API v2 / PyLabRobot / Autoprotocol compiler, virtual 3D collision & tip simulator, `/api/v1/lab/*` REST API, `LabAutomationPage.tsx` UI)
+- **Official Developer Platform SDKs**: 🟢 COMPLETE (Async Python `ai-research-os` SDK in `packages/sdk-python/ai_research_os` & Isomorphic TypeScript Client SDK in `apps/web/src/sdk/client.ts`)
+- **Production Demo Data Seeder**: 🟢 COMPLETE (`scripts/seed_demo_data.py` multi-modal, cross-studio sample dataset spanning all 37 platform studios with the flagship project *"Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery for Monogenic Hepatopathies"*)
+- **Documentation Architecture**: 🟢 COMPLETE (Stable branch: `develop/v1.1` — Generation 11 Active & 100% Fully Completed!)
 
 
 

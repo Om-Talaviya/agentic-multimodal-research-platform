@@ -821,6 +821,80 @@ This document records the key architectural, engineering, and product design dec
   - Positive: Pre-submission mock study section review surfaces methodological pitfalls early, maximizing award probability.
   - Positive: Inaugurates Generation 9 (Autonomous Scientific Grant & Research Funding Proposal Studio) on `develop/v1.1`.
 
+---
+
+### ADR 036: Autonomous Clinical Trial Protocol Synthesizer, PICO Cohort Eligibility Extraction, and Molecular Target Drug Repurposing Engine
+
+- **Status**: Accepted & Implemented (Phase 36 - Generation 10)
+- **Context**: Translating preclinical biomedical breakthroughs into human clinical trials requires constructing highly structured clinical study protocols compliant with Good Clinical Practice (GCP E6(R2)) and FDA 21 CFR 312 regulations. Investigators must formalize patient eligibility through strict PICO (Population, Intervention, Comparison, Outcome) inclusion/exclusion criteria with standard laboratory coding (LOINC), compute quantitative adverse event toxicity risks, and compile electronic Common Technical Document (eCTD) Investigational New Drug (IND) regulatory dossiers. Furthermore, identifying repositioning opportunities for already-approved compounds provides accelerated paths to clinical validation.
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/clinical.py`:
+     - `DBClinicalProtocol`: Master clinical protocol (title, phase_type: `Phase I`, `Phase I/IIa`, `Phase IIb`, `Phase III`, disease_indication, icd_code, investigational_agent, mechanism_of_action, target_gene_or_protein, primary_endpoint, secondary_endpoints, sample_size_planned, study_duration_weeks, adverse_risk_score, regulatory_status, full_protocol_json).
+     - `DBCohortCriterion`: PICO patient eligibility record (criterion_type: `inclusion`/`exclusion`, category: `demographic`, `diagnostic`, `biomarker`, `prior_therapy`, `safety`, description, is_mandatory, loinc_code).
+     - `DBDrugCandidate`: Repurposed drug screening candidate (compound_name, smiles_string, current_approved_indication, repurposed_indication, binding_affinity_nm, bioavailability_pct, toxicity_risk_score, repurposing_rationale).
+     - `DBRegulatoryPackage`: Electronic Common Technical Document (eCTD) IND dossier (regulatory_agency: `FDA`, `EMA`, `PMDA`, `MHRA`, module_type, completeness_score, irb_readiness_verdict, validation_findings).
+  2. Implement `ClinicalRepository` in `packages/database/src/database/repositories/clinical_repo.py`:
+     - Async CRUD operations: `create_protocol`, `get_protocol`, `list_protocols`, `add_cohort_criterion`, `add_drug_candidate`, `list_drug_candidates`, `create_regulatory_package`.
+  3. Implement `ClinicalTrialEngine` in `packages/research/src/research/clinical_trial_engine.py`:
+     - Autonomous protocol synthesis from disease indication + investigational agent.
+     - PICO structured cohort criteria generator with LOINC clinical assay mapping.
+     - Molecular target-affinity repurposing screen ($K_d$ nanomolar affinities, bioavailability %, toxicity scores).
+     - FDA IND / EMA CTD electronic regulatory compliance checker with submission checklist validation.
+  4. Implement REST APIs in `apps/api/src/api/routes/clinical.py`:
+     - `POST /api/v1/clinical/protocols/generate`: Synthesize and persist clinical protocol, cohort criteria, candidate screens, and initial FDA IND package.
+     - `GET /api/v1/clinical/protocols`: List protocols filtered by user/workspace/project.
+     - `GET /api/v1/clinical/protocols/{id}`: Retrieve protocol with criteria, candidates, and regulatory dossiers.
+     - `POST /api/v1/clinical/protocols/{id}/criteria`: Add custom inclusion or exclusion criterion.
+     - `POST /api/v1/clinical/protocols/{id}/regulatory-package`: Generate electronic regulatory module.
+  5. Build React Studio in `apps/web/src/pages/ClinicalTrialsPage.tsx`:
+     - Protocol Generator & Active Protocol Catalog.
+     - Planned Cohort, Study Duration, Adverse Risk, and Molecular Target metrics grid.
+     - Primary and Secondary Endpoint displays.
+     - Interactive Tabbed Explorer:
+       - Cohort Criteria (PICO Inclusion/Exclusion cards with LOINC codes).
+       - Drug Repositioning Screen ($K_d$ affinities, bioavailability, repurposing rationale).
+       - FDA IND / eCTD Dossier (IRB readiness verdict, validation findings, 21 CFR 312 checklist).
+  6. Deliver Official Developer SDKs (`ai_research_os` Python async SDK + TypeScript Client SDK) and Production Demo Data Seeder (`scripts/seed_demo_data.py`).
+- **Consequences**:
+  - Positive: Drastically compresses clinical trial design time from months to minutes while preserving rigorous GCP/FDA regulatory standards.
+  - Positive: Expands platform capabilities into downstream translational medicine and commercialization.
+  - Positive: Completes Generation 10: Phase 36 on `develop/v1.1`.
+
+---
+
+### ADR 037: Autonomous Laboratory Automation & Robotic Protocol Generator (Opentrons OT-2/Flex & PyLabRobot Liquid Handling)
+
+- **Status**: Accepted & Implemented (Phase 37 - Generation 11)
+- **Context**: Bridging in-silico computational research and wet-lab physical experimental execution requires generating executable, deterministic robot control scripts for automated liquid handlers (such as Opentrons OT-2, Opentrons Flex, and PyLabRobot Universal). Researchers need automated deck layout planning (12-slot geometry), pipette volume and liquid class calibration (viscous glycerol, ethanol, aqueous), virtual 3D collision avoidance for tall labware, tip consumption tracking, and standardized cloud lab Autoprotocol exports.
+- **Decision**:
+  1. Implement Database Models in `packages/database/src/database/models/lab_automation.py`:
+     - `DBRoboticProtocol`: Protocol specification (protocol_name, robot_platform: `Opentrons_OT2`, `Opentrons_Flex`, `PyLabRobot_Universal`, `Tecan_Fluent`, `Hamilton_STAR`, assay_type: `CRISPR_LNP_Formulation`, `qPCR_Assay`, `ELISA_Screening`, `Serial_Dilution`, `PCR_MasterMix`, deck_layout_json, total_runtime_minutes, liquid_waste_volume_ml, validation_status, protocol_python_code, autoprotocol_json).
+     - `DBLabwareSlot`: Deck slot allocation (slot_number: 1..12, labware_type, reagent_name, initial_volume_ul, current_volume_ul).
+     - `DBLiquidTransferStep`: Atomic liquid transfer step (step_index, source_slot, source_well, target_slot, target_well, volume_ul, pipette_name, transfer_type: `transfer`, `mix`, `aspirate`, `dispense`, liquid_class: `aqueous`, `viscous_glycerol`, `volatile_ethanol`).
+     - `DBRoboticExecutionTrace`: Virtual simulation and collision record (step_count, simulated_runtime_sec, estimated_tip_count, tip_waste_pct, collision_warnings, simulation_log).
+  2. Implement `LabAutomationRepository` in `packages/database/src/database/repositories/lab_automation_repo.py`:
+     - Async CRUD operations: `create_protocol`, `get_protocol`, `list_protocols`, `add_deck_slot`, `add_deck_slots`, `add_transfer_step`, `add_transfer_steps`, `record_execution_trace`.
+  3. Implement `RoboticProtocolCompiler` in `packages/research/src/research/robotic_protocol_compiler.py`:
+     - Generates valid Opentrons Protocol API v2 Python scripts with metadata, hardware requirements, and `def run(protocol: protocol_api.ProtocolContext)`.
+     - Generates PyLabRobot Universal liquid handling scripts.
+     - Generates standard Autoprotocol JSON v1.0 specifications.
+     - Executes virtual deck simulation tracking reagent volumes, tip consumption, liquid waste, and gantry height collision hazards.
+  4. Implement REST APIs in `apps/api/src/api/routes/lab_automation.py`:
+     - `POST /api/v1/lab/protocols/compile`: Compile, simulate, and persist robotic protocols.
+     - `GET /api/v1/lab/protocols`: List protocols filtered by user/workspace/project/platform.
+     - `GET /api/v1/lab/protocols/{id}`: Fetch complete protocol details.
+     - `POST /api/v1/lab/protocols/{id}/simulate`: Re-simulate deck transfer steps.
+     - `GET /api/v1/lab/protocols/{id}/export-code`: Export Opentrons Python, PyLabRobot, or Autoprotocol scripts.
+  5. Build React Studio in `apps/web/src/pages/LabAutomationPage.tsx`:
+     - Interactive 12-Slot Deck Grid Visualizer with slot highlight and labware inspection.
+     - Transfer Steps table with pipetting sequence, volume, and liquid class badges.
+     - Virtual Physics & Collision Telemetry with warning cards and step-by-step logs.
+     - Executable Code viewer with copy/download options across Opentrons, PyLabRobot, and Autoprotocol formats.
+- **Consequences**:
+  - Positive: Automates wet-lab experimental synthesis, directly executing computational hypotheses on physical robotic liquid handling platforms.
+  - Positive: Inaugurates Generation 11 (Autonomous Laboratory Automation & Cloud Biofoundry Integration) on `develop/v1.1`.
+
+
 
 
 
