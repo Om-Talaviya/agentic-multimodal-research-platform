@@ -178,6 +178,7 @@ function App() {
             <Route path="/adc-design" element={<ADCDesignStudioPage />} />
             <Route path="/pbpk-nanomedicine" element={<NanomedicinePBPKStudioPage />} />
             <Route path="/rare-disease" element={<RareDiseaseHPOStudioPage />} />
+            <Route path="/bioprocess" element={<BioprocessDigitalTwinStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )

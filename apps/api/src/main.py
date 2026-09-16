@@ -6,6 +6,7 @@ from api.routes.ppi_interactome import router as ppi_interactome_router
 from api.routes.adc_design import router as adc_design_router
 from api.routes.pbpk_nanomedicine import router as pbpk_nanomedicine_router
 from api.routes.rare_disease_hpo import router as rare_disease_hpo_router
+from api.routes.bioprocess_digital_twin import router as bioprocess_router
 from api.routes.eln import router as eln_router
 from api.routes.lakehouse import router as lakehouse_router
 from api.routes.ragas_eval import router as ragas_eval_router
@@ -125,6 +126,7 @@ app.include_router(ppi_interactome_router, prefix="/api/v1")
 app.include_router(adc_design_router, prefix="/api/v1")
 app.include_router(pbpk_nanomedicine_router, prefix="/api/v1")
 app.include_router(rare_disease_hpo_router, prefix="/api/v1")
+app.include_router(bioprocess_router, prefix="/api/v1")
 app.include_router(eln_router, prefix="/api/v1")
 app.include_router(lakehouse_router, prefix="/api/v1")
 app.include_router(ragas_eval_router, prefix="/api/v1")

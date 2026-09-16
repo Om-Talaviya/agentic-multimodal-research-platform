@@ -432,3 +432,9 @@ from database.models.rare_disease_hpo import (
     DBHPOPhenotypeTerm,
     DBCandidateGeneMatch,
 )
+
+from database.models.bioprocess_digital_twin import (
+    DBBioreactorRun,
+    DBBioprocessTimeSeriesPoint,
+    DBBioprocessControlAction,
+)
