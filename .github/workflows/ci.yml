@@ -37,7 +37,7 @@ jobs:
 
       - name: Run Pytest Test Suite (376 tests)
         env:
-          PYTHONPATH: "packages/shared/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src"
+          PYTHONPATH: "packages/shared/src:packages/sdk-python/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src"
           DATABASE_URL: "sqlite+aiosqlite:///:memory:"
           SECRET_KEY: "ci-secret-key-for-testing-only-32-chars-long"
           TESTING: "true"

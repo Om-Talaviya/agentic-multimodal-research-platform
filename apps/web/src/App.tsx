@@ -1,21 +1,13 @@
-import VHTSStudioPage from './pages/VHTSStudioPage';
-import ELNStudioPage from './pages/ELNStudioPage';
-import LakehouseStudioPage from './pages/LakehouseStudioPage';
-import RagasStudioPage from './pages/RagasStudioPage';
-import DrugSynergyStudioPage from './pages/DrugSynergyStudioPage';
-import SuperGraphStudioPage from './pages/SuperGraphStudioPage';
-import GenerativeChemistryPage from './pages/GenerativeChemistryPage';
-import SpatialTranscriptomicsPage from './pages/SpatialTranscriptomicsPage';
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Dashboard } from './pages/Dashboard'
+import { ProjectsPage } from './pages/ProjectsPage'
 import { NewResearch } from './pages/NewResearch'
 import { ResearchDetail } from './pages/ResearchDetail'
 import { Settings } from './pages/Settings'
 import { MemoryPage } from './pages/MemoryPage'
 import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage'
-import { ProjectsPage } from './pages/ProjectsPage'
 import { ModelEvaluationPage } from './pages/ModelEvaluationPage'
 import { AgentEvaluationPage } from './pages/AgentEvaluationPage'
 import { EnterpriseSecurityPage } from './pages/EnterpriseSecurityPage'
@@ -37,9 +29,32 @@ import { MolecularStructurePage } from './pages/MolecularStructurePage'
 import { MolecularDynamicsPage } from './pages/MolecularDynamicsPage'
 import { CRISPRStudioPage } from './pages/CRISPRStudioPage'
 import { SingleCellStudioPage } from './pages/SingleCellStudioPage'
+import { SpatialTranscriptomicsPage } from './pages/SpatialTranscriptomicsPage'
+import { GenerativeChemistryPage } from './pages/GenerativeChemistryPage'
+import { SuperGraphStudioPage } from './pages/SuperGraphStudioPage'
+import { DrugSynergyStudioPage } from './pages/DrugSynergyStudioPage'
+import { ClinicalTrialStudioPage } from './pages/ClinicalTrialStudioPage'
+import { CryoEMStudioPage } from './pages/CryoEMStudioPage'
+import { PathwaySimulatorPage } from './pages/PathwaySimulatorPage'
+import { PharmacovigilanceStudioPage } from './pages/PharmacovigilanceStudioPage'
+import { AIScientistStudioPage } from './pages/AIScientistStudioPage'
+import { RagasStudioPage } from './pages/RagasStudioPage'
+import { LakehouseStudioPage } from './pages/LakehouseStudioPage'
+import { ELNStudioPage } from './pages/ELNStudioPage'
+import { VHTSStudioPage } from './pages/VHTSStudioPage'
+import { ImmunologyStudioPage } from './pages/ImmunologyStudioPage'
+import { EpigenomicsStudioPage } from './pages/EpigenomicsStudioPage'
+import { SpatialMetabolomicsStudioPage } from './pages/SpatialMetabolomicsStudioPage'
+import { PPIInteractomeStudioPage } from './pages/PPIInteractomeStudioPage'
+import { ADCDesignStudioPage } from './pages/ADCDesignStudioPage'
+import { NanomedicinePBPKStudioPage } from './pages/NanomedicinePBPKStudioPage'
+import { RareDiseaseHPOStudioPage } from './pages/RareDiseaseHPOStudioPage'
+import { BioprocessDigitalTwinStudioPage } from './pages/BioprocessDigitalTwinStudioPage'
+import { ClinicalLogisticsStudioPage } from './pages/ClinicalLogisticsStudioPage'
+import { PeerReviewStudioPage } from './pages/PeerReviewStudioPage'
+import { SyntheticBiologyStudioPage } from './pages/SyntheticBiologyStudioPage'
+import { CARTStudioPage } from './pages/CARTStudioPage'
 import { Login } from './pages/Login'
-
-
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
 import { Loader2 } from 'lucide-react'
@@ -50,17 +65,14 @@ function App() {
   const [refreshInProgress, setRefreshInProgress] = useState(false)
 
   useEffect(() => {
-    // Check authentication on mount by reading token from localStorage
     const token = localStorage.getItem('token')
     const refreshToken = localStorage.getItem('refresh_token')
 
     if (token) {
-      // Validate the token by calling /auth/me
       import('./services/api').then(({ api }) => {
         api.get('/auth/me').then(() => {
           setIsAuthenticated(true)
         }).catch(async (_err: unknown) => {
-          // Token invalid/expired, try refresh
           if (!refreshInProgress && refreshToken) {
             setRefreshInProgress(true)
             try {
@@ -72,7 +84,6 @@ function App() {
               localStorage.setItem('refresh_token', newRefreshToken)
               setIsAuthenticated(true)
             } catch (refreshErr) {
-              // Refresh failed, clear auth and redirect to login
               localStorage.removeItem('token')
               localStorage.removeItem('refresh_token')
               setIsAuthenticated(false)
@@ -80,7 +91,6 @@ function App() {
               setRefreshInProgress(false)
             }
           } else {
-            // No refresh token or already refreshing, clear auth
             localStorage.removeItem('token')
             localStorage.removeItem('refresh_token')
             setIsAuthenticated(false)
@@ -140,12 +150,34 @@ function App() {
           <Route path="dynamics" element={<MolecularDynamicsPage />} />
           <Route path="crispr" element={<CRISPRStudioPage />} />
           <Route path="single-cell" element={<SingleCellStudioPage />} />
+          <Route path="spatial" element={<SpatialTranscriptomicsPage />} />
+          <Route path="chemistry" element={<GenerativeChemistryPage />} />
+          <Route path="supergraph" element={<SuperGraphStudioPage />} />
+          <Route path="synergy" element={<DrugSynergyStudioPage />} />
+          <Route path="clinical-trials" element={<ClinicalTrialStudioPage />} />
+          <Route path="cryoem" element={<CryoEMStudioPage />} />
+          <Route path="pathways" element={<PathwaySimulatorPage />} />
+          <Route path="pharmacovigilance" element={<PharmacovigilanceStudioPage />} />
+          <Route path="ai-scientist" element={<AIScientistStudioPage />} />
+          <Route path="ragas-eval" element={<RagasStudioPage />} />
+          <Route path="lakehouse" element={<LakehouseStudioPage />} />
+          <Route path="eln" element={<ELNStudioPage />} />
+          <Route path="vhts" element={<VHTSStudioPage />} />
+          <Route path="immunology" element={<ImmunologyStudioPage />} />
+          <Route path="epigenomics" element={<EpigenomicsStudioPage />} />
+          <Route path="spatial-metabolomics" element={<SpatialMetabolomicsStudioPage />} />
+          <Route path="ppi-interactome" element={<PPIInteractomeStudioPage />} />
+          <Route path="adc-design" element={<ADCDesignStudioPage />} />
+          <Route path="pbpk-nanomedicine" element={<NanomedicinePBPKStudioPage />} />
+          <Route path="rare-disease" element={<RareDiseaseHPOStudioPage />} />
+          <Route path="bioprocess" element={<BioprocessDigitalTwinStudioPage />} />
+          <Route path="clinical-logistics" element={<ClinicalLogisticsStudioPage />} />
+          <Route path="peer-review" element={<PeerReviewStudioPage />} />
+          <Route path="synthetic-biology" element={<SyntheticBiologyStudioPage />} />
+          <Route path="cart" element={<CARTStudioPage />} />
           <Route path="settings" element={<Settings />} />
-
-
         </Route>
 
-        {/* Fallbacks & Auth Redirects */}
         <Route path="/login" element={<Navigate to="/dashboard" replace />} />
         <Route path="/register" element={<Navigate to="/dashboard" replace />} />
         <Route
@@ -158,32 +190,7 @@ function App() {
           }
         />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
-                <Route path="/spatial" element={<SpatialTranscriptomicsPage />} />
-          <Route path="/chemistry" element={<GenerativeChemistryPage />} />
-          <Route path="/supergraph" element={<SuperGraphStudioPage />} />
-          <Route path="/synergy" element={<DrugSynergyStudioPage />} />
-        <Route path="/clinical-trials" element={<ClinicalTrialStudioPage />} />
-        <Route path="/cryoem" element={<CryoEMStudioPage />} />
-        <Route path="/pathways" element={<PathwaySimulatorPage />} />
-        <Route path="/pharmacovigilance" element={<PharmacovigilanceStudioPage />} />
-        <Route path="/ai-scientist" element={<AIScientistStudioPage />} />
-        <Route path="/ragas-eval" element={<RagasStudioPage />} />
-        <Route path="/lakehouse" element={<LakehouseStudioPage />} />
-        <Route path="/eln" element={<ELNStudioPage />} />
-        <Route path="/vhts" element={<VHTSStudioPage />} />
-            <Route path="/immunology" element={<ImmunologyStudioPage />} />
-            <Route path="/epigenomics" element={<EpigenomicsStudioPage />} />
-            <Route path="/spatial-metabolomics" element={<SpatialMetabolomicsStudioPage />} />
-            <Route path="/ppi-interactome" element={<PPIInteractomeStudioPage />} />
-            <Route path="/adc-design" element={<ADCDesignStudioPage />} />
-            <Route path="/pbpk-nanomedicine" element={<NanomedicinePBPKStudioPage />} />
-            <Route path="/rare-disease" element={<RareDiseaseHPOStudioPage />} />
-            <Route path="/bioprocess" element={<BioprocessDigitalTwinStudioPage />} />
-            <Route path="/clinical-logistics" element={<ClinicalLogisticsStudioPage />} />
-            <Route path="/peer-review" element={<PeerReviewStudioPage />} />
-            <Route path="/synthetic-biology" element={<SyntheticBiologyStudioPage />} />
-            <Route path="/cart" element={<CARTStudioPage />} />
-</Routes>
+      </Routes>
     </WorkspaceProvider>
   )
 
@@ -199,4 +206,3 @@ function App() {
 }
 
 export default App
-

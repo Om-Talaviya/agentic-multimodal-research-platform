@@ -97,6 +97,7 @@ async def record_worker_heartbeat(
         memory_mb=payload.memory_mb,
         status=payload.status,
     )
+    await session.commit()
     return worker.to_dict()
 
 
@@ -175,6 +176,7 @@ async def catalog_storage_object(
         workspace_id=payload.workspace_id,
         uploader_id=actor_id,
     )
+    await session.commit()
     return obj.to_dict()
 
 

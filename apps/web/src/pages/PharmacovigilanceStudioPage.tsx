@@ -197,18 +197,18 @@ export const PharmacovigilanceStudioPage: React.FC = () => {
                   <div className="text-[10px] text-amber-400 mt-0.5">95% CI: {selectedCorpus.signals?.[0]?.metrics?.[0]?.ror_ci || '[2.85-4.55]'}</div>
                 </div>
                 <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-xl">
-                  <div className="text-xs text-slate-400 flex items-center gap-1.5"><TrendingUp className="w-3.5 h-3.5 text-sky-400"/> BCPNN IC₀₂₅</div>
+                  <div className="text-xs text-slate-400 flex items-center gap-1.5"><TrendingUp className="w-3.5 h-3.5 text-sky-400"/> BCPNN IC025</div>
                   <div className="text-xl font-bold text-white mt-1">
                     +{selectedCorpus.signals?.[0]?.metrics?.[0]?.ic025 || 1.65}
                   </div>
-                  <div className="text-[10px] text-sky-400 mt-0.5">Signal positive ($>0$)</div>
+                  <div className="text-[10px] text-sky-400 mt-0.5">Signal positive (&gt;0)</div>
                 </div>
                 <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-xl">
                   <div className="text-xs text-slate-400 flex items-center gap-1.5"><Database className="w-3.5 h-3.5 text-emerald-400"/> Adverse Cases</div>
                   <div className="text-xl font-bold text-white mt-1">
                     {selectedCorpus.signals?.[0]?.case_count || 142} pts
                   </div>
-                  <div className="text-[10px] text-emerald-400 mt-0.5">Chi²: {selectedCorpus.signals?.[0]?.metrics?.[0]?.chi_square || 48.6}</div>
+                  <div className="text-[10px] text-emerald-400 mt-0.5">Chi-Square: {selectedCorpus.signals?.[0]?.metrics?.[0]?.chi_square || 48.6}</div>
                 </div>
               </div>
 
