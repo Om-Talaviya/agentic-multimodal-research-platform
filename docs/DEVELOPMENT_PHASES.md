@@ -760,3 +760,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `NanomedicinePBPKRepository`, `NanomedicinePBPKEngine`.
 - **API & UI**: `/api/v1/pbpk-nanomedicine` router with `NanomedicinePBPKStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 61: Autonomous Rare Disease Phenotype-to-Genotype Diagnostic Matching & HPO Ontology Engine (Completed)
+- **Objective**: Implement Human Phenotype Ontology (HPO) semantic DAG similarity, orphan disease matching, and causal gene prioritization.
+- **Database Models**: `DBRareDiseaseDiagnosticCase`, `DBHPOPhenotypeTerm`, `DBCandidateGeneMatch`.
+- **Repository & Engine**: `RareDiseaseHPORepository`, `RareDiseaseHPOEngine`.
+- **API & UI**: `/api/v1/rare-disease` router with `RareDiseaseHPOStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
