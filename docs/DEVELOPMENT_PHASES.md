@@ -718,3 +718,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Interactive UI Studio with Target PDB viewer, docking score distribution, chemical hits, and scaffold cluster trees in pps/web/src/pages/VHTSStudioPage.tsx.
 - [x] Comprehensive test suites in packages/database/tests/test_vhts_repo.py, packages/research/tests/test_vhts_engine.py, and pps/api/tests/test_vhts_api.py.
 - [x] Formalized **ADR 054**.
+
+## Phase 55: Autonomous Computational Immunology & TCR-pMHC Neoantigen Binding Predictor (Completed)
+- **Objective**: Implement deep learning pMHC presentation scoring, TCR reactivity classification, and poly-epitope vaccine construct optimization.
+- **Database Models**: `DBNeoantigenScreen`, `DBNeoantigenEpitope`, `DBVaccineConstructDesign`.
+- **Repository & Engine**: `ImmunologyRepository`, `ComputationalImmunologyEngine`.
+- **API & UI**: `/api/v1/immunology` router with `ImmunologyStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.

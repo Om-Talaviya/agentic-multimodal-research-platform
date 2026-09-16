@@ -391,3 +391,9 @@ from database.models.eln import DBElectronicLabNotebook, DBLabNotebookBlock, DBE
 
 from database.models.vhts import DBVirtualHTSScreen, DBVirtualHTSHit, DBHTSClusterGroup
 
+
+from database.models.immunology import (
+    DBNeoantigenScreen,
+    DBNeoantigenEpitope,
+    DBVaccineConstructDesign,
+)
