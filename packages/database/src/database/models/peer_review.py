@@ -11,7 +11,6 @@ from database.models.memory import GUID
 JSONType = JSON().with_variant(JSONB, "postgresql")
 
 
-
 class DBPeerReviewManuscript(Base):
     """Represents a scientific research manuscript submitted for peer review and publication."""
 
@@ -26,14 +25,12 @@ class DBPeerReviewManuscript(Base):
     title = Column(String(512), nullable=False)
     abstract = Column(Text, nullable=False)
     field_of_study = Column(String(128), default="computer_science", nullable=False)
-    venue_format = Column(String(64), default="nature", nullable=False)  # nature, ieee, acm, arxiv
+    venue_format = Column(String(64), default="nature", nullable=False)
     status = Column(String(64), default="submitted", nullable=False, index=True)
-    # submitted, under_review, revisions_requested, accepted, rejected, published
 
     manuscript_content = Column(Text, nullable=True)
     claimed_contributions = Column(JSONType, default=list, nullable=False)
     keywords = Column(JSONType, default=list, nullable=False)
-
 
     overall_score = Column(Float, default=0.0, nullable=False)
     camera_ready_doi = Column(String(256), nullable=True)
@@ -55,16 +52,16 @@ class DBPeerReviewReport(Base):
     id = Column(GUID(), primary_key=True, default=uuid.uuid4)
     manuscript_id = Column(GUID(), ForeignKey("peer_review_manuscripts.id", ondelete="CASCADE"), nullable=False, index=True)
 
-    reviewer_persona = Column(String(64), nullable=False)  # methodology_critic, statistical_auditor, domain_specialist
+    reviewer_persona = Column(String(64), nullable=False)
     reviewer_title = Column(String(128), nullable=False)
 
-    originality_score = Column(Float, default=0.0, nullable=False)  # 0.0 - 10.0
-    methodology_score = Column(Float, default=0.0, nullable=False)  # 0.0 - 10.0
-    empirical_soundness = Column(Float, default=0.0, nullable=False)  # 0.0 - 10.0
-    clarity_score = Column(Float, default=0.0, nullable=False)  # 0.0 - 10.0
-    composite_score = Column(Float, default=0.0, nullable=False)  # 0.0 - 10.0
+    originality_score = Column(Float, default=0.0, nullable=False)
+    methodology_score = Column(Float, default=0.0, nullable=False)
+    empirical_soundness = Column(Float, default=0.0, nullable=False)
+    clarity_score = Column(Float, default=0.0, nullable=False)
+    composite_score = Column(Float, default=0.0, nullable=False)
 
-    recommendation = Column(String(64), default="minor_revision", nullable=False)  # accept, minor_revision, major_revision, reject
+    recommendation = Column(String(64), default="minor_revision", nullable=False)
     summary_verdict = Column(Text, nullable=False)
     strengths = Column(JSONType, default=list, nullable=False)
     weaknesses = Column(JSONType, default=list, nullable=False)
@@ -88,8 +85,7 @@ class DBManuscriptRevision(Base):
     rebuttal_letter = Column(Text, nullable=False)
     diff_summary = Column(Text, nullable=True)
     point_by_point_responses = Column(JSONType, default=list, nullable=False)
-    status = Column(String(64), default="submitted", nullable=False)  # submitted, reviewed, approved
-
+    status = Column(String(64), default="submitted", nullable=False)
 
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
 

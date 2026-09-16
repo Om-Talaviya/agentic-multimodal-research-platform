@@ -781,3 +781,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `ClinicalTrialLogisticsRepository`, `ClinicalTrialLogisticsEngine`.
 - **API & UI**: `/api/v1/clinical-logistics` router with `ClinicalLogisticsStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 64: Autonomous Multi-Modal Scientific Peer-Review Referee Panel & Automated Rebuttal Loop (Completed)
+- **Objective**: Implement 3-agent adversarial peer-review panel, statistical rigor audit, and automated point-by-point rebuttal counter-argument generation.
+- **Database Models**: `DBPeerReviewManuscript`, `DBRefereeReviewReport`, `DBAutomatedRebuttalPoint`.
+- **Repository & Engine**: `PeerReviewRepository`, `ScientificPeerReviewEngine`.
+- **API & UI**: `/api/v1/peer-review` router with `PeerReviewStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
