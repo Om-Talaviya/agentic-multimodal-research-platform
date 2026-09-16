@@ -10,6 +10,7 @@ from api.routes.bioprocess_digital_twin import router as bioprocess_router
 from api.routes.clinical_logistics import router as clinical_logistics_router
 from api.routes.peer_review import router as peer_review_router
 from api.routes.synthetic_biology import router as synbio_router
+from api.routes.cart_engineering import router as cart_router
 from api.routes.eln import router as eln_router
 from api.routes.lakehouse import router as lakehouse_router
 from api.routes.ragas_eval import router as ragas_eval_router
@@ -133,6 +134,7 @@ app.include_router(bioprocess_router, prefix="/api/v1")
 app.include_router(clinical_logistics_router, prefix="/api/v1")
 app.include_router(peer_review_router, prefix="/api/v1")
 app.include_router(synbio_router, prefix="/api/v1")
+app.include_router(cart_router, prefix="/api/v1")
 app.include_router(eln_router, prefix="/api/v1")
 app.include_router(lakehouse_router, prefix="/api/v1")
 app.include_router(ragas_eval_router, prefix="/api/v1")

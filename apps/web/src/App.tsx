@@ -182,6 +182,7 @@ function App() {
             <Route path="/clinical-logistics" element={<ClinicalLogisticsStudioPage />} />
             <Route path="/peer-review" element={<PeerReviewStudioPage />} />
             <Route path="/synthetic-biology" element={<SyntheticBiologyStudioPage />} />
+            <Route path="/cart" element={<CARTStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
