@@ -179,6 +179,7 @@ function App() {
             <Route path="/pbpk-nanomedicine" element={<NanomedicinePBPKStudioPage />} />
             <Route path="/rare-disease" element={<RareDiseaseHPOStudioPage />} />
             <Route path="/bioprocess" element={<BioprocessDigitalTwinStudioPage />} />
+            <Route path="/clinical-logistics" element={<ClinicalLogisticsStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
