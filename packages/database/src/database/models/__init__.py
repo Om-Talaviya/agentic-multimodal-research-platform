@@ -415,3 +415,8 @@ from database.models.ppi_interactome import (
     DBProteinNode,
     DBProteinInteractionEdge,
 )
+
+from database.models.adc_design import (
+    DBADCDesignCampaign,
+    DBADCPayloadLinkerConstruct,
+)
