@@ -438,3 +438,9 @@ from database.models.bioprocess_digital_twin import (
     DBBioprocessTimeSeriesPoint,
     DBBioprocessControlAction,
 )
+
+from database.models.clinical_logistics import (
+    DBClinicalTrialNetwork,
+    DBClinicalSiteNode,
+    DBLogisticsSupplyRoute,
+)
