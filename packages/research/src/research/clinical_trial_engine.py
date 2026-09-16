@@ -10,6 +10,22 @@ from typing import Any, Dict, List, Optional
 class ClinicalTrialEngine:
     """Core intelligence engine for clinical protocol design and regulatory readiness (Phase 36)."""
 
+    def synthesize_protocol(
+        self,
+        disease_indication: str,
+        investigational_agent: str,
+        target_gene_or_protein: Optional[str] = None,
+        phase_type: str = "Phase I/IIa",
+        mechanism_of_action: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        return self.generate_protocol(
+            disease_indication=disease_indication,
+            investigational_agent=investigational_agent,
+            target_gene_or_protein=target_gene_or_protein,
+            phase_type=phase_type,
+            mechanism_of_action=mechanism_of_action,
+        )
+
     def generate_protocol(
         self,
         disease_indication: str,
@@ -132,6 +148,16 @@ class ClinicalTrialEngine:
                 "bioavailability_pct": 82.5,
                 "toxicity_risk_score": 0.08,
                 "repurposing_rationale": f"Demonstrates potent upstream down-regulation of lipid biogenesis, creating favorable cellular clearance for {target}-targeted modalities.",
+            },
+            {
+                "compound_name": "Ezetimibe Synergistic Formulation",
+                "smiles_string": "C1=CC(=CC=C1[C@@H]2[C@@H](C(=O)N2C3=CC=C(C=C3)F)CC[C@H](C4=CC=C(C=C4)F)O)O",
+                "current_approved_indication": "Primary Hyperlipidemia (NPC1L1 Inhibitor)",
+                "repurposed_indication": f"Adjunctive Cholesterol Absorption Blocker for {disease_indication}",
+                "binding_affinity_nm": 12.1,
+                "bioavailability_pct": 65.0,
+                "toxicity_risk_score": 0.05,
+                "repurposing_rationale": f"Blocks intestinal NPC1L1 transporter to augment {target} clearance pathways without systemic hepatic toxicity.",
             }
         ]
 

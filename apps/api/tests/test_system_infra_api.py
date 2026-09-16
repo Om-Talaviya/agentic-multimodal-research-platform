@@ -5,7 +5,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from api.dependencies import get_current_user, get_optional_current_user
-from database.connection import Base
+from database.connection import Base, get_db_session
 from database.models.user import User as DBUser
 from database.repositories.user_repo import UserRepository
 from database.repositories.workspace_repo import WorkspaceRepository
@@ -43,8 +43,15 @@ async def test_db():
         await user_repo.create(alice)
         await session.commit()
 
+    async def override_get_db():
+        async with test_session_maker() as session:
+            yield session
+
+    app.dependency_overrides[get_db_session] = override_get_db
+
     yield test_session_maker
 
+    app.dependency_overrides.pop(get_db_session, None)
     db_conn.engine = orig_engine
     db_conn.async_session_maker = orig_maker
     await test_engine.dispose()

@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import {
+  Flame,
   LayoutDashboard, Plus, Settings, FlaskConical, Brain, Share2,
   FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2,
   Radio, Swords, BookOpenCheck, Cpu, Presentation, Award,
