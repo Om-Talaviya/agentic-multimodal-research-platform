@@ -457,3 +457,9 @@ from database.models.synthetic_biology import (
     DBGeneticPart,
     DBCircuitTruthTableEntry,
 )
+
+from database.models.cart_engineering import (
+    DBCARTConstructDesign,
+    DBCYToxicityScorecard,
+    DBCRSToxicityProfile,
+)

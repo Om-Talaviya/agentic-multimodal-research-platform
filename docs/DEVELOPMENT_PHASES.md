@@ -795,3 +795,12 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `SyntheticBiologyRepository`, `SyntheticBiologyEngine`.
 - **API & UI**: `/api/v1/synthetic-biology` router with `SyntheticBiologyStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 66: Autonomous Cell Therapy CAR-T Engineering & Cytokine Release Syndrome (CRS) Toxicity Predictor (Generation 36)
+- **Status**: Completed
+- **Capabilities**:
+  - In silico modular CAR-T construct designer (scFv binder clone, CD8a hinge/transmembrane, 4-1BB/CD28 costimulatory domain, CD3zeta).
+  - Target antigen modeling across hematologic and solid malignancies (CD19, BCMA, HER2, EGFRvIII, PSMA).
+  - High-precision tumor lysis and effector-to-target (E:T) ratio cytotoxicity kinetics simulation.
+  - Memory Tcm persistence and T-cell exhaustion marker profiling (PD-1, TIM-3, LAG-3).
+  - Clinical ASTCT cytokine release syndrome (CRS) grade and ICANS neurotoxicity predictive risk modeling.
