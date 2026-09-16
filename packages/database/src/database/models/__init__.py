@@ -397,3 +397,9 @@ from database.models.immunology import (
     DBNeoantigenEpitope,
     DBVaccineConstructDesign,
 )
+
+from database.models.epigenomics import (
+    DBEpigenomicExperiment,
+    DBChromatinPeak,
+    DBTranscriptionFactorMotif,
+)
