@@ -3,6 +3,7 @@ from api.routes.immunology import router as immunology_router
 from api.routes.epigenomics import router as epigenomics_router
 from api.routes.spatial_metabolomics import router as spatial_metabolomics_router
 from api.routes.ppi_interactome import router as ppi_interactome_router
+from api.routes.adc_design import router as adc_design_router
 from api.routes.eln import router as eln_router
 from api.routes.lakehouse import router as lakehouse_router
 from api.routes.ragas_eval import router as ragas_eval_router
@@ -119,6 +120,7 @@ app.include_router(immunology_router, prefix="/api/v1")
 app.include_router(epigenomics_router, prefix="/api/v1")
 app.include_router(spatial_metabolomics_router, prefix="/api/v1")
 app.include_router(ppi_interactome_router, prefix="/api/v1")
+app.include_router(adc_design_router, prefix="/api/v1")
 app.include_router(eln_router, prefix="/api/v1")
 app.include_router(lakehouse_router, prefix="/api/v1")
 app.include_router(ragas_eval_router, prefix="/api/v1")

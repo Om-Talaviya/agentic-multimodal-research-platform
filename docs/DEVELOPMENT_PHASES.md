@@ -746,3 +746,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `PPIInteractomeRepository`, `PPIInteractomeEngine`.
 - **API & UI**: `/api/v1/ppi-interactome` router with `PPIInteractomeStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 59: Autonomous Antibody-Drug Conjugate (ADC) Payload-Linker Design & DAR Optimizer (Completed)
+- **Objective**: Implement payload-linker screening, DAR optimization, Cathepsin B cleavability, and multi-parameter therapeutic window modeling.
+- **Database Models**: `DBADCDesignCampaign`, `DBADCPayloadLinkerConstruct`.
+- **Repository & Engine**: `ADCDesignRepository`, `ADCDesignEngine`.
+- **API & UI**: `/api/v1/adc-design` router with `ADCDesignStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
