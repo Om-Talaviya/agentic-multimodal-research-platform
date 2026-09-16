@@ -174,6 +174,7 @@ function App() {
             <Route path="/immunology" element={<ImmunologyStudioPage />} />
             <Route path="/epigenomics" element={<EpigenomicsStudioPage />} />
             <Route path="/spatial-metabolomics" element={<SpatialMetabolomicsStudioPage />} />
+            <Route path="/ppi-interactome" element={<PPIInteractomeStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
