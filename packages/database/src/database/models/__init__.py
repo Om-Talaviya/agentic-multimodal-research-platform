@@ -451,3 +451,9 @@ from database.models.referee_panel import (
     DBRefereePanelReport,
     DBRefereeRebuttalPoint,
 )
+
+from database.models.synthetic_biology import (
+    DBSyntheticCircuitDesign,
+    DBGeneticPart,
+    DBCircuitTruthTableEntry,
+)

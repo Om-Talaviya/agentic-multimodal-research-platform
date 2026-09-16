@@ -788,3 +788,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `PeerReviewRepository`, `ScientificPeerReviewEngine`.
 - **API & UI**: `/api/v1/peer-review` router with `PeerReviewStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 65: Autonomous Synthetic Biology DNA Circuit Design & Genetic Logic Gate Compiler (Completed)
+- **Objective**: Implement Cello-style genetic logic gate compiler, promoter-repressor modeling, and truth table RFU simulation.
+- **Database Models**: `DBSyntheticCircuitDesign`, `DBGeneticPart`, `DBCircuitTruthTableEntry`.
+- **Repository & Engine**: `SyntheticBiologyRepository`, `SyntheticBiologyEngine`.
+- **API & UI**: `/api/v1/synthetic-biology` router with `SyntheticBiologyStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
