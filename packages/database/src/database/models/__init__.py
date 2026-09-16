@@ -426,3 +426,9 @@ from database.models.pbpk_nanomedicine import (
     DBOrganCompartmentPK,
     DBNanoparticleClearancePathway,
 )
+
+from database.models.rare_disease_hpo import (
+    DBRareDiseaseDiagnosticCase,
+    DBHPOPhenotypeTerm,
+    DBCandidateGeneMatch,
+)
