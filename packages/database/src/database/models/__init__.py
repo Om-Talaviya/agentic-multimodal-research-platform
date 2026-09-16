@@ -403,3 +403,9 @@ from database.models.epigenomics import (
     DBChromatinPeak,
     DBTranscriptionFactorMotif,
 )
+
+from database.models.spatial_metabolomics import (
+    DBSpatialMetabolomicsExperiment,
+    DBMetaboliteSpatialProfile,
+    DBMetabolicFluxRoute,
+)

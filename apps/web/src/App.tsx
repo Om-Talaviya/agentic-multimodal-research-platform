@@ -173,6 +173,7 @@ function App() {
         <Route path="/vhts" element={<VHTSStudioPage />} />
             <Route path="/immunology" element={<ImmunologyStudioPage />} />
             <Route path="/epigenomics" element={<EpigenomicsStudioPage />} />
+            <Route path="/spatial-metabolomics" element={<SpatialMetabolomicsStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
