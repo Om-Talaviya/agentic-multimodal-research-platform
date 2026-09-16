@@ -732,3 +732,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `EpigenomicsRepository`, `EpigenomicsEngine`.
 - **API & UI**: `/api/v1/epigenomics` router with `EpigenomicsStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 57: Autonomous Spatial Metabolomics & MALDI Imaging MS Flux Balance Matrix (Completed)
+- **Objective**: Implement MALDI imaging mass spec simulation, spatial tissue microdomain profiling, and FBA flux constraints.
+- **Database Models**: `DBSpatialMetabolomicsExperiment`, `DBMetaboliteSpatialProfile`, `DBMetabolicFluxRoute`.
+- **Repository & Engine**: `SpatialMetabolomicsRepository`, `SpatialMetabolomicsEngine`.
+- **API & UI**: `/api/v1/spatial-metabolomics` router with `SpatialMetabolomicsStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
