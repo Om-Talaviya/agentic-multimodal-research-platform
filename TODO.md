@@ -547,3 +547,10 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 
 - [x] **Phase 50: Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine** <!-- id: 50 -->
   - **Goal**: Autonomous closed-loop scientific discovery, metacognitive self-reflection, breakthrough scorecards, database models (`DBAutonomousScientistProgram`, `DBResearchIterationCycle`, `DBDiscoveryBreakthrough`), `AutonomousScientistRepository`, `AutonomousScientistEngine`, `/api/v1/ai-scientist/*` REST API, and `AIScientistStudioPage.tsx` React studio (**ADR 050**).
+
+- [x] **Phase 51: Autonomous RAGAS Groundedness Evaluation & Adversarial Red-Teaming Guardrails Gateway** <!-- id: 51 -->
+  - **Goal**: Quantitative RAG evaluation (Faithfulness, Relevancy, Precision, Recall), adversarial red-team simulation (Prompt Injection, SSRF, Data Exfiltration), database models (`DBRagasEvaluationSuite`, `DBRagasSampleMetric`, `DBAdversarialRedTeamProbe`), `RagasEvaluationRepository`, `RagasEvaluationEngine`, `/api/v1/evaluations/ragas/*` REST API, and `RagasStudioPage.tsx` React studio (**ADR 051**).
+
+- [x] **Phase 52: Autonomous Scientific Multi-Modal Data Lakehouse & Semantic Query Engine** <!-- id: 52 -->
+  - **Goal**: Multimodal scientific asset lakehouse (PDB, FASTA, DICOM, Parquet, JSONL), automated partitioning, column-level metadata indexing, schema evolution, and hybrid Vector + Structured SQL Semantic query execution, database models (`DBDataLakeTable`, `DBDataLakePartition`, `DBSemanticLakeQuery`), `DataLakeRepository`, `ScientificLakehouseEngine`, `/api/v1/lakehouse/*` REST API, and `LakehouseStudioPage.tsx` React studio (**ADR 052**).
+
