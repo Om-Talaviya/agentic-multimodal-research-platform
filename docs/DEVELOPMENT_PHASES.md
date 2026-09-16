@@ -753,3 +753,10 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - **Repository & Engine**: `ADCDesignRepository`, `ADCDesignEngine`.
 - **API & UI**: `/api/v1/adc-design` router with `ADCDesignStudioPage.tsx`.
 - **Tests**: Comprehensive pytest suite across repo, engine, and API integration.
+
+## Phase 60: Autonomous Nanomedicine Biodistribution & Pharmacokinetic PBPK Compartment Simulator (Completed)
+- **Objective**: Implement 7-compartment PBPK ODE simulation, EPR tumor targeting, and MPS macrophage clearance kinetics.
+- **Database Models**: `DBNanomedicinePBPKSimulation`, `DBOrganCompartmentPK`, `DBNanoparticleClearancePathway`.
+- **Repository & Engine**: `NanomedicinePBPKRepository`, `NanomedicinePBPKEngine`.
+- **API & UI**: `/api/v1/pbpk-nanomedicine` router with `NanomedicinePBPKStudioPage.tsx`.
+- **Tests**: Comprehensive pytest suite across repo, engine, and API integration.

@@ -420,3 +420,9 @@ from database.models.adc_design import (
     DBADCDesignCampaign,
     DBADCPayloadLinkerConstruct,
 )
+
+from database.models.pbpk_nanomedicine import (
+    DBNanomedicinePBPKSimulation,
+    DBOrganCompartmentPK,
+    DBNanoparticleClearancePathway,
+)
