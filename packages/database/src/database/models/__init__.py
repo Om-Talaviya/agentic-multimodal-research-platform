@@ -385,3 +385,6 @@ from database.models.lakehouse import (
     DBDataLakePartition,
     DBSemanticLakeQuery,
 )
+
+from database.models.eln import DBElectronicLabNotebook, DBLabNotebookBlock, DBELNAuditTrailEntry
+

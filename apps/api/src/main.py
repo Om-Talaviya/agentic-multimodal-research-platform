@@ -1,3 +1,4 @@
+from api.routes.eln import router as eln_router
 from api.routes.lakehouse import router as lakehouse_router
 from api.routes.ragas_eval import router as ragas_eval_router
 from api.routes.ai_scientist import router as ai_scientist_router
@@ -108,6 +109,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(eln_router, prefix="/api/v1")
 app.include_router(lakehouse_router, prefix="/api/v1")
 app.include_router(ragas_eval_router, prefix="/api/v1")
 app.include_router(ai_scientist_router, prefix="/api/v1")
@@ -165,3 +167,4 @@ async def root():
         "version": settings.app_version,
         "status": "running",
     }
+

@@ -38,6 +38,7 @@ export function Layout() {
     { path: '/agents/evaluations', label: 'Agent Observability', icon: Activity },
     { path: '/ragas-eval', label: 'RAGAS & Red-Teaming', icon: ShieldCheck },
     { path: '/lakehouse', label: 'Multimodal Lakehouse', icon: Database },
+    { path: '/eln', label: 'Electronic Lab Notebook', icon: BookOpenCheck },
     { path: '/security', label: 'Enterprise Security', icon: ShieldCheck },
     { path: '/infrastructure', label: 'Infrastructure', icon: Server },
     { path: '/developer', label: 'Developer API', icon: Code2 },
