@@ -409,3 +409,9 @@ from database.models.spatial_metabolomics import (
     DBMetaboliteSpatialProfile,
     DBMetabolicFluxRoute,
 )
+
+from database.models.ppi_interactome import (
+    DBPPIInteractomeNetwork,
+    DBProteinNode,
+    DBProteinInteractionEdge,
+)
