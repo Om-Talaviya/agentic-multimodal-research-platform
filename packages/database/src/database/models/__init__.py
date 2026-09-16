@@ -388,3 +388,6 @@ from database.models.lakehouse import (
 
 from database.models.eln import DBElectronicLabNotebook, DBLabNotebookBlock, DBELNAuditTrailEntry
 
+
+from database.models.vhts import DBVirtualHTSScreen, DBVirtualHTSHit, DBHTSClusterGroup
+

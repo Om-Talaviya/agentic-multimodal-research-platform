@@ -39,6 +39,7 @@ export function Layout() {
     { path: '/ragas-eval', label: 'RAGAS & Red-Teaming', icon: ShieldCheck },
     { path: '/lakehouse', label: 'Multimodal Lakehouse', icon: Database },
     { path: '/eln', label: 'Electronic Lab Notebook', icon: BookOpenCheck },
+    { path: '/vhts', label: 'Virtual HTS & Docking', icon: Flame },
     { path: '/security', label: 'Enterprise Security', icon: ShieldCheck },
     { path: '/infrastructure', label: 'Infrastructure', icon: Server },
     { path: '/developer', label: 'Developer API', icon: Code2 },
@@ -111,3 +112,4 @@ export function Layout() {
     </div>
   )
 }
+

@@ -1,3 +1,4 @@
+import VHTSStudioPage from './pages/VHTSStudioPage';
 import ELNStudioPage from './pages/ELNStudioPage';
 import LakehouseStudioPage from './pages/LakehouseStudioPage';
 import RagasStudioPage from './pages/RagasStudioPage';
@@ -169,6 +170,7 @@ function App() {
         <Route path="/ragas-eval" element={<RagasStudioPage />} />
         <Route path="/lakehouse" element={<LakehouseStudioPage />} />
         <Route path="/eln" element={<ELNStudioPage />} />
+        <Route path="/vhts" element={<VHTSStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
@@ -185,3 +187,4 @@ function App() {
 }
 
 export default App
+
