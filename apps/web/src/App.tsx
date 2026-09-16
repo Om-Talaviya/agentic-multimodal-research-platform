@@ -1,3 +1,4 @@
+import ELNStudioPage from './pages/ELNStudioPage';
 import LakehouseStudioPage from './pages/LakehouseStudioPage';
 import RagasStudioPage from './pages/RagasStudioPage';
 import DrugSynergyStudioPage from './pages/DrugSynergyStudioPage';
@@ -167,6 +168,7 @@ function App() {
         <Route path="/ai-scientist" element={<AIScientistStudioPage />} />
         <Route path="/ragas-eval" element={<RagasStudioPage />} />
         <Route path="/lakehouse" element={<LakehouseStudioPage />} />
+        <Route path="/eln" element={<ELNStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
