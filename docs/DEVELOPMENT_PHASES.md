@@ -701,3 +701,20 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Interactive UI Studio with modular block renderer, digital signature modal, and live audit trail in pps/web/src/pages/ELNStudioPage.tsx.
 - [x] Comprehensive test suites in packages/database/tests/test_eln_repo.py, packages/research/tests/test_eln_engine.py, and pps/api/tests/test_eln_api.py.
 - [x] Formalized **ADR 053**.
+
+---
+
+## Phase 54: Autonomous Virtual High-Throughput Screening (vHTS) & Billion-Molecule Docking Grid
+**Status**: ?? COMPLETE (Generation 24: Ultra-Large Compound Screening & Structure-Based Drug Discovery)
+
+**Goal**: Ultra-large virtual chemical library screening (Enamine REAL, ZINC20) with distributed AutoDock Vina / GNINA scoring, estimated Kd calculation, PAINS substructure filtering, and Murcko scaffold structural clustering, database models (DBVirtualHTSScreen, DBVirtualHTSHit, DBHTSClusterGroup), VirtualHTSRepository, VirtualHTSEngine, /api/v1/vhts/* REST API, and VHTSStudioPage.tsx React studio (**ADR 054**).
+
+### Deliverables:
+- [x] GPU-accelerated AutoDock Vina / GNINA binding free energy calculation ($\Delta G$ in kcal/mol) and estimated $ nanomolar affinities.
+- [x] Substructure PAINS alert filtering and Lipinski Rule-of-5 compliance checking.
+- [x] Murcko scaffold structural clustering for top-ranked chemical series.
+- [x] Database persistence models with PostgreSQL/SQLite parity and cascade relations.
+- [x] Full REST API endpoints (/api/v1/vhts/screens, /api/v1/vhts/screens/{id}, /api/v1/vhts/metrics).
+- [x] Interactive UI Studio with Target PDB viewer, docking score distribution, chemical hits, and scaffold cluster trees in pps/web/src/pages/VHTSStudioPage.tsx.
+- [x] Comprehensive test suites in packages/database/tests/test_vhts_repo.py, packages/research/tests/test_vhts_engine.py, and pps/api/tests/test_vhts_api.py.
+- [x] Formalized **ADR 054**.
