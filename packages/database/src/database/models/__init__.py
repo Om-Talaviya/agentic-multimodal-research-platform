@@ -444,3 +444,10 @@ from database.models.clinical_logistics import (
     DBClinicalSiteNode,
     DBLogisticsSupplyRoute,
 )
+
+
+from database.models.referee_panel import (
+    DBRefereePanelManuscript,
+    DBRefereePanelReport,
+    DBRefereeRebuttalPoint,
+)

@@ -180,6 +180,7 @@ function App() {
             <Route path="/rare-disease" element={<RareDiseaseHPOStudioPage />} />
             <Route path="/bioprocess" element={<BioprocessDigitalTwinStudioPage />} />
             <Route path="/clinical-logistics" element={<ClinicalLogisticsStudioPage />} />
+            <Route path="/peer-review" element={<PeerReviewStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )
