@@ -1,3 +1,5 @@
+import LakehouseStudioPage from './pages/LakehouseStudioPage';
+import RagasStudioPage from './pages/RagasStudioPage';
 import DrugSynergyStudioPage from './pages/DrugSynergyStudioPage';
 import SuperGraphStudioPage from './pages/SuperGraphStudioPage';
 import GenerativeChemistryPage from './pages/GenerativeChemistryPage';
@@ -163,6 +165,8 @@ function App() {
         <Route path="/pathways" element={<PathwaySimulatorPage />} />
         <Route path="/pharmacovigilance" element={<PharmacovigilanceStudioPage />} />
         <Route path="/ai-scientist" element={<AIScientistStudioPage />} />
+        <Route path="/ragas-eval" element={<RagasStudioPage />} />
+        <Route path="/lakehouse" element={<LakehouseStudioPage />} />
 </Routes>
     </WorkspaceProvider>
   )

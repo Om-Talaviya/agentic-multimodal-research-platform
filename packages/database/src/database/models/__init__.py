@@ -377,3 +377,11 @@ from database.models.pathway_perturbation import DBMultiOmicsExperiment, DBPathw
 from database.models.pharmacovigilance import DBPharmacovigilanceCorpus, DBSafetySignalReport, DBDisproportionalityMetric
 
 from database.models.ai_scientist import DBAutonomousScientistProgram, DBResearchIterationCycle, DBDiscoveryBreakthrough
+
+from database.models.ragas_eval import DBRagasEvaluationSuite, DBRagasSampleMetric, DBAdversarialRedTeamProbe
+
+from database.models.lakehouse import (
+    DBDataLakeTable,
+    DBDataLakePartition,
+    DBSemanticLakeQuery,
+)
