@@ -1,184 +1,74 @@
 # Agentic Multimodal Research Platform (AI Research OS)
 
-<p align="left">
-  <a href="https://github.com/Om-Talaviya"><img src="https://img.shields.io/badge/Architect-Om%20Talaviya-38bdf8?style=flat-square&logo=github&logoColor=white" alt="Author" /></a>
-  <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Modality-Multimodal%20RAG%20%26%20Multi--Omics-7c3aed?style=flat-square" alt="Multimodal" />
-  <img src="https://img.shields.io/badge/Status-Phase%2082%20Complete%20(v1.1%20Release)-success?style=flat-square" alt="Status" />
-  <img src="https://img.shields.io/badge/Tests-540+%20Passing%20(100%25%20CI)-brightgreen?style=flat-square" alt="Tests" />
-  <img src="https://img.shields.io/badge/SDKs-Python%20%26%20TypeScript-blueviolet?style=flat-square" alt="SDKs" />
-  <img src="https://img.shields.io/badge/Branch-develop%2Fv1.1-blue?style=flat-square" alt="Branch" />
+<p align="center">
+  <a href="https://github.com/Om-Talaviya"><img src="https://img.shields.io/badge/Architect-Om%20Talaviya-38bdf8?style=for-the-badge&logo=github&logoColor=white" alt="Author" /></a>
+  <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776ab?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Release-v1.1%20(82%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
+  <img src="https://img.shields.io/badge/CI%2FCD-100%25%20Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI" />
 </p>
 
-An enterprise-grade, local-first **AI Research Operating System (Research OS v1.1)** that conducts autonomous, verifiable, and evidence-grounded investigations across scientific literature, multi-omics biological data, molecular structures, laboratory robotics, clinical protocols, and physical simulations.
+---
 
-> **This is an AI Scientist, Not Just a Chatbot.**  
-> The platform autonomously orchestrates **Hypothesis Formation $\rightarrow$ Literature Mining $\rightarrow$ Computational In-Silico Modeling $\rightarrow$ Empirical Verification $\rightarrow$ Peer Review $\rightarrow$ Publication $\rightarrow$ Wet-Lab Protocol Translation**, backed by persistent multi-tenant security, transactional quotas, multi-model fallback gateways, and real-time WebSocket streaming.
+## 🌟 What is the AI Research OS?
+
+The **Agentic Multimodal Research Platform (AI Research OS v1.1)** is a local-first, enterprise-grade AI operating system designed to conduct autonomous, verifiable, and evidence-grounded scientific investigations.
+
+Unlike conventional chatbots that provide conversational approximations, the AI Research OS operates as an **Autonomous Digital Scientist**. It orchestrates multi-agent workflows to decompose complex questions, parse multi-modal experimental datasets, run physical and molecular simulations, verify claims with mathematical rigor, and translate findings into wet-lab robotic instructions and camera-ready academic preprints.
 
 ---
 
-## 🏗️ High-Level System Architecture
+## 🔄 The 6-Stage Autonomous Research Lifecycle
 
-```
-                                  ┌──────────────┐
-                                  │  RESEARCHER  │
-                                  └───────┬──────┘
-                                          │
-                                          ▼
-                        ┌─────────────────────────────────┐
-                        │      React 18 Web Platform      │
-                        │ (82 Specialized Research Hubs)  │
-                        └────────────────┬────────────────┘
-                                          │ HTTP / WebSocket
-                                          ▼
-                        ┌─────────────────────────────────┐
-                        │       FastAPI Gateway           │
-                        │   (82 Domain REST Routers)      │
-                        └────────┬───────────────┬────────┘
-                                  │               │
-                  ┌───────────────┘               └───────────────┐
-                  ▼                                               ▼
-       ┌─────────────────────┐                         ┌─────────────────────┐
-       │   Research Engine   │                         │   Knowledge Layer   │
-       │ (Agent Orchestrator)│                         │ (Hybrid RAG & Super)│
-       └──────────┬──────────┘                         └──────────┬──────────┘
-                  │                                               │
-         ┌────────┴───────────────────┐                           │
-         ▼              ▼             ▼                           │
-    ┌─────────┐   ┌───────────┐ ┌──────────┐                      │
-    │ Planner │   │ Web Agent │ │Doc Agent │                      │
-    └────┬────┘   └─────┬─────┘ └────┬─────┘                      │
-         │              │            │                            │
-         └──────────────┼────────────┴────────────────────────────┤
-                        ▼                                         │
-                  ┌───────────┐                                   │
-                  │  Critic   │◄──────────────────────────────────┘
-                  └─────┬─────┘
-                        ▼
-                  ┌───────────┐
-                  │ Synthesis │
-                  └─────┬─────┘
-                        ▼
-                  ┌───────────┐
-                  │  Report   │
-                  └───────────┘
+The platform transforms raw scientific questions into verified discoveries across an automated closed loop:
 
- ═════════════════════════════════════════════════════════════════════════════════
-                                PLATFORM INFRASTRUCTURE
- ─────────────────────────────────────────────────────────────────────────────────
-   [Security & Auth]      [AI Orchestration]              [Platform Persistence]
-   • PBKDF2 & JWT Auth    • ModelRegistry (Capabilities)   • PostgreSQL 16 / SQLite
-   • AES-256 KMS Vault    • Pareto Router (Cost/Speed/Acc) • ChromaDB Vector Store
-   • Merkle Audit Chains  • Multi-Model Fallback Gateway   • Knowledge Super-Graph
-   • GDPR Article 17 Purge• Ollama / Gemini / OpenAI / Anth• Parquet / Iceberg Lake
- ═════════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./docs/assets/workflow_lifecycle.jpg" alt="Autonomous Scientific Research Pipeline" width="95%" />
+</p>
+
+1. **Hypothesis Formulation**: Formulates testable, falsifiable scientific hypotheses by analyzing knowledge graphs and research literature.
+2. **Multimodal Ingestion**: Aggregates and parses academic PDFs, tabular clinical data, sequencing files (FASTQ/BAM), and 3D bio-structures (PDB).
+3. **In-Silico Simulation**: Executes deterministic biophysical, kinetic, and molecular simulations (Velocity Verlet MD, AlphaFold3, smFRET, QSAR).
+4. **Adversarial Peer Review**: Deploys dialectical debate teams (`Proposer` vs `Opposer`) to challenge findings and eliminate hallucinations.
+5. **Lab Robotics Translation**: Compiles validated discoveries directly into executable robotic automation scripts (Opentrons v2, PyLabRobot).
+6. **Academic Publication**: Synthesizes camera-ready LaTeX preprints (Nature, IEEE, ACM formats), PRISMA reviews, and NIH grant proposals.
 
 ---
 
-## ⚡ What Makes This Platform Different?
+## 🏗️ System Architecture
 
-| Dimension | Generic LLM Chatbot / Wrapper | Agentic Multimodal Research Platform (v1.1) |
-|---|---|---|
-| **Execution Paradigm** | Single prompt $\rightarrow$ single speculative reply | Multi-agent DAG execution: `Plan $\rightarrow$ Retrieve $\rightarrow$ Model $\rightarrow$ Critique $\rightarrow$ Re-evaluate $\rightarrow$ Synthesize` |
-| **Model Coupling** | Single vendor lock-in | **Model-Agnostic Pareto Gateway**: Dynamically matches fast, vision, or deep reasoning models with instant zero-downtime failover |
-| **Scientific Evidence** | Unverified claims and hallucinations | **Strict Claim $\rightarrow$ Evidence Matrix**: Explicit anchoring to literature DOIs, clinical trial IDs, UniProt accession, and PDB coordinates |
-| **Verification Loop** | No verification mechanism | Independent `CriticAgent` detects mathematical contradictions, audits citation sufficiency, and triggers iterative replanning |
-| **Dialectical Debate** | Monolithic agreement / echo chamber | `ProposerAgent` vs `OpposerAgent` dialectics with Elo ratings and impartial consensus arbitration |
-| **Multi-Omics & Biology** | Text-only approximations | Native engines for scRNA-seq, CRISPR Cas9/12a/13, ATAC-seq, spatial transcriptomics, neoepitopes, and CAR-T cell therapy |
-| **Molecular Modeling** | Static strings | AlphaFold3/ESMFold 3D structures, AutoDock Vina ligand docking, all-atom Velocity Verlet MD, DFT quantum bandgaps, and smFRET |
-| **Laboratory Translation**| Theoretical suggestions | Compiles verified in-silico findings into runnable robotic automation protocols (Opentrons Python API v2, PyLabRobot) |
-| **Regulatory & Clinical** | Generic advice | 21 CFR Part 11 electronic audit trails, eCTD FDA IND / EMA CTD dossiers, ACMG variant scoring, and FAERS signal mining |
-| **Data Lakehouse** | Session storage | Parquet/Iceberg scientific data lakehouse with duckdb SQL and vector embeddings across petabyte-scale datasets |
+The platform is engineered around a modular, multi-tier microservices and package architecture:
 
----
+<p align="center">
+  <img src="./docs/assets/architecture_diagram.jpg" alt="AI Research Operating System Architecture" width="95%" />
+</p>
 
-## 🚀 Complete 82-Phase Engineering Matrix
-
-The platform is organized into **6 Grand Research Domains** comprising 82 fully implemented, tested, and integrated phases:
-
-### 1. Autonomous Cognition, Deep Research & Meta-Science
-* **Phases 1–7**: Foundation Core Engine, Multi-Modal Document Ingestion (PDF, DOCX, Images, Video, Audio), Dynamic Agentic DAG Runner, Hybrid RAG, and Security Middleware.
-* **Phases 8A–8B**: Intelligent Model Routing Gateway & Transactional Usage Tracking with Row-Locked Quotas.
-* **Phases 9–11**: Autonomous Knowledge Automation, Fine-Grained Citation Grounding, and Hierarchical Query Decomposition.
-* **Phases 12–14**: Speech/Video Timeline Synchronization, Tabular Data Science Intelligence, and Academic Paper Hierarchical Parser.
-* **Phase 15**: Recursive Deep Research Engine with Multi-Branch Hypothesis Trees.
-* **Phase 27**: Adversarial Multi-Agent Dialectical Debate Arena with Elo Consensus Arbitration (`ProposerAgent` vs `OpposerAgent`).
-* **Phase 28**: Systematic Literature Reviews with PRISMA 2020 Flow Tracking, Cochrane RoB 2.0, and Meta-Analysis Forest Plots.
-* **Phase 29**: In-Silico Computational Code Execution & Statistical Reproducibility Delta Verifier.
-* **Phase 30**: Multimodal 16:9 Scientific Presentation Deck & Executive Podcast Briefing Generator (Host & Analyst dialogue).
-* **Phase 31**: Autonomous Academic Peer Review Simulator with Author Rebuttals & Camera-Ready LaTeX Preprint Publisher.
-* **Phase 33**: Evolutionary Active Learning & Synthetic Instruction Dataset Synthesizer (Evol-Instruct, Alpaca, ShareGPT, DPO).
-* **Phase 35**: Multi-Year NIH/NSF Scientific Grant Proposal Synthesizer with Institutional MTDC Direct/Indirect Budgeting.
-* **Phase 50**: Autonomous AI Scientist Self-Evolving Discovery Engine & Hypothesis Evolution.
-* **Phase 51**: RAGAS Groundedness Evaluation and Adversarial Red-Teaming Gateway.
-* **Phase 64**: Multi-Agent Peer Review Referee Panel & Author Rebuttal Arbiter.
-
-### 2. Genomics, Epigenomics & Synthetic Biology
-* **Phase 40**: Synthetic Biology & CRISPR-Cas9/Cas12a/Cas13 Guide RNA Designer with CFD Off-Target Scoring.
-* **Phase 41**: Single-Cell Transcriptomics (scRNA-seq) Differential Expression Studio (Scanpy/AnnData integration).
-* **Phase 55**: Computational Immunology & TCR-pMHC Neoantigen Binding Affinity Predictor.
-* **Phase 56**: Epigenomic Chromatin Accessibility & ATAC-seq Peak Calling Engine.
-* **Phase 65**: Synthetic Biology DNA Logic Gate & Toggle Switch Circuit Compiler (SBOL3 standard).
-* **Phase 67**: Proteogenomic Neoepitope Discovery & Personalized Cancer Vaccine mRNA Cassette Designer.
-* **Phase 70**: Target Validation & CRISPR Synthetic Lethality Matrix (DepMap CERES/Chronos co-dependency).
-* **Phase 72**: Synthetic Gene Circuit Stability & Host Metabolic Burden Forecaster (IFFL Dosage Compensation).
-* **Phase 74**: Genomic Variant Pathogenicity & ACMG/AMP 2015 28-Criteria Classification Engine (AlphaMissense/REVEL).
-* **Phase 82**: Metagenomic Pathogen Surveillance & Antimicrobial Resistance (AMR) CARD Resistome Engine.
-
-### 3. Structural Biology, Chemistry & Biophysics
-* **Phase 38**: AlphaFold3 & ESMFold Bio-Molecular 3D Structure Visualizer and Per-Residue pLDDT Confidence Analyzer.
-* **Phase 39**: All-Atom Velocity Verlet Molecular Dynamics Trajectory Integrator & Quantum DFT Bandgap Studio.
-* **Phase 43**: De Novo Generative Molecule & Antibody Design Studio (Diffusion & VAE latent sampling).
-* **Phase 44**: Scientific Knowledge Super-Graph & Cross-Domain Hypothesis Discovery Engine.
-* **Phase 45**: Drug Repurposing & Multi-Target Combination Synergy Matrix (Bliss/Loewe Additivity).
-* **Phase 47**: Cryo-EM Density Map Fitting & Macromolecular Complex Modeler.
-* **Phase 48**: Multi-Omics Pathway Perturbation & Causal Signaling Network Simulator.
-* **Phase 54**: Virtual High-Throughput Screening (vHTS) & Billion-Molecule Docking Grid.
-* **Phase 57**: Protein-Protein Interactome (PPI) & Functional Subnetwork Community Clustering.
-* **Phase 58**: Spatial Metabolomics & Imaging Mass Spectrometry (IMS) Regional Molecular Cartography.
-* **Phase 59**: Antibody-Drug Conjugate (ADC) Payload & Cleavable Linker Construct Design Studio.
-* **Phase 69**: Biotherapeutic Protein Stability & Spatial Aggregation Propensity (SAP) Forecaster.
-* **Phase 71**: In-Silico Toxicity & QSAR Mutagenicity Profiler (Ames, hERG, DILI, CYP450).
-* **Phase 78**: Chemogenomics Polypharmacology & Off-Target Interactome Engine (Gini Selectivity Index).
-* **Phase 79**: Single-Molecule FRET (smFRET) Kinetics & Hidden Markov Model (HMM) Transition Engine.
-* **Phase 81**: Synthetic Cell Membrane Dynamics & Lipid Nanoparticle (LNP) 4-Component Formulation Simulator.
-
-### 4. Translational Medicine, Clinical Trials & Pharmacovigilance
-* **Phase 34**: Patent Landscape Analysis, 35 U.S.C. 102/103 Prior Art Claim Charts, and Freedom-to-Operate (FTO) Clearance.
-* **Phase 36**: Clinical Trial Protocol Designer, PICO Eligibility Criteria, and eCTD FDA IND / EMA CTD Package.
-* **Phase 42**: Spatial Transcriptomics & Tissue Microenvironment Architecture Studio.
-* **Phase 46**: Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier.
-* **Phase 49**: Real-World Evidence (RWE) & Pharmacovigilance Disproportionality Signal Detector.
-* **Phase 60**: Nanomedicine Physiologically Based Pharmacokinetic (PBPK) Multi-Organ Transport Simulator.
-* **Phase 61**: Rare Disease Phenotypic Matcher & Human Phenotype Ontology (HPO) Diagnostic Engine.
-* **Phase 63**: Clinical Supply Chain & Investigational Medicinal Product (IMP) GxP Logistics Tracker.
-* **Phase 66**: Cell Therapy CAR-T Construct Designer & ASTCT Cytokine Release Syndrome (CRS) Forecaster.
-* **Phase 73**: Clinical Trial Site Selection & Protocol Accrual Feasibility Forecaster.
-* **Phase 75**: Liquid Biopsy ctDNA Fragmentomics & Longitudinal Minimal Residual Disease (MRD) Detection Engine.
-* **Phase 76**: Real-World Safety Signal Mining Sentinel (PRR, ROR, IC025, EBGM).
-* **Phase 80**: Multi-Modal Biomarker Discovery & Multi-Omics Signature Extractor (ElasticNet/AUROC).
-
-### 5. Laboratory Automation, Imaging & Biophysics
-* **Phase 37**: Robotic Wet-Lab Automation Protocol Compiler (Opentrons v2, PyLabRobot, Autoprotocol).
-* **Phase 53**: Multi-Modal Electronic Lab Notebook (ELN) with 21 CFR Part 11 Cryptographic Audit Trails.
-* **Phase 68**: High-Throughput Screening (HTS) Assay Robotics & Flow Cytometry Gating Tree Engine.
-* **Phase 77**: Cryo-Electron Tomography (Cryo-ET) Subtomogram Averaging & Missing-Wedge Filter.
-
-### 6. Enterprise Infrastructure, Platform & Developer Ecosystem
-* **Phases 16–17**: Persistent Cross-Session Research Memory and Relational GraphRAG Knowledge Graph.
-* **Phases 18–19**: Multi-Tenant Workspaces, RBAC Roles, Team Collaboration, and Report Annotations.
-* **Phases 20–22**: Intelligent Model Pareto Routing, Benchmark Evaluation Suites, and Agent Telemetry.
-* **Phases 23–25**: KMS Envelope Encryption (AES-256-GCM), Merkle Audit Trails, Distributed Task Queue, S3 Vault, and Scoped Developer REST Gateway.
-* **Phase 26**: Autonomous Scheduled Research Sweeps, Semantic Diff Engine, and Multi-Channel Alerts.
-* **Phase 32**: Real-Time Collaborative 2D Spatial Research Canvas Studio.
-* **Phase 52**: Scientific Multi-Modal Data Lakehouse with Parquet/Iceberg Storage, DuckDB SQL & Vector Indices.
-* **Official SDKs**: Full-featured Async Python SDK (`packages/sdk-python`) and Isomorphic TypeScript SDK (`apps/web/src/sdk/client.ts`).
+### Architecture Layers:
+* **Web Research Studio & Hubs**: Modern React 18 frontend with 82 dedicated research consoles, visual DAG graph viewers, and collaborative spatial canvases.
+* **API Gateway & Routing**: High-performance FastAPI ASGI backend with 82 domain-specific REST routers and low-latency WebSocket live streaming.
+* **Multi-Agent Orchestration**: LangGraph-inspired directed acyclic graph (DAG) execution engine coordinating Planner, Ingestion, In-Silico Simulators, and Critic verification loops.
+* **Multi-Model Pareto Gateway**: Dynamic model router balancing speed, cost, and reasoning accuracy across Local Ollama, Google Gemini, Anthropic, and OpenAI.
+* **Scientific Data Lakehouse**: Persistent storage powered by PostgreSQL 16, ChromaDB vector indices, DuckDB SQL analytics, and Parquet/Iceberg object vaults.
 
 ---
 
-## 📊 Platform Evolution Status
+## ⚡ Key Capabilities at a Glance
+
+| Scientific Domain | Core Capabilities & Engines |
+|---|---|
+| 🧠 **Autonomous Cognition & Meta-Science** | Recursive Deep Research, Adversarial Multi-Agent Debates, PRISMA 2020 Meta-Analysis, Reproducibility AST Sandboxes, Double-Blind Peer Review, and NIH Grant Proposals. |
+| 🧬 **Genomics & Synthetic Biology** | CRISPR-Cas9/Cas12a guide RNA design with CFD off-target scoring, scRNA-seq differential expression, ATAC-seq peak calling, DNA logic gates (SBOL3), and ACMG 2015 variant classification. |
+| 🧪 **Structural Biology & Chemistry** | AlphaFold3/ESMFold 3D visualizers, Velocity Verlet molecular dynamics, De Novo molecule VAE generation, billion-molecule vHTS docking grid, smFRET kinetics, and QSAR toxicity screening. |
+| 🏥 **Translational Medicine & Clinical AI** | CAR-T cell therapy cytotoxicity & CRS forecasters, personalized cancer vaccines (neoepitopes), ctDNA liquid biopsy fragmentomics, clinical site selection, and FAERS safety mining. |
+| 🔬 **Laboratory Robotics & Imaging** | Automated Opentrons v2 / PyLabRobot protocol generation, 21 CFR Part 11 Electronic Lab Notebooks, Flow Cytometry gating trees, and Cryo-ET subtomogram averaging. |
+| 🏢 **Enterprise Infrastructure & Security** | AES-256-GCM KMS envelope encryption, Merkle audit trails, distributed task queue workers, multi-tenant RBAC, and developer Python/TypeScript SDKs. |
+
+---
+
+## 📊 Platform Evolution Status (All 82 Phases Complete)
+
+<details open>
+<summary><b>Click to expand the Complete 82-Phase Engineering Matrix (100% Passing CI)</b></summary>
 
 ```
 Phase 1: Foundation                  [████████████████████] 100%
@@ -267,68 +157,34 @@ Phase 82: Metagenomic AMR Resistome  [██████████████
 ─────────────────────────────────────────────────────────────────────────────────
 ALL 82 PHASES (GENERATIONS 1 - 52) COMPLETED & FULLY ACTIVE (540+ TESTS PASSING)
 ```
+</details>
 
 ---
 
-## 🛠️ Monorepo Architecture
+## 💻 Quick Start Guide
 
-```
-.
-├── apps/
-│   ├── api/                     # FastAPI backend application (82 REST routers + WebSockets)
-│   │   ├── src/api/             # Routers, dependencies, auth & middlewares
-│   │   └── tests/               # API route integration test suites
-│   └── web/                     # React 18 + TypeScript + Vite frontend
-│       ├── src/components/      # Navigation, Layout, Canvas, Modals
-│       ├── src/pages/           # 82 Dedicated Research Studios & Observability pages
-│       ├── src/services/        # API & WebSocket client adapters
-│       └── src/sdk/             # Official Isomorphic TypeScript Client SDK
-│
-├── packages/                    # Modular Python shared libraries
-│   ├── ai/                      # ModelRegistry, ProviderRegistry, Pareto Router, Gateway
-│   ├── agents/                  # Planner, Web, Doc, Critic, Report, Debate Agents
-│   ├── research/                # Pipeline orchestrator, DAG runner, 82 computational engines
-│   ├── ingestion/               # Parsers (PDF, DOCX, Images, Audio, Video, PDB, FASTQ)
-│   ├── retrieval/               # ChromaStore, InMemoryStore, BM25, Hybrid RRF Retriever
-│   ├── database/                # SQLAlchemy async models (82 schemas), repositories, Alembic
-│   ├── tools/                   # Tool registry, SSRF-safe WebFetch, Code Sandbox, Math
-│   ├── shared/                  # Config, structlog, JWT auth, security filters, exceptions
-│   └── sdk-python/              # Official Async Python Developer SDK
-│
-├── docs/                        # Formal ADRs (ADR 001 - ADR 082), PRD, TRD, architecture
-├── infrastructure/              # Docker Compose, Kubernetes manifests, Prometheus configs
-└── pyproject.toml               # Monorepo workspace configuration
-```
-
----
-
-## 💻 Quick Start
-
-### 1. Environment Configuration
+### 1. Clone & Configure Environment
 ```bash
+git clone https://github.com/Om-Talaviya/agentic-multimodal-research-platform.git
+cd agentic-multimodal-research-platform
 cp .env.example .env
-# Set GEMINI_API_KEY, OPENAI_API_KEY, or point to local Ollama instance
 ```
 
-### 2. Launch Local Database & Services
+### 2. Launch Local Services
 ```bash
 docker compose up -d
 ```
-Spins up PostgreSQL 16 (`5432`), ChromaDB (`8000`), Redis (`6379`), and Ollama (`11434`).
+*Starts PostgreSQL 16 (`5432`), ChromaDB Vector Store (`8000`), Redis (`6379`), and Ollama (`11434`).*
 
 ### 3. Start Backend Services
 ```bash
 cd apps/api
 pip install -e ".[dev]"
-
-# Run database migrations
 alembic upgrade head
-
-# Start FastAPI ASGI server
 uvicorn src.main:app --reload --port 8000
 ```
-* **Interactive OpenAPI Specs**: [http://localhost:8000/docs](http://localhost:8000/docs)
-* **System Health Check**: [http://localhost:8000/api/v1/health](http://localhost:8000/api/v1/health)
+* Interactive OpenAPI Documentation: `http://localhost:8000/docs`
+* System Health Endpoint: `http://localhost:8000/api/v1/health`
 
 ### 4. Start Web Application
 ```bash
@@ -336,31 +192,7 @@ cd apps/web
 npm install
 npm run dev
 ```
-* **Web Application UI**: [http://localhost:5173](http://localhost:5173)
-
----
-
-## 🧪 Testing & Verification
-
-The repository enforces strict continuous integration across **Python 3.11, 3.12, 3.13**, frontend TypeScript compilation, and Docker builds.
-
-```bash
-# Run all unit and integration test suites
-pytest packages/ apps/api/tests/ -v
-
-# Run domain-specific tests
-pytest packages/research/tests/ -v
-pytest packages/database/tests/ -v
-pytest apps/api/tests/ -v
-
-# Run with test coverage
-pytest --cov=packages --cov=apps/api
-
-# Build and validate frontend TypeScript bundle
-cd apps/web
-npm run build
-npm run lint
-```
+* Web Application Dashboard: `http://localhost:5173`
 
 ---
 
@@ -371,17 +203,17 @@ npm run lint
 import asyncio
 from ai_research_os import ResearchClient
 
-async def main():
+async def run_simulation():
     async with ResearchClient(base_url="http://localhost:8000", api_key="sk_live_demo") as client:
-        # Launch an in-silico CAR-T cytotoxicity simulation
-        cart_sim = await client.cart.simulate(
+        # Launch CAR-T in-silico cytotoxicity simulation
+        result = await client.cart.simulate(
             target_antigen="CD19",
             scfv_clone="FMC63",
             costimulatory_domain="4-1BB"
         )
-        print("Predicted Tumor Lysis:", cart_sim.cytotoxicity_lysis_pct)
+        print(f"Predicted Lysis: {result.cytotoxicity_lysis_pct}% | CRS Risk: {result.crs_risk_tier}")
 
-asyncio.run(main())
+asyncio.run(run_simulation())
 ```
 
 ### TypeScript SDK (`apps/web/src/sdk`)
@@ -390,32 +222,30 @@ import { ResearchClient } from './sdk/client';
 
 const client = new ResearchClient({ baseUrl: 'http://localhost:8000', apiKey: 'sk_live_demo' });
 
-async function runAnalysis() {
+async function classifyVariant() {
   const result = await client.variants.classifyACMG({
     gene_symbol: 'BRCA1',
     hgvs_c: 'c.5266dupC',
     alphamissense_score: 0.95
   });
-  console.log('ACMG Class:', result.acmg_class);
+  console.log(`Variant Classification: ${result.acmg_class} (${result.pathogenicity_score})`);
 }
 ```
 
 ---
 
-## 🔒 Security, Compliance & Safety Guarantees
+## 🔒 Enterprise Security & Compliance
 
-1. **Air-Gapped & Local-First Execution**: The platform operates 100% locally with Ollama and self-hosted vector stores without sending sensitive biomedical data externally.
-2. **SSRF Defensive Filtering**: `WebFetchTool` inspects all resolved DNS addresses and blocks private (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`), loopback (`127.0.0.1`), metadata endpoints (`169.254.169.254`), and cloud link-local IPs.
-3. **21 CFR Part 11 & GxP Compliance**: Electronic signatures, cryptographic SHA-256 audit chaining, and timestamped witness approvals.
-4. **Deterministic Calculation Engines**: Mathematical, kinetic, statistical, and genomic formulas execute in sandboxed Python engines rather than probabilistic LLM approximations.
+* **Air-Gapped & Local-First**: Operates 100% offline with Ollama and self-hosted vector databases without exposing IP or patient data.
+* **SSRF Protection**: Defensive DNS filtering blocks loopback (`127.0.0.1`), private subnets (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`), and AWS/GCP metadata endpoints (`169.254.169.254`).
+* **21 CFR Part 11 Audit Chaining**: Cryptographic SHA-256 Merkle hash chains for tamper-evident data integrity and electronic signatures.
+* **Deterministic Solvers**: All physical and genomic calculations run in sandboxed Python kernels rather than relying on LLM approximations.
 
 ---
 
 ## 📜 License & Citation
 
 Distributed under the **Apache 2.0 License**.
-
-If you use the **Agentic Multimodal Research Platform (AI Research OS)** in your research or production systems, please cite:
 
 ```bibtex
 @software{talaviya2026researchos,
