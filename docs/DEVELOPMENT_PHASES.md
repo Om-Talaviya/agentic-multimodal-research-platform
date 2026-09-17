@@ -804,3 +804,130 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
   - High-precision tumor lysis and effector-to-target (E:T) ratio cytotoxicity kinetics simulation.
   - Memory Tcm persistence and T-cell exhaustion marker profiling (PD-1, TIM-3, LAG-3).
   - Clinical ASTCT cytokine release syndrome (CRS) grade and ICANS neurotoxicity predictive risk modeling.
+
+## Phase 67: Autonomous Proteogenomic Neoepitope Discovery & Personalized Cancer Vaccine Designer (Generation 37)
+- **Status**: Completed
+- **Capabilities**:
+  - Somatic tumor mutation translation into HLA-restricted candidate neoepitopes.
+  - NetMHCpan-style binding affinity ($IC_{50}$ in nM) and Agretopicity Index ($IC_{50}^{WT} / IC_{50}^{MT}$) calculation.
+  - Clonality (VAF) and transcript expression (TPM) weighting.
+  - Cleavable tandem poly-epitope mRNA cassette assembly (AAY, GPGPG linkers) with adjuvant scheduling (Poly-ICLC, QS-21).
+  - Database models (`DBCancerVaccineDesign`, `DBCandidateNeoepitope`, `DBVaccineAdjuvantSchedule`), `NeoepitopeVaccineRepository`, `ProteogenomicNeoepitopeEngine`, `/api/v1/cancer-vaccines/*` REST API, and `CancerVaccineStudioPage.tsx` React studio (**ADR 067**).
+
+## Phase 68: Autonomous High-Throughput Screening (HTS) Assay Robotics & Flow Cytometry Gating Engine (Generation 38)
+- **Status**: Completed
+- **Capabilities**:
+  - Hierarchical bivariate polygon flow cytometry gating tree with parent/total event propagation.
+  - Ray casting point-in-polygon boundary filtering.
+  - Robotic HTS 384/1536-well plate Z'-factor quality assurance and S/B ratio calculation.
+  - Database models (`DBFlowCytometryExperiment`, `DBBivariateGatingHierarchy`, `DBAssayZPrimeMetric`), `FlowCytometryRepository`, `FlowCytometryGatingEngine`, `/api/v1/flow-cytometry/*` REST API, and `FlowCytometryStudioPage.tsx` React studio (**ADR 068**).
+
+## Phase 69: Autonomous Biotherapeutic Stability & Aggregation Propensity Forecaster (Generation 39)
+- **Status**: Completed
+- **Capabilities**:
+  - Sequence-level Spatial Aggregation Propensity (SAP) score modeling.
+  - Hydrophobic surface patch detection and residue span mapping.
+  - Thermal denaturation ($T_{m1}, T_{m2}$) and colloidal interaction ($k_D, B_{22}$) prediction.
+  - Formulation buffer and excipient stabilization optimization matrix.
+  - Database models (`DBBiotherapeuticConstruct`, `DBHydrophobicPatch`, `DBFormulationExcipientScreen`), `BiotherapeuticStabilityRepository`, `BiotherapeuticStabilityEngine`, `/api/v1/biotherapeutic-stability/*` REST API, and `BiotherapeuticStabilityStudioPage.tsx` React studio (**ADR 069**).
+
+## Phase 70: Autonomous Target Validation & CRISPR Synthetic Lethality Matrix (Generation 40)
+- **Status**: Completed
+- **Capabilities**:
+  - DepMap CERES/Chronos gene essentiality and co-dependency correlation matrices.
+  - Paralog synthetic lethal vulnerability discovery with Benjamini-Hochberg FDR corrected significance.
+  - Target tractability and druggability stratification across cancer lineages.
+  - Database models (`DBSyntheticLethalScreen`, `DBSyntheticLethalPartner`, `DBCRISPRDependencyScore`), `SyntheticLethalityRepository`, `SyntheticLethalityEngine`, `/api/v1/synthetic-lethality/*` REST API, and `SyntheticLethalityStudioPage.tsx` React studio (**ADR 070**).
+
+## Phase 72: Autonomous Synthetic Gene Circuit Stability & Metabolic Burden Forecaster (Generation 42)
+- **Status**: Completed
+- **Capabilities**:
+  - Growth rate defect ($\mu/\mu_{wt}$) and ribosome allocation burden modeling.
+  - Evolutionary escape half-life ($t_{1/2}$) and mutation rate estimation.
+  - Incoherent Feed-Forward Loop (IFFL) adaptive dosage stabilization.
+  - Database models (`DBSyntheticGeneCircuit`, `DBCircuitComponent`, `DBMetabolicBurdenMetric`, `DBEvolutionaryEscapeRisk`), `GeneCircuitBurdenRepository`, `GeneCircuitBurdenEngine`, `/api/v1/gene-circuits/*` REST API, and `GeneCircuitBurdenStudioPage.tsx` React studio (**ADR 072**).
+
+## Phase 73: Autonomous Clinical Trial Site Selection & Protocol Feasibility Forecaster (Generation 43)
+- **Status**: Completed
+- **Capabilities**:
+  - Global investigator site scoring (patient density, regulatory startup timeline, PI retention, GxP compliance).
+  - Monte Carlo patient accrual trajectory simulation and timeline risk forecasting.
+  - Protocol competition and enrollment bottleneck index calculation.
+  - Database models (`DBTrialSiteStudy`, `DBCandidateTrialSite`, `DBRecruitmentSimulation`), `ClinicalSiteSelectionRepository`, `ClinicalSiteSelectionEngine`, `/api/v1/clinical-site-selection/*` REST API, and `ClinicalSiteSelectionStudioPage.tsx` React studio (**ADR 073**).
+
+## Phase 74: Autonomous Genomic Variant Pathogenicity & ACMG Classification Engine (Generation 44)
+- **Status**: Completed
+- **Capabilities**:
+  - ACMG/AMP 2015 28-criteria rule engine (PVS1, PS1-4, PM1-6, PP1-5, BA1, BS1-4, BP1-7).
+  - Bayesian classification framework and 5-tier pathogenicity verdict assignment.
+  - Ensemble in-silico predictor integration (AlphaMissense, REVEL, CADD, SpliceAI).
+  - Database models (`DBVariantClassificationReport`, `DBACMGCriterionEvidence`, `DBInSilicoPredictorScore`), `VariantPathogenicityRepository`, `VariantPathogenicityEngine`, `/api/v1/genomic-variants/*` REST API, and `VariantPathogenicityStudioPage.tsx` React studio (**ADR 074**).
+
+## Phase 75: Autonomous Liquid Biopsy ctDNA Fragmentomics & MRD Detection Engine (Generation 45)
+- **Status**: Completed
+- **Capabilities**:
+  - Genome-wide cfDNA fragment size distribution ($R_{short}$ 100–150 bp tumor fragment enrichment).
+  - 4-mer cleavage end-motif frequency profiling and Motif Diversity Index (MDI).
+  - Longitudinal Minimal Residual Disease (MRD) monitoring and recurrence risk stratification.
+  - Database models (`DBLiquidBiopsySample`, `DBFragmentSizeDistribution`, `DBEndMotifProfile`), `LiquidBiopsyRepository`, `FragmentomicsMRDEngine`, `/api/v1/liquid-biopsy/*` REST API, and `LiquidBiopsyStudioPage.tsx` React studio (**ADR 075**).
+
+## Phase 76: Autonomous Real-World Evidence Signal Mining & Pharmacovigilance Sentinel (Generation 46)
+- **Status**: Completed
+- **Capabilities**:
+  - Statistical disproportionality metrics (PRR, ROR, BCPNN $IC_{025}$, EBGM).
+  - MedDRA System Organ Class (SOC) event categorizations.
+  - De-identified Individual Case Safety Report (ICSR) audit trail.
+  - Database models (`DBPharmacovigilanceStudy`, `DBSignalDisproportionality`, `DBAdverseEventCaseReport`), `PVSignalMiningRepository`, `PVSignalMiningEngine`, `/api/v1/pv-sentinel/*` REST API, and `PVSignalMiningStudioPage.tsx` React studio (**ADR 076**).
+
+## Phase 77: Autonomous Cryo-Electron Tomography (Cryo-ET) Subtomogram Averaging Engine (Generation 47)
+- **Status**: Completed
+- **Capabilities**:
+  - 3D tomogram tilt-series missing wedge filter ($60^\circ$ geometry).
+  - 3D subtomogram particle picking and iterative 3D Euler angle rotational alignment.
+  - Gold-standard FSC 0.143 resolution refinement.
+  - Database models (`DBCryoETDataset`, `DBSubtomogramParticle`, `DBAveragedStructureRefinement`), `CryoETSubtomogramRepository`, `CryoETSubtomogramEngine`, `/api/v1/cryoet/*` REST API, and `CryoETStudioPage.tsx` React studio (**ADR 077**).
+
+## Phase 78: Autonomous Chemogenomics Polypharmacology & Off-Target Interactome Engine (Generation 48)
+- **Status**: Completed
+- **Capabilities**:
+  - Gini Selectivity Index calculation across multi-kinase and GPCR screening panels.
+  - Critical antitarget liability flagging (hERG, 5-HT2B, BSEP).
+  - Multi-target phenotypic mechanism of action (MOA) profiling.
+  - Database models (`DBCompoundPolypharmacologyProfile`, `DBTargetBindingAffinity`, `DBOffTargetToxicityAlert`), `ChemogenomicsRepository`, `ChemogenomicsPolypharmacologyEngine`, `/api/v1/chemogenomics/*` REST API, and `ChemogenomicsStudioPage.tsx` React studio (**ADR 078**).
+
+## Phase 79: Autonomous Single-Molecule FRET (smFRET) Kinetics & Conformational Transition Engine (Generation 49)
+- **Status**: Completed
+- **Capabilities**:
+  - Single-molecule time-series FRET trajectory analysis and photobleaching detection.
+  - Hidden Markov Model (HMM) idealization and Viterbi state decoding.
+  - Dynamic kinetic transition rate matrix computation ($k_{ij}$) and Förster distance mapping ($R_0$).
+  - Database models (`DBSmFRETExperiment`, `DBSmFRETMoleculeTrace`, `DBConformationalState`), `SmFRETRepository`, `SmFRETKineticsEngine`, `/api/v1/smfret/*` REST API, and `SmFRETStudioPage.tsx` React studio (**ADR 079**).
+
+## Phase 80: Autonomous Multi-Modal Biomarker Discovery & Multi-Omics Signature Extractor (Generation 50)
+- **Status**: Completed
+- **Capabilities**:
+  - Integrated multi-omics signature extraction (Transcriptomics, Proteomics, Epigenomics, Metabolomics).
+  - ElasticNet regularized feature importance weighting and cross-validated AUROC evaluation.
+  - Permutation stability testing and patient cohort response risk stratification.
+  - Database models (`DBBiomarkerDiscoveryStudy`, `DBBiomarkerFeature`, `DBPatientRiskStratification`), `BiomarkerDiscoveryRepository`, `BiomarkerSignatureExtractorEngine`, `/api/v1/biomarkers/*` REST API, and `BiomarkerDiscoveryStudioPage.tsx` React studio (**ADR 080**).
+
+## Phase 81: Autonomous Synthetic Cell Membrane Dynamics & LNP Formulation Simulator (Generation 51)
+- **Status**: Completed
+- **Capabilities**:
+  - Microfluidic self-assembly simulation (FRR, TFR) for mRNA/siRNA LNPs.
+  - 4-component lipid molar fraction optimization (Ionizable, Helper, Cholesterol, PEG-Lipid).
+  - Apparent pKa estimation (TNS assay simulation) and synthetic bilayer dynamics profiling.
+  - Database models (`DBLNPFormulationStudy`, `DBLNPLipidComponent`, `DBMembraneDynamicsProfile`), `LNPFormulationRepository`, `LNPFormulationSimulatorEngine`, `/api/v1/lnp/*` REST API, and `LNPFormulationStudioPage.tsx` React studio (**ADR 081**).
+
+## Phase 82: Autonomous Metagenomic Pathogen Surveillance & Antimicrobial Resistance (AMR) Engine (Generation 52)
+- **Status**: Completed
+- **Capabilities**:
+  - Metagenomic taxonomic abundance profiling across wastewater, clinical, and aerosol samples.
+  - CARD resistome homolog alignment and plasmid horizontal gene transfer risk assessment.
+  - WHO Priority Pathogen outbreak early warning and risk categorization.
+  - Database models (`DBMetagenomicSample`, `DBPathogenAbundance`, `DBAntimicrobialResistanceGene`), `AMRSurveillanceRepository`, `MetagenomicAMREngine`, `/api/v1/amr/*` REST API, and `AMRSurveillanceStudioPage.tsx` React studio (**ADR 082**).
+
+
+
+
+
