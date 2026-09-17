@@ -98,54 +98,65 @@ An enterprise-grade, local-first **AI Research Operating System (Research OS v1.
 
 The platform is organized into **6 Grand Research Domains** comprising 82 fully implemented, tested, and integrated phases:
 
-### 1. Autonomous Cognition, Literature & Meta-Science
-* **Phases 1–11**: Core Research Engine, Hierarchical Query Planning, Web & Multimodal Document Ingestion, and Citation Anchoring.
-* **Phase 15**: Recursive Deep Research Engine with Dynamic Hypothesis Branching.
-* **Phase 27**: Adversarial Multi-Agent Debate Arena with Elo Consensus Arbitration.
-* **Phase 28**: Systematic Literature Reviews with PRISMA 2020 Flow Tracking and Meta-Analysis Forest Plots.
-* **Phase 29**: In-Silico Computational Code Execution & Statistical Reproducibility Verifier.
-* **Phase 30**: Multimodal 16:9 Scientific Presentation and Executive Podcast Briefing Generator.
-* **Phase 31**: Autonomous Double-Blind Peer Review Simulator and Camera-Ready LaTeX Preprint Publisher.
-* **Phase 33**: Evolutionary Active Learning & Synthetic Instruction Dataset Synthesizer (Alpaca/ShareGPT/DPO).
-* **Phase 35**: Multi-Year NIH/NSF Scientific Grant Proposal Synthesizer with Institutional Budgeting.
-* **Phase 50**: Autonomous AI Scientist Self-Evolving Discovery Engine.
+### 1. Autonomous Cognition, Deep Research & Meta-Science
+* **Phases 1–7**: Foundation Core Engine, Multi-Modal Document Ingestion (PDF, DOCX, Images, Video, Audio), Dynamic Agentic DAG Runner, Hybrid RAG, and Security Middleware.
+* **Phases 8A–8B**: Intelligent Model Routing Gateway & Transactional Usage Tracking with Row-Locked Quotas.
+* **Phases 9–11**: Autonomous Knowledge Automation, Fine-Grained Citation Grounding, and Hierarchical Query Decomposition.
+* **Phases 12–14**: Speech/Video Timeline Synchronization, Tabular Data Science Intelligence, and Academic Paper Hierarchical Parser.
+* **Phase 15**: Recursive Deep Research Engine with Multi-Branch Hypothesis Trees.
+* **Phase 27**: Adversarial Multi-Agent Dialectical Debate Arena with Elo Consensus Arbitration (`ProposerAgent` vs `OpposerAgent`).
+* **Phase 28**: Systematic Literature Reviews with PRISMA 2020 Flow Tracking, Cochrane RoB 2.0, and Meta-Analysis Forest Plots.
+* **Phase 29**: In-Silico Computational Code Execution & Statistical Reproducibility Delta Verifier.
+* **Phase 30**: Multimodal 16:9 Scientific Presentation Deck & Executive Podcast Briefing Generator (Host & Analyst dialogue).
+* **Phase 31**: Autonomous Academic Peer Review Simulator with Author Rebuttals & Camera-Ready LaTeX Preprint Publisher.
+* **Phase 33**: Evolutionary Active Learning & Synthetic Instruction Dataset Synthesizer (Evol-Instruct, Alpaca, ShareGPT, DPO).
+* **Phase 35**: Multi-Year NIH/NSF Scientific Grant Proposal Synthesizer with Institutional MTDC Direct/Indirect Budgeting.
+* **Phase 50**: Autonomous AI Scientist Self-Evolving Discovery Engine & Hypothesis Evolution.
 * **Phase 51**: RAGAS Groundedness Evaluation and Adversarial Red-Teaming Gateway.
+* **Phase 64**: Multi-Agent Peer Review Referee Panel & Author Rebuttal Arbiter.
 
 ### 2. Genomics, Epigenomics & Synthetic Biology
-* **Phase 40**: Synthetic Biology & CRISPR-Cas9/Cas12a Guide RNA Designer with Off-Target CFD Scoring.
-* **Phase 41**: Single-Cell Transcriptomics (scRNA-seq) Differential Expression Studio (Scanpy/AnnData).
-* **Phase 55**: Computational Immunology & TCR-pMHC Neoantigen Binding Predictor.
+* **Phase 40**: Synthetic Biology & CRISPR-Cas9/Cas12a/Cas13 Guide RNA Designer with CFD Off-Target Scoring.
+* **Phase 41**: Single-Cell Transcriptomics (scRNA-seq) Differential Expression Studio (Scanpy/AnnData integration).
+* **Phase 55**: Computational Immunology & TCR-pMHC Neoantigen Binding Affinity Predictor.
 * **Phase 56**: Epigenomic Chromatin Accessibility & ATAC-seq Peak Calling Engine.
-* **Phase 65**: Synthetic Biology DNA Logic Gate & Toggle Switch Circuit Compiler (SBOL3).
-* **Phase 67**: Proteogenomic Neoepitope Discovery & Personalized Cancer Vaccine Designer.
-* **Phase 70**: Target Validation & CRISPR Synthetic Lethality Matrix (DepMap CERES/Chronos).
-* **Phase 72**: Synthetic Gene Circuit Stability & Host Metabolic Burden Forecaster.
-* **Phase 74**: Genomic Variant Pathogenicity & ACMG/AMP 2015 28-Criteria Classification Engine.
+* **Phase 65**: Synthetic Biology DNA Logic Gate & Toggle Switch Circuit Compiler (SBOL3 standard).
+* **Phase 67**: Proteogenomic Neoepitope Discovery & Personalized Cancer Vaccine mRNA Cassette Designer.
+* **Phase 70**: Target Validation & CRISPR Synthetic Lethality Matrix (DepMap CERES/Chronos co-dependency).
+* **Phase 72**: Synthetic Gene Circuit Stability & Host Metabolic Burden Forecaster (IFFL Dosage Compensation).
+* **Phase 74**: Genomic Variant Pathogenicity & ACMG/AMP 2015 28-Criteria Classification Engine (AlphaMissense/REVEL).
 * **Phase 82**: Metagenomic Pathogen Surveillance & Antimicrobial Resistance (AMR) CARD Resistome Engine.
 
 ### 3. Structural Biology, Chemistry & Biophysics
-* **Phase 38**: AlphaFold3 & ESMFold Bio-Molecular 3D Structure Visualizer and pLDDT Spectrum Analyzer.
-* **Phase 39**: All-Atom Velocity Verlet Molecular Dynamics Trajectory and Quantum DFT Bandgap Studio.
-* **Phase 43**: De Novo Generative Chemistry & Antibody Design Studio (Diffusion & VAE).
+* **Phase 38**: AlphaFold3 & ESMFold Bio-Molecular 3D Structure Visualizer and Per-Residue pLDDT Confidence Analyzer.
+* **Phase 39**: All-Atom Velocity Verlet Molecular Dynamics Trajectory Integrator & Quantum DFT Bandgap Studio.
+* **Phase 43**: De Novo Generative Molecule & Antibody Design Studio (Diffusion & VAE latent sampling).
 * **Phase 44**: Scientific Knowledge Super-Graph & Cross-Domain Hypothesis Discovery Engine.
-* **Phase 45**: Drug Repurposing & Multi-Target Synergy Matrix (Bliss/Loewe Additivity).
+* **Phase 45**: Drug Repurposing & Multi-Target Combination Synergy Matrix (Bliss/Loewe Additivity).
 * **Phase 47**: Cryo-EM Density Map Fitting & Macromolecular Complex Modeler.
-* **Phase 48**: Multi-Omics Pathway Perturbation & Causal Signaling Simulator.
+* **Phase 48**: Multi-Omics Pathway Perturbation & Causal Signaling Network Simulator.
 * **Phase 54**: Virtual High-Throughput Screening (vHTS) & Billion-Molecule Docking Grid.
+* **Phase 57**: Protein-Protein Interactome (PPI) & Functional Subnetwork Community Clustering.
+* **Phase 58**: Spatial Metabolomics & Imaging Mass Spectrometry (IMS) Regional Molecular Cartography.
+* **Phase 59**: Antibody-Drug Conjugate (ADC) Payload & Cleavable Linker Construct Design Studio.
 * **Phase 69**: Biotherapeutic Protein Stability & Spatial Aggregation Propensity (SAP) Forecaster.
 * **Phase 71**: In-Silico Toxicity & QSAR Mutagenicity Profiler (Ames, hERG, DILI, CYP450).
-* **Phase 78**: Chemogenomics Polypharmacology & Off-Target Interactome Engine (Gini Index).
-* **Phase 79**: Single-Molecule FRET (smFRET) Kinetics & Hidden Markov Model Transition Engine.
-* **Phase 81**: Synthetic Cell Membrane Dynamics & Lipid Nanoparticle (LNP) Formulation Simulator.
+* **Phase 78**: Chemogenomics Polypharmacology & Off-Target Interactome Engine (Gini Selectivity Index).
+* **Phase 79**: Single-Molecule FRET (smFRET) Kinetics & Hidden Markov Model (HMM) Transition Engine.
+* **Phase 81**: Synthetic Cell Membrane Dynamics & Lipid Nanoparticle (LNP) 4-Component Formulation Simulator.
 
 ### 4. Translational Medicine, Clinical Trials & Pharmacovigilance
-* **Phase 34**: Patent Landscape Analysis, 35 U.S.C. 102/103 Prior Art Claim Charts, and FTO Clearance.
-* **Phase 36**: Clinical Trial Protocol Designer, PICO Eligibility Criteria, and eCTD Regulatory Package.
+* **Phase 34**: Patent Landscape Analysis, 35 U.S.C. 102/103 Prior Art Claim Charts, and Freedom-to-Operate (FTO) Clearance.
+* **Phase 36**: Clinical Trial Protocol Designer, PICO Eligibility Criteria, and eCTD FDA IND / EMA CTD Package.
+* **Phase 42**: Spatial Transcriptomics & Tissue Microenvironment Architecture Studio.
 * **Phase 46**: Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier.
 * **Phase 49**: Real-World Evidence (RWE) & Pharmacovigilance Disproportionality Signal Detector.
-* **Phase 66**: Cell Therapy CAR-T Engineering & ASTCT Cytokine Release Syndrome (CRS) Forecaster.
+* **Phase 60**: Nanomedicine Physiologically Based Pharmacokinetic (PBPK) Multi-Organ Transport Simulator.
+* **Phase 61**: Rare Disease Phenotypic Matcher & Human Phenotype Ontology (HPO) Diagnostic Engine.
+* **Phase 63**: Clinical Supply Chain & Investigational Medicinal Product (IMP) GxP Logistics Tracker.
+* **Phase 66**: Cell Therapy CAR-T Construct Designer & ASTCT Cytokine Release Syndrome (CRS) Forecaster.
 * **Phase 73**: Clinical Trial Site Selection & Protocol Accrual Feasibility Forecaster.
-* **Phase 75**: Liquid Biopsy ctDNA Fragmentomics & Longitudinal Minimal Residual Disease (MRD) Engine.
+* **Phase 75**: Liquid Biopsy ctDNA Fragmentomics & Longitudinal Minimal Residual Disease (MRD) Detection Engine.
 * **Phase 76**: Real-World Safety Signal Mining Sentinel (PRR, ROR, IC025, EBGM).
 * **Phase 80**: Multi-Modal Biomarker Discovery & Multi-Omics Signature Extractor (ElasticNet/AUROC).
 
@@ -158,11 +169,11 @@ The platform is organized into **6 Grand Research Domains** comprising 82 fully 
 ### 6. Enterprise Infrastructure, Platform & Developer Ecosystem
 * **Phases 16–17**: Persistent Cross-Session Research Memory and Relational GraphRAG Knowledge Graph.
 * **Phases 18–19**: Multi-Tenant Workspaces, RBAC Roles, Team Collaboration, and Report Annotations.
-* **Phases 20–22**: Intelligent Model Pareto Routing, Benchmark Evaluation, and Agent Telemetry.
-* **Phases 23–25**: KMS Envelope Encryption, Merkle Audit Trails, Distributed Task Worker Cluster, S3 Vault, and Scoped Developer REST Gateway.
+* **Phases 20–22**: Intelligent Model Pareto Routing, Benchmark Evaluation Suites, and Agent Telemetry.
+* **Phases 23–25**: KMS Envelope Encryption (AES-256-GCM), Merkle Audit Trails, Distributed Task Queue, S3 Vault, and Scoped Developer REST Gateway.
 * **Phase 26**: Autonomous Scheduled Research Sweeps, Semantic Diff Engine, and Multi-Channel Alerts.
-* **Phase 32**: Real-Time Collaborative 2D Spatial Research Canvas.
-* **Phase 52**: Scientific Multi-Modal Data Lakehouse with Parquet/Iceberg Storage and Vector Indices.
+* **Phase 32**: Real-Time Collaborative 2D Spatial Research Canvas Studio.
+* **Phase 52**: Scientific Multi-Modal Data Lakehouse with Parquet/Iceberg Storage, DuckDB SQL & Vector Indices.
 * **Official SDKs**: Full-featured Async Python SDK (`packages/sdk-python`) and Isomorphic TypeScript SDK (`apps/web/src/sdk/client.ts`).
 
 ---
