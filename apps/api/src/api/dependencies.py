@@ -3,6 +3,8 @@ from fastapi import Depends, HTTPException, Security, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 from database.connection import get_db_session
+
+get_db = get_db_session
 from ai.gateway.model_gateway import ModelGateway
 from ai.providers.gemini import GeminiProvider
 from ai.providers.ollama import OllamaProvider

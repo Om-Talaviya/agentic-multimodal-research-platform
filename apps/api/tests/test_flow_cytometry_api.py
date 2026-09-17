@@ -1,7 +1,7 @@
 import pytest
 import pytest_asyncio
 from httpx import AsyncClient, ASGITransport
-from apps.api.src.api.main import app
+from main import app
 
 @pytest.mark.asyncio
 async def test_flow_cytometry_api_endpoints(auth_headers):

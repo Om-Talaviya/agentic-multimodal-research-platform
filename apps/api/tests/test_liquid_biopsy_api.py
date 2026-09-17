@@ -1,7 +1,7 @@
 """Tests for Liquid Biopsy API endpoints."""
 import pytest
 from httpx import AsyncClient, ASGITransport
-from apps.api.src.api.main import app
+from main import app
 
 
 @pytest.mark.asyncio
