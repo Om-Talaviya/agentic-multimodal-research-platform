@@ -313,7 +313,7 @@ export const SmFRETStudioPage: React.FC = () => {
 
           <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '8px', padding: '0.75rem', marginTop: 'auto' }}>
             <div style={{ fontSize: '0.8rem', color: '#a7f3d0' }}>
-              ⚡️ <strong>Kinetic Equilibrium:</strong> High-frequency transitions between Open and Intermediate state ($k_{01} = 6.2\text{ s}^{-1}$) demonstrate thermal breathing prior to ligand capture into Closed state.
+              ⚡️ <strong>Kinetic Equilibrium:</strong> High-frequency transitions between Open and Intermediate state (k₀₁ = 6.2 s⁻¹) demonstrate thermal breathing prior to ligand capture into Closed state.
             </div>
           </div>
         </div>

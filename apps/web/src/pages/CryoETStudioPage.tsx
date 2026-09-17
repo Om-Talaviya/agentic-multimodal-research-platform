@@ -276,7 +276,7 @@ export const CryoETStudioPage: React.FC = () => {
 
           <div style={{ background: 'rgba(14, 165, 233, 0.1)', border: '1px solid rgba(14, 165, 233, 0.3)', borderRadius: '8px', padding: '0.75rem', marginTop: 'auto' }}>
             <div style={{ fontSize: '0.8rem', color: '#bae6fd' }}>
-              🔬 <strong>Rosenthal-Henderson Standard:</strong> Resolution reported at $\text{FSC} = 0.143$ intersection ({estimatedRes} Å). B-factor sharpening applied: -115.0 Å².
+              🔬 <strong>Rosenthal-Henderson Standard:</strong> Resolution reported at FSC = 0.143 intersection ({estimatedRes} Å). B-factor sharpening applied: -115.0 Å².
             </div>
           </div>
         </div>

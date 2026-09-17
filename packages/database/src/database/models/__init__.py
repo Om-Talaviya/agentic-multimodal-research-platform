@@ -226,10 +226,8 @@ from database.models.toxicity_qsar import (
     DBStructuralAlertMatch,
 )
 from database.models.gene_circuit_burden import (
-    DBSyntheticGeneCircuit,
-    DBCircuitComponent,
-    DBMetabolicBurdenMetric,
-    DBEvolutionaryEscapeRisk,
+    DBCircuitBurdenSimulation,
+    DBHostCapacityModel,
 )
 from database.models.clinical_site_selection import (
     DBTrialSiteStudy,
@@ -465,10 +463,8 @@ __all__ = [
     "DBCRISPRDependencyScore",
     "DBCompoundToxicityScreen",
     "DBStructuralAlertMatch",
-    "DBSyntheticGeneCircuit",
-    "DBCircuitComponent",
-    "DBMetabolicBurdenMetric",
-    "DBEvolutionaryEscapeRisk",
+    "DBCircuitBurdenSimulation",
+    "DBHostCapacityModel",
     "DBTrialSiteStudy",
     "DBCandidateTrialSite",
     "DBRecruitmentSimulation",

@@ -29,7 +29,7 @@ class DBPharmacovigilanceStudy(Base):
 
 class DBSignalDisproportionality(Base):
     """Statistical disproportionality metrics (PRR, ROR, IC025, EBGM)."""
-    __tablename__ = "pv_disproportionality_metrics"
+    __tablename__ = "pv_signal_disproportionality_metrics"
 
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     study_id = Column(String(36), ForeignKey("pv_sentinel_studies.id", ondelete="CASCADE"), nullable=False)
