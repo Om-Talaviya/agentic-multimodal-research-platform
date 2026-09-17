@@ -49,6 +49,7 @@ uploads/
 !docs/*.png
 !docs/*.jpg
 !docs/*.jpeg
+!docs/assets/*
 
 
 # Model files
