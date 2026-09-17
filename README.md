@@ -40,7 +40,7 @@ The platform transforms high-level scientific inquiries into verified discoverie
 Built on a modular, multi-tier microservices architecture designed for high scalability and local privacy:
 
 <p align="center">
-  <img src="./docs/assets/architecture_diagram.jpg" alt="Clean System Architecture" width="90%" />
+  <img src="./docs/assets/architecture_diagram_v2.jpg" alt="AI Research Operating System Architecture" width="90%" />
 </p>
 
 ### Key Architectural Layers:
