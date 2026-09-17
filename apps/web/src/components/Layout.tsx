@@ -5,7 +5,7 @@ import {
   FolderKanban, Trophy, Activity, ShieldCheck, Server, Code2,
   Radio, Swords, BookOpenCheck, Cpu, Presentation, Award,
   Network, Database, Scale, FileSpreadsheet, HeartPulse, Bot,
-  Dna, Atom, Scissors, Microscope, Layers, Pill
+  Dna, Atom, Scissors, Microscope, Layers, Pill, Syringe, Crosshair, Boxes, Zap, AlertTriangle, CircuitBoard, Building2, TestTube2, Target, Sparkles, ShieldAlert, Biohazard
 } from 'lucide-react'
 import { WorkspaceSelector } from './WorkspaceSelector'
 
@@ -14,6 +14,22 @@ export function Layout() {
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/projects', label: 'Projects', icon: FolderKanban },
     { path: '/research/new', label: 'New Research', icon: Plus },
+    { path: '/cancer-vaccines', label: 'Cancer Vaccines & Neoepitopes', icon: Syringe },
+    { path: '/flow-cytometry', label: 'Flow Cytometry & HTS', icon: Crosshair },
+    { path: '/biotherapeutic-stability', label: 'Biotherapeutic Stability', icon: Boxes },
+    { path: '/synthetic-lethality', label: 'Synthetic Lethality & Targets', icon: Zap },
+    { path: '/toxicity-qsar', label: 'QSAR & Mutagenicity', icon: AlertTriangle },
+    { path: '/gene-circuits', label: 'Gene Circuits & Burden', icon: CircuitBoard },
+    { path: '/clinical-site-selection', label: 'Clinical Site Selection', icon: Building2 },
+    { path: '/variant-pathogenicity', label: 'Variant Pathogenicity (ACMG)', icon: Dna },
+    { path: '/liquid-biopsy', label: 'Liquid Biopsy & ctDNA', icon: TestTube2 },
+    { path: '/pv-sentinel', label: 'Safety Signal Sentinel', icon: ShieldAlert },
+    { path: '/cryoet', label: 'Cryo-ET Subtomograms', icon: Boxes },
+    { path: '/chemogenomics', label: 'Chemogenomics & Kinome', icon: Target },
+    { path: '/smfret', label: 'smFRET Kinetics & Transitions', icon: Activity },
+    { path: '/biomarkers', label: 'Multi-Modal Biomarkers', icon: Sparkles },
+    { path: '/lnp-formulation', label: 'LNP Formulation & Membranes', icon: Boxes },
+    { path: '/amr-surveillance', label: 'Metagenomic AMR Surveillance', icon: Biohazard },
     { path: '/spatial', label: 'Spatial Multi-Omics', icon: Layers },
     { path: '/single-cell', label: 'Single-Cell Transcriptomics', icon: Microscope },
     { path: '/chemistry', label: 'Generative Therapeutics', icon: FlaskConical },

@@ -54,6 +54,22 @@ import { ClinicalLogisticsStudioPage } from './pages/ClinicalLogisticsStudioPage
 import { PeerReviewStudioPage } from './pages/PeerReviewStudioPage'
 import { SyntheticBiologyStudioPage } from './pages/SyntheticBiologyStudioPage'
 import { CARTStudioPage } from './pages/CARTStudioPage'
+import { CancerVaccineStudioPage } from './pages/CancerVaccineStudioPage'
+import { FlowCytometryStudioPage } from './pages/FlowCytometryStudioPage'
+import { BiotherapeuticStabilityStudioPage } from './pages/BiotherapeuticStabilityStudioPage'
+import { SyntheticLethalityStudioPage } from './pages/SyntheticLethalityStudioPage'
+import { ToxicityQSARStudioPage } from './pages/ToxicityQSARStudioPage'
+import { GeneCircuitBurdenStudioPage } from './pages/GeneCircuitBurdenStudioPage'
+import { ClinicalSiteSelectionStudioPage } from './pages/ClinicalSiteSelectionStudioPage'
+import { VariantPathogenicityStudioPage } from './pages/VariantPathogenicityStudioPage'
+import { LiquidBiopsyStudioPage } from './pages/LiquidBiopsyStudioPage'
+import { PVSignalMiningStudioPage } from './pages/PVSignalMiningStudioPage'
+import { CryoETStudioPage } from './pages/CryoETStudioPage'
+import { ChemogenomicsStudioPage } from './pages/ChemogenomicsStudioPage'
+import { SmFRETStudioPage } from './pages/SmFRETStudioPage'
+import { BiomarkerDiscoveryStudioPage } from './pages/BiomarkerDiscoveryStudioPage'
+import { LNPFormulationStudioPage } from './pages/LNPFormulationStudioPage'
+import { AMRSurveillanceStudioPage } from './pages/AMRSurveillanceStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -175,6 +191,22 @@ function App() {
           <Route path="peer-review" element={<PeerReviewStudioPage />} />
           <Route path="synthetic-biology" element={<SyntheticBiologyStudioPage />} />
           <Route path="cart" element={<CARTStudioPage />} />
+          <Route path="cancer-vaccines" element={<CancerVaccineStudioPage />} />
+          <Route path="flow-cytometry" element={<FlowCytometryStudioPage />} />
+          <Route path="biotherapeutic-stability" element={<BiotherapeuticStabilityStudioPage />} />
+          <Route path="synthetic-lethality" element={<SyntheticLethalityStudioPage />} />
+          <Route path="toxicity-qsar" element={<ToxicityQSARStudioPage />} />
+          <Route path="gene-circuits" element={<GeneCircuitBurdenStudioPage />} />
+          <Route path="clinical-site-selection" element={<ClinicalSiteSelectionStudioPage />} />
+          <Route path="variant-pathogenicity" element={<VariantPathogenicityStudioPage />} />
+          <Route path="liquid-biopsy" element={<LiquidBiopsyStudioPage />} />
+          <Route path="pv-sentinel" element={<PVSignalMiningStudioPage />} />
+          <Route path="cryoet" element={<CryoETStudioPage />} />
+          <Route path="chemogenomics" element={<ChemogenomicsStudioPage />} />
+          <Route path="smfret" element={<SmFRETStudioPage />} />
+          <Route path="biomarkers" element={<BiomarkerDiscoveryStudioPage />} />
+          <Route path="lnp-formulation" element={<LNPFormulationStudioPage />} />
+          <Route path="amr-surveillance" element={<AMRSurveillanceStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

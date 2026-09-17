@@ -201,6 +201,86 @@ from database.models.cart_engineering import (
     DBCYToxicityScorecard,
     DBCRSToxicityProfile,
 )
+from database.models.neoepitope_vaccine import (
+    DBCancerVaccineDesign,
+    DBCandidateNeoepitope,
+    DBVaccineAdjuvantSchedule,
+)
+from database.models.flow_cytometry import (
+    DBFlowCytometryExperiment,
+    DBBivariateGatingHierarchy,
+    DBAssayZPrimeMetric,
+)
+from database.models.biotherapeutic_stability import (
+    DBBiotherapeuticConstruct,
+    DBHydrophobicPatch,
+    DBFormulationExcipientScreen,
+)
+from database.models.synthetic_lethality import (
+    DBSyntheticLethalScreen,
+    DBSyntheticLethalPartner,
+    DBCRISPRDependencyScore,
+)
+from database.models.toxicity_qsar import (
+    DBCompoundToxicityScreen,
+    DBStructuralAlertMatch,
+)
+from database.models.gene_circuit_burden import (
+    DBSyntheticGeneCircuit,
+    DBCircuitComponent,
+    DBMetabolicBurdenMetric,
+    DBEvolutionaryEscapeRisk,
+)
+from database.models.clinical_site_selection import (
+    DBTrialSiteStudy,
+    DBCandidateTrialSite,
+    DBRecruitmentSimulation,
+)
+from database.models.variant_pathogenicity import (
+    DBVariantClassificationReport,
+    DBACMGCriterionEvidence,
+    DBInSilicoPredictorScore,
+)
+from database.models.liquid_biopsy_fragmentomics import (
+    DBLiquidBiopsySample,
+    DBFragmentSizeDistribution,
+    DBEndMotifProfile,
+)
+from database.models.pv_signal_mining import (
+    DBPharmacovigilanceStudy,
+    DBSignalDisproportionality,
+    DBAdverseEventCaseReport,
+)
+from database.models.cryoet_subtomogram import (
+    DBCryoETDataset,
+    DBSubtomogramParticle,
+    DBAveragedStructureRefinement,
+)
+from database.models.chemogenomics_polypharmacology import (
+    DBCompoundPolypharmacologyProfile,
+    DBTargetBindingAffinity,
+    DBOffTargetToxicityAlert,
+)
+from database.models.smfret_kinetics import (
+    DBSmFRETExperiment,
+    DBSmFRETMoleculeTrace,
+    DBConformationalState,
+)
+from database.models.biomarker_discovery import (
+    DBBiomarkerDiscoveryStudy,
+    DBBiomarkerFeature,
+    DBPatientRiskStratification,
+)
+from database.models.lnp_formulation import (
+    DBLNPFormulationStudy,
+    DBLNPLipidComponent,
+    DBMembraneDynamicsProfile,
+)
+from database.models.amr_surveillance import (
+    DBMetagenomicSample,
+    DBPathogenAbundance,
+    DBAntimicrobialResistanceGene,
+)
 
 __all__ = [
     "User",
@@ -371,4 +451,52 @@ __all__ = [
     "DBCARTConstructDesign",
     "DBCYToxicityScorecard",
     "DBCRSToxicityProfile",
+    "DBCancerVaccineDesign",
+    "DBCandidateNeoepitope",
+    "DBVaccineAdjuvantSchedule",
+    "DBFlowCytometryExperiment",
+    "DBBivariateGatingHierarchy",
+    "DBAssayZPrimeMetric",
+    "DBBiotherapeuticConstruct",
+    "DBHydrophobicPatch",
+    "DBFormulationExcipientScreen",
+    "DBSyntheticLethalScreen",
+    "DBSyntheticLethalPartner",
+    "DBCRISPRDependencyScore",
+    "DBCompoundToxicityScreen",
+    "DBStructuralAlertMatch",
+    "DBSyntheticGeneCircuit",
+    "DBCircuitComponent",
+    "DBMetabolicBurdenMetric",
+    "DBEvolutionaryEscapeRisk",
+    "DBTrialSiteStudy",
+    "DBCandidateTrialSite",
+    "DBRecruitmentSimulation",
+    "DBVariantClassificationReport",
+    "DBACMGCriterionEvidence",
+    "DBInSilicoPredictorScore",
+    "DBLiquidBiopsySample",
+    "DBFragmentSizeDistribution",
+    "DBEndMotifProfile",
+    "DBPharmacovigilanceStudy",
+    "DBSignalDisproportionality",
+    "DBAdverseEventCaseReport",
+    "DBCryoETDataset",
+    "DBSubtomogramParticle",
+    "DBAveragedStructureRefinement",
+    "DBCompoundPolypharmacologyProfile",
+    "DBTargetBindingAffinity",
+    "DBOffTargetToxicityAlert",
+    "DBSmFRETExperiment",
+    "DBSmFRETMoleculeTrace",
+    "DBConformationalState",
+    "DBBiomarkerDiscoveryStudy",
+    "DBBiomarkerFeature",
+    "DBPatientRiskStratification",
+    "DBLNPFormulationStudy",
+    "DBLNPLipidComponent",
+    "DBMembraneDynamicsProfile",
+    "DBMetagenomicSample",
+    "DBPathogenAbundance",
+    "DBAntimicrobialResistanceGene",
 ]

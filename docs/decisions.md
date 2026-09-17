@@ -1189,3 +1189,253 @@ Implement `DBAutonomousScientistProgram`, `DBResearchIterationCycle`, and `DBDis
 
 ### Consequences:
 - **Positive**: Enables autonomous closed-loop exploration resulting in breakthrough discoveries with quantitative novelty, validity, and falsifiability scorecards.
+
+---
+
+## ADR 067: Autonomous Proteogenomic Neoepitope Discovery & Personalized Cancer Vaccine Designer
+
+### Status: ACCEPTED (Generation 37)
+
+### Context:
+Personalized mRNA cancer vaccines require precise translation of somatic tumor mutations into HLA-restricted neoepitopes, predictive MHC-I/II affinity ranking, and assembly of junction-optimized poly-epitope mRNA constructs.
+
+### Decision:
+Implement `DBCancerVaccineDesign`, `DBCandidateNeoepitope`, and `DBVaccineAdjuvantSchedule` in `neoepitope_vaccine.py` managed via `NeoepitopeVaccineRepository` and computed by `ProteogenomicNeoepitopeEngine`. Expose REST endpoints under `/api/v1/cancer-vaccines/*` and interactive visualization in `CancerVaccineStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: In-silico MHC-I binding prediction, Agretopicity Index calculation, tumor clonality (VAF) and TPM expression weighting, and cleavable poly-epitope mRNA cassette assembly with adjuvant scheduling.
+
+---
+
+## ADR 068: Autonomous High-Throughput Screening (HTS) Assay Robotics & Flow Cytometry Gating Engine
+
+### Status: ACCEPTED (Generation 38)
+
+### Context:
+High-throughput flow cytometry screens require automated polygon bivariate gating, event filtering, population subset frequency propagation, and Zhang et al. Z'-factor robotic quality control.
+
+### Decision:
+Implement `DBFlowCytometryExperiment`, `DBBivariateGatingHierarchy`, and `DBAssayZPrimeMetric` in `flow_cytometry.py` managed via `FlowCytometryRepository` and computed by `FlowCytometryGatingEngine`. Expose REST endpoints under `/api/v1/flow-cytometry/*` and interactive visualization in `FlowCytometryStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Ray-casting point-in-poly bivariate gating, hierarchical cascade tree calculation, and automated HTS plate Z'-factor certification ($Z' \ge 0.5$).
+
+---
+
+## ADR 069: Autonomous Biotherapeutic Stability & Aggregation Propensity Forecaster
+
+### Status: ACCEPTED (Generation 39)
+
+### Context:
+Accelerating biologic drug development requires early sequence-based forecasting of Spatial Aggregation Propensity (SAP), hydrophobic surface patch exposure, thermal unfolding ($T_{m1}, T_{m2}$), and formulation excipient stabilization.
+
+### Decision:
+Implement `DBBiotherapeuticConstruct`, `DBHydrophobicPatch`, and `DBFormulationExcipientScreen` in `biotherapeutic_stability.py` managed via `BiotherapeuticStabilityRepository` and computed by `BiotherapeuticStabilityEngine`. Expose REST endpoints under `/api/v1/biotherapeutic-stability/*` and interactive visualization in `BiotherapeuticStabilityStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated Spatial Aggregation Propensity calculation, surface hydrophobic patch mapping with residue spans, colloidal interaction scoring ($k_D, B_{22}$), and formulation excipient screening.
+
+---
+
+## ADR 070: Autonomous Target Validation & CRISPR Synthetic Lethality Matrix
+
+### Status: ACCEPTED (Generation 40)
+
+### Context:
+Targeting undruggable oncogenic drivers (e.g. loss-of-function tumor suppressors or mutated GTPases) requires systematic DepMap CERES dependency mapping and paralog/pathway synthetic lethal vulnerability discovery.
+
+### Decision:
+Implement `DBSyntheticLethalScreen`, `DBSyntheticLethalPartner`, and `DBCRISPRDependencyScore` in `synthetic_lethality.py` managed via `SyntheticLethalityRepository` and computed by `SyntheticLethalityEngine`. Expose REST endpoints under `/api/v1/synthetic-lethality/*` and interactive visualization in `SyntheticLethalityStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: DepMap CRISPR gene essentiality modeling, paralog compensation partner ranking with Benjamini-Hochberg FDR $p$-values, and co-dependency cell line profiling.
+
+---
+
+## ADR 071: Autonomous In-Silico Toxicity & QSAR Mutagenicity Matrix (Ames Test / hERG Blockade)
+
+### Status: ACCEPTED (Generation 41)
+
+### Context:
+Mitigating clinical-stage chemical attrition requires early in-silico toxicological filtering for Ames bacterial mutagenicity, hERG potassium channel cardiotoxicity, and Drug-Induced Liver Injury (DILI).
+
+### Decision:
+Implement `DBCompoundToxicityScreen` and `DBStructuralAlertMatch` in `toxicity_qsar.py` managed via `ToxicityQSARRepository` and computed by `QSARToxicityEngine`. Expose REST endpoints under `/api/v1/toxicity-qsar/*` and interactive visualization in `ToxicityQSARStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Hansen/Ashby structural alert SMARTS matcher, QSAR hERG cardiotoxicity prediction, DILI risk matrix, and acute oral rat $LD_{50}$ forecasting.
+
+---
+
+## ADR 072: Autonomous Synthetic Gene Circuit Stability & Metabolic Burden Forecaster
+
+### Status: ACCEPTED (Generation 42)
+
+### Context:
+Synthetic genetic circuits engineered into cellular hosts frequently fail due to host metabolic burden, transcriptional/translational resource competition, and evolutionary escape via mutational inactivation. Synthetic biologists need an integrated engine to model circuit ODE kinetics, host growth rate inhibition, and genetic stability half-life.
+
+### Decision:
+Implement `DBSyntheticGeneCircuit`, `DBCircuitComponent`, `DBMetabolicBurdenMetric`, and `DBEvolutionaryEscapeRisk` in `gene_circuit_burden.py` managed via `GeneCircuitBurdenRepository` and computed by `GeneCircuitBurdenEngine`. Expose REST endpoints under `/api/v1/gene-circuits/*` and interactive visualization in `GeneCircuitBurdenStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated Hill function gene expression ODE simulation, cellular ribosome and ATP resource allocation modeling, and mutational escape risk scoring ($t_{1/2}$ in generations).
+
+---
+
+## ADR 073: Autonomous Clinical Trial Site Selection & Protocol Feasibility Forecaster
+
+### Status: ACCEPTED (Generation 43)
+
+### Context:
+Multi-center clinical trials face high failure and delay rates due to sub-optimal site selection, protracted ethics/IRB approval timelines, competing protocol enrollment, and inaccurate patient density forecasts. Clinical development teams require an automated, algorithmic decision support engine to evaluate site feasibility, predict Poisson-gamma stochastic enrollment trajectories (P10/P50/P90), and proactively detect recruitment bottlenecks.
+
+### Decision:
+Implement `DBTrialSiteStudy`, `DBCandidateTrialSite`, and `DBRecruitmentSimulation` in `clinical_site_selection.py` managed via `ClinicalSiteSelectionRepository` and computed by `ClinicalSiteSelectionEngine`. Expose REST endpoints under `/api/v1/clinical-sites/*` and interactive visualization in `ClinicalSiteSelectionStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Multi-dimensional candidate site scoring (recruitment velocity, regulatory latency, patient density, PI track record), Poisson-gamma Monte Carlo enrollment forecasting, and actionable bottleneck mitigation recommendations.
+
+---
+
+## ADR 074: Autonomous Genomic Variant Pathogenicity & ACMG Classification Engine
+
+### Status: ACCEPTED (Generation 44)
+
+### Context:
+Precision oncology and clinical genomics require rigorous, reproducible variant classification adhering to ACMG/AMP 2015 guidelines. Clinical geneticists need an automated engine that integrates gnomAD population frequencies (BA1, BS1, PM2), ClinGen dosage disease mechanisms (PVS1), functional study assay results (PS3, BS3), and ensemble in-silico predictors (AlphaMissense, REVEL, CADD, SpliceAI for PP3/BP4) to produce 5-tier pathogenicity classifications.
+
+### Decision:
+Implement `DBVariantClassificationReport`, `DBACMGCriterionEvidence`, and `DBInSilicoPredictorScore` in `variant_pathogenicity.py` managed via `VariantPathogenicityRepository` and computed by `VariantPathogenicityEngine`. Expose REST endpoints under `/api/v1/genomic-variants/*` and interactive visualization in `VariantPathogenicityStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Complete ACMG/AMP 2015 28-criteria rule engine, automated Bayesian combiner logic, multi-algorithm in-silico scoring, and clinical actionability reporting.
+
+---
+
+## ADR 075: Autonomous Liquid Biopsy ctDNA Fragmentomics & MRD Detection Engine
+
+### Status: ACCEPTED (Generation 45)
+
+### Context:
+Non-invasive post-operative surveillance and therapy response monitoring in oncology rely increasingly on cell-free DNA (cfDNA) fragmentomics. Unlike targeted mutation panels which suffer from clonal hematopoiesis interference and low shedder dropouts, genome-wide fragment length distributions (100–150 bp short tumor fragments vs 167 bp mono-nucleosome peaks) and 4-mer cleavage end-motifs (CCCA/CCAG) enable ultra-sensitive Minimal Residual Disease (MRD) detection and recurrence risk forecasting.
+
+### Decision:
+Implement `DBLiquidBiopsySample`, `DBFragmentSizeDistribution`, and `DBEndMotifProfile` in `liquid_biopsy_fragmentomics.py` managed via `LiquidBiopsyRepository` and computed by `FragmentomicsMRDEngine`. Expose REST endpoints under `/api/v1/liquid-biopsy/*` and interactive visualization in `LiquidBiopsyStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated short-to-long fragment ratio calculation ($R_{short}$), 4-mer end-motif diversity index (MDI), circulating tumor fraction ($TF\%$) inference, and longitudinal MRD relapse stratification.
+
+---
+
+## ADR 076: Autonomous Real-World Safety Signal Mining & Pharmacovigilance Sentinel
+
+### Status: ACCEPTED (Generation 46)
+
+### Context:
+Post-marketing drug safety surveillance requires rapid, automated detection of emerging adverse drug reactions (ADRs) across spontaneous reporting databases (FDA FAERS, WHO VigiBase) and electronic health records (EHRs). Safety epidemiologists need quantitative statistical disproportionality metrics (PRR, ROR, BCPNN $IC_{025}$, EBGM) and WHO-UMC causality grading to validate safety signals and trigger regulatory Risk Management Plans (RMPs).
+
+### Decision:
+Implement `DBPharmacovigilanceStudy`, `DBSignalDisproportionality`, and `DBAdverseEventCaseReport` in `pv_signal_mining.py` managed via `PVSignalMiningRepository` and computed by `PVSignalMiningEngine`. Expose REST endpoints under `/api/v1/pv-sentinel/*` and interactive visualization in `PVSignalMiningStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated $2 \times 2$ contingency table calculation, Proportional Reporting Ratio (PRR) with 95% CI, Bayesian Information Component ($IC_{025}$), MedDRA SOC classification, and de-identified ICSR case review.
+
+---
+
+## ADR 077: Autonomous Cryo-Electron Tomography (Cryo-ET) Subtomogram Averaging Engine
+
+### Status: ACCEPTED (Generation 47)
+
+### Context:
+Determining macromolecular structures in their native cellular context without crystallization or detergent purification requires Cryo-Electron Tomography (Cryo-ET) and Subtomogram Averaging (STA). Structural biologists need automated tilt-series alignment, missing wedge compensation ($60^\circ$ geometry), 3D subtomogram particle picking, iterative rotational alignment (Euler angles $\phi, \theta, \psi$), and gold-standard Fourier Shell Correlation (FSC 0.143) resolution refinement.
+
+### Decision:
+Implement `DBCryoETDataset`, `DBSubtomogramParticle`, and `DBAveragedStructureRefinement` in `cryoet_subtomogram.py` managed via `CryoETSubtomogramRepository` and computed by `CryoETSubtomogramEngine`. Expose REST endpoints under `/api/v1/cryoet/*` and interactive visualization in `CryoETStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated 3D tomogram reconstruction, missing wedge filter, 3D subvolume Euler alignment, and gold-standard FSC 0.143 resolution estimation.
+
+---
+
+## ADR 078: Autonomous Chemogenomics Polypharmacology & Off-Target Interactome Engine
+
+### Status: ACCEPTED (Generation 48)
+
+### Context:
+Small-molecule therapeutics often exert phenotypic biological effects through complex multi-target polypharmacology rather than single-target selectivity. Medicinal chemists require automated chemogenomic screening against kinome and GPCRome panels, Gini Selectivity Index quantification, and early flagging of critical antitarget liabilities (hERG $I_{Kr}$ cardiotoxicity, 5-HT2B valvulopathy, BSEP cholestatic DILI).
+
+### Decision:
+Implement `DBCompoundPolypharmacologyProfile`, `DBTargetBindingAffinity`, and `DBOffTargetToxicityAlert` in `chemogenomics_polypharmacology.py` managed via `ChemogenomicsRepository` and computed by `ChemogenomicsPolypharmacologyEngine`. Expose REST endpoints under `/api/v1/chemogenomics/*` and interactive visualization in `ChemogenomicsStudioPage.tsx`.
+
+### Consequences:
+---
+
+## ADR 079: Autonomous Single-Molecule FRET (smFRET) Kinetics & Conformational Transition Engine
+
+### Status: ACCEPTED (Generation 49)
+
+### Context:
+Characterizing dynamic biomolecular conformational heterogeneity, transient intermediate states, and real-time folding/unfolding kinetics at single-molecule resolution requires Single-Molecule Förster Resonance Energy Transfer (smFRET). Biophysicists need automated time-series photobleaching detection, donor/acceptor crosstalk and gamma factor correction, Hidden Markov Model (HMM) idealization via Viterbi decoding, and kinetic transition rate matrix computation ($k_{ij}$).
+
+### Decision:
+Implement `DBSmFRETExperiment`, `DBSmFRETMoleculeTrace`, and `DBConformationalState` in `smfret_kinetics.py` managed via `SmFRETRepository` and computed by `SmFRETKineticsEngine`. Expose REST endpoints under `/api/v1/smfret/*` and interactive visualization in `SmFRETStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated smFRET trajectory time-series modeling, Förster distance mapping ($R_0$), HMM state occupancy quantification, and conformational transition rate matrix calculation.
+
+---
+
+## ADR 080: Autonomous Multi-Modal Biomarker Discovery & Multi-Omics Signature Extractor
+
+### Status: ACCEPTED (Generation 50)
+
+### Context:
+Translating complex multi-omics datasets (transcriptomics, proteomics, epigenomics, metabolomics) into clinically actionable diagnostic and prognostic signatures requires rigorous feature selection, regularized linear modeling (ElasticNet / LASSO), and patient risk stratification. Translational oncologists need automated feature importance weighting, cross-validated AUROC scoring, permutation test stability metrics, and multi-tier patient response prediction.
+
+### Decision:
+Implement `DBBiomarkerDiscoveryStudy`, `DBBiomarkerFeature`, and `DBPatientRiskStratification` in `biomarker_discovery.py` managed via `BiomarkerDiscoveryRepository` and computed by `BiomarkerSignatureExtractorEngine`. Expose REST endpoints under `/api/v1/biomarkers/*` and interactive visualization in `BiomarkerDiscoveryStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated cross-omics signature extraction, ElasticNet regularized feature weighting, AUROC performance quantification, permutation stability scoring, and patient cohort risk stratification.
+
+---
+
+## ADR 081: Autonomous Synthetic Cell Membrane Dynamics & LNP Formulation Simulator
+
+### Status: ACCEPTED (Generation 51)
+
+### Context:
+Delivering nucleic acid therapeutics (mRNA, siRNA, sgRNA) safely and effectively in vivo requires optimizing lipid nanoparticle (LNP) quaternary composition (Ionizable Lipid, Helper Phospholipid, Cholesterol, PEG-Lipid), microfluidic flow parameters (FRR, TFR), and synthetic bilayer biophysics. Nanomedicine formulators need automated encapsulation efficiency ($EE\%$) prediction, apparent pKa estimation (TNS assay simulation for endosomal protonation at pH 6.2–6.8), hydrodynamic diameter / PDI sizing, and membrane fluidity / endosomal escape modeling.
+
+### Decision:
+Implement `DBLNPFormulationStudy`, `DBLNPLipidComponent`, and `DBMembraneDynamicsProfile` in `lnp_formulation.py` managed via `LNPFormulationRepository` and computed by `LNPFormulationSimulatorEngine`. Expose REST endpoints under `/api/v1/lnp/*` and interactive visualization in `LNPFormulationStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated microfluidic self-assembly simulation, 4-component molar fraction optimization, apparent pKa calculation, synthetic bilayer dynamics profiling, and endosomal escape forecasting.
+
+---
+
+## ADR 082: Autonomous Metagenomic Pathogen Surveillance & Antimicrobial Resistance (AMR) Engine
+
+### Status: ACCEPTED (Generation 52)
+
+### Context:
+Mitigating global pathogen outbreaks and monitoring community-level antimicrobial resistance (AMR) spread requires real-time metagenomic next-generation sequencing (mNGS) surveillance across municipal wastewater, clinical isolates, hospital surfaces, and bioaerosols. Public health epidemiologists and microbiologists need automated taxonomic abundance classification (Kraken2 / Bracken), CARD (Comprehensive Antibiotic Resistance Database) resistome alignment, plasmid horizontal gene transfer risk assessment, and WHO Critical Priority Pathogen outbreak early warning.
+
+### Decision:
+Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResistanceGene` in `amr_surveillance.py` managed via `AMRSurveillanceRepository` and computed by `MetagenomicAMREngine`. Expose REST endpoints under `/api/v1/amr/*` and interactive visualization in `AMRSurveillanceStudioPage.tsx`.
+
+### Consequences:
+- **Positive**: Automated taxonomic pathogen identification, CARD resistome profiling, plasmid mobility risk scoring, and WHO priority pathogen outbreak alert generation.
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,19 @@
+from api.routes.amr_surveillance import router as amr_surveillance_router
+from api.routes.lnp_formulation import router as lnp_formulation_router
+from api.routes.biomarker_discovery import router as biomarker_discovery_router
+from api.routes.smfret import router as smfret_router
+from api.routes.chemogenomics import router as chemogenomics_router
+from api.routes.cryoet_subtomogram import router as cryoet_subtomogram_router
+from api.routes.pv_signal_mining import router as pv_signal_mining_router
+from api.routes.liquid_biopsy import router as liquid_biopsy_router
+from api.routes.variant_pathogenicity import router as variant_pathogenicity_router
+from api.routes.clinical_site_selection import router as clinical_site_selection_router
+from api.routes.gene_circuit_burden import router as circuit_burden_router
+from api.routes.toxicity_qsar import router as toxicity_router
+from api.routes.synthetic_lethality import router as lethality_router
+from api.routes.biotherapeutic_stability import router as stability_router
+from api.routes.flow_cytometry import router as flow_cytometry_router
+from api.routes.cancer_vaccines import router as cancer_vaccines_router
 from api.routes.vhts import router as vhts_router
 from api.routes.immunology import router as immunology_router
 from api.routes.epigenomics import router as epigenomics_router
@@ -122,6 +138,22 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(amr_surveillance_router)
+app.include_router(lnp_formulation_router)
+app.include_router(biomarker_discovery_router)
+app.include_router(smfret_router)
+app.include_router(chemogenomics_router)
+app.include_router(cryoet_subtomogram_router)
+app.include_router(pv_signal_mining_router)
+app.include_router(liquid_biopsy_router)
+app.include_router(variant_pathogenicity_router)
+app.include_router(clinical_site_selection_router)
+app.include_router(circuit_burden_router)
+app.include_router(toxicity_router)
+app.include_router(lethality_router)
+app.include_router(stability_router)
+app.include_router(flow_cytometry_router)
+app.include_router(cancer_vaccines_router)
 app.include_router(vhts_router, prefix="/api/v1")
 app.include_router(immunology_router, prefix="/api/v1")
 app.include_router(epigenomics_router, prefix="/api/v1")
