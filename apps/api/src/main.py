@@ -1,3 +1,4 @@
+from api.routes.long_read_genomics import router as long_read_router
 from api.routes.quantum_chemistry import router as quantum_chemistry_router
 from api.routes.amr_surveillance import router as amr_surveillance_router
 from api.routes.lnp_formulation import router as lnp_formulation_router
@@ -139,6 +140,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(long_read_router, prefix="/api/v1")
 app.include_router(quantum_chemistry_router, prefix="/api/v1")
 app.include_router(amr_surveillance_router)
 app.include_router(lnp_formulation_router)

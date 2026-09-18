@@ -284,6 +284,11 @@ from database.models.quantum_chemistry import (
     DBVQEAnsatzExecution,
     DBHamiltonianEnergyState,
 )
+from database.models.long_read_genomics import (
+    DBLongReadSequencingRun,
+    DBStructuralVariantCall,
+    DBTelomericRepeatProfile,
+)
 
 __all__ = [
     "User",
@@ -503,4 +508,7 @@ __all__ = [
     "DBQuantumMolecularSystem",
     "DBVQEAnsatzExecution",
     "DBHamiltonianEnergyState",
+    "DBLongReadSequencingRun",
+    "DBStructuralVariantCall",
+    "DBTelomericRepeatProfile",
 ]
