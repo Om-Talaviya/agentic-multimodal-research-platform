@@ -47,6 +47,7 @@ from database.repositories.diffusion_conformation_repo import DiffusionConformat
 from database.repositories.whole_cell_metabolism_repo import WholeCellMetabolicRepository
 from database.repositories.clinical_genomics_twin_repo import ClinicalGenomicsTwinRepository
 from database.repositories.radiogenomics_repo import RadiogenomicsRepository
+from database.repositories.robotic_workcell_repo import RoboticWorkcellRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -93,5 +94,6 @@ __all__ = [
     "WholeCellMetabolicRepository",
     "ClinicalGenomicsTwinRepository",
     "RadiogenomicsRepository",
+    "RoboticWorkcellRepository",
 ]
 

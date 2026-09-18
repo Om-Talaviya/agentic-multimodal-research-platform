@@ -309,6 +309,11 @@ from database.models.radiogenomics import (
     DBVolumetricRadiomicFeature,
     DBImagingGenomicCorrelation,
 )
+from database.models.robotic_workcell import (
+    DBRoboticWorkcellProtocol,
+    DBDeckLayoutInstruction,
+    DBAutomatedRunExecution,
+)
 
 __all__ = [
     "User",
@@ -543,4 +548,7 @@ __all__ = [
     "DBRadiogenomicsScan",
     "DBVolumetricRadiomicFeature",
     "DBImagingGenomicCorrelation",
+    "DBRoboticWorkcellProtocol",
+    "DBDeckLayoutInstruction",
+    "DBAutomatedRunExecution",
 ]
