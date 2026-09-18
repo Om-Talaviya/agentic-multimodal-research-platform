@@ -279,6 +279,11 @@ from database.models.amr_surveillance import (
     DBPathogenAbundance,
     DBAntimicrobialResistanceGene,
 )
+from database.models.quantum_chemistry import (
+    DBQuantumMolecularSystem,
+    DBVQEAnsatzExecution,
+    DBHamiltonianEnergyState,
+)
 
 __all__ = [
     "User",
@@ -495,4 +500,7 @@ __all__ = [
     "DBMetagenomicSample",
     "DBPathogenAbundance",
     "DBAntimicrobialResistanceGene",
+    "DBQuantumMolecularSystem",
+    "DBVQEAnsatzExecution",
+    "DBHamiltonianEnergyState",
 ]
