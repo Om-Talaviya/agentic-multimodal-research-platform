@@ -1,3 +1,4 @@
+from api.routes.preclinical_toxicology import router as preclinical_toxicology_router
 from api.routes.synthetic_gene_circuit import router as gene_circuit_router
 from api.routes.phenotypic_screening import router as phenotypic_screening_router
 from api.routes.epigenetic_clock import router as epigenetic_clock_router
@@ -148,6 +149,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(preclinical_toxicology_router, prefix="/api/v1")
 app.include_router(gene_circuit_router, prefix="/api/v1")
 app.include_router(phenotypic_screening_router, prefix="/api/v1")
 app.include_router(epigenetic_clock_router, prefix="/api/v1")
