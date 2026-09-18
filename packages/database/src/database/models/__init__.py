@@ -294,6 +294,11 @@ from database.models.diffusion_conformation import (
     DBDiffusionPocketConformation,
     DBEquivariantDockingPose,
 )
+from database.models.whole_cell_metabolism import (
+    DBWholeCellModel,
+    DBMetabolicFluxState,
+    DBKineticSimulationTrace,
+)
 
 __all__ = [
     "User",
@@ -519,4 +524,7 @@ __all__ = [
     "DBDiffusionComplexJob",
     "DBDiffusionPocketConformation",
     "DBEquivariantDockingPose",
+    "DBWholeCellModel",
+    "DBMetabolicFluxState",
+    "DBKineticSimulationTrace",
 ]

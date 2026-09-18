@@ -1,3 +1,4 @@
+from api.routes.whole_cell_metabolism import router as whole_cell_router
 from api.routes.diffusion_conformation import router as diffusion_router
 from api.routes.long_read_genomics import router as long_read_router
 from api.routes.quantum_chemistry import router as quantum_chemistry_router
@@ -141,6 +142,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(whole_cell_router, prefix="/api/v1")
 app.include_router(diffusion_router, prefix="/api/v1")
 app.include_router(long_read_router, prefix="/api/v1")
 app.include_router(quantum_chemistry_router, prefix="/api/v1")
