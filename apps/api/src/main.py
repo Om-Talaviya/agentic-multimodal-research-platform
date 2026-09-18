@@ -1,3 +1,4 @@
+from api.routes.phenotypic_screening import router as phenotypic_screening_router
 from api.routes.epigenetic_clock import router as epigenetic_clock_router
 from api.routes.robotic_workcell import router as robotic_workcell_router
 from api.routes.radiogenomics import router as radiogenomics_router
@@ -146,6 +147,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(phenotypic_screening_router, prefix="/api/v1")
 app.include_router(epigenetic_clock_router, prefix="/api/v1")
 app.include_router(robotic_workcell_router, prefix="/api/v1")
 app.include_router(radiogenomics_router, prefix="/api/v1")

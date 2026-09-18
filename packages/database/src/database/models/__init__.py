@@ -319,6 +319,11 @@ from database.models.epigenetic_clock import (
     DBMethylationClockResult,
     DBCpGMarkerScore,
 )
+from database.models.phenotypic_screening import (
+    DBCellPaintingPlate,
+    DBCellPaintingWell,
+    DBSingleCellMorphometry,
+)
 
 __all__ = [
     "User",
@@ -559,4 +564,7 @@ __all__ = [
     "DBEpigeneticSample",
     "DBMethylationClockResult",
     "DBCpGMarkerScore",
+    "DBCellPaintingPlate",
+    "DBCellPaintingWell",
+    "DBSingleCellMorphometry",
 ]
