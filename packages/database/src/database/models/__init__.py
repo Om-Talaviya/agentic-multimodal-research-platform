@@ -289,6 +289,11 @@ from database.models.long_read_genomics import (
     DBStructuralVariantCall,
     DBTelomericRepeatProfile,
 )
+from database.models.diffusion_conformation import (
+    DBDiffusionComplexJob,
+    DBDiffusionPocketConformation,
+    DBEquivariantDockingPose,
+)
 
 __all__ = [
     "User",
@@ -511,4 +516,7 @@ __all__ = [
     "DBLongReadSequencingRun",
     "DBStructuralVariantCall",
     "DBTelomericRepeatProfile",
+    "DBDiffusionComplexJob",
+    "DBDiffusionPocketConformation",
+    "DBEquivariantDockingPose",
 ]
