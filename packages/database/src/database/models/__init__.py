@@ -304,6 +304,11 @@ from database.models.clinical_genomics_twin import (
     DBPharmacogenomicGuideline,
     DBPatientDigitalTwinSim,
 )
+from database.models.radiogenomics import (
+    DBRadiogenomicsScan,
+    DBVolumetricRadiomicFeature,
+    DBImagingGenomicCorrelation,
+)
 
 __all__ = [
     "User",
@@ -535,4 +540,7 @@ __all__ = [
     "DBPatientGenomicProfile",
     "DBPharmacogenomicGuideline",
     "DBPatientDigitalTwinSim",
+    "DBRadiogenomicsScan",
+    "DBVolumetricRadiomicFeature",
+    "DBImagingGenomicCorrelation",
 ]

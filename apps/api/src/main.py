@@ -1,3 +1,4 @@
+from api.routes.radiogenomics import router as radiogenomics_router
 from api.routes.clinical_genomics_twin import router as clinical_twin_router
 from api.routes.whole_cell_metabolism import router as whole_cell_router
 from api.routes.diffusion_conformation import router as diffusion_router
@@ -143,6 +144,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(radiogenomics_router, prefix="/api/v1")
 app.include_router(clinical_twin_router, prefix="/api/v1")
 app.include_router(whole_cell_router, prefix="/api/v1")
 app.include_router(diffusion_router, prefix="/api/v1")
