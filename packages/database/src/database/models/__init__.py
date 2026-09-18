@@ -314,6 +314,11 @@ from database.models.robotic_workcell import (
     DBDeckLayoutInstruction,
     DBAutomatedRunExecution,
 )
+from database.models.epigenetic_clock import (
+    DBEpigeneticSample,
+    DBMethylationClockResult,
+    DBCpGMarkerScore,
+)
 
 __all__ = [
     "User",
@@ -551,4 +556,7 @@ __all__ = [
     "DBRoboticWorkcellProtocol",
     "DBDeckLayoutInstruction",
     "DBAutomatedRunExecution",
+    "DBEpigeneticSample",
+    "DBMethylationClockResult",
+    "DBCpGMarkerScore",
 ]
