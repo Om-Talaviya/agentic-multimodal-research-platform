@@ -299,6 +299,11 @@ from database.models.whole_cell_metabolism import (
     DBMetabolicFluxState,
     DBKineticSimulationTrace,
 )
+from database.models.clinical_genomics_twin import (
+    DBPatientGenomicProfile,
+    DBPharmacogenomicGuideline,
+    DBPatientDigitalTwinSim,
+)
 
 __all__ = [
     "User",
@@ -527,4 +532,7 @@ __all__ = [
     "DBWholeCellModel",
     "DBMetabolicFluxState",
     "DBKineticSimulationTrace",
+    "DBPatientGenomicProfile",
+    "DBPharmacogenomicGuideline",
+    "DBPatientDigitalTwinSim",
 ]

@@ -45,6 +45,7 @@ from database.repositories.quantum_chemistry_repo import QuantumChemistryReposit
 from database.repositories.long_read_genomics_repo import LongReadGenomicsRepository
 from database.repositories.diffusion_conformation_repo import DiffusionConformationRepository
 from database.repositories.whole_cell_metabolism_repo import WholeCellMetabolicRepository
+from database.repositories.clinical_genomics_twin_repo import ClinicalGenomicsTwinRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -89,5 +90,6 @@ __all__ = [
     "LongReadGenomicsRepository",
     "DiffusionConformationRepository",
     "WholeCellMetabolicRepository",
+    "ClinicalGenomicsTwinRepository",
 ]
 
