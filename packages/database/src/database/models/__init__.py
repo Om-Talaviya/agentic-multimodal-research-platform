@@ -329,6 +329,11 @@ from database.models.synthetic_gene_circuit import (
     DBBioLogicGate,
     DBCircuitKineticsTrace,
 )
+from database.models.preclinical_toxicology import (
+    DBPreclinicalToxStudy,
+    DBToxicogenomicEndpoint,
+    DBStructuralToxAlert,
+)
 
 __all__ = [
     "User",
@@ -575,4 +580,7 @@ __all__ = [
     "DBSyntheticGeneCircuit",
     "DBBioLogicGate",
     "DBCircuitKineticsTrace",
+    "DBPreclinicalToxStudy",
+    "DBToxicogenomicEndpoint",
+    "DBStructuralToxAlert",
 ]
