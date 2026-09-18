@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-09-18 (Branch: `develop/v1.1`)
+
+### Added
+- **Phase 90: Multi-Omics Epigenetic Age & DNA Methylation Clock Predictor**:
+  - Implemented `EpigeneticClockEngine` supporting Horvath (353-CpG), Hannum (71-CpG), PhenoAge, and GrimAge models with missing site imputation, Epigenetic Age Acceleration (EAA), and DunedinPACE pace of aging.
+  - Created `DBEpigeneticSample`, `DBMethylationClockResult`, `DBCpGMarkerScore` models and `EpigeneticClockRepository`.
+  - Added REST API endpoints under `/api/v1/epigenetic-clock/*`.
+- **Phase 91: High-Content Phenotypic Image Screening & Single-Cell Morphometry AI**:
+  - Implemented `PhenotypicScreeningEngine` analyzing 5-channel Cell Painting assays (DNA, RNA, ER, AGP, Mito) with Haralick texture, Zernike moments, Mahalanobis phenotypic distance, and Mechanism-of-Action (MoA) classification.
+  - Created `DBCellPaintingPlate`, `DBCellPaintingWell`, `DBSingleCellMorphometry` models and `PhenotypicScreeningRepository`.
+  - Added REST API endpoints under `/api/v1/phenotypic-screening/*`.
+- **Phase 92: Synthetic Biology Gene Circuit Design & Boolean Logic Gate Synthesizer**:
+  - Implemented `SyntheticGeneCircuitEngine` with transcriptional logic gates (AND, OR, NAND, NOR, XOR), transcription factor assignment (TetR, LacI, AraC, LuxR), Hill kinetic dynamic ODE simulation, and Golden Gate MoClo plasmid overhang compilation.
+  - Created `DBSyntheticGeneCircuit`, `DBBioLogicGate`, `DBCircuitKineticsTrace` models and `SyntheticGeneCircuitRepository`.
+  - Added REST API endpoints under `/api/v1/synthetic-gene-circuits/*`.
+- **Phase 93: Autonomous Preclinical Toxicogenomics & ADMET-Safety Risk Ranker**:
+  - Implemented `PreclinicalToxicologyEngine` with Ames mutagenicity, hERG cardiotoxicity ($IC_{50}$), DILI hepatotoxicity, CYP450 inhibition profiles, Caco-2 permeability, structural alert scanning, and composite Therapeutic Safety Index (TSI) scoring.
+  - Created `DBPreclinicalToxStudy`, `DBToxicogenomicEndpoint`, `DBStructuralToxAlert` models and `PreclinicalToxicologyRepository`.
+  - Added REST API endpoints under `/api/v1/preclinical-toxicology/*`.
+
+---
+
 ## [1.2.0] - 2026-09-18 (Branch: `develop/v1.1`)
 
 ### Added
