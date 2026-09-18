@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-09-18 (Branch: `develop/v1.1`)
+
+### Added
+- **Phase 83: Autonomous Quantum Chemistry & Molecular Hamiltonian VQE Simulation Engine**:
+  - Implemented `QuantumChemistryVQEEngine` with Jordan-Wigner transformation, UCCSD ansatz parametrization, and classical gradient optimization achieving chemical accuracy ($\Delta E \le 1.0\text{ kcal/mol}$).
+  - Created `DBQuantumMolecularSystem`, `DBVQEAnsatzExecution`, `DBHamiltonianEnergyState` models and `QuantumChemistryRepository`.
+  - Added REST API routes under `/api/v1/quantum-chemistry/*`.
+- **Phase 84: Autonomous Next-Generation Sequencing (NGS) Long-Read Structural Variant & Telomere Calling Engine**:
+  - Implemented `LongReadGenomicsEngine` for PacBio HiFi and Oxford Nanopore CIGAR alignment parsing, structural variant calling (DEL, INS, DUP, INV, TRA), and hexamer `TTAGGG` repeat erosion profiling.
+  - Created `DBLongReadSequencingRun`, `DBStructuralVariantCall`, `DBTelomericRepeatProfile` models and `LongReadGenomicsRepository`.
+  - Added REST API routes under `/api/v1/long-read/*`.
+- **Phase 85: Autonomous Multi-Modal Diffusion-Based 3D Protein-Ligand Complex Conformation Generator**:
+  - Implemented `DiffusionConformationEngine` utilizing SE(3)-equivariant score matching reverse diffusion to sample docking conformations and binding pocket druggability.
+  - Created `DBDiffusionComplexJob`, `DBDiffusionPocketConformation`, `DBEquivariantDockingPose` models and `DiffusionConformationRepository`.
+  - Added REST API routes under `/api/v1/diffusion-conformation/*`.
+- **Phase 86: Autonomous Whole-Cell Metabolic Flux Simulation & Kinetic Genome-Scale Dynamic Modeler**:
+  - Implemented `WholeCellMetabolicEngine` for dynamic Flux Balance Analysis (dFBA), biomass optimization, and glucose-acetate kinetic traces.
+  - Created `DBWholeCellModel`, `DBMetabolicFluxState`, `DBKineticSimulationTrace` models and `WholeCellMetabolicRepository`.
+  - Added REST API routes under `/api/v1/whole-cell/*`.
+- **Phase 87: Autonomous Clinical Genomics Digital Twin & Patient-Specific Pharmacogenomics Engine**:
+  - Implemented `ClinicalGenomicsTwinEngine` matching CPIC Level A diplotypes and calculating patient-specific clearance curves, toxic plasma accumulation risk, and dose adjustments.
+  - Created `DBPatientGenomicProfile`, `DBPharmacogenomicGuideline`, `DBPatientDigitalTwinSim` models and `ClinicalGenomicsTwinRepository`.
+  - Added REST API routes under `/api/v1/clinical-twin/*`.
+- **Phase 88: Autonomous Radiogenomics & 3D Volumetric Medical Imaging AI Feature Extractor**:
+  - Implemented `RadiogenomicsEngine` for IBSI 3D shape, intensity histogram, and GLCM texture extraction correlated with oncogenomic alterations (IDH1, EGFR, MGMT).
+  - Created `DBRadiogenomicsScan`, `DBVolumetricRadiomicFeature`, `DBImagingGenomicCorrelation` models and `RadiogenomicsRepository`.
+  - Added REST API routes under `/api/v1/radiogenomics/*`.
+- **Phase 89: Autonomous Laboratory Robotics Automation & Self-Driving Workcell Protocol Compiler**:
+  - Implemented `RoboticWorkcellEngine` compiling executable Python protocol scripts (Opentrons API v2 / PyLabRobot) with liquid class modeling and deck collision checking.
+  - Created `DBRoboticWorkcellProtocol`, `DBDeckLayoutInstruction`, `DBAutomatedRunExecution` models and `RoboticWorkcellRepository`.
+  - Added REST API routes under `/api/v1/robotic-workcell/*`.
+
+---
+
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
