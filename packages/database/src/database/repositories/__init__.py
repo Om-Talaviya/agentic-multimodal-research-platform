@@ -43,6 +43,7 @@ from database.repositories.user_repo import UserRepository
 from database.repositories.workspace_repo import WorkspaceRepository
 from database.repositories.quantum_chemistry_repo import QuantumChemistryRepository
 from database.repositories.long_read_genomics_repo import LongReadGenomicsRepository
+from database.repositories.diffusion_conformation_repo import DiffusionConformationRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -85,5 +86,6 @@ __all__ = [
     "SingleCellRepository",
     "QuantumChemistryRepository",
     "LongReadGenomicsRepository",
+    "DiffusionConformationRepository",
 ]
 
