@@ -324,6 +324,11 @@ from database.models.phenotypic_screening import (
     DBCellPaintingWell,
     DBSingleCellMorphometry,
 )
+from database.models.synthetic_gene_circuit import (
+    DBSyntheticGeneCircuit,
+    DBBioLogicGate,
+    DBCircuitKineticsTrace,
+)
 
 __all__ = [
     "User",
@@ -567,4 +572,7 @@ __all__ = [
     "DBCellPaintingPlate",
     "DBCellPaintingWell",
     "DBSingleCellMorphometry",
+    "DBSyntheticGeneCircuit",
+    "DBBioLogicGate",
+    "DBCircuitKineticsTrace",
 ]
