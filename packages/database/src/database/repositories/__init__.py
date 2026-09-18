@@ -42,6 +42,7 @@ from database.repositories.usage_repo import UsageRepository
 from database.repositories.user_repo import UserRepository
 from database.repositories.workspace_repo import WorkspaceRepository
 from database.repositories.quantum_chemistry_repo import QuantumChemistryRepository
+from database.repositories.long_read_genomics_repo import LongReadGenomicsRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -83,5 +84,6 @@ __all__ = [
     "CRISPRRepository",
     "SingleCellRepository",
     "QuantumChemistryRepository",
+    "LongReadGenomicsRepository",
 ]
 
