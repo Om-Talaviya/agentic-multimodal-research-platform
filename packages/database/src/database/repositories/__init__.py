@@ -55,6 +55,7 @@ from database.repositories.cryo_ensemble_repo import CryoEnsembleRepository
 from database.repositories.sirna_design_repo import SiRnaDesignRepository
 from database.repositories.pkpd_model_repo import PkPdSimulationRepository
 from database.repositories.experiment_synthesis_repo import ExperimentSynthesisRepository
+from database.repositories.prime_editing_repo import PrimeEditingRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -109,5 +110,6 @@ __all__ = [
     "SiRnaDesignRepository",
     "PkPdSimulationRepository",
     "ExperimentSynthesisRepository",
+    "PrimeEditingRepository",
 ]
 

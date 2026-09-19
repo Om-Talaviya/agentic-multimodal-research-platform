@@ -120,6 +120,11 @@ from database.models.experiment_synthesis import (
     DBAutonomousActionStep,
     DBClosedLoopVerificationRecord,
 )
+from database.models.prime_editing import (
+    DBPrimeEditingDesign,
+    DBPegRnaCandidate,
+    DBBystanderEditingAlert,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -637,4 +642,7 @@ __all__ = [
     "DBAutonomousExperimentSynthesis",
     "DBAutonomousActionStep",
     "DBClosedLoopVerificationRecord",
+    "DBPrimeEditingDesign",
+    "DBPegRnaCandidate",
+    "DBBystanderEditingAlert",
 ]
