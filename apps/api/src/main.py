@@ -1,3 +1,4 @@
+from api.routes.proteogenomics import router as proteogenomics_router
 from api.routes.spatial_transcriptomics import router as spatial_transcriptomics_router
 from api.routes.preclinical_toxicology import router as preclinical_toxicology_router
 from api.routes.synthetic_gene_circuit import router as gene_circuit_router
@@ -150,6 +151,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(proteogenomics_router, prefix="/api/v1")
 app.include_router(spatial_transcriptomics_router, prefix="/api/v1")
 app.include_router(preclinical_toxicology_router, prefix="/api/v1")
 app.include_router(gene_circuit_router, prefix="/api/v1")
