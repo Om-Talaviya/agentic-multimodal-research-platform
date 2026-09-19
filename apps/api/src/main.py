@@ -1,3 +1,4 @@
+from api.routes.pkpd_simulation import router as pkpd_router
 from api.routes.sirna_design import router as sirna_design_router
 from api.routes.cryo_ensemble import router as cryo_ensemble_router
 from api.routes.car_nk import router as car_nk_router
@@ -154,6 +155,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(pkpd_router, prefix="/api/v1")
 app.include_router(sirna_design_router, prefix="/api/v1")
 app.include_router(cryo_ensemble_router, prefix="/api/v1")
 app.include_router(car_nk_router, prefix="/api/v1")
