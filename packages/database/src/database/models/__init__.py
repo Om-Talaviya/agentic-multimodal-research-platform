@@ -86,6 +86,9 @@ from database.models.spatial_transcriptomics import (
     DBCellSpatialCoordinate,
     DBCellCommunicationPair,
     DBSpatialDomain,
+    DBSpatialTranscriptomicsSlice,
+    DBCellTypeProportion,
+    DBSpatialLigandReceptor,
 )
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
@@ -583,4 +586,7 @@ __all__ = [
     "DBPreclinicalToxStudy",
     "DBToxicogenomicEndpoint",
     "DBStructuralToxAlert",
+    "DBSpatialTranscriptomicsSlice",
+    "DBCellTypeProportion",
+    "DBSpatialLigandReceptor",
 ]
