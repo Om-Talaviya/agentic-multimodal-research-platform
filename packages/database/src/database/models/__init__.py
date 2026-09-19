@@ -100,6 +100,11 @@ from database.models.car_nk import (
     DBSynNotchGate,
     DBCytokineSecretionProfile,
 )
+from database.models.cryo_ensemble import (
+    DBCryoEmEnsemble,
+    DBCryoConformationalState,
+    DBFreeEnergyTransition,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -605,4 +610,7 @@ __all__ = [
     "DBCarNkDesign",
     "DBSynNotchGate",
     "DBCytokineSecretionProfile",
+    "DBCryoEmEnsemble",
+    "DBCryoConformationalState",
+    "DBFreeEnergyTransition",
 ]
