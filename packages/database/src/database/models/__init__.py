@@ -115,6 +115,11 @@ from database.models.pkpd_model import (
     DBTissueConcentration,
     DBPharmacodynamicEffect,
 )
+from database.models.experiment_synthesis import (
+    DBAutonomousExperimentSynthesis,
+    DBAutonomousActionStep,
+    DBClosedLoopVerificationRecord,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -629,4 +634,7 @@ __all__ = [
     "DBPkPdSimulation",
     "DBTissueConcentration",
     "DBPharmacodynamicEffect",
+    "DBAutonomousExperimentSynthesis",
+    "DBAutonomousActionStep",
+    "DBClosedLoopVerificationRecord",
 ]
