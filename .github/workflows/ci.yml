@@ -35,14 +35,14 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel hatchling
           pip install pytest pytest-asyncio pytest-cov pytest-timeout httpx pydantic "pydantic[email]" email-validator pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite asyncpg greenlet rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
 
-      - name: Run Pytest Test Suite (376 tests)
+      - name: Run Pytest Test Suite (612+ tests)
         env:
           PYTHONPATH: "packages/shared/src:packages/sdk-python/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src"
           DATABASE_URL: "sqlite+aiosqlite:///:memory:"
           SECRET_KEY: "ci-secret-key-for-testing-only-32-chars-long"
           TESTING: "true"
         run: |
-          pytest -v --timeout=90 packages/ apps/api/tests/
+          pytest -v --timeout=90 packages/ apps/api/tests/ tests/
 
   frontend-build:
     name: Frontend TypeScript & Vite Build
