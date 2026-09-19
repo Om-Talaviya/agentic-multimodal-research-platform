@@ -53,6 +53,7 @@ from database.repositories.proteogenomics_repo import ProteogenomicsRepository
 from database.repositories.car_nk_repo import CarNkDesignRepository
 from database.repositories.cryo_ensemble_repo import CryoEnsembleRepository
 from database.repositories.sirna_design_repo import SiRnaDesignRepository
+from database.repositories.pkpd_model_repo import PkPdSimulationRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -105,5 +106,6 @@ __all__ = [
     "CarNkDesignRepository",
     "CryoEnsembleRepository",
     "SiRnaDesignRepository",
+    "PkPdSimulationRepository",
 ]
 

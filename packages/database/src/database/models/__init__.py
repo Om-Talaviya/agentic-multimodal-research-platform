@@ -110,6 +110,11 @@ from database.models.sirna_design import (
     DBSiRnaOffTargetHit,
     DBChemicalModificationPattern,
 )
+from database.models.pkpd_model import (
+    DBPkPdSimulation,
+    DBTissueConcentration,
+    DBPharmacodynamicEffect,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -621,4 +626,7 @@ __all__ = [
     "DBSiRnaDesign",
     "DBSiRnaOffTargetHit",
     "DBChemicalModificationPattern",
+    "DBPkPdSimulation",
+    "DBTissueConcentration",
+    "DBPharmacodynamicEffect",
 ]
