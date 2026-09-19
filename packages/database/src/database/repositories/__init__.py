@@ -56,6 +56,7 @@ from database.repositories.sirna_design_repo import SiRnaDesignRepository
 from database.repositories.pkpd_model_repo import PkPdSimulationRepository
 from database.repositories.experiment_synthesis_repo import ExperimentSynthesisRepository
 from database.repositories.prime_editing_repo import PrimeEditingRepository
+from database.repositories.spatial_proteomics_repo import SpatialProteomicsRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -111,5 +112,6 @@ __all__ = [
     "PkPdSimulationRepository",
     "ExperimentSynthesisRepository",
     "PrimeEditingRepository",
+    "SpatialProteomicsRepository",
 ]
 

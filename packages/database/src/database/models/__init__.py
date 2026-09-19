@@ -125,6 +125,11 @@ from database.models.prime_editing import (
     DBPegRnaCandidate,
     DBBystanderEditingAlert,
 )
+from database.models.spatial_proteomics import (
+    DBSpatialProteomicsExperiment,
+    DBChannelMarkerIntensity,
+    DBCellularNeighborhoodSpatialMatrix,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -645,4 +650,7 @@ __all__ = [
     "DBPrimeEditingDesign",
     "DBPegRnaCandidate",
     "DBBystanderEditingAlert",
+    "DBSpatialProteomicsExperiment",
+    "DBChannelMarkerIntensity",
+    "DBCellularNeighborhoodSpatialMatrix",
 ]
