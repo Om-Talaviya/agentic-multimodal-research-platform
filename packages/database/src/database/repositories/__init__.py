@@ -54,6 +54,7 @@ from database.repositories.car_nk_repo import CarNkDesignRepository
 from database.repositories.cryo_ensemble_repo import CryoEnsembleRepository
 from database.repositories.sirna_design_repo import SiRnaDesignRepository
 from database.repositories.pkpd_model_repo import PkPdSimulationRepository
+from database.repositories.experiment_synthesis_repo import ExperimentSynthesisRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -107,5 +108,6 @@ __all__ = [
     "CryoEnsembleRepository",
     "SiRnaDesignRepository",
     "PkPdSimulationRepository",
+    "ExperimentSynthesisRepository",
 ]
 
