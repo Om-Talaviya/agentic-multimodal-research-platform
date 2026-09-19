@@ -57,6 +57,7 @@ from database.repositories.pkpd_model_repo import PkPdSimulationRepository
 from database.repositories.experiment_synthesis_repo import ExperimentSynthesisRepository
 from database.repositories.prime_editing_repo import PrimeEditingRepository
 from database.repositories.spatial_proteomics_repo import SpatialProteomicsRepository
+from database.repositories.literature_factcheck_repo import LiteratureFactCheckRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -113,5 +114,6 @@ __all__ = [
     "ExperimentSynthesisRepository",
     "PrimeEditingRepository",
     "SpatialProteomicsRepository",
+    "LiteratureFactCheckRepository",
 ]
 

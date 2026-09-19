@@ -1,3 +1,4 @@
+from api.routes.literature_factcheck import router as factcheck_router
 from api.routes.spatial_proteomics import router as spatial_proteomics_router
 from api.routes.prime_editing import router as prime_editing_router
 from api.routes.experiment_synthesis import router as experiment_synthesis_router
@@ -158,6 +159,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(factcheck_router, prefix="/api/v1")
 app.include_router(spatial_proteomics_router, prefix="/api/v1")
 app.include_router(prime_editing_router, prefix="/api/v1")
 app.include_router(experiment_synthesis_router, prefix="/api/v1")
