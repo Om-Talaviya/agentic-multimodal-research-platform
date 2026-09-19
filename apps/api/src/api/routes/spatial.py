@@ -106,7 +106,7 @@ async def analyze_spatial_tissue(
         technology=dataset.technology,
         organism=dataset.organism,
         total_spots=dataset.total_spots,
-        status=dataset.status,
+        status=getattr(dataset, "status", "completed"),
         description=dataset.description,
         created_at=dataset.created_at.isoformat(),
     )
@@ -131,7 +131,7 @@ async def list_spatial_datasets(
             technology=d.technology,
             organism=d.organism,
             total_spots=d.total_spots,
-            status=d.status,
+            status=getattr(d, "status", "completed"),
             description=d.description,
             created_at=d.created_at.isoformat(),
         )

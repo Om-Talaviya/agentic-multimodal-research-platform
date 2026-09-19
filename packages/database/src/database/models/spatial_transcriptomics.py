@@ -27,6 +27,7 @@ class DBSpatialTissueDataset(Base):
     slide_height_um: Mapped[float] = mapped_column(Float, default=6500.0)
     spot_diameter_um: Mapped[float] = mapped_column(Float, default=55.0)
     total_spots: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(50), default="completed")
     meta_info: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSONType, nullable=True)
     created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
 
