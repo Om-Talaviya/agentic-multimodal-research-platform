@@ -90,6 +90,11 @@ from database.models.spatial_transcriptomics import (
     DBCellTypeProportion,
     DBSpatialLigandReceptor,
 )
+from database.models.proteogenomics import (
+    DBProteogenomicExperiment,
+    DBPeptideSpectrumMatch,
+    DBNovelSpliceJunction,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -589,4 +594,7 @@ __all__ = [
     "DBSpatialTranscriptomicsSlice",
     "DBCellTypeProportion",
     "DBSpatialLigandReceptor",
+    "DBProteogenomicExperiment",
+    "DBPeptideSpectrumMatch",
+    "DBNovelSpliceJunction",
 ]
