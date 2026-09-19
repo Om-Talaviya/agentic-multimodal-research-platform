@@ -105,6 +105,11 @@ from database.models.cryo_ensemble import (
     DBCryoConformationalState,
     DBFreeEnergyTransition,
 )
+from database.models.sirna_design import (
+    DBSiRnaDesign,
+    DBSiRnaOffTargetHit,
+    DBChemicalModificationPattern,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -613,4 +618,7 @@ __all__ = [
     "DBCryoEmEnsemble",
     "DBCryoConformationalState",
     "DBFreeEnergyTransition",
+    "DBSiRnaDesign",
+    "DBSiRnaOffTargetHit",
+    "DBChemicalModificationPattern",
 ]
