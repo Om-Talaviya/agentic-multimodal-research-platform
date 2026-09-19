@@ -48,6 +48,7 @@ from database.repositories.whole_cell_metabolism_repo import WholeCellMetabolicR
 from database.repositories.clinical_genomics_twin_repo import ClinicalGenomicsTwinRepository
 from database.repositories.radiogenomics_repo import RadiogenomicsRepository
 from database.repositories.robotic_workcell_repo import RoboticWorkcellRepository
+from database.repositories.spatial_transcriptomics_repo import SpatialTranscriptomicsRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -95,5 +96,6 @@ __all__ = [
     "ClinicalGenomicsTwinRepository",
     "RadiogenomicsRepository",
     "RoboticWorkcellRepository",
+    "SpatialTranscriptomicsRepository",
 ]
 
