@@ -84,9 +84,9 @@ def cmd_health(args):
 
         # Test Model Gateway
         try:
-            from ai.gateway import ModelGateway
-            gateway = ModelGateway()
-            providers = gateway.get_available_providers()
+            from ai.factory import create_default_gateway
+            gateway = create_default_gateway()
+            providers = list(gateway.provider_registry._llm_providers.keys())
             print(f"[+] AI Model Gateway: READY (Providers: {', '.join(providers) if providers else 'Local Fallback'})")
         except Exception as e:
             print(f"[-] AI Model Gateway: STANDBY ({e})")
@@ -215,6 +215,7 @@ def cmd_synthesize(args):
 
 def main():
     parser = argparse.ArgumentParser(description="Agentic Multimodal Research Platform CLI")
+    parser.add_argument("-v", "--version", action="store_true", help="Display platform version and active phase count")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
     # Version
@@ -255,7 +256,7 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == "version":
+    if getattr(args, "version", False) or args.command == "version":
         cmd_version(args)
     elif args.command == "seed":
         cmd_seed(args)
