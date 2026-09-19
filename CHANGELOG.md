@@ -7,6 +7,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.0] - 2026-09-19 (Branch: `develop/v1.1`)
+
+### Added
+- **Phase 94: Autonomous Spatial Transcriptomics & TME Cellular Deconvolution Engine**:
+  - Implemented `SpatialTranscriptomicsEngine` for Visium/Xenium spot deconvolution, cell-type proportions, and cellular niche clustering.
+  - Created `DBSpatialSample`, `DBSpatialSpotDeconvolution`, `DBCellTypeProportion` models and `SpatialTranscriptomicsRepository`.
+  - Added REST API endpoints under `/api/v1/spatial-transcriptomics/*`.
+- **Phase 95: Autonomous Proteogenomics & MS/MS Spectral Library Generator**:
+  - Implemented `ProteogenomicsEngine` for novel splice junction peptide mapping, MS/MS spectra matching, and FDR calculation.
+  - Created `DBProteogenomicSample`, `DBSpectralMatch`, `DBNovelPeptide` models and `ProteogenomicsRepository`.
+  - Added REST API endpoints under `/api/v1/proteogenomics/*`.
+- **Phase 96: Autonomous CAR-NK & Immuno-Oncology SynNotch Designer**:
+  - Implemented `CarNkDesignerEngine` for chimeric antigen receptor architecture design, scFv affinity matching, and SynNotch logic gate circuits.
+  - Created `DBCarNkDesign`, `DBSynNotchCircuit`, `DBCytotoxicityPrediction` models and `CarNkDesignerRepository`.
+  - Added REST API endpoints under `/api/v1/car-nk/*`.
+- **Phase 97: Autonomous Target-Enabled Cryo-EM Ensemble Generator**:
+  - Implemented `CryoEmEnsembleEngine` for conformational state clustering, energy landscape reconstruction, and density map fitting.
+  - Created `DBCryoEmEnsemble`, `DBConformationalState`, `DBEnergyLandscapePoint` models and `CryoEmEnsembleRepository`.
+  - Added REST API endpoints under `/api/v1/cryoem-ensemble/*`.
+- **Phase 98: Autonomous Oligonucleotide & siRNA Therapeutic Off-Target Modeler**:
+  - Implemented `SirnaOffTargetEngine` for siRNA seed region thermodynamics, RNAi knockdown efficacy prediction, and transcriptomic off-target profiling.
+  - Created `DBSirnaCandidate`, `DBOffTargetTranscript`, `DBKnockdownPrediction` models and `SirnaOffTargetRepository`.
+  - Added REST API endpoints under `/api/v1/sirna/*`.
+- **Phase 99: Autonomous Pharmacokinetic-Pharmacodynamic (PK/PD) & PBPK Modeler**:
+  - Implemented `PkPdModelerEngine` with multi-compartment physiologically-based PK modeling, clearance kinetics, and dynamic concentration-time profiles.
+  - Created `DBPkPdSimulation`, `DBPbpkCompartment`, `DBConcentrationTimePoint` models and `PkPdModelerRepository`.
+  - Added REST API endpoints under `/api/v1/pkpd/*`.
+- **Phase 100: Autonomous AI Lab Co-Pilot & Centennial Synthesis Core**:
+  - Implemented `AiLabCopilotEngine` synthesizing milestone insights across all 100 platform generations with cross-domain scientific discovery scoring.
+  - Created `DBCopilotSession`, `DBSynthesisInsight`, `DBCentennialScorecard` models and `AiLabCopilotRepository`.
+  - Added REST API endpoints under `/api/v1/ai-copilot/*`.
+- **Phase 101: Autonomous CRISPR Prime & Base Editing Predictor**:
+  - Implemented `CrisprPrimeBaseEditingEngine` predicting pegRNA efficiency, reverse transcription template insertion accuracy, and bystander base editing risks.
+  - Created `DBCrisprEditingDesign`, `DBPegRnaCandidate`, `DBBystanderRisk` models and `CrisprPrimeBaseEditingRepository`.
+  - Added REST API endpoints under `/api/v1/crispr-editing/*`.
+- **Phase 102: Autonomous Multiplexed Spatial Proteomics Analyzer**:
+  - Implemented `SpatialProteomicsEngine` analyzing multiplexed imaging mass cytometry / CODEX marker intensities, neighborhood graphs, and tumor-stroma infiltration.
+  - Created `DBSpatialProteomicsScan`, `DBCellularPhenotype`, `DBSpatialNeighborhood` models and `SpatialProteomicsRepository`.
+  - Added REST API endpoints under `/api/v1/spatial-proteomics/*`.
+- **Phase 103: Autonomous Literature Fact-Checking & Claim Verification Engine**:
+  - Implemented `LiteratureFactcheckEngine` verifying biomedical claims against knowledge base evidence with NLI stance classification (SUPPORTED, REFUTED, INSUFFICIENT_EVIDENCE) and contradiction detection.
+  - Created `DBFactcheckSession`, `DBVerifiedClaim`, `DBEvidenceGrounding` models and `LiteratureFactcheckRepository`.
+  - Added REST API endpoints under `/api/v1/literature-factcheck/*`.
+  - Upgraded and hardened Research CLI (`scripts/research_cli.py`) with comprehensive CLI automated test suite (`tests/test_research_cli.py`).
+
+---
+
 ## [1.3.0] - 2026-09-18 (Branch: `develop/v1.1`)
 
 ### Added

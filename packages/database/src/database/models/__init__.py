@@ -130,6 +130,11 @@ from database.models.spatial_proteomics import (
     DBChannelMarkerIntensity,
     DBCellularNeighborhoodSpatialMatrix,
 )
+from database.models.literature_factcheck import (
+    DBLiteratureFactCheck,
+    DBDiscrepancyClaim,
+    DBCitationIntegrityMetric,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -653,4 +658,7 @@ __all__ = [
     "DBSpatialProteomicsExperiment",
     "DBChannelMarkerIntensity",
     "DBCellularNeighborhoodSpatialMatrix",
+    "DBLiteratureFactCheck",
+    "DBDiscrepancyClaim",
+    "DBCitationIntegrityMetric",
 ]
