@@ -51,6 +51,7 @@ from database.repositories.robotic_workcell_repo import RoboticWorkcellRepositor
 from database.repositories.spatial_transcriptomics_repo import SpatialTranscriptomicsRepository
 from database.repositories.proteogenomics_repo import ProteogenomicsRepository
 from database.repositories.car_nk_repo import CarNkDesignRepository
+from database.repositories.cryo_ensemble_repo import CryoEnsembleRepository
 
 __all__ = [
     "ResearchJobRepository",
@@ -101,5 +102,6 @@ __all__ = [
     "SpatialTranscriptomicsRepository",
     "ProteogenomicsRepository",
     "CarNkDesignRepository",
+    "CryoEnsembleRepository",
 ]
 

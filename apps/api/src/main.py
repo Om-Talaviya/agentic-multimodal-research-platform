@@ -1,3 +1,4 @@
+from api.routes.cryo_ensemble import router as cryo_ensemble_router
 from api.routes.car_nk import router as car_nk_router
 from api.routes.proteogenomics import router as proteogenomics_router
 from api.routes.spatial_transcriptomics import router as spatial_transcriptomics_router
@@ -152,6 +153,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(cryo_ensemble_router, prefix="/api/v1")
 app.include_router(car_nk_router, prefix="/api/v1")
 app.include_router(proteogenomics_router, prefix="/api/v1")
 app.include_router(spatial_transcriptomics_router, prefix="/api/v1")
