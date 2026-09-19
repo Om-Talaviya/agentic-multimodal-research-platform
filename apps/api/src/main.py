@@ -1,3 +1,4 @@
+from api.routes.prime_editing import router as prime_editing_router
 from api.routes.experiment_synthesis import router as experiment_synthesis_router
 from api.routes.pkpd_simulation import router as pkpd_router
 from api.routes.sirna_design import router as sirna_design_router
@@ -156,6 +157,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(prime_editing_router, prefix="/api/v1")
 app.include_router(experiment_synthesis_router, prefix="/api/v1")
 app.include_router(pkpd_router, prefix="/api/v1")
 app.include_router(sirna_design_router, prefix="/api/v1")
