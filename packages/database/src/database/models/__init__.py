@@ -95,6 +95,11 @@ from database.models.proteogenomics import (
     DBPeptideSpectrumMatch,
     DBNovelSpliceJunction,
 )
+from database.models.car_nk import (
+    DBCarNkDesign,
+    DBSynNotchGate,
+    DBCytokineSecretionProfile,
+)
 from database.models.generative_chemistry import (
     DBGenerativeMolecule,
     DBADMETProfile,
@@ -597,4 +602,7 @@ __all__ = [
     "DBProteogenomicExperiment",
     "DBPeptideSpectrumMatch",
     "DBNovelSpliceJunction",
+    "DBCarNkDesign",
+    "DBSynNotchGate",
+    "DBCytokineSecretionProfile",
 ]
