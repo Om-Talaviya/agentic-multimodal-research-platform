@@ -76,6 +76,7 @@ import { SpatialLipidomicsStudioPage } from './pages/SpatialLipidomicsStudioPage
 import { CrypticPocketsStudioPage } from './pages/CrypticPocketsStudioPage'
 import { OrganChipStudioPage } from './pages/OrganChipStudioPage'
 import { CyTOFStudioPage } from './pages/CyTOFStudioPage'
+import { SurvivalPrognosisStudioPage } from './pages/SurvivalPrognosisStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -219,6 +220,7 @@ function App() {
           <Route path="cryptic-pockets" element={<CrypticPocketsStudioPage />} />
           <Route path="organ-chip" element={<OrganChipStudioPage />} />
           <Route path="cytof" element={<CyTOFStudioPage />} />
+          <Route path="survival-prognosis" element={<SurvivalPrognosisStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

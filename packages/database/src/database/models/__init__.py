@@ -417,6 +417,11 @@ from database.models.cytof import (
     DBCyTOFMetalChannel,
     DBSingleCellCyTOFCluster,
 )
+from database.models.survival_prognosis import (
+    DBMultiOmicsPrognosticModel,
+    DBSurvivalCohortPatient,
+    DBSurvivalStratificationCurve,
+)
 
 __all__ = [
     "User",
@@ -714,6 +719,9 @@ __all__ = [
     "DBCyTOFExperiment",
     "DBCyTOFMetalChannel",
     "DBSingleCellCyTOFCluster",
+    "DBMultiOmicsPrognosticModel",
+    "DBSurvivalCohortPatient",
+    "DBSurvivalStratificationCurve",
 ]
 
 

@@ -927,6 +927,63 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
   - WHO Priority Pathogen outbreak early warning and risk categorization.
   - Database models (`DBMetagenomicSample`, `DBPathogenAbundance`, `DBAntimicrobialResistanceGene`), `AMRSurveillanceRepository`, `MetagenomicAMREngine`, `/api/v1/amr/*` REST API, and `AMRSurveillanceStudioPage.tsx` React studio (**ADR 082**).
 
+## Phase 104: Autonomous TCR/BCR Clonotype & Immune Repertoire Engine (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - V(D)J recombination alignment and somatic hypermutation analysis for TCR alpha/beta and BCR heavy/light chains.
+  - CDR3 sequence diversity quantification (Shannon entropy, Gini-Simpson, Clonality Index).
+  - Public clonotype sharing cross-referencing and CDR3 length Gaussian distribution fit.
+  - Database models (`DBImmuneRepertoire`, `DBTCRClonotype`, `DBVDJRecombination`), `ImmuneRepertoireRepository`, `TCRClonotypeEngine`, `/api/v1/immune-repertoire/*` REST API, and `ImmuneRepertoireStudioPage.tsx` React studio (**ADR 104**).
+
+## Phase 105: Autonomous Proteome-Wide HDX-MS Conformational Dynamics Engine (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - Hydrogen-Deuterium Exchange Mass Spectrometry (HDX-MS) kinetic uptake curve fitting ($D(t) = N - \sum A_i e^{-k_i t}$).
+  - Residue-level Protection Factor ($\ln P$) mapping and solvent accessibility classification.
+  - Ligand-induced allosteric perturbation and conformational shielding mapping.
+  - Database models (`DBHDXExperiment`, `DBDeuteriumUptakeCurve`, `DBProtectionFactorMap`), `HDXMSRepository`, `HDXMSEngine`, `/api/v1/hdx-ms/*` REST API, and `HDXMSStudioPage.tsx` React studio (**ADR 105**).
+
+## Phase 106: Autonomous Spatial Lipidomics & Imaging Mass Spectrometry Engine (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - MALDI/DESI Imaging Mass Spectrometry (IMS) 2D ion intensity spatial distribution.
+  - Accurate mass lipid identification (Phospholipids, Sphingolipids, Glycolipids, Neutral lipids).
+  - Spatial domain clustering (Tumor core vs Stroma vs Necrosis) and spatial Pearson colocalization.
+  - Database models (`DBSpatialLipidomicsDataset`, `DBLipidSpeciesIdentification`, `DBSpatialIonIntensityMap`), `SpatialLipidomicsRepository`, `SpatialLipidomicsEngine`, `/api/v1/spatial-lipidomics/*` REST API, and `SpatialLipidomicsStudioPage.tsx` React studio (**ADR 106**).
+
+## Phase 107: Autonomous Allosteric Pocket Discovery & Cryptic Site Mapper (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - MD trajectory cryptic pocket volume opening dynamics and surface enclosure calculations.
+  - Mutual Information Dynamic Cross-Correlation Network (DCCM) for long-range allosteric coupling.
+  - Druggability index scoring ($D_{score}$) and small-molecule allosteric modulator tractability.
+  - Database models (`DBCrypticPocketAnalysis`, `DBAllostericPocketProfile`, `DBCoupledResidueNetwork`), `CrypticPocketsRepository`, `CrypticPocketEngine`, `/api/v1/cryptic-pockets/*` REST API, and `CrypticPocketsStudioPage.tsx` React studio (**ADR 107**).
+
+## Phase 108: Autonomous Organ-on-a-Chip Microfluidic Dynamics Simulator (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - Microfluidic Navier-Stokes shear stress modeling in dual-channel biochips ($\tau = 6\mu Q / (w h^2)$).
+  - Dynamic endothelial barrier permeability and Transepithelial Electrical Resistance (TEER in $\Omega \cdot \text{cm}^2$).
+  - Blood-brain barrier, lung alveolus, and liver sinusoid microphysiological simulations.
+  - Database models (`DBOrganOnChipSimulation`, `DBMicrofluidicChannel`, `DBShearStressProfile`), `OrganChipRepository`, `MicrofluidicBiochipEngine`, `/api/v1/organ-chip/*` REST API, and `OrganChipStudioPage.tsx` React studio (**ADR 108**).
+
+## Phase 109: Autonomous High-Dimensional CyTOF Phenotyper Engine (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - 35+ heavy-metal isotopic channel mass cytometry panel data processing with Arcsinh transformation (cofactor=5).
+  - Isotopic spillover compensation and PhenoGraph-inspired deterministic phenotypic subset clustering.
+  - High-dimensional single-cell manifold projection into 2D t-SNE / UMAP space.
+  - Database models (`DBCyTOFExperiment`, `DBCyTOFMetalChannel`, `DBSingleCellCyTOFCluster`), `CyTOFRepository`, `CyTOFPhenotyperEngine`, `/api/v1/cytof/*` REST API, and `CyTOFStudioPage.tsx` React studio (**ADR 109**).
+
+## Phase 110: Autonomous Clinical-Genomic Survival Prognosis Stratifier (Completed)
+- **Status**: Completed
+- **Capabilities**:
+  - Multi-omics clinical-genomic patient cohort stratification and Cox Proportional Hazards regression modeling.
+  - Non-parametric Kaplan-Meier survival estimator with median OS, 5-year OS, and log-rank test p-values.
+  - Harrell's Concordance Index (C-Index > 0.80) validation and genomic biomarker hazard ratio forest plots.
+  - Database models (`DBMultiOmicsPrognosticModel`, `DBSurvivalCohortPatient`, `DBSurvivalStratificationCurve`), `SurvivalPrognosisRepository`, `SurvivalPrognosisEngine`, `/api/v1/survival-prognosis/*` REST API, and `SurvivalPrognosisStudioPage.tsx` React studio (**ADR 110**).
+
+
 
 
 

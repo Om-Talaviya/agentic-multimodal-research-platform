@@ -14,8 +14,8 @@ interface LipidSpecies {
 
 interface SpatialSpot {
   lipid_species_id: string;
-  x_coord: int;
-  y_coord: int;
+  x_coord: number;
+  y_coord: number;
   normalized_intensity: number;
   region_annotation: string;
 }
