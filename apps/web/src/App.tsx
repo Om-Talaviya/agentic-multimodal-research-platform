@@ -75,6 +75,7 @@ import { HDXMSStudioPage } from './pages/HDXMSStudioPage'
 import { SpatialLipidomicsStudioPage } from './pages/SpatialLipidomicsStudioPage'
 import { CrypticPocketsStudioPage } from './pages/CrypticPocketsStudioPage'
 import { OrganChipStudioPage } from './pages/OrganChipStudioPage'
+import { CyTOFStudioPage } from './pages/CyTOFStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -217,6 +218,7 @@ function App() {
           <Route path="spatial-lipidomics" element={<SpatialLipidomicsStudioPage />} />
           <Route path="cryptic-pockets" element={<CrypticPocketsStudioPage />} />
           <Route path="organ-chip" element={<OrganChipStudioPage />} />
+          <Route path="cytof" element={<CyTOFStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
