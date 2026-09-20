@@ -1,3 +1,4 @@
+from api.routes.hdx_ms import router as hdx_ms_router
 from api.routes.immune_repertoire import router as immune_repertoire_router
 from api.routes.literature_factcheck import router as factcheck_router
 from api.routes.spatial_proteomics import router as spatial_proteomics_router
@@ -160,6 +161,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(hdx_ms_router, prefix="/api/v1")
 app.include_router(immune_repertoire_router, prefix="/api/v1")
 app.include_router(factcheck_router, prefix="/api/v1")
 app.include_router(spatial_proteomics_router, prefix="/api/v1")

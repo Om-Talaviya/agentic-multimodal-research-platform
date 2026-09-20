@@ -392,6 +392,11 @@ from database.models.immune_repertoire import (
     DBTCRClonotype,
     DBVDJRecombination,
 )
+from database.models.hdx_ms import (
+    DBHDXExperiment,
+    DBDeuteriumUptakeCurve,
+    DBProtectionFactorMap,
+)
 
 __all__ = [
     "User",
@@ -674,6 +679,9 @@ __all__ = [
     "DBImmuneRepertoire",
     "DBTCRClonotype",
     "DBVDJRecombination",
+    "DBHDXExperiment",
+    "DBDeuteriumUptakeCurve",
+    "DBProtectionFactorMap",
 ]
 
 
