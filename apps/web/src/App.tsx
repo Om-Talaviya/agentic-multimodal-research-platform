@@ -70,6 +70,7 @@ import { SmFRETStudioPage } from './pages/SmFRETStudioPage'
 import { BiomarkerDiscoveryStudioPage } from './pages/BiomarkerDiscoveryStudioPage'
 import { LNPFormulationStudioPage } from './pages/LNPFormulationStudioPage'
 import { AMRSurveillanceStudioPage } from './pages/AMRSurveillanceStudioPage'
+import { ImmuneRepertoireStudioPage } from './pages/ImmuneRepertoireStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -207,6 +208,7 @@ function App() {
           <Route path="biomarkers" element={<BiomarkerDiscoveryStudioPage />} />
           <Route path="lnp-formulation" element={<LNPFormulationStudioPage />} />
           <Route path="amr-surveillance" element={<AMRSurveillanceStudioPage />} />
+          <Route path="immune-repertoire" element={<ImmuneRepertoireStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
