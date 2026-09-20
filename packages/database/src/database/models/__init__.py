@@ -412,6 +412,11 @@ from database.models.organ_chip import (
     DBMicrofluidicChannel,
     DBShearStressProfile,
 )
+from database.models.cytof import (
+    DBCyTOFExperiment,
+    DBCyTOFMetalChannel,
+    DBSingleCellCyTOFCluster,
+)
 
 __all__ = [
     "User",
@@ -706,6 +711,9 @@ __all__ = [
     "DBOrganOnChipSimulation",
     "DBMicrofluidicChannel",
     "DBShearStressProfile",
+    "DBCyTOFExperiment",
+    "DBCyTOFMetalChannel",
+    "DBSingleCellCyTOFCluster",
 ]
 
 

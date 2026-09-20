@@ -1,3 +1,4 @@
+from api.routes.cytof import router as cytof_router
 from api.routes.organ_chip import router as organ_chip_router
 from api.routes.cryptic_pockets import router as cryptic_pockets_router
 from api.routes.spatial_lipidomics import router as spatial_lipidomics_router
@@ -164,6 +165,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(cytof_router, prefix="/api/v1")
 app.include_router(organ_chip_router, prefix="/api/v1")
 app.include_router(cryptic_pockets_router, prefix="/api/v1")
 app.include_router(spatial_lipidomics_router, prefix="/api/v1")
