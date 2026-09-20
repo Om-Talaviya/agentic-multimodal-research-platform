@@ -72,6 +72,7 @@ import { LNPFormulationStudioPage } from './pages/LNPFormulationStudioPage'
 import { AMRSurveillanceStudioPage } from './pages/AMRSurveillanceStudioPage'
 import { ImmuneRepertoireStudioPage } from './pages/ImmuneRepertoireStudioPage'
 import { HDXMSStudioPage } from './pages/HDXMSStudioPage'
+import { SpatialLipidomicsStudioPage } from './pages/SpatialLipidomicsStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -211,6 +212,7 @@ function App() {
           <Route path="amr-surveillance" element={<AMRSurveillanceStudioPage />} />
           <Route path="immune-repertoire" element={<ImmuneRepertoireStudioPage />} />
           <Route path="hdx-ms" element={<HDXMSStudioPage />} />
+          <Route path="spatial-lipidomics" element={<SpatialLipidomicsStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

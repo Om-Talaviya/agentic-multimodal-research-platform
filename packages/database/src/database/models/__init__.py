@@ -397,6 +397,11 @@ from database.models.hdx_ms import (
     DBDeuteriumUptakeCurve,
     DBProtectionFactorMap,
 )
+from database.models.spatial_lipidomics import (
+    DBSpatialLipidomicsDataset,
+    DBLipidSpeciesIdentification,
+    DBSpatialIonIntensityMap,
+)
 
 __all__ = [
     "User",
@@ -682,6 +687,9 @@ __all__ = [
     "DBHDXExperiment",
     "DBDeuteriumUptakeCurve",
     "DBProtectionFactorMap",
+    "DBSpatialLipidomicsDataset",
+    "DBLipidSpeciesIdentification",
+    "DBSpatialIonIntensityMap",
 ]
 
 
