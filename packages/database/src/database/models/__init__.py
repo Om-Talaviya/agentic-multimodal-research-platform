@@ -407,6 +407,11 @@ from database.models.cryptic_pockets import (
     DBAllostericPocketProfile,
     DBCoupledResidueNetwork,
 )
+from database.models.organ_chip import (
+    DBOrganOnChipSimulation,
+    DBMicrofluidicChannel,
+    DBShearStressProfile,
+)
 
 __all__ = [
     "User",
@@ -698,6 +703,9 @@ __all__ = [
     "DBCrypticPocketAnalysis",
     "DBAllostericPocketProfile",
     "DBCoupledResidueNetwork",
+    "DBOrganOnChipSimulation",
+    "DBMicrofluidicChannel",
+    "DBShearStressProfile",
 ]
 
 
