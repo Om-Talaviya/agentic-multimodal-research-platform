@@ -73,6 +73,7 @@ import { AMRSurveillanceStudioPage } from './pages/AMRSurveillanceStudioPage'
 import { ImmuneRepertoireStudioPage } from './pages/ImmuneRepertoireStudioPage'
 import { HDXMSStudioPage } from './pages/HDXMSStudioPage'
 import { SpatialLipidomicsStudioPage } from './pages/SpatialLipidomicsStudioPage'
+import { CrypticPocketsStudioPage } from './pages/CrypticPocketsStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -213,6 +214,7 @@ function App() {
           <Route path="immune-repertoire" element={<ImmuneRepertoireStudioPage />} />
           <Route path="hdx-ms" element={<HDXMSStudioPage />} />
           <Route path="spatial-lipidomics" element={<SpatialLipidomicsStudioPage />} />
+          <Route path="cryptic-pockets" element={<CrypticPocketsStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

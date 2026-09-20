@@ -402,6 +402,11 @@ from database.models.spatial_lipidomics import (
     DBLipidSpeciesIdentification,
     DBSpatialIonIntensityMap,
 )
+from database.models.cryptic_pockets import (
+    DBCrypticPocketAnalysis,
+    DBAllostericPocketProfile,
+    DBCoupledResidueNetwork,
+)
 
 __all__ = [
     "User",
@@ -690,6 +695,9 @@ __all__ = [
     "DBSpatialLipidomicsDataset",
     "DBLipidSpeciesIdentification",
     "DBSpatialIonIntensityMap",
+    "DBCrypticPocketAnalysis",
+    "DBAllostericPocketProfile",
+    "DBCoupledResidueNetwork",
 ]
 
 
