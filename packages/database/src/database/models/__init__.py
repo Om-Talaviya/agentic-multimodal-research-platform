@@ -382,6 +382,16 @@ from database.models.preclinical_toxicology import (
     DBToxicogenomicEndpoint,
     DBStructuralToxAlert,
 )
+from database.models.literature_factcheck import (
+    DBLiteratureFactCheck,
+    DBDiscrepancyClaim,
+    DBCitationIntegrityMetric,
+)
+from database.models.immune_repertoire import (
+    DBImmuneRepertoire,
+    DBTCRClonotype,
+    DBVDJRecombination,
+)
 
 __all__ = [
     "User",
@@ -661,4 +671,9 @@ __all__ = [
     "DBLiteratureFactCheck",
     "DBDiscrepancyClaim",
     "DBCitationIntegrityMetric",
+    "DBImmuneRepertoire",
+    "DBTCRClonotype",
+    "DBVDJRecombination",
 ]
+
+
