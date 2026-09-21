@@ -61,6 +61,7 @@ from database.repositories.literature_factcheck_repo import LiteratureFactCheckR
 
 from database.repositories.ctc_metastasis_repo import CTCRepository
 from database.repositories.histone_epigenetics_repo import HistoneEpigeneticsRepository
+from database.repositories.tce_bispecific_repo import TCERepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -119,5 +120,6 @@ __all__ = [
     "LiteratureFactCheckRepository",
     "CTCRepository",
     "HistoneEpigeneticsRepository",
+    "TCERepository",
 ]
 

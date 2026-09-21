@@ -425,6 +425,7 @@ from database.models.survival_prognosis import (
 
 from database.models.ctc_metastasis import DBCirculatingTumorCellSample, DBMetastaticColonizationSite
 from database.models.histone_epigenetics import DBHistoneChIPSample, DBSuperEnhancerLocus
+from database.models.tce_bispecific import DBTCEConstructDesign, DBSynapseGeometryMetric
 __all__ = [
     "User",
     "UserQuota",
@@ -728,6 +729,8 @@ __all__ = [
     "DBMetastaticColonizationSite",
     "DBHistoneChIPSample",
     "DBSuperEnhancerLocus",
+    "DBTCEConstructDesign",
+    "DBSynapseGeometryMetric",
 ]
 
 
