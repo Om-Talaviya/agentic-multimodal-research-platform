@@ -1459,3 +1459,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Clonal dynamics.
 ### Decision: Implement `DBLineageBarcodeExperiment` & `DBClonalLineageTrajectory`.
 ### Consequences: Automated lineage evolution tracking.
+
+---
+
+## ADR 115: Autonomous MicroRNA (miRNA) Regulatory Network & Target Repression Modeler
+### Status: ACCEPTED (Generation 79)
+### Context: 3' UTR binding thermodynamics.
+### Decision: Implement `DBMiRNARegulatoryNetwork` & `DBMiRNATargetRepression`.
+### Consequences: Automated ceRNA network modeling.
