@@ -59,6 +59,7 @@ from database.repositories.prime_editing_repo import PrimeEditingRepository
 from database.repositories.spatial_proteomics_repo import SpatialProteomicsRepository
 from database.repositories.literature_factcheck_repo import LiteratureFactCheckRepository
 
+from database.repositories.ctc_metastasis_repo import CTCRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -115,5 +116,6 @@ __all__ = [
     "PrimeEditingRepository",
     "SpatialProteomicsRepository",
     "LiteratureFactCheckRepository",
+    "CTCRepository",
 ]
-
+

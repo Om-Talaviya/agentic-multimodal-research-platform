@@ -1428,14 +1428,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Consequences:
 - **Positive**: Automated taxonomic pathogen identification, CARD resistome profiling, plasmid mobility risk scoring, and WHO priority pathogen outbreak alert generation.
 
+---
 
-
-
-
-
-
-
-
-
-
-
+## ADR 111: Autonomous Circulating Tumor Cell (CTC) Single-Cell Trajectory & Metastasis Colonization Engine
+### Status: ACCEPTED (Generation 75)
+### Context: Metastatic CTC prediction.
+### Decision: Implement `DBCirculatingTumorCellSample` & `DBMetastaticColonizationSite`.
+### Consequences: Automated organotropism modeling.

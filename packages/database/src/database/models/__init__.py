@@ -423,6 +423,7 @@ from database.models.survival_prognosis import (
     DBSurvivalStratificationCurve,
 )
 
+from database.models.ctc_metastasis import DBCirculatingTumorCellSample, DBMetastaticColonizationSite
 __all__ = [
     "User",
     "UserQuota",
@@ -722,6 +723,8 @@ __all__ = [
     "DBMultiOmicsPrognosticModel",
     "DBSurvivalCohortPatient",
     "DBSurvivalStratificationCurve",
+    "DBCirculatingTumorCellSample",
+    "DBMetastaticColonizationSite",
 ]
 
 
