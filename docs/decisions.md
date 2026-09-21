@@ -1507,3 +1507,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: WNN multimodal joint graph.
 ### Decision: Implement `DBSingleCellMultiomeDataset` & `DBCisRegulatoryLinkage`.
 ### Consequences: Automated chromatin peak-to-gene transcriptional correlation.
+
+---
+
+## ADR 121: Autonomous Target Protein Degradation (TPD) Molecular Glue & Ternary Complex Stability Ranker
+### Status: ACCEPTED (Generation 85)
+### Context: E3 Ligase-Target cooperativity.
+### Decision: Implement `DBMolecularGlueScreen` & `DBTernaryComplexAffinity`.
+### Consequences: Automated targeted protein degrader scoring.

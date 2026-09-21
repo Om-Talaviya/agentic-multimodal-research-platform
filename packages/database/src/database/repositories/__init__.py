@@ -69,6 +69,7 @@ from database.repositories.cryo_dynamic_manifold_repo import CryoManifoldReposit
 from database.repositories.pmhc_class2_repo import MHCClass2Repository
 from database.repositories.ddr_pathways_repo import DDRPathwayRepository
 from database.repositories.multiome_joint_repo import MultiomeRepository
+from database.repositories.tpd_molecular_glue_repo import MolecularGlueRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -135,5 +136,6 @@ __all__ = [
     "MHCClass2Repository",
     "DDRPathwayRepository",
     "MultiomeRepository",
+    "MolecularGlueRepository",
 ]
 
