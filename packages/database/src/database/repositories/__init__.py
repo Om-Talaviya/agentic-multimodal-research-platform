@@ -67,6 +67,7 @@ from database.repositories.mirna_regulation_repo import MiRNARepository
 from database.repositories.spatial_metabolite_imaging_repo import SpatialMSIRepository
 from database.repositories.cryo_dynamic_manifold_repo import CryoManifoldRepository
 from database.repositories.pmhc_class2_repo import MHCClass2Repository
+from database.repositories.ddr_pathways_repo import DDRPathwayRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -131,5 +132,6 @@ __all__ = [
     "SpatialMSIRepository",
     "CryoManifoldRepository",
     "MHCClass2Repository",
+    "DDRPathwayRepository",
 ]
 
