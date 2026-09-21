@@ -65,6 +65,7 @@ from database.repositories.tce_bispecific_repo import TCERepository
 from database.repositories.lineage_tracing_repo import LineageTracingRepository
 from database.repositories.mirna_regulation_repo import MiRNARepository
 from database.repositories.spatial_metabolite_imaging_repo import SpatialMSIRepository
+from database.repositories.cryo_dynamic_manifold_repo import CryoManifoldRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -127,5 +128,6 @@ __all__ = [
     "LineageTracingRepository",
     "MiRNARepository",
     "SpatialMSIRepository",
+    "CryoManifoldRepository",
 ]
 
