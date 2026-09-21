@@ -1,3 +1,4 @@
+from api.routes.histone_epigenetics import router as histone_epigenetics_router
 from api.routes.ctc_metastasis import router as ctc_router
 from api.routes.survival_prognosis import router as survival_prognosis_router
 from api.routes.cytof import router as cytof_router
@@ -167,6 +168,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(histone_epigenetics_router, prefix="/api/v1")
 app.include_router(ctc_router, prefix="/api/v1")
 app.include_router(survival_prognosis_router, prefix="/api/v1")
 app.include_router(cytof_router, prefix="/api/v1")

@@ -1435,3 +1435,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Metastatic CTC prediction.
 ### Decision: Implement `DBCirculatingTumorCellSample` & `DBMetastaticColonizationSite`.
 ### Consequences: Automated organotropism modeling.
+
+---
+
+## ADR 112: Autonomous Epigenetic Histone Modification ChIP-seq & Super-Enhancer Discovery Matrix
+### Status: ACCEPTED (Generation 76)
+### Context: ROSE super-enhancer discovery.
+### Decision: Implement `DBHistoneChIPSample` & `DBSuperEnhancerLocus`.
+### Consequences: Automated oncogene enhancer mapping.
