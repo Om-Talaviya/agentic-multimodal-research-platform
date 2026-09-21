@@ -1,3 +1,4 @@
+from api.routes.mirna_regulation import router as mirna_router
 from api.routes.lineage_tracing import router as lineage_router
 from api.routes.tce_bispecific import router as tce_router
 from api.routes.histone_epigenetics import router as histone_epigenetics_router
@@ -170,6 +171,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(mirna_router, prefix="/api/v1")
 app.include_router(lineage_router, prefix="/api/v1")
 app.include_router(tce_router, prefix="/api/v1")
 app.include_router(histone_epigenetics_router, prefix="/api/v1")

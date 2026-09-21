@@ -63,6 +63,7 @@ from database.repositories.ctc_metastasis_repo import CTCRepository
 from database.repositories.histone_epigenetics_repo import HistoneEpigeneticsRepository
 from database.repositories.tce_bispecific_repo import TCERepository
 from database.repositories.lineage_tracing_repo import LineageTracingRepository
+from database.repositories.mirna_regulation_repo import MiRNARepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -123,5 +124,6 @@ __all__ = [
     "HistoneEpigeneticsRepository",
     "TCERepository",
     "LineageTracingRepository",
+    "MiRNARepository",
 ]
 

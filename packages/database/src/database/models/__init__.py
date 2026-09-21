@@ -427,6 +427,7 @@ from database.models.ctc_metastasis import DBCirculatingTumorCellSample, DBMetas
 from database.models.histone_epigenetics import DBHistoneChIPSample, DBSuperEnhancerLocus
 from database.models.tce_bispecific import DBTCEConstructDesign, DBSynapseGeometryMetric
 from database.models.lineage_tracing import DBLineageBarcodeExperiment, DBClonalLineageTrajectory
+from database.models.mirna_regulation import DBMiRNARegulatoryNetwork, DBMiRNATargetRepression
 __all__ = [
     "User",
     "UserQuota",
@@ -734,6 +735,8 @@ __all__ = [
     "DBSynapseGeometryMetric",
     "DBLineageBarcodeExperiment",
     "DBClonalLineageTrajectory",
+    "DBMiRNARegulatoryNetwork",
+    "DBMiRNATargetRepression",
 ]
 
 
