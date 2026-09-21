@@ -1451,3 +1451,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Immunological synapse spacing.
 ### Decision: Implement `DBTCEConstructDesign` & `DBSynapseGeometryMetric`.
 ### Consequences: Optimal CD45 exclusion and picomolar EC50.
+
+---
+
+## ADR 114: Autonomous Cellular Barcoding & Lineage Tracing Clonal Dynamics Predictor
+### Status: ACCEPTED (Generation 78)
+### Context: Clonal dynamics.
+### Decision: Implement `DBLineageBarcodeExperiment` & `DBClonalLineageTrajectory`.
+### Consequences: Automated lineage evolution tracking.

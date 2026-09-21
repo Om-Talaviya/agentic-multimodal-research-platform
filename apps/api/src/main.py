@@ -1,3 +1,4 @@
+from api.routes.lineage_tracing import router as lineage_router
 from api.routes.tce_bispecific import router as tce_router
 from api.routes.histone_epigenetics import router as histone_epigenetics_router
 from api.routes.ctc_metastasis import router as ctc_router
@@ -169,6 +170,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(lineage_router, prefix="/api/v1")
 app.include_router(tce_router, prefix="/api/v1")
 app.include_router(histone_epigenetics_router, prefix="/api/v1")
 app.include_router(ctc_router, prefix="/api/v1")
