@@ -1523,3 +1523,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Wearable IoT biosensor time-series telemetry.
 ### Decision: Implement `DBTrialSubjectTelemetryCohort` & `DBDigitalBiomarkerAnomaly`.
 ### Consequences: Automated ECOG performance degradation alerts.
+
+---
+
+## ADR 123: Autonomous Microbial Natural Product Biosynthetic Gene Cluster (BGC) Mining Engine
+### Status: ACCEPTED (Generation 87)
+### Context: NRPS/PKS domain parsing.
+### Decision: Implement `DBMicrobialBGCGenome` & `DBBiosyntheticClusterCluster`.
+### Consequences: Automated secondary metabolite chemical scaffold discovery.
