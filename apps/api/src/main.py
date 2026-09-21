@@ -1,3 +1,4 @@
+from api.routes.ddr_pathways import router as ddr_router
 from api.routes.pmhc_class2 import router as pmhc_class2_router
 from api.routes.cryo_dynamic_manifold import router as cryo_manifold_router
 from api.routes.spatial_metabolite_imaging import router as spatial_msi_router
@@ -174,6 +175,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(ddr_router, prefix="/api/v1")
 app.include_router(pmhc_class2_router, prefix="/api/v1")
 app.include_router(cryo_manifold_router, prefix="/api/v1")
 app.include_router(spatial_msi_router, prefix="/api/v1")

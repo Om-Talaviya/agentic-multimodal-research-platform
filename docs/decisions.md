@@ -1491,3 +1491,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: CD4+ Helper T-cell activation via MHC-II.
 ### Decision: Implement `DBMHCClass2Screen` & `DBCD4NeoepitopeHit`.
 ### Consequences: Automated 9-mer core binding and nanomolar IC50 ranking.
+
+---
+
+## ADR 119: Autonomous DNA Damage Response (DDR) & Synthetic Viability Pathway Modeler
+### Status: ACCEPTED (Generation 83)
+### Context: HRD genomic scar scoring.
+### Decision: Implement `DBDDRPathwayProfile` & `DBSyntheticViabilityInteraction`.
+### Consequences: Automated PARP/ATR inhibitor matching.

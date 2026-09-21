@@ -431,6 +431,7 @@ from database.models.mirna_regulation import DBMiRNARegulatoryNetwork, DBMiRNATa
 from database.models.spatial_metabolite_imaging import DBSpatialMSISample, DBTissueMetaboliteGradient
 from database.models.cryo_dynamic_manifold import DBCryoManifoldDataset, DBConformationalManifoldState
 from database.models.pmhc_class2 import DBMHCClass2Screen, DBCD4NeoepitopeHit
+from database.models.ddr_pathways import DBDDRPathwayProfile, DBSyntheticViabilityInteraction
 __all__ = [
     "User",
     "UserQuota",
@@ -746,6 +747,8 @@ __all__ = [
     "DBConformationalManifoldState",
     "DBMHCClass2Screen",
     "DBCD4NeoepitopeHit",
+    "DBDDRPathwayProfile",
+    "DBSyntheticViabilityInteraction",
 ]
 
 
