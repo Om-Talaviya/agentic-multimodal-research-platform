@@ -436,6 +436,7 @@ from database.models.multiome_joint import DBSingleCellMultiomeDataset, DBCisReg
 from database.models.tpd_molecular_glue import DBMolecularGlueScreen, DBTernaryComplexAffinity
 from database.models.trial_telemetry import DBTrialSubjectTelemetryCohort, DBDigitalBiomarkerAnomaly
 from database.models.bgc_mining import DBMicrobialBGCGenome, DBBiosyntheticClusterCluster
+from database.models.preprint_latex import DBPreprintManuscript, DBCitationGraphNode
 __all__ = [
     "User",
     "UserQuota",
@@ -761,6 +762,8 @@ __all__ = [
     "DBDigitalBiomarkerAnomaly",
     "DBMicrobialBGCGenome",
     "DBBiosyntheticClusterCluster",
+    "DBPreprintManuscript",
+    "DBCitationGraphNode",
 ]
 
 

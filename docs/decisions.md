@@ -1531,3 +1531,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: NRPS/PKS domain parsing.
 ### Decision: Implement `DBMicrobialBGCGenome` & `DBBiosyntheticClusterCluster`.
 ### Consequences: Automated secondary metabolite chemical scaffold discovery.
+
+---
+
+## ADR 124: Autonomous Multi-Modal AI Scientist Autonomous Publication Pre-print & LaTeX Compiler
+### Status: ACCEPTED (Generation 88)
+### Context: Closed-loop manuscript publishing.
+### Decision: Implement `DBPreprintManuscript` & `DBCitationGraphNode`.
+### Consequences: Automated LaTeX compilation and preprint readiness.
