@@ -435,6 +435,7 @@ from database.models.ddr_pathways import DBDDRPathwayProfile, DBSyntheticViabili
 from database.models.multiome_joint import DBSingleCellMultiomeDataset, DBCisRegulatoryLinkage
 from database.models.tpd_molecular_glue import DBMolecularGlueScreen, DBTernaryComplexAffinity
 from database.models.trial_telemetry import DBTrialSubjectTelemetryCohort, DBDigitalBiomarkerAnomaly
+from database.models.bgc_mining import DBMicrobialBGCGenome, DBBiosyntheticClusterCluster
 __all__ = [
     "User",
     "UserQuota",
@@ -758,6 +759,8 @@ __all__ = [
     "DBTernaryComplexAffinity",
     "DBTrialSubjectTelemetryCohort",
     "DBDigitalBiomarkerAnomaly",
+    "DBMicrobialBGCGenome",
+    "DBBiosyntheticClusterCluster",
 ]
 
 
