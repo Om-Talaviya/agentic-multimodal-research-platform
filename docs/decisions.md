@@ -1539,3 +1539,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Closed-loop manuscript publishing.
 ### Decision: Implement `DBPreprintManuscript` & `DBCitationGraphNode`.
 ### Consequences: Automated LaTeX compilation and preprint readiness.
+
+---
+
+## ADR 125: Autonomous Centenary Milestone v1.6 Core Platform Synthesis & Autonomous Research Orchestration Matrix
+### Status: ACCEPTED (Generation 89)
+### Context: Unification of all 125 active research engines.
+### Decision: Implement `DBMilestoneCentennialOrchestration`.
+### Consequences: 100% CI pass rate and complete 125-phase milestone orchestration.

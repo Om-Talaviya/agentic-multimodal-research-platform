@@ -73,6 +73,7 @@ from database.repositories.tpd_molecular_glue_repo import MolecularGlueRepositor
 from database.repositories.trial_telemetry_repo import TrialTelemetryRepository
 from database.repositories.bgc_mining_repo import BGCRepository
 from database.repositories.preprint_latex_repo import PreprintLatexRepository
+from database.repositories.milestone_v1_6_repo import MilestoneV16Repository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -143,5 +144,6 @@ __all__ = [
     "TrialTelemetryRepository",
     "BGCRepository",
     "PreprintLatexRepository",
+    "MilestoneV16Repository",
 ]
 

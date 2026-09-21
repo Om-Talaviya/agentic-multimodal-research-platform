@@ -437,6 +437,7 @@ from database.models.tpd_molecular_glue import DBMolecularGlueScreen, DBTernaryC
 from database.models.trial_telemetry import DBTrialSubjectTelemetryCohort, DBDigitalBiomarkerAnomaly
 from database.models.bgc_mining import DBMicrobialBGCGenome, DBBiosyntheticClusterCluster
 from database.models.preprint_latex import DBPreprintManuscript, DBCitationGraphNode
+from database.models.milestone_v1_6 import DBMilestoneCentennialOrchestration
 __all__ = [
     "User",
     "UserQuota",
@@ -764,6 +765,7 @@ __all__ = [
     "DBBiosyntheticClusterCluster",
     "DBPreprintManuscript",
     "DBCitationGraphNode",
+    "DBMilestoneCentennialOrchestration",
 ]
 
 
