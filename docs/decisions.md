@@ -1515,3 +1515,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: E3 Ligase-Target cooperativity.
 ### Decision: Implement `DBMolecularGlueScreen` & `DBTernaryComplexAffinity`.
 ### Consequences: Automated targeted protein degrader scoring.
+
+---
+
+## ADR 122: Autonomous Clinical Trial Decentralized Patient Telemetry & Digital Biomarker Anomaly Sentinel
+### Status: ACCEPTED (Generation 86)
+### Context: Wearable IoT biosensor time-series telemetry.
+### Decision: Implement `DBTrialSubjectTelemetryCohort` & `DBDigitalBiomarkerAnomaly`.
+### Consequences: Automated ECOG performance degradation alerts.

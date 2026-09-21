@@ -434,6 +434,7 @@ from database.models.pmhc_class2 import DBMHCClass2Screen, DBCD4NeoepitopeHit
 from database.models.ddr_pathways import DBDDRPathwayProfile, DBSyntheticViabilityInteraction
 from database.models.multiome_joint import DBSingleCellMultiomeDataset, DBCisRegulatoryLinkage
 from database.models.tpd_molecular_glue import DBMolecularGlueScreen, DBTernaryComplexAffinity
+from database.models.trial_telemetry import DBTrialSubjectTelemetryCohort, DBDigitalBiomarkerAnomaly
 __all__ = [
     "User",
     "UserQuota",
@@ -755,6 +756,8 @@ __all__ = [
     "DBCisRegulatoryLinkage",
     "DBMolecularGlueScreen",
     "DBTernaryComplexAffinity",
+    "DBTrialSubjectTelemetryCohort",
+    "DBDigitalBiomarkerAnomaly",
 ]
 
 
