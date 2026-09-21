@@ -988,3 +988,20 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 
 
+
+### Milestone v1.6: Autonomous Multimodal Systems Biology & Synthesis Platform (Phases 111-125)
+- [x] **Phase 111**: Autonomous Circulating Tumor Cell (CTC) Single-Cell Trajectory & Metastasis Colonization Engine (`ctc_metastasis`)
+- [x] **Phase 112**: Autonomous Epigenetic Histone Modification ChIP-seq & Super-Enhancer Discovery Matrix (`histone_epigenetics`)
+- [x] **Phase 113**: Autonomous Multi-Specific T-Cell Engager (TCE) & Bispecific Antibody Geometry Optimizer (`tce_bispecific`)
+- [x] **Phase 114**: Autonomous Cellular Barcoding & Lineage Tracing Clonal Dynamics Predictor (`lineage_tracing`)
+- [x] **Phase 115**: Autonomous MicroRNA (miRNA) Regulatory Network & Target Repression Modeler (`mirna_regulation`)
+- [x] **Phase 116**: Autonomous Spatial Metabolite Imaging (DESI/MALDI-MSI) & Tissue Microenvironment Engine (`spatial_metabolite_imaging`)
+- [x] **Phase 117**: Autonomous Cryo-EM Dynamic Flexibility & Continuous Manifold Embedding Engine (`cryo_dynamic_manifold`)
+- [x] **Phase 118**: Autonomous Peptide-MHC Class II Neoantigen Immunogenicity Predictor (CD4+ Epitopes) (`pmhc_class2`)
+- [x] **Phase 119**: Autonomous DNA Damage Response (DDR) & Synthetic Viability Pathway Modeler (`ddr_pathways`)
+- [x] **Phase 120**: Autonomous Single-Cell ATAC+RNA Multiome Joint Embedding & Regulatory Network Engine (`multiome_joint`)
+- [x] **Phase 121**: Autonomous Target Protein Degradation (TPD) Molecular Glue & Ternary Complex Stability Ranker (`tpd_molecular_glue`)
+- [x] **Phase 122**: Autonomous Clinical Trial Decentralized Patient Telemetry & Digital Biomarker Anomaly Sentinel (`trial_telemetry`)
+- [x] **Phase 123**: Autonomous Microbial Natural Product Biosynthetic Gene Cluster (BGC) Mining Engine (`bgc_mining`)
+- [x] **Phase 124**: Autonomous Multi-Modal AI Scientist Autonomous Publication Pre-print & LaTeX Compiler (`preprint_latex`)
+- [x] **Phase 125**: Autonomous Centenary Milestone v1.6 Core Platform Synthesis & Autonomous Research Orchestration Matrix (`milestone_v1_6`)

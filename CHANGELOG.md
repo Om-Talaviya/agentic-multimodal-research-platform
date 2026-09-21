@@ -1,4 +1,24 @@
-# Changelog: CHANGELOG.md
+# Changelog
+
+## [v1.6.0] - Milestone v1.6 Autonomous Multimodal Systems Biology & Synthesis Platform (Phases 111-125)
+
+### Added
+- **Phase 111**: CTC Single-Cell Trajectory & Metastasis Colonization Engine (`ctc_metastasis`)
+- **Phase 112**: Histone Modification ChIP-seq & Super-Enhancer Discovery Matrix (`histone_epigenetics`)
+- **Phase 113**: Multi-Specific T-Cell Engager (TCE) & Bispecific Antibody Geometry Optimizer (`tce_bispecific`)
+- **Phase 114**: Cellular Barcoding & Lineage Tracing Clonal Dynamics Predictor (`lineage_tracing`)
+- **Phase 115**: MicroRNA (miRNA) Regulatory Network & Target Repression Modeler (`mirna_regulation`)
+- **Phase 116**: Spatial Metabolite Imaging (DESI/MALDI-MSI) & Tissue Microenvironment Engine (`spatial_metabolite_imaging`)
+- **Phase 117**: Cryo-EM Dynamic Flexibility & Continuous Manifold Embedding Engine (`cryo_dynamic_manifold`)
+- **Phase 118**: Peptide-MHC Class II Neoantigen Immunogenicity Predictor (CD4+ Epitopes) (`pmhc_class2`)
+- **Phase 119**: DNA Damage Response (DDR) & Synthetic Viability Pathway Modeler (`ddr_pathways`)
+- **Phase 120**: Single-Cell ATAC+RNA Multiome Joint Embedding & Regulatory Network Engine (`multiome_joint`)
+- **Phase 121**: Target Protein Degradation (TPD) Molecular Glue & Ternary Complex Stability Ranker (`tpd_molecular_glue`)
+- **Phase 122**: Clinical Trial Decentralized Patient Telemetry & Digital Biomarker Anomaly Sentinel (`trial_telemetry`)
+- **Phase 123**: Microbial Natural Product Biosynthetic Gene Cluster (BGC) Mining Engine (`bgc_mining`)
+- **Phase 124**: Multi-Modal AI Scientist Autonomous Publication Pre-print & LaTeX Compiler (`preprint_latex`)
+- **Phase 125**: Centenary Milestone v1.6 Core Platform Synthesis & Autonomous Research Orchestration Matrix (`milestone_v1_6`)
+: CHANGELOG.md
 
 All notable changes to the **Agentic Multimodal Research Platform** will be documented in this file.
 
