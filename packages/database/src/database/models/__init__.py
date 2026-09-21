@@ -428,6 +428,7 @@ from database.models.histone_epigenetics import DBHistoneChIPSample, DBSuperEnha
 from database.models.tce_bispecific import DBTCEConstructDesign, DBSynapseGeometryMetric
 from database.models.lineage_tracing import DBLineageBarcodeExperiment, DBClonalLineageTrajectory
 from database.models.mirna_regulation import DBMiRNARegulatoryNetwork, DBMiRNATargetRepression
+from database.models.spatial_metabolite_imaging import DBSpatialMSISample, DBTissueMetaboliteGradient
 __all__ = [
     "User",
     "UserQuota",
@@ -737,6 +738,8 @@ __all__ = [
     "DBClonalLineageTrajectory",
     "DBMiRNARegulatoryNetwork",
     "DBMiRNATargetRepression",
+    "DBSpatialMSISample",
+    "DBTissueMetaboliteGradient",
 ]
 
 

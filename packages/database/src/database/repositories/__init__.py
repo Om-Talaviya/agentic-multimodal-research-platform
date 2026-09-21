@@ -64,6 +64,7 @@ from database.repositories.histone_epigenetics_repo import HistoneEpigeneticsRep
 from database.repositories.tce_bispecific_repo import TCERepository
 from database.repositories.lineage_tracing_repo import LineageTracingRepository
 from database.repositories.mirna_regulation_repo import MiRNARepository
+from database.repositories.spatial_metabolite_imaging_repo import SpatialMSIRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -125,5 +126,6 @@ __all__ = [
     "TCERepository",
     "LineageTracingRepository",
     "MiRNARepository",
+    "SpatialMSIRepository",
 ]
 
