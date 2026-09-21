@@ -424,6 +424,7 @@ from database.models.survival_prognosis import (
 )
 
 from database.models.ctc_metastasis import DBCirculatingTumorCellSample, DBMetastaticColonizationSite
+from database.models.histone_epigenetics import DBHistoneChIPSample, DBSuperEnhancerLocus
 __all__ = [
     "User",
     "UserQuota",
@@ -725,6 +726,8 @@ __all__ = [
     "DBSurvivalStratificationCurve",
     "DBCirculatingTumorCellSample",
     "DBMetastaticColonizationSite",
+    "DBHistoneChIPSample",
+    "DBSuperEnhancerLocus",
 ]
 
 

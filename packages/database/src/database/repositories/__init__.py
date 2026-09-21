@@ -60,6 +60,7 @@ from database.repositories.spatial_proteomics_repo import SpatialProteomicsRepos
 from database.repositories.literature_factcheck_repo import LiteratureFactCheckRepository
 
 from database.repositories.ctc_metastasis_repo import CTCRepository
+from database.repositories.histone_epigenetics_repo import HistoneEpigeneticsRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -117,5 +118,6 @@ __all__ = [
     "SpatialProteomicsRepository",
     "LiteratureFactCheckRepository",
     "CTCRepository",
+    "HistoneEpigeneticsRepository",
 ]
 
