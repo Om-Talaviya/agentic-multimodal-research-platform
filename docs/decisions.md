@@ -1499,3 +1499,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: HRD genomic scar scoring.
 ### Decision: Implement `DBDDRPathwayProfile` & `DBSyntheticViabilityInteraction`.
 ### Consequences: Automated PARP/ATR inhibitor matching.
+
+---
+
+## ADR 120: Autonomous Single-Cell ATAC+RNA Multiome Joint Embedding & Regulatory Network Engine
+### Status: ACCEPTED (Generation 84)
+### Context: WNN multimodal joint graph.
+### Decision: Implement `DBSingleCellMultiomeDataset` & `DBCisRegulatoryLinkage`.
+### Consequences: Automated chromatin peak-to-gene transcriptional correlation.
