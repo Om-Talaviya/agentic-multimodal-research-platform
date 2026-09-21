@@ -433,6 +433,7 @@ from database.models.cryo_dynamic_manifold import DBCryoManifoldDataset, DBConfo
 from database.models.pmhc_class2 import DBMHCClass2Screen, DBCD4NeoepitopeHit
 from database.models.ddr_pathways import DBDDRPathwayProfile, DBSyntheticViabilityInteraction
 from database.models.multiome_joint import DBSingleCellMultiomeDataset, DBCisRegulatoryLinkage
+from database.models.tpd_molecular_glue import DBMolecularGlueScreen, DBTernaryComplexAffinity
 __all__ = [
     "User",
     "UserQuota",
@@ -752,6 +753,8 @@ __all__ = [
     "DBSyntheticViabilityInteraction",
     "DBSingleCellMultiomeDataset",
     "DBCisRegulatoryLinkage",
+    "DBMolecularGlueScreen",
+    "DBTernaryComplexAffinity",
 ]
 
 
