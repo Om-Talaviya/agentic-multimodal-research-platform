@@ -68,6 +68,7 @@ from database.repositories.spatial_metabolite_imaging_repo import SpatialMSIRepo
 from database.repositories.cryo_dynamic_manifold_repo import CryoManifoldRepository
 from database.repositories.pmhc_class2_repo import MHCClass2Repository
 from database.repositories.ddr_pathways_repo import DDRPathwayRepository
+from database.repositories.multiome_joint_repo import MultiomeRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -133,5 +134,6 @@ __all__ = [
     "CryoManifoldRepository",
     "MHCClass2Repository",
     "DDRPathwayRepository",
+    "MultiomeRepository",
 ]
 
