@@ -1483,3 +1483,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: VAE latent continuous structural heterogeneity.
 ### Decision: Implement `DBCryoManifoldDataset` & `DBConformationalManifoldState`.
 ### Consequences: Automated continuous conformational landscape reconstruction.
+
+---
+
+## ADR 118: Autonomous Peptide-MHC Class II Neoantigen Immunogenicity Predictor (CD4+ Epitopes)
+### Status: ACCEPTED (Generation 82)
+### Context: CD4+ Helper T-cell activation via MHC-II.
+### Decision: Implement `DBMHCClass2Screen` & `DBCD4NeoepitopeHit`.
+### Consequences: Automated 9-mer core binding and nanomolar IC50 ranking.

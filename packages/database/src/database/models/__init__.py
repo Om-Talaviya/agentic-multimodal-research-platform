@@ -430,6 +430,7 @@ from database.models.lineage_tracing import DBLineageBarcodeExperiment, DBClonal
 from database.models.mirna_regulation import DBMiRNARegulatoryNetwork, DBMiRNATargetRepression
 from database.models.spatial_metabolite_imaging import DBSpatialMSISample, DBTissueMetaboliteGradient
 from database.models.cryo_dynamic_manifold import DBCryoManifoldDataset, DBConformationalManifoldState
+from database.models.pmhc_class2 import DBMHCClass2Screen, DBCD4NeoepitopeHit
 __all__ = [
     "User",
     "UserQuota",
@@ -743,6 +744,8 @@ __all__ = [
     "DBTissueMetaboliteGradient",
     "DBCryoManifoldDataset",
     "DBConformationalManifoldState",
+    "DBMHCClass2Screen",
+    "DBCD4NeoepitopeHit",
 ]
 
 
