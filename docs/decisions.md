@@ -1475,3 +1475,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Spatial oncometabolites.
 ### Decision: Implement `DBSpatialMSISample` & `DBTissueMetaboliteGradient`.
 ### Consequences: Automated Warburg lactate gradient mapping.
+
+---
+
+## ADR 117: Autonomous Cryo-EM Dynamic Flexibility & Continuous Manifold Embedding Engine
+### Status: ACCEPTED (Generation 81)
+### Context: VAE latent continuous structural heterogeneity.
+### Decision: Implement `DBCryoManifoldDataset` & `DBConformationalManifoldState`.
+### Consequences: Automated continuous conformational landscape reconstruction.

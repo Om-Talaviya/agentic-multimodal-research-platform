@@ -429,6 +429,7 @@ from database.models.tce_bispecific import DBTCEConstructDesign, DBSynapseGeomet
 from database.models.lineage_tracing import DBLineageBarcodeExperiment, DBClonalLineageTrajectory
 from database.models.mirna_regulation import DBMiRNARegulatoryNetwork, DBMiRNATargetRepression
 from database.models.spatial_metabolite_imaging import DBSpatialMSISample, DBTissueMetaboliteGradient
+from database.models.cryo_dynamic_manifold import DBCryoManifoldDataset, DBConformationalManifoldState
 __all__ = [
     "User",
     "UserQuota",
@@ -740,6 +741,8 @@ __all__ = [
     "DBMiRNATargetRepression",
     "DBSpatialMSISample",
     "DBTissueMetaboliteGradient",
+    "DBCryoManifoldDataset",
+    "DBConformationalManifoldState",
 ]
 
 
