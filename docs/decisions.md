@@ -1443,3 +1443,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: ROSE super-enhancer discovery.
 ### Decision: Implement `DBHistoneChIPSample` & `DBSuperEnhancerLocus`.
 ### Consequences: Automated oncogene enhancer mapping.
+
+---
+
+## ADR 113: Autonomous Multi-Specific T-Cell Engager (TCE) & Bispecific Antibody Geometry Optimizer
+### Status: ACCEPTED (Generation 77)
+### Context: Immunological synapse spacing.
+### Decision: Implement `DBTCEConstructDesign` & `DBSynapseGeometryMetric`.
+### Consequences: Optimal CD45 exclusion and picomolar EC50.
