@@ -1,3 +1,4 @@
+from api.routes.preprint_latex import router as preprint_latex_router
 from api.routes.bgc_mining import router as bgc_router
 from api.routes.trial_telemetry import router as trial_telemetry_router
 from api.routes.tpd_molecular_glue import router as tpd_router
@@ -179,6 +180,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(preprint_latex_router, prefix="/api/v1")
 app.include_router(bgc_router, prefix="/api/v1")
 app.include_router(trial_telemetry_router, prefix="/api/v1")
 app.include_router(tpd_router, prefix="/api/v1")
