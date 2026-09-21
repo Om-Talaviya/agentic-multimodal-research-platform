@@ -70,6 +70,7 @@ from database.repositories.pmhc_class2_repo import MHCClass2Repository
 from database.repositories.ddr_pathways_repo import DDRPathwayRepository
 from database.repositories.multiome_joint_repo import MultiomeRepository
 from database.repositories.tpd_molecular_glue_repo import MolecularGlueRepository
+from database.repositories.trial_telemetry_repo import TrialTelemetryRepository
 __all__ = [
     "ResearchJobRepository",
     "TaskRepository",
@@ -137,5 +138,6 @@ __all__ = [
     "DDRPathwayRepository",
     "MultiomeRepository",
     "MolecularGlueRepository",
+    "TrialTelemetryRepository",
 ]
 
