@@ -1467,3 +1467,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: 3' UTR binding thermodynamics.
 ### Decision: Implement `DBMiRNARegulatoryNetwork` & `DBMiRNATargetRepression`.
 ### Consequences: Automated ceRNA network modeling.
+
+---
+
+## ADR 116: Autonomous Spatial Metabolite Imaging (DESI/MALDI-MSI) & Tissue Microenvironment Engine
+### Status: ACCEPTED (Generation 80)
+### Context: Spatial oncometabolites.
+### Decision: Implement `DBSpatialMSISample` & `DBTissueMetaboliteGradient`.
+### Consequences: Automated Warburg lactate gradient mapping.
