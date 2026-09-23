@@ -443,6 +443,7 @@ from database.models.antibody_maturation import DBAntibodyAffinityMaturation, DB
 from database.models.citeseq import DBCITEseqDataset, DBAntibodyDerivedTag, DBCellSurfaceProteinExpression
 from database.models.pandda_crystallography import DBCrystallographyFragmentScreen, DBFragmentHit, DBPanDDABackgroundDensityMap
 from database.models.adaptive_resistance import DBAdaptiveResistanceStudy, DBClonalFitnessLineage, DBDrugResistanceTrajectory
+from database.models.biocomputer_logic import DBBiocomputerCircuit, DBLogicGateCascade, DBCellularStateClassifier
 __all__ = [
     "User",
     "UserQuota",
@@ -786,6 +787,9 @@ __all__ = [
     "DBAdaptiveResistanceStudy",
     "DBClonalFitnessLineage",
     "DBDrugResistanceTrajectory",
+    "DBBiocomputerCircuit",
+    "DBLogicGateCascade",
+    "DBCellularStateClassifier",
 ]
 
 
