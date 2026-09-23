@@ -471,6 +471,11 @@ from database.models.lnp_encapsulation import (
     DBLipidRatioComponent,
     DBEncapsulationEfficiencyMetric,
 )
+from database.models.spatial_gnn_neighborhood import (
+    DBSpatialGNNNeighborhood,
+    DBCellTypeProximityGraph,
+    DBSpatialMicrodomainNiche,
+)
 __all__ = [
     "User",
     "UserQuota",
@@ -838,6 +843,9 @@ __all__ = [
     "DBLNPFormulationScreen",
     "DBLipidRatioComponent",
     "DBEncapsulationEfficiencyMetric",
+    "DBSpatialGNNNeighborhood",
+    "DBCellTypeProximityGraph",
+    "DBSpatialMicrodomainNiche",
 ]
 
 

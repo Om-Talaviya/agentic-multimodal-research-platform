@@ -90,6 +90,7 @@ import { HLALOHResistanceStudioPage } from './pages/HLALOHResistanceStudioPage'
 import { HistoneAcetylationStudioPage } from './pages/HistoneAcetylationStudioPage'
 import { CARMacrophageStudioPage } from './pages/CARMacrophageStudioPage'
 import { LNPEncapsulationStudioPage } from './pages/LNPEncapsulationStudioPage'
+import { SpatialGNNStudioPage } from './pages/SpatialGNNStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -247,6 +248,7 @@ function App() {
           <Route path="histone-acetylation" element={<HistoneAcetylationStudioPage />} />
           <Route path="car-macrophage" element={<CARMacrophageStudioPage />} />
           <Route path="lnp-encapsulation" element={<LNPEncapsulationStudioPage />} />
+          <Route path="spatial-gnn" element={<SpatialGNNStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
