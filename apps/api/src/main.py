@@ -1,3 +1,4 @@
+from api.routes.adaptive_resistance import router as adaptive_resistance_router
 from api.routes.pandda_crystallography import router as pandda_crystallography_router
 from api.routes.citeseq import router as citeseq_router
 from api.routes.antibody_maturation import router as antibody_maturation_router
@@ -185,6 +186,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(adaptive_resistance_router, prefix="/api/v1")
 app.include_router(pandda_crystallography_router, prefix="/api/v1")
 app.include_router(citeseq_router, prefix="/api/v1")
 app.include_router(antibody_maturation_router, prefix="/api/v1")

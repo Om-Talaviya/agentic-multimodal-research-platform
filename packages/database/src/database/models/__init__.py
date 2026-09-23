@@ -442,6 +442,7 @@ from database.models.t2t_assembly import DBT2TAssembly, DBT2TStructuralVariantCa
 from database.models.antibody_maturation import DBAntibodyAffinityMaturation, DBDirectedEvolutionVariant, DBParatopeEpitopeContact
 from database.models.citeseq import DBCITEseqDataset, DBAntibodyDerivedTag, DBCellSurfaceProteinExpression
 from database.models.pandda_crystallography import DBCrystallographyFragmentScreen, DBFragmentHit, DBPanDDABackgroundDensityMap
+from database.models.adaptive_resistance import DBAdaptiveResistanceStudy, DBClonalFitnessLineage, DBDrugResistanceTrajectory
 __all__ = [
     "User",
     "UserQuota",
@@ -782,6 +783,9 @@ __all__ = [
     "DBCrystallographyFragmentScreen",
     "DBFragmentHit",
     "DBPanDDABackgroundDensityMap",
+    "DBAdaptiveResistanceStudy",
+    "DBClonalFitnessLineage",
+    "DBDrugResistanceTrajectory",
 ]
 
 
