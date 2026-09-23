@@ -83,6 +83,7 @@ import { CITEseqStudioPage } from './pages/CITEseqStudioPage'
 import { PanDDACrystallographyStudioPage } from './pages/PanDDACrystallographyStudioPage'
 import { AdaptiveResistanceStudioPage } from './pages/AdaptiveResistanceStudioPage'
 import { BiocomputerLogicStudioPage } from './pages/BiocomputerLogicStudioPage'
+import { ViralPhylodynamicsStudioPage } from './pages/ViralPhylodynamicsStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -233,6 +234,7 @@ function App() {
           <Route path="pandda-crystallography" element={<PanDDACrystallographyStudioPage />} />
           <Route path="adaptive-resistance" element={<AdaptiveResistanceStudioPage />} />
           <Route path="biocomputer-logic" element={<BiocomputerLogicStudioPage />} />
+          <Route path="viral-phylodynamics" element={<ViralPhylodynamicsStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
