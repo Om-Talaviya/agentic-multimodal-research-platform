@@ -456,6 +456,11 @@ from database.models.hla_loh_resistance import (
     DBAlleleCopyNumberProfile,
     DBImmuneEvasionScore,
 )
+from database.models.histone_acetylation import (
+    DBHistoneAcetylationModel,
+    DBHATHDACKinetics,
+    DBChromatinOpennessProfile,
+)
 __all__ = [
     "User",
     "UserQuota",
@@ -814,6 +819,9 @@ __all__ = [
     "DBHLALOHStudy",
     "DBAlleleCopyNumberProfile",
     "DBImmuneEvasionScore",
+    "DBHistoneAcetylationModel",
+    "DBHATHDACKinetics",
+    "DBChromatinOpennessProfile",
 ]
 
 
