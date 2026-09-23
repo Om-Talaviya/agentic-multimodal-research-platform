@@ -446,6 +446,11 @@ from database.models.adaptive_resistance import DBAdaptiveResistanceStudy, DBClo
 from database.models.biocomputer_logic import DBBiocomputerCircuit, DBLogicGateCascade, DBCellularStateClassifier
 from database.models.viral_phylodynamics import DBViralSurveillanceStudy, DBPhylodynamicLineage, DBStrainTransmissionFitness
 from database.models.cryoet_clustering import DBCryoETSubtomogramStudy, DBSubtomogramVolume, DBInSituMacromoleculeCluster
+from database.models.riboswitch_kinetics import (
+    DBRiboswitchCircuit,
+    DBRNALoopSecondaryStructure,
+    DBLigandKineticsProfile,
+)
 __all__ = [
     "User",
     "UserQuota",
@@ -798,6 +803,9 @@ __all__ = [
     "DBCryoETSubtomogramStudy",
     "DBSubtomogramVolume",
     "DBInSituMacromoleculeCluster",
+    "DBRiboswitchCircuit",
+    "DBRNALoopSecondaryStructure",
+    "DBLigandKineticsProfile",
 ]
 
 
