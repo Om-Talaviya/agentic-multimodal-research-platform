@@ -80,6 +80,7 @@ import { SurvivalPrognosisStudioPage } from './pages/SurvivalPrognosisStudioPage
 import { T2TAssemblyStudioPage } from './pages/T2TAssemblyStudioPage'
 import { AntibodyMaturationStudioPage } from './pages/AntibodyMaturationStudioPage'
 import { CITEseqStudioPage } from './pages/CITEseqStudioPage'
+import { PanDDACrystallographyStudioPage } from './pages/PanDDACrystallographyStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -227,6 +228,7 @@ function App() {
           <Route path="t2t-assembly" element={<T2TAssemblyStudioPage />} />
           <Route path="antibody-maturation" element={<AntibodyMaturationStudioPage />} />
           <Route path="citeseq" element={<CITEseqStudioPage />} />
+          <Route path="pandda-crystallography" element={<PanDDACrystallographyStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
