@@ -1,5 +1,16 @@
 # Changelog
 
+## [v1.7.0] - Milestone v1.7 Deep Bio-Computational Systems & Precision Planetary AI (Phases 126-132)
+
+### Added
+- **Phase 126**: Autonomous Whole-Genome Long-Read T2T Structural Variant & Phase Assembly Engine (`t2t_assembly`)
+- **Phase 127**: Autonomous In-Silico Antibody Affinity Maturation & Somatic Hypermutation Engine (`antibody_maturation`)
+- **Phase 128**: Autonomous Single-Cell Spatial CITE-seq Surface Protein & mRNA Co-Mapping Engine (`citeseq`)
+- **Phase 129**: Autonomous High-Throughput Crystallography PanDDA Fragment Screening Engine (`pandda_crystallography`)
+- **Phase 130**: Precision Oncology Adaptive Chemotherapy Resistance & Clonal Fitness Dynamics Simulator (`adaptive_resistance`)
+- **Phase 131**: Synthetic Gene Logic Biocomputer & Multi-Input Cellular State Classifier Engine (`biocomputer_logic`)
+- **Phase 132**: Global Pandemic Biosurveillance & Multi-Strain Viral Lineage Phylodynamics Engine (`viral_phylodynamics`)
+
 ## [v1.6.0] - Milestone v1.6 Autonomous Multimodal Systems Biology & Synthesis Platform (Phases 111-125)
 
 ### Added
