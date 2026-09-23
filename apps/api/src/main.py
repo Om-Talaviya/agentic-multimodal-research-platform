@@ -1,3 +1,4 @@
+from api.routes.t2t_assembly import router as t2t_assembly_router
 from api.routes.milestone_v1_6 import router as milestone_v1_6_router
 from api.routes.preprint_latex import router as preprint_latex_router
 from api.routes.bgc_mining import router as bgc_router
@@ -181,6 +182,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(t2t_assembly_router, prefix="/api/v1")
 app.include_router(milestone_v1_6_router, prefix="/api/v1")
 app.include_router(preprint_latex_router, prefix="/api/v1")
 app.include_router(bgc_router, prefix="/api/v1")
