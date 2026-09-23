@@ -440,6 +440,7 @@ from database.models.preprint_latex import DBPreprintManuscript, DBCitationGraph
 from database.models.milestone_v1_6 import DBMilestoneCentennialOrchestration
 from database.models.t2t_assembly import DBT2TAssembly, DBT2TStructuralVariantCall, DBPhasedHaplotypeBlock
 from database.models.antibody_maturation import DBAntibodyAffinityMaturation, DBDirectedEvolutionVariant, DBParatopeEpitopeContact
+from database.models.citeseq import DBCITEseqDataset, DBAntibodyDerivedTag, DBCellSurfaceProteinExpression
 __all__ = [
     "User",
     "UserQuota",
@@ -774,6 +775,9 @@ __all__ = [
     "DBAntibodyAffinityMaturation",
     "DBDirectedEvolutionVariant",
     "DBParatopeEpitopeContact",
+    "DBCITEseqDataset",
+    "DBAntibodyDerivedTag",
+    "DBCellSurfaceProteinExpression",
 ]
 
 
