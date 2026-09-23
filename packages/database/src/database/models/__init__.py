@@ -439,6 +439,7 @@ from database.models.bgc_mining import DBMicrobialBGCGenome, DBBiosyntheticClust
 from database.models.preprint_latex import DBPreprintManuscript, DBCitationGraphNode
 from database.models.milestone_v1_6 import DBMilestoneCentennialOrchestration
 from database.models.t2t_assembly import DBT2TAssembly, DBT2TStructuralVariantCall, DBPhasedHaplotypeBlock
+from database.models.antibody_maturation import DBAntibodyAffinityMaturation, DBDirectedEvolutionVariant, DBParatopeEpitopeContact
 __all__ = [
     "User",
     "UserQuota",
@@ -770,6 +771,9 @@ __all__ = [
     "DBT2TAssembly",
     "DBT2TStructuralVariantCall",
     "DBPhasedHaplotypeBlock",
+    "DBAntibodyAffinityMaturation",
+    "DBDirectedEvolutionVariant",
+    "DBParatopeEpitopeContact",
 ]
 
 
