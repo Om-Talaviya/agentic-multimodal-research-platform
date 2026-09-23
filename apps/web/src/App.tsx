@@ -88,6 +88,7 @@ import { CryoETClusteringStudioPage } from './pages/CryoETClusteringStudioPage'
 import { RiboswitchKineticsStudioPage } from './pages/RiboswitchKineticsStudioPage'
 import { HLALOHResistanceStudioPage } from './pages/HLALOHResistanceStudioPage'
 import { HistoneAcetylationStudioPage } from './pages/HistoneAcetylationStudioPage'
+import { CARMacrophageStudioPage } from './pages/CARMacrophageStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -243,6 +244,7 @@ function App() {
           <Route path="riboswitch-kinetics" element={<RiboswitchKineticsStudioPage />} />
           <Route path="hla-loh" element={<HLALOHResistanceStudioPage />} />
           <Route path="histone-acetylation" element={<HistoneAcetylationStudioPage />} />
+          <Route path="car-macrophage" element={<CARMacrophageStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

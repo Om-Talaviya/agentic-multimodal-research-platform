@@ -461,6 +461,11 @@ from database.models.histone_acetylation import (
     DBHATHDACKinetics,
     DBChromatinOpennessProfile,
 )
+from database.models.car_macrophage import (
+    DBCARMacrophageDesign,
+    DBPhagocytosisKinetics,
+    DBTMERepolarizationProfile,
+)
 __all__ = [
     "User",
     "UserQuota",
@@ -822,6 +827,9 @@ __all__ = [
     "DBHistoneAcetylationModel",
     "DBHATHDACKinetics",
     "DBChromatinOpennessProfile",
+    "DBCARMacrophageDesign",
+    "DBPhagocytosisKinetics",
+    "DBTMERepolarizationProfile",
 ]
 
 
