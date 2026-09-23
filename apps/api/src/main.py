@@ -1,3 +1,4 @@
+from api.routes.pandda_crystallography import router as pandda_crystallography_router
 from api.routes.citeseq import router as citeseq_router
 from api.routes.antibody_maturation import router as antibody_maturation_router
 from api.routes.t2t_assembly import router as t2t_assembly_router
@@ -184,6 +185,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(pandda_crystallography_router, prefix="/api/v1")
 app.include_router(citeseq_router, prefix="/api/v1")
 app.include_router(antibody_maturation_router, prefix="/api/v1")
 app.include_router(t2t_assembly_router, prefix="/api/v1")
