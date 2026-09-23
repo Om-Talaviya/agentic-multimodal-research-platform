@@ -1,3 +1,4 @@
+from api.routes.hla_loh_resistance import router as hla_loh_router
 from api.routes.riboswitch_kinetics import router as riboswitch_kinetics_router
 from api.routes.cryoet_clustering import router as cryoet_clustering_router
 from api.routes.viral_phylodynamics import router as viral_phylodynamics_router
@@ -190,6 +191,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(hla_loh_router, prefix="/api/v1")
 app.include_router(riboswitch_kinetics_router, prefix="/api/v1")
 app.include_router(cryoet_clustering_router, prefix="/api/v1")
 app.include_router(viral_phylodynamics_router, prefix="/api/v1")

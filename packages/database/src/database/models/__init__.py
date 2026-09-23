@@ -451,6 +451,11 @@ from database.models.riboswitch_kinetics import (
     DBRNALoopSecondaryStructure,
     DBLigandKineticsProfile,
 )
+from database.models.hla_loh_resistance import (
+    DBHLALOHStudy,
+    DBAlleleCopyNumberProfile,
+    DBImmuneEvasionScore,
+)
 __all__ = [
     "User",
     "UserQuota",
@@ -806,6 +811,9 @@ __all__ = [
     "DBRiboswitchCircuit",
     "DBRNALoopSecondaryStructure",
     "DBLigandKineticsProfile",
+    "DBHLALOHStudy",
+    "DBAlleleCopyNumberProfile",
+    "DBImmuneEvasionScore",
 ]
 
 
