@@ -466,6 +466,11 @@ from database.models.car_macrophage import (
     DBPhagocytosisKinetics,
     DBTMERepolarizationProfile,
 )
+from database.models.lnp_encapsulation import (
+    DBLNPFormulationScreen,
+    DBLipidRatioComponent,
+    DBEncapsulationEfficiencyMetric,
+)
 __all__ = [
     "User",
     "UserQuota",
@@ -830,6 +835,9 @@ __all__ = [
     "DBCARMacrophageDesign",
     "DBPhagocytosisKinetics",
     "DBTMERepolarizationProfile",
+    "DBLNPFormulationScreen",
+    "DBLipidRatioComponent",
+    "DBEncapsulationEfficiencyMetric",
 ]
 
 
