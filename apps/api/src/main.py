@@ -1,3 +1,4 @@
+from api.routes.car_macrophage import router as car_macrophage_router
 from api.routes.histone_acetylation import router as histone_acetylation_router
 from api.routes.hla_loh_resistance import router as hla_loh_router
 from api.routes.riboswitch_kinetics import router as riboswitch_kinetics_router
@@ -192,6 +193,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(car_macrophage_router, prefix="/api/v1")
 app.include_router(histone_acetylation_router, prefix="/api/v1")
 app.include_router(hla_loh_router, prefix="/api/v1")
 app.include_router(riboswitch_kinetics_router, prefix="/api/v1")
