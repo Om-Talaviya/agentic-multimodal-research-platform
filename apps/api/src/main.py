@@ -1,3 +1,4 @@
+from api.routes.spatial_gnn_neighborhood import router as spatial_gnn_router
 from api.routes.lnp_encapsulation import router as lnp_encapsulation_router
 from api.routes.car_macrophage import router as car_macrophage_router
 from api.routes.histone_acetylation import router as histone_acetylation_router
@@ -194,6 +195,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(spatial_gnn_router, prefix="/api/v1")
 app.include_router(lnp_encapsulation_router, prefix="/api/v1")
 app.include_router(car_macrophage_router, prefix="/api/v1")
 app.include_router(histone_acetylation_router, prefix="/api/v1")
