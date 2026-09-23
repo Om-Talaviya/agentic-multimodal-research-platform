@@ -1,3 +1,4 @@
+from api.routes.cryoet_clustering import router as cryoet_clustering_router
 from api.routes.viral_phylodynamics import router as viral_phylodynamics_router
 from api.routes.biocomputer_logic import router as biocomputer_logic_router
 from api.routes.adaptive_resistance import router as adaptive_resistance_router
@@ -188,6 +189,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(cryoet_clustering_router, prefix="/api/v1")
 app.include_router(viral_phylodynamics_router, prefix="/api/v1")
 app.include_router(biocomputer_logic_router, prefix="/api/v1")
 app.include_router(adaptive_resistance_router, prefix="/api/v1")

@@ -445,6 +445,7 @@ from database.models.pandda_crystallography import DBCrystallographyFragmentScre
 from database.models.adaptive_resistance import DBAdaptiveResistanceStudy, DBClonalFitnessLineage, DBDrugResistanceTrajectory
 from database.models.biocomputer_logic import DBBiocomputerCircuit, DBLogicGateCascade, DBCellularStateClassifier
 from database.models.viral_phylodynamics import DBViralSurveillanceStudy, DBPhylodynamicLineage, DBStrainTransmissionFitness
+from database.models.cryoet_clustering import DBCryoETSubtomogramStudy, DBSubtomogramVolume, DBInSituMacromoleculeCluster
 __all__ = [
     "User",
     "UserQuota",
@@ -794,6 +795,9 @@ __all__ = [
     "DBViralSurveillanceStudy",
     "DBPhylodynamicLineage",
     "DBStrainTransmissionFitness",
+    "DBCryoETSubtomogramStudy",
+    "DBSubtomogramVolume",
+    "DBInSituMacromoleculeCluster",
 ]
 
 

@@ -84,6 +84,7 @@ import { PanDDACrystallographyStudioPage } from './pages/PanDDACrystallographySt
 import { AdaptiveResistanceStudioPage } from './pages/AdaptiveResistanceStudioPage'
 import { BiocomputerLogicStudioPage } from './pages/BiocomputerLogicStudioPage'
 import { ViralPhylodynamicsStudioPage } from './pages/ViralPhylodynamicsStudioPage'
+import { CryoETClusteringStudioPage } from './pages/CryoETClusteringStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -235,6 +236,7 @@ function App() {
           <Route path="adaptive-resistance" element={<AdaptiveResistanceStudioPage />} />
           <Route path="biocomputer-logic" element={<BiocomputerLogicStudioPage />} />
           <Route path="viral-phylodynamics" element={<ViralPhylodynamicsStudioPage />} />
+          <Route path="cryoet-clustering" element={<CryoETClusteringStudioPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 
