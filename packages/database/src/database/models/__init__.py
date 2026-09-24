@@ -896,3 +896,9 @@ from database.models.organoid_morphometry import (
     DBOrganoidZStackProfile,
     DBOrganoidDrugDoseResponse
 )
+
+from database.models.glycan_microarray import (
+    DBGlycanMicroarrayScreen,
+    DBGlycanSpotBindingRecord,
+    DBLectinSpecificityProfile
+)
