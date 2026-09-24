@@ -1,3 +1,4 @@
+import { PROTACKineticsStudioPage } from './pages/PROTACKineticsStudioPage';
 import { SpatialProteomicsCODEXStudioPage } from './pages/SpatialProteomicsCODEXStudioPage';
 import { MilestoneV18StudioPage } from './pages/MilestoneV18StudioPage';
 import { mRNACodonStudioPage } from './pages/mRNACodonStudioPage';
@@ -289,6 +290,7 @@ function App() {
                       <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
                       <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
+                      <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -307,6 +309,7 @@ function App() {
                       <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
                       <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
+                      <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
           </Routes>
   )
 
