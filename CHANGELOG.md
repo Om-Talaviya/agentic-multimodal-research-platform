@@ -1,4 +1,15 @@
 
+## [v1.9.0] - 2026-09-24
+### Added (Phases 155 - 161)
+- Phase 155: Multi-Modal Spatial Proteomics & CODEX Ultra High-Plex (40+) Fluorescence Multiplexing Engine
+- Phase 156: PROTAC Ternary Complex Thermodynamics, Alpha Cooperativity & Hook Effect Degradation Dynamics
+- Phase 157: Cell-Free Protein Synthesis (CFPS) In-Vitro Transcription-Translation (TX-TL) Kinetic Reactor Engine
+- Phase 158: Multi-Target Bispecific & Trispecific T-Cell Engager (BiTE/TriTE) Immunological Synapse Geometry Engine
+- Phase 159: Epigenetic CRISPR Base/Prime Editing & Targeted DNA Methylation Maintenance Engine
+- Phase 160: Single-Molecule FRET (smFRET) Hidden Markov Model Conformational Transition Kinetics Engine
+- Phase 161: Pan-Cancer Multi-Omics Precision Patient Stratification & Milestone v1.9 Global Certification
+
+
 ## [v1.8.0] - 2026-09-24
 ### Added (Phases 140 - 154)
 - Phase 140: In-Silico Membrane Permeability PAMPA Simulation Engine

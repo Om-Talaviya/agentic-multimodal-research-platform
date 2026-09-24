@@ -4,7 +4,7 @@
   <a href="https://github.com/Om-Talaviya"><img src="https://img.shields.io/badge/Architect-Om%20Talaviya-38bdf8?style=for-the-badge&logo=github&logoColor=white" alt="Author" /></a>
   <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776ab?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Release-v1.8%20(154%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
+  <img src="https://img.shields.io/badge/Release-v1.9%20(161%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
   <img src="https://img.shields.io/badge/CI%2FCD-100%25%20Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI" />
 </p>
 
@@ -308,3 +308,13 @@ Distributed under the **Apache 2.0 License**.
 - **Phase 152**: Autonomous Hi-C Chromatin Loop Contact Engine
 - **Phase 153**: Autonomous Multi-Objective mRNA Codon Optimization Engine
 - **Phase 154**: Autonomous Centennial Bio-System Synthesis & Milestone v1.8 Certification
+
+
+### 🚀 Milestone v1.9: Targeted Therapeutics, Biophysics & Precision Oncology (Phases 155 - 161)
+- **Phase 155**: Autonomous Multi-Modal Spatial Proteomics & CODEX Single-Cell Multiplexing Engine
+- **Phase 156**: Autonomous Proteolysis Targeting Chimera (PROTAC) Ternary Complex Degradation Kinetics Engine
+- **Phase 157**: Autonomous Cell-Free Protein Synthesis (CFPS) In-Vitro Transcription-Translation (TX-TL) Kinetics Engine
+- **Phase 158**: Autonomous Multi-Target Bispecific & Trispecific T-Cell Engager (BiTE/TriTE) Geometry Engine
+- **Phase 159**: Autonomous Epigenetic CRISPR Base/Prime Editing DNA Methylation Maintenance Engine
+- **Phase 160**: Autonomous Single-Molecule FRET (smFRET) Conformational Dynamic Transition Kinetics Engine
+- **Phase 161**: Autonomous Pan-Cancer Multi-Omics Precision Stratification, Milestone v1.9 Docs & CLI Sync
