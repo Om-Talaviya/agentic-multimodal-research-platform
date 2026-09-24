@@ -1016,3 +1016,9 @@ from database.models.single_cell_perturbation import (
     DBPerturbationTargetEffect,
     DBCausalGRNEdge,
 )
+
+from database.models.whole_body_pbpk import (
+    DBWholeBodyPBPKStudy,
+    DBOrganTissueCompartment,
+    DBTransOrganClearanceRate,
+)
