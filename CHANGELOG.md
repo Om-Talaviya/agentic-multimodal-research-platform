@@ -1,4 +1,8 @@
 
+## [v2.0.0] - 2026-09-24
+### Added (Phases 162 - 168)
+- Phase 162: Autonomous Spatial Transcriptomics Microdissection & Subcellular Spot Deconvolution Engine
+
 ## [v1.9.0] - 2026-09-24
 ### Added (Phases 155 - 161)
 - Phase 155: Multi-Modal Spatial Proteomics & CODEX Ultra High-Plex (40+) Fluorescence Multiplexing Engine

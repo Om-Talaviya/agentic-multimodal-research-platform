@@ -113,6 +113,7 @@ import { HistoneAcetylationStudioPage } from './pages/HistoneAcetylationStudioPa
 import { CARMacrophageStudioPage } from './pages/CARMacrophageStudioPage'
 import { LNPEncapsulationStudioPage } from './pages/LNPEncapsulationStudioPage'
 import { SpatialGNNStudioPage } from './pages/SpatialGNNStudioPage'
+import { SpatialMicrodissectionStudioPage } from './pages/SpatialMicrodissectionStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -301,6 +302,7 @@ function App() {
                       <Route path="/crispr-epigenetic" element={<CRISPREpigeneticStudioPage />} />
                       <Route path="/smfret-kinetics" element={<smFRETKineticsStudioPage />} />
                       <Route path="/milestone-v1-9" element={<MilestoneV19StudioPage />} />
+                      <Route path="/spatial-microdissection" element={<SpatialMicrodissectionStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
