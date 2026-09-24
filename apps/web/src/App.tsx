@@ -1,3 +1,4 @@
+import { ChromatinLoopStudioPage } from './pages/ChromatinLoopStudioPage';
 import { CapsidAssemblyStudioPage } from './pages/CapsidAssemblyStudioPage';
 import { SpatialFluxStudioPage } from './pages/SpatialFluxStudioPage';
 import { DNAOrigamiStudioPage } from './pages/DNAOrigamiStudioPage';
@@ -281,6 +282,7 @@ function App() {
                       <Route path="/dna-origami" element={<DNAOrigamiStudioPage />} />
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
+                      <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -295,6 +297,7 @@ function App() {
                       <Route path="/dna-origami" element={<DNAOrigamiStudioPage />} />
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
+                      <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
           </Routes>
   )
 
