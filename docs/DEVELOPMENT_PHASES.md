@@ -1027,6 +1027,6 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 164**: Autonomous CRISPR Base Editing Bystander Mutation Risk & Precise Nucleotide Transition Forecaster (`crispr_base_editor`)
 - [x] **Phase 165**: Autonomous Peptide-Drug Conjugate (PDC) Linker Cleavability & Tumor Cathepsin-B Selectivity Engine (`pdc_conjugate`)
 - [x] **Phase 166**: Autonomous In-Silico Cryo-Electron Microscopy Micro-Crystal Electron Diffraction (MicroED) Structural Engine (`microed_structural`)
-- [ ] **Phase 167**: Autonomous Single-Cell Multi-Omics Perturbation Screening & Causal Gene Regulatory Network Inversion Engine (`single_cell_perturbation`)
+- [x] **Phase 167**: Autonomous Single-Cell Multi-Omics Perturbation Screening & Causal Gene Regulatory Network Inversion Engine (`single_cell_perturbation`)
 - [ ] **Phase 168**: Autonomous Whole-Body PBPK Digital Twin & Trans-Organ Pharmacokinetics Forecaster (`whole_body_pbpk`)
 
