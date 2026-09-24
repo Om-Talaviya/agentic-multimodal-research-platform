@@ -914,3 +914,9 @@ from database.models.single_cell_spatial_flux import (
     DBMetabolicReactionFluxRate,
     DBTissueMicrodomainProfile
 )
+
+from database.models.viral_capsid_assembly import (
+    DBViralCapsidAssemblyStudy,
+    DBCapsomerInterfaceEnergy,
+    DBCapsidThermodynamicTrajectory
+)

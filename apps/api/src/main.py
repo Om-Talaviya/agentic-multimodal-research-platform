@@ -1,3 +1,4 @@
+from api.routes import capsid_assembly
 from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
@@ -367,3 +368,5 @@ app.include_router(glycan_microarray.router, prefix=settings.api_prefix)
 app.include_router(dna_origami.router, prefix=settings.api_prefix)
 
 app.include_router(spatial_flux.router, prefix=settings.api_prefix)
+
+app.include_router(capsid_assembly.router, prefix=settings.api_prefix)

@@ -1,3 +1,4 @@
+import { CapsidAssemblyStudioPage } from './pages/CapsidAssemblyStudioPage';
 import { SpatialFluxStudioPage } from './pages/SpatialFluxStudioPage';
 import { DNAOrigamiStudioPage } from './pages/DNAOrigamiStudioPage';
 import { GlycanMicroarrayStudioPage } from './pages/GlycanMicroarrayStudioPage';
@@ -279,6 +280,7 @@ function App() {
                       <Route path="/glycan-microarray" element={<GlycanMicroarrayStudioPage />} />
                       <Route path="/dna-origami" element={<DNAOrigamiStudioPage />} />
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
+                      <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -292,6 +294,7 @@ function App() {
                       <Route path="/glycan-microarray" element={<GlycanMicroarrayStudioPage />} />
                       <Route path="/dna-origami" element={<DNAOrigamiStudioPage />} />
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
+                      <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
           </Routes>
   )
 
