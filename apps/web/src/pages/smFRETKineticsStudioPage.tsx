@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, ShieldCheck, Zap, Waveform, Sparkles, Activity } from 'lucide-react';
+import { Eye, ShieldCheck, Zap, Sparkles, Activity } from 'lucide-react';
 
 export const smFRETKineticsStudioPage: React.FC = () => {
   const [biomolecule, setBiomolecule] = useState('Hsp90 Molecular Chaperone Homodimer');
