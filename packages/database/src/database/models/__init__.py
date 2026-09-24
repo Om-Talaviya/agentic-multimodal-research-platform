@@ -849,3 +849,9 @@ __all__ = [
 ]
 
 
+
+from database.models.membrane_permeability import (
+    DBPAMPAPermeabilityStudy,
+    DBMembraneDiffusivityRecord,
+    DBPermeabilityQSARProfile,
+)

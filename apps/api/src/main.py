@@ -1,3 +1,4 @@
+from api.routes.membrane_permeability import router as membrane_permeability_router
 from api.routes.spatial_gnn_neighborhood import router as spatial_gnn_router
 from api.routes.lnp_encapsulation import router as lnp_encapsulation_router
 from api.routes.car_macrophage import router as car_macrophage_router
@@ -209,6 +210,7 @@ app.include_router(pandda_crystallography_router, prefix="/api/v1")
 app.include_router(citeseq_router, prefix="/api/v1")
 app.include_router(antibody_maturation_router, prefix="/api/v1")
 app.include_router(t2t_assembly_router, prefix="/api/v1")
+app.include_router(membrane_permeability_router, prefix="/api/v1")
 app.include_router(milestone_v1_6_router, prefix="/api/v1")
 app.include_router(preprint_latex_router, prefix="/api/v1")
 app.include_router(bgc_router, prefix="/api/v1")
