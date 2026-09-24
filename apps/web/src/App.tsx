@@ -116,6 +116,7 @@ import { SpatialGNNStudioPage } from './pages/SpatialGNNStudioPage'
 import { SpatialMicrodissectionStudioPage } from './pages/SpatialMicrodissectionStudioPage'
 import { RNAThermodynamicsStudioPage } from './pages/RNAThermodynamicsStudioPage'
 import { CRISPRBaseEditorStudioPage } from './pages/CRISPRBaseEditorStudioPage'
+import { PDCConjugateStudioPage } from './pages/PDCConjugateStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -307,6 +308,7 @@ function App() {
                       <Route path="/spatial-microdissection" element={<SpatialMicrodissectionStudioPage />} />
                       <Route path="/rna-thermodynamics" element={<RNAThermodynamicsStudioPage />} />
                       <Route path="/crispr-base-editor" element={<CRISPRBaseEditorStudioPage />} />
+                      <Route path="/pdc-conjugate" element={<PDCConjugateStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )

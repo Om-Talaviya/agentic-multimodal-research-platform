@@ -998,3 +998,9 @@ from database.models.crispr_base_editor import (
     DBTargetNucleotideTransition,
     DBBystanderEditingWindow,
 )
+
+from database.models.pdc_conjugate import (
+    DBPDCConjugateStudy,
+    DBPeptideLinkerCleavageProfile,
+    DBCathepsinBSelectivityAssay,
+)

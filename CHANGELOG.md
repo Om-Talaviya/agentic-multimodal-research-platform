@@ -4,6 +4,7 @@
 - Phase 162: Autonomous Spatial Transcriptomics Microdissection & Subcellular Spot Deconvolution Engine
 - Phase 163: Autonomous Non-Coding RNA Secondary Structure Thermodynamics & Minimum Free Energy Folding Matrix
 - Phase 164: Autonomous CRISPR Base Editing Bystander Mutation Risk & Precise Nucleotide Transition Forecaster
+- Phase 165: Autonomous Peptide-Drug Conjugate (PDC) Linker Cleavability & Tumor Cathepsin-B Selectivity Engine
 
 ## [v1.9.0] - 2026-09-24
 ### Added (Phases 155 - 161)
