@@ -41,8 +41,8 @@ def cmd_version(args):
     """Display system release and phase status."""
     print("=================================================================")
     print("  AGENTIC MULTIMODAL RESEARCH PLATFORM (AI RESEARCH OS)")
-    print("  Release: v1.9 | Generations 1-29 | 161 Completed Active Phases")
-    print("  Test Coverage: 660+ Tests (100% CI Passing)")
+    print("  Release: v2.0 | Generations 1-30 | 168 Completed Active Phases")
+    print("  Test Coverage: 730+ Tests (100% CI Passing)")
     print("=================================================================")
 
 
