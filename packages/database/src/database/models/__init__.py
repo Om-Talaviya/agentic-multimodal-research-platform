@@ -974,3 +974,9 @@ from database.models.single_molecule_fret import (
     DBFRETKineticStateTransition,
     DBFluorophorePhotobleachingTrajectory
 )
+
+from database.models.milestone_v1_9 import (
+    DBMilestoneV19Orchestration,
+    DBPanCancerPatientStratificationCluster,
+    DBCrossModalTherapeuticEfficacyMatrix
+)
