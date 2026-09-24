@@ -873,3 +873,9 @@ from database.models.aptamer_evolution import (
     DBAptamerRoundSequence,
     DBAptamerTargetBindingRecord,
 )
+
+from database.models.mitochondrial_bioenergetics import (
+    DBMitochondrialOXPHOSStudy,
+    DBETCComplexActivityRecord,
+    DBROSDynamicsProfile,
+)
