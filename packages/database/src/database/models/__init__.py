@@ -986,3 +986,9 @@ from database.models.spatial_microdissection import (
     DBSubcellularSpotDeconvolution,
     DBCellularNicheBoundary,
 )
+
+from database.models.rna_thermodynamics import (
+    DBRNAThermodynamicsStudy,
+    DBRNABasePairProbability,
+    DBRNAPseudoknotStructure,
+)
