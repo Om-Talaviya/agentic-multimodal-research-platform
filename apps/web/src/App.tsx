@@ -1,3 +1,4 @@
+import { AptamerEvolutionStudioPage } from './pages/AptamerEvolutionStudioPage'
 import { CYP450MetabolismStudioPage } from './pages/CYP450MetabolismStudioPage'
 import { ClinicalePROStudioPage } from './pages/ClinicalePROStudioPage'
 import { MembranePermeabilityStudioPage } from './pages/MembranePermeabilityStudioPage'
