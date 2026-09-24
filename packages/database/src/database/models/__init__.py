@@ -861,3 +861,9 @@ from database.models.clinical_epro import (
     DBPatientSurveyTelemetry,
     DBePROAdverseEventAlert,
 )
+
+from database.models.cyp450_metabolism import (
+    DBCYP450MetabolismScreen,
+    DBCYPIsoformProfile,
+    DBMetabolicClearanceRecord,
+)

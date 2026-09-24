@@ -1,3 +1,4 @@
+from api.routes.cyp450_metabolism import router as cyp450_metabolism_router
 from api.routes.clinical_epro import router as clinical_epro_router
 from api.routes.membrane_permeability import router as membrane_permeability_router
 from api.routes.spatial_gnn_neighborhood import router as spatial_gnn_router
@@ -213,6 +214,7 @@ app.include_router(antibody_maturation_router, prefix="/api/v1")
 app.include_router(t2t_assembly_router, prefix="/api/v1")
 app.include_router(membrane_permeability_router, prefix="/api/v1")
 app.include_router(clinical_epro_router, prefix="/api/v1")
+app.include_router(cyp450_metabolism_router, prefix="/api/v1")
 app.include_router(milestone_v1_6_router, prefix="/api/v1")
 app.include_router(preprint_latex_router, prefix="/api/v1")
 app.include_router(bgc_router, prefix="/api/v1")
