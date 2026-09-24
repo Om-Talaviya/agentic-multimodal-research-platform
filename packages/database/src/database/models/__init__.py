@@ -908,3 +908,9 @@ from database.models.dna_origami_nanorobot import (
     DBStapleStrandCrossover,
     DBAptamerLatchTrigger
 )
+
+from database.models.single_cell_spatial_flux import (
+    DBSingleCellSpatialFluxStudy,
+    DBMetabolicReactionFluxRate,
+    DBTissueMicrodomainProfile
+)
