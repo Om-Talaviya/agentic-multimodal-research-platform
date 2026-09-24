@@ -902,3 +902,9 @@ from database.models.glycan_microarray import (
     DBGlycanSpotBindingRecord,
     DBLectinSpecificityProfile
 )
+
+from database.models.dna_origami_nanorobot import (
+    DBDNAOrigamiDesignCampaign,
+    DBStapleStrandCrossover,
+    DBAptamerLatchTrigger
+)
