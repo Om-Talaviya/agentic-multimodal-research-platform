@@ -879,3 +879,8 @@ from database.models.mitochondrial_bioenergetics import (
     DBETCComplexActivityRecord,
     DBROSDynamicsProfile,
 )
+
+from database.models.tcr_pmhc_affinity import (
+    DBTCRpMHCStudy,
+    DBTCRCrossReactivityRecord,
+)
