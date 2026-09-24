@@ -855,3 +855,9 @@ from database.models.membrane_permeability import (
     DBMembraneDiffusivityRecord,
     DBPermeabilityQSARProfile,
 )
+
+from database.models.clinical_epro import (
+    DBePROClinicalTrialStudy,
+    DBPatientSurveyTelemetry,
+    DBePROAdverseEventAlert,
+)
