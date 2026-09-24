@@ -1,12 +1,12 @@
 import { MilestoneV19StudioPage } from './pages/MilestoneV19StudioPage';
-import { smFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
+import { smFRETKineticsStudioPage as SmFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
 import { CRISPREpigeneticStudioPage } from './pages/CRISPREpigeneticStudioPage';
 import { TCellEngagerStudioPage } from './pages/TCellEngagerStudioPage';
 import { CFPSTXTLStudioPage } from './pages/CFPSTXTLStudioPage';
 import { PROTACKineticsStudioPage } from './pages/PROTACKineticsStudioPage';
 import { SpatialProteomicsCODEXStudioPage } from './pages/SpatialProteomicsCODEXStudioPage';
 import { MilestoneV18StudioPage } from './pages/MilestoneV18StudioPage';
-import { mRNACodonStudioPage } from './pages/mRNACodonStudioPage';
+import { mRNACodonStudioPage as MRNACodonStudioPage } from './pages/mRNACodonStudioPage';
 import { ChromatinLoopStudioPage } from './pages/ChromatinLoopStudioPage';
 import { CapsidAssemblyStudioPage } from './pages/CapsidAssemblyStudioPage';
 import { SpatialFluxStudioPage } from './pages/SpatialFluxStudioPage';
@@ -299,14 +299,14 @@ function App() {
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
                       <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
-                      <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
+                      <Route path="/mrna-codon" element={<MRNACodonStudioPage />} />
                       <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
                       <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
                       <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
                       <Route path="/tcell-engager" element={<TCellEngagerStudioPage />} />
                       <Route path="/crispr-epigenetic" element={<CRISPREpigeneticStudioPage />} />
-                      <Route path="/smfret-kinetics" element={<smFRETKineticsStudioPage />} />
+                      <Route path="/smfret-kinetics" element={<SmFRETKineticsStudioPage />} />
                       <Route path="/milestone-v1-9" element={<MilestoneV19StudioPage />} />
                       <Route path="/spatial-microdissection" element={<SpatialMicrodissectionStudioPage />} />
                       <Route path="/rna-thermodynamics" element={<RNAThermodynamicsStudioPage />} />
@@ -330,14 +330,14 @@ function App() {
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
                       <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
-                      <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
+                      <Route path="/mrna-codon" element={<MRNACodonStudioPage />} />
                       <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
                       <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
                       <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
                       <Route path="/tcell-engager" element={<TCellEngagerStudioPage />} />
                       <Route path="/crispr-epigenetic" element={<CRISPREpigeneticStudioPage />} />
-                      <Route path="/smfret-kinetics" element={<smFRETKineticsStudioPage />} />
+                      <Route path="/smfret-kinetics" element={<SmFRETKineticsStudioPage />} />
                       <Route path="/milestone-v1-9" element={<MilestoneV19StudioPage />} />
           </Routes>
   )
