@@ -938,3 +938,9 @@ from database.models.milestone_v1_8 import (
     DBCrossDomainWorkflowNode,
     DBSynthesisExecutiveReport
 )
+
+from database.models.spatial_proteomics_codex import (
+    DBSpatialProteomicsCODEXStudy,
+    DBCODEXProteinMarkerExpression,
+    DBSingleCellSpatialNeighborhoodPhenotype
+)

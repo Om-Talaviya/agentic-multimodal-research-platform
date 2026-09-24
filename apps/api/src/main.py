@@ -1,3 +1,4 @@
+from api.routes import spatial_proteomics_codex
 from api.routes import milestone_v1_8
 from api.routes import mrna_codon
 from api.routes import chromatin_loop
@@ -379,3 +380,5 @@ app.include_router(chromatin_loop.router, prefix=settings.api_prefix)
 app.include_router(mrna_codon.router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v1_8.router, prefix=settings.api_prefix)
+
+app.include_router(spatial_proteomics_codex.router, prefix=settings.api_prefix)
