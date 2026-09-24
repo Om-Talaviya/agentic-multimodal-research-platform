@@ -1,3 +1,4 @@
+from api.routes import smfret_kinetics
 from api.routes import crispr_epigenetic
 from api.routes import tcell_engager
 from api.routes import cfps_txtl
@@ -394,3 +395,5 @@ app.include_router(cfps_txtl.router, prefix=settings.api_prefix)
 app.include_router(tcell_engager.router, prefix=settings.api_prefix)
 
 app.include_router(crispr_epigenetic.router, prefix=settings.api_prefix)
+
+app.include_router(smfret_kinetics.router, prefix=settings.api_prefix)

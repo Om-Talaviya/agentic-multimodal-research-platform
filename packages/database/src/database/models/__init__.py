@@ -968,3 +968,9 @@ from database.models.epigenetic_crispr_editing import (
     DBCpGIslandMethylationProfile,
     DBOffTargetEpigeneticEpimutation
 )
+
+from database.models.single_molecule_fret import (
+    DBSingleMoleculeFRETStudy,
+    DBFRETKineticStateTransition,
+    DBFluorophorePhotobleachingTrajectory
+)
