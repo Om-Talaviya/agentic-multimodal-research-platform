@@ -884,3 +884,9 @@ from database.models.tcr_pmhc_affinity import (
     DBTCRpMHCStudy,
     DBTCRCrossReactivityRecord,
 )
+
+from database.models.spatial_rna_velocity import (
+    DBSpatialRNAVelocityStudy,
+    DBVelocityVectorFieldSpot,
+    DBMorphogenesisStreamline,
+)

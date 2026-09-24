@@ -1,3 +1,4 @@
+import { SpatialRNAVelocityStudioPage } from './pages/SpatialRNAVelocityStudioPage'
 import { TCRpMHCStudioPage } from './pages/TCRpMHCStudioPage'
 import { MitochondrialBioenergeticsStudioPage } from './pages/MitochondrialBioenergeticsStudioPage'
 import { AptamerEvolutionStudioPage } from './pages/AptamerEvolutionStudioPage'
