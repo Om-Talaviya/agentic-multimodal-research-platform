@@ -962,3 +962,9 @@ from database.models.multispecific_tcell_engager import (
     DBTargetBindingDomainGeometry,
     DBSynapticDistanceProfile
 )
+
+from database.models.epigenetic_crispr_editing import (
+    DBEpigeneticCRISPREditingStudy,
+    DBCpGIslandMethylationProfile,
+    DBOffTargetEpigeneticEpimutation
+)
