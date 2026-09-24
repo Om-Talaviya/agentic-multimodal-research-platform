@@ -992,3 +992,9 @@ from database.models.rna_thermodynamics import (
     DBRNABasePairProbability,
     DBRNAPseudoknotStructure,
 )
+
+from database.models.crispr_base_editor import (
+    DBCRISPRBaseEditorStudy,
+    DBTargetNucleotideTransition,
+    DBBystanderEditingWindow,
+)
