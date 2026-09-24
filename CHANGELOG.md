@@ -7,6 +7,7 @@
 - Phase 165: Autonomous Peptide-Drug Conjugate (PDC) Linker Cleavability & Tumor Cathepsin-B Selectivity Engine
 - Phase 166: Autonomous In-Silico Cryo-Electron Microscopy Micro-Crystal Electron Diffraction (MicroED) Structural Engine
 - Phase 167: Autonomous Single-Cell Multi-Omics Perturbation Screening & Causal Gene Regulatory Network Inversion Engine
+- Phase 168: Autonomous Whole-Body PBPK Digital Twin & Trans-Organ Pharmacokinetics Forecaster
 
 ## [v1.9.0] - 2026-09-24
 ### Added (Phases 155 - 161)
