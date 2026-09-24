@@ -1,3 +1,4 @@
+from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
 from api.routes.spatial_rna_velocity import router as spatial_rna_velocity_router
@@ -361,3 +362,5 @@ async def root():
 app.include_router(organoid_morphometry.router, prefix=settings.api_prefix)
 
 app.include_router(glycan_microarray.router, prefix=settings.api_prefix)
+
+app.include_router(dna_origami.router, prefix=settings.api_prefix)
