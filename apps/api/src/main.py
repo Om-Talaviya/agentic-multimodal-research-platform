@@ -1,3 +1,4 @@
+from api.routes import milestone_v1_8
 from api.routes import mrna_codon
 from api.routes import chromatin_loop
 from api.routes import capsid_assembly
@@ -376,3 +377,5 @@ app.include_router(capsid_assembly.router, prefix=settings.api_prefix)
 app.include_router(chromatin_loop.router, prefix=settings.api_prefix)
 
 app.include_router(mrna_codon.router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v1_8.router, prefix=settings.api_prefix)

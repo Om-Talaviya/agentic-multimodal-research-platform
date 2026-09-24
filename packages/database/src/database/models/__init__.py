@@ -932,3 +932,9 @@ from database.models.mrna_codon_optimization import (
     DBOptimizedCodonVariant,
     DBCAIProfilePoint
 )
+
+from database.models.milestone_v1_8 import (
+    DBMilestoneV18Orchestration,
+    DBCrossDomainWorkflowNode,
+    DBSynthesisExecutiveReport
+)

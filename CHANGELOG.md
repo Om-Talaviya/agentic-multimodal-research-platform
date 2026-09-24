@@ -1,3 +1,22 @@
+
+## [v1.8.0] - 2026-09-24
+### Added (Phases 140 - 154)
+- Phase 140: In-Silico Membrane Permeability PAMPA Simulation Engine
+- Phase 141: Decentralized Clinical ePRO & Wearable Biomarker Outcomes Engine
+- Phase 142: Cytochrome P450 (CYP450) Regioselectivity & Drug Clearance Predictor
+- Phase 143: In-Silico SELEX Nucleic Acid Aptamer Affinity Evolution Engine
+- Phase 144: Mitochondrial OXPHOS Bioenergetics & Respiration Flux Engine
+- Phase 145: TCR-pMHC Structural Binding Affinity & Immunogenicity Predictor
+- Phase 146: Spatial RNA Velocity & Tissue Morphogenesis Vector Field Engine
+- Phase 147: 3D Tumor Organoid High-Content Morphometry & Drug Viability Engine
+- Phase 148: Glycomics High-Density Microarray & Lectin Specificity Engine
+- Phase 149: 3D DNA Origami Nanorobot Scaffold Routing & Aptamer Latch Engine
+- Phase 150: Single-Cell High-Resolution Spatial Flux Balance Analysis (FBA) Engine
+- Phase 151: AAV Viral Capsid Thermodynamic Self-Assembly & Nucleation Engine
+- Phase 152: Hi-C Chromatin Looping & Enhancer-Promoter Contact Topology Engine
+- Phase 153: Multi-Objective mRNA Codon Adaptation (CAI) & Uridine Depletion Engine
+- Phase 154: Centennial Multi-Modal Bio-System Synthesis & Milestone v1.8 Certification
+
 # Changelog
 
 ## [v1.7.0] - Milestone v1.7 Deep Bio-Computational Systems & Precision Planetary AI (Phases 126-132)

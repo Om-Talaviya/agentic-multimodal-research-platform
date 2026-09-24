@@ -1,3 +1,4 @@
+import { MilestoneV18StudioPage } from './pages/MilestoneV18StudioPage';
 import { mRNACodonStudioPage } from './pages/mRNACodonStudioPage';
 import { ChromatinLoopStudioPage } from './pages/ChromatinLoopStudioPage';
 import { CapsidAssemblyStudioPage } from './pages/CapsidAssemblyStudioPage';
@@ -285,6 +286,7 @@ function App() {
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
                       <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
                       <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
+                      <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -301,6 +303,7 @@ function App() {
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
                       <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
                       <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
+                      <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
           </Routes>
   )
 

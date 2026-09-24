@@ -25,7 +25,7 @@ def test_cli_version():
     result = subprocess.run([sys.executable, cli_path, "version"], capture_output=True, text=True)
     assert result.returncode == 0
     assert "AI RESEARCH OS" in result.stdout
-    assert "132 Completed Active Phases" in result.stdout
+    assert "154 Completed Active Phases" in result.stdout
 
 
 def test_cli_health():
