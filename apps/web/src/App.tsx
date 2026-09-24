@@ -1,3 +1,4 @@
+import { CFPSTXTLStudioPage } from './pages/CFPSTXTLStudioPage';
 import { PROTACKineticsStudioPage } from './pages/PROTACKineticsStudioPage';
 import { SpatialProteomicsCODEXStudioPage } from './pages/SpatialProteomicsCODEXStudioPage';
 import { MilestoneV18StudioPage } from './pages/MilestoneV18StudioPage';
@@ -291,6 +292,7 @@ function App() {
                       <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
                       <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
+                      <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -310,6 +312,7 @@ function App() {
                       <Route path="/milestone-v1-8" element={<MilestoneV18StudioPage />} />
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
                       <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
+                      <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
           </Routes>
   )
 
