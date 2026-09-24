@@ -1010,3 +1010,9 @@ from database.models.microed_structural import (
     DBMicroEDDiffractionFrame,
     DBMicroEDAtomicRefinement,
 )
+
+from database.models.single_cell_perturbation import (
+    DBSingleCellPerturbationStudy,
+    DBPerturbationTargetEffect,
+    DBCausalGRNEdge,
+)
