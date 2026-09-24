@@ -1023,7 +1023,7 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ### Milestone v2.0: Autonomous Planetary Bio-Computation & Multi-Omics Synthesis (Phases 162-168)
 - [x] **Phase 162**: Autonomous Spatial Transcriptomics Microdissection & Subcellular Spot Deconvolution Engine (`spatial_microdissection`)
-- [ ] **Phase 163**: Autonomous Non-Coding RNA Secondary Structure Thermodynamics & Minimum Free Energy Folding Matrix (`rna_thermodynamics`)
+- [x] **Phase 163**: Autonomous Non-Coding RNA Secondary Structure Thermodynamics & Minimum Free Energy Folding Matrix (`rna_thermodynamics`)
 - [ ] **Phase 164**: Autonomous CRISPR Base Editing Bystander Mutation Risk & Precise Nucleotide Transition Forecaster (`crispr_base_editor`)
 - [ ] **Phase 165**: Autonomous Peptide-Drug Conjugate (PDC) Linker Cleavability & Tumor Cathepsin-B Selectivity Engine (`pdc_conjugate`)
 - [ ] **Phase 166**: Autonomous In-Silico Cryo-Electron Microscopy Micro-Crystal Electron Diffraction (MicroED) Structural Engine (`microed_structural`)
