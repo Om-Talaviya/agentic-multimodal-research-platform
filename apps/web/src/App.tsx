@@ -1,3 +1,4 @@
+import { OrganoidMorphometryStudioPage } from './pages/OrganoidMorphometryStudioPage';
 import { SpatialRNAVelocityStudioPage } from './pages/SpatialRNAVelocityStudioPage'
 import { TCRpMHCStudioPage } from './pages/TCRpMHCStudioPage'
 import { MitochondrialBioenergeticsStudioPage } from './pages/MitochondrialBioenergeticsStudioPage'
@@ -271,7 +272,8 @@ function App() {
           }
         />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
-      </Routes>
+                  <Route path="/organoid-morphometry" element={<OrganoidMorphometryStudioPage />} />
+          </Routes>
     </WorkspaceProvider>
   )
 
@@ -280,7 +282,8 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<Navigate to="/login" replace />} />
-    </Routes>
+                <Route path="/organoid-morphometry" element={<OrganoidMorphometryStudioPage />} />
+          </Routes>
   )
 
   return isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes

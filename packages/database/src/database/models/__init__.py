@@ -890,3 +890,9 @@ from database.models.spatial_rna_velocity import (
     DBVelocityVectorFieldSpot,
     DBMorphogenesisStreamline,
 )
+
+from database.models.organoid_morphometry import (
+    DBOrganoidMorphometryStudy,
+    DBOrganoidZStackProfile,
+    DBOrganoidDrugDoseResponse
+)

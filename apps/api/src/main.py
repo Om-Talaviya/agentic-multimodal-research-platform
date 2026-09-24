@@ -1,3 +1,4 @@
+from api.routes import organoid_morphometry
 from api.routes.spatial_rna_velocity import router as spatial_rna_velocity_router
 from api.routes.tcr_pmhc import router as tcr_pmhc_router
 from api.routes.mitochondrial_bioenergetics import router as mitochondrial_bioenergetics_router
@@ -355,3 +356,5 @@ async def root():
     }
 
 
+
+app.include_router(organoid_morphometry.router, prefix=settings.api_prefix)
