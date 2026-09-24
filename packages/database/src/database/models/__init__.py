@@ -867,3 +867,9 @@ from database.models.cyp450_metabolism import (
     DBCYPIsoformProfile,
     DBMetabolicClearanceRecord,
 )
+
+from database.models.aptamer_evolution import (
+    DBAptamerEvolutionCampaign,
+    DBAptamerRoundSequence,
+    DBAptamerTargetBindingRecord,
+)
