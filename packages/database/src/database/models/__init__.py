@@ -980,3 +980,9 @@ from database.models.milestone_v1_9 import (
     DBPanCancerPatientStratificationCluster,
     DBCrossModalTherapeuticEfficacyMatrix
 )
+
+from database.models.spatial_microdissection import (
+    DBSpatialMicrodissectionSession,
+    DBSubcellularSpotDeconvolution,
+    DBCellularNicheBoundary,
+)

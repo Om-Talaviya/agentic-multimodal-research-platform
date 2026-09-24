@@ -13,6 +13,7 @@ from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
+from api.routes.spatial_microdissection import router as spatial_microdissection_router
 from api.routes.spatial_rna_velocity import router as spatial_rna_velocity_router
 from api.routes.tcr_pmhc import router as tcr_pmhc_router
 from api.routes.mitochondrial_bioenergetics import router as mitochondrial_bioenergetics_router
@@ -217,6 +218,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(spatial_microdissection_router, prefix="/api/v1")
 app.include_router(spatial_gnn_router, prefix="/api/v1")
 app.include_router(lnp_encapsulation_router, prefix="/api/v1")
 app.include_router(car_macrophage_router, prefix="/api/v1")
