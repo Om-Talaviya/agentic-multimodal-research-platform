@@ -920,3 +920,9 @@ from database.models.viral_capsid_assembly import (
     DBCapsomerInterfaceEnergy,
     DBCapsidThermodynamicTrajectory
 )
+
+from database.models.chromatin_looping import (
+    DBHiCChromatinLoopStudy,
+    DBEnhancerPromoterContactEdge,
+    DBTADBoundaryRegion
+)

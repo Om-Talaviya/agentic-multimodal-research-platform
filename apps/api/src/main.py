@@ -1,3 +1,4 @@
+from api.routes import chromatin_loop
 from api.routes import capsid_assembly
 from api.routes import spatial_flux
 from api.routes import dna_origami
@@ -370,3 +371,5 @@ app.include_router(dna_origami.router, prefix=settings.api_prefix)
 app.include_router(spatial_flux.router, prefix=settings.api_prefix)
 
 app.include_router(capsid_assembly.router, prefix=settings.api_prefix)
+
+app.include_router(chromatin_loop.router, prefix=settings.api_prefix)
