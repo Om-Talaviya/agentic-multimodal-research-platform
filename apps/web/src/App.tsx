@@ -1,3 +1,4 @@
+import { ClinicalePROStudioPage } from './pages/ClinicalePROStudioPage'
 import { MembranePermeabilityStudioPage } from './pages/MembranePermeabilityStudioPage'
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
