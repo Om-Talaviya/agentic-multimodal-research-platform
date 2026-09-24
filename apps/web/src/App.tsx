@@ -1,3 +1,4 @@
+import { smFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
 import { CRISPREpigeneticStudioPage } from './pages/CRISPREpigeneticStudioPage';
 import { TCellEngagerStudioPage } from './pages/TCellEngagerStudioPage';
 import { CFPSTXTLStudioPage } from './pages/CFPSTXTLStudioPage';
@@ -297,6 +298,7 @@ function App() {
                       <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
                       <Route path="/tcell-engager" element={<TCellEngagerStudioPage />} />
                       <Route path="/crispr-epigenetic" element={<CRISPREpigeneticStudioPage />} />
+                      <Route path="/smfret-kinetics" element={<smFRETKineticsStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -319,6 +321,7 @@ function App() {
                       <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
                       <Route path="/tcell-engager" element={<TCellEngagerStudioPage />} />
                       <Route path="/crispr-epigenetic" element={<CRISPREpigeneticStudioPage />} />
+                      <Route path="/smfret-kinetics" element={<smFRETKineticsStudioPage />} />
           </Routes>
   )
 
