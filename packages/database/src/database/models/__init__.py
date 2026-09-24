@@ -926,3 +926,9 @@ from database.models.chromatin_looping import (
     DBEnhancerPromoterContactEdge,
     DBTADBoundaryRegion
 )
+
+from database.models.mrna_codon_optimization import (
+    DBmRNACodonOptimizationCampaign,
+    DBOptimizedCodonVariant,
+    DBCAIProfilePoint
+)

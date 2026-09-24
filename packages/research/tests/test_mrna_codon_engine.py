@@ -1,0 +1,21 @@
+"""Tests for mRNACodonEngine (Phase 153)."""
+
+from research.vaccines.mrna_codon_engine import (
+    mRNACodonEngine,
+    mRNACodonRequest,
+)
+
+
+def test_mrna_codon_engine():
+    engine = mRNACodonEngine()
+    req = mRNACodonRequest(
+        target_protein_name="Flu Hemagglutinin",
+        expression_host="Homo sapiens",
+        amino_acid_sequence="MKTIIALSYIFCLALGQDLPGNDNSTATLCLGHHAVPNGTLVKTITDDQIEVTNATELVQSSSTGKICNNPHRILDGIDCTLIDALLGDPHCDVFQNETWDLFVERSKAFSNCYPYDVPDYASLRSLVASSGTLEFITEGFTWTGVTQNGGSNACKRGPGSGFFSRLNWLTKSGSTYPVLNVTMPNNDNFDKLYIWGVHHPSTNQEQTSLYVQASGRVTVSTRRSQQTIIPNIGSRPWVRGLSSRISIYWTIVKPGDVLVINSNGNLIAPRGYFKMRTGKSSIMRSDAPIDTCISECITPNGSIPNDKPFQNVNKITYGACPKYVKQNTLKLATGMRNVPEKQTRGIFGAIAGFIENGWEGMVDGWYGFRHQNSEGTGQAADLKSTQAAIDQINGKLNRVIEKTNEKFHQIEKEFSEVEGRIQDLEKYVEDTKIDLWSYNAELLVALENQHTIDLTDSEMNKLFEKTRRQLRENAEDMGNGCFKIYHKCDNACIESIRNGTYDHDVYRDEALNNRFQIKGVELKSGYKDWILWISFAISCFLLCVVLLGFIMWACQKGNIRCNICI",
+        target_gc_percent=56.0,
+    )
+    result = engine.optimize(req)
+    assert result.optimized_cai > result.original_cai
+    assert result.translation_efficiency_score > 0.90
+    assert len(result.candidate_variants) == 3
+    assert len(result.cai_profile_sample) == 5

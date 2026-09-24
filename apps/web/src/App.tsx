@@ -1,3 +1,4 @@
+import { mRNACodonStudioPage } from './pages/mRNACodonStudioPage';
 import { ChromatinLoopStudioPage } from './pages/ChromatinLoopStudioPage';
 import { CapsidAssemblyStudioPage } from './pages/CapsidAssemblyStudioPage';
 import { SpatialFluxStudioPage } from './pages/SpatialFluxStudioPage';
@@ -283,6 +284,7 @@ function App() {
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
                       <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
+                      <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -298,6 +300,7 @@ function App() {
                       <Route path="/spatial-flux" element={<SpatialFluxStudioPage />} />
                       <Route path="/capsid-assembly" element={<CapsidAssemblyStudioPage />} />
                       <Route path="/chromatin-loop" element={<ChromatinLoopStudioPage />} />
+                      <Route path="/mrna-codon" element={<mRNACodonStudioPage />} />
           </Routes>
   )
 
