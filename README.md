@@ -4,7 +4,7 @@
   <a href="https://github.com/Om-Talaviya"><img src="https://img.shields.io/badge/Architect-Om%20Talaviya-38bdf8?style=for-the-badge&logo=github&logoColor=white" alt="Author" /></a>
   <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776ab?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Release-v1.7%20(132%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
+  <img src="https://img.shields.io/badge/Release-v1.8%20(154%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
   <img src="https://img.shields.io/badge/CI%2FCD-100%25%20Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI" />
 </p>
 
@@ -291,3 +291,20 @@ Distributed under the **Apache 2.0 License**.
   version = {1.1}
 }
 ```
+
+### 🚀 Milestone v1.8: Multi-Scale Biophysical & Molecular Synthesis (Phases 140 - 154)
+- **Phase 140**: Autonomous In-Silico Membrane Permeability PAMPA Engine
+- **Phase 141**: Autonomous Clinical Trial Decentralized ePRO Outcomes Engine
+- **Phase 142**: Autonomous Cytochrome P450 Drug Metabolism Predictor
+- **Phase 143**: Autonomous In-Silico SELEX Nucleic Acid Aptamer Affinity Evolution Engine
+- **Phase 144**: Autonomous Mitochondrial OXPHOS Bioenergetics Engine
+- **Phase 145**: Autonomous TCR-pMHC Structural Binding Affinity Predictor
+- **Phase 146**: Autonomous Spatial RNA Velocity Morphogenesis Engine
+- **Phase 147**: Autonomous 3D Tumor Organoid Morphometry Engine
+- **Phase 148**: Autonomous Glycomics Microarray Lectin Specificity Engine
+- **Phase 149**: Autonomous 3D DNA Origami Nanorobot Design Engine
+- **Phase 150**: Autonomous Single-Cell Spatial Flux Balance Engine
+- **Phase 151**: Autonomous AAV Viral Capsid Self-Assembly Engine
+- **Phase 152**: Autonomous Hi-C Chromatin Loop Contact Engine
+- **Phase 153**: Autonomous Multi-Objective mRNA Codon Optimization Engine
+- **Phase 154**: Autonomous Centennial Bio-System Synthesis & Milestone v1.8 Certification
