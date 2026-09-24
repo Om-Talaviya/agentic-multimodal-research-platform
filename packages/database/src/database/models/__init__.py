@@ -944,3 +944,9 @@ from database.models.spatial_proteomics_codex import (
     DBCODEXProteinMarkerExpression,
     DBSingleCellSpatialNeighborhoodPhenotype
 )
+
+from database.models.protac_ternary_complex import (
+    DBPROTACTernaryComplexStudy,
+    DBE3LigaseBindingProfile,
+    DBProteinDegradationKineticPoint
+)
