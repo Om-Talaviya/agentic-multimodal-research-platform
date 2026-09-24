@@ -1,3 +1,4 @@
+from api.routes.spatial_rna_velocity import router as spatial_rna_velocity_router
 from api.routes.tcr_pmhc import router as tcr_pmhc_router
 from api.routes.mitochondrial_bioenergetics import router as mitochondrial_bioenergetics_router
 from api.routes.aptamer_evolution import router as aptamer_evolution_router
@@ -221,6 +222,7 @@ app.include_router(cyp450_metabolism_router, prefix="/api/v1")
 app.include_router(aptamer_evolution_router, prefix="/api/v1")
 app.include_router(mitochondrial_bioenergetics_router, prefix="/api/v1")
 app.include_router(tcr_pmhc_router, prefix="/api/v1")
+app.include_router(spatial_rna_velocity_router, prefix="/api/v1")
 app.include_router(milestone_v1_6_router, prefix="/api/v1")
 app.include_router(preprint_latex_router, prefix="/api/v1")
 app.include_router(bgc_router, prefix="/api/v1")
