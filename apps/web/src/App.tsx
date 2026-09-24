@@ -1,3 +1,4 @@
+import { TCellEngagerStudioPage } from './pages/TCellEngagerStudioPage';
 import { CFPSTXTLStudioPage } from './pages/CFPSTXTLStudioPage';
 import { PROTACKineticsStudioPage } from './pages/PROTACKineticsStudioPage';
 import { SpatialProteomicsCODEXStudioPage } from './pages/SpatialProteomicsCODEXStudioPage';
@@ -293,6 +294,7 @@ function App() {
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
                       <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
                       <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
+                      <Route path="/tcell-engager" element={<TCellEngagerStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
@@ -313,6 +315,7 @@ function App() {
                       <Route path="/spatial-proteomics-codex" element={<SpatialProteomicsCODEXStudioPage />} />
                       <Route path="/protac-kinetics" element={<PROTACKineticsStudioPage />} />
                       <Route path="/cfps-txtl" element={<CFPSTXTLStudioPage />} />
+                      <Route path="/tcell-engager" element={<TCellEngagerStudioPage />} />
           </Routes>
   )
 

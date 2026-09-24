@@ -1,3 +1,4 @@
+from api.routes import tcell_engager
 from api.routes import cfps_txtl
 from api.routes import protac_kinetics
 from api.routes import spatial_proteomics_codex
@@ -388,3 +389,5 @@ app.include_router(spatial_proteomics_codex.router, prefix=settings.api_prefix)
 app.include_router(protac_kinetics.router, prefix=settings.api_prefix)
 
 app.include_router(cfps_txtl.router, prefix=settings.api_prefix)
+
+app.include_router(tcell_engager.router, prefix=settings.api_prefix)

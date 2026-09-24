@@ -956,3 +956,9 @@ from database.models.cfps_txtl_kinetics import (
     DBRibosomeTranslationalYieldCurve,
     DBMetabolicSubstrateDepletionRecord
 )
+
+from database.models.multispecific_tcell_engager import (
+    DBMultispecificTCellEngagerStudy,
+    DBTargetBindingDomainGeometry,
+    DBSynapticDistanceProfile
+)
