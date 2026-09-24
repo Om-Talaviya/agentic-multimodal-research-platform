@@ -13,6 +13,7 @@ from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
+from api.routes.crispr_base_editor import router as crispr_base_editor_router
 from api.routes.rna_thermodynamics import router as rna_thermodynamics_router
 from api.routes.spatial_microdissection import router as spatial_microdissection_router
 from api.routes.spatial_rna_velocity import router as spatial_rna_velocity_router
@@ -219,6 +220,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(crispr_base_editor_router, prefix="/api/v1")
 app.include_router(rna_thermodynamics_router, prefix="/api/v1")
 app.include_router(spatial_microdissection_router, prefix="/api/v1")
 app.include_router(spatial_gnn_router, prefix="/api/v1")
