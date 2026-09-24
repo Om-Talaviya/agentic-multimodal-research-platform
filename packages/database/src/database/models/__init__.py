@@ -950,3 +950,9 @@ from database.models.protac_ternary_complex import (
     DBE3LigaseBindingProfile,
     DBProteinDegradationKineticPoint
 )
+
+from database.models.cfps_txtl_kinetics import (
+    DBCFPSTXTLKineticsStudy,
+    DBRibosomeTranslationalYieldCurve,
+    DBMetabolicSubstrateDepletionRecord
+)

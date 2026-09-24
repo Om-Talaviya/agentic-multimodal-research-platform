@@ -1,3 +1,4 @@
+from api.routes import cfps_txtl
 from api.routes import protac_kinetics
 from api.routes import spatial_proteomics_codex
 from api.routes import milestone_v1_8
@@ -385,3 +386,5 @@ app.include_router(milestone_v1_8.router, prefix=settings.api_prefix)
 app.include_router(spatial_proteomics_codex.router, prefix=settings.api_prefix)
 
 app.include_router(protac_kinetics.router, prefix=settings.api_prefix)
+
+app.include_router(cfps_txtl.router, prefix=settings.api_prefix)
