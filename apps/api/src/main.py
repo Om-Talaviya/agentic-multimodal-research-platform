@@ -13,6 +13,7 @@ from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
+from api.routes.microed_structural import router as microed_structural_router
 from api.routes.pdc_conjugate import router as pdc_conjugate_router
 from api.routes.crispr_base_editor import router as crispr_base_editor_router
 from api.routes.rna_thermodynamics import router as rna_thermodynamics_router
@@ -221,6 +222,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(microed_structural_router, prefix="/api/v1")
 app.include_router(pdc_conjugate_router, prefix="/api/v1")
 app.include_router(crispr_base_editor_router, prefix="/api/v1")
 app.include_router(rna_thermodynamics_router, prefix="/api/v1")

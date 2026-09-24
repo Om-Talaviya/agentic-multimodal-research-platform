@@ -1004,3 +1004,9 @@ from database.models.pdc_conjugate import (
     DBPeptideLinkerCleavageProfile,
     DBCathepsinBSelectivityAssay,
 )
+
+from database.models.microed_structural import (
+    DBMicroEDExperiment,
+    DBMicroEDDiffractionFrame,
+    DBMicroEDAtomicRefinement,
+)
