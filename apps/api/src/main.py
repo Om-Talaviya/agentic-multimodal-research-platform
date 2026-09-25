@@ -1,3 +1,4 @@
+from api.routes.radiomics_deep_phenotyping import router as radiomics_deep_phenotyping_router
 from api.routes.neoantigen_hla_presentation import router as neoantigen_hla_presentation_router
 from api.routes.fragment_based_lead_discovery import router as fragment_based_lead_discovery_router
 from api.routes.car_t_exhaustion_kinetics import router as car_t_exhaustion_kinetics_router
@@ -464,3 +465,5 @@ app.include_router(fragment_based_lead_discovery_router, prefix=settings.api_pre
 
 app.include_router(neoantigen_hla_presentation_router, prefix=settings.api_prefix)
 
+
+app.include_router(radiomics_deep_phenotyping_router, prefix=settings.api_prefix)

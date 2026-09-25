@@ -339,3 +339,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Tumor Neoantigen & HLA Presentation**: Somatic mutation cleavage prediction, TAP transport efficiency modeling, and allele-specific HLA-I/II presentation ranking.
 - **RESTful Endpoints & Web Studio**: Interactive patient genomic and personalized mRNA vaccine candidate prioritization interface.
+
+### Phase 186 - Multi-Parametric Oncology Radiomics & Physiological Habitat Imaging Biomarker Extractor Engine
+- Implemented IBSI-standardized 3D radiomics texture extraction, multi-parametric MRI/CT/PET voxel clustering, and intratumoral physiological habitat deconstruction.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

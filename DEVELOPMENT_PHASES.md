@@ -121,3 +121,11 @@ eoantigen_hla_binding_predictions)
 - [x] RESTful API endpoints (/api/v1/neoantigen-hla-presentation/simulate, /api/v1/neoantigen-hla-presentation/studies)
 - [x] Interactive web studio (NeoantigenHLAPresentationStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+## Phase 186: Multi-Parametric Oncology Radiomics & Physiological Habitat Imaging Biomarker Extractor Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/radiomics_deep_phenotyping.py`: Tables `radiomics_deep_imaging_studies`, `radiomics_habitat_subregions`, and `radiomics_extracted_texture_features`.
+  - `packages/database/src/database/repositories/radiomics_deep_phenotyping_repo.py`: Repository handling study creation, 3D habitat volume partitioning, and IBSI-standardized texture feature registries.
+  - `packages/research/src/research/imaging/radiomics_deep_phenotyping_engine.py`: High-throughput IBSI-compliant GLCM/GLRLM texture engine, Ktrans perfusion, ADC diffusion, PET SUV avidity modeling, and radiogenomic overall survival hazard modeling.
+  - `apps/api/src/api/routes/radiomics_deep_phenotyping.py`: FastAPI endpoints for multi-parametric habitat segmentation simulation and longitudinal imaging study queries.
+  - `apps/web/src/pages/RadiomicsDeepPhenotypingStudioPage.tsx`: Interactive React/Lucide oncology imaging console with 3D habitat volume breakdown, texture radar metrics, and radiogenomic hazard risk forecasts.
