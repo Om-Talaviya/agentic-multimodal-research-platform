@@ -1,4 +1,8 @@
 
+## [v2.1.0] - 2026-09-25
+### Added (Phases 169 - 175)
+- Phase 169: Autonomous Single-Cell TCR/BCR Clonotype Expansion & Immune Repertoire Lineage Dynamics Engine
+
 ## [v2.0.0] - 2026-09-24
 ### Added (Phases 162 - 168)
 - Phase 162: Autonomous Spatial Transcriptomics Microdissection & Subcellular Spot Deconvolution Engine

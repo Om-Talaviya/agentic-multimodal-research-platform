@@ -13,6 +13,7 @@ from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
+from api.routes.tcr_clonotype_tracking import router as tcr_clonotype_tracking_router
 from api.routes.whole_body_pbpk import router as whole_body_pbpk_router
 from api.routes.single_cell_perturbation import router as single_cell_perturbation_router
 from api.routes.microed_structural import router as microed_structural_router
@@ -224,6 +225,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(tcr_clonotype_tracking_router, prefix="/api/v1")
 app.include_router(whole_body_pbpk_router, prefix="/api/v1")
 app.include_router(single_cell_perturbation_router, prefix="/api/v1")
 app.include_router(microed_structural_router, prefix="/api/v1")

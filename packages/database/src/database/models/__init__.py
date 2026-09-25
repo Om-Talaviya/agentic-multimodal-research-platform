@@ -1022,3 +1022,9 @@ from database.models.whole_body_pbpk import (
     DBOrganTissueCompartment,
     DBTransOrganClearanceRate,
 )
+
+from database.models.tcr_clonotype_tracking import (
+    DBTCRClonotypeStudy,
+    DBClonotypeLineageNode,
+    DBImmuneRepertoireDiversityMetric,
+)

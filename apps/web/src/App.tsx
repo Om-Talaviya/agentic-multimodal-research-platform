@@ -120,6 +120,7 @@ import { PDCConjugateStudioPage } from './pages/PDCConjugateStudioPage'
 import { MicroEDStructuralStudioPage } from './pages/MicroEDStructuralStudioPage'
 import { SingleCellPerturbationStudioPage } from './pages/SingleCellPerturbationStudioPage'
 import { WholeBodyPBPKStudioPage } from './pages/WholeBodyPBPKStudioPage'
+import { TCRClonotypeTrackingStudioPage } from './pages/TCRClonotypeTrackingStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -315,6 +316,7 @@ function App() {
                       <Route path="/microed-structural" element={<MicroEDStructuralStudioPage />} />
                       <Route path="/single-cell-perturbation" element={<SingleCellPerturbationStudioPage />} />
                       <Route path="/whole-body-pbpk" element={<WholeBodyPBPKStudioPage />} />
+                      <Route path="/tcr-clonotype-tracking" element={<TCRClonotypeTrackingStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
