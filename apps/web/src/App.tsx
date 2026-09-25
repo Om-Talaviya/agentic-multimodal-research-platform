@@ -1,3 +1,4 @@
+import { MilestoneV21StudioPage } from './pages/MilestoneV21StudioPage';
 import { RadiomicsDeepPhenotypingStudioPage } from './pages/RadiomicsDeepPhenotypingStudioPage';
 import { NeoantigenHLAPresentationStudioPage } from './pages/NeoantigenHLAPresentationStudioPage';
 import { FragmentBasedLeadDiscoveryStudioPage } from './pages/FragmentBasedLeadDiscoveryStudioPage';
@@ -214,6 +215,8 @@ function App() {
             <Route path="/fragment-based-lead-discovery" element={<FragmentBasedLeadDiscoveryStudioPage />} />
             <Route path="/neoantigen-hla-presentation" element={<NeoantigenHLAPresentationStudioPage />} />
         <Route path="/radiomics-deep-phenotyping" element={<RadiomicsDeepPhenotypingStudioPage />} />
+        <Route path="/milestone-v2-1" element={<MilestoneV21StudioPage />} />
+
 
             <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
