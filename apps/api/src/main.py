@@ -1,3 +1,4 @@
+from api.routes.adc_dar_optimization import router as adc_dar_optimization_router
 from api.routes import milestone_v1_9
 from api.routes import smfret_kinetics
 from api.routes import crispr_epigenetic
@@ -432,3 +433,6 @@ app.include_router(crispr_epigenetic.router, prefix=settings.api_prefix)
 app.include_router(smfret_kinetics.router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v1_9.router, prefix=settings.api_prefix)
+
+app.include_router(adc_dar_optimization_router, prefix=settings.api_prefix)
+
