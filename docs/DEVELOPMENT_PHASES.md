@@ -1032,4 +1032,5 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ### Milestone v2.1: Multi-Scale Immune Dynamics & Epigenetic Aging (Phases 169-175)
 - [x] **Phase 169**: Autonomous Single-Cell TCR/BCR Clonotype Expansion & Immune Repertoire Lineage Dynamics Engine (`tcr_clonotype_tracking`)
+- [x] **Phase 170**: Autonomous Multi-Tissue Epigenetic DNA Methylation Biological Age & Mortality Forecaster (`dna_methylation_clock`)
 

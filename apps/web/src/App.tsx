@@ -121,6 +121,7 @@ import { MicroEDStructuralStudioPage } from './pages/MicroEDStructuralStudioPage
 import { SingleCellPerturbationStudioPage } from './pages/SingleCellPerturbationStudioPage'
 import { WholeBodyPBPKStudioPage } from './pages/WholeBodyPBPKStudioPage'
 import { TCRClonotypeTrackingStudioPage } from './pages/TCRClonotypeTrackingStudioPage'
+import { DNAMethylationClockStudioPage } from './pages/DNAMethylationClockStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -317,6 +318,7 @@ function App() {
                       <Route path="/single-cell-perturbation" element={<SingleCellPerturbationStudioPage />} />
                       <Route path="/whole-body-pbpk" element={<WholeBodyPBPKStudioPage />} />
                       <Route path="/tcr-clonotype-tracking" element={<TCRClonotypeTrackingStudioPage />} />
+                      <Route path="/dna-methylation-clock" element={<DNAMethylationClockStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
