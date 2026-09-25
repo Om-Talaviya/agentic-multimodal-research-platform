@@ -1,3 +1,4 @@
+from api.routes.thermal_proteome_profiling import router as thermal_proteome_profiling_router
 from api.routes.nanopore_direct_rna import router as nanopore_direct_rna_router
 from api.routes.spatial_maldi_metabolomics import router as spatial_maldi_metabolomics_router
 from api.routes.milestone_v2_1_orchestrator import router as milestone_v2_1_orchestrator_router
@@ -476,3 +477,5 @@ app.include_router(milestone_v2_1_orchestrator_router, prefix=settings.api_prefi
 app.include_router(spatial_maldi_metabolomics_router, prefix=settings.api_prefix)
 
 app.include_router(nanopore_direct_rna_router, prefix=settings.api_prefix)
+
+app.include_router(thermal_proteome_profiling_router, prefix=settings.api_prefix)
