@@ -1053,3 +1053,9 @@ from database.models.alphafold_complex_docking import (
     DBInterfaceEnergyMetric,
 )
 
+from database.models.spatial_proteogenomics import (
+    DBSpatialProteogenomicsStudy,
+    DBProteinRNACoLocalizationSpot,
+    DBMarkerEnrichmentMetric,
+)
+

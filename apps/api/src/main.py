@@ -13,6 +13,7 @@ from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
+from api.routes.spatial_proteogenomics import router as spatial_proteogenomics_router
 from api.routes.alphafold_complex_docking import router as alphafold_complex_docking_router
 from api.routes.sirna_thermodynamics import router as sirna_thermodynamics_router
 from api.routes.cadd_variant_pathogenicity import router as cadd_variant_pathogenicity_router
@@ -229,6 +230,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(spatial_proteogenomics_router, prefix="/api/v1")
 app.include_router(alphafold_complex_docking_router, prefix="/api/v1")
 app.include_router(sirna_thermodynamics_router, prefix="/api/v1")
 app.include_router(cadd_variant_pathogenicity_router, prefix="/api/v1")

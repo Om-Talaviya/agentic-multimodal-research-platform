@@ -1036,6 +1036,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 171**: Autonomous Combined Annotation Dependent Depletion (CADD) & In-Silico Variant Pathogenicity Ranker (`cadd_variant_pathogenicity`)
 - [x] **Phase 172**: Autonomous Asymmetric siRNA Duplex Thermodynamics & Off-Target Seed Match Suppressor Engine (`sirna_thermodynamics`)
 - [x] **Phase 173**: Autonomous Multimeric Protein-Protein Complex Interface & Co-Evolutionary Contact Forecaster (`alphafold_complex_docking`)
+- [x] **Phase 174**: Autonomous Multi-Omics Spatial CITE-seq & Subcellular Protein-RNA Co-Localization Engine (`spatial_proteogenomics`)
+
 
 
 
