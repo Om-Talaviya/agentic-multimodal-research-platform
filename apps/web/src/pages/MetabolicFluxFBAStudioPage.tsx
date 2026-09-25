@@ -104,7 +104,7 @@ export const MetabolicFluxFBAStudioPage: React.FC = () => {
               <RefreshCw className="w-5 h-5 text-amber-400" /> Linear Programming Optimization Principles
             </h3>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Flux Balance Analysis solves $\max c^T v$ subject to the steady-state stoichiometric constraint $S \cdot v = 0$ and boundary conditions $v_{lb} \le v \le v_{ub}$. Shadow prices identify metabolic bottlenecks, while in-silico gene deletions uncover targetable vulnerabilities and synthetic lethal pairs.
+              Flux Balance Analysis solves $max c^T v$ subject to the steady-state stoichiometric constraint $S \cdot v = 0$ and boundary conditions v_lower ≤ v ≤ v_upper. Shadow prices identify metabolic bottlenecks, while in-silico gene deletions uncover targetable vulnerabilities and synthetic lethal pairs.
             </p>
           </div>
 

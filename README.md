@@ -4,7 +4,7 @@
   <a href="https://github.com/Om-Talaviya"><img src="https://img.shields.io/badge/Architect-Om%20Talaviya-38bdf8?style=for-the-badge&logo=github&logoColor=white" alt="Author" /></a>
   <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776ab?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Release-v2.0%20(168%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
+  <img src="https://img.shields.io/badge/Release-v2.1%20(187%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
   <img src="https://img.shields.io/badge/CI%2FCD-100%25%20Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI" />
 </p>
 
@@ -12,7 +12,7 @@
 
 ## 🌟 Overview
 
-The **Agentic Multimodal Research Platform (AI Research OS v2.0)** is a local-first, enterprise-grade operating system designed for autonomous scientific research and computational discovery.
+The **Agentic Multimodal Research Platform (AI Research OS v2.1)** is a local-first, enterprise-grade operating system designed for autonomous scientific research and computational discovery.
 
 Rather than acting as a standard text chatbot, the platform serves as an **Autonomous AI Scientist**. It coordinates multi-agent workflows to explore scientific literature, run physical and molecular simulations, verify empirical findings, and translate discoveries into robotic laboratory protocols and academic publications.
 
@@ -327,3 +327,25 @@ Distributed under the **Apache 2.0 License**.
 - **Phase 166**: Autonomous In-Silico Cryo-Electron Microscopy Micro-Crystal Electron Diffraction (MicroED) Structural Engine (`microed_structural`)
 - **Phase 167**: Autonomous Single-Cell Multi-Omics Perturbation Screening & Causal Gene Regulatory Network Inversion Engine (`single_cell_perturbation`)
 - **Phase 168**: Autonomous Whole-Body PBPK Digital Twin & Trans-Organ Pharmacokinetics Forecaster (`whole_body_pbpk`)
+
+
+### 🪐 Milestone v2.1: Autonomous Planetary Research Synthesis & Multi-System Meta-Orchestration (Phases 169 - 187)
+- **Phase 169**: Autonomous Single-Cell TCR/BCR Clonotype Expansion & Lineage Dynamics Engine (`tcr_clonotype_tracking`)
+- **Phase 170**: Autonomous Multi-Tissue Epigenetic DNA Methylation Biological Age Forecaster (`dna_methylation_clock`)
+- **Phase 171**: Autonomous CADD & In-Silico Variant Pathogenicity Ranker (`cadd_variant_pathogenicity`)
+- **Phase 172**: Autonomous Asymmetric siRNA Duplex Thermodynamics & Off-Target Seed Match Suppressor (`sirna_thermodynamics`)
+- **Phase 173**: Autonomous Multimeric Protein-Protein Complex Interface & Co-Evolutionary Contact Forecaster (`alphafold_complex_docking`)
+- **Phase 174**: Autonomous Multi-Omics Spatial CITE-seq & Subcellular Protein-RNA Co-Localization (`spatial_proteogenomics`)
+- **Phase 175**: Autonomous Genome-Scale Metabolic Network Flux Balance Analysis (FBA) (`metabolic_flux_fba`)
+- **Phase 176**: Autonomous HDX-MS Epitope Mapping Engine (`hdx_ms_epitope_mapping`)
+- **Phase 177**: Autonomous 3D Cryo-Electron Tomography Subtomogram Averaging Engine (`cryoet_subtomogram_tomography`)
+- **Phase 178**: Autonomous ADC Drug-to-Antibody Ratio (DAR) Optimization & Aggregation Predictor (`adc_dar_optimization`)
+- **Phase 179**: Autonomous Circular RNA (circRNA) Back-Splicing Biogenesis & miRNA Sponge Matrix (`circrna_biogenesis`)
+- **Phase 180**: Autonomous Prime Editing pegRNA Design & Flap Kinetics Synthesis Matrix (`crispr_prime_editing_pegdna`)
+- **Phase 181**: Autonomous Rare Disease Deep Phenotyping & HPO-OMIM Semantic Disease Matcher (`rare_disease_hpo_phenotyping`)
+- **Phase 182**: Autonomous Gut Microbiome-Host Co-Metabolism & SCFA Dynamics Engine (`microbiome_metabolomics_axis`)
+- **Phase 183**: Autonomous CAR-T Cell Exhaustion Epigenetic State Transition & Persistence Simulator (`car_t_exhaustion_kinetics`)
+- **Phase 184**: Autonomous Fragment-Based Drug Discovery (FBDD) Deconstruction & Linker Growth Engine (`fragment_based_lead_discovery`)
+- **Phase 185**: Autonomous Tumor Neoantigen Proteasomal Cleavage & HLA-I/II Presentation Forecaster (`neoantigen_hla_presentation`)
+- **Phase 186**: Autonomous Multi-Parametric Oncology Radiomics & Physiological Habitat Imaging Biomarker Extractor Engine (`radiomics_deep_phenotyping`)
+- **Phase 187**: Autonomous Milestone v2.1 Planetary Research Synthesis & Multi-System Meta-Orchestrator Engine (`milestone_v2_1_orchestrator`)
