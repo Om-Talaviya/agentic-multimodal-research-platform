@@ -1,3 +1,4 @@
+from api.routes.spatial_maldi_metabolomics import router as spatial_maldi_metabolomics_router
 from api.routes.milestone_v2_1_orchestrator import router as milestone_v2_1_orchestrator_router
 from api.routes.radiomics_deep_phenotyping import router as radiomics_deep_phenotyping_router
 from api.routes.neoantigen_hla_presentation import router as neoantigen_hla_presentation_router
@@ -470,3 +471,5 @@ app.include_router(neoantigen_hla_presentation_router, prefix=settings.api_prefi
 app.include_router(radiomics_deep_phenotyping_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v2_1_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_maldi_metabolomics_router, prefix=settings.api_prefix)

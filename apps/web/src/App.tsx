@@ -1,3 +1,4 @@
+import { SpatialMaldiMetabolomicsStudioPage } from './pages/SpatialMaldiMetabolomicsStudioPage';
 import { MilestoneV21StudioPage } from './pages/MilestoneV21StudioPage';
 import { RadiomicsDeepPhenotypingStudioPage } from './pages/RadiomicsDeepPhenotypingStudioPage';
 import { NeoantigenHLAPresentationStudioPage } from './pages/NeoantigenHLAPresentationStudioPage';
@@ -218,7 +219,8 @@ function App() {
         <Route path="/milestone-v2-1" element={<MilestoneV21StudioPage />} />
 
 
-            <Route path="/" element={<Layout />}>
+                    <Route path="/spatial-maldi-metabolomics" element={<SpatialMaldiMetabolomicsStudioPage />} />
+        <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="projects" element={<ProjectsPage />} />

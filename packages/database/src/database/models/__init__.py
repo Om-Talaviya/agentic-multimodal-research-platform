@@ -1138,3 +1138,9 @@ from database.models.milestone_v2_1_orchestrator import (
     MilestoneV21SubsystemTelemetry,
     MilestoneV21PlanetaryRun,
 )
+
+from database.models.spatial_maldi_metabolomics import (
+    SpatialMaldiMetabolomicsStudy,
+    SpatialMaldiMetabolomicsItemProfile,
+    SpatialMaldiMetabolomicsMetricTrace,
+)
