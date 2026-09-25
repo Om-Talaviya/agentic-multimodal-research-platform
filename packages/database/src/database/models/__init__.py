@@ -1156,3 +1156,9 @@ from database.models.thermal_proteome_profiling import (
     ThermalProteomeProfilingItemProfile,
     ThermalProteomeProfilingMetricTrace,
 )
+
+from database.models.cellular_barcoding_lineage import (
+    CellularBarcodingLineageStudy,
+    CellularBarcodingLineageItemProfile,
+    CellularBarcodingLineageMetricTrace,
+)
