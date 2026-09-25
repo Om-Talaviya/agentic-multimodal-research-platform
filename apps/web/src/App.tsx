@@ -122,6 +122,7 @@ import { SingleCellPerturbationStudioPage } from './pages/SingleCellPerturbation
 import { WholeBodyPBPKStudioPage } from './pages/WholeBodyPBPKStudioPage'
 import { TCRClonotypeTrackingStudioPage } from './pages/TCRClonotypeTrackingStudioPage'
 import { DNAMethylationClockStudioPage } from './pages/DNAMethylationClockStudioPage'
+import { CADDVariantPathogenicityStudioPage } from './pages/CADDVariantPathogenicityStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -319,6 +320,7 @@ function App() {
                       <Route path="/whole-body-pbpk" element={<WholeBodyPBPKStudioPage />} />
                       <Route path="/tcr-clonotype-tracking" element={<TCRClonotypeTrackingStudioPage />} />
                       <Route path="/dna-methylation-clock" element={<DNAMethylationClockStudioPage />} />
+                      <Route path="/cadd-variant-pathogenicity" element={<CADDVariantPathogenicityStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )

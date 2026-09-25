@@ -1034,3 +1034,9 @@ from database.models.dna_methylation_clock import (
     DBCpGIslandMethylationMarker,
     DBEpigeneticAgeAccelerationMetric,
 )
+
+from database.models.cadd_variant_pathogenicity import (
+    DBCADDVariantStudy,
+    DBCADDSNPScore,
+    DBPathogenicityEnsembleScore,
+)
