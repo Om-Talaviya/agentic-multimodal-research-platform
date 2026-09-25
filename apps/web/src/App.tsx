@@ -126,6 +126,7 @@ import { CADDVariantPathogenicityStudioPage } from './pages/CADDVariantPathogeni
 import { SiRNAThermodynamicsStudioPage } from './pages/SiRNAThermodynamicsStudioPage'
 import { AlphaFoldComplexDockingStudioPage } from './pages/AlphaFoldComplexDockingStudioPage'
 import { SpatialProteogenomicsStudioPage } from './pages/SpatialProteogenomicsStudioPage'
+import { MetabolicFluxFBAStudioPage } from './pages/MetabolicFluxFBAStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -327,6 +328,7 @@ function App() {
                       <Route path="/sirna-thermodynamics" element={<SiRNAThermodynamicsStudioPage />} />
                       <Route path="/alphafold-complex-docking" element={<AlphaFoldComplexDockingStudioPage />} />
                       <Route path="/spatial-proteogenomics" element={<SpatialProteogenomicsStudioPage />} />
+                      <Route path="/metabolic-flux-fba" element={<MetabolicFluxFBAStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )

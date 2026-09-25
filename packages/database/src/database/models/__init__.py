@@ -1059,3 +1059,9 @@ from database.models.spatial_proteogenomics import (
     DBMarkerEnrichmentMetric,
 )
 
+from database.models.metabolic_flux_fba import (
+    DBMetabolicFluxFBASStudy,
+    DBReactionFluxConstraint,
+    DBMetabolicVulnerabilityHit,
+)
+
