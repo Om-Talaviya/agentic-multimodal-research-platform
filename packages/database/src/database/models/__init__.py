@@ -1089,3 +1089,9 @@ from database.models.circrna_biogenesis import (
     CircRNABackspliceJunction,
     CircRNAMiRNASpongeTarget,
 )
+
+from database.models.crispr_prime_editing_pegdna import (
+    PrimeEditingPegDNAStudy,
+    PegDNASpacerPBSRTTDesign,
+    PegDNAFlapEquilibriumMetric,
+)
