@@ -137,3 +137,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/orchestration/milestone_v2_1_orchestrator_engine.py`: Planetary Meta-Orchestrator engine harmonizing all 187 research domains across single-cell genomics, epigenetics, structural complexes, cryo-ET, ADC/CAR-T therapeutics, and multi-parametric oncology radiomics.
   - `apps/api/src/api/routes/milestone_v2_1_orchestrator.py`: FastAPI endpoints for planetary meta-synthesis runs and system-wide health and throughput telemetry.
   - `apps/web/src/pages/MilestoneV21StudioPage.tsx`: Interactive React/Lucide planetary mission control dashboard displaying cross-correlation indices, autonomous hypothesis discovery rates, and multi-domain telemetries.
+
+## Phase 188: Spatial Metabolomics MALDI-MSI Tissue Architecture Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/spatial_maldi_metabolomics.py`: Tables `spatial_maldi_studies`, `spatial_maldi_item_profiles`, and `spatial_maldi_metric_traces`.
+  - `packages/database/src/database/repositories/spatial_maldi_metabolomics_repo.py`: Repository handling MALDI-MSI tissue oncometabolite spatial distribution, m/z rasterization, and metabolic heterogeneity profiling.
+  - `packages/research/src/research/metabolomics/spatial_maldi_metabolomics_engine.py`: High-resolution matrix-assisted laser desorption/ionization metabolomics engine resolving oncometabolites (2-HG, lactate, ATP) and spatial Warburg pathway shifts.
+  - `apps/api/src/api/routes/spatial_maldi_metabolomics.py`: FastAPI endpoints for MALDI-MSI tissue rasterization simulations and longitudinal study queries.
+  - `apps/web/src/pages/SpatialMaldiMetabolomicsStudioPage.tsx`: Interactive React/Lucide spatial metabolomics console with ion image spectra cards, oncometabolite log2FC radar, and matrix laser parameters.
