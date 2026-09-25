@@ -88,3 +88,18 @@
 - [x] RESTful API endpoints (/api/v1/car-t-exhaustion-kinetics/simulate, /api/v1/car-t-exhaustion-kinetics/studies)
 - [x] Interactive web studio (CARTExhaustionKineticsStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+---
+
+## Phase 184: Autonomous Fragment-Based Drug Discovery (FBDD) Deconstruction & Linker Growth Engine
+**Status**: ?? COMPLETE
+
+**Goal**: Biophysical fragment hit deconstruction, ligand efficiency (LE/LLE) optimization, and linker growth modeling.
+
+### Deliverables
+- [x] FBDD lead discovery schema (bdd_lead_discovery_studies, bdd_fragment_hits, bdd_linker_growth_candidates)
+- [x] Async repository (FBDDLeadDiscoveryRepository)
+- [x] Biophysical fragment elaboration engine (FBDDLeadDiscoveryEngine)
+- [x] RESTful API endpoints (/api/v1/fragment-based-lead-discovery/simulate, /api/v1/fragment-based-lead-discovery/studies)
+- [x] Interactive web studio (FragmentBasedLeadDiscoveryStudioPage.tsx)
+- [x] 100% automated test coverage across database, research engine, and API layer

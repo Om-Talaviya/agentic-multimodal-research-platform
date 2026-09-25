@@ -329,3 +329,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **CAR-T Exhaustion & Persistence Kinetics**: Differentiation state decomposition (Tscm, Tcm, Tem, Tex), TOX/NR4A chromatin accessibility quantification, and clinical half-life persistence forecasting.
 - **RESTful Endpoints & Web Studio**: Interactive CAR engineering and costimulatory domain exploration interface with persistent records.
+
+## [v2.1.16] - Phase 184 Complete
+### Added
+- **Fragment-Based Lead Discovery & Linker Growth**: Biophysical fragment hit screening, ligand efficiency (LE) calculation, and rigid/flexible linker growth modeling.
+- **RESTful Endpoints & Web Studio**: Interactive SBDD vector and linker exploration interface with persistent storage.

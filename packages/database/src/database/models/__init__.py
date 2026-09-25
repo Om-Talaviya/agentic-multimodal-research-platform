@@ -1114,3 +1114,9 @@ from database.models.car_t_exhaustion_kinetics import (
     CARTDifferentiationState,
     CARTExhaustionCheckpointMarker,
 )
+
+from database.models.fragment_based_lead_discovery import (
+    FBDDLeadDiscoveryStudy,
+    FBDDFragmentHit,
+    FBDDLinkerGrowthCandidate,
+)
