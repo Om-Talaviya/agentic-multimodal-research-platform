@@ -1,3 +1,4 @@
+from api.routes.car_t_exhaustion_kinetics import router as car_t_exhaustion_kinetics_router
 from api.routes.microbiome_metabolomics_axis import router as microbiome_metabolomics_axis_router
 from api.routes.rare_disease_hpo_phenotyping import router as rare_disease_hpo_phenotyping_router
 from api.routes.crispr_prime_editing_pegdna import router as crispr_prime_editing_pegdna_router
@@ -451,4 +452,7 @@ app.include_router(rare_disease_hpo_phenotyping_router, prefix=settings.api_pref
 
 
 app.include_router(microbiome_metabolomics_axis_router, prefix=settings.api_prefix)
+
+
+app.include_router(car_t_exhaustion_kinetics_router, prefix=settings.api_prefix)
 

@@ -324,3 +324,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Gut Microbiome-Host Co-Metabolism & SCFA Dynamics**: Taxonomic abundance profiling, anaerobic fiber fermentation modeling, and mucosal barrier integrity index.
 - **RESTful Endpoints & Web Studio**: Interactive dietary fiber and prebiotic exploration interface with persistent records.
+
+## [v2.1.15] - Phase 183 Complete
+### Added
+- **CAR-T Exhaustion & Persistence Kinetics**: Differentiation state decomposition (Tscm, Tcm, Tem, Tex), TOX/NR4A chromatin accessibility quantification, and clinical half-life persistence forecasting.
+- **RESTful Endpoints & Web Studio**: Interactive CAR engineering and costimulatory domain exploration interface with persistent records.
