@@ -7,6 +7,7 @@
 - Phase 172: Autonomous Asymmetric siRNA Duplex Thermodynamics & Off-Target Seed Match Suppressor Engine
 - Phase 173: Autonomous Multimeric Protein-Protein Complex Interface & Co-Evolutionary Contact Forecaster
 - Phase 174: Autonomous Multi-Omics Spatial CITE-seq & Subcellular Protein-RNA Co-Localization Engine
+- Phase 175: Autonomous Genome-Scale Metabolic Network Flux Balance Analysis (FBA) & Target Vulnerability Simulator
 
 ## [v2.0.0] - 2026-09-24
 ### Added (Phases 162 - 168)
