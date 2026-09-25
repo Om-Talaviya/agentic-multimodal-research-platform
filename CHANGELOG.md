@@ -309,3 +309,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **circRNA Biogenesis & miRNA Sponge Matrix**: Back-splicing junction identification, RNase R resistance half-life prediction, and multi-family miRNA sponge capacity scoring.
 - **RESTful Endpoints & Web Studio**: Interactive locus parameter exploration and persistent storage.
+
+## [v2.1.12] - Phase 180 Complete
+### Added
+- **Prime Editing pegRNA Design & Flap Kinetics**: Automated PBS/RTT sequence optimization, melting thermodynamics, and 3' vs 5' flap ligation equilibrium resolution.
+- **RESTful Endpoints & Web Studio**: Interactive pegRNA synthesis interface and persistent study analytics.

@@ -28,3 +28,18 @@
 - [x] RESTful API endpoints (/api/v1/circrna-biogenesis/simulate, /api/v1/circrna-biogenesis/studies)
 - [x] Interactive web studio (CircRNABiogenesisStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+---
+
+## Phase 180: Autonomous Prime Editing pegRNA Design & Flap Kinetics Synthesis Matrix Engine
+**Status**: ?? COMPLETE
+
+**Goal**: pegRNA PBS/RTT design, structured tevpre epegRNA optimization, and flap equilibrium kinetics predictor.
+
+### Deliverables
+- [x] Prime editing pegRNA schema (prime_editing_pegdna_studies, pegdna_spacer_pbs_rtt_designs, pegdna_flap_equilibrium_metrics)
+- [x] Async repository (CRISPRPrimeEditingPegDNARepository)
+- [x] pegRNA design & flap kinetics engine (CRISPRPrimeEditingPegDNAEngine)
+- [x] RESTful API endpoints (/api/v1/crispr-prime-editing-pegdna/simulate, /api/v1/crispr-prime-editing-pegdna/studies)
+- [x] Interactive web studio (CRISPRPrimeEditingPegDNAStudioPage.tsx)
+- [x] 100% automated test coverage across database, research engine, and API layer

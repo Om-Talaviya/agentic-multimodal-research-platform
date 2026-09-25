@@ -1,3 +1,4 @@
+from api.routes.crispr_prime_editing_pegdna import router as crispr_prime_editing_pegdna_router
 from api.routes.circrna_biogenesis import router as circrna_biogenesis_router
 from api.routes.adc_dar_optimization import router as adc_dar_optimization_router
 from api.routes import milestone_v1_9
@@ -439,4 +440,7 @@ app.include_router(adc_dar_optimization_router, prefix=settings.api_prefix)
 
 
 app.include_router(circrna_biogenesis_router, prefix=settings.api_prefix)
+
+
+app.include_router(crispr_prime_editing_pegdna_router, prefix=settings.api_prefix)
 
