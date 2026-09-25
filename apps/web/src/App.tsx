@@ -1,3 +1,4 @@
+import { CARTExhaustionKineticsStudioPage } from './pages/CARTExhaustionKineticsStudioPage';
 import { MicrobiomeMetabolomicsAxisStudioPage } from './pages/MicrobiomeMetabolomicsAxisStudioPage';
 import { RareDiseaseHPOPhenotypingStudioPage } from './pages/RareDiseaseHPOPhenotypingStudioPage';
 import { CRISPRPrimeEditingPegDNAStudioPage } from './pages/CRISPRPrimeEditingPegDNAStudioPage';
@@ -206,6 +207,7 @@ function App() {
             <Route path="/crispr-prime-editing-pegdna" element={<CRISPRPrimeEditingPegDNAStudioPage />} />
             <Route path="/rare-disease-hpo-phenotyping" element={<RareDiseaseHPOPhenotypingStudioPage />} />
             <Route path="/microbiome-metabolomics-axis" element={<MicrobiomeMetabolomicsAxisStudioPage />} />
+            <Route path="/car-t-exhaustion-kinetics" element={<CARTExhaustionKineticsStudioPage />} />
             <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -374,6 +376,7 @@ function App() {
 }
 
 export default App
+
 
 
 

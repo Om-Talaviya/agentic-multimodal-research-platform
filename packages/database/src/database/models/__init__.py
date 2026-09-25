@@ -1108,3 +1108,9 @@ from database.models.microbiome_metabolomics_axis import (
     MicrobiomeTaxaAbundance,
     MicrobiomeSCFAKinetics,
 )
+
+from database.models.car_t_exhaustion_kinetics import (
+    CARTExhaustionStudy,
+    CARTDifferentiationState,
+    CARTExhaustionCheckpointMarker,
+)

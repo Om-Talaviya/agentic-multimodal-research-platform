@@ -73,3 +73,18 @@
 - [x] RESTful API endpoints (/api/v1/microbiome-metabolomics-axis/simulate, /api/v1/microbiome-metabolomics-axis/studies)
 - [x] Interactive web studio (MicrobiomeMetabolomicsAxisStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+---
+
+## Phase 183: Autonomous CAR-T Cell Exhaustion Epigenetic State Transition & Persistence Simulator Engine
+**Status**: ?? COMPLETE
+
+**Goal**: Epigenetic Tscm stem memory preservation, TOX/NR4A exhaustion trajectory modeling, and in-vivo persistence forecasting.
+
+### Deliverables
+- [x] CAR-T cell exhaustion schema (car_t_exhaustion_studies, car_t_differentiation_states, car_t_exhaustion_checkpoint_markers)
+- [x] Async repository (CARTExhaustionKineticsRepository)
+- [x] Exhaustion state transition & persistence engine (CARTExhaustionKineticsEngine)
+- [x] RESTful API endpoints (/api/v1/car-t-exhaustion-kinetics/simulate, /api/v1/car-t-exhaustion-kinetics/studies)
+- [x] Interactive web studio (CARTExhaustionKineticsStudioPage.tsx)
+- [x] 100% automated test coverage across database, research engine, and API layer
