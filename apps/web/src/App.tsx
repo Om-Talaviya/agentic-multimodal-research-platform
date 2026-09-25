@@ -1,3 +1,4 @@
+import { MicrobiomeMetabolomicsAxisStudioPage } from './pages/MicrobiomeMetabolomicsAxisStudioPage';
 import { RareDiseaseHPOPhenotypingStudioPage } from './pages/RareDiseaseHPOPhenotypingStudioPage';
 import { CRISPRPrimeEditingPegDNAStudioPage } from './pages/CRISPRPrimeEditingPegDNAStudioPage';
 import { CircRNABiogenesisStudioPage } from './pages/CircRNABiogenesisStudioPage';
@@ -204,6 +205,7 @@ function App() {
             <Route path="/circrna-biogenesis" element={<CircRNABiogenesisStudioPage />} />
             <Route path="/crispr-prime-editing-pegdna" element={<CRISPRPrimeEditingPegDNAStudioPage />} />
             <Route path="/rare-disease-hpo-phenotyping" element={<RareDiseaseHPOPhenotypingStudioPage />} />
+            <Route path="/microbiome-metabolomics-axis" element={<MicrobiomeMetabolomicsAxisStudioPage />} />
             <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -372,6 +374,7 @@ function App() {
 }
 
 export default App
+
 
 
 
