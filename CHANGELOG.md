@@ -2,6 +2,7 @@
 ## [v2.1.0] - 2026-09-25
 ### Added (Phases 169 - 175)
 - Phase 169: Autonomous Single-Cell TCR/BCR Clonotype Expansion & Immune Repertoire Lineage Dynamics Engine
+- Phase 170: Autonomous Multi-Tissue Epigenetic DNA Methylation Biological Age & Mortality Forecaster
 
 ## [v2.0.0] - 2026-09-24
 ### Added (Phases 162 - 168)

@@ -1028,3 +1028,9 @@ from database.models.tcr_clonotype_tracking import (
     DBClonotypeLineageNode,
     DBImmuneRepertoireDiversityMetric,
 )
+
+from database.models.dna_methylation_clock import (
+    DBDNAMethylationClockStudy,
+    DBCpGIslandMethylationMarker,
+    DBEpigeneticAgeAccelerationMetric,
+)

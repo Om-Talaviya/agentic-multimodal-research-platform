@@ -1,4 +1,5 @@
-"""Epigenetics package initialization."""
-from research.epigenetics.epigenetic_clock_engine import EpigeneticClockEngine
+"""Epigenetics research package."""
 
-__all__ = ["EpigeneticClockEngine"]
+from research.epigenetics.dna_methylation_clock_engine import DNAMethylationClockEngine
+
+__all__ = ["DNAMethylationClockEngine"]
