@@ -1,6 +1,5 @@
-"""Genomics research modules."""
-from research.genomics.variant_pathogenicity_engine import VariantPathogenicityEngine
-from research.genomics.long_read_engine import LongReadGenomicsEngine
+"""Genomics research package."""
 
-__all__ = ["VariantPathogenicityEngine", "LongReadGenomicsEngine"]
+from research.genomics.cadd_variant_pathogenicity_engine import CADDVariantPathogenicityEngine
 
+__all__ = ["CADDVariantPathogenicityEngine"]
