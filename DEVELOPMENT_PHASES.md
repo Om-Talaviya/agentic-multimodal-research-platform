@@ -169,3 +169,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/cellular_barcoding_lineage_engine.py`: Single-cell lineage tree reconstruction engine using maximum parsimony and cumulative indel scarring patterns (GESTALT/LINNAEUS).
   - `apps/api/src/api/routes/cellular_barcoding_lineage.py`: FastAPI endpoints for cellular lineage simulation and evolutionary tree deconstruction.
   - `apps/web/src/pages/CellularBarcodingLineageStudioPage.tsx`: Interactive React/Lucide cellular barcoding studio featuring phylogenetic cladograms, barcode scarring frequency charts, and cell fate bifurcation nodes.
+
+## Phase 192: Cryo-EM Continuous Conformational Heterogeneity & Manifold Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/cryoem_manifold_dynamics.py`: Tables `cryoem_manifold_studies`, `cryoem_manifold_item_profiles`, and `cryoem_manifold_metric_traces`.
+  - `packages/database/src/database/repositories/cryoem_manifold_dynamics_repo.py`: Repository managing single-particle 3D variability analysis (3DVA), latent eigenvalue variance, and free-energy landscape barriers.
+  - `packages/research/src/research/structural/cryoem_manifold_dynamics_engine.py`: Continuous conformational heterogeneity engine mapping single-particle Cryo-EM 2D projections onto nonlinear geodesic Riemannian manifolds.
+  - `apps/api/src/api/routes/cryoem_manifold_dynamics.py`: FastAPI endpoints for 3D variability simulation and macromolecular energy landscape queries.
+  - `apps/web/src/pages/CryoEMManifoldDynamicsStudioPage.tsx`: Interactive React/Lucide Cryo-EM manifold console with 3D variability principal components, free energy landscape profiles, and conformational transition states.
