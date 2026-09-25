@@ -1174,3 +1174,9 @@ from database.models.aso_gapmer_therapeutics import (
     ASOGapmerTherapeuticsItemProfile,
     ASOGapmerTherapeuticsMetricTrace,
 )
+
+from database.models.ctdna_liquid_biopsy_mrd import (
+    CtDNALiquidBiopsyMRDStudy,
+    CtDNALiquidBiopsyMRDItemProfile,
+    CtDNALiquidBiopsyMRDMetricTrace,
+)
