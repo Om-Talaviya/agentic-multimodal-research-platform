@@ -1040,3 +1040,10 @@ from database.models.cadd_variant_pathogenicity import (
     DBCADDSNPScore,
     DBPathogenicityEnsembleScore,
 )
+
+from database.models.sirna_thermodynamics import (
+    DBsiRNAThermodynamicsStudy,
+    DBsiRNADuplexConstruct,
+    DBOffTargetSeedMatch,
+)
+

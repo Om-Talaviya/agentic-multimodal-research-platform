@@ -4,6 +4,7 @@
 - Phase 169: Autonomous Single-Cell TCR/BCR Clonotype Expansion & Immune Repertoire Lineage Dynamics Engine
 - Phase 170: Autonomous Multi-Tissue Epigenetic DNA Methylation Biological Age & Mortality Forecaster
 - Phase 171: Autonomous Combined Annotation Dependent Depletion (CADD) & In-Silico Variant Pathogenicity Ranker
+- Phase 172: Autonomous Asymmetric siRNA Duplex Thermodynamics & Off-Target Seed Match Suppressor Engine
 
 ## [v2.0.0] - 2026-09-24
 ### Added (Phases 162 - 168)
