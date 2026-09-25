@@ -371,3 +371,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 193 - Antisense Oligonucleotide RNase-H Cleavage & Gapmer Engine
 - Implemented Antisense Oligonucleotide (ASO) 2'-MOE/LNA gapmer architecture optimization, RNase H1 cleavage kinetics modeling, and in-silico transcript knockdown quantification.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 194 - Pan-Cancer ctDNA Liquid Biopsy & Minimal Residual Disease Engine
+- Implemented pan-cancer circulating tumor DNA (ctDNA) duplex sequencing error suppression, longitudinal tumor fraction clearance modeling, and minimal residual disease (MRD) recurrence forecasting.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

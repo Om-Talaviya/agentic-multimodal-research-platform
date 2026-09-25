@@ -1,3 +1,4 @@
+import { CtDNALiquidBiopsyMRDStudioPage } from './pages/CtDNALiquidBiopsyMRDStudioPage';
 import { ASOGapmerTherapeuticsStudioPage } from './pages/ASOGapmerTherapeuticsStudioPage';
 import { CryoEMManifoldDynamicsStudioPage } from './pages/CryoEMManifoldDynamicsStudioPage';
 import { CellularBarcodingLineageStudioPage } from './pages/CellularBarcodingLineageStudioPage';
@@ -230,6 +231,7 @@ function App() {
                 <Route path="/cellular-barcoding-lineage" element={<CellularBarcodingLineageStudioPage />} />
                 <Route path="/cryoem-manifold-dynamics" element={<CryoEMManifoldDynamicsStudioPage />} />
                 <Route path="/aso-gapmer-therapeutics" element={<ASOGapmerTherapeuticsStudioPage />} />
+                <Route path="/ctdna-liquid-biopsy-mrd" element={<CtDNALiquidBiopsyMRDStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -185,3 +185,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/therapeutics/aso_gapmer_therapeutics_engine.py`: Oligonucleotide therapeutic simulator optimizing ASO duplex binding affinity, RNase H1 activation, and off-target transcript mitigation.
   - `apps/api/src/api/routes/aso_gapmer_therapeutics.py`: FastAPI endpoints for ASO gapmer cleavage kinetics simulation and therapeutic potency analysis.
   - `apps/web/src/pages/ASOGapmerTherapeuticsStudioPage.tsx`: Interactive React/Lucide antisense oligonucleotide console with gapmer architecture diagrams, RNase H cleavage velocity bars, and target knockdown dose-response curves.
+
+## Phase 194: Pan-Cancer ctDNA Liquid Biopsy & Minimal Residual Disease Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/ctdna_liquid_biopsy_mrd.py`: Tables `ctdna_mrd_studies`, `ctdna_mrd_item_profiles`, and `ctdna_mrd_metric_traces`.
+  - `packages/database/src/database/repositories/ctdna_liquid_biopsy_mrd_repo.py`: Repository managing longitudinal circulating tumor DNA (ctDNA) variant allele frequencies (VAF < 0.01%), tumor clearance kinetics, and minimal residual disease (MRD) recurrence hazard ratios.
+  - `packages/research/src/research/diagnostics/ctdna_liquid_biopsy_mrd_engine.py`: Duplex sequencing error suppression and Bayesian ctDNA clearance engine predicting post-operative recurrence risk before radiological detection.
+  - `apps/api/src/api/routes/ctdna_liquid_biopsy_mrd.py`: FastAPI endpoints for liquid biopsy ctDNA kinetics simulation and recurrence hazard forecasting.
+  - `apps/web/src/pages/CtDNALiquidBiopsyMRDStudioPage.tsx`: Interactive React/Lucide ctDNA liquid biopsy studio with longitudinal VAF clearance curves, clonal driver tracking cards, and MRD hazard risk indicators.
