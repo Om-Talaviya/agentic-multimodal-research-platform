@@ -299,3 +299,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented initial end-to-end research workflow from inquiry formulation to report generation.
 - **Phase 1: Foundation**:
   - Established modular monorepo structure with FastAPI backend, SQLAlchemy 2.0 Async, and React 18 / Vite frontend.
+
+## [v2.1.10] - Phase 178 Complete
+### Added
+- **ADC DAR Optimization & Aggregation Predictor**: In-silico DAR distribution modeling, clearance rate forecasting, and 72-hour aggregation stability kinetics.
+- **RESTful Endpoints & Web Studio**: Interactive simulation interface and persistent analytics.

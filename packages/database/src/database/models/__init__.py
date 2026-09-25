@@ -1077,3 +1077,9 @@ from database.models.cryoet_subtomogram_tomography import (
     DBCryoETResolutionClass,
 )
 
+
+from database.models.adc_dar_optimization import (
+    ADCDAROptStudy,
+    ADCDARSpeciesDistribution,
+    ADCDARAggregationMetric,
+)

@@ -1,3 +1,4 @@
+import { ADCDAROptimizationStudioPage } from './pages/ADCDAROptimizationStudioPage';
 import { MilestoneV19StudioPage } from './pages/MilestoneV19StudioPage';
 import { smFRETKineticsStudioPage as SmFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
 import { CRISPREpigeneticStudioPage } from './pages/CRISPREpigeneticStudioPage';
@@ -196,7 +197,8 @@ function App() {
   const authenticatedRoutes = (
     <WorkspaceProvider>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/adc-dar-optimization" element={<ADCDAROptimizationStudioPage />} />
+            <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="projects" element={<ProjectsPage />} />
@@ -364,3 +366,4 @@ function App() {
 }
 
 export default App
+
