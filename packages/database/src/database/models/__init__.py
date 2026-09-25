@@ -1126,3 +1126,9 @@ from database.models.neoantigen_hla_presentation import (
     NeoantigenPeptideCandidate,
     NeoantigenHLABindingPrediction,
 )
+
+from database.models.radiomics_deep_phenotyping import (
+    RadiomicsDeepImagingStudy,
+    RadiomicsHabitatSubregion,
+    RadiomicsExtractedTextureFeature,
+)
