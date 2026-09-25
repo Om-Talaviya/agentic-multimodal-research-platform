@@ -1039,6 +1039,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 174**: Autonomous Multi-Omics Spatial CITE-seq & Subcellular Protein-RNA Co-Localization Engine (`spatial_proteogenomics`)
 - [x] **Phase 175**: Autonomous Genome-Scale Metabolic Network Flux Balance Analysis (FBA) & Target Vulnerability Simulator (`metabolic_flux_fba`)
 - [x] **Phase 176**: Autonomous Hydrogen-Deuterium Exchange Mass Spectrometry (HDX-MS) Epitope Mapping Engine (`hdx_ms_epitope_mapping`)
+- [x] **Phase 177**: Autonomous 3D Cryo-Electron Tomography Subtomogram Averaging Engine (`cryoet_subtomogram_tomography`)
+
 
 
 

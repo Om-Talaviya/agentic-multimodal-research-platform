@@ -13,6 +13,7 @@ from api.routes import spatial_flux
 from api.routes import dna_origami
 from api.routes import glycan_microarray
 from api.routes import organoid_morphometry
+from api.routes.cryoet_subtomogram_tomography import router as cryoet_subtomogram_tomography_router
 from api.routes.hdx_ms_epitope_mapping import router as hdx_ms_epitope_mapping_router
 from api.routes.metabolic_flux_fba import router as metabolic_flux_fba_router
 from api.routes.spatial_proteogenomics import router as spatial_proteogenomics_router
@@ -232,6 +233,7 @@ async def add_request_id(request: Request, call_next):
     return response
 
 # Include routers
+app.include_router(cryoet_subtomogram_tomography_router, prefix="/api/v1")
 app.include_router(hdx_ms_epitope_mapping_router, prefix="/api/v1")
 app.include_router(metabolic_flux_fba_router, prefix="/api/v1")
 app.include_router(spatial_proteogenomics_router, prefix="/api/v1")

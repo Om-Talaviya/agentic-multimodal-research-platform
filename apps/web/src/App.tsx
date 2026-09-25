@@ -128,6 +128,7 @@ import { AlphaFoldComplexDockingStudioPage } from './pages/AlphaFoldComplexDocki
 import { SpatialProteogenomicsStudioPage } from './pages/SpatialProteogenomicsStudioPage'
 import { MetabolicFluxFBAStudioPage } from './pages/MetabolicFluxFBAStudioPage'
 import { HDXMSEpitopeMappingStudioPage } from './pages/HDXMSEpitopeMappingStudioPage'
+import { CryoETSubtomogramTomographyStudioPage } from './pages/CryoETSubtomogramTomographyStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -331,6 +332,7 @@ function App() {
                       <Route path="/spatial-proteogenomics" element={<SpatialProteogenomicsStudioPage />} />
                       <Route path="/metabolic-flux-fba" element={<MetabolicFluxFBAStudioPage />} />
                       <Route path="/hdx-ms-epitope-mapping" element={<HDXMSEpitopeMappingStudioPage />} />
+                      <Route path="/cryoet-subtomogram-tomography" element={<CryoETSubtomogramTomographyStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )

@@ -1071,3 +1071,9 @@ from database.models.hdx_ms_epitope_mapping import (
     DBEpitopeProtectionHotspot,
 )
 
+from database.models.cryoet_subtomogram_tomography import (
+    DBCryoETTomogramStudy,
+    DBCryoETSubtomogramParticle,
+    DBCryoETResolutionClass,
+)
+
