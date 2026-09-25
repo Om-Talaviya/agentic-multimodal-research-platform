@@ -123,6 +123,7 @@ import { WholeBodyPBPKStudioPage } from './pages/WholeBodyPBPKStudioPage'
 import { TCRClonotypeTrackingStudioPage } from './pages/TCRClonotypeTrackingStudioPage'
 import { DNAMethylationClockStudioPage } from './pages/DNAMethylationClockStudioPage'
 import { CADDVariantPathogenicityStudioPage } from './pages/CADDVariantPathogenicityStudioPage'
+import { SiRNAThermodynamicsStudioPage } from './pages/SiRNAThermodynamicsStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -321,6 +322,7 @@ function App() {
                       <Route path="/tcr-clonotype-tracking" element={<TCRClonotypeTrackingStudioPage />} />
                       <Route path="/dna-methylation-clock" element={<DNAMethylationClockStudioPage />} />
                       <Route path="/cadd-variant-pathogenicity" element={<CADDVariantPathogenicityStudioPage />} />
+                      <Route path="/sirna-thermodynamics" element={<SiRNAThermodynamicsStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )
