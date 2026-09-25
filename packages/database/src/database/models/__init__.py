@@ -1095,3 +1095,10 @@ from database.models.crispr_prime_editing_pegdna import (
     PegDNASpacerPBSRTTDesign,
     PegDNAFlapEquilibriumMetric,
 )
+
+from database.models.rare_disease_hpo_phenotyping import (
+    RDDeepHPOStudy,
+    RDDeepHPOTerm,
+    RDDeepOMIMMatch,
+)
+

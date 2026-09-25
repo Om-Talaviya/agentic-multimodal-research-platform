@@ -314,3 +314,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Prime Editing pegRNA Design & Flap Kinetics**: Automated PBS/RTT sequence optimization, melting thermodynamics, and 3' vs 5' flap ligation equilibrium resolution.
 - **RESTful Endpoints & Web Studio**: Interactive pegRNA synthesis interface and persistent study analytics.
+
+## [v2.1.13] - Phase 181 Complete
+### Added
+- **Rare Disease Deep Phenotyping & HPO-OMIM Matcher**: Information-content weighted HPO term extraction, Resnik semantic similarity metrics, and causal gene prediction.
+- **RESTful Endpoints & Web Studio**: Interactive EHR/clinical narrative analysis interface and persistent study records.

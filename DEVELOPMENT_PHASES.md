@@ -43,3 +43,18 @@
 - [x] RESTful API endpoints (/api/v1/crispr-prime-editing-pegdna/simulate, /api/v1/crispr-prime-editing-pegdna/studies)
 - [x] Interactive web studio (CRISPRPrimeEditingPegDNAStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+---
+
+## Phase 181: Autonomous Rare Disease Deep Phenotyping & HPO-OMIM Semantic Disease Matcher Engine
+**Status**: ?? COMPLETE
+
+**Goal**: Clinical narrative parsing into Human Phenotype Ontology (HPO) terms, Resnik semantic similarity scoring, and OMIM/Orphanet rare disease diagnostic prioritization.
+
+### Deliverables
+- [x] Rare disease deep phenotyping schema (d_deep_hpo_phenotyping_studies, d_deep_hpo_terms, d_deep_omim_matches)
+- [x] Async repository (RareDiseaseHPOPhenotypingRepository)
+- [x] Clinical phenotype ontology semantic engine (RareDiseaseHPOPhenotypingEngine)
+- [x] RESTful API endpoints (/api/v1/rare-disease-hpo-phenotyping/analyze, /api/v1/rare-disease-hpo-phenotyping/studies)
+- [x] Interactive web studio (RareDiseaseHPOPhenotypingStudioPage.tsx)
+- [x] 100% automated test coverage across database, research engine, and API layer
