@@ -1144,3 +1144,9 @@ from database.models.spatial_maldi_metabolomics import (
     SpatialMaldiMetabolomicsItemProfile,
     SpatialMaldiMetabolomicsMetricTrace,
 )
+
+from database.models.nanopore_direct_rna import (
+    NanoporeDirectRNAStudy,
+    NanoporeDirectRNAItemProfile,
+    NanoporeDirectRNAMetricTrace,
+)
