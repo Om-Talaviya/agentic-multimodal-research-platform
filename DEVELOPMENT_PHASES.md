@@ -153,3 +153,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/nanopore_direct_rna_engine.py`: Direct RNA basecalling and epitranscriptomic modification stoichiometry engine without reverse-transcription bias.
   - `apps/api/src/api/routes/nanopore_direct_rna.py`: FastAPI endpoints for direct RNA sequencing simulation and transcript modification profiling.
   - `apps/web/src/pages/NanoporeDirectRNAStudioPage.tsx`: Interactive React/Lucide direct RNA studio featuring DRACH motif m6A stoichiometry, poly(A) tail length histograms, and squiggle dwell-time heatmaps.
+
+## Phase 190: Thermal Proteome Profiling & Target Engagement Deconvolution Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/thermal_proteome_profiling.py`: Tables `thermal_tpp_studies`, `thermal_tpp_item_profiles`, and `thermal_tpp_metric_traces`.
+  - `packages/database/src/database/repositories/thermal_proteome_profiling_repo.py`: Repository handling proteome-wide thermal shift melting curve parameters ($T_m$, $\Delta T_m$), compound-target stabilization, and target engagement AUC metrics.
+  - `packages/research/src/research/proteomics/thermal_proteome_profiling_engine.py`: Sigmoidal melting curve deconvolution engine quantifying target engagement and off-target cross-reactivities in intact cell lysates.
+  - `apps/api/src/api/routes/thermal_proteome_profiling.py`: FastAPI endpoints for cellular thermal shift assay (CETSA/TPP) simulation and target engagement deconvolution.
+  - `apps/web/src/pages/ThermalProteomeProfilingStudioPage.tsx`: Interactive React/Lucide thermal proteome profiling console with melting curve shift plots ($\Delta T_m$), target engagement ranking, and AUC stabilization matrices.

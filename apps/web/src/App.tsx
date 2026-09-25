@@ -1,3 +1,4 @@
+import { ThermalProteomeProfilingStudioPage } from './pages/ThermalProteomeProfilingStudioPage';
 import { NanoporeDirectRNAStudioPage } from './pages/NanoporeDirectRNAStudioPage';
 import { SpatialMaldiMetabolomicsStudioPage } from './pages/SpatialMaldiMetabolomicsStudioPage';
 import { MilestoneV21StudioPage } from './pages/MilestoneV21StudioPage';
@@ -222,6 +223,7 @@ function App() {
 
                     <Route path="/spatial-maldi-metabolomics" element={<SpatialMaldiMetabolomicsStudioPage />} />
                 <Route path="/nanopore-direct-rna" element={<NanoporeDirectRNAStudioPage />} />
+                <Route path="/thermal-proteome-profiling" element={<ThermalProteomeProfilingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

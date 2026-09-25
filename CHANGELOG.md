@@ -355,3 +355,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 189 - Nanopore Direct RNA Sequencing & Epitranscriptomic Modification Mapper
 - Implemented Nanopore Direct RNA Sequencing with ionic current squiggle dwell-time deconvolution, DRACH motif m6A/pseudouridine site stoichiometry, and poly(A) tail profiling.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 190 - Thermal Proteome Profiling & Target Engagement Deconvolution Engine
+- Implemented cellular thermal shift assay (CETSA/TPP) sigmoidal melting curve deconvolution, $\Delta T_m$ target engagement quantification, and proteome-wide off-target deorphanization.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

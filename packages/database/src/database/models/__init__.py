@@ -1150,3 +1150,9 @@ from database.models.nanopore_direct_rna import (
     NanoporeDirectRNAItemProfile,
     NanoporeDirectRNAMetricTrace,
 )
+
+from database.models.thermal_proteome_profiling import (
+    ThermalProteomeProfilingStudy,
+    ThermalProteomeProfilingItemProfile,
+    ThermalProteomeProfilingMetricTrace,
+)
