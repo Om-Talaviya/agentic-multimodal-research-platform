@@ -1132,3 +1132,9 @@ from database.models.radiomics_deep_phenotyping import (
     RadiomicsHabitatSubregion,
     RadiomicsExtractedTextureFeature,
 )
+
+from database.models.milestone_v2_1_orchestrator import (
+    MilestoneV21SynthesisStudy,
+    MilestoneV21SubsystemTelemetry,
+    MilestoneV21PlanetaryRun,
+)

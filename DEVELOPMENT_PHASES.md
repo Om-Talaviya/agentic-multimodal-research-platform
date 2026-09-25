@@ -129,3 +129,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/imaging/radiomics_deep_phenotyping_engine.py`: High-throughput IBSI-compliant GLCM/GLRLM texture engine, Ktrans perfusion, ADC diffusion, PET SUV avidity modeling, and radiogenomic overall survival hazard modeling.
   - `apps/api/src/api/routes/radiomics_deep_phenotyping.py`: FastAPI endpoints for multi-parametric habitat segmentation simulation and longitudinal imaging study queries.
   - `apps/web/src/pages/RadiomicsDeepPhenotypingStudioPage.tsx`: Interactive React/Lucide oncology imaging console with 3D habitat volume breakdown, texture radar metrics, and radiogenomic hazard risk forecasts.
+
+## Phase 187: Milestone v2.1 Planetary Research Synthesis & Multi-System Autonomous Meta-Orchestrator
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/milestone_v2_1_orchestrator.py`: Tables `milestone_v2_1_synthesis_studies`, `milestone_v2_1_subsystem_telemetries`, and `milestone_v2_1_planetary_runs`.
+  - `packages/database/src/database/repositories/milestone_v2_1_orchestrator_repo.py`: Repository orchestrating planetary multi-modal synthesis studies, cross-domain telemetries, and autonomous discovery pipelines.
+  - `packages/research/src/research/orchestration/milestone_v2_1_orchestrator_engine.py`: Planetary Meta-Orchestrator engine harmonizing all 187 research domains across single-cell genomics, epigenetics, structural complexes, cryo-ET, ADC/CAR-T therapeutics, and multi-parametric oncology radiomics.
+  - `apps/api/src/api/routes/milestone_v2_1_orchestrator.py`: FastAPI endpoints for planetary meta-synthesis runs and system-wide health and throughput telemetry.
+  - `apps/web/src/pages/MilestoneV21StudioPage.tsx`: Interactive React/Lucide planetary mission control dashboard displaying cross-correlation indices, autonomous hypothesis discovery rates, and multi-domain telemetries.
