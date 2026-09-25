@@ -177,3 +177,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/structural/cryoem_manifold_dynamics_engine.py`: Continuous conformational heterogeneity engine mapping single-particle Cryo-EM 2D projections onto nonlinear geodesic Riemannian manifolds.
   - `apps/api/src/api/routes/cryoem_manifold_dynamics.py`: FastAPI endpoints for 3D variability simulation and macromolecular energy landscape queries.
   - `apps/web/src/pages/CryoEMManifoldDynamicsStudioPage.tsx`: Interactive React/Lucide Cryo-EM manifold console with 3D variability principal components, free energy landscape profiles, and conformational transition states.
+
+## Phase 193: Antisense Oligonucleotide RNase-H Cleavage & Gapmer Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/aso_gapmer_therapeutics.py`: Tables `aso_gapmer_studies`, `aso_gapmer_item_profiles`, and `aso_gapmer_metric_traces`.
+  - `packages/database/src/database/repositories/aso_gapmer_therapeutics_repo.py`: Repository handling gapmer wing/gap architecture (2'-MOE, LNA, phosphorothioate backbones), RNase H1 catalytic cleavage rates ($k_{	ext{cat}}$), and target knockdown percentage.
+  - `packages/research/src/research/therapeutics/aso_gapmer_therapeutics_engine.py`: Oligonucleotide therapeutic simulator optimizing ASO duplex binding affinity, RNase H1 activation, and off-target transcript mitigation.
+  - `apps/api/src/api/routes/aso_gapmer_therapeutics.py`: FastAPI endpoints for ASO gapmer cleavage kinetics simulation and therapeutic potency analysis.
+  - `apps/web/src/pages/ASOGapmerTherapeuticsStudioPage.tsx`: Interactive React/Lucide antisense oligonucleotide console with gapmer architecture diagrams, RNase H cleavage velocity bars, and target knockdown dose-response curves.

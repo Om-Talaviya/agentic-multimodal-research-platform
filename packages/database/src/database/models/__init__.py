@@ -1168,3 +1168,9 @@ from database.models.cryoem_manifold_dynamics import (
     CryoEMManifoldDynamicsItemProfile,
     CryoEMManifoldDynamicsMetricTrace,
 )
+
+from database.models.aso_gapmer_therapeutics import (
+    ASOGapmerTherapeuticsStudy,
+    ASOGapmerTherapeuticsItemProfile,
+    ASOGapmerTherapeuticsMetricTrace,
+)
