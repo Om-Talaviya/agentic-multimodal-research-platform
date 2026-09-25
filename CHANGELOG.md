@@ -351,3 +351,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 188 - Spatial Metabolomics MALDI-MSI Tissue Architecture Engine
 - Implemented high-resolution MALDI-MSI oncometabolite spatial tissue rasterization, m/z ion deconvolution, and metabolic pathway entropy scoring.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 189 - Nanopore Direct RNA Sequencing & Epitranscriptomic Modification Mapper
+- Implemented Nanopore Direct RNA Sequencing with ionic current squiggle dwell-time deconvolution, DRACH motif m6A/pseudouridine site stoichiometry, and poly(A) tail profiling.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

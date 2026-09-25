@@ -145,3 +145,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/metabolomics/spatial_maldi_metabolomics_engine.py`: High-resolution matrix-assisted laser desorption/ionization metabolomics engine resolving oncometabolites (2-HG, lactate, ATP) and spatial Warburg pathway shifts.
   - `apps/api/src/api/routes/spatial_maldi_metabolomics.py`: FastAPI endpoints for MALDI-MSI tissue rasterization simulations and longitudinal study queries.
   - `apps/web/src/pages/SpatialMaldiMetabolomicsStudioPage.tsx`: Interactive React/Lucide spatial metabolomics console with ion image spectra cards, oncometabolite log2FC radar, and matrix laser parameters.
+
+## Phase 189: Nanopore Direct RNA Sequencing & Epitranscriptomic Modification Mapper
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/nanopore_direct_rna.py`: Tables `nanopore_drna_studies`, `nanopore_drna_item_profiles`, and `nanopore_drna_metric_traces`.
+  - `packages/database/src/database/repositories/nanopore_direct_rna_repo.py`: Repository handling raw ionic current squiggle dwell-time profiles, m6A/m5C/pseudouridine site mapping, and poly(A) tail dynamics.
+  - `packages/research/src/research/genomics/nanopore_direct_rna_engine.py`: Direct RNA basecalling and epitranscriptomic modification stoichiometry engine without reverse-transcription bias.
+  - `apps/api/src/api/routes/nanopore_direct_rna.py`: FastAPI endpoints for direct RNA sequencing simulation and transcript modification profiling.
+  - `apps/web/src/pages/NanoporeDirectRNAStudioPage.tsx`: Interactive React/Lucide direct RNA studio featuring DRACH motif m6A stoichiometry, poly(A) tail length histograms, and squiggle dwell-time heatmaps.
