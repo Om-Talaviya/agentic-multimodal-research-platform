@@ -1,3 +1,4 @@
+import { CircRNABiogenesisStudioPage } from './pages/CircRNABiogenesisStudioPage';
 import { ADCDAROptimizationStudioPage } from './pages/ADCDAROptimizationStudioPage';
 import { MilestoneV19StudioPage } from './pages/MilestoneV19StudioPage';
 import { smFRETKineticsStudioPage as SmFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
@@ -198,6 +199,7 @@ function App() {
     <WorkspaceProvider>
       <Routes>
         <Route path="/adc-dar-optimization" element={<ADCDAROptimizationStudioPage />} />
+            <Route path="/circrna-biogenesis" element={<CircRNABiogenesisStudioPage />} />
             <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -366,4 +368,5 @@ function App() {
 }
 
 export default App
+
 

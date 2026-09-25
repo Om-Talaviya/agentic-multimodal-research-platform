@@ -1083,3 +1083,9 @@ from database.models.adc_dar_optimization import (
     ADCDARSpeciesDistribution,
     ADCDARAggregationMetric,
 )
+
+from database.models.circrna_biogenesis import (
+    CircRNABiogenesisStudy,
+    CircRNABackspliceJunction,
+    CircRNAMiRNASpongeTarget,
+)
