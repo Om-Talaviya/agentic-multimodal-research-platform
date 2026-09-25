@@ -319,3 +319,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Rare Disease Deep Phenotyping & HPO-OMIM Matcher**: Information-content weighted HPO term extraction, Resnik semantic similarity metrics, and causal gene prediction.
 - **RESTful Endpoints & Web Studio**: Interactive EHR/clinical narrative analysis interface and persistent study records.
+
+## [v2.1.14] - Phase 182 Complete
+### Added
+- **Gut Microbiome-Host Co-Metabolism & SCFA Dynamics**: Taxonomic abundance profiling, anaerobic fiber fermentation modeling, and mucosal barrier integrity index.
+- **RESTful Endpoints & Web Studio**: Interactive dietary fiber and prebiotic exploration interface with persistent records.

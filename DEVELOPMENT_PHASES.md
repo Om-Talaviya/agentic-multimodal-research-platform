@@ -58,3 +58,18 @@
 - [x] RESTful API endpoints (/api/v1/rare-disease-hpo-phenotyping/analyze, /api/v1/rare-disease-hpo-phenotyping/studies)
 - [x] Interactive web studio (RareDiseaseHPOPhenotypingStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+---
+
+## Phase 182: Autonomous Gut Microbiome-Host Co-Metabolism & Short-Chain Fatty Acid (SCFA) Dynamics Engine
+**Status**: ?? COMPLETE
+
+**Goal**: Microbiome taxonomic community modeling, dietary fiber anaerobic fermentation kinetics, and short-chain fatty acid mucosal barrier flux simulation.
+
+### Deliverables
+- [x] Gut microbiome-metabolome schema (microbiome_metabolomics_studies, microbiome_taxa_abundances, microbiome_scfa_kinetics)
+- [x] Async repository (MicrobiomeMetabolomicsAxisRepository)
+- [x] Co-metabolism & SCFA dynamics engine (MicrobiomeMetabolomicsAxisEngine)
+- [x] RESTful API endpoints (/api/v1/microbiome-metabolomics-axis/simulate, /api/v1/microbiome-metabolomics-axis/studies)
+- [x] Interactive web studio (MicrobiomeMetabolomicsAxisStudioPage.tsx)
+- [x] 100% automated test coverage across database, research engine, and API layer

@@ -1102,3 +1102,9 @@ from database.models.rare_disease_hpo_phenotyping import (
     RDDeepOMIMMatch,
 )
 
+
+from database.models.microbiome_metabolomics_axis import (
+    MicrobiomeMetabolomicsStudy,
+    MicrobiomeTaxaAbundance,
+    MicrobiomeSCFAKinetics,
+)
