@@ -1,3 +1,4 @@
+from api.routes.aso_gapmer_therapeutics import router as aso_gapmer_therapeutics_router
 from api.routes.cryoem_manifold_dynamics import router as cryoem_manifold_dynamics_router
 from api.routes.cellular_barcoding_lineage import router as cellular_barcoding_lineage_router
 from api.routes.thermal_proteome_profiling import router as thermal_proteome_profiling_router
@@ -485,3 +486,5 @@ app.include_router(thermal_proteome_profiling_router, prefix=settings.api_prefix
 app.include_router(cellular_barcoding_lineage_router, prefix=settings.api_prefix)
 
 app.include_router(cryoem_manifold_dynamics_router, prefix=settings.api_prefix)
+
+app.include_router(aso_gapmer_therapeutics_router, prefix=settings.api_prefix)
