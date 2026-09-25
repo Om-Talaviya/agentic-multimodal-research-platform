@@ -334,3 +334,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Fragment-Based Lead Discovery & Linker Growth**: Biophysical fragment hit screening, ligand efficiency (LE) calculation, and rigid/flexible linker growth modeling.
 - **RESTful Endpoints & Web Studio**: Interactive SBDD vector and linker exploration interface with persistent storage.
+
+## [v2.1.17] - Phase 185 Complete
+### Added
+- **Tumor Neoantigen & HLA Presentation**: Somatic mutation cleavage prediction, TAP transport efficiency modeling, and allele-specific HLA-I/II presentation ranking.
+- **RESTful Endpoints & Web Studio**: Interactive patient genomic and personalized mRNA vaccine candidate prioritization interface.
