@@ -161,3 +161,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/proteomics/thermal_proteome_profiling_engine.py`: Sigmoidal melting curve deconvolution engine quantifying target engagement and off-target cross-reactivities in intact cell lysates.
   - `apps/api/src/api/routes/thermal_proteome_profiling.py`: FastAPI endpoints for cellular thermal shift assay (CETSA/TPP) simulation and target engagement deconvolution.
   - `apps/web/src/pages/ThermalProteomeProfilingStudioPage.tsx`: Interactive React/Lucide thermal proteome profiling console with melting curve shift plots ($\Delta T_m$), target engagement ranking, and AUC stabilization matrices.
+
+## Phase 191: Cellular Barcoding & Lineage Tree Reconstructor Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/cellular_barcoding_lineage.py`: Tables `cellular_lineage_studies`, `cellular_lineage_item_profiles`, and `cellular_lineage_metric_traces`.
+  - `packages/database/src/database/repositories/cellular_barcoding_lineage_repo.py`: Repository managing dynamic CRISPR barcode scar arrays, lineage branch depths, and single-cell phylogenetic tree matrices.
+  - `packages/research/src/research/genomics/cellular_barcoding_lineage_engine.py`: Single-cell lineage tree reconstruction engine using maximum parsimony and cumulative indel scarring patterns (GESTALT/LINNAEUS).
+  - `apps/api/src/api/routes/cellular_barcoding_lineage.py`: FastAPI endpoints for cellular lineage simulation and evolutionary tree deconstruction.
+  - `apps/web/src/pages/CellularBarcodingLineageStudioPage.tsx`: Interactive React/Lucide cellular barcoding studio featuring phylogenetic cladograms, barcode scarring frequency charts, and cell fate bifurcation nodes.

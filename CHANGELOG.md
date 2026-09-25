@@ -359,3 +359,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 190 - Thermal Proteome Profiling & Target Engagement Deconvolution Engine
 - Implemented cellular thermal shift assay (CETSA/TPP) sigmoidal melting curve deconvolution, $\Delta T_m$ target engagement quantification, and proteome-wide off-target deorphanization.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 191 - Cellular Barcoding & Lineage Tree Reconstructor Engine
+- Implemented dynamic CRISPR barcode scarring, single-cell lineage tree deconstruction via maximum parsimony, and developmental cell fate bifurcation tracking.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
