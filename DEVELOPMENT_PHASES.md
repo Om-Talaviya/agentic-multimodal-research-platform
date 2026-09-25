@@ -103,3 +103,21 @@
 - [x] RESTful API endpoints (/api/v1/fragment-based-lead-discovery/simulate, /api/v1/fragment-based-lead-discovery/studies)
 - [x] Interactive web studio (FragmentBasedLeadDiscoveryStudioPage.tsx)
 - [x] 100% automated test coverage across database, research engine, and API layer
+
+---
+
+## Phase 185: Autonomous Tumor Neoantigen Proteasomal Cleavage & HLA-I/II Presentation Forecaster Engine
+**Status**: ?? COMPLETE
+
+**Goal**: Somatic mutation proteasomal processing, TAP transport dynamics, and HLA-I/II presentation affinity forecaster.
+
+### Deliverables
+- [x] Tumor neoantigen presentation schema (
+eoantigen_hla_presentation_studies, 
+eoantigen_peptide_candidates, 
+eoantigen_hla_binding_predictions)
+- [x] Async repository (NeoantigenHLAPresentationRepository)
+- [x] Proteasome cleavage and HLA presentation engine (NeoantigenHLAPresentationEngine)
+- [x] RESTful API endpoints (/api/v1/neoantigen-hla-presentation/simulate, /api/v1/neoantigen-hla-presentation/studies)
+- [x] Interactive web studio (NeoantigenHLAPresentationStudioPage.tsx)
+- [x] 100% automated test coverage across database, research engine, and API layer

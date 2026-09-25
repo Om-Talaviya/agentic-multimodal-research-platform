@@ -1120,3 +1120,9 @@ from database.models.fragment_based_lead_discovery import (
     FBDDFragmentHit,
     FBDDLinkerGrowthCandidate,
 )
+
+from database.models.neoantigen_hla_presentation import (
+    NeoantigenHLAStudy,
+    NeoantigenPeptideCandidate,
+    NeoantigenHLABindingPrediction,
+)

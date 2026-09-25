@@ -1,3 +1,4 @@
+import { NeoantigenHLAPresentationStudioPage } from './pages/NeoantigenHLAPresentationStudioPage';
 import { FragmentBasedLeadDiscoveryStudioPage } from './pages/FragmentBasedLeadDiscoveryStudioPage';
 import { CARTExhaustionKineticsStudioPage } from './pages/CARTExhaustionKineticsStudioPage';
 import { MicrobiomeMetabolomicsAxisStudioPage } from './pages/MicrobiomeMetabolomicsAxisStudioPage';
@@ -210,6 +211,7 @@ function App() {
             <Route path="/microbiome-metabolomics-axis" element={<MicrobiomeMetabolomicsAxisStudioPage />} />
             <Route path="/car-t-exhaustion-kinetics" element={<CARTExhaustionKineticsStudioPage />} />
             <Route path="/fragment-based-lead-discovery" element={<FragmentBasedLeadDiscoveryStudioPage />} />
+            <Route path="/neoantigen-hla-presentation" element={<NeoantigenHLAPresentationStudioPage />} />
             <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -378,6 +380,7 @@ function App() {
 }
 
 export default App
+
 
 
 
