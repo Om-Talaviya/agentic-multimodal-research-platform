@@ -304,3 +304,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **ADC DAR Optimization & Aggregation Predictor**: In-silico DAR distribution modeling, clearance rate forecasting, and 72-hour aggregation stability kinetics.
 - **RESTful Endpoints & Web Studio**: Interactive simulation interface and persistent analytics.
+
+## [v2.1.11] - Phase 179 Complete
+### Added
+- **circRNA Biogenesis & miRNA Sponge Matrix**: Back-splicing junction identification, RNase R resistance half-life prediction, and multi-family miRNA sponge capacity scoring.
+- **RESTful Endpoints & Web Studio**: Interactive locus parameter exploration and persistent storage.
