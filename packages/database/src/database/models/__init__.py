@@ -1162,3 +1162,9 @@ from database.models.cellular_barcoding_lineage import (
     CellularBarcodingLineageItemProfile,
     CellularBarcodingLineageMetricTrace,
 )
+
+from database.models.cryoem_manifold_dynamics import (
+    CryoEMManifoldDynamicsStudy,
+    CryoEMManifoldDynamicsItemProfile,
+    CryoEMManifoldDynamicsMetricTrace,
+)

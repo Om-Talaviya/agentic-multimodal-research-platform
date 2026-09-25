@@ -1,3 +1,4 @@
+import { CryoEMManifoldDynamicsStudioPage } from './pages/CryoEMManifoldDynamicsStudioPage';
 import { CellularBarcodingLineageStudioPage } from './pages/CellularBarcodingLineageStudioPage';
 import { ThermalProteomeProfilingStudioPage } from './pages/ThermalProteomeProfilingStudioPage';
 import { NanoporeDirectRNAStudioPage } from './pages/NanoporeDirectRNAStudioPage';
@@ -226,6 +227,7 @@ function App() {
                 <Route path="/nanopore-direct-rna" element={<NanoporeDirectRNAStudioPage />} />
                 <Route path="/thermal-proteome-profiling" element={<ThermalProteomeProfilingStudioPage />} />
                 <Route path="/cellular-barcoding-lineage" element={<CellularBarcodingLineageStudioPage />} />
+                <Route path="/cryoem-manifold-dynamics" element={<CryoEMManifoldDynamicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

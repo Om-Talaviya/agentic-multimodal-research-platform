@@ -1,3 +1,4 @@
+from api.routes.cryoem_manifold_dynamics import router as cryoem_manifold_dynamics_router
 from api.routes.cellular_barcoding_lineage import router as cellular_barcoding_lineage_router
 from api.routes.thermal_proteome_profiling import router as thermal_proteome_profiling_router
 from api.routes.nanopore_direct_rna import router as nanopore_direct_rna_router
@@ -482,3 +483,5 @@ app.include_router(nanopore_direct_rna_router, prefix=settings.api_prefix)
 app.include_router(thermal_proteome_profiling_router, prefix=settings.api_prefix)
 
 app.include_router(cellular_barcoding_lineage_router, prefix=settings.api_prefix)
+
+app.include_router(cryoem_manifold_dynamics_router, prefix=settings.api_prefix)
