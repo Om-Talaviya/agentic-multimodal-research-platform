@@ -124,6 +124,7 @@ import { TCRClonotypeTrackingStudioPage } from './pages/TCRClonotypeTrackingStud
 import { DNAMethylationClockStudioPage } from './pages/DNAMethylationClockStudioPage'
 import { CADDVariantPathogenicityStudioPage } from './pages/CADDVariantPathogenicityStudioPage'
 import { SiRNAThermodynamicsStudioPage } from './pages/SiRNAThermodynamicsStudioPage'
+import { AlphaFoldComplexDockingStudioPage } from './pages/AlphaFoldComplexDockingStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -323,6 +324,7 @@ function App() {
                       <Route path="/dna-methylation-clock" element={<DNAMethylationClockStudioPage />} />
                       <Route path="/cadd-variant-pathogenicity" element={<CADDVariantPathogenicityStudioPage />} />
                       <Route path="/sirna-thermodynamics" element={<SiRNAThermodynamicsStudioPage />} />
+                      <Route path="/alphafold-complex-docking" element={<AlphaFoldComplexDockingStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )

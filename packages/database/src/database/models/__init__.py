@@ -1047,3 +1047,9 @@ from database.models.sirna_thermodynamics import (
     DBOffTargetSeedMatch,
 )
 
+from database.models.alphafold_complex_docking import (
+    DBAlphaFoldComplexStudy,
+    DBInterfaceContactResidue,
+    DBInterfaceEnergyMetric,
+)
+
