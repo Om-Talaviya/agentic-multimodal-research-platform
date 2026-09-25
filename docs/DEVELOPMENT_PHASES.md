@@ -1038,6 +1038,8 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 173**: Autonomous Multimeric Protein-Protein Complex Interface & Co-Evolutionary Contact Forecaster (`alphafold_complex_docking`)
 - [x] **Phase 174**: Autonomous Multi-Omics Spatial CITE-seq & Subcellular Protein-RNA Co-Localization Engine (`spatial_proteogenomics`)
 - [x] **Phase 175**: Autonomous Genome-Scale Metabolic Network Flux Balance Analysis (FBA) & Target Vulnerability Simulator (`metabolic_flux_fba`)
+- [x] **Phase 176**: Autonomous Hydrogen-Deuterium Exchange Mass Spectrometry (HDX-MS) Epitope Mapping Engine (`hdx_ms_epitope_mapping`)
+
 
 
 

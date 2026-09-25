@@ -127,6 +127,7 @@ import { SiRNAThermodynamicsStudioPage } from './pages/SiRNAThermodynamicsStudio
 import { AlphaFoldComplexDockingStudioPage } from './pages/AlphaFoldComplexDockingStudioPage'
 import { SpatialProteogenomicsStudioPage } from './pages/SpatialProteogenomicsStudioPage'
 import { MetabolicFluxFBAStudioPage } from './pages/MetabolicFluxFBAStudioPage'
+import { HDXMSEpitopeMappingStudioPage } from './pages/HDXMSEpitopeMappingStudioPage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -329,6 +330,7 @@ function App() {
                       <Route path="/alphafold-complex-docking" element={<AlphaFoldComplexDockingStudioPage />} />
                       <Route path="/spatial-proteogenomics" element={<SpatialProteogenomicsStudioPage />} />
                       <Route path="/metabolic-flux-fba" element={<MetabolicFluxFBAStudioPage />} />
+                      <Route path="/hdx-ms-epitope-mapping" element={<HDXMSEpitopeMappingStudioPage />} />
           </Routes>
     </WorkspaceProvider>
   )

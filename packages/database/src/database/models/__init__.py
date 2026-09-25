@@ -1065,3 +1065,9 @@ from database.models.metabolic_flux_fba import (
     DBMetabolicVulnerabilityHit,
 )
 
+from database.models.hdx_ms_epitope_mapping import (
+    DBHDXMSEpitopeStudy,
+    DBPeptideDeuterationProfile,
+    DBEpitopeProtectionHotspot,
+)
+
