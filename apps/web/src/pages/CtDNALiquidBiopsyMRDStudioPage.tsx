@@ -67,7 +67,7 @@ export const CtDNALiquidBiopsyMRDStudioPage: React.FC = () => {
             </h1>
           </div>
           <p className="text-slate-400 text-sm mt-1">
-            Phase 194: Autonomous Pan-Cancer Circulating Tumor DNA (ctDNA) Duplex Sequencing, Ultra-Low VAF (<0.01%) Error Suppression & Minimal Residual Disease (MRD) Recurrence Forecasting
+            Phase 194: Autonomous Pan-Cancer Circulating Tumor DNA (ctDNA) Duplex Sequencing, Ultra-Low VAF (≤0.01%) Error Suppression & Minimal Residual Disease (MRD) Recurrence Forecasting
           </p>
         </div>
         <div className="flex items-center space-x-4">
