@@ -1,3 +1,4 @@
+import { RareDiseaseHPOPhenotypingStudioPage } from './pages/RareDiseaseHPOPhenotypingStudioPage';
 import { CRISPRPrimeEditingPegDNAStudioPage } from './pages/CRISPRPrimeEditingPegDNAStudioPage';
 import { CircRNABiogenesisStudioPage } from './pages/CircRNABiogenesisStudioPage';
 import { ADCDAROptimizationStudioPage } from './pages/ADCDAROptimizationStudioPage';
@@ -202,6 +203,7 @@ function App() {
         <Route path="/adc-dar-optimization" element={<ADCDAROptimizationStudioPage />} />
             <Route path="/circrna-biogenesis" element={<CircRNABiogenesisStudioPage />} />
             <Route path="/crispr-prime-editing-pegdna" element={<CRISPRPrimeEditingPegDNAStudioPage />} />
+            <Route path="/rare-disease-hpo-phenotyping" element={<RareDiseaseHPOPhenotypingStudioPage />} />
             <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -370,6 +372,7 @@ function App() {
 }
 
 export default App
+
 
 
 
