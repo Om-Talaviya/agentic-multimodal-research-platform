@@ -1,3 +1,4 @@
+import { ScRNACopyNumberKaryotypeStudioPage } from './pages/ScRNACopyNumberKaryotypeStudioPage';
 import { OptogeneticsPhotostimulationStudioPage } from './pages/OptogeneticsPhotostimulationStudioPage';
 import { MilestoneV23OrchestratorStudioPage } from './pages/MilestoneV23OrchestratorStudioPage';
 import { LongReadSVAssemblyStudioPage } from './pages/LongReadSVAssemblyStudioPage';
@@ -264,6 +265,7 @@ function App() {
                 <Route path="/long-read-sv-assembly" element={<LongReadSVAssemblyStudioPage />} />
                 <Route path="/milestone-v2-3-orchestrator" element={<MilestoneV23OrchestratorStudioPage />} />
                 <Route path="/optogenetics-photostimulation" element={<OptogeneticsPhotostimulationStudioPage />} />
+                <Route path="/scrna-copy-number-karyotype" element={<ScRNACopyNumberKaryotypeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

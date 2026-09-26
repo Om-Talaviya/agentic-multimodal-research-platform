@@ -329,3 +329,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/optogenetics_photostimulation.py`
   - `apps/web/src/pages/OptogeneticsPhotostimulationStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 211: Autonomous Single-Cell Copy Number Variation (scCNV) & Chromosomal Aneuploidy Karyotyper Engine
+- **Module**: `scrna_copy_number_karyotype`
+- **Domain**: Single-Cell Genomics & Oncology
+- **Description**: Infers copy number variations and whole-chromosome aneuploidies from single-cell transcriptomic moving-average expression profiles with sub-clonal lineage tree reconstructions.
+- **Architecture**:
+  - `packages/database/src/database/models/scrna_copy_number_karyotype.py`
+  - `packages/database/src/database/repositories/scrna_copy_number_karyotype_repo.py`
+  - `packages/research/src/research/orchestration/scrna_copy_number_karyotype_engine.py`
+  - `apps/api/src/api/routes/scrna_copy_number_karyotype.py`
+  - `apps/web/src/pages/ScRNACopyNumberKaryotypeStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
