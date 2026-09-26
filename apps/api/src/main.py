@@ -1,3 +1,4 @@
+from api.routes.riboseq_translation_kinetics import router as riboseq_translation_kinetics_router
 from api.routes.crispr_cas13_rna_targeting import router as crispr_cas13_rna_targeting_router
 from api.routes.ctdna_liquid_biopsy_mrd import router as ctdna_liquid_biopsy_mrd_router
 from api.routes.aso_gapmer_therapeutics import router as aso_gapmer_therapeutics_router
@@ -494,3 +495,5 @@ app.include_router(aso_gapmer_therapeutics_router, prefix=settings.api_prefix)
 app.include_router(ctdna_liquid_biopsy_mrd_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_cas13_rna_targeting_router, prefix=settings.api_prefix)
+
+app.include_router(riboseq_translation_kinetics_router, prefix=settings.api_prefix)

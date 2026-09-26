@@ -379,3 +379,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 195 - CRISPR-Cas13 RNA-Targeting & Collateral Cleavage Suppressor Engine
 - Implemented high-affinity CRISPR-Cas13 RNA targeting with HEPN domain catalytic modeling and bystander collateral cleavage suppression.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 196 - Ribosome Profiling & Translation Efficiency Deconvolution Engine
+- Implemented Ribosome Profiling (Ribo-seq) sub-codon footprint deconvolution, codon dwell-time pausing estimation, and transcript translation efficiency quantification.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
