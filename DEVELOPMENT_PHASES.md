@@ -257,3 +257,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/scrnaseq_ambient_scrubber_engine.py`: Probabilistic single-cell decontamination engine removing cell-free lysis soup while preserving genuine transcript expression counts.
   - `apps/api/src/api/routes/scrnaseq_ambient_scrubber.py`: FastAPI endpoints for droplet ambient RNA scrubbing simulation and doublet deconvolution.
   - `apps/web/src/pages/ScRNASeqAmbientScrubberStudioPage.tsx`: Interactive React/Lucide single-cell scrubber studio with barcode rank Knee plots, ambient mRNA fraction gauges, and doublet exclusion scatters.
+
+## Phase 203: Pan-Cancer Spatial Tumor Microenvironment Immune Infiltration Ranker
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/spatial_tme_immune_infiltration.py`: Tables `spatial_tme_studies`, `spatial_tme_item_profiles`, and `spatial_tme_metric_traces`.
+  - `packages/database/src/database/repositories/spatial_tme_immune_infiltration_repo.py`: Repository handling multiplexed spatial immunofluorescence, tertiary lymphoid structure (TLS) density, CD8+ cytotoxic T-cell infiltration, and checkpoint response predictive scores.
+  - `packages/research/src/research/immunology/spatial_tme_immune_infiltration_engine.py`: Spatial tumor-immune interaction engine quantifying immune-inflamed, immune-excluded, and immune-desert architectural archetypes.
+  - `apps/api/src/api/routes/spatial_tme_immune_infiltration.py`: FastAPI endpoints for spatial TME immune infiltration simulation and immunotherapy biomarker ranking.
+  - `apps/web/src/pages/SpatialTMEImmuneInfiltrationStudioPage.tsx`: Interactive React/Lucide spatial TME console with immune cell density scatter plots, TLS maturity indicators, and anti-PD-1/CTLA-4 response likelihood gauges.

@@ -1228,3 +1228,9 @@ from database.models.scrnaseq_ambient_scrubber import (
     ScRNASeqAmbientScrubberItemProfile,
     ScRNASeqAmbientScrubberMetricTrace,
 )
+
+from database.models.spatial_tme_immune_infiltration import (
+    SpatialTMEImmuneInfiltrationStudy,
+    SpatialTMEImmuneInfiltrationItemProfile,
+    SpatialTMEImmuneInfiltrationMetricTrace,
+)
