@@ -387,3 +387,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 197 - Cryo-EM Focused Refinement & Deep Symmetrization Engine
 - Implemented sub-volume soft-edge masked focused refinement, local B-factor sharpening, and deep non-crystallographic symmetry (NCS) expansion for Cryo-EM density maps.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 198 - CAR-NK Immune Synapse & Cytolytic Kinetics Simulator
+- Implemented multi-target CAR-NK immune synapse biophysics modeling, granzyme/perforin degranulation polarization, and serial tumor lysis kinetics.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

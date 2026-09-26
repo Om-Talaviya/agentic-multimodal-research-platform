@@ -1198,3 +1198,9 @@ from database.models.cryoem_focused_refinement import (
     CryoEMFocusedRefinementItemProfile,
     CryoEMFocusedRefinementMetricTrace,
 )
+
+from database.models.car_nk_cytolytic_synapse import (
+    CARNKCytolyticSynapseStudy,
+    CARNKCytolyticSynapseItemProfile,
+    CARNKCytolyticSynapseMetricTrace,
+)

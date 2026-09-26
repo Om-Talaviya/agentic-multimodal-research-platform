@@ -217,3 +217,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/structural/cryoem_focused_refinement_engine.py`: Focused 3D refinement engine resolving flexible macromolecular peripheral domains and high-symmetry macromolecular complexes.
   - `apps/api/src/api/routes/cryoem_focused_refinement.py`: FastAPI endpoints for focused refinement simulation and local resolution map generation.
   - `apps/web/src/pages/CryoEMFocusedRefinementStudioPage.tsx`: Interactive React/Lucide Cryo-EM focused refinement console with local resolution slicing cards, symmetry group selectors, and cross-correlation graphs.
+
+## Phase 198: CAR-NK Immune Synapse & Cytolytic Kinetics Simulator
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/car_nk_cytolytic_synapse.py`: Tables `car_nk_synapse_studies`, `car_nk_synapse_item_profiles`, and `car_nk_synapse_metric_traces`.
+  - `packages/database/src/database/repositories/car_nk_cytolytic_synapse_repo.py`: Repository handling multi-antigen targeting CAR-NK constructs, MTOC polarized granzyme B release, killer cell immunoglobulin-like receptors (KIR) signaling, and tumor killing rates.
+  - `packages/research/src/research/immunology/car_nk_cytolytic_synapse_engine.py`: Off-the-shelf allogeneic CAR-NK immune synapse biophysics engine simulating target degranulation, perforin pore formation, and serial killing kinetics.
+  - `apps/api/src/api/routes/car_nk_cytolytic_synapse.py`: FastAPI endpoints for CAR-NK cytolytic kinetics simulation and immune synapse polarization assays.
+  - `apps/web/src/pages/CARNKCytolyticSynapseStudioPage.tsx`: Interactive React/Lucide CAR-NK console with effector-to-target (E:T) lysis curves, granzyme secretion profiles, and synapse polarization metrics.

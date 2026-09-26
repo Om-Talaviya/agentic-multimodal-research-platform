@@ -1,3 +1,4 @@
+from api.routes.car_nk_cytolytic_synapse import router as car_nk_cytolytic_synapse_router
 from api.routes.cryoem_focused_refinement import router as cryoem_focused_refinement_router
 from api.routes.riboseq_translation_kinetics import router as riboseq_translation_kinetics_router
 from api.routes.crispr_cas13_rna_targeting import router as crispr_cas13_rna_targeting_router
@@ -500,3 +501,5 @@ app.include_router(crispr_cas13_rna_targeting_router, prefix=settings.api_prefix
 app.include_router(riboseq_translation_kinetics_router, prefix=settings.api_prefix)
 
 app.include_router(cryoem_focused_refinement_router, prefix=settings.api_prefix)
+
+app.include_router(car_nk_cytolytic_synapse_router, prefix=settings.api_prefix)
