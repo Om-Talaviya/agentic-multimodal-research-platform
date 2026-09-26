@@ -1,3 +1,4 @@
+import { ScRNASeqAmbientScrubberStudioPage } from './pages/ScRNASeqAmbientScrubberStudioPage';
 import { MRNALNPEncapsulationStudioPage } from './pages/MRNALNPEncapsulationStudioPage';
 import { HiChIPChromatinLoopingStudioPage } from './pages/HiChIPChromatinLoopingStudioPage';
 import { SpatialLipidomicsProfilingStudioPage } from './pages/SpatialLipidomicsProfilingStudioPage';
@@ -246,6 +247,7 @@ function App() {
                 <Route path="/spatial-lipidomics-profiling" element={<SpatialLipidomicsProfilingStudioPage />} />
                 <Route path="/hichip-chromatin-looping" element={<HiChIPChromatinLoopingStudioPage />} />
                 <Route path="/mrna-lnp-encapsulation" element={<MRNALNPEncapsulationStudioPage />} />
+                <Route path="/scrnaseq-ambient-scrubber" element={<ScRNASeqAmbientScrubberStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

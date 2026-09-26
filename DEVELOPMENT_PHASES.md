@@ -249,3 +249,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/therapeutics/mrna_lnp_encapsulation_engine.py`: High-throughput mRNA-LNP formulation engine predicting particle size distribution, polydispersity index (PDI), and ribonuclease protection factors.
   - `apps/api/src/api/routes/mrna_lnp_encapsulation.py`: FastAPI endpoints for LNP encapsulation simulation and mRNA structural stability analytics.
   - `apps/web/src/pages/MRNALNPEncapsulationStudioPage.tsx`: Interactive React/Lucide mRNA-LNP studio featuring microfluidic flow rate ratio dials, dynamic light scattering (DLS) size distributions, and MFE folding diagrams.
+
+## Phase 202: Single-Cell RNA-seq Droplet De-multiplexing & Ambient RNA Scrubber Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/scrnaseq_ambient_scrubber.py`: Tables `scrna_scrubber_studies`, `scrna_scrubber_item_profiles`, and `scrna_scrubber_metric_traces`.
+  - `packages/database/src/database/repositories/scrnaseq_ambient_scrubber_repo.py`: Repository handling droplet microfluidic barcode profiles, empty droplet ambient RNA background estimation (SoupX/CellBender), and heterotypic doublet rejection.
+  - `packages/research/src/research/genomics/scrnaseq_ambient_scrubber_engine.py`: Probabilistic single-cell decontamination engine removing cell-free lysis soup while preserving genuine transcript expression counts.
+  - `apps/api/src/api/routes/scrnaseq_ambient_scrubber.py`: FastAPI endpoints for droplet ambient RNA scrubbing simulation and doublet deconvolution.
+  - `apps/web/src/pages/ScRNASeqAmbientScrubberStudioPage.tsx`: Interactive React/Lucide single-cell scrubber studio with barcode rank Knee plots, ambient mRNA fraction gauges, and doublet exclusion scatters.
