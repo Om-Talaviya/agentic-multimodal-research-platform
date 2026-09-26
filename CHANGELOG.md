@@ -419,3 +419,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 205 - Synthetic Gene Circuit Toggle Switch & Stochastic Noise Forecaster
 - Implemented synthetic biological bistable toggle switch circuit modeling, Chemical Master Equation Gillespie stochastic simulation, and Fano factor noise forecasting.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 206 - Single-Cell Multiome ATAC+GEX Peak-to-Gene Cis-Regulatory Engine
+- Implemented single-nucleus simultaneous ATAC+GEX integration, chromatin accessibility peak-to-gene linkage deconvolution, and transcription factor regulon discovery.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
