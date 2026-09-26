@@ -1,3 +1,4 @@
+import { CarTExhaustionScveloStudioPage } from './pages/CarTExhaustionScveloStudioPage';
 import { MrnaCapPolyADecayStudioPage } from './pages/MrnaCapPolyADecayStudioPage';
 import { WholeExomeTmbMsiRankerStudioPage } from './pages/WholeExomeTmbMsiRankerStudioPage';
 import { SyntheticRiboswitchAptamerStudioPage } from './pages/SyntheticRiboswitchAptamerStudioPage';
@@ -282,6 +283,7 @@ function App() {
                 <Route path="/synthetic-riboswitch-aptamer" element={<SyntheticRiboswitchAptamerStudioPage />} />
                 <Route path="/whole-exome-tmb-msi-ranker" element={<WholeExomeTmbMsiRankerStudioPage />} />
                 <Route path="/mrna-cap-poly-a-decay" element={<MrnaCapPolyADecayStudioPage />} />
+                <Route path="/car-t-exhaustion-scvelo" element={<CarTExhaustionScveloStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
