@@ -394,3 +394,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/spatial_transcriptomics_celltype.py`
   - `apps/web/src/pages/SpatialTranscriptomicsCelltypeStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 216: Autonomous Targeted Covalent Inhibitor (TCI) Electrophilic Warhead Reactivity & Cysteine Residence Time Engine
+- **Module**: `targeted_covalent_inhibitor_warhead`
+- **Domain**: Medicinal Chemistry & Covalent Drug Design
+- **Description**: Evaluates electrophilic warhead acrylamide/haloacetamide reactivity with non-catalytic target cysteines, predicting kinome kinact/KI selectivity and target residence time.
+- **Architecture**:
+  - `packages/database/src/database/models/targeted_covalent_inhibitor_warhead.py`
+  - `packages/database/src/database/repositories/targeted_covalent_inhibitor_warhead_repo.py`
+  - `packages/research/src/research/orchestration/targeted_covalent_inhibitor_warhead_engine.py`
+  - `apps/api/src/api/routes/targeted_covalent_inhibitor_warhead.py`
+  - `apps/web/src/pages/TargetedCovalentInhibitorWarheadStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
