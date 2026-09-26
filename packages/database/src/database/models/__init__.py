@@ -1264,3 +1264,9 @@ from database.models.long_read_sv_assembly import (
     LongReadSVAssemblyItemProfile,
     LongReadSVAssemblyMetricTrace,
 )
+
+from database.models.milestone_v2_3_orchestrator import (
+    MilestoneV23OrchestratorStudy,
+    MilestoneV23OrchestratorItemProfile,
+    MilestoneV23OrchestratorMetricTrace,
+)
