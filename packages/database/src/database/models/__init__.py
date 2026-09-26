@@ -1312,3 +1312,9 @@ from database.models.cryoem_flexible_backbone_refine import (
     CryoEMFlexibleBackboneRefineItemProfile,
     CryoEMFlexibleBackboneRefineMetricTrace,
 )
+
+from database.models.spatial_transcriptomics_celltype import (
+    SpatialTranscriptomicsCelltypeStudy,
+    SpatialTranscriptomicsCelltypeItemProfile,
+    SpatialTranscriptomicsCelltypeMetricTrace,
+)

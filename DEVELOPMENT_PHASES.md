@@ -381,3 +381,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/cryoem_flexible_backbone_refine.py`
   - `apps/web/src/pages/CryoEMFlexibleBackboneRefineStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 215: Autonomous Subcellular Spatial Transcriptomics Cell-Type Deconvolution & Niche Cell-Cell Communication Engine
+- **Module**: `spatial_transcriptomics_celltype`
+- **Domain**: Spatial Biology & Computational Genomics
+- **Description**: Performs subcellular deconvolution of multiplexed spatial transcriptomics spots into single-cell fractions and quantifies spatial ligand-receptor interaction axes in tissue niches.
+- **Architecture**:
+  - `packages/database/src/database/models/spatial_transcriptomics_celltype.py`
+  - `packages/database/src/database/repositories/spatial_transcriptomics_celltype_repo.py`
+  - `packages/research/src/research/orchestration/spatial_transcriptomics_celltype_engine.py`
+  - `apps/api/src/api/routes/spatial_transcriptomics_celltype.py`
+  - `apps/web/src/pages/SpatialTranscriptomicsCelltypeStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

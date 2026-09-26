@@ -1,3 +1,4 @@
+import { SpatialTranscriptomicsCelltypeStudioPage } from './pages/SpatialTranscriptomicsCelltypeStudioPage';
 import { CryoEMFlexibleBackboneRefineStudioPage } from './pages/CryoEMFlexibleBackboneRefineStudioPage';
 import { ImmunopeptidomeDeconvolutionStudioPage } from './pages/ImmunopeptidomeDeconvolutionStudioPage';
 import { CpGIslandHypermethylationStudioPage } from './pages/CpGIslandHypermethylationStudioPage';
@@ -272,6 +273,7 @@ function App() {
                 <Route path="/cpg-island-hypermethylation" element={<CpGIslandHypermethylationStudioPage />} />
                 <Route path="/immunopeptidome-deconvolution" element={<ImmunopeptidomeDeconvolutionStudioPage />} />
                 <Route path="/cryoem-flexible-backbone-refine" element={<CryoEMFlexibleBackboneRefineStudioPage />} />
+                <Route path="/spatial-transcriptomics-celltype" element={<SpatialTranscriptomicsCelltypeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1,3 +1,4 @@
+from api.routes.spatial_transcriptomics_celltype import router as spatial_transcriptomics_celltype_router
 from api.routes.cryoem_flexible_backbone_refine import router as cryoem_flexible_backbone_refine_router
 from api.routes.immunopeptidome_deconvolution import router as immunopeptidome_deconvolution_router
 from api.routes.cpg_island_hypermethylation import router as cpg_island_hypermethylation_router
@@ -551,3 +552,5 @@ app.include_router(cpg_island_hypermethylation_router, prefix=settings.api_prefi
 app.include_router(immunopeptidome_deconvolution_router, prefix=settings.api_prefix)
 
 app.include_router(cryoem_flexible_backbone_refine_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_transcriptomics_celltype_router, prefix=settings.api_prefix)
