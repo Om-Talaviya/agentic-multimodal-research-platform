@@ -1,3 +1,4 @@
+import { CryoEMFlexibleBackboneRefineStudioPage } from './pages/CryoEMFlexibleBackboneRefineStudioPage';
 import { ImmunopeptidomeDeconvolutionStudioPage } from './pages/ImmunopeptidomeDeconvolutionStudioPage';
 import { CpGIslandHypermethylationStudioPage } from './pages/CpGIslandHypermethylationStudioPage';
 import { ScRNACopyNumberKaryotypeStudioPage } from './pages/ScRNACopyNumberKaryotypeStudioPage';
@@ -270,6 +271,7 @@ function App() {
                 <Route path="/scrna-copy-number-karyotype" element={<ScRNACopyNumberKaryotypeStudioPage />} />
                 <Route path="/cpg-island-hypermethylation" element={<CpGIslandHypermethylationStudioPage />} />
                 <Route path="/immunopeptidome-deconvolution" element={<ImmunopeptidomeDeconvolutionStudioPage />} />
+                <Route path="/cryoem-flexible-backbone-refine" element={<CryoEMFlexibleBackboneRefineStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

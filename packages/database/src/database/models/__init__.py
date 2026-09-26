@@ -1306,3 +1306,9 @@ from database.models.immunopeptidome_deconvolution import (
     ImmunopeptidomeDeconvolutionItemProfile,
     ImmunopeptidomeDeconvolutionMetricTrace,
 )
+
+from database.models.cryoem_flexible_backbone_refine import (
+    CryoEMFlexibleBackboneRefineStudy,
+    CryoEMFlexibleBackboneRefineItemProfile,
+    CryoEMFlexibleBackboneRefineMetricTrace,
+)

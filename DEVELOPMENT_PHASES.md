@@ -368,3 +368,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/immunopeptidome_deconvolution.py`
   - `apps/web/src/pages/ImmunopeptidomeDeconvolutionStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 214: Autonomous Cryo-EM Continuous Flexible Backbone Motion & Deep Non-Rigid Fitting Engine
+- **Module**: `cryoem_flexible_backbone_refine`
+- **Domain**: Structural Biology & Cryo-EM
+- **Description**: Performs continuous flexible backbone deformation modeling across heterogeneous cryo-EM density maps using deep non-rigid normal mode analysis.
+- **Architecture**:
+  - `packages/database/src/database/models/cryoem_flexible_backbone_refine.py`
+  - `packages/database/src/database/repositories/cryoem_flexible_backbone_refine_repo.py`
+  - `packages/research/src/research/orchestration/cryoem_flexible_backbone_refine_engine.py`
+  - `apps/api/src/api/routes/cryoem_flexible_backbone_refine.py`
+  - `apps/web/src/pages/CryoEMFlexibleBackboneRefineStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
