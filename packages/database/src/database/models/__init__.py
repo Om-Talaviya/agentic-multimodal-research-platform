@@ -1324,3 +1324,9 @@ from database.models.targeted_covalent_inhibitor_warhead import (
     TargetedCovalentInhibitorWarheadItemProfile,
     TargetedCovalentInhibitorWarheadMetricTrace,
 )
+
+from database.models.synthetic_riboswitch_aptamer import (
+    SyntheticRiboswitchAptamerStudy,
+    SyntheticRiboswitchAptamerItemProfile,
+    SyntheticRiboswitchAptamerMetricTrace,
+)

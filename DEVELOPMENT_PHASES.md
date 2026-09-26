@@ -407,3 +407,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/targeted_covalent_inhibitor_warhead.py`
   - `apps/web/src/pages/TargetedCovalentInhibitorWarheadStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 217: Autonomous Synthetic Bio Riboswitch Aptamer Secondary Structure & Ligand-Induced Translation Terminator Engine
+- **Module**: `synthetic_riboswitch_aptamer`
+- **Domain**: Synthetic Biology & RNA Engineering
+- **Description**: Engineers synthetic theophylline and small-molecule-sensing RNA riboswitches with precise ligand-induced conformational switching between antiterminator and terminator hairpin states.
+- **Architecture**:
+  - `packages/database/src/database/models/synthetic_riboswitch_aptamer.py`
+  - `packages/database/src/database/repositories/synthetic_riboswitch_aptamer_repo.py`
+  - `packages/research/src/research/orchestration/synthetic_riboswitch_aptamer_engine.py`
+  - `apps/api/src/api/routes/synthetic_riboswitch_aptamer.py`
+  - `apps/web/src/pages/SyntheticRiboswitchAptamerStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
