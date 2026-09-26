@@ -420,3 +420,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/synthetic_riboswitch_aptamer.py`
   - `apps/web/src/pages/SyntheticRiboswitchAptamerStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 218: Autonomous Whole-Exome Sequencing (WES) Tumor Mutation Burden (TMB) & Microsatellite Instability (MSI) Ranker Engine
+- **Module**: `whole_exome_tmb_msi_ranker`
+- **Domain**: Clinical Genomics & Precision Immunotherapy
+- **Description**: Analyzes whole-exome somatic variant calls to compute non-synonymous Tumor Mutation Burden (TMB) per megabase and assesses microsatellite instability (MSI-High) status.
+- **Architecture**:
+  - `packages/database/src/database/models/whole_exome_tmb_msi_ranker.py`
+  - `packages/database/src/database/repositories/whole_exome_tmb_msi_ranker_repo.py`
+  - `packages/research/src/research/orchestration/whole_exome_tmb_msi_ranker_engine.py`
+  - `apps/api/src/api/routes/whole_exome_tmb_msi_ranker.py`
+  - `apps/web/src/pages/WholeExomeTmbMsiRankerStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
