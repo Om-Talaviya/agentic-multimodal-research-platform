@@ -1,3 +1,4 @@
+import { CpGIslandHypermethylationStudioPage } from './pages/CpGIslandHypermethylationStudioPage';
 import { ScRNACopyNumberKaryotypeStudioPage } from './pages/ScRNACopyNumberKaryotypeStudioPage';
 import { OptogeneticsPhotostimulationStudioPage } from './pages/OptogeneticsPhotostimulationStudioPage';
 import { MilestoneV23OrchestratorStudioPage } from './pages/MilestoneV23OrchestratorStudioPage';
@@ -266,6 +267,7 @@ function App() {
                 <Route path="/milestone-v2-3-orchestrator" element={<MilestoneV23OrchestratorStudioPage />} />
                 <Route path="/optogenetics-photostimulation" element={<OptogeneticsPhotostimulationStudioPage />} />
                 <Route path="/scrna-copy-number-karyotype" element={<ScRNACopyNumberKaryotypeStudioPage />} />
+                <Route path="/cpg-island-hypermethylation" element={<CpGIslandHypermethylationStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
