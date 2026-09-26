@@ -1204,3 +1204,9 @@ from database.models.car_nk_cytolytic_synapse import (
     CARNKCytolyticSynapseItemProfile,
     CARNKCytolyticSynapseMetricTrace,
 )
+
+from database.models.spatial_lipidomics_profiling import (
+    SpatialLipidomicsProfilingStudy,
+    SpatialLipidomicsProfilingItemProfile,
+    SpatialLipidomicsProfilingMetricTrace,
+)

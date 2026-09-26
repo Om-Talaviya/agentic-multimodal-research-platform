@@ -1,3 +1,4 @@
+import { SpatialLipidomicsProfilingStudioPage } from './pages/SpatialLipidomicsProfilingStudioPage';
 import { CARNKCytolyticSynapseStudioPage } from './pages/CARNKCytolyticSynapseStudioPage';
 import { CryoEMFocusedRefinementStudioPage } from './pages/CryoEMFocusedRefinementStudioPage';
 import { RiboSeqTranslationKineticsStudioPage } from './pages/RiboSeqTranslationKineticsStudioPage';
@@ -240,6 +241,7 @@ function App() {
                 <Route path="/riboseq-translation-kinetics" element={<RiboSeqTranslationKineticsStudioPage />} />
                 <Route path="/cryoem-focused-refinement" element={<CryoEMFocusedRefinementStudioPage />} />
                 <Route path="/car-nk-cytolytic-synapse" element={<CARNKCytolyticSynapseStudioPage />} />
+                <Route path="/spatial-lipidomics-profiling" element={<SpatialLipidomicsProfilingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
