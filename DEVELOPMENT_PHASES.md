@@ -225,3 +225,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/immunology/car_nk_cytolytic_synapse_engine.py`: Off-the-shelf allogeneic CAR-NK immune synapse biophysics engine simulating target degranulation, perforin pore formation, and serial killing kinetics.
   - `apps/api/src/api/routes/car_nk_cytolytic_synapse.py`: FastAPI endpoints for CAR-NK cytolytic kinetics simulation and immune synapse polarization assays.
   - `apps/web/src/pages/CARNKCytolyticSynapseStudioPage.tsx`: Interactive React/Lucide CAR-NK console with effector-to-target (E:T) lysis curves, granzyme secretion profiles, and synapse polarization metrics.
+
+## Phase 199: Spatial Lipidomics & Membrane Biogenesis Deconvolution Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/spatial_lipidomics_profiling.py`: Tables `spatial_lipid_studies`, `spatial_lipid_item_profiles`, and `spatial_lipid_metric_traces`.
+  - `packages/database/src/database/repositories/spatial_lipidomics_profiling_repo.py`: Repository handling DESI/MALDI spatial lipid maps, PUFA acyl-chain remodeling, membrane fluidity indices, and ferroptotic lipid hydroperoxide biomarkers.
+  - `packages/research/src/research/metabolomics/spatial_lipidomics_profiling_engine.py`: High-dimensional spatial lipidomics engine resolving phospholipid double-bond isomers and ferroptosis vulnerability landscapes.
+  - `apps/api/src/api/routes/spatial_lipidomics_profiling.py`: FastAPI endpoints for spatial lipidomics profiling and membrane biogenesis deconvolution.
+  - `apps/web/src/pages/SpatialLipidomicsProfilingStudioPage.tsx`: Interactive React/Lucide spatial lipidomics studio with phospholipid saturation heatmaps, acyl chain length histograms, and ferroptosis risk scores.
