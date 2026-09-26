@@ -1180,3 +1180,9 @@ from database.models.ctdna_liquid_biopsy_mrd import (
     CtDNALiquidBiopsyMRDItemProfile,
     CtDNALiquidBiopsyMRDMetricTrace,
 )
+
+from database.models.crispr_cas13_rna_targeting import (
+    CRISPRCas13RNATargetingStudy,
+    CRISPRCas13RNATargetingItemProfile,
+    CRISPRCas13RNATargetingMetricTrace,
+)
