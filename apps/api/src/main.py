@@ -1,3 +1,4 @@
+from api.routes.whole_exome_tmb_msi_ranker import router as whole_exome_tmb_msi_ranker_router
 from api.routes.synthetic_riboswitch_aptamer import router as synthetic_riboswitch_aptamer_router
 from api.routes.targeted_covalent_inhibitor_warhead import router as targeted_covalent_inhibitor_warhead_router
 from api.routes.spatial_transcriptomics_celltype import router as spatial_transcriptomics_celltype_router
@@ -560,3 +561,5 @@ app.include_router(spatial_transcriptomics_celltype_router, prefix=settings.api_
 app.include_router(targeted_covalent_inhibitor_warhead_router, prefix=settings.api_prefix)
 
 app.include_router(synthetic_riboswitch_aptamer_router, prefix=settings.api_prefix)
+
+app.include_router(whole_exome_tmb_msi_ranker_router, prefix=settings.api_prefix)

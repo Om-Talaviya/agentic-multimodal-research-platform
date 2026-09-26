@@ -1330,3 +1330,9 @@ from database.models.synthetic_riboswitch_aptamer import (
     SyntheticRiboswitchAptamerItemProfile,
     SyntheticRiboswitchAptamerMetricTrace,
 )
+
+from database.models.whole_exome_tmb_msi_ranker import (
+    WholeExomeTmbMsiRankerStudy,
+    WholeExomeTmbMsiRankerItemProfile,
+    WholeExomeTmbMsiRankerMetricTrace,
+)
