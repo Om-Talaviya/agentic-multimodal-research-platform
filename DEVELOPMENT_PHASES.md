@@ -297,3 +297,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/proteomics/ubiquitination_e3_selectivity_engine.py`: Proteome-wide degradomics engine predicting CRL/E3 ligase substrate specificity for targeted protein degradation and molecular glues.
   - `apps/api/src/api/routes/ubiquitination_e3_selectivity.py`: FastAPI endpoints for ubiquitination site prediction and E3 ligase binding selectivity analysis.
   - `apps/web/src/pages/UbiquitinationE3SelectivityStudioPage.tsx`: Interactive React/Lucide ubiquitination studio with substrate lysine sequence logos, E3 ligase docking affinity bars, and ternary complex stability plots.
+
+## Phase 208: Long-Read Structural Variant & De Novo Assembly Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/long_read_sv_assembly.py`: Tables `longread_sv_studies`, `longread_sv_item_profiles`, and `longread_sv_metric_traces`.
+  - `packages/database/src/database/repositories/long_read_sv_assembly_repo.py`: Repository handling long-read sequencing contig graph generation, telomere-to-telomere (T2T) haplotype phasing, complex structural variant (SV) calling, and breakpoint resolution.
+  - `packages/research/src/research/genomics/long_read_sv_assembly_engine.py`: De novo assembly engine reconciling long-read split-read and paired-end signatures for complex balanced translocations and inversions.
+  - `apps/api/src/api/routes/long_read_sv_assembly.py`: FastAPI endpoints for long-read de novo assembly simulation and structural variant breakpoint queries.
+  - `apps/web/src/pages/LongReadSVAssemblyStudioPage.tsx`: Interactive React/Lucide long-read genomics studio with Circos translocation plots, contig N50 length curves, and haplotype phased SV tables.

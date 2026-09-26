@@ -1,3 +1,4 @@
+import { LongReadSVAssemblyStudioPage } from './pages/LongReadSVAssemblyStudioPage';
 import { UbiquitinationE3SelectivityStudioPage } from './pages/UbiquitinationE3SelectivityStudioPage';
 import { MultiomeATACGEXCisRegStudioPage } from './pages/MultiomeATACGEXCisRegStudioPage';
 import { SyntheticGeneToggleSwitchStudioPage } from './pages/SyntheticGeneToggleSwitchStudioPage';
@@ -258,6 +259,7 @@ function App() {
                 <Route path="/synthetic-gene-toggle-switch" element={<SyntheticGeneToggleSwitchStudioPage />} />
                 <Route path="/multiome-atac-gex-cisreg" element={<MultiomeATACGEXCisRegStudioPage />} />
                 <Route path="/ubiquitination-e3-selectivity" element={<UbiquitinationE3SelectivityStudioPage />} />
+                <Route path="/long-read-sv-assembly" element={<LongReadSVAssemblyStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
