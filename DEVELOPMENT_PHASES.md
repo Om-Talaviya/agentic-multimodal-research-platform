@@ -233,3 +233,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/metabolomics/spatial_lipidomics_profiling_engine.py`: High-dimensional spatial lipidomics engine resolving phospholipid double-bond isomers and ferroptosis vulnerability landscapes.
   - `apps/api/src/api/routes/spatial_lipidomics_profiling.py`: FastAPI endpoints for spatial lipidomics profiling and membrane biogenesis deconvolution.
   - `apps/web/src/pages/SpatialLipidomicsProfilingStudioPage.tsx`: Interactive React/Lucide spatial lipidomics studio with phospholipid saturation heatmaps, acyl chain length histograms, and ferroptosis risk scores.
+
+## Phase 200: Epigenomic Hi-ChIP & Enhancer-Promoter Chromatin Looping Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/hichip_chromatin_looping.py`: Tables `hichip_looping_studies`, `hichip_looping_item_profiles`, and `hichip_looping_metric_traces`.
+  - `packages/database/src/database/repositories/hichip_chromatin_looping_repo.py`: Repository handling protein-directed Hi-ChIP contact matrices, H3K27ac/CTCF-anchored loop calling, virtual 4C signal profiles, and super-enhancer connectivity maps.
+  - `packages/research/src/research/genomics/hichip_chromatin_looping_engine.py`: 3D epigenome looping engine integrating ChIP-seq peak enrichment with chromosome conformation contact frequencies.
+  - `apps/api/src/api/routes/hichip_chromatin_looping.py`: FastAPI endpoints for Hi-ChIP chromatin interaction simulation and enhancer-promoter hub discovery.
+  - `apps/web/src/pages/HiChIPChromatinLoopingStudioPage.tsx`: Interactive React/Lucide Hi-ChIP studio featuring 2D contact matrix heatmaps, virtual 4C viewpoint tracks, and super-enhancer loop arc diagrams.
