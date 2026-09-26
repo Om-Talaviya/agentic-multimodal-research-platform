@@ -1294,3 +1294,9 @@ from database.models.scrna_copy_number_karyotype import (
     ScRNACopyNumberKaryotypeItemProfile,
     ScRNACopyNumberKaryotypeMetricTrace,
 )
+
+from database.models.cpg_island_hypermethylation import (
+    CpGIslandHypermethylationStudy,
+    CpGIslandHypermethylationItemProfile,
+    CpGIslandHypermethylationMetricTrace,
+)

@@ -342,3 +342,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/scrna_copy_number_karyotype.py`
   - `apps/web/src/pages/ScRNACopyNumberKaryotypeStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 212: Autonomous Epigenomic Promoter CpG Island Hypermethylation & Tumor Suppressor Gene Silencing Engine
+- **Module**: `cpg_island_hypermethylation`
+- **Domain**: Epigenetics & Molecular Oncology
+- **Description**: Quantifies promoter CpG island dense hypermethylation patterns, DNMT1/3B recruitment kinetics, and transcriptional repression of critical tumor suppressor genes.
+- **Architecture**:
+  - `packages/database/src/database/models/cpg_island_hypermethylation.py`
+  - `packages/database/src/database/repositories/cpg_island_hypermethylation_repo.py`
+  - `packages/research/src/research/orchestration/cpg_island_hypermethylation_engine.py`
+  - `apps/api/src/api/routes/cpg_island_hypermethylation.py`
+  - `apps/web/src/pages/CpGIslandHypermethylationStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

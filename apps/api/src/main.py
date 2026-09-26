@@ -1,3 +1,4 @@
+from api.routes.cpg_island_hypermethylation import router as cpg_island_hypermethylation_router
 from api.routes.scrna_copy_number_karyotype import router as scrna_copy_number_karyotype_router
 from api.routes.optogenetics_photostimulation import router as optogenetics_photostimulation_router
 from api.routes.milestone_v2_3_orchestrator import router as milestone_v2_3_orchestrator_router
@@ -542,3 +543,5 @@ app.include_router(milestone_v2_3_orchestrator_router, prefix=settings.api_prefi
 app.include_router(optogenetics_photostimulation_router, prefix=settings.api_prefix)
 
 app.include_router(scrna_copy_number_karyotype_router, prefix=settings.api_prefix)
+
+app.include_router(cpg_island_hypermethylation_router, prefix=settings.api_prefix)
