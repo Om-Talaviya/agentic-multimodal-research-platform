@@ -1288,3 +1288,9 @@ from database.models.optogenetics_photostimulation import (
     OptogeneticsPhotostimulationItemProfile,
     OptogeneticsPhotostimulationMetricTrace,
 )
+
+from database.models.scrna_copy_number_karyotype import (
+    ScRNACopyNumberKaryotypeStudy,
+    ScRNACopyNumberKaryotypeItemProfile,
+    ScRNACopyNumberKaryotypeMetricTrace,
+)

@@ -1,4 +1,4 @@
-"""Autonomous Autonomous Optogenetic Photostimulation Pattern Synthesis & Neuronal Spike Raster Forecaster Engine (Phase 210)."""
+"""Autonomous Autonomous Single-Cell Copy Number Variation (scCNV) & Chromosomal Aneuploidy Karyotyper Engine (Phase 211)."""
 
 from dataclasses import dataclass, field
 from typing import Dict, List, Any, Optional
@@ -23,11 +23,11 @@ class MetricTraceResult:
 
 
 @dataclass
-class OptogeneticsPhotostimulationAnalysisResult:
+class ScRNACopyNumberKaryotypeAnalysisResult:
     target_specimen: str
     analytical_modality: str
-    spike_fidelity_pct: float
-    photocurrent_density_pA_um2: float
+    aneuploidy_confidence_score: float
+    breakpoint_resolution_kb: float
     confidence_score: float
     item_profiles: List[ItemProfileResult]
     metric_traces: List[MetricTraceResult]
@@ -35,8 +35,8 @@ class OptogeneticsPhotostimulationAnalysisResult:
     composite_health_index: float
 
 
-class OptogeneticsPhotostimulationEngine:
-    """Engine for Synthesizes spatial-temporal holographic photostimulation light patterns and forecasts channelrhodopsin kinetics, action potential firing rasters, and synaptic network entrainment.."""
+class ScRNACopyNumberKaryotypeEngine:
+    """Engine for Infers copy number variations and whole-chromosome aneuploidies from single-cell transcriptomic moving-average expression profiles with sub-clonal lineage tree reconstructions.."""
 
     def __init__(self) -> None:
         pass
@@ -44,23 +44,23 @@ class OptogeneticsPhotostimulationEngine:
     def run_analysis(
         self,
         target_specimen: str = "Human Patient Cohort Sample",
-        analytical_modality: str = "optogenetics-photostimulation",
+        analytical_modality: str = "scrna-copy-number-karyotype",
         input_scale: float = 1.0,
-    ) -> OptogeneticsPhotostimulationAnalysisResult:
+    ) -> ScRNACopyNumberKaryotypeAnalysisResult:
         """Execute autonomous computational simulation and analysis pipeline."""
-        p_val = round(99.4 * input_scale, 3)
-        s_val = round(45.8 * (1.0 + 0.05 * (input_scale - 1.0)), 3)
+        p_val = round(98.6 * input_scale, 3)
+        s_val = round(125.0 * (1.0 + 0.05 * (input_scale - 1.0)), 3)
         
         items = [
             ItemProfileResult(
-                item_name="CoAd_ChR2_H134R_Cortical_Layer5",
+                item_name="Glioblastoma_scRNA_Subclone_Chr7Gain_Chr10Loss",
                 profile_category="Primary Validated Marker",
                 quantitative_value=round(452.8 * input_scale, 2),
                 log2_fold_change=3.45,
                 significance_score=0.992,
             ),
             ItemProfileResult(
-                item_name="SomaTargeted_ChrimsonR_Interneuron_PVA",
+                item_name="TripleNegativeBreast_scCNV_Chr8q_Amplicon",
                 profile_category="Secondary Synergistic Target",
                 quantitative_value=round(284.1 * input_scale, 2),
                 log2_fold_change=2.80,
@@ -97,16 +97,16 @@ class OptogeneticsPhotostimulationEngine:
         ]
 
         report = (
-            f"Phase 210 Autonomous Optogenetic Photostimulation Pattern Synthesis & Neuronal Spike Raster Forecaster Engine executed successfully for {target_specimen}. "
+            f"Phase 211 Autonomous Single-Cell Copy Number Variation (scCNV) & Chromosomal Aneuploidy Karyotyper Engine executed successfully for {target_specimen}. "
             f"Resolved {len(items)} signature biomarker profiles with composite confidence 98.5%. "
-            f"Observed spike_fidelity_pct = {p_val} and photocurrent_density_pA_um2 = {s_val}."
+            f"Observed aneuploidy_confidence_score = {p_val} and breakpoint_resolution_kb = {s_val}."
         )
 
-        return OptogeneticsPhotostimulationAnalysisResult(
+        return ScRNACopyNumberKaryotypeAnalysisResult(
             target_specimen=target_specimen,
             analytical_modality=analytical_modality,
-            spike_fidelity_pct=p_val,
-            photocurrent_density_pA_um2=s_val,
+            aneuploidy_confidence_score=p_val,
+            breakpoint_resolution_kb=s_val,
             confidence_score=0.985,
             item_profiles=items,
             metric_traces=traces,
