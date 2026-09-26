@@ -1318,3 +1318,9 @@ from database.models.spatial_transcriptomics_celltype import (
     SpatialTranscriptomicsCelltypeItemProfile,
     SpatialTranscriptomicsCelltypeMetricTrace,
 )
+
+from database.models.targeted_covalent_inhibitor_warhead import (
+    TargetedCovalentInhibitorWarheadStudy,
+    TargetedCovalentInhibitorWarheadItemProfile,
+    TargetedCovalentInhibitorWarheadMetricTrace,
+)

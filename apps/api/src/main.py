@@ -1,3 +1,4 @@
+from api.routes.targeted_covalent_inhibitor_warhead import router as targeted_covalent_inhibitor_warhead_router
 from api.routes.spatial_transcriptomics_celltype import router as spatial_transcriptomics_celltype_router
 from api.routes.cryoem_flexible_backbone_refine import router as cryoem_flexible_backbone_refine_router
 from api.routes.immunopeptidome_deconvolution import router as immunopeptidome_deconvolution_router
@@ -554,3 +555,5 @@ app.include_router(immunopeptidome_deconvolution_router, prefix=settings.api_pre
 app.include_router(cryoem_flexible_backbone_refine_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_transcriptomics_celltype_router, prefix=settings.api_prefix)
+
+app.include_router(targeted_covalent_inhibitor_warhead_router, prefix=settings.api_prefix)
