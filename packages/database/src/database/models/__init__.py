@@ -1300,3 +1300,9 @@ from database.models.cpg_island_hypermethylation import (
     CpGIslandHypermethylationItemProfile,
     CpGIslandHypermethylationMetricTrace,
 )
+
+from database.models.immunopeptidome_deconvolution import (
+    ImmunopeptidomeDeconvolutionStudy,
+    ImmunopeptidomeDeconvolutionItemProfile,
+    ImmunopeptidomeDeconvolutionMetricTrace,
+)
