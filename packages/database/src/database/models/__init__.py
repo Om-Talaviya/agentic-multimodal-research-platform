@@ -1360,3 +1360,9 @@ from database.models.crispr_prime_peg_rna_flap import (
     CrisprPrimePegRnaFlapItemProfile,
     CrisprPrimePegRnaFlapMetricTrace,
 )
+
+from database.models.nanobody_paratope_deep_mutational import (
+    NanobodyParatopeDeepMutationalStudy,
+    NanobodyParatopeDeepMutationalItemProfile,
+    NanobodyParatopeDeepMutationalMetricTrace,
+)

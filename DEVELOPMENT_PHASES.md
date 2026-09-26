@@ -485,3 +485,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/crispr_prime_peg_rna_flap.py`
   - `apps/web/src/pages/CrisprPrimePegRnaFlapStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 223: Autonomous Heavy-Chain Nanobody (VHH) Paratope Deep Mutational Scanning (DMS) & Conformational Thermal Stability Engine
+- **Module**: `nanobody_paratope_deep_mutational`
+- **Domain**: Antibody Engineering & Structural Biophysics
+- **Description**: Predicts CDR3 paratope saturation mutagenesis fitness landscapes, calculating binding affinity DeltaDeltaG and melting temperature shifts for heavy-chain single-domain antibodies.
+- **Architecture**:
+  - `packages/database/src/database/models/nanobody_paratope_deep_mutational.py`
+  - `packages/database/src/database/repositories/nanobody_paratope_deep_mutational_repo.py`
+  - `packages/research/src/research/orchestration/nanobody_paratope_deep_mutational_engine.py`
+  - `apps/api/src/api/routes/nanobody_paratope_deep_mutational.py`
+  - `apps/web/src/pages/NanobodyParatopeDeepMutationalStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

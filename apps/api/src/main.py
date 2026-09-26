@@ -1,3 +1,4 @@
+from api.routes.nanobody_paratope_deep_mutational import router as nanobody_paratope_deep_mutational_router
 from api.routes.crispr_prime_peg_rna_flap import router as crispr_prime_peg_rna_flap_router
 from api.routes.spatial_mass_cytometry_imc import router as spatial_mass_cytometry_imc_router
 from api.routes.car_t_exhaustion_scvelo import router as car_t_exhaustion_scvelo_router
@@ -575,3 +576,5 @@ app.include_router(car_t_exhaustion_scvelo_router, prefix=settings.api_prefix)
 app.include_router(spatial_mass_cytometry_imc_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_prime_peg_rna_flap_router, prefix=settings.api_prefix)
+
+app.include_router(nanobody_paratope_deep_mutational_router, prefix=settings.api_prefix)
