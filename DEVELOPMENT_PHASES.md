@@ -446,3 +446,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/mrna_cap_poly_a_decay.py`
   - `apps/web/src/pages/MrnaCapPolyADecayStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 220: Autonomous Single-Cell RNA Velocity Lineage Trajectory & CAR-T Epigenetic Exhaustion Interceptor Engine
+- **Module**: `car_t_exhaustion_scvelo`
+- **Domain**: Cell Therapy & Single-Cell Transcriptomics
+- **Description**: Simulates spliced-to-unspliced mRNA turnover kinetics to construct dynamic RNA velocity vectors, identifying critical branching points where CAR-T cells diverge into terminal exhaustion.
+- **Architecture**:
+  - `packages/database/src/database/models/car_t_exhaustion_scvelo.py`
+  - `packages/database/src/database/repositories/car_t_exhaustion_scvelo_repo.py`
+  - `packages/research/src/research/orchestration/car_t_exhaustion_scvelo_engine.py`
+  - `apps/api/src/api/routes/car_t_exhaustion_scvelo.py`
+  - `apps/web/src/pages/CarTExhaustionScveloStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

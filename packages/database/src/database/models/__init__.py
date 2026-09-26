@@ -1342,3 +1342,9 @@ from database.models.mrna_cap_poly_a_decay import (
     MrnaCapPolyADecayItemProfile,
     MrnaCapPolyADecayMetricTrace,
 )
+
+from database.models.car_t_exhaustion_scvelo import (
+    CarTExhaustionScveloStudy,
+    CarTExhaustionScveloItemProfile,
+    CarTExhaustionScveloMetricTrace,
+)
