@@ -375,3 +375,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 194 - Pan-Cancer ctDNA Liquid Biopsy & Minimal Residual Disease Engine
 - Implemented pan-cancer circulating tumor DNA (ctDNA) duplex sequencing error suppression, longitudinal tumor fraction clearance modeling, and minimal residual disease (MRD) recurrence forecasting.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 195 - CRISPR-Cas13 RNA-Targeting & Collateral Cleavage Suppressor Engine
+- Implemented high-affinity CRISPR-Cas13 RNA targeting with HEPN domain catalytic modeling and bystander collateral cleavage suppression.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

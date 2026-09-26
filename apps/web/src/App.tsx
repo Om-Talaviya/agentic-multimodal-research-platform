@@ -1,3 +1,4 @@
+import { CRISPRCas13RNATargetingStudioPage } from './pages/CRISPRCas13RNATargetingStudioPage';
 import { CtDNALiquidBiopsyMRDStudioPage } from './pages/CtDNALiquidBiopsyMRDStudioPage';
 import { ASOGapmerTherapeuticsStudioPage } from './pages/ASOGapmerTherapeuticsStudioPage';
 import { CryoEMManifoldDynamicsStudioPage } from './pages/CryoEMManifoldDynamicsStudioPage';
@@ -232,6 +233,7 @@ function App() {
                 <Route path="/cryoem-manifold-dynamics" element={<CryoEMManifoldDynamicsStudioPage />} />
                 <Route path="/aso-gapmer-therapeutics" element={<ASOGapmerTherapeuticsStudioPage />} />
                 <Route path="/ctdna-liquid-biopsy-mrd" element={<CtDNALiquidBiopsyMRDStudioPage />} />
+                <Route path="/crispr-cas13-rna-targeting" element={<CRISPRCas13RNATargetingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

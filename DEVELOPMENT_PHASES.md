@@ -193,3 +193,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/diagnostics/ctdna_liquid_biopsy_mrd_engine.py`: Duplex sequencing error suppression and Bayesian ctDNA clearance engine predicting post-operative recurrence risk before radiological detection.
   - `apps/api/src/api/routes/ctdna_liquid_biopsy_mrd.py`: FastAPI endpoints for liquid biopsy ctDNA kinetics simulation and recurrence hazard forecasting.
   - `apps/web/src/pages/CtDNALiquidBiopsyMRDStudioPage.tsx`: Interactive React/Lucide ctDNA liquid biopsy studio with longitudinal VAF clearance curves, clonal driver tracking cards, and MRD hazard risk indicators.
+
+## Phase 195: CRISPR-Cas13 RNA-Targeting & Collateral Cleavage Suppressor Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/crispr_cas13_rna_targeting.py`: Tables `crispr_cas13_studies`, `crispr_cas13_item_profiles`, and `crispr_cas13_metric_traces`.
+  - `packages/database/src/database/repositories/crispr_cas13_rna_targeting_repo.py`: Repository managing crRNA guide design, on-target RNA degradation rates, HEPN catalytic conformational transitions, and non-specific collateral cleavage indices.
+  - `packages/research/src/research/genomics/crispr_cas13_rna_targeting_engine.py`: High-fidelity Cas13 RNA-targeting engine simulating precise transcript depletion with minimal bystander cellular cytotoxicity.
+  - `apps/api/src/api/routes/crispr_cas13_rna_targeting.py`: FastAPI endpoints for Cas13 RNA-targeting simulation and collateral cleavage suppression analytics.
+  - `apps/web/src/pages/CRISPRCas13RNATargetingStudioPage.tsx`: Interactive React/Lucide CRISPR-Cas13 console featuring on-target vs collateral degradation bar plots, HEPN activation kinetics, and crRNA mismatch matrices.
