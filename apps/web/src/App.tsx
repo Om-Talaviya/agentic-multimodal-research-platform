@@ -1,3 +1,4 @@
+import { UbiquitinationE3SelectivityStudioPage } from './pages/UbiquitinationE3SelectivityStudioPage';
 import { MultiomeATACGEXCisRegStudioPage } from './pages/MultiomeATACGEXCisRegStudioPage';
 import { SyntheticGeneToggleSwitchStudioPage } from './pages/SyntheticGeneToggleSwitchStudioPage';
 import { FEPBindingAffinityStudioPage } from './pages/FEPBindingAffinityStudioPage';
@@ -256,6 +257,7 @@ function App() {
                 <Route path="/fep-binding-affinity" element={<FEPBindingAffinityStudioPage />} />
                 <Route path="/synthetic-gene-toggle-switch" element={<SyntheticGeneToggleSwitchStudioPage />} />
                 <Route path="/multiome-atac-gex-cisreg" element={<MultiomeATACGEXCisRegStudioPage />} />
+                <Route path="/ubiquitination-e3-selectivity" element={<UbiquitinationE3SelectivityStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1,3 +1,4 @@
+from api.routes.ubiquitination_e3_selectivity import router as ubiquitination_e3_selectivity_router
 from api.routes.multiome_atac_gex_cisreg import router as multiome_atac_gex_cisreg_router
 from api.routes.synthetic_gene_toggle_switch import router as synthetic_gene_toggle_switch_router
 from api.routes.fep_binding_affinity import router as fep_binding_affinity_router
@@ -527,3 +528,5 @@ app.include_router(fep_binding_affinity_router, prefix=settings.api_prefix)
 app.include_router(synthetic_gene_toggle_switch_router, prefix=settings.api_prefix)
 
 app.include_router(multiome_atac_gex_cisreg_router, prefix=settings.api_prefix)
+
+app.include_router(ubiquitination_e3_selectivity_router, prefix=settings.api_prefix)
