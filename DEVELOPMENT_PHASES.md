@@ -433,3 +433,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/whole_exome_tmb_msi_ranker.py`
   - `apps/web/src/pages/WholeExomeTmbMsiRankerStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 219: Autonomous Synthetic mRNA 5' Cap Structure & Poly(A) Tail Deadenylation Decay Kinetics Simulator Engine
+- **Module**: `mrna_cap_poly_a_decay`
+- **Domain**: RNA Therapeutics & mRNA Engineering
+- **Description**: Models synthetic mRNA translation initiation efficiency and half-life dynamics as a function of Cap-1/Cap-2 enzymatic structures and poly(A) deadenylation rate kinetics.
+- **Architecture**:
+  - `packages/database/src/database/models/mrna_cap_poly_a_decay.py`
+  - `packages/database/src/database/repositories/mrna_cap_poly_a_decay_repo.py`
+  - `packages/research/src/research/orchestration/mrna_cap_poly_a_decay_engine.py`
+  - `apps/api/src/api/routes/mrna_cap_poly_a_decay.py`
+  - `apps/web/src/pages/MrnaCapPolyADecayStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
