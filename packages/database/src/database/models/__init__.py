@@ -1336,3 +1336,9 @@ from database.models.whole_exome_tmb_msi_ranker import (
     WholeExomeTmbMsiRankerItemProfile,
     WholeExomeTmbMsiRankerMetricTrace,
 )
+
+from database.models.mrna_cap_poly_a_decay import (
+    MrnaCapPolyADecayStudy,
+    MrnaCapPolyADecayItemProfile,
+    MrnaCapPolyADecayMetricTrace,
+)

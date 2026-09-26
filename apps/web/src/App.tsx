@@ -1,3 +1,4 @@
+import { MrnaCapPolyADecayStudioPage } from './pages/MrnaCapPolyADecayStudioPage';
 import { WholeExomeTmbMsiRankerStudioPage } from './pages/WholeExomeTmbMsiRankerStudioPage';
 import { SyntheticRiboswitchAptamerStudioPage } from './pages/SyntheticRiboswitchAptamerStudioPage';
 import { TargetedCovalentInhibitorWarheadStudioPage } from './pages/TargetedCovalentInhibitorWarheadStudioPage';
@@ -280,6 +281,7 @@ function App() {
                 <Route path="/targeted-covalent-inhibitor-warhead" element={<TargetedCovalentInhibitorWarheadStudioPage />} />
                 <Route path="/synthetic-riboswitch-aptamer" element={<SyntheticRiboswitchAptamerStudioPage />} />
                 <Route path="/whole-exome-tmb-msi-ranker" element={<WholeExomeTmbMsiRankerStudioPage />} />
+                <Route path="/mrna-cap-poly-a-decay" element={<MrnaCapPolyADecayStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
