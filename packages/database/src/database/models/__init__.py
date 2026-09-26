@@ -1240,3 +1240,9 @@ from database.models.fep_binding_affinity import (
     FEPBindingAffinityItemProfile,
     FEPBindingAffinityMetricTrace,
 )
+
+from database.models.synthetic_gene_toggle_switch import (
+    SyntheticGeneToggleSwitchStudy,
+    SyntheticGeneToggleSwitchItemProfile,
+    SyntheticGeneToggleSwitchMetricTrace,
+)
