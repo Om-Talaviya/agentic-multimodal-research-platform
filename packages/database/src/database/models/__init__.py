@@ -1252,3 +1252,9 @@ from database.models.multiome_atac_gex_cisreg import (
     MultiomeATACGEXCisRegItemProfile,
     MultiomeATACGEXCisRegMetricTrace,
 )
+
+from database.models.ubiquitination_e3_selectivity import (
+    UbiquitinationE3SelectivityStudy,
+    UbiquitinationE3SelectivityItemProfile,
+    UbiquitinationE3SelectivityMetricTrace,
+)

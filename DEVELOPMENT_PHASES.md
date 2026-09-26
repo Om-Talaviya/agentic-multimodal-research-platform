@@ -289,3 +289,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/multiome_atac_gex_cisreg_engine.py`: Multiome integration engine predicting functional enhancer-promoter regulatory logic and lineage-defining master regulon networks.
   - `apps/api/src/api/routes/multiome_atac_gex_cisreg.py`: FastAPI endpoints for multiome peak-to-gene linkage simulation and TF motif activity deconvolution.
   - `apps/web/src/pages/MultiomeATACGEXCisRegStudioPage.tsx`: Interactive React/Lucide single-cell multiome studio featuring co-accessibility track viewers, peak-to-gene correlation scatter matrices, and TF regulon network graphs.
+
+## Phase 207: Proteome-Wide Ubiquitination & E3 Ligase Selectivity Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/ubiquitination_e3_selectivity.py`: Tables `ubiquitin_e3_studies`, `ubiquitin_e3_item_profiles`, and `ubiquitin_e3_metric_traces`.
+  - `packages/database/src/database/repositories/ubiquitination_e3_selectivity_repo.py`: Repository handling deep learning ubiquitin-lysine acceptor sites, E3 ligase recognition motifs (Degron patterns), and ternary complex degradation kinetics.
+  - `packages/research/src/research/proteomics/ubiquitination_e3_selectivity_engine.py`: Proteome-wide degradomics engine predicting CRL/E3 ligase substrate specificity for targeted protein degradation and molecular glues.
+  - `apps/api/src/api/routes/ubiquitination_e3_selectivity.py`: FastAPI endpoints for ubiquitination site prediction and E3 ligase binding selectivity analysis.
+  - `apps/web/src/pages/UbiquitinationE3SelectivityStudioPage.tsx`: Interactive React/Lucide ubiquitination studio with substrate lysine sequence logos, E3 ligase docking affinity bars, and ternary complex stability plots.
