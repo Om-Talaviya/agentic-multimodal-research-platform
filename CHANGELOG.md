@@ -383,3 +383,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 196 - Ribosome Profiling & Translation Efficiency Deconvolution Engine
 - Implemented Ribosome Profiling (Ribo-seq) sub-codon footprint deconvolution, codon dwell-time pausing estimation, and transcript translation efficiency quantification.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 197 - Cryo-EM Focused Refinement & Deep Symmetrization Engine
+- Implemented sub-volume soft-edge masked focused refinement, local B-factor sharpening, and deep non-crystallographic symmetry (NCS) expansion for Cryo-EM density maps.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

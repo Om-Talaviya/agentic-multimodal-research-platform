@@ -1192,3 +1192,9 @@ from database.models.riboseq_translation_kinetics import (
     RiboSeqTranslationKineticsItemProfile,
     RiboSeqTranslationKineticsMetricTrace,
 )
+
+from database.models.cryoem_focused_refinement import (
+    CryoEMFocusedRefinementStudy,
+    CryoEMFocusedRefinementItemProfile,
+    CryoEMFocusedRefinementMetricTrace,
+)

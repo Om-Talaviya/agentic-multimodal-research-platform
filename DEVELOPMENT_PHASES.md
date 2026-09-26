@@ -209,3 +209,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/riboseq_translation_kinetics_engine.py`: High-resolution Ribo-seq sub-codon triplet phasing engine resolving stall sites, non-canonical translation, and elongation rates.
   - `apps/api/src/api/routes/riboseq_translation_kinetics.py`: FastAPI endpoints for ribosome footprinting kinetics simulation and translatome efficiency queries.
   - `apps/web/src/pages/RiboSeqTranslationKineticsStudioPage.tsx`: Interactive React/Lucide Ribo-seq studio with metagene footprint profiles, codon pause heatmaps, and mRNA translation efficiency rankings.
+
+## Phase 197: Cryo-EM Focused Refinement & Deep Symmetrization Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/cryoem_focused_refinement.py`: Tables `cryoem_focused_studies`, `cryoem_focused_item_profiles`, and `cryoem_focused_metric_traces`.
+  - `packages/database/src/database/repositories/cryoem_focused_refinement_repo.py`: Repository handling sub-volume soft-edge masking, local Fourier shell correlation (FSC) maps, B-factor sharpening, and non-crystallographic symmetry (NCS) expansion.
+  - `packages/research/src/research/structural/cryoem_focused_refinement_engine.py`: Focused 3D refinement engine resolving flexible macromolecular peripheral domains and high-symmetry macromolecular complexes.
+  - `apps/api/src/api/routes/cryoem_focused_refinement.py`: FastAPI endpoints for focused refinement simulation and local resolution map generation.
+  - `apps/web/src/pages/CryoEMFocusedRefinementStudioPage.tsx`: Interactive React/Lucide Cryo-EM focused refinement console with local resolution slicing cards, symmetry group selectors, and cross-correlation graphs.
