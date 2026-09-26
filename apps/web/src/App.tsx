@@ -1,3 +1,4 @@
+import { MilestoneV24OrchestratorStudioPage } from './pages/MilestoneV24OrchestratorStudioPage';
 import { NanobodyParatopeDeepMutationalStudioPage } from './pages/NanobodyParatopeDeepMutationalStudioPage';
 import { CrisprPrimePegRnaFlapStudioPage } from './pages/CrisprPrimePegRnaFlapStudioPage';
 import { SpatialMassCytometryImcStudioPage } from './pages/SpatialMassCytometryImcStudioPage';
@@ -290,6 +291,7 @@ function App() {
                 <Route path="/spatial-mass-cytometry-imc" element={<SpatialMassCytometryImcStudioPage />} />
                 <Route path="/crispr-prime-peg-rna-flap" element={<CrisprPrimePegRnaFlapStudioPage />} />
                 <Route path="/nanobody-paratope-deep-mutational" element={<NanobodyParatopeDeepMutationalStudioPage />} />
+                <Route path="/milestone-v2-4-orchestrator" element={<MilestoneV24OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

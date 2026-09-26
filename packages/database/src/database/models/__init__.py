@@ -1366,3 +1366,9 @@ from database.models.nanobody_paratope_deep_mutational import (
     NanobodyParatopeDeepMutationalItemProfile,
     NanobodyParatopeDeepMutationalMetricTrace,
 )
+
+from database.models.milestone_v2_4_orchestrator import (
+    MilestoneV24OrchestratorStudy,
+    MilestoneV24OrchestratorItemProfile,
+    MilestoneV24OrchestratorMetricTrace,
+)
