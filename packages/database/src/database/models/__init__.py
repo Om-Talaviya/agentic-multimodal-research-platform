@@ -1234,3 +1234,9 @@ from database.models.spatial_tme_immune_infiltration import (
     SpatialTMEImmuneInfiltrationItemProfile,
     SpatialTMEImmuneInfiltrationMetricTrace,
 )
+
+from database.models.fep_binding_affinity import (
+    FEPBindingAffinityStudy,
+    FEPBindingAffinityItemProfile,
+    FEPBindingAffinityMetricTrace,
+)

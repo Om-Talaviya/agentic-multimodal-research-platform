@@ -411,3 +411,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 203 - Pan-Cancer Spatial Tumor Microenvironment Immune Infiltration Ranker
 - Implemented spatial transcriptomics and multiplexed IF tumor microenvironment (TME) immune infiltration modeling, tertiary lymphoid structure (TLS) maturation scoring, and immune checkpoint response prediction.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 204 - Molecular Dynamics Free Energy Perturbation (FEP) Binding Engine
+- Implemented alchemical molecular dynamics Free Energy Perturbation (FEP+), Bennett Acceptance Ratio (BAR) convergence deconvolution, and relative binding free energy ($\Delta\Delta G$) forecasting.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
