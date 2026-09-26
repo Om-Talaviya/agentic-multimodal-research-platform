@@ -1,3 +1,4 @@
+from api.routes.optogenetics_photostimulation import router as optogenetics_photostimulation_router
 from api.routes.milestone_v2_3_orchestrator import router as milestone_v2_3_orchestrator_router
 from api.routes.long_read_sv_assembly import router as long_read_sv_assembly_router
 from api.routes.ubiquitination_e3_selectivity import router as ubiquitination_e3_selectivity_router
@@ -536,3 +537,5 @@ app.include_router(ubiquitination_e3_selectivity_router, prefix=settings.api_pre
 app.include_router(long_read_sv_assembly_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v2_3_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(optogenetics_photostimulation_router, prefix=settings.api_prefix)

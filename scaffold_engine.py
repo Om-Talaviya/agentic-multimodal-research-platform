@@ -199,7 +199,7 @@ class {pascal_name}Repository:
         f.write(repo_content)
 
     # 3. Research Engine
-    os.makedirs(f"packages/research/src/research/{domain}", exist_ok=True)
+    os.makedirs("packages/research/src/research/orchestration", exist_ok=True)
     engine_content = f'''"""Autonomous {title} (Phase {phase_num})."""
 
 from dataclasses import dataclass, field
@@ -316,7 +316,7 @@ class {pascal_name}Engine:
             composite_health_index=98.5,
         )
 '''
-    with open(f"packages/research/src/research/{domain}/{snake_name}_engine.py", "w", encoding="utf-8") as f:
+    with open(f"packages/research/src/research/orchestration/{snake_name}_engine.py", "w", encoding="utf-8") as f:
         f.write(engine_content)
 
     # 4. API Routes
@@ -331,7 +331,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from database.connection import get_db_session
 from database.repositories.{snake_name}_repo import {pascal_name}Repository
-from research.{domain}.{snake_name}_engine import {pascal_name}Engine
+from research.orchestration.{snake_name}_engine import {pascal_name}Engine
 
 router = APIRouter(prefix="/{route_path}", tags=["{route_tag}"])
 
@@ -689,7 +689,7 @@ async def test_{snake_name}_repository(db_session):
     engine_test_content = f'''"""Tests for Phase {phase_num}: {title} Engine."""
 
 import pytest
-from research.{domain}.{snake_name}_engine import {pascal_name}Engine
+from research.orchestration.{snake_name}_engine import {pascal_name}Engine
 
 
 def test_{snake_name}_engine():
