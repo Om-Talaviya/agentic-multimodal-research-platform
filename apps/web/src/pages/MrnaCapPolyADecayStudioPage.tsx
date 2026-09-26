@@ -27,7 +27,7 @@ interface MetricTrace {
 }
 
 export const MrnaCapPolyADecayStudioPage: React.FC = () => {
-  const [studyName, setStudyName] = useState('Autonomous Synthetic mRNA 5' Cap Structure & Poly(A) Tail Deadenylation Decay Kinetics Simulator Engine Protocol 01');
+  const [studyName, setStudyName] = useState('Autonomous Synthetic mRNA 5-Prime Cap Structure & Poly(A) Tail Deadenylation Decay Kinetics Simulator Engine Protocol 01');
   const [specimen, setSpecimen] = useState('Human Patient Cohort Sample');
   const [inputScale, setInputScale] = useState(1.0);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -63,7 +63,7 @@ export const MrnaCapPolyADecayStudioPage: React.FC = () => {
           <div className="flex items-center space-x-3">
             <Activity className="w-8 h-8 text-cyan-400" />
             <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
-              Autonomous Synthetic mRNA 5' Cap Structure & Poly(A) Tail Deadenylation Decay Kinetics Simulator Engine Studio
+              Autonomous Synthetic mRNA 5-Prime Cap Structure & Poly(A) Tail Deadenylation Decay Kinetics Simulator Engine Studio
             </h1>
           </div>
           <p className="text-slate-400 text-sm mt-1">
