@@ -1,3 +1,4 @@
+import { CryoEMFocusedRefinementStudioPage } from './pages/CryoEMFocusedRefinementStudioPage';
 import { RiboSeqTranslationKineticsStudioPage } from './pages/RiboSeqTranslationKineticsStudioPage';
 import { CRISPRCas13RNATargetingStudioPage } from './pages/CRISPRCas13RNATargetingStudioPage';
 import { CtDNALiquidBiopsyMRDStudioPage } from './pages/CtDNALiquidBiopsyMRDStudioPage';
@@ -236,6 +237,7 @@ function App() {
                 <Route path="/ctdna-liquid-biopsy-mrd" element={<CtDNALiquidBiopsyMRDStudioPage />} />
                 <Route path="/crispr-cas13-rna-targeting" element={<CRISPRCas13RNATargetingStudioPage />} />
                 <Route path="/riboseq-translation-kinetics" element={<RiboSeqTranslationKineticsStudioPage />} />
+                <Route path="/cryoem-focused-refinement" element={<CryoEMFocusedRefinementStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
