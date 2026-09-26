@@ -1222,3 +1222,9 @@ from database.models.mrna_lnp_encapsulation import (
     MRNALNPEncapsulationItemProfile,
     MRNALNPEncapsulationMetricTrace,
 )
+
+from database.models.scrnaseq_ambient_scrubber import (
+    ScRNASeqAmbientScrubberStudy,
+    ScRNASeqAmbientScrubberItemProfile,
+    ScRNASeqAmbientScrubberMetricTrace,
+)

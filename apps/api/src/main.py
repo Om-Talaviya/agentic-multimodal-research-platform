@@ -1,3 +1,4 @@
+from api.routes.scrnaseq_ambient_scrubber import router as scrnaseq_ambient_scrubber_router
 from api.routes.mrna_lnp_encapsulation import router as mrna_lnp_encapsulation_router
 from api.routes.hichip_chromatin_looping import router as hichip_chromatin_looping_router
 from api.routes.spatial_lipidomics_profiling import router as spatial_lipidomics_profiling_router
@@ -512,3 +513,5 @@ app.include_router(spatial_lipidomics_profiling_router, prefix=settings.api_pref
 app.include_router(hichip_chromatin_looping_router, prefix=settings.api_prefix)
 
 app.include_router(mrna_lnp_encapsulation_router, prefix=settings.api_prefix)
+
+app.include_router(scrnaseq_ambient_scrubber_router, prefix=settings.api_prefix)
