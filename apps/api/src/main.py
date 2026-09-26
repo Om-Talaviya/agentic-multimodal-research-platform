@@ -1,3 +1,4 @@
+from api.routes.spatial_mass_cytometry_imc import router as spatial_mass_cytometry_imc_router
 from api.routes.car_t_exhaustion_scvelo import router as car_t_exhaustion_scvelo_router
 from api.routes.mrna_cap_poly_a_decay import router as mrna_cap_poly_a_decay_router
 from api.routes.whole_exome_tmb_msi_ranker import router as whole_exome_tmb_msi_ranker_router
@@ -569,3 +570,5 @@ app.include_router(whole_exome_tmb_msi_ranker_router, prefix=settings.api_prefix
 app.include_router(mrna_cap_poly_a_decay_router, prefix=settings.api_prefix)
 
 app.include_router(car_t_exhaustion_scvelo_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_mass_cytometry_imc_router, prefix=settings.api_prefix)
