@@ -1210,3 +1210,9 @@ from database.models.spatial_lipidomics_profiling import (
     SpatialLipidomicsProfilingItemProfile,
     SpatialLipidomicsProfilingMetricTrace,
 )
+
+from database.models.hichip_chromatin_looping import (
+    HiChIPChromatinLoopingStudy,
+    HiChIPChromatinLoopingItemProfile,
+    HiChIPChromatinLoopingMetricTrace,
+)

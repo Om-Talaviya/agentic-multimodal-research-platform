@@ -1,3 +1,4 @@
+from api.routes.hichip_chromatin_looping import router as hichip_chromatin_looping_router
 from api.routes.spatial_lipidomics_profiling import router as spatial_lipidomics_profiling_router
 from api.routes.car_nk_cytolytic_synapse import router as car_nk_cytolytic_synapse_router
 from api.routes.cryoem_focused_refinement import router as cryoem_focused_refinement_router
@@ -506,3 +507,5 @@ app.include_router(cryoem_focused_refinement_router, prefix=settings.api_prefix)
 app.include_router(car_nk_cytolytic_synapse_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_lipidomics_profiling_router, prefix=settings.api_prefix)
+
+app.include_router(hichip_chromatin_looping_router, prefix=settings.api_prefix)
