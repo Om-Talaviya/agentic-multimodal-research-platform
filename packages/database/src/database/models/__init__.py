@@ -1354,3 +1354,9 @@ from database.models.spatial_mass_cytometry_imc import (
     SpatialMassCytometryImcItemProfile,
     SpatialMassCytometryImcMetricTrace,
 )
+
+from database.models.crispr_prime_peg_rna_flap import (
+    CrisprPrimePegRnaFlapStudy,
+    CrisprPrimePegRnaFlapItemProfile,
+    CrisprPrimePegRnaFlapMetricTrace,
+)
