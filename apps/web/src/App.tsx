@@ -1,3 +1,4 @@
+import { CrisprPrimePegRnaFlapStudioPage } from './pages/CrisprPrimePegRnaFlapStudioPage';
 import { SpatialMassCytometryImcStudioPage } from './pages/SpatialMassCytometryImcStudioPage';
 import { CarTExhaustionScveloStudioPage } from './pages/CarTExhaustionScveloStudioPage';
 import { MrnaCapPolyADecayStudioPage } from './pages/MrnaCapPolyADecayStudioPage';
@@ -286,6 +287,7 @@ function App() {
                 <Route path="/mrna-cap-poly-a-decay" element={<MrnaCapPolyADecayStudioPage />} />
                 <Route path="/car-t-exhaustion-scvelo" element={<CarTExhaustionScveloStudioPage />} />
                 <Route path="/spatial-mass-cytometry-imc" element={<SpatialMassCytometryImcStudioPage />} />
+                <Route path="/crispr-prime-peg-rna-flap" element={<CrisprPrimePegRnaFlapStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
