@@ -1270,3 +1270,21 @@ from database.models.milestone_v2_3_orchestrator import (
     MilestoneV23OrchestratorItemProfile,
     MilestoneV23OrchestratorMetricTrace,
 )
+
+from database.models.optogenetics_photostimulation import (
+    OptogeneticsPhotostimulationStudy,
+    OptogeneticsPhotostimulationItemProfile,
+    OptogeneticsPhotostimulationMetricTrace,
+)
+
+from database.models.optogenetics_photostimulation import (
+    OptogeneticsPhotostimulationStudy,
+    OptogeneticsPhotostimulationItemProfile,
+    OptogeneticsPhotostimulationMetricTrace,
+)
+
+from database.models.optogenetics_photostimulation import (
+    OptogeneticsPhotostimulationStudy,
+    OptogeneticsPhotostimulationItemProfile,
+    OptogeneticsPhotostimulationMetricTrace,
+)
