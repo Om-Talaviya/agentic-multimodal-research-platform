@@ -1,3 +1,4 @@
+import { SyntheticGeneToggleSwitchStudioPage } from './pages/SyntheticGeneToggleSwitchStudioPage';
 import { FEPBindingAffinityStudioPage } from './pages/FEPBindingAffinityStudioPage';
 import { SpatialTMEImmuneInfiltrationStudioPage } from './pages/SpatialTMEImmuneInfiltrationStudioPage';
 import { ScRNASeqAmbientScrubberStudioPage } from './pages/ScRNASeqAmbientScrubberStudioPage';
@@ -252,6 +253,7 @@ function App() {
                 <Route path="/scrnaseq-ambient-scrubber" element={<ScRNASeqAmbientScrubberStudioPage />} />
                 <Route path="/spatial-tme-immune-infiltration" element={<SpatialTMEImmuneInfiltrationStudioPage />} />
                 <Route path="/fep-binding-affinity" element={<FEPBindingAffinityStudioPage />} />
+                <Route path="/synthetic-gene-toggle-switch" element={<SyntheticGeneToggleSwitchStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

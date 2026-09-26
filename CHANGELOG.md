@@ -415,3 +415,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 204 - Molecular Dynamics Free Energy Perturbation (FEP) Binding Engine
 - Implemented alchemical molecular dynamics Free Energy Perturbation (FEP+), Bennett Acceptance Ratio (BAR) convergence deconvolution, and relative binding free energy ($\Delta\Delta G$) forecasting.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 205 - Synthetic Gene Circuit Toggle Switch & Stochastic Noise Forecaster
+- Implemented synthetic biological bistable toggle switch circuit modeling, Chemical Master Equation Gillespie stochastic simulation, and Fano factor noise forecasting.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

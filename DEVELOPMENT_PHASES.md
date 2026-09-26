@@ -273,3 +273,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/structural/fep_binding_affinity_engine.py`: Rigorous statistical mechanics free energy perturbation engine calculating relative binding free energies ($\Delta\Delta G$) with sub-kcal/mol precision.
   - `apps/api/src/api/routes/fep_binding_affinity.py`: FastAPI endpoints for alchemical FEP simulation and ligand series affinity ranking.
   - `apps/web/src/pages/FEPBindingAffinityStudioPage.tsx`: Interactive React/Lucide FEP studio with alchemical thermodynamic cycle diagrams, Bennett Acceptance Ratio overlap histograms, and $\Delta\Delta G$ correlation scatters.
+
+## Phase 205: Synthetic Gene Circuit Toggle Switch & Stochastic Noise Forecaster
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/synthetic_gene_toggle_switch.py`: Tables `synthetic_toggle_studies`, `synthetic_toggle_item_profiles`, and `synthetic_toggle_metric_traces`.
+  - `packages/database/src/database/repositories/synthetic_gene_toggle_switch_repo.py`: Repository handling mutual repression Hill kinetics, bistable state occupancy, Gillespie stochastic simulation trajectories, and Fano factor noise metrics.
+  - `packages/research/src/research/genomics/synthetic_gene_toggle_switch_engine.py`: Chemical master equation simulator predicting stochastic switching rates and bimodal cell state distributions in genetic toggle circuits.
+  - `apps/api/src/api/routes/synthetic_gene_toggle_switch.py`: FastAPI endpoints for synthetic circuit stochastic simulation and bistability phase portraits.
+  - `apps/web/src/pages/SyntheticGeneToggleSwitchStudioPage.tsx`: Interactive React/Lucide synthetic gene circuit studio with bistable phase-plane nullclines, Gillespie stochastic trajectory plots, and promoter inducer sliders.
