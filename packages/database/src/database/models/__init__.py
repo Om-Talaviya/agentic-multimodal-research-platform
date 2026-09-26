@@ -1246,3 +1246,9 @@ from database.models.synthetic_gene_toggle_switch import (
     SyntheticGeneToggleSwitchItemProfile,
     SyntheticGeneToggleSwitchMetricTrace,
 )
+
+from database.models.multiome_atac_gex_cisreg import (
+    MultiomeATACGEXCisRegStudy,
+    MultiomeATACGEXCisRegItemProfile,
+    MultiomeATACGEXCisRegMetricTrace,
+)

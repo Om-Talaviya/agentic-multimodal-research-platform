@@ -1,3 +1,4 @@
+import { MultiomeATACGEXCisRegStudioPage } from './pages/MultiomeATACGEXCisRegStudioPage';
 import { SyntheticGeneToggleSwitchStudioPage } from './pages/SyntheticGeneToggleSwitchStudioPage';
 import { FEPBindingAffinityStudioPage } from './pages/FEPBindingAffinityStudioPage';
 import { SpatialTMEImmuneInfiltrationStudioPage } from './pages/SpatialTMEImmuneInfiltrationStudioPage';
@@ -254,6 +255,7 @@ function App() {
                 <Route path="/spatial-tme-immune-infiltration" element={<SpatialTMEImmuneInfiltrationStudioPage />} />
                 <Route path="/fep-binding-affinity" element={<FEPBindingAffinityStudioPage />} />
                 <Route path="/synthetic-gene-toggle-switch" element={<SyntheticGeneToggleSwitchStudioPage />} />
+                <Route path="/multiome-atac-gex-cisreg" element={<MultiomeATACGEXCisRegStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -281,3 +281,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/synthetic_gene_toggle_switch_engine.py`: Chemical master equation simulator predicting stochastic switching rates and bimodal cell state distributions in genetic toggle circuits.
   - `apps/api/src/api/routes/synthetic_gene_toggle_switch.py`: FastAPI endpoints for synthetic circuit stochastic simulation and bistability phase portraits.
   - `apps/web/src/pages/SyntheticGeneToggleSwitchStudioPage.tsx`: Interactive React/Lucide synthetic gene circuit studio with bistable phase-plane nullclines, Gillespie stochastic trajectory plots, and promoter inducer sliders.
+
+## Phase 206: Single-Cell Multiome ATAC+GEX Peak-to-Gene Cis-Regulatory Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/multiome_atac_gex_cisreg.py`: Tables `multiome_cisreg_studies`, `multiome_cisreg_item_profiles`, and `multiome_cisreg_metric_traces`.
+  - `packages/database/src/database/repositories/multiome_atac_gex_cisreg_repo.py`: Repository managing simultaneous single-nucleus chromatin accessibility (ATAC) and RNA expression (GEX) correlations, cis-regulatory element (cCRE) linkages, and transcription factor regulons.
+  - `packages/research/src/research/genomics/multiome_atac_gex_cisreg_engine.py`: Multiome integration engine predicting functional enhancer-promoter regulatory logic and lineage-defining master regulon networks.
+  - `apps/api/src/api/routes/multiome_atac_gex_cisreg.py`: FastAPI endpoints for multiome peak-to-gene linkage simulation and TF motif activity deconvolution.
+  - `apps/web/src/pages/MultiomeATACGEXCisRegStudioPage.tsx`: Interactive React/Lucide single-cell multiome studio featuring co-accessibility track viewers, peak-to-gene correlation scatter matrices, and TF regulon network graphs.
