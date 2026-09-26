@@ -1,3 +1,4 @@
+import { RiboSeqTranslationKineticsStudioPage } from './pages/RiboSeqTranslationKineticsStudioPage';
 import { CRISPRCas13RNATargetingStudioPage } from './pages/CRISPRCas13RNATargetingStudioPage';
 import { CtDNALiquidBiopsyMRDStudioPage } from './pages/CtDNALiquidBiopsyMRDStudioPage';
 import { ASOGapmerTherapeuticsStudioPage } from './pages/ASOGapmerTherapeuticsStudioPage';
@@ -234,6 +235,7 @@ function App() {
                 <Route path="/aso-gapmer-therapeutics" element={<ASOGapmerTherapeuticsStudioPage />} />
                 <Route path="/ctdna-liquid-biopsy-mrd" element={<CtDNALiquidBiopsyMRDStudioPage />} />
                 <Route path="/crispr-cas13-rna-targeting" element={<CRISPRCas13RNATargetingStudioPage />} />
+                <Route path="/riboseq-translation-kinetics" element={<RiboSeqTranslationKineticsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

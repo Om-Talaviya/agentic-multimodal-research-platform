@@ -201,3 +201,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/crispr_cas13_rna_targeting_engine.py`: High-fidelity Cas13 RNA-targeting engine simulating precise transcript depletion with minimal bystander cellular cytotoxicity.
   - `apps/api/src/api/routes/crispr_cas13_rna_targeting.py`: FastAPI endpoints for Cas13 RNA-targeting simulation and collateral cleavage suppression analytics.
   - `apps/web/src/pages/CRISPRCas13RNATargetingStudioPage.tsx`: Interactive React/Lucide CRISPR-Cas13 console featuring on-target vs collateral degradation bar plots, HEPN activation kinetics, and crRNA mismatch matrices.
+
+## Phase 196: Ribosome Profiling & Translation Efficiency Deconvolution Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/riboseq_translation_kinetics.py`: Tables `riboseq_kinetics_studies`, `riboseq_kinetics_item_profiles`, and `riboseq_kinetics_metric_traces`.
+  - `packages/database/src/database/repositories/riboseq_translation_kinetics_repo.py`: Repository handling ribosome-protected fragments (RPFs), codon dwell times, uORF translation initiation, and translational efficiency ratios.
+  - `packages/research/src/research/genomics/riboseq_translation_kinetics_engine.py`: High-resolution Ribo-seq sub-codon triplet phasing engine resolving stall sites, non-canonical translation, and elongation rates.
+  - `apps/api/src/api/routes/riboseq_translation_kinetics.py`: FastAPI endpoints for ribosome footprinting kinetics simulation and translatome efficiency queries.
+  - `apps/web/src/pages/RiboSeqTranslationKineticsStudioPage.tsx`: Interactive React/Lucide Ribo-seq studio with metagene footprint profiles, codon pause heatmaps, and mRNA translation efficiency rankings.

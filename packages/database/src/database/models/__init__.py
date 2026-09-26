@@ -1186,3 +1186,9 @@ from database.models.crispr_cas13_rna_targeting import (
     CRISPRCas13RNATargetingItemProfile,
     CRISPRCas13RNATargetingMetricTrace,
 )
+
+from database.models.riboseq_translation_kinetics import (
+    RiboSeqTranslationKineticsStudy,
+    RiboSeqTranslationKineticsItemProfile,
+    RiboSeqTranslationKineticsMetricTrace,
+)
