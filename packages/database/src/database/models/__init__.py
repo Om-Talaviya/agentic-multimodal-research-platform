@@ -1258,3 +1258,9 @@ from database.models.ubiquitination_e3_selectivity import (
     UbiquitinationE3SelectivityItemProfile,
     UbiquitinationE3SelectivityMetricTrace,
 )
+
+from database.models.long_read_sv_assembly import (
+    LongReadSVAssemblyStudy,
+    LongReadSVAssemblyItemProfile,
+    LongReadSVAssemblyMetricTrace,
+)
