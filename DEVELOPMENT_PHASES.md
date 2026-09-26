@@ -459,3 +459,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/car_t_exhaustion_scvelo.py`
   - `apps/web/src/pages/CarTExhaustionScveloStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 221: Autonomous Spatial Imaging Mass Cytometry (IMC) 40-Plex Phenotyping & Microenvironment Niche Ranker Engine
+- **Module**: `spatial_mass_cytometry_imc`
+- **Domain**: Spatial Proteomics & Multiplex Imaging
+- **Description**: Processes metal-isotope tagged antibody imaging mass cytometry laser ablation channels, performing multi-channel cell segmentation, deep phenotyping, and cell neighborhood scoring.
+- **Architecture**:
+  - `packages/database/src/database/models/spatial_mass_cytometry_imc.py`
+  - `packages/database/src/database/repositories/spatial_mass_cytometry_imc_repo.py`
+  - `packages/research/src/research/orchestration/spatial_mass_cytometry_imc_engine.py`
+  - `apps/api/src/api/routes/spatial_mass_cytometry_imc.py`
+  - `apps/web/src/pages/SpatialMassCytometryImcStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

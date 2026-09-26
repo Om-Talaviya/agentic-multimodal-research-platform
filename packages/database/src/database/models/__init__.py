@@ -1348,3 +1348,9 @@ from database.models.car_t_exhaustion_scvelo import (
     CarTExhaustionScveloItemProfile,
     CarTExhaustionScveloMetricTrace,
 )
+
+from database.models.spatial_mass_cytometry_imc import (
+    SpatialMassCytometryImcStudy,
+    SpatialMassCytometryImcItemProfile,
+    SpatialMassCytometryImcMetricTrace,
+)
