@@ -399,3 +399,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Phase 200 - Epigenomic Hi-ChIP & Enhancer-Promoter Chromatin Looping Engine
 - Implemented protein-directed Hi-ChIP contact matrix deconvolution, H3K27ac/CTCF-anchored chromatin loop calling, and super-enhancer promoter interaction modeling.
 - Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 201 - Therapeutic mRNA LNP Encapsulation & Structure Thermodynamics Engine
+- Implemented therapeutic mRNA lipid nanoparticle formulation modeling, microfluidic total flow rate optimization, and secondary structure minimum free energy (MFE) deconvolution.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.

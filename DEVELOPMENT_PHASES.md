@@ -241,3 +241,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/genomics/hichip_chromatin_looping_engine.py`: 3D epigenome looping engine integrating ChIP-seq peak enrichment with chromosome conformation contact frequencies.
   - `apps/api/src/api/routes/hichip_chromatin_looping.py`: FastAPI endpoints for Hi-ChIP chromatin interaction simulation and enhancer-promoter hub discovery.
   - `apps/web/src/pages/HiChIPChromatinLoopingStudioPage.tsx`: Interactive React/Lucide Hi-ChIP studio featuring 2D contact matrix heatmaps, virtual 4C viewpoint tracks, and super-enhancer loop arc diagrams.
+
+## Phase 201: Therapeutic mRNA LNP Encapsulation & Structure Thermodynamics Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/mrna_lnp_encapsulation.py`: Tables `mrna_lnp_studies`, `mrna_lnp_item_profiles`, and `mrna_lnp_metric_traces`.
+  - `packages/database/src/database/repositories/mrna_lnp_encapsulation_repo.py`: Repository handling lipid nanoparticle microfluidic mixing ratios, ionizable lipid pKa, mRNA MFE folding thermodynamics, and encapsulation efficiencies.
+  - `packages/research/src/research/therapeutics/mrna_lnp_encapsulation_engine.py`: High-throughput mRNA-LNP formulation engine predicting particle size distribution, polydispersity index (PDI), and ribonuclease protection factors.
+  - `apps/api/src/api/routes/mrna_lnp_encapsulation.py`: FastAPI endpoints for LNP encapsulation simulation and mRNA structural stability analytics.
+  - `apps/web/src/pages/MRNALNPEncapsulationStudioPage.tsx`: Interactive React/Lucide mRNA-LNP studio featuring microfluidic flow rate ratio dials, dynamic light scattering (DLS) size distributions, and MFE folding diagrams.

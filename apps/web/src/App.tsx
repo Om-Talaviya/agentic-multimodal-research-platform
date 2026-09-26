@@ -1,3 +1,4 @@
+import { MRNALNPEncapsulationStudioPage } from './pages/MRNALNPEncapsulationStudioPage';
 import { HiChIPChromatinLoopingStudioPage } from './pages/HiChIPChromatinLoopingStudioPage';
 import { SpatialLipidomicsProfilingStudioPage } from './pages/SpatialLipidomicsProfilingStudioPage';
 import { CARNKCytolyticSynapseStudioPage } from './pages/CARNKCytolyticSynapseStudioPage';
@@ -244,6 +245,7 @@ function App() {
                 <Route path="/car-nk-cytolytic-synapse" element={<CARNKCytolyticSynapseStudioPage />} />
                 <Route path="/spatial-lipidomics-profiling" element={<SpatialLipidomicsProfilingStudioPage />} />
                 <Route path="/hichip-chromatin-looping" element={<HiChIPChromatinLoopingStudioPage />} />
+                <Route path="/mrna-lnp-encapsulation" element={<MRNALNPEncapsulationStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

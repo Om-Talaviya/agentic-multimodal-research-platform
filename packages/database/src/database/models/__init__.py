@@ -1216,3 +1216,9 @@ from database.models.hichip_chromatin_looping import (
     HiChIPChromatinLoopingItemProfile,
     HiChIPChromatinLoopingMetricTrace,
 )
+
+from database.models.mrna_lnp_encapsulation import (
+    MRNALNPEncapsulationStudy,
+    MRNALNPEncapsulationItemProfile,
+    MRNALNPEncapsulationMetricTrace,
+)
