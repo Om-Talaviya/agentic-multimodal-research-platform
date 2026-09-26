@@ -1,3 +1,4 @@
+import { FEPBindingAffinityStudioPage } from './pages/FEPBindingAffinityStudioPage';
 import { SpatialTMEImmuneInfiltrationStudioPage } from './pages/SpatialTMEImmuneInfiltrationStudioPage';
 import { ScRNASeqAmbientScrubberStudioPage } from './pages/ScRNASeqAmbientScrubberStudioPage';
 import { MRNALNPEncapsulationStudioPage } from './pages/MRNALNPEncapsulationStudioPage';
@@ -250,6 +251,7 @@ function App() {
                 <Route path="/mrna-lnp-encapsulation" element={<MRNALNPEncapsulationStudioPage />} />
                 <Route path="/scrnaseq-ambient-scrubber" element={<ScRNASeqAmbientScrubberStudioPage />} />
                 <Route path="/spatial-tme-immune-infiltration" element={<SpatialTMEImmuneInfiltrationStudioPage />} />
+                <Route path="/fep-binding-affinity" element={<FEPBindingAffinityStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

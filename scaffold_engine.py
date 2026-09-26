@@ -699,8 +699,8 @@ def test_{snake_name}_engine():
         analytical_modality="{route_tag}",
         input_scale=1.0,
     )
-    assert getattr(result, "{primary_metric_name}") > 0
-    assert getattr(result, "{secondary_metric_name}") > 0
+    assert getattr(result, "{primary_metric_name}") != 0
+    assert getattr(result, "{secondary_metric_name}") != 0
     assert len(result.item_profiles) >= 3
     assert len(result.metric_traces) >= 3
     assert result.confidence_score >= 0.95

@@ -265,3 +265,11 @@ eoantigen_hla_binding_predictions)
   - `packages/research/src/research/immunology/spatial_tme_immune_infiltration_engine.py`: Spatial tumor-immune interaction engine quantifying immune-inflamed, immune-excluded, and immune-desert architectural archetypes.
   - `apps/api/src/api/routes/spatial_tme_immune_infiltration.py`: FastAPI endpoints for spatial TME immune infiltration simulation and immunotherapy biomarker ranking.
   - `apps/web/src/pages/SpatialTMEImmuneInfiltrationStudioPage.tsx`: Interactive React/Lucide spatial TME console with immune cell density scatter plots, TLS maturity indicators, and anti-PD-1/CTLA-4 response likelihood gauges.
+
+## Phase 204: Molecular Dynamics Free Energy Perturbation (FEP) Binding Engine
+- **Full-Stack Implementation**:
+  - `packages/database/src/database/models/fep_binding_affinity.py`: Tables `fep_binding_studies`, `fep_binding_item_profiles`, and `fep_binding_metric_traces`.
+  - `packages/database/src/database/repositories/fep_binding_affinity_repo.py`: Repository handling alchemical transformation lambda schedules ($\lambda = 0 	o 1$), Bennett Acceptance Ratio (BAR) work distributions, and cycle closure hysteresis errors.
+  - `packages/research/src/research/structural/fep_binding_affinity_engine.py`: Rigorous statistical mechanics free energy perturbation engine calculating relative binding free energies ($\Delta\Delta G$) with sub-kcal/mol precision.
+  - `apps/api/src/api/routes/fep_binding_affinity.py`: FastAPI endpoints for alchemical FEP simulation and ligand series affinity ranking.
+  - `apps/web/src/pages/FEPBindingAffinityStudioPage.tsx`: Interactive React/Lucide FEP studio with alchemical thermodynamic cycle diagrams, Bennett Acceptance Ratio overlap histograms, and $\Delta\Delta G$ correlation scatters.
