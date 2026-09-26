@@ -1,3 +1,4 @@
+import { ImmunopeptidomeDeconvolutionStudioPage } from './pages/ImmunopeptidomeDeconvolutionStudioPage';
 import { CpGIslandHypermethylationStudioPage } from './pages/CpGIslandHypermethylationStudioPage';
 import { ScRNACopyNumberKaryotypeStudioPage } from './pages/ScRNACopyNumberKaryotypeStudioPage';
 import { OptogeneticsPhotostimulationStudioPage } from './pages/OptogeneticsPhotostimulationStudioPage';
@@ -268,6 +269,7 @@ function App() {
                 <Route path="/optogenetics-photostimulation" element={<OptogeneticsPhotostimulationStudioPage />} />
                 <Route path="/scrna-copy-number-karyotype" element={<ScRNACopyNumberKaryotypeStudioPage />} />
                 <Route path="/cpg-island-hypermethylation" element={<CpGIslandHypermethylationStudioPage />} />
+                <Route path="/immunopeptidome-deconvolution" element={<ImmunopeptidomeDeconvolutionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

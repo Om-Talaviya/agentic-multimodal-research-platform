@@ -355,3 +355,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/cpg_island_hypermethylation.py`
   - `apps/web/src/pages/CpGIslandHypermethylationStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 213: Autonomous Mass Spectrometry Immunopeptidomics & Non-Canonical Cryptic Peptide Deconvolution Engine
+- **Module**: `immunopeptidome_deconvolution`
+- **Domain**: Immunopeptidomics & Mass Spectrometry
+- **Description**: Deconvolutes high-resolution Orbitrap LC-MS/MS immunopeptidome spectra, identifying non-canonical cryptic peptide antigens, trans-spliced epitopes, and HLA presentation ranks.
+- **Architecture**:
+  - `packages/database/src/database/models/immunopeptidome_deconvolution.py`
+  - `packages/database/src/database/repositories/immunopeptidome_deconvolution_repo.py`
+  - `packages/research/src/research/orchestration/immunopeptidome_deconvolution_engine.py`
+  - `apps/api/src/api/routes/immunopeptidome_deconvolution.py`
+  - `apps/web/src/pages/ImmunopeptidomeDeconvolutionStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
