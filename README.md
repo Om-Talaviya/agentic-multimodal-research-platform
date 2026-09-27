@@ -416,3 +416,16 @@ iboseq_translation_kinetics)
 - **Phase 236**: Autonomous Molecular Glue Degrader (MGD) CRBN/VHL Ternary Composite Cooperativity Engine (`targeted_protein_degrader_molecular_glue`)
 - **Phase 237**: Autonomous Anti-CRISPR (Acr) Protein Interaction & Gene Editing Precision Regulator Engine (`crispr_anti_crispr_suppression`)
 - **Phase 238**: Autonomous Milestone v2.6 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_6_orchestrator`)
+
+
+### Milestone v2.7: Autonomous Molecular Biophysics, Glycomics & Synthetic Epigenome Engineering (Phases 239–245)
+
+| Phase | Engine & Domain | Key Capabilities & Algorithms | Stack / Test Status |
+|---|---|---|---|
+| **Phase 239** | `single_molecule_force_spectroscopy` | Bell-Evans rupture potential, Dudko-Hummer-Szabo (DHS) free energy barrier, worm-like chain (WLC) extension contour fitting | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 240** | `spatial_glycomics_mass_spec` | MALDI-MSI tissue micro-architecture, branching index, $\alpha2,3/\alpha2,6$ sialylation ratio, spatial moran's I | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 241** | `prime_editing_rt_template_secondary_structure` | Reverse transcriptase extension velocity, pegRNA stem-loop secondary structure stability, flap equilibration kinetics | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 242** | `tcr_mimic_antibody_selectivity` | TCR-mimic fine specificity, pHLA allotype cross-reactivity profiling, positional alanine-scanning selectivity score | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 243** | `cellular_thermal_shift_cetsa` | Intact-cell CETSA thermal denaturation melt curves, $T_m$ shift ($\Delta T_m$), target engagement $EC_{50}$ deconvolution | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 244** | `synthetic_promoter_regulatory_grammar` | De-novo synthetic promoter generative grammar, TF motif spacing/orientation synergy, tissue-specific expression ratio | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 245** | `milestone_v2_7_orchestrator` | Milestone v2.7 planetary multi-omics research synthesis & meta-orchestrator, cross-phase DAG synchronization | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
