@@ -1414,3 +1414,9 @@ from database.models.milestone_v2_5_orchestrator import (
     MilestoneV25OrchestratorItemProfile,
     MilestoneV25OrchestratorMetricTrace,
 )
+
+from database.models.spatial_cistromics_transcription_factor import (
+    SpatialCistromicsTranscriptionFactorStudy,
+    SpatialCistromicsTranscriptionFactorItemProfile,
+    SpatialCistromicsTranscriptionFactorMetricTrace,
+)

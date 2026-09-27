@@ -602,3 +602,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/milestone_v2_5_orchestrator.py`
   - `apps/web/src/pages/MilestoneV25OrchestratorStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 232: Autonomous Spatial Cistromics TF-Binding Motif & Chromatin Footprinting Engine
+- **Module**: `spatial_cistromics_transcription_factor`
+- **Domain**: Spatial Epigenomics & Cistromics
+- **Description**: Quantifies spatial transcription factor occupancy footprints, motif co-enrichment networks, and pioneer TF binding states in intact tissue architectures.
+- **Architecture**:
+  - `packages/database/src/database/models/spatial_cistromics_transcription_factor.py`
+  - `packages/database/src/database/repositories/spatial_cistromics_transcription_factor_repo.py`
+  - `packages/research/src/research/orchestration/spatial_cistromics_transcription_factor_engine.py`
+  - `apps/api/src/api/routes/spatial_cistromics_transcription_factor.py`
+  - `apps/web/src/pages/SpatialCistromicsTranscriptionFactorStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
