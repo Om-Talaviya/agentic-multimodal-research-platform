@@ -1,3 +1,4 @@
+import { CellularThermalShiftCetsaStudioPage } from './pages/CellularThermalShiftCetsaStudioPage';
 import { TcrMimicAntibodySelectivityStudioPage } from './pages/TcrMimicAntibodySelectivityStudioPage';
 import { PrimeEditingRtTemplateSecondaryStructureStudioPage } from './pages/PrimeEditingRtTemplateSecondaryStructureStudioPage';
 import { SpatialGlycomicsMassSpecStudioPage } from './pages/SpatialGlycomicsMassSpecStudioPage';
@@ -328,6 +329,7 @@ function App() {
                 <Route path="/spatial-glycomics-mass-spec" element={<SpatialGlycomicsMassSpecStudioPage />} />
                 <Route path="/prime-editing-rt-template-secondary-structure" element={<PrimeEditingRtTemplateSecondaryStructureStudioPage />} />
                 <Route path="/tcr-mimic-antibody-selectivity" element={<TcrMimicAntibodySelectivityStudioPage />} />
+                <Route path="/cellular-thermal-shift-cetsa" element={<CellularThermalShiftCetsaStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

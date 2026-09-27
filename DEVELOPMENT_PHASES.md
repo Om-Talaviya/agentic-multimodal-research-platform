@@ -745,3 +745,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/tcr_mimic_antibody_selectivity.py`
   - `apps/web/src/pages/TcrMimicAntibodySelectivityStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 243: Autonomous Intact-Cell Cellular Thermal Shift Assay (CETSA) & Target Engagement Deconvolution Engine
+- **Module**: `cellular_thermal_shift_cetsa`
+- **Domain**: Chemical Proteomics & Biophysical Assays
+- **Description**: Analyzes multiplexed TMT isobaric proteomic thermal denaturation curves in intact cells to quantify small-molecule target engagement melting temperature shifts.
+- **Architecture**:
+  - `packages/database/src/database/models/cellular_thermal_shift_cetsa.py`
+  - `packages/database/src/database/repositories/cellular_thermal_shift_cetsa_repo.py`
+  - `packages/research/src/research/orchestration/cellular_thermal_shift_cetsa_engine.py`
+  - `apps/api/src/api/routes/cellular_thermal_shift_cetsa.py`
+  - `apps/web/src/pages/CellularThermalShiftCetsaStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

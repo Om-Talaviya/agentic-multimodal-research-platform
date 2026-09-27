@@ -1486,3 +1486,9 @@ from database.models.tcr_mimic_antibody_selectivity import (
     TcrMimicAntibodySelectivityItemProfile,
     TcrMimicAntibodySelectivityMetricTrace,
 )
+
+from database.models.cellular_thermal_shift_cetsa import (
+    CellularThermalShiftCetsaStudy,
+    CellularThermalShiftCetsaItemProfile,
+    CellularThermalShiftCetsaMetricTrace,
+)

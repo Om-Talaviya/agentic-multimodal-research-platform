@@ -1,3 +1,4 @@
+from api.routes.cellular_thermal_shift_cetsa import router as cellular_thermal_shift_cetsa_router
 from api.routes.tcr_mimic_antibody_selectivity import router as tcr_mimic_antibody_selectivity_router
 from api.routes.prime_editing_rt_template_secondary_structure import router as prime_editing_rt_template_secondary_structure_router
 from api.routes.spatial_glycomics_mass_spec import router as spatial_glycomics_mass_spec_router
@@ -635,3 +636,5 @@ app.include_router(spatial_glycomics_mass_spec_router, prefix=settings.api_prefi
 app.include_router(prime_editing_rt_template_secondary_structure_router, prefix=settings.api_prefix)
 
 app.include_router(tcr_mimic_antibody_selectivity_router, prefix=settings.api_prefix)
+
+app.include_router(cellular_thermal_shift_cetsa_router, prefix=settings.api_prefix)
