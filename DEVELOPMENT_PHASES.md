@@ -667,3 +667,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/targeted_protein_degrader_molecular_glue.py`
   - `apps/web/src/pages/TargetedProteinDegraderMolecularGlueStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 237: Autonomous Anti-CRISPR (Acr) Protein Interaction & Gene Editing Precision Regulator Engine
+- **Module**: `crispr_anti_crispr_suppression`
+- **Domain**: Synthetic Biology & Epigenome Safety
+- **Description**: Engineers phage-derived anti-CRISPR spatial-temporal off-switches to restrict Cas9/Cas12a active time windows and ablate off-target genome cleavage.
+- **Architecture**:
+  - `packages/database/src/database/models/crispr_anti_crispr_suppression.py`
+  - `packages/database/src/database/repositories/crispr_anti_crispr_suppression_repo.py`
+  - `packages/research/src/research/orchestration/crispr_anti_crispr_suppression_engine.py`
+  - `apps/api/src/api/routes/crispr_anti_crispr_suppression.py`
+  - `apps/web/src/pages/CrisprAntiCrisprSuppressionStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

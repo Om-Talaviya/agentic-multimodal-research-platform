@@ -1450,3 +1450,9 @@ from database.models.targeted_protein_degrader_molecular_glue import (
     TargetedProteinDegraderMolecularGlueItemProfile,
     TargetedProteinDegraderMolecularGlueMetricTrace,
 )
+
+from database.models.crispr_anti_crispr_suppression import (
+    CrisprAntiCrisprSuppressionStudy,
+    CrisprAntiCrisprSuppressionItemProfile,
+    CrisprAntiCrisprSuppressionMetricTrace,
+)
