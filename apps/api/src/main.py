@@ -1,3 +1,4 @@
+from api.routes.spatial_epigenomics_cut_tag import router as spatial_epigenomics_cut_tag_router
 from api.routes.tcr_pmhc_docking_affinity_landscape import router as tcr_pmhc_docking_affinity_landscape_router
 from api.routes.crispr_cas12a_direct_repeat_processing import router as crispr_cas12a_direct_repeat_processing_router
 from api.routes.cryoem_subtomogram_membrane_coat import router as cryoem_subtomogram_membrane_coat_router
@@ -593,3 +594,5 @@ app.include_router(cryoem_subtomogram_membrane_coat_router, prefix=settings.api_
 app.include_router(crispr_cas12a_direct_repeat_processing_router, prefix=settings.api_prefix)
 
 app.include_router(tcr_pmhc_docking_affinity_landscape_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_epigenomics_cut_tag_router, prefix=settings.api_prefix)

@@ -563,3 +563,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/tcr_pmhc_docking_affinity_landscape.py`
   - `apps/web/src/pages/TcrPmhcDockingAffinityLandscapeStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 229: Autonomous Spatial Epigenomic Cleavage Under Targets and Tagmentation (CUT&Tag) Chromatin Landscape Engine
+- **Module**: `spatial_epigenomics_cut_tag`
+- **Domain**: Spatial Epigenomics & Chromatin Biology
+- **Description**: Decodes microfluidic spatial barcoding of in-situ pA-Tn5 antibody-tethered tagmentation for simultaneous histone modification mapping at tissue-scale.
+- **Architecture**:
+  - `packages/database/src/database/models/spatial_epigenomics_cut_tag.py`
+  - `packages/database/src/database/repositories/spatial_epigenomics_cut_tag_repo.py`
+  - `packages/research/src/research/orchestration/spatial_epigenomics_cut_tag_engine.py`
+  - `apps/api/src/api/routes/spatial_epigenomics_cut_tag.py`
+  - `apps/web/src/pages/SpatialEpigenomicsCutTagStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

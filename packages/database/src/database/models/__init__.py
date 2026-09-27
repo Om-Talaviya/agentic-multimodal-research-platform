@@ -1396,3 +1396,9 @@ from database.models.tcr_pmhc_docking_affinity_landscape import (
     TcrPmhcDockingAffinityLandscapeItemProfile,
     TcrPmhcDockingAffinityLandscapeMetricTrace,
 )
+
+from database.models.spatial_epigenomics_cut_tag import (
+    SpatialEpigenomicsCutTagStudy,
+    SpatialEpigenomicsCutTagItemProfile,
+    SpatialEpigenomicsCutTagMetricTrace,
+)
