@@ -1,3 +1,4 @@
+from api.routes.milestone_v2_7_orchestrator import router as milestone_v2_7_orchestrator_router
 from api.routes.synthetic_promoter_regulatory_grammar import router as synthetic_promoter_regulatory_grammar_router
 from api.routes.cellular_thermal_shift_cetsa import router as cellular_thermal_shift_cetsa_router
 from api.routes.tcr_mimic_antibody_selectivity import router as tcr_mimic_antibody_selectivity_router
@@ -641,3 +642,5 @@ app.include_router(tcr_mimic_antibody_selectivity_router, prefix=settings.api_pr
 app.include_router(cellular_thermal_shift_cetsa_router, prefix=settings.api_prefix)
 
 app.include_router(synthetic_promoter_regulatory_grammar_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v2_7_orchestrator_router, prefix=settings.api_prefix)

@@ -1,3 +1,4 @@
+import { MilestoneV27OrchestratorStudioPage } from './pages/MilestoneV27OrchestratorStudioPage';
 import { SyntheticPromoterRegulatoryGrammarStudioPage } from './pages/SyntheticPromoterRegulatoryGrammarStudioPage';
 import { CellularThermalShiftCetsaStudioPage } from './pages/CellularThermalShiftCetsaStudioPage';
 import { TcrMimicAntibodySelectivityStudioPage } from './pages/TcrMimicAntibodySelectivityStudioPage';
@@ -332,6 +333,7 @@ function App() {
                 <Route path="/tcr-mimic-antibody-selectivity" element={<TcrMimicAntibodySelectivityStudioPage />} />
                 <Route path="/cellular-thermal-shift-cetsa" element={<CellularThermalShiftCetsaStudioPage />} />
                 <Route path="/synthetic-promoter-regulatory-grammar" element={<SyntheticPromoterRegulatoryGrammarStudioPage />} />
+                <Route path="/milestone-v2-7-orchestrator" element={<MilestoneV27OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

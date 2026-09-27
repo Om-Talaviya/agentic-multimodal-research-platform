@@ -1498,3 +1498,9 @@ from database.models.synthetic_promoter_regulatory_grammar import (
     SyntheticPromoterRegulatoryGrammarItemProfile,
     SyntheticPromoterRegulatoryGrammarMetricTrace,
 )
+
+from database.models.milestone_v2_7_orchestrator import (
+    MilestoneV27OrchestratorStudy,
+    MilestoneV27OrchestratorItemProfile,
+    MilestoneV27OrchestratorMetricTrace,
+)
