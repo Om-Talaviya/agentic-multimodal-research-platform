@@ -1,3 +1,4 @@
+from api.routes.cryoem_subtomogram_membrane_coat import router as cryoem_subtomogram_membrane_coat_router
 from api.routes.metabolite_flux_metagenomics import router as metabolite_flux_metagenomics_router
 from api.routes.milestone_v2_4_orchestrator import router as milestone_v2_4_orchestrator_router
 from api.routes.nanobody_paratope_deep_mutational import router as nanobody_paratope_deep_mutational_router
@@ -584,3 +585,5 @@ app.include_router(nanobody_paratope_deep_mutational_router, prefix=settings.api
 app.include_router(milestone_v2_4_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(metabolite_flux_metagenomics_router, prefix=settings.api_prefix)
+
+app.include_router(cryoem_subtomogram_membrane_coat_router, prefix=settings.api_prefix)

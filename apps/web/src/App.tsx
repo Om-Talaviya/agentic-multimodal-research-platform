@@ -1,3 +1,4 @@
+import { CryoEMSubtomogramMembraneCoatStudioPage } from './pages/CryoEMSubtomogramMembraneCoatStudioPage';
 import { MetaboliteFluxMetagenomicsStudioPage } from './pages/MetaboliteFluxMetagenomicsStudioPage';
 import { MilestoneV24OrchestratorStudioPage } from './pages/MilestoneV24OrchestratorStudioPage';
 import { NanobodyParatopeDeepMutationalStudioPage } from './pages/NanobodyParatopeDeepMutationalStudioPage';
@@ -294,6 +295,7 @@ function App() {
                 <Route path="/nanobody-paratope-deep-mutational" element={<NanobodyParatopeDeepMutationalStudioPage />} />
                 <Route path="/milestone-v2-4-orchestrator" element={<MilestoneV24OrchestratorStudioPage />} />
                 <Route path="/metabolite-flux-metagenomics" element={<MetaboliteFluxMetagenomicsStudioPage />} />
+                <Route path="/cryoem-subtomogram-membrane-coat" element={<CryoEMSubtomogramMembraneCoatStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

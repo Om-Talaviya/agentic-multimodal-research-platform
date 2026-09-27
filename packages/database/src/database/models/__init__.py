@@ -1378,3 +1378,9 @@ from database.models.metabolite_flux_metagenomics import (
     MetaboliteFluxMetagenomicsItemProfile,
     MetaboliteFluxMetagenomicsMetricTrace,
 )
+
+from database.models.cryoem_subtomogram_membrane_coat import (
+    CryoEMSubtomogramMembraneCoatStudy,
+    CryoEMSubtomogramMembraneCoatItemProfile,
+    CryoEMSubtomogramMembraneCoatMetricTrace,
+)

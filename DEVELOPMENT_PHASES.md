@@ -524,3 +524,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/metabolite_flux_metagenomics.py`
   - `apps/web/src/pages/MetaboliteFluxMetagenomicsStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 226: Autonomous In-Situ Cryo-ET Membrane Coat & Clathrin/COP-II Lattice Structural Fitting Engine
+- **Module**: `cryoem_subtomogram_membrane_coat`
+- **Domain**: Structural Biology & In-Situ Cryo-ET
+- **Description**: Reconstructs sub-nanometer resolution structural lattices of curved vesicular vesicle coat complexes directly inside intact eukaryotic cellular tomograms.
+- **Architecture**:
+  - `packages/database/src/database/models/cryoem_subtomogram_membrane_coat.py`
+  - `packages/database/src/database/repositories/cryoem_subtomogram_membrane_coat_repo.py`
+  - `packages/research/src/research/orchestration/cryoem_subtomogram_membrane_coat_engine.py`
+  - `apps/api/src/api/routes/cryoem_subtomogram_membrane_coat.py`
+  - `apps/web/src/pages/CryoEMSubtomogramMembraneCoatStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
