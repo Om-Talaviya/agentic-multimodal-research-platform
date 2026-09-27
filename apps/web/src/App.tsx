@@ -1,3 +1,4 @@
+import { PrimeEditingRtTemplateSecondaryStructureStudioPage } from './pages/PrimeEditingRtTemplateSecondaryStructureStudioPage';
 import { SpatialGlycomicsMassSpecStudioPage } from './pages/SpatialGlycomicsMassSpecStudioPage';
 import { SingleMoleculeForceSpectroscopyStudioPage } from './pages/SingleMoleculeForceSpectroscopyStudioPage';
 import { MilestoneV26OrchestratorStudioPage } from './pages/MilestoneV26OrchestratorStudioPage';
@@ -324,6 +325,7 @@ function App() {
                 <Route path="/milestone-v2-6-orchestrator" element={<MilestoneV26OrchestratorStudioPage />} />
                 <Route path="/single-molecule-force-spectroscopy" element={<SingleMoleculeForceSpectroscopyStudioPage />} />
                 <Route path="/spatial-glycomics-mass-spec" element={<SpatialGlycomicsMassSpecStudioPage />} />
+                <Route path="/prime-editing-rt-template-secondary-structure" element={<PrimeEditingRtTemplateSecondaryStructureStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

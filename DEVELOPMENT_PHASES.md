@@ -719,3 +719,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/spatial_glycomics_mass_spec.py`
   - `apps/web/src/pages/SpatialGlycomicsMassSpecStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 241: Autonomous Prime Editing RT Template Secondary Structure & Extension Velocity Forecaster Engine
+- **Module**: `prime_editing_rt_template_secondary_structure`
+- **Domain**: Genome Engineering & RNA Thermodynamics
+- **Description**: Predicts reverse transcriptase template intramolecular hairpins and G-quadruplex structures, optimizing pegRNA sequences for maximum M-MLV RT processivity.
+- **Architecture**:
+  - `packages/database/src/database/models/prime_editing_rt_template_secondary_structure.py`
+  - `packages/database/src/database/repositories/prime_editing_rt_template_secondary_structure_repo.py`
+  - `packages/research/src/research/orchestration/prime_editing_rt_template_secondary_structure_engine.py`
+  - `apps/api/src/api/routes/prime_editing_rt_template_secondary_structure.py`
+  - `apps/web/src/pages/PrimeEditingRtTemplateSecondaryStructureStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

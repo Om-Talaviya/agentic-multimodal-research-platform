@@ -1474,3 +1474,9 @@ from database.models.spatial_glycomics_mass_spec import (
     SpatialGlycomicsMassSpecItemProfile,
     SpatialGlycomicsMassSpecMetricTrace,
 )
+
+from database.models.prime_editing_rt_template_secondary_structure import (
+    PrimeEditingRtTemplateSecondaryStructureStudy,
+    PrimeEditingRtTemplateSecondaryStructureItemProfile,
+    PrimeEditingRtTemplateSecondaryStructureMetricTrace,
+)
