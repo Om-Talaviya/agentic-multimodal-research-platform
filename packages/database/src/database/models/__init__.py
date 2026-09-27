@@ -1468,3 +1468,9 @@ from database.models.single_molecule_force_spectroscopy import (
     SingleMoleculeForceSpectroscopyItemProfile,
     SingleMoleculeForceSpectroscopyMetricTrace,
 )
+
+from database.models.spatial_glycomics_mass_spec import (
+    SpatialGlycomicsMassSpecStudy,
+    SpatialGlycomicsMassSpecItemProfile,
+    SpatialGlycomicsMassSpecMetricTrace,
+)

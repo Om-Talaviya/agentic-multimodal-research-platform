@@ -1,3 +1,4 @@
+import { SpatialGlycomicsMassSpecStudioPage } from './pages/SpatialGlycomicsMassSpecStudioPage';
 import { SingleMoleculeForceSpectroscopyStudioPage } from './pages/SingleMoleculeForceSpectroscopyStudioPage';
 import { MilestoneV26OrchestratorStudioPage } from './pages/MilestoneV26OrchestratorStudioPage';
 import { CrisprAntiCrisprSuppressionStudioPage } from './pages/CrisprAntiCrisprSuppressionStudioPage';
@@ -322,6 +323,7 @@ function App() {
                 <Route path="/crispr-anti-crispr-suppression" element={<CrisprAntiCrisprSuppressionStudioPage />} />
                 <Route path="/milestone-v2-6-orchestrator" element={<MilestoneV26OrchestratorStudioPage />} />
                 <Route path="/single-molecule-force-spectroscopy" element={<SingleMoleculeForceSpectroscopyStudioPage />} />
+                <Route path="/spatial-glycomics-mass-spec" element={<SpatialGlycomicsMassSpecStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

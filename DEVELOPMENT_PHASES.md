@@ -706,3 +706,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/single_molecule_force_spectroscopy.py`
   - `apps/web/src/pages/SingleMoleculeForceSpectroscopyStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 240: Autonomous Spatial MALDI-MSI Glycan Branching & Sialylation Tissue Micro-Architecture Engine
+- **Module**: `spatial_glycomics_mass_spec`
+- **Domain**: Spatial Glycomics & Mass Spectrometry
+- **Description**: Maps spatial distribution of N-linked glycan branchings, core fucosylation, and alpha-2,3/alpha-2,6 sialylation states across intact formalin-fixed tumor sections.
+- **Architecture**:
+  - `packages/database/src/database/models/spatial_glycomics_mass_spec.py`
+  - `packages/database/src/database/repositories/spatial_glycomics_mass_spec_repo.py`
+  - `packages/research/src/research/orchestration/spatial_glycomics_mass_spec_engine.py`
+  - `apps/api/src/api/routes/spatial_glycomics_mass_spec.py`
+  - `apps/web/src/pages/SpatialGlycomicsMassSpecStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
