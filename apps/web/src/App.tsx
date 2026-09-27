@@ -1,3 +1,4 @@
+import { TcrMimicAntibodySelectivityStudioPage } from './pages/TcrMimicAntibodySelectivityStudioPage';
 import { PrimeEditingRtTemplateSecondaryStructureStudioPage } from './pages/PrimeEditingRtTemplateSecondaryStructureStudioPage';
 import { SpatialGlycomicsMassSpecStudioPage } from './pages/SpatialGlycomicsMassSpecStudioPage';
 import { SingleMoleculeForceSpectroscopyStudioPage } from './pages/SingleMoleculeForceSpectroscopyStudioPage';
@@ -326,6 +327,7 @@ function App() {
                 <Route path="/single-molecule-force-spectroscopy" element={<SingleMoleculeForceSpectroscopyStudioPage />} />
                 <Route path="/spatial-glycomics-mass-spec" element={<SpatialGlycomicsMassSpecStudioPage />} />
                 <Route path="/prime-editing-rt-template-secondary-structure" element={<PrimeEditingRtTemplateSecondaryStructureStudioPage />} />
+                <Route path="/tcr-mimic-antibody-selectivity" element={<TcrMimicAntibodySelectivityStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

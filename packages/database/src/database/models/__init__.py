@@ -1480,3 +1480,9 @@ from database.models.prime_editing_rt_template_secondary_structure import (
     PrimeEditingRtTemplateSecondaryStructureItemProfile,
     PrimeEditingRtTemplateSecondaryStructureMetricTrace,
 )
+
+from database.models.tcr_mimic_antibody_selectivity import (
+    TcrMimicAntibodySelectivityStudy,
+    TcrMimicAntibodySelectivityItemProfile,
+    TcrMimicAntibodySelectivityMetricTrace,
+)

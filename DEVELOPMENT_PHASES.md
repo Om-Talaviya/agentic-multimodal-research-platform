@@ -732,3 +732,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/prime_editing_rt_template_secondary_structure.py`
   - `apps/web/src/pages/PrimeEditingRtTemplateSecondaryStructureStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 242: Autonomous TCR-Mimic Antibody Fine Specificity & HLA-Allotype Cross-Reactivity Engine
+- **Module**: `tcr_mimic_antibody_selectivity`
+- **Domain**: Antibody Therapeutics & Immuno-Oncology
+- **Description**: Evaluates TCR-like monoclonal antibody fine epitope recognition across peptide-MHC complexes, ranking off-target self-peptide presentation risks and affinity.
+- **Architecture**:
+  - `packages/database/src/database/models/tcr_mimic_antibody_selectivity.py`
+  - `packages/database/src/database/repositories/tcr_mimic_antibody_selectivity_repo.py`
+  - `packages/research/src/research/orchestration/tcr_mimic_antibody_selectivity_engine.py`
+  - `apps/api/src/api/routes/tcr_mimic_antibody_selectivity.py`
+  - `apps/web/src/pages/TcrMimicAntibodySelectivityStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

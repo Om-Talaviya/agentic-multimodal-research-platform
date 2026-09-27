@@ -1,3 +1,4 @@
+from api.routes.tcr_mimic_antibody_selectivity import router as tcr_mimic_antibody_selectivity_router
 from api.routes.prime_editing_rt_template_secondary_structure import router as prime_editing_rt_template_secondary_structure_router
 from api.routes.spatial_glycomics_mass_spec import router as spatial_glycomics_mass_spec_router
 from api.routes.single_molecule_force_spectroscopy import router as single_molecule_force_spectroscopy_router
@@ -632,3 +633,5 @@ app.include_router(single_molecule_force_spectroscopy_router, prefix=settings.ap
 app.include_router(spatial_glycomics_mass_spec_router, prefix=settings.api_prefix)
 
 app.include_router(prime_editing_rt_template_secondary_structure_router, prefix=settings.api_prefix)
+
+app.include_router(tcr_mimic_antibody_selectivity_router, prefix=settings.api_prefix)
