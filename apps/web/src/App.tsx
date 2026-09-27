@@ -1,3 +1,4 @@
+import { CryoEMSymmetryMismatchRefineStudioPage } from './pages/CryoEMSymmetryMismatchRefineStudioPage';
 import { SingleCellSpatialSpliceJunctionStudioPage } from './pages/SingleCellSpatialSpliceJunctionStudioPage';
 import { AdcPayloadBystanderKillingStudioPage } from './pages/AdcPayloadBystanderKillingStudioPage';
 import { SpatialCistromicsTranscriptionFactorStudioPage } from './pages/SpatialCistromicsTranscriptionFactorStudioPage';
@@ -312,6 +313,7 @@ function App() {
                 <Route path="/spatial-cistromics-transcription-factor" element={<SpatialCistromicsTranscriptionFactorStudioPage />} />
                 <Route path="/adc-payload-bystander-killing" element={<AdcPayloadBystanderKillingStudioPage />} />
                 <Route path="/single-cell-spatial-splice-junction" element={<SingleCellSpatialSpliceJunctionStudioPage />} />
+                <Route path="/cryoem-symmetry-mismatch-refine" element={<CryoEMSymmetryMismatchRefineStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

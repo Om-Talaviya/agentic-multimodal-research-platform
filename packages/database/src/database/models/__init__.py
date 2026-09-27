@@ -1438,3 +1438,9 @@ from database.models.single_cell_spatial_splice_junction import (
     SingleCellSpatialSpliceJunctionItemProfile,
     SingleCellSpatialSpliceJunctionMetricTrace,
 )
+
+from database.models.cryoem_symmetry_mismatch_refine import (
+    CryoEMSymmetryMismatchRefineStudy,
+    CryoEMSymmetryMismatchRefineItemProfile,
+    CryoEMSymmetryMismatchRefineMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.cryoem_symmetry_mismatch_refine import router as cryoem_symmetry_mismatch_refine_router
 from api.routes.single_cell_spatial_splice_junction import router as single_cell_spatial_splice_junction_router
 from api.routes.adc_payload_bystander_killing import router as adc_payload_bystander_killing_router
 from api.routes.spatial_cistromics_transcription_factor import router as spatial_cistromics_transcription_factor_router
@@ -611,3 +612,5 @@ app.include_router(spatial_cistromics_transcription_factor_router, prefix=settin
 app.include_router(adc_payload_bystander_killing_router, prefix=settings.api_prefix)
 
 app.include_router(single_cell_spatial_splice_junction_router, prefix=settings.api_prefix)
+
+app.include_router(cryoem_symmetry_mismatch_refine_router, prefix=settings.api_prefix)

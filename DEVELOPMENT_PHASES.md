@@ -641,3 +641,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/single_cell_spatial_splice_junction.py`
   - `apps/web/src/pages/SingleCellSpatialSpliceJunctionStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 235: Autonomous Cryo-EM Symmetry-Mismatch & Helical Filament Reconstruction Engine
+- **Module**: `cryoem_symmetry_mismatch_refine`
+- **Domain**: Structural Biophysics & Helical Cryo-EM
+- **Description**: Solves non-crystallographic helical and pseudo-symmetric mismatch architectures such as viral portal vertex motors and amyloidogenic tau fibrils.
+- **Architecture**:
+  - `packages/database/src/database/models/cryoem_symmetry_mismatch_refine.py`
+  - `packages/database/src/database/repositories/cryoem_symmetry_mismatch_refine_repo.py`
+  - `packages/research/src/research/orchestration/cryoem_symmetry_mismatch_refine_engine.py`
+  - `apps/api/src/api/routes/cryoem_symmetry_mismatch_refine.py`
+  - `apps/web/src/pages/CryoEMSymmetryMismatchRefineStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
