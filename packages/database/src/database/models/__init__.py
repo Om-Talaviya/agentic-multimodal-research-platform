@@ -1384,3 +1384,9 @@ from database.models.cryoem_subtomogram_membrane_coat import (
     CryoEMSubtomogramMembraneCoatItemProfile,
     CryoEMSubtomogramMembraneCoatMetricTrace,
 )
+
+from database.models.crispr_cas12a_direct_repeat_processing import (
+    CrisprCas12aDirectRepeatProcessingStudy,
+    CrisprCas12aDirectRepeatProcessingItemProfile,
+    CrisprCas12aDirectRepeatProcessingMetricTrace,
+)

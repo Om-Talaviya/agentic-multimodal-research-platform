@@ -537,3 +537,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/cryoem_subtomogram_membrane_coat.py`
   - `apps/web/src/pages/CryoEMSubtomogramMembraneCoatStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 227: Autonomous CRISPR-Cas12a Multiplex crRNA Array Self-Processing & Asymmetric Cleavage Engine
+- **Module**: `crispr_cas12a_direct_repeat_processing`
+- **Domain**: Genome Engineering & Molecular Diagnostics
+- **Description**: Models Cas12a intrinsic endoribonuclease maturation kinetics of tandem direct repeat pre-crRNA arrays and simulates staggered 5-overhang target DNA cutting.
+- **Architecture**:
+  - `packages/database/src/database/models/crispr_cas12a_direct_repeat_processing.py`
+  - `packages/database/src/database/repositories/crispr_cas12a_direct_repeat_processing_repo.py`
+  - `packages/research/src/research/orchestration/crispr_cas12a_direct_repeat_processing_engine.py`
+  - `apps/api/src/api/routes/crispr_cas12a_direct_repeat_processing.py`
+  - `apps/web/src/pages/CrisprCas12aDirectRepeatProcessingStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

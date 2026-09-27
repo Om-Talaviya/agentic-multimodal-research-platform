@@ -1,3 +1,4 @@
+from api.routes.crispr_cas12a_direct_repeat_processing import router as crispr_cas12a_direct_repeat_processing_router
 from api.routes.cryoem_subtomogram_membrane_coat import router as cryoem_subtomogram_membrane_coat_router
 from api.routes.metabolite_flux_metagenomics import router as metabolite_flux_metagenomics_router
 from api.routes.milestone_v2_4_orchestrator import router as milestone_v2_4_orchestrator_router
@@ -587,3 +588,5 @@ app.include_router(milestone_v2_4_orchestrator_router, prefix=settings.api_prefi
 app.include_router(metabolite_flux_metagenomics_router, prefix=settings.api_prefix)
 
 app.include_router(cryoem_subtomogram_membrane_coat_router, prefix=settings.api_prefix)
+
+app.include_router(crispr_cas12a_direct_repeat_processing_router, prefix=settings.api_prefix)

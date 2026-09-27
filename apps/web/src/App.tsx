@@ -1,3 +1,4 @@
+import { CrisprCas12aDirectRepeatProcessingStudioPage } from './pages/CrisprCas12aDirectRepeatProcessingStudioPage';
 import { CryoEMSubtomogramMembraneCoatStudioPage } from './pages/CryoEMSubtomogramMembraneCoatStudioPage';
 import { MetaboliteFluxMetagenomicsStudioPage } from './pages/MetaboliteFluxMetagenomicsStudioPage';
 import { MilestoneV24OrchestratorStudioPage } from './pages/MilestoneV24OrchestratorStudioPage';
@@ -296,6 +297,7 @@ function App() {
                 <Route path="/milestone-v2-4-orchestrator" element={<MilestoneV24OrchestratorStudioPage />} />
                 <Route path="/metabolite-flux-metagenomics" element={<MetaboliteFluxMetagenomicsStudioPage />} />
                 <Route path="/cryoem-subtomogram-membrane-coat" element={<CryoEMSubtomogramMembraneCoatStudioPage />} />
+                <Route path="/crispr-cas12a-direct-repeat-processing" element={<CrisprCas12aDirectRepeatProcessingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
