@@ -1,3 +1,4 @@
+from api.routes.single_cell_spatial_splice_junction import router as single_cell_spatial_splice_junction_router
 from api.routes.adc_payload_bystander_killing import router as adc_payload_bystander_killing_router
 from api.routes.spatial_cistromics_transcription_factor import router as spatial_cistromics_transcription_factor_router
 from api.routes.milestone_v2_5_orchestrator import router as milestone_v2_5_orchestrator_router
@@ -608,3 +609,5 @@ app.include_router(milestone_v2_5_orchestrator_router, prefix=settings.api_prefi
 app.include_router(spatial_cistromics_transcription_factor_router, prefix=settings.api_prefix)
 
 app.include_router(adc_payload_bystander_killing_router, prefix=settings.api_prefix)
+
+app.include_router(single_cell_spatial_splice_junction_router, prefix=settings.api_prefix)

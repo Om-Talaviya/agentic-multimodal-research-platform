@@ -1426,3 +1426,15 @@ from database.models.adc_payload_bystander_killing import (
     AdcPayloadBystanderKillingItemProfile,
     AdcPayloadBystanderKillingMetricTrace,
 )
+
+from database.models.single_cell_spatial_splice_junction import (
+    SingleCellSpatialSpliceJunctionStudy,
+    SingleCellSpatialSpliceJunctionItemProfile,
+    SingleCellSpatialSpliceJunctionMetricTrace,
+)
+
+from database.models.single_cell_spatial_splice_junction import (
+    SingleCellSpatialSpliceJunctionStudy,
+    SingleCellSpatialSpliceJunctionItemProfile,
+    SingleCellSpatialSpliceJunctionMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { SingleCellSpatialSpliceJunctionStudioPage } from './pages/SingleCellSpatialSpliceJunctionStudioPage';
 import { AdcPayloadBystanderKillingStudioPage } from './pages/AdcPayloadBystanderKillingStudioPage';
 import { SpatialCistromicsTranscriptionFactorStudioPage } from './pages/SpatialCistromicsTranscriptionFactorStudioPage';
 import { MilestoneV25OrchestratorStudioPage } from './pages/MilestoneV25OrchestratorStudioPage';
@@ -310,6 +311,7 @@ function App() {
                 <Route path="/milestone-v2-5-orchestrator" element={<MilestoneV25OrchestratorStudioPage />} />
                 <Route path="/spatial-cistromics-transcription-factor" element={<SpatialCistromicsTranscriptionFactorStudioPage />} />
                 <Route path="/adc-payload-bystander-killing" element={<AdcPayloadBystanderKillingStudioPage />} />
+                <Route path="/single-cell-spatial-splice-junction" element={<SingleCellSpatialSpliceJunctionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

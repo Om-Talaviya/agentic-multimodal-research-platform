@@ -628,3 +628,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/adc_payload_bystander_killing.py`
   - `apps/web/src/pages/AdcPayloadBystanderKillingStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 234: Autonomous Single-Cell & Spatial Alternative Splicing Isoform Deconvolution Engine
+- **Module**: `single_cell_spatial_splice_junction`
+- **Domain**: Computational Transcriptomics & Splicing
+- **Description**: Deconvolutes exon-exon junction spanning reads from single-cell and spatial RNA-seq to quantify percent spliced in (PSI) metrics and neo-isoform switches.
+- **Architecture**:
+  - `packages/database/src/database/models/single_cell_spatial_splice_junction.py`
+  - `packages/database/src/database/repositories/single_cell_spatial_splice_junction_repo.py`
+  - `packages/research/src/research/orchestration/single_cell_spatial_splice_junction_engine.py`
+  - `apps/api/src/api/routes/single_cell_spatial_splice_junction.py`
+  - `apps/web/src/pages/SingleCellSpatialSpliceJunctionStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
