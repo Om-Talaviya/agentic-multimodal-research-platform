@@ -511,3 +511,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/milestone_v2_4_orchestrator.py`
   - `apps/web/src/pages/MilestoneV24OrchestratorStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 225: Autonomous Metagenomic Metabolic Flux & Gut-Liver Axis Co-Metabolism Simulator Engine
+- **Module**: `metabolite_flux_metagenomics`
+- **Domain**: Metagenomics & Metabolic Modeling
+- **Description**: Integrates whole-metagenome shotgun sequencing with multi-species flux balance analysis to forecast short-chain fatty acid and bile acid biotransformations across the gut-liver axis.
+- **Architecture**:
+  - `packages/database/src/database/models/metabolite_flux_metagenomics.py`
+  - `packages/database/src/database/repositories/metabolite_flux_metagenomics_repo.py`
+  - `packages/research/src/research/orchestration/metabolite_flux_metagenomics_engine.py`
+  - `apps/api/src/api/routes/metabolite_flux_metagenomics.py`
+  - `apps/web/src/pages/MetaboliteFluxMetagenomicsStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

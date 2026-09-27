@@ -475,7 +475,7 @@ interface MetricTrace {{
 }}
 
 export const {pascal_name}StudioPage: React.FC = () => {{
-  const [studyName, setStudyName] = useState('{title} Protocol 01');
+  const [studyName, setStudyName] = useState('{title.replace("\'", "")} Protocol 01');
   const [specimen, setSpecimen] = useState('Human Patient Cohort Sample');
   const [inputScale, setInputScale] = useState(1.0);
   const [isAnalyzing, setIsAnalyzing] = useState(false);

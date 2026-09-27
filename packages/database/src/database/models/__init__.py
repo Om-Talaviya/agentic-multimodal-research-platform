@@ -1372,3 +1372,9 @@ from database.models.milestone_v2_4_orchestrator import (
     MilestoneV24OrchestratorItemProfile,
     MilestoneV24OrchestratorMetricTrace,
 )
+
+from database.models.metabolite_flux_metagenomics import (
+    MetaboliteFluxMetagenomicsStudy,
+    MetaboliteFluxMetagenomicsItemProfile,
+    MetaboliteFluxMetagenomicsMetricTrace,
+)
