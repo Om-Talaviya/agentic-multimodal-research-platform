@@ -1492,3 +1492,9 @@ from database.models.cellular_thermal_shift_cetsa import (
     CellularThermalShiftCetsaItemProfile,
     CellularThermalShiftCetsaMetricTrace,
 )
+
+from database.models.synthetic_promoter_regulatory_grammar import (
+    SyntheticPromoterRegulatoryGrammarStudy,
+    SyntheticPromoterRegulatoryGrammarItemProfile,
+    SyntheticPromoterRegulatoryGrammarMetricTrace,
+)

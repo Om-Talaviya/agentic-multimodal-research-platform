@@ -758,3 +758,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/cellular_thermal_shift_cetsa.py`
   - `apps/web/src/pages/CellularThermalShiftCetsaStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 244: Autonomous De-Novo Synthetic Promoter Deep Generative Architecture & Specificity Grammar Engine
+- **Module**: `synthetic_promoter_regulatory_grammar`
+- **Domain**: Synthetic Biology & Generative Genomics
+- **Description**: Generates de-novo cell-type-specific mini-promoter DNA architectures by optimizing TF motif spacing, helical phasing, and core initiator elements for targeted gene therapy.
+- **Architecture**:
+  - `packages/database/src/database/models/synthetic_promoter_regulatory_grammar.py`
+  - `packages/database/src/database/repositories/synthetic_promoter_regulatory_grammar_repo.py`
+  - `packages/research/src/research/orchestration/synthetic_promoter_regulatory_grammar_engine.py`
+  - `apps/api/src/api/routes/synthetic_promoter_regulatory_grammar.py`
+  - `apps/web/src/pages/SyntheticPromoterRegulatoryGrammarStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
