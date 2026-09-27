@@ -1420,3 +1420,9 @@ from database.models.spatial_cistromics_transcription_factor import (
     SpatialCistromicsTranscriptionFactorItemProfile,
     SpatialCistromicsTranscriptionFactorMetricTrace,
 )
+
+from database.models.adc_payload_bystander_killing import (
+    AdcPayloadBystanderKillingStudy,
+    AdcPayloadBystanderKillingItemProfile,
+    AdcPayloadBystanderKillingMetricTrace,
+)

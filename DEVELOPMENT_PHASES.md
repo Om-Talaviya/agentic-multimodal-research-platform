@@ -615,3 +615,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/spatial_cistromics_transcription_factor.py`
   - `apps/web/src/pages/SpatialCistromicsTranscriptionFactorStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 233: Autonomous Antibody-Drug Conjugate (ADC) Payload Bystander Killing & Lysosomal Cleavability Engine
+- **Module**: `adc_payload_bystander_killing`
+- **Domain**: Biotherapeutics & ADC Engineering
+- **Description**: Simulates cathepsin-B lysosomal cleavage kinetics and neutral payload membrane permeability to forecast bystander tumor cell clearance in heterogeneous antigen-low regions.
+- **Architecture**:
+  - `packages/database/src/database/models/adc_payload_bystander_killing.py`
+  - `packages/database/src/database/repositories/adc_payload_bystander_killing_repo.py`
+  - `packages/research/src/research/orchestration/adc_payload_bystander_killing_engine.py`
+  - `apps/api/src/api/routes/adc_payload_bystander_killing.py`
+  - `apps/web/src/pages/AdcPayloadBystanderKillingStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
