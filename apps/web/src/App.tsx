@@ -1,3 +1,4 @@
+import { SirnaChemicalModificationPsOmeStudioPage } from './pages/SirnaChemicalModificationPsOmeStudioPage';
 import { SpatialEpigenomicsCutTagStudioPage } from './pages/SpatialEpigenomicsCutTagStudioPage';
 import { TcrPmhcDockingAffinityLandscapeStudioPage } from './pages/TcrPmhcDockingAffinityLandscapeStudioPage';
 import { CrisprCas12aDirectRepeatProcessingStudioPage } from './pages/CrisprCas12aDirectRepeatProcessingStudioPage';
@@ -302,6 +303,7 @@ function App() {
                 <Route path="/crispr-cas12a-direct-repeat-processing" element={<CrisprCas12aDirectRepeatProcessingStudioPage />} />
                 <Route path="/tcr-pmhc-docking-affinity-landscape" element={<TcrPmhcDockingAffinityLandscapeStudioPage />} />
                 <Route path="/spatial-epigenomics-cut-tag" element={<SpatialEpigenomicsCutTagStudioPage />} />
+                <Route path="/sirna-chemical-modification-ps-ome" element={<SirnaChemicalModificationPsOmeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

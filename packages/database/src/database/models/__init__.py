@@ -1402,3 +1402,9 @@ from database.models.spatial_epigenomics_cut_tag import (
     SpatialEpigenomicsCutTagItemProfile,
     SpatialEpigenomicsCutTagMetricTrace,
 )
+
+from database.models.sirna_chemical_modification_ps_ome import (
+    SirnaChemicalModificationPsOmeStudy,
+    SirnaChemicalModificationPsOmeItemProfile,
+    SirnaChemicalModificationPsOmeMetricTrace,
+)

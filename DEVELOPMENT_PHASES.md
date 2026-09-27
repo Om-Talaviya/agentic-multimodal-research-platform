@@ -576,3 +576,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/spatial_epigenomics_cut_tag.py`
   - `apps/web/src/pages/SpatialEpigenomicsCutTagStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 230: Autonomous siRNA Phosphorothioate & 2-O-Methyl Stability Optimization Engine
+- **Module**: `sirna_chemical_modification_ps_ome`
+- **Domain**: RNA Therapeutics & Oligonucleotide Chemistry
+- **Description**: Optimizes alternating 2-F and 2-OMe ribose chemistry with stereopure terminal phosphorothioate backbones to maximize in-vivo serum exonuclease half-life.
+- **Architecture**:
+  - `packages/database/src/database/models/sirna_chemical_modification_ps_ome.py`
+  - `packages/database/src/database/repositories/sirna_chemical_modification_ps_ome_repo.py`
+  - `packages/research/src/research/orchestration/sirna_chemical_modification_ps_ome_engine.py`
+  - `apps/api/src/api/routes/sirna_chemical_modification_ps_ome.py`
+  - `apps/web/src/pages/SirnaChemicalModificationPsOmeStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.
