@@ -589,3 +589,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/sirna_chemical_modification_ps_ome.py`
   - `apps/web/src/pages/SirnaChemicalModificationPsOmeStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 231: Autonomous Milestone v2.5 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine
+- **Module**: `milestone_v2_5_orchestrator`
+- **Domain**: Meta-Orchestration & Autonomous Discovery
+- **Description**: Meta-orchestrates all 231 active platforms and computational engines across 35 generations, coordinating multi-modal structural biophysics, spatial epigenomics, and in-vivo therapeutic simulations.
+- **Architecture**:
+  - `packages/database/src/database/models/milestone_v2_5_orchestrator.py`
+  - `packages/database/src/database/repositories/milestone_v2_5_orchestrator_repo.py`
+  - `packages/research/src/research/orchestration/milestone_v2_5_orchestrator_engine.py`
+  - `apps/api/src/api/routes/milestone_v2_5_orchestrator.py`
+  - `apps/web/src/pages/MilestoneV25OrchestratorStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

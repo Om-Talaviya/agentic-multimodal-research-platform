@@ -1,3 +1,4 @@
+from api.routes.milestone_v2_5_orchestrator import router as milestone_v2_5_orchestrator_router
 from api.routes.sirna_chemical_modification_ps_ome import router as sirna_chemical_modification_ps_ome_router
 from api.routes.spatial_epigenomics_cut_tag import router as spatial_epigenomics_cut_tag_router
 from api.routes.tcr_pmhc_docking_affinity_landscape import router as tcr_pmhc_docking_affinity_landscape_router
@@ -599,3 +600,5 @@ app.include_router(tcr_pmhc_docking_affinity_landscape_router, prefix=settings.a
 app.include_router(spatial_epigenomics_cut_tag_router, prefix=settings.api_prefix)
 
 app.include_router(sirna_chemical_modification_ps_ome_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v2_5_orchestrator_router, prefix=settings.api_prefix)

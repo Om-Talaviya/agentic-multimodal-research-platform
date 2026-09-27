@@ -1408,3 +1408,9 @@ from database.models.sirna_chemical_modification_ps_ome import (
     SirnaChemicalModificationPsOmeItemProfile,
     SirnaChemicalModificationPsOmeMetricTrace,
 )
+
+from database.models.milestone_v2_5_orchestrator import (
+    MilestoneV25OrchestratorStudy,
+    MilestoneV25OrchestratorItemProfile,
+    MilestoneV25OrchestratorMetricTrace,
+)

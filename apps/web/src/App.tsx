@@ -1,3 +1,4 @@
+import { MilestoneV25OrchestratorStudioPage } from './pages/MilestoneV25OrchestratorStudioPage';
 import { SirnaChemicalModificationPsOmeStudioPage } from './pages/SirnaChemicalModificationPsOmeStudioPage';
 import { SpatialEpigenomicsCutTagStudioPage } from './pages/SpatialEpigenomicsCutTagStudioPage';
 import { TcrPmhcDockingAffinityLandscapeStudioPage } from './pages/TcrPmhcDockingAffinityLandscapeStudioPage';
@@ -304,6 +305,7 @@ function App() {
                 <Route path="/tcr-pmhc-docking-affinity-landscape" element={<TcrPmhcDockingAffinityLandscapeStudioPage />} />
                 <Route path="/spatial-epigenomics-cut-tag" element={<SpatialEpigenomicsCutTagStudioPage />} />
                 <Route path="/sirna-chemical-modification-ps-ome" element={<SirnaChemicalModificationPsOmeStudioPage />} />
+                <Route path="/milestone-v2-5-orchestrator" element={<MilestoneV25OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
