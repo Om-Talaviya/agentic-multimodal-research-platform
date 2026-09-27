@@ -1456,3 +1456,9 @@ from database.models.crispr_anti_crispr_suppression import (
     CrisprAntiCrisprSuppressionItemProfile,
     CrisprAntiCrisprSuppressionMetricTrace,
 )
+
+from database.models.milestone_v2_6_orchestrator import (
+    MilestoneV26OrchestratorStudy,
+    MilestoneV26OrchestratorItemProfile,
+    MilestoneV26OrchestratorMetricTrace,
+)

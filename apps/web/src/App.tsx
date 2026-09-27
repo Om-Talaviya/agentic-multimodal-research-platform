@@ -1,3 +1,4 @@
+import { MilestoneV26OrchestratorStudioPage } from './pages/MilestoneV26OrchestratorStudioPage';
 import { CrisprAntiCrisprSuppressionStudioPage } from './pages/CrisprAntiCrisprSuppressionStudioPage';
 import { TargetedProteinDegraderMolecularGlueStudioPage } from './pages/TargetedProteinDegraderMolecularGlueStudioPage';
 import { CryoEMSymmetryMismatchRefineStudioPage } from './pages/CryoEMSymmetryMismatchRefineStudioPage';
@@ -318,6 +319,7 @@ function App() {
                 <Route path="/cryoem-symmetry-mismatch-refine" element={<CryoEMSymmetryMismatchRefineStudioPage />} />
                 <Route path="/targeted-protein-degrader-molecular-glue" element={<TargetedProteinDegraderMolecularGlueStudioPage />} />
                 <Route path="/crispr-anti-crispr-suppression" element={<CrisprAntiCrisprSuppressionStudioPage />} />
+                <Route path="/milestone-v2-6-orchestrator" element={<MilestoneV26OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
