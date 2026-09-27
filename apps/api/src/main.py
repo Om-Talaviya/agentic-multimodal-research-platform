@@ -1,3 +1,4 @@
+from api.routes.targeted_protein_degrader_molecular_glue import router as targeted_protein_degrader_molecular_glue_router
 from api.routes.cryoem_symmetry_mismatch_refine import router as cryoem_symmetry_mismatch_refine_router
 from api.routes.single_cell_spatial_splice_junction import router as single_cell_spatial_splice_junction_router
 from api.routes.adc_payload_bystander_killing import router as adc_payload_bystander_killing_router
@@ -614,3 +615,5 @@ app.include_router(adc_payload_bystander_killing_router, prefix=settings.api_pre
 app.include_router(single_cell_spatial_splice_junction_router, prefix=settings.api_prefix)
 
 app.include_router(cryoem_symmetry_mismatch_refine_router, prefix=settings.api_prefix)
+
+app.include_router(targeted_protein_degrader_molecular_glue_router, prefix=settings.api_prefix)

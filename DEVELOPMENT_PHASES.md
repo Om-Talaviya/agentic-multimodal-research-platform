@@ -654,3 +654,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/cryoem_symmetry_mismatch_refine.py`
   - `apps/web/src/pages/CryoEMSymmetryMismatchRefineStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 236: Autonomous Molecular Glue Degrader (MGD) CRBN/VHL Ternary Composite Cooperativity Engine
+- **Module**: `targeted_protein_degrader_molecular_glue`
+- **Domain**: Chemical Biology & Targeted Protein Degradation
+- **Description**: Predicts small-molecule-induced E3 ligase surface remodeling, composite neo-epitope binding interfaces, and thermodynamic cooperativity factor alpha for targeted degradation.
+- **Architecture**:
+  - `packages/database/src/database/models/targeted_protein_degrader_molecular_glue.py`
+  - `packages/database/src/database/repositories/targeted_protein_degrader_molecular_glue_repo.py`
+  - `packages/research/src/research/orchestration/targeted_protein_degrader_molecular_glue_engine.py`
+  - `apps/api/src/api/routes/targeted_protein_degrader_molecular_glue.py`
+  - `apps/web/src/pages/TargetedProteinDegraderMolecularGlueStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

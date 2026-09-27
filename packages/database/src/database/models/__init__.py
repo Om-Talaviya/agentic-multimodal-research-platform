@@ -1444,3 +1444,9 @@ from database.models.cryoem_symmetry_mismatch_refine import (
     CryoEMSymmetryMismatchRefineItemProfile,
     CryoEMSymmetryMismatchRefineMetricTrace,
 )
+
+from database.models.targeted_protein_degrader_molecular_glue import (
+    TargetedProteinDegraderMolecularGlueStudy,
+    TargetedProteinDegraderMolecularGlueItemProfile,
+    TargetedProteinDegraderMolecularGlueMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { TargetedProteinDegraderMolecularGlueStudioPage } from './pages/TargetedProteinDegraderMolecularGlueStudioPage';
 import { CryoEMSymmetryMismatchRefineStudioPage } from './pages/CryoEMSymmetryMismatchRefineStudioPage';
 import { SingleCellSpatialSpliceJunctionStudioPage } from './pages/SingleCellSpatialSpliceJunctionStudioPage';
 import { AdcPayloadBystanderKillingStudioPage } from './pages/AdcPayloadBystanderKillingStudioPage';
@@ -314,6 +315,7 @@ function App() {
                 <Route path="/adc-payload-bystander-killing" element={<AdcPayloadBystanderKillingStudioPage />} />
                 <Route path="/single-cell-spatial-splice-junction" element={<SingleCellSpatialSpliceJunctionStudioPage />} />
                 <Route path="/cryoem-symmetry-mismatch-refine" element={<CryoEMSymmetryMismatchRefineStudioPage />} />
+                <Route path="/targeted-protein-degrader-molecular-glue" element={<TargetedProteinDegraderMolecularGlueStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
