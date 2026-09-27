@@ -1390,3 +1390,9 @@ from database.models.crispr_cas12a_direct_repeat_processing import (
     CrisprCas12aDirectRepeatProcessingItemProfile,
     CrisprCas12aDirectRepeatProcessingMetricTrace,
 )
+
+from database.models.tcr_pmhc_docking_affinity_landscape import (
+    TcrPmhcDockingAffinityLandscapeStudy,
+    TcrPmhcDockingAffinityLandscapeItemProfile,
+    TcrPmhcDockingAffinityLandscapeMetricTrace,
+)

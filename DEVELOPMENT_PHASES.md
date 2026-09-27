@@ -550,3 +550,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/crispr_cas12a_direct_repeat_processing.py`
   - `apps/web/src/pages/CrisprCas12aDirectRepeatProcessingStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 228: Autonomous TCR-pMHC Complex Interface Geometric Docking & Cross-Reactivity Risk Engine
+- **Module**: `tcr_pmhc_docking_affinity_landscape`
+- **Domain**: Immunoinformatics & TCR Structural Biology
+- **Description**: Predicts tertiary docking geometries, CDR3 loop induced-fit binding energies, and off-target cross-reactivity risks across human self-peptide-HLA presentation repertoires.
+- **Architecture**:
+  - `packages/database/src/database/models/tcr_pmhc_docking_affinity_landscape.py`
+  - `packages/database/src/database/repositories/tcr_pmhc_docking_affinity_landscape_repo.py`
+  - `packages/research/src/research/orchestration/tcr_pmhc_docking_affinity_landscape_engine.py`
+  - `apps/api/src/api/routes/tcr_pmhc_docking_affinity_landscape.py`
+  - `apps/web/src/pages/TcrPmhcDockingAffinityLandscapeStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

@@ -1,3 +1,4 @@
+import { TcrPmhcDockingAffinityLandscapeStudioPage } from './pages/TcrPmhcDockingAffinityLandscapeStudioPage';
 import { CrisprCas12aDirectRepeatProcessingStudioPage } from './pages/CrisprCas12aDirectRepeatProcessingStudioPage';
 import { CryoEMSubtomogramMembraneCoatStudioPage } from './pages/CryoEMSubtomogramMembraneCoatStudioPage';
 import { MetaboliteFluxMetagenomicsStudioPage } from './pages/MetaboliteFluxMetagenomicsStudioPage';
@@ -298,6 +299,7 @@ function App() {
                 <Route path="/metabolite-flux-metagenomics" element={<MetaboliteFluxMetagenomicsStudioPage />} />
                 <Route path="/cryoem-subtomogram-membrane-coat" element={<CryoEMSubtomogramMembraneCoatStudioPage />} />
                 <Route path="/crispr-cas12a-direct-repeat-processing" element={<CrisprCas12aDirectRepeatProcessingStudioPage />} />
+                <Route path="/tcr-pmhc-docking-affinity-landscape" element={<TcrPmhcDockingAffinityLandscapeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
