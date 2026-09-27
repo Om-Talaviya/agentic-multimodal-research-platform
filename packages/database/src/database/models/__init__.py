@@ -1462,3 +1462,9 @@ from database.models.milestone_v2_6_orchestrator import (
     MilestoneV26OrchestratorItemProfile,
     MilestoneV26OrchestratorMetricTrace,
 )
+
+from database.models.single_molecule_force_spectroscopy import (
+    SingleMoleculeForceSpectroscopyStudy,
+    SingleMoleculeForceSpectroscopyItemProfile,
+    SingleMoleculeForceSpectroscopyMetricTrace,
+)

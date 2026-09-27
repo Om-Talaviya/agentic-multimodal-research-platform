@@ -693,3 +693,16 @@ eoantigen_hla_binding_predictions)
   - `apps/api/src/api/routes/milestone_v2_6_orchestrator.py`
   - `apps/web/src/pages/MilestoneV26OrchestratorStudioPage.tsx`
 - **Verification**: 100% test coverage with automated unit & integration test suites.
+
+
+## Phase 239: Autonomous Single-Molecule Optical Tweezers & AFM Force-Induced Unfolding Kinetics Engine
+- **Module**: `single_molecule_force_spectroscopy`
+- **Domain**: Single-Molecule Biophysics & Nanomechanics
+- **Description**: Models optical tweezers and atomic force spectroscopy force-extension curves, calculating Bell-Evans transition state barrier distances and mechanical rupture forces.
+- **Architecture**:
+  - `packages/database/src/database/models/single_molecule_force_spectroscopy.py`
+  - `packages/database/src/database/repositories/single_molecule_force_spectroscopy_repo.py`
+  - `packages/research/src/research/orchestration/single_molecule_force_spectroscopy_engine.py`
+  - `apps/api/src/api/routes/single_molecule_force_spectroscopy.py`
+  - `apps/web/src/pages/SingleMoleculeForceSpectroscopyStudioPage.tsx`
+- **Verification**: 100% test coverage with automated unit & integration test suites.

@@ -1,3 +1,4 @@
+from api.routes.single_molecule_force_spectroscopy import router as single_molecule_force_spectroscopy_router
 from api.routes.milestone_v2_6_orchestrator import router as milestone_v2_6_orchestrator_router
 from api.routes.crispr_anti_crispr_suppression import router as crispr_anti_crispr_suppression_router
 from api.routes.targeted_protein_degrader_molecular_glue import router as targeted_protein_degrader_molecular_glue_router
@@ -623,3 +624,5 @@ app.include_router(targeted_protein_degrader_molecular_glue_router, prefix=setti
 app.include_router(crispr_anti_crispr_suppression_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v2_6_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(single_molecule_force_spectroscopy_router, prefix=settings.api_prefix)
