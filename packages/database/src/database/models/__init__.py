@@ -1546,3 +1546,9 @@ from database.models.milestone_v2_8_orchestrator import (
     MilestoneV28OrchestratorItemProfile,
     MilestoneV28OrchestratorMetricTrace,
 )
+
+from database.models.smfish_subcellular_rna_localization import (
+    SmfishSubcellularRnaLocalizationStudy,
+    SmfishSubcellularRnaLocalizationItemProfile,
+    SmfishSubcellularRnaLocalizationMetricTrace,
+)

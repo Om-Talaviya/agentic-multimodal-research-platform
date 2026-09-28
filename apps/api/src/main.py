@@ -1,3 +1,4 @@
+from api.routes.smfish_subcellular_rna_localization import router as smfish_subcellular_rna_localization_router
 from api.routes.milestone_v2_8_orchestrator import router as milestone_v2_8_orchestrator_router
 from api.routes.crispr_cas13_collateral_cleavage import router as crispr_cas13_collateral_cleavage_router
 from api.routes.dili_mitochondrial_toxicity import router as dili_mitochondrial_toxicity_router
@@ -665,3 +666,5 @@ app.include_router(dili_mitochondrial_toxicity_router, prefix=settings.api_prefi
 app.include_router(crispr_cas13_collateral_cleavage_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v2_8_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(smfish_subcellular_rna_localization_router, prefix=settings.api_prefix)
