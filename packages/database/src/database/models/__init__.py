@@ -1504,3 +1504,9 @@ from database.models.milestone_v2_7_orchestrator import (
     MilestoneV27OrchestratorItemProfile,
     MilestoneV27OrchestratorMetricTrace,
 )
+
+from database.models.protac_ternary_ubiquitination import (
+    ProtacTernaryUbiquitinationStudy,
+    ProtacTernaryUbiquitinationItemProfile,
+    ProtacTernaryUbiquitinationMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.protac_ternary_ubiquitination import router as protac_ternary_ubiquitination_router
 from api.routes.milestone_v2_7_orchestrator import router as milestone_v2_7_orchestrator_router
 from api.routes.synthetic_promoter_regulatory_grammar import router as synthetic_promoter_regulatory_grammar_router
 from api.routes.cellular_thermal_shift_cetsa import router as cellular_thermal_shift_cetsa_router
@@ -644,3 +645,5 @@ app.include_router(cellular_thermal_shift_cetsa_router, prefix=settings.api_pref
 app.include_router(synthetic_promoter_regulatory_grammar_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v2_7_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(protac_ternary_ubiquitination_router, prefix=settings.api_prefix)
