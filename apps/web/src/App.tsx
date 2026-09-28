@@ -1,3 +1,4 @@
+import { AntibodyDeimmunizationEpitopeRemovalStudioPage } from './pages/AntibodyDeimmunizationEpitopeRemovalStudioPage';
 import { SpatialEpigenomeTranscriptomeCoassayStudioPage } from './pages/SpatialEpigenomeTranscriptomeCoassayStudioPage';
 import { MilestoneV29OrchestratorStudioPage } from './pages/MilestoneV29OrchestratorStudioPage';
 import { BiomolecularCondensateLlpsDynamicsStudioPage } from './pages/BiomolecularCondensateLlpsDynamicsStudioPage';
@@ -364,6 +365,7 @@ function App() {
                 <Route path="/biomolecular-condensate-llps-dynamics" element={<BiomolecularCondensateLlpsDynamicsStudioPage />} />
                 <Route path="/milestone-v2-9-orchestrator" element={<MilestoneV29OrchestratorStudioPage />} />
                 <Route path="/spatial-epigenome-transcriptome-coassay" element={<SpatialEpigenomeTranscriptomeCoassayStudioPage />} />
+                <Route path="/antibody-deimmunization-epitope-removal" element={<AntibodyDeimmunizationEpitopeRemovalStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1594,3 +1594,9 @@ from database.models.spatial_epigenome_transcriptome_coassay import (
     SpatialEpigenomeTranscriptomeCoassayItemProfile,
     SpatialEpigenomeTranscriptomeCoassayMetricTrace,
 )
+
+from database.models.antibody_deimmunization_epitope_removal import (
+    AntibodyDeimmunizationEpitopeRemovalStudy,
+    AntibodyDeimmunizationEpitopeRemovalItemProfile,
+    AntibodyDeimmunizationEpitopeRemovalMetricTrace,
+)
