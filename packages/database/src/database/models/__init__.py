@@ -1618,3 +1618,9 @@ from database.models.liquid_biopsy_mrd_deconvolution import (
     LiquidBiopsyMrdDeconvolutionItemProfile,
     LiquidBiopsyMrdDeconvolutionMetricTrace,
 )
+
+from database.models.synthetic_minimal_genome_design import (
+    SyntheticMinimalGenomeDesignStudy,
+    SyntheticMinimalGenomeDesignItemProfile,
+    SyntheticMinimalGenomeDesignMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { SyntheticMinimalGenomeDesignStudioPage } from './pages/SyntheticMinimalGenomeDesignStudioPage';
 import { LiquidBiopsyMrdDeconvolutionStudioPage } from './pages/LiquidBiopsyMrdDeconvolutionStudioPage';
 import { CryoemFlexibleFittingMdStudioPage } from './pages/CryoemFlexibleFittingMdStudioPage';
 import { PerturbSeqEpistasisCausalNetworkStudioPage } from './pages/PerturbSeqEpistasisCausalNetworkStudioPage';
@@ -372,6 +373,7 @@ function App() {
                 <Route path="/perturb-seq-epistasis-causal-network" element={<PerturbSeqEpistasisCausalNetworkStudioPage />} />
                 <Route path="/cryoem-flexible-fitting-md" element={<CryoemFlexibleFittingMdStudioPage />} />
                 <Route path="/liquid-biopsy-mrd-deconvolution" element={<LiquidBiopsyMrdDeconvolutionStudioPage />} />
+                <Route path="/synthetic-minimal-genome-design" element={<SyntheticMinimalGenomeDesignStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
