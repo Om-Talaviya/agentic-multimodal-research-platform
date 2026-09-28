@@ -1582,3 +1582,9 @@ from database.models.biomolecular_condensate_llps_dynamics import (
     BiomolecularCondensateLlpsDynamicsItemProfile,
     BiomolecularCondensateLlpsDynamicsMetricTrace,
 )
+
+from database.models.milestone_v2_9_orchestrator import (
+    MilestoneV29OrchestratorStudy,
+    MilestoneV29OrchestratorItemProfile,
+    MilestoneV29OrchestratorMetricTrace,
+)

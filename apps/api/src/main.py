@@ -1,3 +1,4 @@
+from api.routes.milestone_v2_9_orchestrator import router as milestone_v2_9_orchestrator_router
 from api.routes.biomolecular_condensate_llps_dynamics import router as biomolecular_condensate_llps_dynamics_router
 from api.routes.nanopore_direct_rna_modifications import router as nanopore_direct_rna_modifications_router
 from api.routes.crispr_epigenome_methylation_editor import router as crispr_epigenome_methylation_editor_router
@@ -683,3 +684,5 @@ app.include_router(crispr_epigenome_methylation_editor_router, prefix=settings.a
 app.include_router(nanopore_direct_rna_modifications_router, prefix=settings.api_prefix)
 
 app.include_router(biomolecular_condensate_llps_dynamics_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v2_9_orchestrator_router, prefix=settings.api_prefix)
