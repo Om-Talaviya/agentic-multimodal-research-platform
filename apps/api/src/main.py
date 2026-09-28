@@ -1,3 +1,4 @@
+from api.routes.chemically_modified_mrna_design import router as chemically_modified_mrna_design_router
 from api.routes.spatial_cell_cell_communication import router as spatial_cell_cell_communication_router
 from api.routes.protac_ternary_ubiquitination import router as protac_ternary_ubiquitination_router
 from api.routes.milestone_v2_7_orchestrator import router as milestone_v2_7_orchestrator_router
@@ -650,3 +651,5 @@ app.include_router(milestone_v2_7_orchestrator_router, prefix=settings.api_prefi
 app.include_router(protac_ternary_ubiquitination_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_cell_cell_communication_router, prefix=settings.api_prefix)
+
+app.include_router(chemically_modified_mrna_design_router, prefix=settings.api_prefix)

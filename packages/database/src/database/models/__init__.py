@@ -1516,3 +1516,9 @@ from database.models.spatial_cell_cell_communication import (
     SpatialCellCellCommunicationItemProfile,
     SpatialCellCellCommunicationMetricTrace,
 )
+
+from database.models.chemically_modified_mrna_design import (
+    ChemicallyModifiedMrnaDesignStudy,
+    ChemicallyModifiedMrnaDesignItemProfile,
+    ChemicallyModifiedMrnaDesignMetricTrace,
+)
