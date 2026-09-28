@@ -1522,3 +1522,9 @@ from database.models.chemically_modified_mrna_design import (
     ChemicallyModifiedMrnaDesignItemProfile,
     ChemicallyModifiedMrnaDesignMetricTrace,
 )
+
+from database.models.cryoem_continuous_energy_landscape import (
+    CryoemContinuousEnergyLandscapeStudy,
+    CryoemContinuousEnergyLandscapeItemProfile,
+    CryoemContinuousEnergyLandscapeMetricTrace,
+)

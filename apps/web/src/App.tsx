@@ -1,3 +1,4 @@
+import { CryoemContinuousEnergyLandscapeStudioPage } from './pages/CryoemContinuousEnergyLandscapeStudioPage';
 import { ChemicallyModifiedMrnaDesignStudioPage } from './pages/ChemicallyModifiedMrnaDesignStudioPage';
 import { SpatialCellCellCommunicationStudioPage } from './pages/SpatialCellCellCommunicationStudioPage';
 import { ProtacTernaryUbiquitinationStudioPage } from './pages/ProtacTernaryUbiquitinationStudioPage';
@@ -340,6 +341,7 @@ function App() {
                 <Route path="/protac-ternary-ubiquitination" element={<ProtacTernaryUbiquitinationStudioPage />} />
                 <Route path="/spatial-cell-cell-communication" element={<SpatialCellCellCommunicationStudioPage />} />
                 <Route path="/chemically-modified-mrna-design" element={<ChemicallyModifiedMrnaDesignStudioPage />} />
+                <Route path="/cryoem-continuous-energy-landscape" element={<CryoemContinuousEnergyLandscapeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
