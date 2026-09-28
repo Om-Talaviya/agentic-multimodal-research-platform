@@ -1,3 +1,4 @@
+import { SpatialCellCellCommunicationStudioPage } from './pages/SpatialCellCellCommunicationStudioPage';
 import { ProtacTernaryUbiquitinationStudioPage } from './pages/ProtacTernaryUbiquitinationStudioPage';
 import { MilestoneV27OrchestratorStudioPage } from './pages/MilestoneV27OrchestratorStudioPage';
 import { SyntheticPromoterRegulatoryGrammarStudioPage } from './pages/SyntheticPromoterRegulatoryGrammarStudioPage';
@@ -336,6 +337,7 @@ function App() {
                 <Route path="/synthetic-promoter-regulatory-grammar" element={<SyntheticPromoterRegulatoryGrammarStudioPage />} />
                 <Route path="/milestone-v2-7-orchestrator" element={<MilestoneV27OrchestratorStudioPage />} />
                 <Route path="/protac-ternary-ubiquitination" element={<ProtacTernaryUbiquitinationStudioPage />} />
+                <Route path="/spatial-cell-cell-communication" element={<SpatialCellCellCommunicationStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

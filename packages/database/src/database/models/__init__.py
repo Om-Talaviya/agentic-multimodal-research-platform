@@ -1510,3 +1510,9 @@ from database.models.protac_ternary_ubiquitination import (
     ProtacTernaryUbiquitinationItemProfile,
     ProtacTernaryUbiquitinationMetricTrace,
 )
+
+from database.models.spatial_cell_cell_communication import (
+    SpatialCellCellCommunicationStudy,
+    SpatialCellCellCommunicationItemProfile,
+    SpatialCellCellCommunicationMetricTrace,
+)
