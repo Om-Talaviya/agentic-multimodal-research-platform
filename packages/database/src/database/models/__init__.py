@@ -1570,3 +1570,9 @@ from database.models.crispr_epigenome_methylation_editor import (
     CrisprEpigenomeMethylationEditorItemProfile,
     CrisprEpigenomeMethylationEditorMetricTrace,
 )
+
+from database.models.nanopore_direct_rna_modifications import (
+    NanoporeDirectRnaModificationsStudy,
+    NanoporeDirectRnaModificationsItemProfile,
+    NanoporeDirectRnaModificationsMetricTrace,
+)

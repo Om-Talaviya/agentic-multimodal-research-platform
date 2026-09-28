@@ -1,3 +1,4 @@
+from api.routes.nanopore_direct_rna_modifications import router as nanopore_direct_rna_modifications_router
 from api.routes.crispr_epigenome_methylation_editor import router as crispr_epigenome_methylation_editor_router
 from api.routes.single_cell_mass_spec_proteomics import router as single_cell_mass_spec_proteomics_router
 from api.routes.multispecific_antibody_hinge_geometry import router as multispecific_antibody_hinge_geometry_router
@@ -677,3 +678,5 @@ app.include_router(multispecific_antibody_hinge_geometry_router, prefix=settings
 app.include_router(single_cell_mass_spec_proteomics_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_epigenome_methylation_editor_router, prefix=settings.api_prefix)
+
+app.include_router(nanopore_direct_rna_modifications_router, prefix=settings.api_prefix)

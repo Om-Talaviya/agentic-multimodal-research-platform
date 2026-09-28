@@ -1,3 +1,4 @@
+import { NanoporeDirectRnaModificationsStudioPage } from './pages/NanoporeDirectRnaModificationsStudioPage';
 import { CrisprEpigenomeMethylationEditorStudioPage } from './pages/CrisprEpigenomeMethylationEditorStudioPage';
 import { SingleCellMassSpecProteomicsStudioPage } from './pages/SingleCellMassSpecProteomicsStudioPage';
 import { MultispecificAntibodyHingeGeometryStudioPage } from './pages/MultispecificAntibodyHingeGeometryStudioPage';
@@ -356,6 +357,7 @@ function App() {
                 <Route path="/multispecific-antibody-hinge-geometry" element={<MultispecificAntibodyHingeGeometryStudioPage />} />
                 <Route path="/single-cell-mass-spec-proteomics" element={<SingleCellMassSpecProteomicsStudioPage />} />
                 <Route path="/crispr-epigenome-methylation-editor" element={<CrisprEpigenomeMethylationEditorStudioPage />} />
+                <Route path="/nanopore-direct-rna-modifications" element={<NanoporeDirectRnaModificationsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
