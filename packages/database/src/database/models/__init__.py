@@ -1564,3 +1564,9 @@ from database.models.single_cell_mass_spec_proteomics import (
     SingleCellMassSpecProteomicsItemProfile,
     SingleCellMassSpecProteomicsMetricTrace,
 )
+
+from database.models.crispr_epigenome_methylation_editor import (
+    CrisprEpigenomeMethylationEditorStudy,
+    CrisprEpigenomeMethylationEditorItemProfile,
+    CrisprEpigenomeMethylationEditorMetricTrace,
+)

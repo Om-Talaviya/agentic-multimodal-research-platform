@@ -1,3 +1,4 @@
+import { CrisprEpigenomeMethylationEditorStudioPage } from './pages/CrisprEpigenomeMethylationEditorStudioPage';
 import { SingleCellMassSpecProteomicsStudioPage } from './pages/SingleCellMassSpecProteomicsStudioPage';
 import { MultispecificAntibodyHingeGeometryStudioPage } from './pages/MultispecificAntibodyHingeGeometryStudioPage';
 import { SmfishSubcellularRnaLocalizationStudioPage } from './pages/SmfishSubcellularRnaLocalizationStudioPage';
@@ -354,6 +355,7 @@ function App() {
                 <Route path="/smfish-subcellular-rna-localization" element={<SmfishSubcellularRnaLocalizationStudioPage />} />
                 <Route path="/multispecific-antibody-hinge-geometry" element={<MultispecificAntibodyHingeGeometryStudioPage />} />
                 <Route path="/single-cell-mass-spec-proteomics" element={<SingleCellMassSpecProteomicsStudioPage />} />
+                <Route path="/crispr-epigenome-methylation-editor" element={<CrisprEpigenomeMethylationEditorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
