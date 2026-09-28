@@ -1576,3 +1576,9 @@ from database.models.nanopore_direct_rna_modifications import (
     NanoporeDirectRnaModificationsItemProfile,
     NanoporeDirectRnaModificationsMetricTrace,
 )
+
+from database.models.biomolecular_condensate_llps_dynamics import (
+    BiomolecularCondensateLlpsDynamicsStudy,
+    BiomolecularCondensateLlpsDynamicsItemProfile,
+    BiomolecularCondensateLlpsDynamicsMetricTrace,
+)

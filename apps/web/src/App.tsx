@@ -1,3 +1,4 @@
+import { BiomolecularCondensateLlpsDynamicsStudioPage } from './pages/BiomolecularCondensateLlpsDynamicsStudioPage';
 import { NanoporeDirectRnaModificationsStudioPage } from './pages/NanoporeDirectRnaModificationsStudioPage';
 import { CrisprEpigenomeMethylationEditorStudioPage } from './pages/CrisprEpigenomeMethylationEditorStudioPage';
 import { SingleCellMassSpecProteomicsStudioPage } from './pages/SingleCellMassSpecProteomicsStudioPage';
@@ -358,6 +359,7 @@ function App() {
                 <Route path="/single-cell-mass-spec-proteomics" element={<SingleCellMassSpecProteomicsStudioPage />} />
                 <Route path="/crispr-epigenome-methylation-editor" element={<CrisprEpigenomeMethylationEditorStudioPage />} />
                 <Route path="/nanopore-direct-rna-modifications" element={<NanoporeDirectRnaModificationsStudioPage />} />
+                <Route path="/biomolecular-condensate-llps-dynamics" element={<BiomolecularCondensateLlpsDynamicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
