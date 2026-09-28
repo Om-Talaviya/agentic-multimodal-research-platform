@@ -1540,3 +1540,9 @@ from database.models.crispr_cas13_collateral_cleavage import (
     CrisprCas13CollateralCleavageItemProfile,
     CrisprCas13CollateralCleavageMetricTrace,
 )
+
+from database.models.milestone_v2_8_orchestrator import (
+    MilestoneV28OrchestratorStudy,
+    MilestoneV28OrchestratorItemProfile,
+    MilestoneV28OrchestratorMetricTrace,
+)
