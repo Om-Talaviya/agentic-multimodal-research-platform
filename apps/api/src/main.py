@@ -1,3 +1,4 @@
+from api.routes.crispr_cas13_collateral_cleavage import router as crispr_cas13_collateral_cleavage_router
 from api.routes.dili_mitochondrial_toxicity import router as dili_mitochondrial_toxicity_router
 from api.routes.cryoem_continuous_energy_landscape import router as cryoem_continuous_energy_landscape_router
 from api.routes.chemically_modified_mrna_design import router as chemically_modified_mrna_design_router
@@ -659,3 +660,5 @@ app.include_router(chemically_modified_mrna_design_router, prefix=settings.api_p
 app.include_router(cryoem_continuous_energy_landscape_router, prefix=settings.api_prefix)
 
 app.include_router(dili_mitochondrial_toxicity_router, prefix=settings.api_prefix)
+
+app.include_router(crispr_cas13_collateral_cleavage_router, prefix=settings.api_prefix)

@@ -1534,3 +1534,9 @@ from database.models.dili_mitochondrial_toxicity import (
     DiliMitochondrialToxicityItemProfile,
     DiliMitochondrialToxicityMetricTrace,
 )
+
+from database.models.crispr_cas13_collateral_cleavage import (
+    CrisprCas13CollateralCleavageStudy,
+    CrisprCas13CollateralCleavageItemProfile,
+    CrisprCas13CollateralCleavageMetricTrace,
+)

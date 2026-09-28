@@ -1,3 +1,4 @@
+import { CrisprCas13CollateralCleavageStudioPage } from './pages/CrisprCas13CollateralCleavageStudioPage';
 import { DiliMitochondrialToxicityStudioPage } from './pages/DiliMitochondrialToxicityStudioPage';
 import { CryoemContinuousEnergyLandscapeStudioPage } from './pages/CryoemContinuousEnergyLandscapeStudioPage';
 import { ChemicallyModifiedMrnaDesignStudioPage } from './pages/ChemicallyModifiedMrnaDesignStudioPage';
@@ -344,6 +345,7 @@ function App() {
                 <Route path="/chemically-modified-mrna-design" element={<ChemicallyModifiedMrnaDesignStudioPage />} />
                 <Route path="/cryoem-continuous-energy-landscape" element={<CryoemContinuousEnergyLandscapeStudioPage />} />
                 <Route path="/dili-mitochondrial-toxicity" element={<DiliMitochondrialToxicityStudioPage />} />
+                <Route path="/crispr-cas13-collateral-cleavage" element={<CrisprCas13CollateralCleavageStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
