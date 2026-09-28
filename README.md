@@ -418,6 +418,19 @@ iboseq_translation_kinetics)
 - **Phase 238**: Autonomous Milestone v2.6 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_6_orchestrator`)
 
 
+
+### Milestone v2.8: Autonomous Targeted Degradation, Spatial Interactomics & Deep mRNA Thermodynamics (Phases 246–252)
+
+| Phase | Engine & Domain | Key Capabilities & Algorithms | Stack / Test Status |
+|---|---|---|---|
+| **Phase 246** | `protac_ternary_ubiquitination` | PROTAC cooperativity factor $\alpha$, Hook effect bell curve deconvolution, E3-POI ubiquitination rate ($k_{ub}$) | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 247** | `spatial_cell_cell_communication` | Gaussian distance-decay ligand-receptor interaction potential, juxtacrine/paracrine niche deconvolution | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 248** | `chemically_modified_mrna_design` | $\text{m1}\Psi$ & 5moU modified mRNA design, MFE secondary structure stability, ribosome clearance rate | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 249** | `cryoem_continuous_energy_landscape` | 3D Gaussian latent space manifold, Boltzmann free energy landscape ($\Delta G = -k_B T \ln P$), transition barrier | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 250** | `dili_mitochondrial_toxicity` | Multi-omics DILI risk, BSEP inhibition $IC_{50}$, mitochondrial membrane potential dissipation ($\Delta \Psi_m$) | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 251** | `crispr_cas13_collateral_cleavage` | Cas13 collateral ribonuclease kinetics ($k_{cat}/K_m$), single-nucleotide mismatch discrimination index | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 252** | `milestone_v2_8_orchestrator` | Milestone v2.8 planetary multi-omics research synthesis & meta-orchestrator, cross-phase DAG synchronization | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+
 ### Milestone v2.7: Autonomous Molecular Biophysics, Glycomics & Synthetic Epigenome Engineering (Phases 239–245)
 
 | Phase | Engine & Domain | Key Capabilities & Algorithms | Stack / Test Status |
