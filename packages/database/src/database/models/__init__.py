@@ -1624,3 +1624,9 @@ from database.models.synthetic_minimal_genome_design import (
     SyntheticMinimalGenomeDesignItemProfile,
     SyntheticMinimalGenomeDesignMetricTrace,
 )
+
+from database.models.milestone_v3_0_orchestrator import (
+    MilestoneV30OrchestratorStudy,
+    MilestoneV30OrchestratorItemProfile,
+    MilestoneV30OrchestratorMetricTrace,
+)

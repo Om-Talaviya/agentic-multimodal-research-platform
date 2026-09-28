@@ -1,3 +1,4 @@
+import { MilestoneV30OrchestratorStudioPage } from './pages/MilestoneV30OrchestratorStudioPage';
 import { SyntheticMinimalGenomeDesignStudioPage } from './pages/SyntheticMinimalGenomeDesignStudioPage';
 import { LiquidBiopsyMrdDeconvolutionStudioPage } from './pages/LiquidBiopsyMrdDeconvolutionStudioPage';
 import { CryoemFlexibleFittingMdStudioPage } from './pages/CryoemFlexibleFittingMdStudioPage';
@@ -374,6 +375,7 @@ function App() {
                 <Route path="/cryoem-flexible-fitting-md" element={<CryoemFlexibleFittingMdStudioPage />} />
                 <Route path="/liquid-biopsy-mrd-deconvolution" element={<LiquidBiopsyMrdDeconvolutionStudioPage />} />
                 <Route path="/synthetic-minimal-genome-design" element={<SyntheticMinimalGenomeDesignStudioPage />} />
+                <Route path="/milestone-v3-0-orchestrator" element={<MilestoneV30OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
