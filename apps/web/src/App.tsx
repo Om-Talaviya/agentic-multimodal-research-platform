@@ -1,3 +1,4 @@
+import { DiliMitochondrialToxicityStudioPage } from './pages/DiliMitochondrialToxicityStudioPage';
 import { CryoemContinuousEnergyLandscapeStudioPage } from './pages/CryoemContinuousEnergyLandscapeStudioPage';
 import { ChemicallyModifiedMrnaDesignStudioPage } from './pages/ChemicallyModifiedMrnaDesignStudioPage';
 import { SpatialCellCellCommunicationStudioPage } from './pages/SpatialCellCellCommunicationStudioPage';
@@ -342,6 +343,7 @@ function App() {
                 <Route path="/spatial-cell-cell-communication" element={<SpatialCellCellCommunicationStudioPage />} />
                 <Route path="/chemically-modified-mrna-design" element={<ChemicallyModifiedMrnaDesignStudioPage />} />
                 <Route path="/cryoem-continuous-energy-landscape" element={<CryoemContinuousEnergyLandscapeStudioPage />} />
+                <Route path="/dili-mitochondrial-toxicity" element={<DiliMitochondrialToxicityStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1,3 +1,4 @@
+from api.routes.dili_mitochondrial_toxicity import router as dili_mitochondrial_toxicity_router
 from api.routes.cryoem_continuous_energy_landscape import router as cryoem_continuous_energy_landscape_router
 from api.routes.chemically_modified_mrna_design import router as chemically_modified_mrna_design_router
 from api.routes.spatial_cell_cell_communication import router as spatial_cell_cell_communication_router
@@ -656,3 +657,5 @@ app.include_router(spatial_cell_cell_communication_router, prefix=settings.api_p
 app.include_router(chemically_modified_mrna_design_router, prefix=settings.api_prefix)
 
 app.include_router(cryoem_continuous_energy_landscape_router, prefix=settings.api_prefix)
+
+app.include_router(dili_mitochondrial_toxicity_router, prefix=settings.api_prefix)

@@ -1528,3 +1528,9 @@ from database.models.cryoem_continuous_energy_landscape import (
     CryoemContinuousEnergyLandscapeItemProfile,
     CryoemContinuousEnergyLandscapeMetricTrace,
 )
+
+from database.models.dili_mitochondrial_toxicity import (
+    DiliMitochondrialToxicityStudy,
+    DiliMitochondrialToxicityItemProfile,
+    DiliMitochondrialToxicityMetricTrace,
+)
