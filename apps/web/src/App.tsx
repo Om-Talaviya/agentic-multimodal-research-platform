@@ -1,3 +1,4 @@
+import { MultispecificAntibodyHingeGeometryStudioPage } from './pages/MultispecificAntibodyHingeGeometryStudioPage';
 import { SmfishSubcellularRnaLocalizationStudioPage } from './pages/SmfishSubcellularRnaLocalizationStudioPage';
 import { MilestoneV28OrchestratorStudioPage } from './pages/MilestoneV28OrchestratorStudioPage';
 import { CrisprCas13CollateralCleavageStudioPage } from './pages/CrisprCas13CollateralCleavageStudioPage';
@@ -350,6 +351,7 @@ function App() {
                 <Route path="/crispr-cas13-collateral-cleavage" element={<CrisprCas13CollateralCleavageStudioPage />} />
                 <Route path="/milestone-v2-8-orchestrator" element={<MilestoneV28OrchestratorStudioPage />} />
                 <Route path="/smfish-subcellular-rna-localization" element={<SmfishSubcellularRnaLocalizationStudioPage />} />
+                <Route path="/multispecific-antibody-hinge-geometry" element={<MultispecificAntibodyHingeGeometryStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

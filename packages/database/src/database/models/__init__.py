@@ -1552,3 +1552,9 @@ from database.models.smfish_subcellular_rna_localization import (
     SmfishSubcellularRnaLocalizationItemProfile,
     SmfishSubcellularRnaLocalizationMetricTrace,
 )
+
+from database.models.multispecific_antibody_hinge_geometry import (
+    MultispecificAntibodyHingeGeometryStudy,
+    MultispecificAntibodyHingeGeometryItemProfile,
+    MultispecificAntibodyHingeGeometryMetricTrace,
+)
