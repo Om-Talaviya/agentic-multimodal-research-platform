@@ -419,6 +419,19 @@ iboseq_translation_kinetics)
 
 
 
+
+### Milestone v2.9: Autonomous Subcellular Imaging, Single-Cell Proteomics & Epitranscriptomics (Phases 253–259)
+
+| Phase | Engine & Domain | Key Capabilities & Algorithms | Stack / Test Status |
+|---|---|---|---|
+| **Phase 253** | `smfish_subcellular_rna_localization` | smFISH 3D point-spread function (PSF) fitting, Ripley's K clustering, perinuclear vs cytoplasmic mRNA enrichment | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 254** | `multispecific_antibody_hinge_geometry` | Multi-specific Fab-Fc inter-domain angles, hinge torsional potential, dual-epitope simultaneous binding geometry | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 255** | `single_cell_mass_spec_proteomics` | scMS TMT carrier channel deconvolution, trapped ion mobility spectrometry (TIMS) CCS alignment, GP imputation | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 256** | `crispr_epigenome_methylation_editor` | dCas9-DNMT3A/TET1 targeted CpG island methylation density, chromatin accessibility transitions & persistence | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 257** | `nanopore_direct_rna_modifications` | In-silico nanopore dRNA raw ionic current dwell-time/amplitude GMM, m6A/pseudouridine modification stoichiometry | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 258** | `biomolecular_condensate_llps_dynamics` | Flory-Huggins interaction parameter $\chi$, sticker-spacer multivalency, critical saturation concentration $C_{sat}$ | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+| **Phase 259** | `milestone_v2_9_orchestrator` | Milestone v2.9 planetary multi-omics research synthesis & meta-orchestrator, cross-phase DAG synchronization | SQLAlchemy 2.0, FastAPI, React TSX, 3/3 Tests (100% Pass) |
+
 ### Milestone v2.8: Autonomous Targeted Degradation, Spatial Interactomics & Deep mRNA Thermodynamics (Phases 246–252)
 
 | Phase | Engine & Domain | Key Capabilities & Algorithms | Stack / Test Status |
