@@ -1,3 +1,4 @@
+from api.routes.perturb_seq_epistasis_causal_network import router as perturb_seq_epistasis_causal_network_router
 from api.routes.antibody_deimmunization_epitope_removal import router as antibody_deimmunization_epitope_removal_router
 from api.routes.spatial_epigenome_transcriptome_coassay import router as spatial_epigenome_transcriptome_coassay_router
 from api.routes.milestone_v2_9_orchestrator import router as milestone_v2_9_orchestrator_router
@@ -692,3 +693,5 @@ app.include_router(milestone_v2_9_orchestrator_router, prefix=settings.api_prefi
 app.include_router(spatial_epigenome_transcriptome_coassay_router, prefix=settings.api_prefix)
 
 app.include_router(antibody_deimmunization_epitope_removal_router, prefix=settings.api_prefix)
+
+app.include_router(perturb_seq_epistasis_causal_network_router, prefix=settings.api_prefix)

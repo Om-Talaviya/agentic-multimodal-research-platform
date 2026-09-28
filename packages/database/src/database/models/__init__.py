@@ -1600,3 +1600,9 @@ from database.models.antibody_deimmunization_epitope_removal import (
     AntibodyDeimmunizationEpitopeRemovalItemProfile,
     AntibodyDeimmunizationEpitopeRemovalMetricTrace,
 )
+
+from database.models.perturb_seq_epistasis_causal_network import (
+    PerturbSeqEpistasisCausalNetworkStudy,
+    PerturbSeqEpistasisCausalNetworkItemProfile,
+    PerturbSeqEpistasisCausalNetworkMetricTrace,
+)

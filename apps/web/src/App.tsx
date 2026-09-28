@@ -1,3 +1,4 @@
+import { PerturbSeqEpistasisCausalNetworkStudioPage } from './pages/PerturbSeqEpistasisCausalNetworkStudioPage';
 import { AntibodyDeimmunizationEpitopeRemovalStudioPage } from './pages/AntibodyDeimmunizationEpitopeRemovalStudioPage';
 import { SpatialEpigenomeTranscriptomeCoassayStudioPage } from './pages/SpatialEpigenomeTranscriptomeCoassayStudioPage';
 import { MilestoneV29OrchestratorStudioPage } from './pages/MilestoneV29OrchestratorStudioPage';
@@ -366,6 +367,7 @@ function App() {
                 <Route path="/milestone-v2-9-orchestrator" element={<MilestoneV29OrchestratorStudioPage />} />
                 <Route path="/spatial-epigenome-transcriptome-coassay" element={<SpatialEpigenomeTranscriptomeCoassayStudioPage />} />
                 <Route path="/antibody-deimmunization-epitope-removal" element={<AntibodyDeimmunizationEpitopeRemovalStudioPage />} />
+                <Route path="/perturb-seq-epistasis-causal-network" element={<PerturbSeqEpistasisCausalNetworkStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
