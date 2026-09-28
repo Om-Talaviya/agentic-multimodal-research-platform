@@ -1,3 +1,4 @@
+import { LiquidBiopsyMrdDeconvolutionStudioPage } from './pages/LiquidBiopsyMrdDeconvolutionStudioPage';
 import { CryoemFlexibleFittingMdStudioPage } from './pages/CryoemFlexibleFittingMdStudioPage';
 import { PerturbSeqEpistasisCausalNetworkStudioPage } from './pages/PerturbSeqEpistasisCausalNetworkStudioPage';
 import { AntibodyDeimmunizationEpitopeRemovalStudioPage } from './pages/AntibodyDeimmunizationEpitopeRemovalStudioPage';
@@ -370,6 +371,7 @@ function App() {
                 <Route path="/antibody-deimmunization-epitope-removal" element={<AntibodyDeimmunizationEpitopeRemovalStudioPage />} />
                 <Route path="/perturb-seq-epistasis-causal-network" element={<PerturbSeqEpistasisCausalNetworkStudioPage />} />
                 <Route path="/cryoem-flexible-fitting-md" element={<CryoemFlexibleFittingMdStudioPage />} />
+                <Route path="/liquid-biopsy-mrd-deconvolution" element={<LiquidBiopsyMrdDeconvolutionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

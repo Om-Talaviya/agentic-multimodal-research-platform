@@ -1612,3 +1612,9 @@ from database.models.cryoem_flexible_fitting_md import (
     CryoemFlexibleFittingMdItemProfile,
     CryoemFlexibleFittingMdMetricTrace,
 )
+
+from database.models.liquid_biopsy_mrd_deconvolution import (
+    LiquidBiopsyMrdDeconvolutionStudy,
+    LiquidBiopsyMrdDeconvolutionItemProfile,
+    LiquidBiopsyMrdDeconvolutionMetricTrace,
+)
