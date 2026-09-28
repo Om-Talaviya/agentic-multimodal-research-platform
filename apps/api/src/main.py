@@ -1,3 +1,4 @@
+from api.routes.spatial_epigenome_transcriptome_coassay import router as spatial_epigenome_transcriptome_coassay_router
 from api.routes.milestone_v2_9_orchestrator import router as milestone_v2_9_orchestrator_router
 from api.routes.biomolecular_condensate_llps_dynamics import router as biomolecular_condensate_llps_dynamics_router
 from api.routes.nanopore_direct_rna_modifications import router as nanopore_direct_rna_modifications_router
@@ -686,3 +687,5 @@ app.include_router(nanopore_direct_rna_modifications_router, prefix=settings.api
 app.include_router(biomolecular_condensate_llps_dynamics_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v2_9_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_epigenome_transcriptome_coassay_router, prefix=settings.api_prefix)

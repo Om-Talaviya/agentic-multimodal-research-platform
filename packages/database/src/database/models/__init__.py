@@ -1588,3 +1588,9 @@ from database.models.milestone_v2_9_orchestrator import (
     MilestoneV29OrchestratorItemProfile,
     MilestoneV29OrchestratorMetricTrace,
 )
+
+from database.models.spatial_epigenome_transcriptome_coassay import (
+    SpatialEpigenomeTranscriptomeCoassayStudy,
+    SpatialEpigenomeTranscriptomeCoassayItemProfile,
+    SpatialEpigenomeTranscriptomeCoassayMetricTrace,
+)
