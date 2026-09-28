@@ -1,3 +1,4 @@
+import { SingleCellMassSpecProteomicsStudioPage } from './pages/SingleCellMassSpecProteomicsStudioPage';
 import { MultispecificAntibodyHingeGeometryStudioPage } from './pages/MultispecificAntibodyHingeGeometryStudioPage';
 import { SmfishSubcellularRnaLocalizationStudioPage } from './pages/SmfishSubcellularRnaLocalizationStudioPage';
 import { MilestoneV28OrchestratorStudioPage } from './pages/MilestoneV28OrchestratorStudioPage';
@@ -352,6 +353,7 @@ function App() {
                 <Route path="/milestone-v2-8-orchestrator" element={<MilestoneV28OrchestratorStudioPage />} />
                 <Route path="/smfish-subcellular-rna-localization" element={<SmfishSubcellularRnaLocalizationStudioPage />} />
                 <Route path="/multispecific-antibody-hinge-geometry" element={<MultispecificAntibodyHingeGeometryStudioPage />} />
+                <Route path="/single-cell-mass-spec-proteomics" element={<SingleCellMassSpecProteomicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1,3 +1,4 @@
+from api.routes.single_cell_mass_spec_proteomics import router as single_cell_mass_spec_proteomics_router
 from api.routes.multispecific_antibody_hinge_geometry import router as multispecific_antibody_hinge_geometry_router
 from api.routes.smfish_subcellular_rna_localization import router as smfish_subcellular_rna_localization_router
 from api.routes.milestone_v2_8_orchestrator import router as milestone_v2_8_orchestrator_router
@@ -671,3 +672,5 @@ app.include_router(milestone_v2_8_orchestrator_router, prefix=settings.api_prefi
 app.include_router(smfish_subcellular_rna_localization_router, prefix=settings.api_prefix)
 
 app.include_router(multispecific_antibody_hinge_geometry_router, prefix=settings.api_prefix)
+
+app.include_router(single_cell_mass_spec_proteomics_router, prefix=settings.api_prefix)

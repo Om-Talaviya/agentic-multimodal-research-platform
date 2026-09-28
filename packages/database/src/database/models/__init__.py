@@ -1558,3 +1558,9 @@ from database.models.multispecific_antibody_hinge_geometry import (
     MultispecificAntibodyHingeGeometryItemProfile,
     MultispecificAntibodyHingeGeometryMetricTrace,
 )
+
+from database.models.single_cell_mass_spec_proteomics import (
+    SingleCellMassSpecProteomicsStudy,
+    SingleCellMassSpecProteomicsItemProfile,
+    SingleCellMassSpecProteomicsMetricTrace,
+)
