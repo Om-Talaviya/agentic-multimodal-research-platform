@@ -1,3 +1,4 @@
+import { CryoemFlexibleFittingMdStudioPage } from './pages/CryoemFlexibleFittingMdStudioPage';
 import { PerturbSeqEpistasisCausalNetworkStudioPage } from './pages/PerturbSeqEpistasisCausalNetworkStudioPage';
 import { AntibodyDeimmunizationEpitopeRemovalStudioPage } from './pages/AntibodyDeimmunizationEpitopeRemovalStudioPage';
 import { SpatialEpigenomeTranscriptomeCoassayStudioPage } from './pages/SpatialEpigenomeTranscriptomeCoassayStudioPage';
@@ -368,6 +369,7 @@ function App() {
                 <Route path="/spatial-epigenome-transcriptome-coassay" element={<SpatialEpigenomeTranscriptomeCoassayStudioPage />} />
                 <Route path="/antibody-deimmunization-epitope-removal" element={<AntibodyDeimmunizationEpitopeRemovalStudioPage />} />
                 <Route path="/perturb-seq-epistasis-causal-network" element={<PerturbSeqEpistasisCausalNetworkStudioPage />} />
+                <Route path="/cryoem-flexible-fitting-md" element={<CryoemFlexibleFittingMdStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

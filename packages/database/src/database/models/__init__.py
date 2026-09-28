@@ -1606,3 +1606,9 @@ from database.models.perturb_seq_epistasis_causal_network import (
     PerturbSeqEpistasisCausalNetworkItemProfile,
     PerturbSeqEpistasisCausalNetworkMetricTrace,
 )
+
+from database.models.cryoem_flexible_fitting_md import (
+    CryoemFlexibleFittingMdStudy,
+    CryoemFlexibleFittingMdItemProfile,
+    CryoemFlexibleFittingMdMetricTrace,
+)

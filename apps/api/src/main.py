@@ -1,3 +1,4 @@
+from api.routes.cryoem_flexible_fitting_md import router as cryoem_flexible_fitting_md_router
 from api.routes.perturb_seq_epistasis_causal_network import router as perturb_seq_epistasis_causal_network_router
 from api.routes.antibody_deimmunization_epitope_removal import router as antibody_deimmunization_epitope_removal_router
 from api.routes.spatial_epigenome_transcriptome_coassay import router as spatial_epigenome_transcriptome_coassay_router
@@ -695,3 +696,5 @@ app.include_router(spatial_epigenome_transcriptome_coassay_router, prefix=settin
 app.include_router(antibody_deimmunization_epitope_removal_router, prefix=settings.api_prefix)
 
 app.include_router(perturb_seq_epistasis_causal_network_router, prefix=settings.api_prefix)
+
+app.include_router(cryoem_flexible_fitting_md_router, prefix=settings.api_prefix)
