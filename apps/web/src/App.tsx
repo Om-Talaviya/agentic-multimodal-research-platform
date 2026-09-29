@@ -1,3 +1,4 @@
+import { NanoporeEpitranscriptomeCallerStudioPage } from './pages/NanoporeEpitranscriptomeCallerStudioPage';
 import { CapsidGlycanCanopyShieldingStudioPage } from './pages/CapsidGlycanCanopyShieldingStudioPage';
 import { PisaThermalShiftAssayStudioPage } from './pages/PisaThermalShiftAssayStudioPage';
 import { ChemicalProximityDegronStudioPage } from './pages/ChemicalProximityDegronStudioPage';
@@ -514,6 +515,7 @@ function App() {
                 <Route path="/chemical-proximity-degron" element={<ChemicalProximityDegronStudioPage />} />
                 <Route path="/pisa-thermal-shift" element={<PisaThermalShiftAssayStudioPage />} />
                 <Route path="/capsid-glycan-canopy" element={<CapsidGlycanCanopyShieldingStudioPage />} />
+                <Route path="/nanopore-epitranscriptome" element={<NanoporeEpitranscriptomeCallerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

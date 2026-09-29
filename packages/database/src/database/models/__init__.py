@@ -2068,3 +2068,9 @@ from database.models.capsid_glycan_canopy_shielding import (
     CapsidGlycanCanopyShieldingItemProfile,
     CapsidGlycanCanopyShieldingMetricTrace,
 )
+
+from database.models.nanopore_epitranscriptome_caller import (
+    NanoporeEpitranscriptomeCallerStudy,
+    NanoporeEpitranscriptomeCallerItemProfile,
+    NanoporeEpitranscriptomeCallerMetricTrace,
+)

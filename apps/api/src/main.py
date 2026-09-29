@@ -1,3 +1,4 @@
+from api.routes.nanopore_epitranscriptome_caller import router as nanopore_epitranscriptome_caller_router
 from api.routes.capsid_glycan_canopy_shielding import router as capsid_glycan_canopy_shielding_router
 from api.routes.pisa_thermal_shift_assay import router as pisa_thermal_shift_assay_router
 from api.routes.chemical_proximity_degron import router as chemical_proximity_degron_router
@@ -914,3 +915,5 @@ app.include_router(chemical_proximity_degron_router, prefix=settings.api_prefix)
 app.include_router(pisa_thermal_shift_assay_router, prefix=settings.api_prefix)
 
 app.include_router(capsid_glycan_canopy_shielding_router, prefix=settings.api_prefix)
+
+app.include_router(nanopore_epitranscriptome_caller_router, prefix=settings.api_prefix)
