@@ -1,3 +1,4 @@
+import { MicrobialConsortiaSyntrophyStudioPage } from './pages/MicrobialConsortiaSyntrophyStudioPage';
 import { OptogeneticSpatialGeneExpressionStudioPage } from './pages/OptogeneticSpatialGeneExpressionStudioPage';
 import { NanoporeDnaStorageCodecStudioPage } from './pages/NanoporeDnaStorageCodecStudioPage';
 import { SpatialMetabolomicsMaldiOrbitrapStudioPage } from './pages/SpatialMetabolomicsMaldiOrbitrapStudioPage';
@@ -470,6 +471,7 @@ function App() {
                 <Route path="/spatial-metabolomics-maldi" element={<SpatialMetabolomicsMaldiOrbitrapStudioPage />} />
                 <Route path="/nanopore-dna-storage-codec" element={<NanoporeDnaStorageCodecStudioPage />} />
                 <Route path="/optogenetic-spatial-gene" element={<OptogeneticSpatialGeneExpressionStudioPage />} />
+                <Route path="/microbial-consortia-syntrophy" element={<MicrobialConsortiaSyntrophyStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

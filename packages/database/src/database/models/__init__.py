@@ -1930,3 +1930,9 @@ from database.models.optogenetic_spatial_gene_expression import (
     OptogeneticSpatialGeneExpressionItemProfile,
     OptogeneticSpatialGeneExpressionMetricTrace,
 )
+
+from database.models.microbial_consortia_syntrophy import (
+    MicrobialConsortiaSyntrophyStudy,
+    MicrobialConsortiaSyntrophyItemProfile,
+    MicrobialConsortiaSyntrophyMetricTrace,
+)

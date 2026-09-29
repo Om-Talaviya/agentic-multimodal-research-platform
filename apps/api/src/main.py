@@ -1,3 +1,4 @@
+from api.routes.microbial_consortia_syntrophy import router as microbial_consortia_syntrophy_router
 from api.routes.optogenetic_spatial_gene_expression import router as optogenetic_spatial_gene_expression_router
 from api.routes.nanopore_dna_storage_codec import router as nanopore_dna_storage_codec_router
 from api.routes.spatial_metabolomics_maldi_orbitrap import router as spatial_metabolomics_maldi_orbitrap_router
@@ -848,3 +849,5 @@ app.include_router(spatial_metabolomics_maldi_orbitrap_router, prefix=settings.a
 app.include_router(nanopore_dna_storage_codec_router, prefix=settings.api_prefix)
 
 app.include_router(optogenetic_spatial_gene_expression_router, prefix=settings.api_prefix)
+
+app.include_router(microbial_consortia_syntrophy_router, prefix=settings.api_prefix)
