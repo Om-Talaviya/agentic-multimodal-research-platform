@@ -1,3 +1,4 @@
+import { CryoemTimeResolvedEnsembleStudioPage } from './pages/CryoemTimeResolvedEnsembleStudioPage';
 import { MilestoneV37OrchestratorStudioPage } from './pages/MilestoneV37OrchestratorStudioPage';
 import { MicrobialConsortiaSyntrophyStudioPage } from './pages/MicrobialConsortiaSyntrophyStudioPage';
 import { OptogeneticSpatialGeneExpressionStudioPage } from './pages/OptogeneticSpatialGeneExpressionStudioPage';
@@ -474,6 +475,7 @@ function App() {
                 <Route path="/optogenetic-spatial-gene" element={<OptogeneticSpatialGeneExpressionStudioPage />} />
                 <Route path="/microbial-consortia-syntrophy" element={<MicrobialConsortiaSyntrophyStudioPage />} />
                 <Route path="/milestone-v3-7-orchestrator" element={<MilestoneV37OrchestratorStudioPage />} />
+                <Route path="/cryoem-time-resolved-ensemble" element={<CryoemTimeResolvedEnsembleStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

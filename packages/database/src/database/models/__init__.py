@@ -1942,3 +1942,9 @@ from database.models.milestone_v3_7_orchestrator import (
     MilestoneV37OrchestratorItemProfile,
     MilestoneV37OrchestratorMetricTrace,
 )
+
+from database.models.cryoem_time_resolved_ensemble import (
+    CryoemTimeResolvedEnsembleStudy,
+    CryoemTimeResolvedEnsembleItemProfile,
+    CryoemTimeResolvedEnsembleMetricTrace,
+)

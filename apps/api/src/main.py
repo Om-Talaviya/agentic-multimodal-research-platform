@@ -1,3 +1,4 @@
+from api.routes.cryoem_time_resolved_ensemble import router as cryoem_time_resolved_ensemble_router
 from api.routes.milestone_v3_7_orchestrator import router as milestone_v3_7_orchestrator_router
 from api.routes.microbial_consortia_syntrophy import router as microbial_consortia_syntrophy_router
 from api.routes.optogenetic_spatial_gene_expression import router as optogenetic_spatial_gene_expression_router
@@ -854,3 +855,5 @@ app.include_router(optogenetic_spatial_gene_expression_router, prefix=settings.a
 app.include_router(microbial_consortia_syntrophy_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v3_7_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(cryoem_time_resolved_ensemble_router, prefix=settings.api_prefix)
