@@ -1870,3 +1870,9 @@ from database.models.nanopore_readuntil_threat_sentinel import (
     NanoporeReaduntilThreatSentinelItemProfile,
     NanoporeReaduntilThreatSentinelMetricTrace,
 )
+
+from database.models.degron_dtag_haloprotac_optimizer import (
+    DegronDtagHaloprotacOptimizerStudy,
+    DegronDtagHaloprotacOptimizerItemProfile,
+    DegronDtagHaloprotacOptimizerMetricTrace,
+)

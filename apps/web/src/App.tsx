@@ -1,3 +1,4 @@
+import { DegronDtagHaloprotacOptimizerStudioPage } from './pages/DegronDtagHaloprotacOptimizerStudioPage';
 import { NanoporeReaduntilThreatSentinelStudioPage } from './pages/NanoporeReaduntilThreatSentinelStudioPage';
 import { MicrobialMetaboliteGpcrSignalingStudioPage } from './pages/MicrobialMetaboliteGpcrSignalingStudioPage';
 import { GuvSyntheticCellFactoryStudioPage } from './pages/GuvSyntheticCellFactoryStudioPage';
@@ -454,6 +455,7 @@ function App() {
                 <Route path="/guv-synthetic-cell-factory" element={<GuvSyntheticCellFactoryStudioPage />} />
                 <Route path="/microbial-metabolite-gpcr-signaling" element={<MicrobialMetaboliteGpcrSignalingStudioPage />} />
                 <Route path="/nanopore-readuntil-threat-sentinel" element={<NanoporeReaduntilThreatSentinelStudioPage />} />
+                <Route path="/degron-dtag-haloprotac-optimizer" element={<DegronDtagHaloprotacOptimizerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
