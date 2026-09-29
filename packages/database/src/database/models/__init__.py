@@ -1714,3 +1714,9 @@ from database.models.milestone_v3_2_orchestrator import (
     MilestoneV32OrchestratorItemProfile,
     MilestoneV32OrchestratorMetricTrace,
 )
+
+from database.models.adc_bystander_killing_diffusion import (
+    AdcBystanderKillingDiffusionStudy,
+    AdcBystanderKillingDiffusionItemProfile,
+    AdcBystanderKillingDiffusionMetricTrace,
+)

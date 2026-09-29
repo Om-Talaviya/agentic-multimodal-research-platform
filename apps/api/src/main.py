@@ -1,3 +1,4 @@
+from api.routes.adc_bystander_killing_diffusion import router as adc_bystander_killing_diffusion_router
 from api.routes.milestone_v3_2_orchestrator import router as milestone_v3_2_orchestrator_router
 from api.routes.sc_velocity_optimal_transport import router as sc_velocity_optimal_transport_router
 from api.routes.pep_hla_neoantigen_presentation import router as pep_hla_neoantigen_presentation_router
@@ -749,3 +750,5 @@ app.include_router(pep_hla_neoantigen_presentation_router, prefix=settings.api_p
 app.include_router(sc_velocity_optimal_transport_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v3_2_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(adc_bystander_killing_diffusion_router, prefix=settings.api_prefix)

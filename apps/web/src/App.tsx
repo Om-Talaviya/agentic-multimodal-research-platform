@@ -1,3 +1,4 @@
+import { AdcBystanderKillingDiffusionStudioPage } from './pages/AdcBystanderKillingDiffusionStudioPage';
 import { MilestoneV32OrchestratorStudioPage } from './pages/MilestoneV32OrchestratorStudioPage';
 import { ScVelocityOptimalTransportStudioPage } from './pages/ScVelocityOptimalTransportStudioPage';
 import { PepHlaNeoantigenPresentationStudioPage } from './pages/PepHlaNeoantigenPresentationStudioPage';
@@ -404,6 +405,7 @@ function App() {
                 <Route path="/pep-hla-neoantigen-presentation" element={<PepHlaNeoantigenPresentationStudioPage />} />
                 <Route path="/sc-velocity-optimal-transport" element={<ScVelocityOptimalTransportStudioPage />} />
                 <Route path="/milestone-v3-2-orchestrator" element={<MilestoneV32OrchestratorStudioPage />} />
+                <Route path="/adc-bystander-killing-diffusion" element={<AdcBystanderKillingDiffusionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
