@@ -1,3 +1,4 @@
+from api.routes.milestone_v3_1_orchestrator import router as milestone_v3_1_orchestrator_router
 from api.routes.chemoproteomics_abpp_covalent_screen import router as chemoproteomics_abpp_covalent_screen_router
 from api.routes.microphysiological_organ_chip_sensors import router as microphysiological_organ_chip_sensors_router
 from api.routes.smfret_riboswitch_kinetics import router as smfret_riboswitch_kinetics_router
@@ -725,3 +726,5 @@ app.include_router(smfret_riboswitch_kinetics_router, prefix=settings.api_prefix
 app.include_router(microphysiological_organ_chip_sensors_router, prefix=settings.api_prefix)
 
 app.include_router(chemoproteomics_abpp_covalent_screen_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v3_1_orchestrator_router, prefix=settings.api_prefix)

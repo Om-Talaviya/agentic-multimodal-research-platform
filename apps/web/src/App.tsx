@@ -1,3 +1,4 @@
+import { MilestoneV31OrchestratorStudioPage } from './pages/MilestoneV31OrchestratorStudioPage';
 import { ChemoproteomicsAbppCovalentScreenStudioPage } from './pages/ChemoproteomicsAbppCovalentScreenStudioPage';
 import { MicrophysiologicalOrganChipSensorsStudioPage } from './pages/MicrophysiologicalOrganChipSensorsStudioPage';
 import { SmfretRiboswitchKineticsStudioPage } from './pages/SmfretRiboswitchKineticsStudioPage';
@@ -388,6 +389,7 @@ function App() {
                 <Route path="/smfret-riboswitch-kinetics" element={<SmfretRiboswitchKineticsStudioPage />} />
                 <Route path="/microphysiological-organ-chip-sensors" element={<MicrophysiologicalOrganChipSensorsStudioPage />} />
                 <Route path="/chemoproteomics-abpp-covalent-screen" element={<ChemoproteomicsAbppCovalentScreenStudioPage />} />
+                <Route path="/milestone-v3-1-orchestrator" element={<MilestoneV31OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

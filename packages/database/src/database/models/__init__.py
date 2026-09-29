@@ -1666,3 +1666,9 @@ from database.models.chemoproteomics_abpp_covalent_screen import (
     ChemoproteomicsAbppCovalentScreenItemProfile,
     ChemoproteomicsAbppCovalentScreenMetricTrace,
 )
+
+from database.models.milestone_v3_1_orchestrator import (
+    MilestoneV31OrchestratorStudy,
+    MilestoneV31OrchestratorItemProfile,
+    MilestoneV31OrchestratorMetricTrace,
+)
