@@ -2176,3 +2176,9 @@ from database.models.quantum_annealing_folding import (
     QuantumAnnealingFoldingItemProfile,
     QuantumAnnealingFoldingMetricTrace,
 )
+
+from database.models.mibi_tof_spatial_proteomics import (
+    MibiTofSpatialProteomicsStudy,
+    MibiTofSpatialProteomicsItemProfile,
+    MibiTofSpatialProteomicsMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { MibiTofSpatialProteomicsStudioPage } from './pages/MibiTofSpatialProteomicsStudioPage';
 import { QuantumAnnealingFoldingStudioPage } from './pages/QuantumAnnealingFoldingStudioPage';
 import { MilestoneV40MetaOrchestratorStudioPage } from './pages/MilestoneV40MetaOrchestratorStudioPage';
 import { OligoChemModifierOptimizerStudioPage } from './pages/OligoChemModifierOptimizerStudioPage';
@@ -545,6 +546,7 @@ function App() {
                 <Route path="/oligo-chem-modifier" element={<OligoChemModifierOptimizerStudioPage />} />
                 <Route path="/milestone-v4-0-orchestrator" element={<MilestoneV40MetaOrchestratorStudioPage />} />
                 <Route path="/quantum-annealing-folding" element={<QuantumAnnealingFoldingStudioPage />} />
+                <Route path="/mibi-tof-spatial-proteomics" element={<MibiTofSpatialProteomicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
