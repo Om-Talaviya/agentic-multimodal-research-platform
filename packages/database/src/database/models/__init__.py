@@ -1948,3 +1948,9 @@ from database.models.cryoem_time_resolved_ensemble import (
     CryoemTimeResolvedEnsembleItemProfile,
     CryoemTimeResolvedEnsembleMetricTrace,
 )
+
+from database.models.microglia_synaptic_pruning_modeler import (
+    MicrogliaSynapticPruningModelerStudy,
+    MicrogliaSynapticPruningModelerItemProfile,
+    MicrogliaSynapticPruningModelerMetricTrace,
+)

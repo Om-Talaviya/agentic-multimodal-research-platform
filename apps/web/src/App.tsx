@@ -1,3 +1,4 @@
+import { MicrogliaSynapticPruningModelerStudioPage } from './pages/MicrogliaSynapticPruningModelerStudioPage';
 import { CryoemTimeResolvedEnsembleStudioPage } from './pages/CryoemTimeResolvedEnsembleStudioPage';
 import { MilestoneV37OrchestratorStudioPage } from './pages/MilestoneV37OrchestratorStudioPage';
 import { MicrobialConsortiaSyntrophyStudioPage } from './pages/MicrobialConsortiaSyntrophyStudioPage';
@@ -476,6 +477,7 @@ function App() {
                 <Route path="/microbial-consortia-syntrophy" element={<MicrobialConsortiaSyntrophyStudioPage />} />
                 <Route path="/milestone-v3-7-orchestrator" element={<MilestoneV37OrchestratorStudioPage />} />
                 <Route path="/cryoem-time-resolved-ensemble" element={<CryoemTimeResolvedEnsembleStudioPage />} />
+                <Route path="/microglia-synaptic-pruning" element={<MicrogliaSynapticPruningModelerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
