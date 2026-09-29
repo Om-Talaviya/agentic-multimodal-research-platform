@@ -1,829 +1,243 @@
+# Changelog
 
-## [Phase 50] - Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine
+All notable changes to the **Agentic Multimodal Research Platform (AI Research OS)** will be documented in this file.
+
+## [v3.0.0] - 2026-09-28 (Centennial Super-Release)
+### Added (Phases 260 - 266)
+- **Phase 260**: Autonomous Spatial Multi-Modal Epigenome & Transcriptome Co-Assay Latent Alignment Engine (`spatial_epigenome_transcriptome_coassay`)
+- **Phase 261**: Autonomous Deep Generative Antibody De-Immunization & T-Cell Epitope Elimination Engine (`antibody_deimmunization_epitope_removal`)
+- **Phase 262**: Autonomous High-Throughput Perturb-seq Deep Causal Gene Regulatory Network Inversion & Epistasis Engine (`perturb_seq_epistasis_causal_network`)
+- **Phase 263**: Autonomous In-Silico Cryo-EM Continuous Motion Trajectory & Flexible Molecular Dynamics Fitting Engine (`cryoem_flexible_fitting_md`)
+- **Phase 264**: Autonomous Multi-Omics Microscopic Residual Disease (MRD) & Ultra-Low VAF Liquid Biopsy Deconvolution Engine (`liquid_biopsy_mrd_deconvolution`)
+- **Phase 265**: Autonomous Synthetic Minimal Genome Design & Metabolic Essentiality Minimization Engine (`synthetic_minimal_genome_design`)
+- **Phase 266**: Autonomous Milestone v3.0 Planetary Multi-Omics Research Synthesis & Centennial Meta-Orchestrator Engine (`milestone_v3_0_orchestrator`)
+
+## [v2.9.0] - 2026-09-28
+### Added (Phases 253 - 259)
+- **Phase 253**: Autonomous Single-Molecule FISH Subcellular RNA Transcript Localization & Cluster Analysis Engine (`smfish_subcellular_rna_localization`)
+- **Phase 254**: Autonomous Multi-Specific Antibody Fragment Geometry & Hinge Flexibility In-Silico Modeling Engine (`multispecific_antibody_hinge_geometry`)
+- **Phase 255**: Autonomous Single-Cell Proteomics by Mass Spectrometry (scMS) Carrier Proteome Deconvolution Engine (`single_cell_mass_spec_proteomics`)
+- **Phase 256**: Autonomous Targeted CRISPR Epigenome Methylation/Demethylation Editing & Chromatin Accessibility Engine (`crispr_epigenome_methylation_editor`)
+- **Phase 257**: Autonomous In-Silico Nanopore Direct RNA Sequencing (dRNA-seq) Base Modification Decoding Engine (`nanopore_direct_rna_modifications`)
+- **Phase 258**: Autonomous Liquid-Liquid Phase Separation (LLPS) Biomolecular Condensate Multivalent Driving Force Engine (`biomolecular_condensate_llps_dynamics`)
+- **Phase 259**: Autonomous Milestone v2.9 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_9_orchestrator`)
+
+## [v2.8.0] - 2026-09-28
+### Added (Phases 246 - 252)
+- **Phase 246**: Autonomous Targeted Protein Degradation (PROTAC) Ternary Complex Cooperativity & Ubiquitination Kinetics Engine (`protac_ternary_ubiquitination`)
+- **Phase 247**: Autonomous Spatial Transcriptomics Cell-Cell Communication & Distance-Decay Ligand-Receptor Engine (`spatial_cell_cell_communication`)
+- **Phase 248**: Autonomous Chemically Modified mRNA Secondary Structure & Translation Velocity Optimization Engine (`chemically_modified_mrna_design`)
+- **Phase 249**: Autonomous Cryo-EM Continuous Heterogeneity Conformational Landscape & Energy Surface Reconstruction Engine (`cryoem_continuous_energy_landscape`)
+- **Phase 250**: Autonomous Multi-Omics Drug-Induced Liver Injury (DILI) & Mitochondrial Toxicity Forecaster Engine (`dili_mitochondrial_toxicity`)
+- **Phase 251**: Autonomous CRISPR-Cas13 Collateral Cleavage & Viral RNA Detection Specificity Engine (`crispr_cas13_collateral_cleavage`)
+- **Phase 252**: Autonomous Milestone v2.8 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_8_orchestrator`)
+
+## [v2.7.0] - 2026-09-27
+### Added (Phases 239 - 245)
+- **Phase 239**: Autonomous Single-Molecule Optical Tweezers & AFM Force-Induced Unfolding Kinetics Engine (`single_molecule_force_spectroscopy`)
+- **Phase 240**: Autonomous Spatial MALDI-MSI Glycan Branching & Sialylation Tissue Micro-Architecture Engine (`spatial_glycomics_mass_spec`)
+- **Phase 241**: Autonomous Prime Editing RT Template Secondary Structure & Extension Velocity Forecaster Engine (`prime_editing_rt_template_secondary_structure`)
+- **Phase 242**: Autonomous TCR-Mimic Antibody Fine Specificity & HLA-Allotype Cross-Reactivity Engine (`tcr_mimic_antibody_selectivity`)
+- **Phase 243**: Autonomous Intact-Cell Cellular Thermal Shift Assay (CETSA) & Target Engagement Deconvolution Engine (`cellular_thermal_shift_cetsa`)
+- **Phase 244**: Autonomous De-Novo Synthetic Promoter Deep Generative Architecture & Specificity Grammar Engine (`synthetic_promoter_regulatory_grammar`)
+- **Phase 245**: Autonomous Milestone v2.7 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_7_orchestrator`)
+
+
+## [v2.1.0] - 2026-09-25
+### Added (Phases 169 - 175)
+- Phase 169: Autonomous Single-Cell TCR/BCR Clonotype Expansion & Immune Repertoire Lineage Dynamics Engine
+- Phase 170: Autonomous Multi-Tissue Epigenetic DNA Methylation Biological Age & Mortality Forecaster
+- Phase 171: Autonomous Combined Annotation Dependent Depletion (CADD) & In-Silico Variant Pathogenicity Ranker
+- Phase 172: Autonomous Asymmetric siRNA Duplex Thermodynamics & Off-Target Seed Match Suppressor Engine
+- Phase 173: Autonomous Multimeric Protein-Protein Complex Interface & Co-Evolutionary Contact Forecaster
+- Phase 174: Autonomous Multi-Omics Spatial CITE-seq & Subcellular Protein-RNA Co-Localization Engine
+- Phase 175: Autonomous Genome-Scale Metabolic Network Flux Balance Analysis (FBA) & Target Vulnerability Simulator
+- Phase 176: Autonomous Hydrogen-Deuterium Exchange Mass Spectrometry (HDX-MS) Epitope Mapping Engine
+- Phase 177: Autonomous 3D Cryo-Electron Tomography Subtomogram Averaging Engine
+
+## [v2.0.0] - 2026-09-24
+### Added (Phases 162 - 168)
+- Phase 162: Autonomous Spatial Transcriptomics Microdissection & Subcellular Spot Deconvolution Engine
+- Phase 163: Autonomous Non-Coding RNA Secondary Structure Thermodynamics & Minimum Free Energy Folding Matrix
+- Phase 164: Autonomous CRISPR Base Editing Bystander Mutation Risk & Precise Nucleotide Transition Forecaster
+- Phase 165: Autonomous Peptide-Drug Conjugate (PDC) Linker Cleavability & Tumor Cathepsin-B Selectivity Engine
+- Phase 166: Autonomous In-Silico Cryo-Electron Microscopy Micro-Crystal Electron Diffraction (MicroED) Structural Engine
+- Phase 167: Autonomous Single-Cell Multi-Omics Perturbation Screening & Causal Gene Regulatory Network Inversion Engine
+- Phase 168: Autonomous Whole-Body PBPK Digital Twin & Trans-Organ Pharmacokinetics Forecaster
+
+## [v1.9.0] - 2026-09-24
+### Added (Phases 155 - 161)
+- Phase 155: Multi-Modal Spatial Proteomics & CODEX Ultra High-Plex (40+) Fluorescence Multiplexing Engine
+- Phase 156: PROTAC Ternary Complex Thermodynamics, Alpha Cooperativity & Hook Effect Degradation Dynamics
+- Phase 157: Cell-Free Protein Synthesis (CFPS) In-Vitro Transcription-Translation (TX-TL) Kinetic Reactor Engine
+- Phase 158: Multi-Target Bispecific & Trispecific T-Cell Engager (BiTE/TriTE) Immunological Synapse Geometry Engine
+- Phase 159: Epigenetic CRISPR Base/Prime Editing & Targeted DNA Methylation Maintenance Engine
+- Phase 160: Single-Molecule FRET (smFRET) Hidden Markov Model Conformational Transition Kinetics Engine
+- Phase 161: Pan-Cancer Multi-Omics Precision Patient Stratification & Milestone v1.9 Global Certification
+
+
+## [v1.8.0] - 2026-09-24
+### Added (Phases 140 - 154)
+- Phase 140: In-Silico Membrane Permeability PAMPA Simulation Engine
+- Phase 141: Decentralized Clinical ePRO & Wearable Biomarker Outcomes Engine
+- Phase 142: Cytochrome P450 (CYP450) Regioselectivity & Drug Clearance Predictor
+- Phase 143: In-Silico SELEX Nucleic Acid Aptamer Affinity Evolution Engine
+- Phase 144: Mitochondrial OXPHOS Bioenergetics & Respiration Flux Engine
+- Phase 145: TCR-pMHC Structural Binding Affinity & Immunogenicity Predictor
+- Phase 146: Spatial RNA Velocity & Tissue Morphogenesis Vector Field Engine
+- Phase 147: 3D Tumor Organoid High-Content Morphometry & Drug Viability Engine
+- Phase 148: Glycomics High-Density Microarray & Lectin Specificity Engine
+- Phase 149: 3D DNA Origami Nanorobot Scaffold Routing & Aptamer Latch Engine
+- Phase 150: Single-Cell High-Resolution Spatial Flux Balance Analysis (FBA) Engine
+- Phase 151: AAV Viral Capsid Thermodynamic Self-Assembly & Nucleation Engine
+- Phase 152: Hi-C Chromatin Looping & Enhancer-Promoter Contact Topology Engine
+- Phase 153: Multi-Objective mRNA Codon Adaptation (CAI) & Uridine Depletion Engine
+- Phase 154: Centennial Multi-Modal Bio-System Synthesis & Milestone v1.8 Certification
+
+## [v1.7.0] - Milestone v1.7 Deep Bio-Computational Systems & Precision Planetary AI (Phases 126-132)
+
 ### Added
-- Database models: `DBAutonomousScientistProgram`, `DBResearchIterationCycle`, `DBDiscoveryBreakthrough`.
-- Repository `AutonomousScientistRepository` for managing self-evolving research programs, cycles, and breakthroughs.
-- Scientific `AutonomousScientistEngine` for executing closed-loop autonomous scientific meta-discovery.
-- FastAPI routes at `/api/v1/ai-scientist/*`.
-- Interactive React studio `AIScientistStudioPage.tsx` with Nobel-Turing class discovery scorecard, reflection timeline, and whitepaper generator.
-- Unit and integration tests in `packages/database/tests/test_ai_scientist_repo.py`, `packages/research/tests/test_ai_scientist_engine.py`, and `apps/api/tests/test_ai_scientist_api.py`.
-- Architecture Decision Record **ADR 050**.
+- **Phase 126**: Autonomous Whole-Genome Long-Read T2T Structural Variant & Phase Assembly Engine (`t2t_assembly`)
+- **Phase 127**: Autonomous In-Silico Antibody Affinity Maturation & Somatic Hypermutation Engine (`antibody_maturation`)
+- **Phase 128**: Autonomous Single-Cell Spatial CITE-seq Surface Protein & mRNA Co-Mapping Engine (`citeseq`)
+- **Phase 129**: Autonomous High-Throughput Crystallography PanDDA Fragment Screening Engine (`pandda_crystallography`)
+- **Phase 130**: Precision Oncology Adaptive Chemotherapy Resistance & Clonal Fitness Dynamics Simulator (`adaptive_resistance`)
+- **Phase 131**: Synthetic Gene Logic Biocomputer & Multi-Input Cellular State Classifier Engine (`biocomputer_logic`)
+- **Phase 132**: Global Pandemic Biosurveillance & Multi-Strain Viral Lineage Phylodynamics Engine (`viral_phylodynamics`)
 
+## [v1.6.0] - Milestone v1.6 Autonomous Multimodal Systems Biology & Synthesis Platform (Phases 111-125)
 
-## [Phase 49] - Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector
 ### Added
-- Database models: `DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`.
-- Repository `PharmacovigilanceRepository` for managing multi-source adverse event corpora and signal metrics.
-- Scientific `PharmacovigilanceEngine` for PRR, ROR 95% CI, BCPNN IC025, and WHO-UMC causality inference.
-- FastAPI routes at `/api/v1/pharmacovigilance/*`.
-- Interactive React studio `PharmacovigilanceStudioPage.tsx` with disproportionality gauges and safety signal cards.
-- Unit and integration tests in `packages/database/tests/test_pharmacovigilance_repo.py`, `packages/research/tests/test_pharmacovigilance_engine.py`, and `apps/api/tests/test_pharmacovigilance_api.py`.
-- Architecture Decision Record **ADR 049**.
-
-
-## [Phase 48] - Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator
-### Added
-- Database models: `DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`.
-- Repository `PathwayPerturbationRepository` for multi-omics experiment lifecycle and cascade topologies.
-- Scientific `PathwayPerturbationEngine` for solving ordinary differential equations of signaling pathways.
-- FastAPI routes at `/api/v1/pathways/*`.
-- Interactive React studio `PathwaySimulatorPage.tsx` with knockdown telemetry, bypass resistance cards, and ODE time-course trajectory viewer.
-- Unit and integration tests in `packages/database/tests/test_pathway_perturbation_repo.py`, `packages/research/tests/test_pathway_perturbation_engine.py`, and `apps/api/tests/test_pathway_perturbation_api.py`.
-- Architecture Decision Record **ADR 048**.
-
-
-## [Phase 47] - Autonomous Cryo-EM Density Map Fitting & Macromolecular Complex Modeling
-### Added
-- Database models: `DBCryoEMDensityMap`, `DBDensityMapFitting`, `DBMacromolecularComplex`.
-- Repository `CryoEMRepository` for managing 3D volumetric density maps, fittings, and complexes.
-- Scientific `CryoEMModelingEngine` for Fourier Shell Correlation (FSC) and real-space coordinate cross-correlation.
-- FastAPI routes at `/api/v1/cryoem/*`.
-- Interactive React studio `CryoEMStudioPage.tsx` with 3D map telemetry, FSC resolution spectrum chart, and interface hotspot cards.
-- Unit and integration tests in `packages/database/tests/test_cryoem_repo.py`, `packages/research/tests/test_cryoem_engine.py`, and `apps/api/tests/test_cryoem_api.py`.
-- Architecture Decision Record **ADR 047**.
-
-
-## [Phase 46] - Autonomous Clinical Trial Protocol Optimizer & Patient-Cohort Stratifier
-### Added
-- Database models: `DBClinicalTrialProtocol`, `DBEligibilityCriterion`, `DBCohortPatientMatch`, `DBSyntheticControlArm`.
-- Repository `ClinicalTrialRepository` for CRUD and cascade protocol relations.
-- Scientific `ClinicalTrialOptimizerEngine` for Schoenfeld sample-size power estimation and Kaplan-Meier survival curves.
-- FastAPI routes at `/api/v1/clinical-trials/*`.
-- Interactive React studio `ClinicalTrialStudioPage.tsx` with telemetry gauges and survival curve chart.
-- Unit and integration tests in `packages/database/tests/test_clinical_trial_repo.py`, `packages/research/tests/test_clinical_trial_engine.py`, and `apps/api/tests/test_clinical_trial_api.py`.
-- Architecture Decision Record **ADR 046**.
-
-# Changelog: CHANGELOG.md
+- **Phase 111**: CTC Single-Cell Trajectory & Metastasis Colonization Engine (`ctc_metastasis`)
+- **Phase 112**: Histone Modification ChIP-seq & Super-Enhancer Discovery Matrix (`histone_epigenetics`)
+- **Phase 113**: Multi-Specific T-Cell Engager (TCE) & Bispecific Antibody Geometry Optimizer (`tce_bispecific`)
+- **Phase 114**: Cellular Barcoding & Lineage Tracing Clonal Dynamics Predictor (`lineage_tracing`)
+- **Phase 115**: MicroRNA (miRNA) Regulatory Network & Target Repression Modeler (`mirna_regulation`)
+- **Phase 116**: Spatial Metabolite Imaging (DESI/MALDI-MSI) & Tissue Microenvironment Engine (`spatial_metabolite_imaging`)
+- **Phase 117**: Cryo-EM Dynamic Flexibility & Continuous Manifold Embedding Engine (`cryo_dynamic_manifold`)
+- **Phase 118**: Peptide-MHC Class II Neoantigen Immunogenicity Predictor (CD4+ Epitopes) (`pmhc_class2`)
+- **Phase 119**: DNA Damage Response (DDR) & Synthetic Viability Pathway Modeler (`ddr_pathways`)
+- **Phase 120**: Single-Cell ATAC+RNA Multiome Joint Embedding & Regulatory Network Engine (`multiome_joint`)
+- **Phase 121**: Target Protein Degradation (TPD) Molecular Glue & Ternary Complex Stability Ranker (`tpd_molecular_glue`)
+- **Phase 122**: Clinical Trial Decentralized Patient Telemetry & Digital Biomarker Anomaly Sentinel (`trial_telemetry`)
+- **Phase 123**: Microbial Natural Product Biosynthetic Gene Cluster (BGC) Mining Engine (`bgc_mining`)
+- **Phase 124**: Multi-Modal AI Scientist Autonomous Publication Pre-print & LaTeX Compiler (`preprint_latex`)
+- **Phase 125**: Centenary Milestone v1.6 Core Platform Synthesis & Autonomous Research Orchestration Matrix (`milestone_v1_6`)
+: CHANGELOG.md
 
 All notable changes to the **Agentic Multimodal Research Platform** will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.19.0] - 2026-09-15 (Generation 17: Phase 45 - Autonomous Drug Repurposing & Combination Synergy Simulator)
+---
+
+## [1.4.0] - 2026-09-19 (Branch: `develop/v1.1`)
 
 ### Added
-- **Phase 45: Autonomous Drug Repurposing & Combination Synergy Simulator**:
-  - Implemented database models in `packages/database/src/database/models/drug_synergy.py` (`DBDrugRepurposingScreen`, `DBRepurposedCandidate`, `DBDrugCombinationSynergy`).
-  - Implemented `DrugSynergyRepository` in `packages/database/src/database/repositories/drug_synergy_repo.py`.
-  - Implemented `DrugSynergyEngine` in `packages/research/src/research/drug_synergy_engine.py`.
-  - Implemented REST API routes in `apps/api/src/api/routes/drug_synergy.py`.
-  - Created interactive Drug Synergy Studio in `apps/web/src/pages/DrugSynergyStudioPage.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_drug_synergy_repo.py`, `packages/research/tests/test_drug_synergy_engine.py`, and `apps/api/tests/test_drug_synergy_api.py`.
-  - Formalized **ADR 045** in `docs/decisions.md`.
+- **Phase 94: Autonomous Spatial Transcriptomics & TME Cellular Deconvolution Engine**:
+  - Implemented `SpatialTranscriptomicsEngine` for Visium/Xenium spot deconvolution, cell-type proportions, and cellular niche clustering.
+  - Created `DBSpatialSample`, `DBSpatialSpotDeconvolution`, `DBCellTypeProportion` models and `SpatialTranscriptomicsRepository`.
+  - Added REST API endpoints under `/api/v1/spatial-transcriptomics/*`.
+- **Phase 95: Autonomous Proteogenomics & MS/MS Spectral Library Generator**:
+  - Implemented `ProteogenomicsEngine` for novel splice junction peptide mapping, MS/MS spectra matching, and FDR calculation.
+  - Created `DBProteogenomicSample`, `DBSpectralMatch`, `DBNovelPeptide` models and `ProteogenomicsRepository`.
+  - Added REST API endpoints under `/api/v1/proteogenomics/*`.
+- **Phase 96: Autonomous CAR-NK & Immuno-Oncology SynNotch Designer**:
+  - Implemented `CarNkDesignerEngine` for chimeric antigen receptor architecture design, scFv affinity matching, and SynNotch logic gate circuits.
+  - Created `DBCarNkDesign`, `DBSynNotchCircuit`, `DBCytotoxicityPrediction` models and `CarNkDesignerRepository`.
+  - Added REST API endpoints under `/api/v1/car-nk/*`.
+- **Phase 97: Autonomous Target-Enabled Cryo-EM Ensemble Generator**:
+  - Implemented `CryoEmEnsembleEngine` for conformational state clustering, energy landscape reconstruction, and density map fitting.
+  - Created `DBCryoEmEnsemble`, `DBConformationalState`, `DBEnergyLandscapePoint` models and `CryoEmEnsembleRepository`.
+  - Added REST API endpoints under `/api/v1/cryoem-ensemble/*`.
+- **Phase 98: Autonomous Oligonucleotide & siRNA Therapeutic Off-Target Modeler**:
+  - Implemented `SirnaOffTargetEngine` for siRNA seed region thermodynamics, RNAi knockdown efficacy prediction, and transcriptomic off-target profiling.
+  - Created `DBSirnaCandidate`, `DBOffTargetTranscript`, `DBKnockdownPrediction` models and `SirnaOffTargetRepository`.
+  - Added REST API endpoints under `/api/v1/sirna/*`.
+- **Phase 99: Autonomous Pharmacokinetic-Pharmacodynamic (PK/PD) & PBPK Modeler**:
+  - Implemented `PkPdModelerEngine` with multi-compartment physiologically-based PK modeling, clearance kinetics, and dynamic concentration-time profiles.
+  - Created `DBPkPdSimulation`, `DBPbpkCompartment`, `DBConcentrationTimePoint` models and `PkPdModelerRepository`.
+  - Added REST API endpoints under `/api/v1/pkpd/*`.
+- **Phase 100: Autonomous AI Lab Co-Pilot & Centennial Synthesis Core**:
+  - Implemented `AiLabCopilotEngine` synthesizing milestone insights across all 100 platform generations with cross-domain scientific discovery scoring.
+  - Created `DBCopilotSession`, `DBSynthesisInsight`, `DBCentennialScorecard` models and `AiLabCopilotRepository`.
+  - Added REST API endpoints under `/api/v1/ai-copilot/*`.
+- **Phase 101: Autonomous CRISPR Prime & Base Editing Predictor**:
+  - Implemented `CrisprPrimeBaseEditingEngine` predicting pegRNA efficiency, reverse transcription template insertion accuracy, and bystander base editing risks.
+  - Created `DBCrisprEditingDesign`, `DBPegRnaCandidate`, `DBBystanderRisk` models and `CrisprPrimeBaseEditingRepository`.
+  - Added REST API endpoints under `/api/v1/crispr-editing/*`.
+- **Phase 102: Autonomous Multiplexed Spatial Proteomics Analyzer**:
+  - Implemented `SpatialProteomicsEngine` analyzing multiplexed imaging mass cytometry / CODEX marker intensities, neighborhood graphs, and tumor-stroma infiltration.
+  - Created `DBSpatialProteomicsScan`, `DBCellularPhenotype`, `DBSpatialNeighborhood` models and `SpatialProteomicsRepository`.
+  - Added REST API endpoints under `/api/v1/spatial-proteomics/*`.
+- **Phase 103: Autonomous Literature Fact-Checking & Claim Verification Engine**:
+  - Implemented `LiteratureFactcheckEngine` verifying biomedical claims against knowledge base evidence with NLI stance classification (SUPPORTED, REFUTED, INSUFFICIENT_EVIDENCE) and contradiction detection.
+  - Created `DBFactcheckSession`, `DBVerifiedClaim`, `DBEvidenceGrounding` models and `LiteratureFactcheckRepository`.
+  - Added REST API endpoints under `/api/v1/literature-factcheck/*`.
+  - Upgraded and hardened Research CLI (`scripts/research_cli.py`) with comprehensive CLI automated test suite (`tests/test_research_cli.py`).
 
 ---
 
-## [2.18.0] - 2026-09-15 (Generation 17: Phase 44 - Autonomous Multi-Modal Scientific Knowledge Super-Graph & Hypothesis Discovery Engine)
+## [1.3.0] - 2026-09-18 (Branch: `develop/v1.1`)
 
 ### Added
-- **Phase 44: Autonomous Multi-Modal Scientific Knowledge Super-Graph & Hypothesis Discovery Engine**:
-  - Implemented database models in `packages/database/src/database/models/super_graph.py` (`DBSuperGraphNode`, `DBSuperGraphEdge`, `DBCausalHypothesis`).
-  - Implemented `SuperGraphRepository` in `packages/database/src/database/repositories/super_graph_repo.py`.
-  - Implemented `SuperGraphHypothesisEngine` in `packages/research/src/research/super_graph_engine.py`.
-  - Implemented REST API routes in `apps/api/src/api/routes/super_graph.py`.
-  - Created interactive Super-Graph Studio in `apps/web/src/pages/SuperGraphStudioPage.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_super_graph_repo.py`, `packages/research/tests/test_super_graph_engine.py`, and `apps/api/tests/test_super_graph_api.py`.
-  - Formalized **ADR 044** in `docs/decisions.md`.
+- **Phase 90: Multi-Omics Epigenetic Age & DNA Methylation Clock Predictor**:
+  - Implemented `EpigeneticClockEngine` supporting Horvath (353-CpG), Hannum (71-CpG), PhenoAge, and GrimAge models with missing site imputation, Epigenetic Age Acceleration (EAA), and DunedinPACE pace of aging.
+  - Created `DBEpigeneticSample`, `DBMethylationClockResult`, `DBCpGMarkerScore` models and `EpigeneticClockRepository`.
+  - Added REST API endpoints under `/api/v1/epigenetic-clock/*`.
+- **Phase 91: High-Content Phenotypic Image Screening & Single-Cell Morphometry AI**:
+  - Implemented `PhenotypicScreeningEngine` analyzing 5-channel Cell Painting assays (DNA, RNA, ER, AGP, Mito) with Haralick texture, Zernike moments, Mahalanobis phenotypic distance, and Mechanism-of-Action (MoA) classification.
+  - Created `DBCellPaintingPlate`, `DBCellPaintingWell`, `DBSingleCellMorphometry` models and `PhenotypicScreeningRepository`.
+  - Added REST API endpoints under `/api/v1/phenotypic-screening/*`.
+- **Phase 92: Synthetic Biology Gene Circuit Design & Boolean Logic Gate Synthesizer**:
+  - Implemented `SyntheticGeneCircuitEngine` with transcriptional logic gates (AND, OR, NAND, NOR, XOR), transcription factor assignment (TetR, LacI, AraC, LuxR), Hill kinetic dynamic ODE simulation, and Golden Gate MoClo plasmid overhang compilation.
+  - Created `DBSyntheticGeneCircuit`, `DBBioLogicGate`, `DBCircuitKineticsTrace` models and `SyntheticGeneCircuitRepository`.
+  - Added REST API endpoints under `/api/v1/synthetic-gene-circuits/*`.
+- **Phase 93: Autonomous Preclinical Toxicogenomics & ADMET-Safety Risk Ranker**:
+  - Implemented `PreclinicalToxicologyEngine` with Ames mutagenicity, hERG cardiotoxicity ($IC_{50}$), DILI hepatotoxicity, CYP450 inhibition profiles, Caco-2 permeability, structural alert scanning, and composite Therapeutic Safety Index (TSI) scoring.
+  - Created `DBPreclinicalToxStudy`, `DBToxicogenomicEndpoint`, `DBStructuralToxAlert` models and `PreclinicalToxicologyRepository`.
+  - Added REST API endpoints under `/api/v1/preclinical-toxicology/*`.
 
 ---
 
-## [2.17.0] - 2026-09-15 (Generation 16: Phase 43 - Autonomous De Novo Generative Molecule & Antibody Design Studio)
+## [1.2.0] - 2026-09-18 (Branch: `develop/v1.1`)
 
 ### Added
-- **Phase 43: Autonomous De Novo Generative Molecule & Antibody Design Studio**:
-  - Implemented database models in `packages/database/src/database/models/generative_chemistry.py` (`DBGenerativeMolecule`, `DBADMETProfile`, `DBAntibodyCandidate`).
-  - Implemented `GenerativeChemistryRepository` in `packages/database/src/database/repositories/generative_chemistry_repo.py`.
-  - Implemented `GenerativeChemistryEngine` in `packages/research/src/research/generative_chemistry_engine.py`.
-  - Implemented REST API routes in `apps/api/src/api/routes/generative_chemistry.py`.
-  - Created interactive Generative Chemistry Studio in `apps/web/src/pages/GenerativeChemistryPage.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_generative_chemistry_repo.py`, `packages/research/tests/test_generative_chemistry_engine.py`, and `apps/api/tests/test_generative_chemistry_api.py`.
-  - Formalized **ADR 043** in `docs/decisions.md`.
-
----
-
-## [2.16.0] - 2026-09-15 (Generation 16: Phase 42 - Autonomous Spatial Transcriptomics & Tissue Microenvironment Studio)
-
-### Added
-- **Phase 42: Autonomous Spatial Transcriptomics & Tissue Microenvironment Studio**:
-  - Implemented database models in `packages/database/src/database/models/spatial_transcriptomics.py` (`DBSpatialTissueDataset`, `DBCellSpatialCoordinate`, `DBCellCommunicationPair`, `DBSpatialDomain`).
-  - Implemented `SpatialTranscriptomicsRepository` in `packages/database/src/database/repositories/spatial_repo.py` supporting dataset CRUD, coordinate querying, and ligand-receptor crosstalk extraction.
-  - Implemented `SpatialTranscriptomicsEngine` in `packages/research/src/research/spatial_engine.py` simulating 2D histological coordinate grids, spatial domain partitioning, and CellChat/CellPhoneDB signaling pathways.
-  - Implemented REST API routes in `apps/api/src/api/routes/spatial.py`.
-  - Created interactive Spatial Transcriptomics Studio in `apps/web/src/pages/SpatialTranscriptomicsPage.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_spatial_repo.py`, `packages/research/tests/test_spatial_engine.py`, and `apps/api/tests/test_spatial_api.py`.
-  - Formalized **ADR 042** in `docs/decisions.md`.
-
----
-
-## [2.15.0] - 2026-09-15 (Generation 15: Phase 41 - Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio)
-
-### Added
-- **Phase 41: Autonomous Multi-Omics & Single-Cell Transcriptomics Differential Expression Studio**:
-  - Implemented database models in `packages/database/src/database/models/single_cell.py` (`DBSingleCellDataset`, `DBCellCluster`, `DBCellCoordinate`, `DBDifferentialGene`, `DBPathwayEnrichment`) with cross-dialect `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `SingleCellRepository` in `packages/database/src/database/repositories/single_cell_repo.py` supporting single-cell dataset lifecycles, cluster distributions, high-dimensional coordinates, marker gene discoveries, and GSEA pathway enrichments.
-  - Implemented `SingleCellTranscriptomicsEngine` in `packages/research/src/research/single_cell_engine.py`:
-    - Quality Control (QC) filtering pipeline on UMI library depth, detected gene count, and mitochondrial read percentage ($\le 15\%$).
-    - Graph-based Leiden community clustering and Principal Component Analysis (PCA) dimensionality reduction.
-    - 2D nonlinear embedding projection generating high-resolution coordinates for both Uniform Manifold Approximation and Projection (UMAP) and $t$-Distributed Stochastic Neighbor Embedding (t-SNE).
-    - Non-parametric Wilcoxon rank-sum differential expression testing with Benjamini-Hochberg False Discovery Rate (FDR) adjusted $p$-values and $\log_2\text{FC}$ effect sizes.
-    - Diffusion Pseudotime (DPT) cellular trajectory ordering ($0.0 \rightarrow 1.0$) mapping stem/quiescent state transitions toward lineage endpoints.
-    - Gene Set Enrichment Analysis (GSEA) over-representation scoring across MSigDB Hallmark, KEGG, and Reactome pathways with Normalized Enrichment Scores (NES).
-  - Implemented REST API routes in `apps/api/src/api/routes/single_cell.py`:
-    - `POST /api/v1/single-cell/analyze`: Run end-to-end single-cell transcriptomics analysis pipeline.
-    - `GET /api/v1/single-cell/datasets`: List scRNA-seq datasets with filtering.
-    - `GET /api/v1/single-cell/datasets/{id}`: Detailed dataset inspection with clusters and pathway enrichments.
-    - `GET /api/v1/single-cell/datasets/{id}/coordinates`: Fetch 2D UMAP/t-SNE coordinates with optional cluster filtering and downsampling.
-    - `GET /api/v1/single-cell/datasets/{id}/markers`: Fetch cluster-specific differential marker genes.
-    - `DELETE /api/v1/single-cell/datasets/{id}`: Delete dataset and cascaded records.
-  - Created interactive Single-Cell Transcriptomics Studio in `apps/web/src/pages/SingleCellStudioPage.tsx`:
-    - 2D UMAP/t-SNE Scatter Plot Canvas with cluster color-coding, cell-type gating, and interactive tooltips.
-    - Cell Cluster Composition Distribution cards with top distinguishing markers.
-    - Differential Expression Volcano Plot with fold change and FDR significance thresholds.
-    - Cluster-Specific Marker Genes Table with export and search.
-    - Diffusion Pseudotime Trajectory Bar Graphs showing differentiation progression.
-    - Gene Set Enrichment Analysis (GSEA) Pathway Waterfall.
-    - Preloaded single-cell study presets (Human Hepatocyte LNP Atlas, PBMC Immune Profiling, Neural Lineage Dynamics).
-  - Mounted `/single-cell` route in `App.tsx` and added `Single-Cell Multi-Omics` navigation link with `Microscope` icon in `Layout.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_single_cell_repo.py`, `packages/research/tests/test_single_cell_engine.py`, and `apps/api/tests/test_single_cell_api.py` (410/410 monorepo tests passing).
-  - Updated `scripts/seed_demo_data.py` with Human Primary Hepatocyte LNP-CRISPR scRNA-seq Atlas.
-  - Formalized **ADR 041** in `docs/decisions.md`.
-
----
-
-## [2.14.0] - 2026-09-15 (Generation 14: Phase 40 - Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio)
-
-### Added
-- **Phase 40: Autonomous Synthetic Biology & CRISPR Gene Editing Guide RNA Design Studio**:
-  - Implemented database models in `packages/database/src/database/models/crispr.py` (`DBCRISPRDesign`, `DBGuideRNA`, `DBOffTargetSite`, `DBBaseEditingProfile`) with cross-dialect `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `CRISPRRepository` in `packages/database/src/database/repositories/crispr_repo.py` supporting targeting campaign lifecycle, candidate gRNA ranking, genome-wide off-target mismatch loci, and precision base editing profiles.
-  - Implemented `CRISPRGuideDesignEngine` in `packages/research/src/research/crispr_engine.py`:
-    - PAM scanning across nucleases: SpCas9 (`NGG`), Cas12a/Cpf1 (`TTTV`), xCas9 (`NG`), SaCas9 (`NNGRRT`), and Cas9-HF1.
-    - Azimuth 2.0 / Rule Set 2 on-target cleavage efficiency scoring (0–100%) incorporating positional base preferences and GC penalty windows.
-    - Cutting Frequency Determination (CFD) off-target positional mismatch matrix scoring against genome-wide loci.
-    - Precision Base Editing deamination activity window profiling (positions 4–8 for ABE $A \rightarrow G$ and CBE $C \rightarrow T$) with bystander mutation risk classification.
-    - Golden Gate cloning oligonucleotide generation with BsmBI/BsaI sticky overhangs (`5'-CACC-[Spacer]-3'` and `5'-AAAC-[RevComp]-3'`) and duplex annealing thermocycler protocols.
-  - Implemented REST API routes in `apps/api/src/api/routes/crispr.py`:
-    - `POST /api/v1/crispr/design`: Design candidate gRNAs, off-target analysis, base editing profiles, and cloning oligos.
-    - `GET /api/v1/crispr/designs`: List targeting campaigns with filtering.
-    - `GET /api/v1/crispr/designs/{id}`: Detailed campaign inspection with full candidate guides, off-targets, and base editing profiles.
-    - `GET /api/v1/crispr/guides/{id}/oligos`: Retrieve ready-to-order Golden Gate cloning oligos and annealing protocol.
-    - `GET /api/v1/crispr/designs/{id}/export-genbank`: Download annotated GenBank (.gb) format sequence file.
-    - `DELETE /api/v1/crispr/designs/{id}`: Delete targeting campaign and cascaded records.
-  - Created interactive CRISPR & Synthetic Biology Studio in `apps/web/src/pages/CRISPRStudioPage.tsx`:
-    - Protospacer Sequence Map Visualizer with highlighted PAM sites and active guide footprints.
-    - Candidate gRNA Ranked Table with Azimuth efficiency, CFD specificity, GC%, and Quality Tier badges.
-    - Genome-Wide Off-Target Inspector with mismatch counts and exonic vs intergenic risk tags.
-    - Precision Base Editing Window Visualizer for ABE8e and CBE deamination windows.
-    - Golden Gate BsmBI/BsaI Cloning Oligo ordering sheet with 1-click clipboard copy and GenBank download.
-    - Preloaded therapeutic targeting presets (PCSK9 Exon 1, BCL11A Enhancer, VEGFA Exon 3).
-  - Mounted `/crispr` route in `App.tsx` and added `CRISPR & Synthetic Bio` navigation link with `Scissors` icon in `Layout.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_crispr_repo.py`, `packages/research/tests/test_crispr_engine.py`, and `apps/api/tests/test_crispr_api.py` (407/407 monorepo tests passing).
-  - Updated `scripts/seed_demo_data.py` with PCSK9 Exon 1 targeting campaign.
-  - Formalized **ADR 040** in `docs/decisions.md`.
-
----
-
-## [2.13.0] - 2026-09-15 (Generation 13: Phase 39 - Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio)
-
-### Added
-- **Phase 39: Autonomous Molecular Dynamics Trajectory & Quantum Chemistry Simulation Studio**:
-  - Implemented database models in `packages/database/src/database/models/molecular_dynamics.py` (`DBMolecularDynamicsSimulation`, `DBTrajectoryFrame`, `DBResidueFluctuation`, `DBQuantumChemistryProperty`) with cross-dialect `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `MolecularDynamicsRepository` in `packages/database/src/database/repositories/molecular_dynamics_repo.py` supporting time-series simulations, multi-frame snapshots, per-residue RMSF flexibility curves, and quantum DFT properties.
-  - Implemented `MolecularDynamicsEngine` in `packages/research/src/research/molecular_dynamics_engine.py`:
-    - All-atom Velocity Verlet trajectory simulator generating standard PDB multi-model frames with thermal noise and harmonic atomic oscillations.
-    - Asymptotic Backbone C$\alpha$ RMSD convergence profiling and equilibrium plateau detection ($\tau \sim 1.45 \text{ \AA}$).
-    - Per-residue Root Mean Square Fluctuation (RMSF) dynamic flexibility mapping with flexible loop gating detection.
-    - Quantum Density Functional Theory (DFT B3LYP/6-31G*) electronic orbital calculation (HOMO/LUMO levels, bandgap energy $\Delta E$, dipole moment, chemical hardness $\eta$, and Mulliken charges).
-  - Implemented REST API routes in `apps/api/src/api/routes/molecular_dynamics.py`:
-    - `POST /api/v1/md/simulate`: Execute all-atom MD trajectory with quantum DFT analysis.
-    - `GET /api/v1/md/simulations`: List simulations with summary stats and bandgaps.
-    - `GET /api/v1/md/simulations/{id}`: Detailed simulation inspection with full trajectory frames and fluctuations.
-    - `GET /api/v1/md/simulations/{id}/frames/{frame_index}`: Fetch single coordinate snapshot.
-    - `GET /api/v1/md/simulations/{id}/export-trajectory`: Download concatenated multi-model PDB trajectory file.
-  - Created interactive Molecular Dynamics & Quantum Chemistry Studio in `apps/web/src/pages/MolecularDynamicsPage.tsx`:
-    - 3D Animated Canvas Trajectory Time-Lapse Player with Play/Pause, speed control ($0.5\times - 2.0\times$), time scrubber slider, and dynamic flexibility/structure color coding.
-    - Live simulation telemetry (Instantaneous potential energy, temperature, RMSD, timestep).
-    - RMSD & Thermodynamic Equilibrium line chart with convergence plateau reference.
-    - Per-Residue RMSF Flexibility bar chart with high-flexibility loop badges.
-    - Quantum Chemistry & DFT Orbitals Studio with HOMO/LUMO level diagrams, $\Delta E$ bandgap indicator, and reactivity indexes.
-    - Frame Snapshots table and Multi-Model PDB export.
-  - Mounted `/dynamics` route in `App.tsx` and added `MD Trajectory & Quantum` navigation link with `Atom` icon in `Layout.tsx`.
-  - Added unit and integration test suites in `packages/database/tests/test_molecular_dynamics_repo.py`, `packages/research/tests/test_molecular_dynamics_engine.py`, and `apps/api/tests/test_molecular_dynamics_api.py` (404/404 total tests passing).
-  - Updated `scripts/seed_demo_data.py` with 100ns AMBER14SB PCSK9 simulation and B3LYP DFT quantum properties.
-  - Formalized **ADR 039** in `docs/decisions.md`.
-
----
-
-## [2.12.0] - 2026-09-15 (Generation 12: Phase 38 - Autonomous Bio-Molecular Structure & Protein Folding Visualizer)
-
-### Added
-- **Phase 38: Autonomous Bio-Molecular Structure & Protein Folding Visualizer**:
-  - Implemented database persistence models in `packages/database/src/database/models/molecular.py` (`DBMolecularStructure`, `DBBindingPocket`, `DBDockingPose`, `DBMutationStability`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `MolecularStructureRepository` in `packages/database/src/database/repositories/molecular_repo.py` supporting 3D structure creation, active binding pocket management, in-silico ligand docking poses, and mutational stability scan queries.
-  - Implemented `StructurePredictionEngine` in `packages/research/src/research/structure_engine.py`:
-    - Generates standard PDB coordinate streams for AlphaFold3 / ESMFold predictions with per-residue pLDDT confidence embedded in the B-factor column.
-    - Druggable catalytic pocket and cavity detection with volume ($\text{Å}^3$) and surface area ($\text{Å}^2$) calculation.
-    - In-silico ligand docking simulator (AutoDock-Vina / DiffDock proxy) computing binding affinity ($\Delta G$), RMSD, and hydrogen bonding.
-    - Thermodynamic folding free energy scan ($\Delta\Delta G$ in $\text{kcal/mol}$) for point mutations with pathogenic classification.
-  - Implemented REST API routes in `apps/api/src/api/routes/molecular.py`:
-    - `POST /api/v1/molecular/predict`: Predict 3D protein structure and binding pockets.
-    - `GET /api/v1/molecular/structures`: List structures filtered by user/workspace/project/uniprot.
-    - `GET /api/v1/molecular/structures/{id}`: Detailed structure inspection with pockets, docking poses, and mutations.
-    - `POST /api/v1/molecular/structures/{id}/dock`: Execute in-silico ligand docking.
-    - `POST /api/v1/molecular/structures/{id}/mutate`: Run mutational stability scan.
-    - `GET /api/v1/molecular/structures/{id}/export-pdb`: Download PDB coordinate file.
-  - Created interactive Bio-Molecular Structure Studio in `apps/web/src/pages/MolecularStructurePage.tsx`:
-    - Interactive 3D Canvas visualizer with ribbon/helix rendering and animated rotation.
-    - pLDDT confidence spectrum color scale (Very High $>90$, Confident $70-90$, Low $50-70$, Disordered $<50$).
-    - Binding Pocket Explorer with druggability scores and active site residues.
-    - In-silico Ligand Docking Studio with binding affinities, RMSD, and hydrogen bonds.
-    - $\Delta\Delta G$ Mutational Stability Scanner with pathogenic hotspot warnings.
-    - PDB Export & Raw Sequence inspect viewer.
-  - Mounted `/molecular` route in `App.tsx` and added `Bio-Molecular Structure` navigation link with `Dna` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_molecular_repo.py`, `packages/research/tests/test_structure_engine.py`, and `apps/api/tests/test_molecular_api.py` (399/399 total tests passing).
-  - Updated `scripts/seed_demo_data.py` with AlphaFold3 PCSK9 & Cas9_Sp structural models.
-  - Formalized **ADR 038** in `docs/decisions.md`.
-
----
-
-## [2.11.0] - 2026-09-15 (Generation 11: Phase 37 - Autonomous Laboratory Automation & Robotic Protocol Generator)
-
-### Added
-- **Phase 37: Autonomous Laboratory Automation & Robotic Protocol Generator**:
-  - Implemented database models in `packages/database/src/database/models/lab_automation.py` (`DBRoboticProtocol`, `DBLabwareSlot`, `DBLiquidTransferStep`, `DBRoboticExecutionTrace`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `LabAutomationRepository` in `packages/database/src/database/repositories/lab_automation_repo.py` supporting protocol creation, 12-slot deck layout allocation, atomic pipetting transfer steps, execution trace logging, and multi-tenant filtering.
-  - Implemented `RoboticProtocolCompiler` in `packages/research/src/research/robotic_protocol_compiler.py`:
-    - Generates production-grade Opentrons Protocol API v2 Python code with metadata, hardware requirements (`OT-2` / `Flex`, API `2.15`), and `run(protocol: protocol_api.ProtocolContext)`.
-    - Generates universal PyLabRobot Python automation scripts.
-    - Generates standard Autoprotocol JSON specifications for cloud biofoundries.
-    - Deterministic deck simulation with reagent volume tracking, pipette capacity validation, liquid class speed adjustments (`aqueous`, `viscous_glycerol`, `volatile_ethanol`), liquid waste calculation, and 3D gantry collision detection for tall labware.
-  - Implemented REST API routes in `apps/api/src/api/routes/lab_automation.py`:
-    - `POST /api/v1/lab/protocols/compile`: Autonomous compilation, virtual collision check, and protocol persistence.
-    - `GET /api/v1/lab/protocols`: List robotic protocols filtered by user/workspace/project/platform.
-    - `GET /api/v1/lab/protocols/{id}`: Detailed protocol retrieval with slots, steps, and simulation traces.
-    - `POST /api/v1/lab/protocols/{id}/simulate`: Dynamic simulation of custom pipetting sequences.
-    - `GET /api/v1/lab/protocols/{id}/export-code`: Multi-format robot code export (`opentrons_python`, `pylabrobot`, `autoprotocol`).
-  - Created interactive Robotic Lab Automation Studio in `apps/web/src/pages/LabAutomationPage.tsx`:
-    - Interactive 12-Slot Deck Grid Visualizer with slot selection and reagent capacity monitoring.
-    - Microfluidic pipetting transfer steps table with liquid class badges.
-    - Physics & Collision Telemetry with spatial warning cards and step execution log.
-    - Executable code viewer with copy and download utilities.
-  - Mounted `/lab` route in `App.tsx` and added `Robotic Lab Automation` navigation link with `Bot` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_lab_automation_repo.py`, `packages/research/tests/test_robotic_protocol_compiler.py`, and `apps/api/tests/test_lab_automation_api.py` (392/392 total tests passing).
-  - Updated `scripts/seed_demo_data.py` with full lab automation protocol demo data.
-  - Formalized **ADR 037** in `docs/decisions.md`.
-
----
-
-## [2.10.0] - 2026-09-15 (Generation 10: Phase 36 - Autonomous Clinical Trial Protocol & Drug Repurposing Engine + Official SDKs + Demo Seeder)
-
-### Added
-- **Phase 36: Autonomous Clinical Trial Protocol & Drug Repurposing Engine**:
-  - Implemented database models in `packages/database/src/database/models/clinical.py` (`DBClinicalProtocol`, `DBCohortCriterion`, `DBDrugCandidate`, `DBRegulatoryPackage`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `ClinicalRepository` in `packages/database/src/database/repositories/clinical_repo.py` supporting protocol creation, PICO cohort criteria management, drug repositioning screens, and eCTD regulatory package generation.
-  - Implemented `ClinicalTrialEngine` in `packages/research/src/research/clinical_trial_engine.py`:
-    - Protocol synthesizer evaluating disease indication, investigational modality, and target mechanisms.
-    - PICO structured cohort eligibility generator with standard LOINC clinical lab assay codes.
-    - Molecular target-affinity drug repositioning screen ($K_d$ nanomolar affinities, bioavailability %, and toxicity risk scores).
-    - eCTD FDA IND / EMA CTD electronic regulatory compliance checker and submission checklists.
-  - Implemented REST API routes in `apps/api/src/api/routes/clinical.py`:
-    - `POST /api/v1/clinical/protocols/generate`: Autonomous protocol generation and multi-module persistence.
-    - `GET /api/v1/clinical/protocols`: List protocols filtered by user/workspace/project.
-    - `GET /api/v1/clinical/protocols/{id}`: Detailed protocol inspection with criteria, candidates, and regulatory packages.
-    - `POST /api/v1/clinical/protocols/{id}/criteria`: Add custom PICO eligibility criteria.
-    - `POST /api/v1/clinical/protocols/{id}/regulatory-package`: Generate eCTD IND compliance package.
-  - Created interactive Clinical Trials Studio in `apps/web/src/pages/ClinicalTrialsPage.tsx`:
-    - Protocol Synthesizer & Active Protocols Catalog.
-    - Planned Cohort, Study Duration, Adverse Risk, and Molecular Target metrics grid.
-    - Primary & Secondary Endpoints view.
-    - Interactive Tabbed Explorer (PICO Cohort Criteria, Drug Repurposing Screen, FDA IND Dossier).
-  - Mounted `/clinical` route in `App.tsx` and added `Clinical Trials & Repurposing` navigation link with `HeartPulse` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_clinical_repo.py`, `packages/research/tests/test_clinical_trial_engine.py`, and `apps/api/tests/test_clinical_api.py`.
-  - Formalized **ADR 036** in `docs/decisions.md`.
-- **Official Developer Platform SDKs**:
-  - Python async SDK (`ai-research-os` in `packages/sdk-python/ai_research_os`) with `AIResearchClient`, research job submission, polling helpers, document ingestion, usage tracking, and Pydantic models.
-  - TypeScript SDK (`apps/web/src/sdk/client.ts`) with typed methods, SSE/WebSocket subscription handlers, and token auth.
-- **Production Demo Data Seeder**:
-  - Comprehensive seed script (`scripts/seed_demo_data.py`) spanning all 36 platform studios with the flagship project *"Targeted CRISPR-Cas9 Epigenetic Editing via Lipid Nanoparticle Delivery for Monogenic Hepatopathies"*.
-- **GENERATION 10 COMPLETED**: Phase 36, Developer Platform SDKs, and Demo Seeder are 100% complete and verified!
-
----
-
-## [2.9.0] - 2026-09-14 (Generation 9 Milestone 1: Phase 35 - Autonomous Scientific Grant & Research Funding Proposal Synthesizer)
-
-### Added
-- **Phase 35: Autonomous Scientific Grant & Research Funding Proposal Synthesizer**:
-  - Implemented database models in `packages/database/src/database/models/grant_proposal.py` (`DBGrantProposal`, `DBGrantSpecificAim`, `DBGrantBudgetItem`, `DBGrantReviewScorecard`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `GrantProposalRepository` in `packages/database/src/database/repositories/grant_proposal_repo.py` supporting proposal lifecycle, specific aims tracking, multi-year budget itemization, mock review scorecard recording, and platform grant metrics (`get_grant_metrics`).
-  - Implemented Grant Proposal Synthesizer Engine in `packages/research/src/research/grants/synthesizer.py`:
-    - `InstitutionalBudgetCalculator.calculate_multiyear_budget`: Computes institutional multi-year budgets including PI effort, postdoc/student salaries, fringe benefits (28.5%), annual cost escalation (3%), Modified Total Direct Costs (MTDC), and Facilities & Administrative (F&A) indirect cost rates (52%).
-    - `GrantProposalSynthesizer.synthesize_proposal_narratives`: Generates Specific Aims, Executive Abstract, Significance, Innovation, Approach, and Preliminary Data narratives for NIH (R01/R21), NSF (CAREER), and Horizon Europe grants.
-    - `GrantProposalSynthesizer.conduct_mock_study_section_review`: Simulates study section peer review panels with 1.0 (exceptional) to 9.0 (poor) scoring, percentile rankings, critique strengths/weaknesses, and funding recommendations.
-    - `GrantProposalSynthesizer.export_proposal_latex`: Generates complete, compilable LaTeX scientific grant proposals with formal section hierarchies and itemized financial tables.
-  - Implemented REST API routes in `apps/api/src/api/routes/grant_proposals.py`:
-    - `POST /api/v1/grants/proposals`: Create grant proposal project and synthesize baseline aims and budget.
-    - `GET /api/v1/grants/metrics`: Query platform grant funding metrics.
-    - `GET /api/v1/grants/proposals`: List grant proposals.
-    - `GET /api/v1/grants/proposals/{proposal_id}`: Fetch complete proposal with aims, budget items, and mock review scorecards.
-    - `POST /api/v1/grants/proposals/{proposal_id}/synthesize-aims`: Synthesize Specific Aims from research topic.
-    - `POST /api/v1/grants/proposals/{proposal_id}/calculate-budget`: Recalculate multi-year institutional budget.
-    - `POST /api/v1/grants/proposals/{proposal_id}/mock-review`: Run autonomous study section peer review simulation.
-    - `GET /api/v1/grants/proposals/{proposal_id}/export-latex`: Export proposal as compilable LaTeX document.
-    - `DELETE /api/v1/grants/proposals/{proposal_id}`: Delete proposal.
-  - Created interactive Grant Proposal Studio in `apps/web/src/pages/GrantProposalStudioPage.tsx`:
-    - Proposal Catalog & Metrics Overview (`Total Active Proposals`, `Total Funding Pipeline`, `Mean Impact Score`, `High Priority Percentile`).
-    - Specific Aims Interactive Editor with hypothesis, experimental design, milestones, and effort allocations.
-    - Multi-Year Institutional Budget Calculator with real-time MTDC breakdown and indirect cost estimation.
-    - Mock Study Section Review Scorecard with 1.0-9.0 criterion ratings, critique strengths/weaknesses, and fundability badge.
-    - LaTeX Exporter with one-click copy and download functionality.
-  - Mounted `/grants` route in `App.tsx` and added `Grant Proposals` navigation link with `Landmark` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_grant_proposal_repo.py`, `packages/research/tests/test_grant_proposal_synthesizer.py`, and `apps/api/tests/test_grant_proposals_api.py`.
-  - Formalized **ADR 035** (Autonomous Scientific Grant Proposal Synthesizer, Institutional Budget Calculation, and Mock Study Section Peer Review Engine).
-  - **GENERATION 9 MILESTONE 1 COMPLETED**: Phase 35 is 100% complete, verified, and active!
-
----
-
-## [2.8.0] - 2026-09-14 (Generation 8 Milestone 4: Phase 34 - Autonomous Patent Landscape Analysis & Prior Art Search Engine)
-
-### Added
-- **Phase 34: Autonomous Patent Landscape Analysis & Prior Art Search Engine**:
-  - Implemented database models in `packages/database/src/database/models/patent.py` (`DBPatentCorpus`, `DBPatentDocument`, `DBPatentClaim`, `DBPriorArtEvaluation`, `DBFreedomToOperateReport`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `PatentRepository` in `packages/database/src/database/repositories/patent_repo.py` supporting corpus lifecycle, patent/claim indexing, prior art evaluations, FTO clearance reporting, and platform patent metrics (`get_patent_metrics`).
-  - Implemented Patent Prior Art Engine in `packages/research/src/research/patents/prior_art.py`:
-    - `PatentPriorArtEngine.decompose_claim_limitations`: Decomposes patent claims into preamble, transition, and numbered atomic limitations.
-    - `PatentPriorArtEngine.evaluate_prior_art_anticipation`: Evaluates 35 U.S.C. 102 anticipation and 103 obviousness against prior art citations with limitation-by-limitation claim charts and design-around mitigations.
-    - `PatentPriorArtEngine.generate_fto_assessment`: Synthesizes Freedom-to-Operate clearance scores, identifies high/medium risk claims, and maps white-space innovation opportunities.
-    - `PatentPriorArtEngine.synthesize_baseline_corpus`: Synthesizes structured baseline patent assets conforming to USPTO/EPO/WIPO specifications.
-  - Implemented REST API routes in `apps/api/src/api/routes/patents.py`:
-    - `POST /api/v1/patents/corpora`: Create patent landscape study and index baseline prior art patents.
-    - `GET /api/v1/patents/metrics`: Query platform patent KPIs.
-    - `GET /api/v1/patents/corpora`: List patent landscape corpora.
-    - `GET /api/v1/patents/corpora/{corpus_id}`: Fetch complete corpus with patents, claims, evaluations, and FTO reports.
-    - `POST /api/v1/patents/corpora/{corpus_id}/evaluate-claim`: Run 102/103 prior art evaluation against target claim.
-    - `POST /api/v1/patents/corpora/{corpus_id}/fto-report`: Generate Freedom to Operate clearance report and white-space map.
-    - `DELETE /api/v1/patents/corpora/{corpus_id}`: Delete corpus.
-  - Created interactive Patent Landscape Studio in `apps/web/src/pages/PatentLandscapePage.tsx`:
-    - Patent Landscape Explorer with CPC classifications and global jurisdiction filters (`USPTO`, `EPO`, `WIPO`).
-    - Interactive 35 U.S.C. 102/103 Claim Chart Studio with atomic limitation breakdown and color-coded status badges (`Anticipated (102)`, `Obvious Variant (103)`, `Novel Distinction`).
-    - Freedom to Operate Clearance Gauge and White-Space Innovation Opportunities Studio.
-    - New Landscape Study Creator Modal.
-  - Mounted `/patents` route in `App.tsx` and added `Patent Landscape` navigation link with `Scale` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_patent_repo.py`, `packages/research/tests/test_patent_prior_art.py`, and `apps/api/tests/test_patents_api.py`.
-  - Formalized **ADR 034** (Autonomous Patent Landscape Analysis, 35 U.S.C. 102/103 Claim Charts, and Freedom-to-Operate (FTO) Engine).
-  - **GENERATION 8 MILESTONE COMPLETED**: Generation 8 (Phases 31, 32, 33, 34) is 100% complete, tested, and active!
-
----
-
-## [2.7.0] - 2026-09-14 (Generation 8 Milestone 3: Phase 33 - Synthetic Instruction Dataset Generation & Active Learning Engine)
-
-### Added
-- **Phase 33: Synthetic Instruction Dataset Generation & Active Learning Engine**:
-  - Implemented database models in `packages/database/src/database/models/dataset_synthesis.py` (`DBSyntheticDataset`, `DBInstructionSample`, `DBAlignmentExport`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `DatasetSynthesisRepository` in `packages/database/src/database/repositories/dataset_synthesis_repo.py` supporting dataset lifecycle, sample batch addition, active learning curation updates, export recording, and platform synthesis metrics (`get_synthesis_metrics`).
-  - Implemented Instruction Synthesizer Engine in `packages/research/src/research/datasets/synthesizer.py`:
-    - `InstructionDatasetSynthesizer.synthesize_from_research_findings`: Generates high-entropy instruction-response samples or DPO pairs from research findings.
-    - `InstructionDatasetSynthesizer.evolve_instruction`: Evol-Instruct prompt mutator supporting `in_depth_expansion`, `in_breadth_variation`, `constraint_hardening`, `adversarial_redteaming`, and `cot_decomposition`.
-    - `InstructionDatasetSynthesizer.format_dataset`: Converts samples to Alpaca SFT, ShareGPT Multi-Turn, DPO Preference Pairs, or CoT formats.
-    - `InstructionDatasetSynthesizer.calculate_quality_metrics`: Deterministic quality, toxicity, hallucination risk, and SHA-256 deduplication hashing.
-  - Implemented REST API routes in `apps/api/src/api/routes/dataset_synthesis.py`:
-    - `POST /api/v1/datasets/synthesize`: Synthesize instruction tuning dataset from research findings.
-    - `GET /api/v1/datasets/metrics`: Query platform dataset metrics.
-    - `GET /api/v1/datasets`: List synthetic datasets.
-    - `GET /api/v1/datasets/{dataset_id}`: Fetch complete dataset with samples and export history.
-    - `PATCH /api/v1/datasets/{dataset_id}/samples/{sample_id}`: Human/Active-learning curation.
-    - `POST /api/v1/datasets/{dataset_id}/export`: Export dataset into standardized fine-tuning JSONL format.
-    - `DELETE /api/v1/datasets/{dataset_id}`: Delete dataset.
-  - Created interactive Dataset Synthesis Studio in `apps/web/src/pages/DatasetSynthesisPage.tsx`:
-    - Dataset Catalog & Format Selector (`Alpaca SFT`, `ShareGPT`, `DPO Preference Pairs`, `Chain-of-Thought`).
-    - Instruction Sample Inspector & Active Learning Curation Studio with side-by-side chosen vs. rejected responses and CoT reasoning traces.
-    - Evol-Instruct Strategy badges and quality score gauges.
-    - One-click Standardized Alignment JSONL Exporter with live clipboard copy and file download.
-  - Mounted `/datasets` route in `App.tsx` and added `Dataset Synthesis` navigation link with `Database` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_dataset_synthesis_repo.py`, `packages/research/tests/test_dataset_synthesizer.py`, and `apps/api/tests/test_dataset_synthesis_api.py`.
-  - Formalized **ADR 033** (Synthetic Instruction Dataset Generation, Evol-Instruct Mutations, and Active Learning Alignment Engine).
-  - **MILESTONE COMPLETED**: Generation 8 Milestone 3 (Phase 33) is 100% complete, tested, and active!
-
----
-
-## [2.6.0] - 2026-09-14 (Generation 8 Milestone 2: Phase 32 - Real-Time Collaborative Research Canvas & Visual Ideation Studio)
-
-### Added
-- **Phase 32: Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio**:
-  - Implemented database models in `packages/database/src/database/models/canvas.py` (`DBCanvasBoard`, `DBCanvasNode`, `DBCanvasEdge`) with dialect-safe `GUID()`, JSONB variants, cascade relations, and timezone-aware timestamps.
-  - Implemented `CanvasRepository` in `packages/database/src/database/repositories/canvas_repo.py` supporting board lifecycle, node/edge additions, coordinate updates, batch additions, metrics (`get_canvas_metrics`), and cascade deletion.
-  - Implemented Research Canvas Engine in `packages/research/src/research/canvas/ideation.py`:
-    - `CanvasIdeationEngine.generate_canvas_from_research`: Synthesizes structured 2D topological DAG layouts from findings, evidence, and conclusions.
-    - `CanvasIdeationEngine.synthesize_agent_brainstorm_nodes`: Generates multi-agent brainstorming nodes (counter-hypotheses and orthogonal inquiries).
-    - `CanvasIdeationEngine.detect_canvas_clusters`: Computes connected subgraph clusters across canvas nodes.
-  - Implemented REST API routes in `apps/api/src/api/routes/canvas.py`:
-    - `POST /api/v1/canvas/boards`: Create research canvas board.
-    - `GET /api/v1/canvas/metrics`: Query platform canvas & node metrics.
-    - `GET /api/v1/canvas/boards`: List canvas boards.
-    - `GET /api/v1/canvas/boards/{board_id}`: Fetch complete board with nodes and edges.
-    - `POST /api/v1/canvas/boards/{board_id}/generate`: Auto-generate 2D DAG from research findings.
-    - `POST /api/v1/canvas/boards/{board_id}/nodes`: Add visual research node.
-    - `PATCH /api/v1/canvas/boards/{board_id}/nodes/{node_id}`: Update node position and status.
-    - `POST /api/v1/canvas/boards/{board_id}/edges`: Add relational edge.
-    - `POST /api/v1/canvas/boards/{board_id}/brainstorm`: Trigger AI agent brainstorming expansion.
-    - `DELETE /api/v1/canvas/boards/{board_id}`: Delete board.
-  - Created interactive Research Canvas Studio in `apps/web/src/pages/ResearchCanvasPage.tsx`:
-    - Infinite 2D interactive canvas viewport with smooth zooming, panning, and customizable background grid (dots, lines, crosses, clean).
-    - Visual node-graph renderer with type-specific color accents, status badges, drag/drop interaction, and connecting SVG relation lines.
-    - AI Brainstorming Trigger and Auto-Generate from Research dossier modal.
-    - Node detail drawer with confidence scores, relations, and metadata.
-  - Mounted `/canvas` route in `App.tsx` and added `Research Canvas` navigation link with `Network` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_canvas_repo.py`, `packages/research/tests/test_canvas_ideation.py`, and `apps/api/tests/test_canvas_api.py`.
-  - Formalized **ADR 032** (Real-Time Multi-Agent Collaborative Research Canvas & Visual Ideation Studio).
-  - **MILESTONE COMPLETED**: Generation 8 Milestone 2 (Phase 32) is 100% complete, tested, and active!
-
----
-
-## [2.5.0] - 2026-09-14 (Generation 8 Milestone 1: Phase 31 - Autonomous Scientific Peer Review & Journal Publishing Pipeline)
-
-### Added
-- **Phase 31: Autonomous Multi-Agent Blinded Peer Review & Academic Publishing Pipeline**:
-  - Implemented database models in `packages/database/src/database/models/peer_review.py` (`DBPeerReviewManuscript`, `DBPeerReviewReport`, `DBManuscriptRevision`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
-  - Implemented `PeerReviewRepository` in `packages/database/src/database/repositories/peer_review_repo.py` supporting manuscript submission, referee reports saving, composite score aggregation, author revisions, camera-ready publishing, and platform metrics (`get_peer_review_metrics`).
-  - Implemented Multi-Agent Peer Review and Publishing Engine in `packages/research/src/research/publishing/peer_review.py`:
-    - `PeerReviewEngine.evaluate_manuscript`: Multi-agent double-blind evaluation simulating 3 specialized referee personas (`methodology_critic`, `statistical_auditor`, `domain_specialist`) with weighted metrics across originality, methodological rigor, empirical soundness, and clarity.
-    - `PublicationFormatter`: Generates camera-ready academic preprints (LaTeX source conforming to Nature / IEEE / ACM guidelines), BibTeX citation blocks, and canonical DOI identifiers.
-    - `AuthorRebuttalGenerator`: Synthesizes point-by-point author rebuttal letters addressing referee critique items.
-  - Implemented REST API routes in `apps/api/src/api/routes/peer_review.py`:
-    - `POST /api/v1/publishing/manuscripts`: Submit manuscript for peer review.
-    - `GET /api/v1/publishing/metrics`: Query platform peer review and publication statistics.
-    - `GET /api/v1/publishing/manuscripts`: List manuscripts with filters.
-    - `GET /api/v1/publishing/manuscripts/{id}`: Fetch manuscript details with referee reports and author revisions.
-    - `POST /api/v1/publishing/manuscripts/{id}/review`: Trigger multi-agent double-blind peer review simulation.
-    - `POST /api/v1/publishing/manuscripts/{id}/revisions`: Submit author rebuttal and revision round.
-    - `POST /api/v1/publishing/manuscripts/{id}/publish`: Generate camera-ready preprint, BibTeX, and formal DOI.
-    - `DELETE /api/v1/publishing/manuscripts/{id}`: Delete manuscript.
-  - Created interactive Peer Review & Publishing Studio in `apps/web/src/pages/PeerReviewPage.tsx`:
-    - Blind Referee Panel & Scorecard (radar/bar breakdowns across Originality, Methodological Rigor, Empirical Soundness, Clarity, detailed comments and recommendations).
-    - Author Rebuttal & Revision Studio (rebuttal letters, point-by-point response tracking).
-    - Camera-Ready Preprint & Publishing Studio (LaTeX source viewer, BibTeX copy block, DOI badge).
-    - Submit Manuscript modal with multi-venue format selector (`Nature`, `IEEE`, `ACM`, `arXiv`).
-  - Mounted `/publishing` route in `App.tsx` and added `Peer Review & Publishing` navigation link with `Award` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_peer_review_repo.py`, `packages/research/tests/test_peer_review_engine.py`, and `apps/api/tests/test_peer_review_api.py`.
-  - Formalized **ADR 031** (Autonomous Multi-Agent Blinded Peer Review, Author Rebuttals, and Camera-Ready Academic Preprint Publishing Pipeline).
-  - **MILESTONE COMPLETED**: Generation 8 Milestone 1 (Phase 31) is 100% complete, tested, and active!
-
----
-
-## [2.4.0] - 2026-09-14 (Generation 7 Milestone 4: Phase 30 - Multimodal Scientific Presentation & Executive Podcasting Briefing Generator)
-
-### Added
-- **Phase 30: Multimodal Scientific Presentation Decks & Multi-Speaker Executive Podcasting Briefing Generator**:
-  - Implemented database models in `packages/database/src/database/models/presentation.py` (`DBSynthesisPresentation`, `DBPresentationSlide`, `DBPodcastBriefing`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
-  - Implemented `PresentationRepository` in `packages/database/src/database/repositories/presentation_repo.py` supporting presentation lifecycle (`create_presentation`, `get_presentation`, `list_presentations`, `delete_presentation`), slide operations (`save_slides`, `get_slides`), podcast briefings (`create_podcast_briefing`, `get_podcast_briefing`, `list_podcast_briefings`), and platform-wide presentation metrics (`get_presentation_metrics`).
-  - Implemented `PresentationGenerator` and `PodcastBriefingSynthesizer` in `packages/research/src/research/presentation/synthesizer.py`:
-    - `PresentationGenerator.generate_presentation(title, topic, summary, findings, target_audience, slide_count)`: Generates structured scientific slide decks with layouts (`title_slide`, `key_findings`, `architecture_flow`, `comparative_analysis`, `conclusion_next_steps`), bullet assertions, visual cards, charts, and detailed speaker script notes.
-    - `PodcastBriefingSynthesizer.generate_podcast(title, topic, key_points, findings, style, target_duration_minutes)`: Generates structured multi-speaker dialogue scripts (`Host (Alex)` & `Domain Specialist (Dr. Rowan)`) with tone cues (`engaging_inquisitive`, `authoritative_analytical`, `balanced_synthesis`), duration calculation, and automated chapter timestamps.
-  - Implemented REST API routes in `apps/api/src/api/routes/presentations.py`:
-    - `POST /api/v1/presentations/generate`: Synthesize structured presentation slide deck.
-    - `GET /api/v1/presentations`: List synthesized presentations.
-    - `GET /api/v1/presentations/{id}`: Fetch presentation details with full slide deck.
-    - `POST /api/v1/presentations/podcasts/generate`: Synthesize multi-speaker podcast briefing.
-    - `GET /api/v1/presentations/podcasts`: List generated podcast briefings.
-    - `GET /api/v1/presentations/podcasts/{id}`: Fetch podcast briefing dialogue.
-    - `GET /api/v1/presentations/metrics`: Query platform presentation and podcast metrics.
-    - `DELETE /api/v1/presentations/{id}`: Delete presentation deck.
-  - Created interactive Multimodal Presentation & Podcast Studio in `apps/web/src/pages/PresentationStudioPage.tsx`:
-    - Slide Deck Presenter tab (live slide stage with full-screen toggle, layout-aware card rendering, slide navigation bar, and expandable presenter speaker notes).
-    - Slide List & Hierarchy tab (compact grid overview of all deck slides with bullet points, visuals, and timing).
-    - Executive Podcast Player & Transcript tab (audio player simulation, multi-speaker dialogue view with speaker avatar badges, duration/word-count badges, and timestamped chapter markers).
-    - Synthesize New Deck & Generate Podcast modals.
-  - Mounted `/presentations` route in `App.tsx` and added `Presentation Studio` navigation link with `Tv` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_presentation_repo.py`, `packages/research/tests/test_presentation_synthesizer.py`, and `apps/api/tests/test_presentation_api.py`.
-  - Formalized **ADR 030** (Multimodal Scientific Presentation Decks and Multi-Speaker Executive Podcasting Briefing Generator).
-  - **MILESTONE COMPLETED**: Generation 7 Milestone 4 (Phase 30) is 100% complete, tested, and active!
-
----
-
-## [2.3.0] - 2026-09-14 (Generation 7 Milestone 3: Phase 29 - In-Silico Experimentation, Computational Reproducibility & Code Verification)
-
-### Added
-- **Phase 29: In-Silico Experimentation, Computational Reproducibility & Empirical Claim Verification Engine**:
-  - Implemented database models in `packages/database/src/database/models/reproducibility.py` (`DBExperimentProtocol`, `DBReproducibilityRun`, `DBClaimVerificationTrace`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
-  - Implemented `ReproducibilityRepository` in `packages/database/src/database/repositories/reproducibility_repo.py` supporting computational protocol lifecycle (`create_protocol`, `get_protocol`, `list_protocols`, `update_protocol_status`, `delete_protocol`), in-silico execution runs (`record_reproducibility_run`, `get_run`, `list_runs`), claim verification traces (`record_verification_trace`, `list_verification_traces`), and aggregate platform metrics (`get_reproducibility_metrics`).
-  - Implemented `ReproducibilityEngine` in `packages/research/src/research/reproducibility/engine.py`:
-    - `validate_code_ast(code)`: AST tree security parser screening against prohibited modules (`os`, `sys`, `subprocess`, `socket`, `requests`, `eval`, `exec`, `open`).
-    - `execute_protocol(code, parameters)`: Sandboxed runtime scope with pre-loaded mathematical modules (`math`, `random`, `statistics`), stdout terminal interceptor, and numerical output metric extraction.
-    - `verify_claims(claimed_metrics, reproduced_metrics, tolerance)`: Relative delta error calculator ($\delta = \frac{|M_{\text{claimed}} - M_{\text{reproduced}}|}{\max(|M_{\text{claimed}}|, 1e-6)}$), tolerance-based verdict categorization (`reproduced`, `discrepant`, `refuted`, `inconclusive`), and composite reproducibility score $\kappa \in [0.0, 1.0]$.
-  - Implemented REST API routes in `apps/api/src/api/routes/reproducibility.py`:
-    - `POST /api/v1/reproducibility/protocols`: Register computational protocol.
-    - `GET /api/v1/reproducibility/protocols`: List protocols with filtering.
-    - `GET /api/v1/reproducibility/protocols/{id}`: Fetch protocol with runs and claim verification traces.
-    - `POST /api/v1/reproducibility/protocols/{id}/execute`: Trigger in-silico simulation run and automated claim verification.
-    - `GET /api/v1/reproducibility/metrics`: Query platform reproducibility metrics.
-    - `DELETE /api/v1/reproducibility/protocols/{id}`: Delete protocol.
-  - Created interactive In-Silico Experimentation & Reproducibility Studio in `apps/web/src/pages/ReproducibilityPage.tsx`:
-    - Protocols & Code Studio tab (protocol selector, paper reference badge, claimed benchmark metrics grid, AST-sandboxed code editor).
-    - Simulation Console & Telemetry tab (live stdout terminal output, execution duration gauge, peak heap memory telemetry, computed output metrics grid, re-run trigger).
-    - Claim Verification Matrix tab (granular claim vs. reproduced comparison table, relative delta error percentages, tolerance thresholds, and verdict badges).
-    - Run History & Scorecard tab (chronological historical runs and composite reproducibility scores).
-    - Register Protocol modal with template script.
-  - Mounted `/reproducibility` route in `App.tsx` and added `In-Silico Verification` navigation link with `Cpu` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_reproducibility_repo.py`, `packages/research/tests/test_reproducibility_engine.py`, and `apps/api/tests/test_reproducibility_api.py`.
-  - Formalized **ADR 029** (In-Silico Experimentation, Sandboxed Computational Reproducibility, and Claim Discrepancy Verification).
-  - **MILESTONE COMPLETED**: Generation 7 Milestone 3 (Phase 29) is 100% complete, tested, and active!
-
----
-
-## [2.2.0] - 2026-09-14 (Generation 7 Milestone 2: Phase 28 - Autonomous Systematic Literature Review & PRISMA Meta-Analysis)
-
-### Added
-- **Phase 28: Autonomous Systematic Literature Review, PRISMA 2020 Protocol Flow & Quantitative Meta-Analysis**:
-  - Implemented database models in `packages/database/src/database/models/literature.py` (`DBLiteratureReview`, `DBSLRCriterion`, `DBSLRStudyCandidate`, `DBMetaAnalysisReport`, `DBRiskOfBiasAssessment`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
-  - Implemented `LiteratureRepository` in `packages/database/src/database/repositories/literature_repo.py` supporting SLR review lifecycle (`create_literature_review`, `get_literature_review`, `list_literature_reviews`, `update_review_phase`, `recalculate_review_counts`, `delete_literature_review`), criteria management (`add_criterion`, `list_criteria`), candidate study screening (`add_candidate_studies`, `get_candidate_study`, `update_candidate_screening`, `list_candidate_studies`), Risk of Bias auditing (`save_risk_of_bias`), and quantitative meta-analysis saving (`save_meta_analysis_report`, `get_meta_analysis_report`, `get_slr_metrics`).
-  - Implemented deterministic Meta-Analysis & SLR Engine in `packages/research/src/research/literature/meta_analysis.py`:
-    - `EffectSizeCalculator`: Deterministic computation of Cohen's $d$, small-sample bias corrected Hedges' $g$, and natural log Odds Ratios with 95% confidence intervals.
-    - `HeterogeneityEngine`: Cochrane's $Q$ statistic, degrees of freedom, $I^2$ inconsistency index ($0-100\%$), DerSimonian-Laird between-study variance $\tau^2$, and chi-square approximation $p$-value.
-    - `PooledEffectEstimator`: Fixed-effect (Inverse-Variance) and Random-Effects (DerSimonian-Laird) model pooling with coordinates for forest plots.
-    - `PRISMAFlowTracker`: 4-box PRISMA 2020 identification, screening, eligibility, and included funnel telemetry with study attrition metrics.
-    - `RiskOfBiasEvaluator`: Multi-domain Cochrane RoB 2 / ROBINS-I criteria evaluation across Selection, Confounding, Measurement, and Reporting bias.
-    - `SLROrchestrator`: Full SLR review and quantitative meta-analysis synthesis pipeline.
-  - Implemented REST API routes in `apps/api/src/api/routes/literature.py`:
-    - `POST /api/v1/literature/reviews`: Create new Systematic Literature Review.
-    - `GET /api/v1/literature/reviews`: List reviews with workspace/project/phase filtering.
-    - `GET /api/v1/literature/reviews/{id}`: Fetch review details with criteria, candidate studies, and meta-analyses.
-    - `POST /api/v1/literature/reviews/{id}/criteria`: Add inclusion/exclusion criterion.
-    - `POST /api/v1/literature/reviews/{id}/candidates`: Batch add candidate studies.
-    - `PATCH /api/v1/literature/reviews/{id}/candidates/{cand_id}`: Screen candidate study and record effect metrics.
-    - `POST /api/v1/literature/reviews/{id}/meta-analysis`: Run quantitative meta-analysis calculation.
-    - `POST /api/v1/literature/reviews/{id}/risk-of-bias`: Record study Risk of Bias evaluation.
-    - `GET /api/v1/literature/reviews/{id}/prisma-flow`: Fetch PRISMA 2020 flow report.
-    - `GET /api/v1/literature/metrics`: Query platform SLR metrics.
-    - `DELETE /api/v1/literature/reviews/{id}`: Delete SLR and cascade child records.
-  - Created interactive Systematic Literature Review & Meta-Analysis Studio in `apps/web/src/pages/LiteratureReviewPage.tsx`:
-    - PRISMA 2020 Flow & Overview tab (interactive 4-box flowchart, live attrition rate, review selector, PICO framework breakdown, criteria summary pills).
-    - Screening Queue & Triage tab (candidate cards with methodology badges, 1-click Include / Exclude action buttons, exclusion reason taxonomy, sample size / effect size badges).
-    - Quantitative Meta-Analysis & Forest Plot Studio (run meta-analysis modal, pooled effect size & 95% CI summary cards, $I^2$ heterogeneity metric, visual Forest Plot with study confidence intervals, weights, and pooled diamond summary).
-    - Risk of Bias (RoB 2) Matrix Heatmap tab (domain-level quality table across Selection, Confounding, Measurement, and Reporting bias with color-coded Low Risk / Some Concerns / High Risk badges).
-    - Create SLR Review modal with PICO framework fields.
-  - Mounted `/literature` route in `App.tsx` and added `Literature Reviews` navigation link with `BookOpenCheck` icon in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_literature_repo.py`, `packages/research/tests/test_meta_analysis.py`, and `apps/api/tests/test_literature_api.py`.
-  - Formalized **ADR 028** (Autonomous Systematic Literature Review, PRISMA 2020 Protocol Flow, and Quantitative Meta-Analysis).
-  - **MILESTONE COMPLETED**: Generation 7 Milestone 2 (Phase 28) is 100% complete, tested, and active!
-
----
-
-## [2.1.0] - 2026-09-13 (Generation 7 Milestone 1: Phase 27 - Adversarial Multi-Agent Debate & Consensus Engine)
-
-### Added
-- **Phase 27: Adversarial Multi-Agent Debate, Elo Robustness Scoring & Dialectical Consensus Synthesis**:
-  - Implemented database models in `packages/database/src/database/models/debate.py` (`DBAgentDebate`, `DBDebateRound`, `DBDebateConsensus`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
-  - Implemented `DebateRepository` in `packages/database/src/database/repositories/debate_repo.py` supporting debate lifecycle (`create_debate`, `get_debate`, `list_debates`, `update_debate_status`, `add_debate_round`, `list_debate_rounds`, `record_consensus`, `get_consensus`, `get_debate_metrics`, `delete_debate`).
-  - Implemented specialized debate agents in `packages/agents/src/agents/debate/`:
-    - `ProposerAgent`: Affirmative evidence-grounded thesis defense, deduction formulation, citation tracking, and honest concession reporting.
-    - `OpposerAgent`: Adversarial counterarguments, edge case stress testing, methodology criticism, and fallacy detection.
-    - `ConsensusArbiter`: Impartial round evaluation, argument scoring, critique generation, and dialectical consensus synthesis.
-  - Implemented `DebateEngine` in `packages/research/src/research/debate/engine.py` with standard Elo rating shift updates ($\Delta R = K \times (S - E)$ with $K=32.0$), round-by-round orchestration, autonomous full debate runs, and automatic consensus recording.
-  - Implemented REST API routes in `apps/api/src/api/routes/debate.py`:
-    - `POST /api/v1/debates`: Launch new debate session.
-    - `GET /api/v1/debates`: List debates with workspace/project/status filters.
-    - `GET /api/v1/debates/{id}`: Retrieve debate with rounds and consensus.
-    - `POST /api/v1/debates/{id}/rounds`: Execute next round or full debate run.
-    - `GET /api/v1/debates/{id}/rounds`: List chronological round transcripts and citations.
-    - `GET /api/v1/debates/{id}/consensus`: Retrieve synthesized consensus.
-    - `GET /api/v1/debates/metrics`: Query aggregate debate statistics.
-    - `DELETE /api/v1/debates/{id}`: Delete debate and cascade child records.
-  - Created interactive Debate Arena Studio in `apps/web/src/pages/DebateArenaPage.tsx`:
-    - Active Debates tab (grid of active/concluded debates, Elo rating pills, round counters, launch debate modal).
-    - Split-Screen Dialectical Arena Inspector (side-by-side Proposer vs Opposer transcript viewer, claim cards, citations, Arbiter critique card with round winner and Elo delta indicator).
-    - Synthesized Consensus Vault tab (high-confidence consensus statement card, accepted empirical claims with confidence bars, refuted claims, mutual concessions, and residual uncertainties).
-  - Mounted `/debates` in `App.tsx` and added `Debate Arena` link in `Layout.tsx` with `Swords` icon.
-  - Added test suites in `packages/database/tests/test_debate_repo.py`, `packages/research/tests/test_debate_engine.py`, and `apps/api/tests/test_debate_api.py`, achieving 100% pass rate (333/333 tests passing across entire monorepo).
-  - Formalized **ADR 027** (Adversarial Multi-Agent Debate, Elo Robustness Scoring, and Dialectical Consensus Synthesis).
-  - **MILESTONE COMPLETED**: Generation 7 Milestone 1 is 100% complete, tested, and active!
-
----
-
-## [2.0.0] - 2026-09-13 (Generation 6 Milestone 4 & 6-Generation Product Roadmap Completion: Phase 26 - Research Automation)
-
-### Added
-- **Phase 26: Research Automation, Cron Scheduling, Semantic Diffing & Alerting**:
-  - Implemented database models in `packages/database/src/database/models/automation.py` (`DBScheduledResearch`, `DBResearchSweepResult`, `DBAutomationAlert`) with dialect-safe `GUID()`, JSONB variants, and timezone-aware timestamps.
-  - Implemented `AutomationRepository` in `packages/database/src/database/repositories/automation_repo.py` supporting schedule CRUD (`create_schedule`, `get_schedule`, `list_schedules`, `update_schedule`, `pause_schedule`, `resume_schedule`, `delete_schedule`), sweep recording (`record_sweep_result`, `list_sweep_results`), alert management (`create_alert`, `list_alerts`, `acknowledge_alert`), and aggregate automation telemetry (`get_automation_metrics`).
-  - Implemented `ResearchAutomationEngine` in `packages/research/src/research/automation/engine.py`:
-    - `compute_next_run(cron_expression, interval_seconds)`: Robust timestamp calculator supporting 5-field cron parsing and interval frequencies.
-    - `detect_novelty(current_claims, prior_claims)`: Semantic claim normalization and diff engine isolating novel and contradictory claims and generating novelty intensity scores $\in [0.0, 1.0]$.
-    - `execute_scheduled_sweep(schedule_id)`: Autonomous sweep execution pipeline that retrieves prior findings, calculates novelty, records sweep results, and dispatches in-app and webhook alerts when $\text{novelty} \ge \tau_{\text{novel}}$.
-  - Implemented REST API routes in `apps/api/src/api/routes/automation.py`:
-    - `POST /api/v1/automation/schedules`: Create recurring research sweeps.
-    - `GET /api/v1/automation/schedules`: List research schedules.
-    - `GET /api/v1/automation/schedules/{id}`: Fetch schedule details.
-    - `PATCH /api/v1/automation/schedules/{id}/pause` & `/resume`: Pause and resume schedules.
-    - `DELETE /api/v1/automation/schedules/{id}`: Delete schedules.
-    - `POST /api/v1/automation/schedules/{id}/trigger`: Trigger immediate on-demand sweep.
-    - `GET /api/v1/automation/schedules/{id}/sweeps`: List historical sweeps and diffs.
-    - `GET /api/v1/automation/alerts`: List change detection alerts with unread filtering.
-    - `PATCH /api/v1/automation/alerts/{id}/acknowledge`: Mark alert as acknowledged.
-    - `GET /api/v1/automation/metrics`: Query aggregate automation metrics.
-  - Created interactive Research Automation Studio in `apps/web/src/pages/ResearchAutomationPage.tsx`:
-    - Sweeps & Cron Schedules tab (active/paused schedules, countdown badges, instant trigger, pause/resume, and schedule creator modal).
-    - Sweep History & Diff Explorer tab (chronological sweep feed, novel/contradictory claim badges, crawl stats, novelty score gauge).
-    - Dispatched Alerts & Webhooks tab (unread alert cards, novelty score badges, 1-click acknowledge button, webhook test dispatcher).
-  - Mounted `/automation` in `App.tsx` and added `Research Automation` link in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_automation_repo.py`, `packages/research/tests/test_research_automation.py`, and `apps/api/tests/test_automation_api.py`, achieving 100% pass rate (329/329 tests passing across entire monorepo).
-  - Formalized **ADR 026** (Autonomous Research Automation, Cron Scheduling, and Novelty-Triggered Multi-Channel Alerting).
-  - **MILESTONE COMPLETED**: All 26 Phases across all 6 Generations are now 100% complete, tested, and production ready!
-
----
-
-## [1.9.0] - 2026-09-13 (Generation 6 Milestone 3: Phase 25 - Public API & Developer Platform)
-
-### Added
-- **Phase 25: Public API Gateway, Developer Platform & SDK Playground**:
-  - Implemented secure API key model `DBApiKey` in `packages/database/src/database/models/api_key.py` with `key_prefix` indexing, SHA-256 `key_hash` storage, granular permission scopes (`research:read/write`, `documents:read/write`, `memory:read`, `graph:read`), and rate limit tiers (`free`, `pro`, `enterprise`).
-  - Implemented `ApiKeyRepository` in `packages/database/src/database/repositories/api_key_repo.py` supporting constant-time hash authentication, scope enforcement, and sliding 60-second window rate limit enforcement (`check_rate_limit`).
-  - Implemented public developer REST API endpoints in `apps/api/src/api/routes/developer.py`:
-    - `GET /api/v1/developer/keys`: Lists developer keys with masked previews.
-    - `POST /api/v1/developer/keys`: Generates new cryptographically secure API key with one-time plaintext reveal.
-    - `GET /api/v1/developer/keys/{id}`: Retrieves specific key metadata.
-    - `PATCH /api/v1/developer/keys/{id}/revoke`: Immediately revokes key access.
-    - `DELETE /api/v1/developer/keys/{id}`: Permanently deletes API key record.
-    - `POST /api/v1/developer/research`: Public endpoint for triggering research via `X-API-Key` header.
-    - `GET /api/v1/developer/research/{id}`: Public endpoint for polling research progress and fetching finished reports.
-    - `POST /api/v1/developer/documents`: Public endpoint for ingesting text/documents.
-    - `GET /api/v1/developer/usage`: Public endpoint for developer token/request analytics.
-  - Created interactive Developer Platform Studio in `apps/web/src/pages/DeveloperPlatformPage.tsx` with API Keys Vault, Create Key modal with scope & expiration selector, One-Time Key Reveal modal, Interactive API Playground & SDK generator (cURL, Python `requests`, TypeScript `axios`), and Rate Limits & Quotas breakdown.
-  - Mounted `/developer` route in `App.tsx` and added `Developer API` navigation link in `Layout.tsx`.
-  - Added test suites in `packages/database/tests/test_api_key_repo.py` and `apps/api/tests/test_developer_api.py`, achieving 100% pass rate.
-  - Formalized **ADR 025** (Public API Gateway, SHA-256 Hashed API Keys, and Sliding Window Rate Limiting).
-
----
-
-## [1.8.0] - 2026-09-13 (Generation 6 Milestone 2: Phase 24 - Production Scale Infrastructure)
-
-### Added
-- **Phase 24: Production Infrastructure, Priority Task Queue & Blob Storage Vault**:
-  - Implemented asynchronous priority task queue and worker node engine in `packages/research/src/research/workers/task_queue.py` (`AsyncTaskQueue`, `QueuedTask`, `WorkerNode`, `TaskPriority`, and `global_task_queue`) supporting 4 priority levels (`CRITICAL`, `HIGH`, `DEFAULT`, `LOW`), concurrency throttling, retry counters, and task leases.
-  - Implemented unified multi-provider object storage client in `packages/shared/src/shared/storage.py` (`ObjectStorageClient`, `StorageBackendType`, `StorageObjectMetadata`) supporting AWS S3, MinIO, and local filesystem backends with presigned URL generation, MD5/SHA-256 checksumming, and aggregate bucket usage telemetry.
-  - Implemented database models `DBWorkerNode` and `DBStorageObject` in `packages/database/src/database/models/infrastructure.py` with full PostgreSQL/SQLite parity.
-  - Implemented `InfrastructureRepository` in `packages/database/src/database/repositories/infrastructure_repo.py` supporting worker node registration, heartbeat leasing, task assignment, blob recording, and storage usage calculations.
-  - Implemented REST API endpoints in `apps/api/src/api/routes/system_infra.py`:
-    - `GET /api/v1/system/workers`: Lists cluster worker nodes with heartbeat health.
-    - `POST /api/v1/system/workers/heartbeat`: Worker pulse registering CPU/RAM load and active tasks.
-    - `GET /api/v1/system/queue/status`: Returns priority queue length, latency, and throughput metrics.
-    - `POST /api/v1/system/queue/tasks`: Enqueues research tasks with priority.
-    - `GET /api/v1/system/storage/objects`: Queries stored object blobs.
-    - `POST /api/v1/system/storage/presigned-url`: Generates secure presigned download/upload links.
-    - `GET /api/v1/system/storage/usage`: Computes total byte and object count storage metrics.
-  - Created interactive Production Infrastructure Studio in `apps/web/src/pages/ProductionInfrastructurePage.tsx` with Cluster Topology dashboard, Distributed Task Queue manager, S3/MinIO Blob Storage browser, Heartbeat simulator modal, Task enqueue modal, and Presigned URL generator modal.
-  - Mounted `/infrastructure` route in `App.tsx` and added `Infrastructure` navigation link in `Layout.tsx`.
-  - Added test suites in `packages/research/tests/test_async_task_queue.py`, `packages/shared/tests/test_object_storage.py`, `packages/database/tests/test_infrastructure_repo.py`, and `apps/api/tests/test_system_infra_api.py`, achieving 100% pass rate (319/319 tests passing across monorepo).
-  - Formalized **ADR 024** (Distributed Priority Task Queue, Asynchronous Worker Clusters, and S3/MinIO Blob Vault Architecture).
-
----
-
-## [1.7.0] - 2026-09-13 (Generation 6 Milestone 1: Phase 23 - Enterprise Security & Compliance Platform)
-
-### Added
-- **Phase 23: Enterprise Security, KMS Secret Vault & Cryptographic Audit Trails**:
-  - Implemented military-grade two-tier envelope encryption engine `KMSEnvelopeEncryption` in `packages/shared/src/shared/kms.py` using PBKDF2-HMAC-SHA256 derived Key Encryption Key (KEK) and ephemeral 256-bit Data Encryption Key (DEK) with AES-256-GCM authenticated ciphertext.
-  - Implemented blockchain-like tamper-evident cryptographic SHA-256 audit hash chaining `AuditHashChainer` in `packages/shared/src/shared/kms.py` calculating deterministic hashes linked to preceding records with `verify_chain_integrity()` validation.
-  - Implemented database models `DBSecurityAuditLog`, `DBEncryptedSecret`, and `DBSecurityPolicy` in `packages/database/src/database/models/security.py` with full PostgreSQL/SQLite parity.
-  - Implemented `SecurityRepository` in `packages/database/src/database/repositories/security_repo.py` supporting hash-chained audit event creation, integrity verification, secret vaulting/revocation, security policy management, and GDPR Article 17 automated cascade data purge (`execute_gdpr_data_purge`).
-  - Implemented REST API endpoints in `apps/api/src/api/routes/security.py`:
-    - `POST /api/v1/security/audit-logs`: Records hash-chained security event.
-    - `GET /api/v1/security/audit-logs`: Queries audit trails with filtering.
-    - `GET /api/v1/security/audit-logs/verify`: Cryptographically verifies SHA-256 hash chain integrity.
-    - `POST /api/v1/security/secrets` & `GET /api/v1/security/secrets`: Vaults and lists secrets with masked previews.
-    - `PATCH /api/v1/security/secrets/{id}/revoke` & `DELETE /api/v1/security/secrets/{id}`: Secret lifecycle and revocation.
-    - `GET /api/v1/security/policy` & `PATCH /api/v1/security/policy`: Workspace security policy and retention rules.
-    - `POST /api/v1/security/gdpr/purge`: GDPR Right-to-be-Forgotten cascade data purge.
-    - `GET /api/v1/security/compliance/status`: Real-time SOC 2 Type II and GDPR compliance scorecard.
-  - Created interactive Enterprise Security Studio in `apps/web/src/pages/EnterpriseSecurityPage.tsx` with Compliance Scorecard, KMS Secret Vault manager, Tamper-Evident Audit Log explorer, and Retention & GDPR purge controls.
-  - Mounted `/security` route in `App.tsx` and added `Enterprise Security` navigation link in `Layout.tsx`.
-  - Added test suites in `packages/shared/tests/test_kms_encryption.py`, `packages/database/tests/test_security_repo.py`, and `apps/api/tests/test_security_api.py`, achieving 100% pass rate (309/309 tests passing across monorepo).
-  - Formalized **ADR 023** (Enterprise KMS Envelope Encryption, Cryptographic Audit Chains, and GDPR Data Lifecycle Controls).
-
----
-
-## [1.6.0] - 2026-09-13 (Generation 5 Milestone 3: Phase 22 - Agent Evaluation Engine & Observability Platform)
-
-### Added
-- **Phase 22: Agent Evaluation & Observability Platform**:
-  - Implemented multi-metric autonomous agent evaluation engine in `packages/ai/src/ai/eval/agent_evaluator.py` (`AgentEvaluator`, `AgentEvaluationScorecard`, `AgentStepTelemetry`, `AgentEvaluationMetric`).
-  - Added deterministic scoring functions: Plan Precision (`evaluate_plan_precision`), Tool Accuracy (`evaluate_tool_accuracy`), Evidence Coverage (`evaluate_evidence_coverage`), and sentence-level Hallucination Rate (`evaluate_hallucination_rate`).
-  - Implemented database models `DBAgentEvaluation` and `DBAgentStepMetric` in `packages/database/src/database/models/agent_evaluation.py` with full PostgreSQL/SQLite parity.
-  - Implemented `AgentEvaluationRepository` in `packages/database/src/database/repositories/agent_evaluation_repo.py` supporting evaluation scorecard persistence, step telemetry inspection, and aggregate KPI calculation.
-  - Implemented REST API endpoints in `apps/api/src/api/routes/agent_evaluations.py`:
-    - `POST /api/v1/agents/evaluate`: Evaluates an agent execution run or research job.
-    - `GET /api/v1/agents/evaluations`: Lists historical evaluations with agent and job filters.
-    - `GET /api/v1/agents/evaluations/{id}`: Retrieves detailed evaluation scorecard and sequential step telemetry.
-    - `DELETE /api/v1/agents/evaluations/{id}`: Deletes evaluation run.
-    - `GET /api/v1/agents/metrics/summary`: Returns system-wide quality, evidence coverage, hallucination rate, token usage, and cost aggregates.
-  - Created interactive Agent Observability Studio in `apps/web/src/pages/AgentEvaluationPage.tsx` with KPI scorecards, per-agent architecture badges, historical evaluation runs table, run audit modal, and sequential step telemetry inspector drawer.
-  - Integrated `/agents/evaluations` route into `App.tsx` and added `Agent Observability` navigation link to `Layout.tsx`.
-  - Added comprehensive test suites in `packages/ai/tests/test_agent_evaluator.py`, `packages/database/tests/test_agent_evaluation_repo.py`, and `apps/api/tests/test_agent_evaluation_api.py`, achieving 100% pass rate (299/299 tests passing).
-  - Formalized **ADR 022** (Autonomous Agent Evaluation and Hallucination Observability Engine).
-
----
-
-## [1.5.0] - 2026-09-13 (Generation 5 Milestone 2: Phase 21 - Model Evaluation System)
-
-### Added
-- **Phase 21: Model Evaluation System**:
-  - Implemented standardized golden benchmark suite in `packages/ai/src/ai/eval/schemas.py` (`BenchmarkCategory`, `BenchmarkSample`, `BenchmarkDataset`, and `DEFAULT_RESEARCH_BENCHMARK`).
-  - Implemented `EvaluationMetricsEngine` in `packages/ai/src/ai/eval/metrics.py` computing quantitative scores across Factual Accuracy, Reasoning Depth, Retrieval Faithfulness, Citation Precision, Latency, and Cost.
-  - Implemented `ModelEvaluator` in `packages/ai/src/ai/eval/evaluator.py` orchestrating end-to-end evaluation runs with low temperature against `ModelGateway`.
-  - Implemented database models `DBModelEvaluation` and `DBModelBenchmarkResult` in `packages/database/src/database/models/evaluation.py` with full PostgreSQL/SQLite parity.
-  - Implemented `ModelEvaluationRepository` in `packages/database/src/database/repositories/evaluation_repo.py` supporting evaluation CRUD, latest-per-model queries, and test case relationship queries.
-  - Created REST API endpoints in `apps/api/src/api/routes/evaluation.py`:
-    - `POST /api/v1/models/evaluate`: Triggers evaluation runs.
-    - `GET /api/v1/models/evaluations`: Lists historical evaluation runs.
-    - `GET /api/v1/models/evaluations/{id}`: Retrieves detailed sample test case breakdown.
-    - `DELETE /api/v1/models/evaluations/{id}`: Deletes evaluation run.
-    - `GET /api/v1/models/leaderboard`: Returns aggregated competitive leaderboard with Pareto optimal badges.
-  - Created interactive React Leaderboard Studio `ModelEvaluationPage.tsx` with ranking table, benchmark runner modal, score progress bars, and test case breakdown drawer.
-  - Added unit, database repository, and integration test suites in `packages/ai/tests/test_model_evaluator.py`, `packages/database/tests/test_evaluation_repo.py`, and `apps/api/tests/test_model_evaluation_api.py`, achieving 100% pass rate across 291 monorepo tests.
-  - Formalized **ADR 021** (Automated Model Evaluation System with Golden Benchmark Harness and Competitive Leaderboard).
-
----
-
-## [1.4.0] - 2026-09-13 (Generation 5 Milestone 1: Phase 20 - Intelligent Model Ecosystem)
-
-### Added
-- **Phase 20: Intelligent Model Ecosystem**:
-  - Implemented `ModelEcosystemOptimizer` in `packages/ai/src/ai/router/optimizer.py` with multi-parameter utility scoring formula: $\text{Score}(M) = w_q \cdot Q(M) + w_s \cdot S(M) + w_c \cdot C(M) + w_l \cdot L(M)$.
-  - Implemented non-dominated Pareto-frontier sorting across Quality, Speed, and Cost Efficiency dimensions.
-  - Defined preset `OptimizationProfile` schemas (`Balanced`, `Cost Minimized`, `Speed Maximized`, `Quality & Reasoning Maximized`, `Custom`).
-  - Integrated routing profile awareness into `ModelRouter` (`packages/ai/src/ai/providers/router.py`) and `ModelGateway` (`packages/ai/src/ai/gateway/model_gateway.py`), attaching `routing_profile` to execution telemetry.
-  - Implemented REST API endpoints in `apps/api/src/api/routes/models.py`:
-    - `GET /api/v1/models/profiles`: Returns preset optimization profiles with normalized weight breakdowns.
-    - `POST /api/v1/models/optimize`: Simulates candidate model ranking, Pareto-frontier identification, and itemized trade-off rationale.
-  - Upgraded `NewResearch.tsx` with interactive profile selector cards and live simulation preview.
-  - Formalized **ADR 020** (Intelligent Model Ecosystem with Multi-Parameter Routing Optimization and Pareto-Frontier Selection).
-  - Added unit and integration test suites in `packages/ai/tests/test_model_ecosystem_optimizer.py` and `apps/api/tests/test_model_optimization_api.py`, achieving 100% pass rate across 283 monorepo tests.
-
----
-
-## [1.3.0] - 2026-09-13 (Generation 4 Milestone 2: Phase 19 - Team Collaboration)
-
-### Added
-- **Phase 19: Team Collaboration**:
-  - Implemented `DBWorkspaceInvite`, `DBReportAnnotation`, and `DBWorkspaceActivity` database models in `packages/database/src/database/models/collaboration.py` with URL-safe crypto token generation, 7-day expiration, and dialect-safe `GUID`/`JSONType`.
-  - Implemented `WorkspaceInviteRepository`, `ReportAnnotationRepository`, and `WorkspaceActivityRepository` in `packages/database/src/database/repositories/collaboration_repo.py` supporting token redemption, multi-role membership upgrade, threaded report annotations with quotes and resolution tracking, and chronological activity auditing.
-  - Created REST API endpoints in `apps/api/src/api/routes/collaboration.py`:
-    - `/api/v1/workspaces/{id}/invites` (POST, GET)
-    - `/api/v1/invites/{token}` (GET)
-    - `/api/v1/invites/{token}/accept` (POST)
-    - `/api/v1/invites/{id}` (DELETE)
-    - `/api/v1/reports/{id}/annotations` (POST, GET)
-    - `/api/v1/annotations/{id}/resolve` (PATCH)
-    - `/api/v1/annotations/{id}` (DELETE)
-    - `/api/v1/workspaces/{id}/activities` (GET)
-    - `/api/v1/projects/{id}/activities` (GET)
-  - Built React collaboration components:
-    - `WorkspaceMembersModal.tsx`: Real-time member roster, role badges, email invitation modal, invite link copy button, and pending invite revocation.
-    - `ReportAnnotationsDrawer.tsx`: Slide-over review drawer on `ResearchDetail.tsx` with section quotes, comment threads, filter tabs (All, Open, Resolved), and 1-click resolution.
-    - Integrated team access modal into `ProjectsPage.tsx` and review notes trigger into `ResearchDetail.tsx`.
-  - Formalized **ADR 019** (Team Collaboration, Workspace Invites, Report Annotations, and Activity Feed).
-  - Added unit and integration test suites in `packages/database/tests/test_collaboration_repo.py` and `apps/api/tests/test_collaboration_api.py`, achieving 100% pass rate across all 276 monorepo tests.
-
----
-
-## [1.2.0] - 2026-09-13 (Generation 4 Milestone 1: Phase 18)
-
-### Added
-- **Phase 18: Projects & Workspaces**:
-  - Implemented `DBWorkspace`, `DBWorkspaceMember`, and `DBProject` database models in `packages/database/src/database/models/workspace.py` with cross-database dialect-safe `GUID`, `JSONType`, multi-role membership (`owner`, `admin`, `researcher`, `member`, `viewer`), and collision-resistant slug generation.
-  - Extended existing models (`ResearchJob`, `Document`, `DBResearchMemory`, `DBKnowledgeEntity`) with `workspace_id` and `project_id` foreign keys and compound indexes for full tenant isolation.
-  - Implemented `WorkspaceRepository` and `ProjectRepository` in `packages/database/src/database/repositories/` with auto-provisioning of personal workspaces and default projects, membership RBAC queries, and aggregate statistical overview queries (`total_jobs`, `total_documents`, `total_memories`, `total_graph_entities`).
-  - Created complete FastAPI REST API endpoints in `apps/api/src/api/routes/workspaces.py` and `apps/api/src/api/routes/projects.py` with dependency injection in `dependencies.py` and registration in `main.py`.
-  - Upgraded `ResearchPipeline` and `IngestionPipeline` to accept, propagate, and filter by `workspace_id` and `project_id`.
-  - Built `WorkspaceContext.tsx` global provider, `WorkspaceSelector.tsx` dropdown in sidebar navigation, and dedicated `ProjectsPage.tsx` management dashboard in `apps/web`.
-  - Formalized **ADR 018** (Multi-Tenant Workspace & Project Hierarchy).
-  - Added unit and integration test suites in `packages/database/tests/test_workspace_project_repo.py` and `apps/api/tests/test_workspaces_projects_api.py`, achieving 100% pass rate across all 270 monorepo tests.
+- **Phase 83: Autonomous Quantum Chemistry & Molecular Hamiltonian VQE Simulation Engine**:
+  - Implemented `QuantumChemistryVQEEngine` with Jordan-Wigner transformation, UCCSD ansatz parametrization, and classical gradient optimization achieving chemical accuracy ($\Delta E \le 1.0\text{ kcal/mol}$).
+  - Created `DBQuantumMolecularSystem`, `DBVQEAnsatzExecution`, `DBHamiltonianEnergyState` models and `QuantumChemistryRepository`.
+  - Added REST API routes under `/api/v1/quantum-chemistry/*`.
+- **Phase 84: Autonomous Next-Generation Sequencing (NGS) Long-Read Structural Variant & Telomere Calling Engine**:
+  - Implemented `LongReadGenomicsEngine` for PacBio HiFi and Oxford Nanopore CIGAR alignment parsing, structural variant calling (DEL, INS, DUP, INV, TRA), and hexamer `TTAGGG` repeat erosion profiling.
+  - Created `DBLongReadSequencingRun`, `DBStructuralVariantCall`, `DBTelomericRepeatProfile` models and `LongReadGenomicsRepository`.
+  - Added REST API routes under `/api/v1/long-read/*`.
+- **Phase 85: Autonomous Multi-Modal Diffusion-Based 3D Protein-Ligand Complex Conformation Generator**:
+  - Implemented `DiffusionConformationEngine` utilizing SE(3)-equivariant score matching reverse diffusion to sample docking conformations and binding pocket druggability.
+  - Created `DBDiffusionComplexJob`, `DBDiffusionPocketConformation`, `DBEquivariantDockingPose` models and `DiffusionConformationRepository`.
+  - Added REST API routes under `/api/v1/diffusion-conformation/*`.
+- **Phase 86: Autonomous Whole-Cell Metabolic Flux Simulation & Kinetic Genome-Scale Dynamic Modeler**:
+  - Implemented `WholeCellMetabolicEngine` for dynamic Flux Balance Analysis (dFBA), biomass optimization, and glucose-acetate kinetic traces.
+  - Created `DBWholeCellModel`, `DBMetabolicFluxState`, `DBKineticSimulationTrace` models and `WholeCellMetabolicRepository`.
+  - Added REST API routes under `/api/v1/whole-cell/*`.
+- **Phase 87: Autonomous Clinical Genomics Digital Twin & Patient-Specific Pharmacogenomics Engine**:
+  - Implemented `ClinicalGenomicsTwinEngine` matching CPIC Level A diplotypes and calculating patient-specific clearance curves, toxic plasma accumulation risk, and dose adjustments.
+  - Created `DBPatientGenomicProfile`, `DBPharmacogenomicGuideline`, `DBPatientDigitalTwinSim` models and `ClinicalGenomicsTwinRepository`.
+  - Added REST API routes under `/api/v1/clinical-twin/*`.
+- **Phase 88: Autonomous Radiogenomics & 3D Volumetric Medical Imaging AI Feature Extractor**:
+  - Implemented `RadiogenomicsEngine` for IBSI 3D shape, intensity histogram, and GLCM texture extraction correlated with oncogenomic alterations (IDH1, EGFR, MGMT).
+  - Created `DBRadiogenomicsScan`, `DBVolumetricRadiomicFeature`, `DBImagingGenomicCorrelation` models and `RadiogenomicsRepository`.
+  - Added REST API routes under `/api/v1/radiogenomics/*`.
+- **Phase 89: Autonomous Laboratory Robotics Automation & Self-Driving Workcell Protocol Compiler**:
+  - Implemented `RoboticWorkcellEngine` compiling executable Python protocol scripts (Opentrons API v2 / PyLabRobot) with liquid class modeling and deck collision checking.
+  - Created `DBRoboticWorkcellProtocol`, `DBDeckLayoutInstruction`, `DBAutomatedRunExecution` models and `RoboticWorkcellRepository`.
+  - Added REST API routes under `/api/v1/robotic-workcell/*`.
 
 ---
 
 ## [1.1.0] - 2026-09-12 (Branch: `develop/v1.1`)
 
 ### Added
-- **Phase 17: Long-Term Knowledge Graph**:
-  - Implemented `DBKnowledgeEntity` and `DBKnowledgeRelation` database models in `packages/database/src/database/models/graph.py` with cross-database dialect-safe `GUID`, `JSONType`, entity categories (`concept`, `person`, `organization`, `technology`, `methodology`, `finding`, `dataset`, `metric`, `other`), aliases, and properties.
-  - Implemented `KnowledgeGraphRepository` in `packages/database/src/database/repositories/graph_repo.py` supporting CRUD, entity name canonicalization, batch triplet upserting, $k$-hop BFS neighborhood extraction (`get_k_hop_subgraph`), and shortest-path multi-hop traversal (`find_shortest_path`).
-  - Implemented `KnowledgeGraphEngine` in `packages/research/src/research/graph/engine.py` orchestrating automated triplet extraction from research findings, LLM fallback parsing, Graph-Augmented RAG (`GraphRAG`), and semantic pathfinding.
-  - Added Agent graph tools in `packages/tools/src/tools/definitions/graph.py`: `QueryKnowledgeGraphTool`, `ExtractGraphTripletsTool`, and `FindRelationPathTool` with lazy loading to prevent circular import chains.
-  - Created complete FastAPI REST API endpoints in `apps/api/src/api/routes/graph.py` (`/nodes`, `/edges`, `/subgraph`, `/paths`, `/extract`, `/stats`) wired in `dependencies.py` and `main.py`.
-  - Added WebSocket real-time events: `GRAPH_ENTITIES_EXTRACTED` and `GRAPH_RELATIONS_EXTRACTED`.
-  - Developed interactive React network studio `KnowledgeGraphViewer.tsx` and `KnowledgeGraphPage.tsx` with dynamic SVG force layouts, node dragging, pan/zoom, type color badges, multi-hop pathfinding explorer, and direct integration into `ResearchDetail.tsx` and `Layout.tsx`.
-  - Formalized **ADR 017** (Long-Term Knowledge Graph & GraphRAG via In-Database Adjacency vs External Graph DBs).
-  - Added unit test suites across all layers (`test_knowledge_graph_repository.py`, `test_knowledge_graph_engine.py`, `test_knowledge_graph_tools.py`, `test_graph_api.py`), achieving 100% pass rate (265/265 tests).
-- **Phase 16: Research Memory**:
-  - Implemented `DBResearchMemory` database model in `packages/database/src/database/models/memory.py` supporting dialect-safe JSON/GUID types, memory types (`concept`, `finding`, `hypothesis`, `methodology`, `fact`), tagging, confidence scores, provenance, and access statistics (`access_count`, `last_accessed_at`).
-  - Implemented `MemoryRepository` in `packages/database/src/database/repositories/memory_repository.py` providing transactional async CRUD, keyword/text search across titles/content/tags, access incrementing, and count aggregations.
-  - Implemented `ResearchMemoryManager` in `packages/research/src/research/memory/manager.py` with `recall_memories()`, prompt formatting, and `store_memories_from_report()` for automated post-synthesis persistence of distilled findings, methodologies, and hypotheses.
-  - Integrated research memory recall into `PlannerAgent` context in `packages/research/src/research/pipeline.py` and `packages/agents/src/agents/planner/planner_agent.py`.
-  - Added `RecallMemoryTool` and `StoreMemoryTool` in `packages/tools/src/tools/definitions/memory.py` allowing autonomous agents to query and persist memory items during research execution.
-  - Created FastAPI REST endpoints in `apps/api/src/api/routes/memory.py` (`GET /`, `POST /`, `GET /search`, `GET /{id}`, `PATCH /{id}`, `DELETE /{id}`) with dependency injection in `apps/api/src/api/dependencies.py`.
-  - Added `MEMORY_RECALLED` and `MEMORY_STORED` WebSocket domain events in `ResearchEventType`.
-  - Built interactive `ResearchMemoryViewer.tsx` React component with rich dark theme, type filtering, confidence gauges, tag filtering, access stats, and manual creation modals.
-  - Added dedicated `/memory` route in `apps/web/src/App.tsx`, nav link in `apps/web/src/components/Layout.tsx`, and a Memories tab in `apps/web/src/pages/ResearchDetail.tsx`.
-  - Added unit test suites in `packages/database/tests/test_memory_repository.py`, `packages/research/tests/test_research_memory.py`, `packages/tools/tests/test_memory_tools.py`, and `apps/api/tests/test_memory_api.py`, achieving 100% pass rate across all 256 monorepo tests.
 - **Phase 15: Deep Research Engine**:
   - Implemented `DeepResearchEngine` in `packages/research/src/research/deep_research.py` orchestrating autonomous multi-round recursive research loops, iterative hypothesis formulation, and dynamic DAG subtask rescheduling.
   - Added `DeepResearchConfig` and `ResearchIteration` data structures in `packages/research/src/research/models.py` tracking iteration index, hypothesis formulation, targeted subtasks, and quantitative confidence progression.
@@ -927,3 +341,140 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented initial end-to-end research workflow from inquiry formulation to report generation.
 - **Phase 1: Foundation**:
   - Established modular monorepo structure with FastAPI backend, SQLAlchemy 2.0 Async, and React 18 / Vite frontend.
+
+## [v2.1.10] - Phase 178 Complete
+### Added
+- **ADC DAR Optimization & Aggregation Predictor**: In-silico DAR distribution modeling, clearance rate forecasting, and 72-hour aggregation stability kinetics.
+- **RESTful Endpoints & Web Studio**: Interactive simulation interface and persistent analytics.
+
+## [v2.1.11] - Phase 179 Complete
+### Added
+- **circRNA Biogenesis & miRNA Sponge Matrix**: Back-splicing junction identification, RNase R resistance half-life prediction, and multi-family miRNA sponge capacity scoring.
+- **RESTful Endpoints & Web Studio**: Interactive locus parameter exploration and persistent storage.
+
+## [v2.1.12] - Phase 180 Complete
+### Added
+- **Prime Editing pegRNA Design & Flap Kinetics**: Automated PBS/RTT sequence optimization, melting thermodynamics, and 3' vs 5' flap ligation equilibrium resolution.
+- **RESTful Endpoints & Web Studio**: Interactive pegRNA synthesis interface and persistent study analytics.
+
+## [v2.1.13] - Phase 181 Complete
+### Added
+- **Rare Disease Deep Phenotyping & HPO-OMIM Matcher**: Information-content weighted HPO term extraction, Resnik semantic similarity metrics, and causal gene prediction.
+- **RESTful Endpoints & Web Studio**: Interactive EHR/clinical narrative analysis interface and persistent study records.
+
+## [v2.1.14] - Phase 182 Complete
+### Added
+- **Gut Microbiome-Host Co-Metabolism & SCFA Dynamics**: Taxonomic abundance profiling, anaerobic fiber fermentation modeling, and mucosal barrier integrity index.
+- **RESTful Endpoints & Web Studio**: Interactive dietary fiber and prebiotic exploration interface with persistent records.
+
+## [v2.1.15] - Phase 183 Complete
+### Added
+- **CAR-T Exhaustion & Persistence Kinetics**: Differentiation state decomposition (Tscm, Tcm, Tem, Tex), TOX/NR4A chromatin accessibility quantification, and clinical half-life persistence forecasting.
+- **RESTful Endpoints & Web Studio**: Interactive CAR engineering and costimulatory domain exploration interface with persistent records.
+
+## [v2.1.16] - Phase 184 Complete
+### Added
+- **Fragment-Based Lead Discovery & Linker Growth**: Biophysical fragment hit screening, ligand efficiency (LE) calculation, and rigid/flexible linker growth modeling.
+- **RESTful Endpoints & Web Studio**: Interactive SBDD vector and linker exploration interface with persistent storage.
+
+## [v2.1.17] - Phase 185 Complete
+### Added
+- **Tumor Neoantigen & HLA Presentation**: Somatic mutation cleavage prediction, TAP transport efficiency modeling, and allele-specific HLA-I/II presentation ranking.
+- **RESTful Endpoints & Web Studio**: Interactive patient genomic and personalized mRNA vaccine candidate prioritization interface.
+
+### Phase 186 - Multi-Parametric Oncology Radiomics & Physiological Habitat Imaging Biomarker Extractor Engine
+- Implemented IBSI-standardized 3D radiomics texture extraction, multi-parametric MRI/CT/PET voxel clustering, and intratumoral physiological habitat deconstruction.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 187 - Milestone v2.1 Planetary Research Synthesis & Multi-System Autonomous Meta-Orchestrator
+- Delivered Milestone v2.1 Planetary Meta-Orchestration unifying all 187 research engines across omics, structural biology, gene editing, immune therapeutics, and oncology imaging.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React mission control studio, and 100% automated test suite.
+
+### Phase 188 - Spatial Metabolomics MALDI-MSI Tissue Architecture Engine
+- Implemented high-resolution MALDI-MSI oncometabolite spatial tissue rasterization, m/z ion deconvolution, and metabolic pathway entropy scoring.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 189 - Nanopore Direct RNA Sequencing & Epitranscriptomic Modification Mapper
+- Implemented Nanopore Direct RNA Sequencing with ionic current squiggle dwell-time deconvolution, DRACH motif m6A/pseudouridine site stoichiometry, and poly(A) tail profiling.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 190 - Thermal Proteome Profiling & Target Engagement Deconvolution Engine
+- Implemented cellular thermal shift assay (CETSA/TPP) sigmoidal melting curve deconvolution, $\Delta T_m$ target engagement quantification, and proteome-wide off-target deorphanization.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 191 - Cellular Barcoding & Lineage Tree Reconstructor Engine
+- Implemented dynamic CRISPR barcode scarring, single-cell lineage tree deconstruction via maximum parsimony, and developmental cell fate bifurcation tracking.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 192 - Cryo-EM Continuous Conformational Heterogeneity & Manifold Engine
+- Implemented single-particle Cryo-EM continuous conformational heterogeneity, 3D variability analysis (3DVA), and latent energy landscape manifold reconstruction.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 193 - Antisense Oligonucleotide RNase-H Cleavage & Gapmer Engine
+- Implemented Antisense Oligonucleotide (ASO) 2'-MOE/LNA gapmer architecture optimization, RNase H1 cleavage kinetics modeling, and in-silico transcript knockdown quantification.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 194 - Pan-Cancer ctDNA Liquid Biopsy & Minimal Residual Disease Engine
+- Implemented pan-cancer circulating tumor DNA (ctDNA) duplex sequencing error suppression, longitudinal tumor fraction clearance modeling, and minimal residual disease (MRD) recurrence forecasting.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 195 - CRISPR-Cas13 RNA-Targeting & Collateral Cleavage Suppressor Engine
+- Implemented high-affinity CRISPR-Cas13 RNA targeting with HEPN domain catalytic modeling and bystander collateral cleavage suppression.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 196 - Ribosome Profiling & Translation Efficiency Deconvolution Engine
+- Implemented Ribosome Profiling (Ribo-seq) sub-codon footprint deconvolution, codon dwell-time pausing estimation, and transcript translation efficiency quantification.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 197 - Cryo-EM Focused Refinement & Deep Symmetrization Engine
+- Implemented sub-volume soft-edge masked focused refinement, local B-factor sharpening, and deep non-crystallographic symmetry (NCS) expansion for Cryo-EM density maps.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 198 - CAR-NK Immune Synapse & Cytolytic Kinetics Simulator
+- Implemented multi-target CAR-NK immune synapse biophysics modeling, granzyme/perforin degranulation polarization, and serial tumor lysis kinetics.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 199 - Spatial Lipidomics & Membrane Biogenesis Deconvolution Engine
+- Implemented DESI/MALDI spatial lipidomics mass spectrometry imaging, membrane phospholipid saturation analysis, and ferroptotic lipid peroxidation deconvolution.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 200 - Epigenomic Hi-ChIP & Enhancer-Promoter Chromatin Looping Engine
+- Implemented protein-directed Hi-ChIP contact matrix deconvolution, H3K27ac/CTCF-anchored chromatin loop calling, and super-enhancer promoter interaction modeling.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 201 - Therapeutic mRNA LNP Encapsulation & Structure Thermodynamics Engine
+- Implemented therapeutic mRNA lipid nanoparticle formulation modeling, microfluidic total flow rate optimization, and secondary structure minimum free energy (MFE) deconvolution.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 202 - Single-Cell RNA-seq Droplet De-multiplexing & Ambient RNA Scrubber Engine
+- Implemented microfluidic single-cell RNA-seq droplet background estimation, ambient RNA soup decontamination, and heterotypic doublet deconvolution.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 203 - Pan-Cancer Spatial Tumor Microenvironment Immune Infiltration Ranker
+- Implemented spatial transcriptomics and multiplexed IF tumor microenvironment (TME) immune infiltration modeling, tertiary lymphoid structure (TLS) maturation scoring, and immune checkpoint response prediction.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 204 - Molecular Dynamics Free Energy Perturbation (FEP) Binding Engine
+- Implemented alchemical molecular dynamics Free Energy Perturbation (FEP+), Bennett Acceptance Ratio (BAR) convergence deconvolution, and relative binding free energy ($\Delta\Delta G$) forecasting.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 205 - Synthetic Gene Circuit Toggle Switch & Stochastic Noise Forecaster
+- Implemented synthetic biological bistable toggle switch circuit modeling, Chemical Master Equation Gillespie stochastic simulation, and Fano factor noise forecasting.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 206 - Single-Cell Multiome ATAC+GEX Peak-to-Gene Cis-Regulatory Engine
+- Implemented single-nucleus simultaneous ATAC+GEX integration, chromatin accessibility peak-to-gene linkage deconvolution, and transcription factor regulon discovery.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 207 - Proteome-Wide Ubiquitination & E3 Ligase Selectivity Engine
+- Implemented deep learning proteome-wide ubiquitination site prediction, E3 ligase substrate selectivity profiling, and targeted protein degradation (PROTAC) degradomics.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 208 - Long-Read Structural Variant & De Novo Assembly Engine
+- Implemented PacBio HiFi / Nanopore whole-genome long-read de novo assembly, complex structural variant breakpoint deconvolution, and telomere-to-telomere haplotype phasing.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React dashboard, and 100% automated test suite.
+
+### Phase 209 - Milestone v2.3 Planetary Research Synthesis & Meta-Orchestrator Engine
+- Delivered Milestone v2.3 Planetary Meta-Orchestration unifying all 209 research engines across spatial omics, structural biology, gene editing, immune therapeutics, and oncology diagnostics.
+- Added comprehensive database models, repository, async research engine, FastAPI endpoints, React mission control dashboard, and 100% automated test suite.
+\n- **Phase 210 (optogenetics_photostimulation)**: Autonomous Optogenetic Photostimulation Pattern Synthesis & Neuronal Spike Raster Forecaster Engine - Synthesizes spatial-temporal holographic photostimulation light patterns and forecasts channelrhodopsin kinetics, action potential firing rasters, and synaptic network entrainment.\n- **Phase 211 (scrna_copy_number_karyotype)**: Autonomous Single-Cell Copy Number Variation (scCNV) & Chromosomal Aneuploidy Karyotyper Engine - Infers copy number variations and whole-chromosome aneuploidies from single-cell transcriptomic moving-average expression profiles with sub-clonal lineage tree reconstructions.\n- **Phase 212 (cpg_island_hypermethylation)**: Autonomous Epigenomic Promoter CpG Island Hypermethylation & Tumor Suppressor Gene Silencing Engine - Quantifies promoter CpG island dense hypermethylation patterns, DNMT1/3B recruitment kinetics, and transcriptional repression of critical tumor suppressor genes.\n- **Phase 213 (immunopeptidome_deconvolution)**: Autonomous Mass Spectrometry Immunopeptidomics & Non-Canonical Cryptic Peptide Deconvolution Engine - Deconvolutes high-resolution Orbitrap LC-MS/MS immunopeptidome spectra, identifying non-canonical cryptic peptide antigens, trans-spliced epitopes, and HLA presentation ranks.\n- **Phase 214 (cryoem_flexible_backbone_refine)**: Autonomous Cryo-EM Continuous Flexible Backbone Motion & Deep Non-Rigid Fitting Engine - Performs continuous flexible backbone deformation modeling across heterogeneous cryo-EM density maps using deep non-rigid normal mode analysis.\n- **Phase 215 (spatial_transcriptomics_celltype)**: Autonomous Subcellular Spatial Transcriptomics Cell-Type Deconvolution & Niche Cell-Cell Communication Engine - Performs subcellular deconvolution of multiplexed spatial transcriptomics spots into single-cell fractions and quantifies spatial ligand-receptor interaction axes in tissue niches.\n- **Phase 216 (targeted_covalent_inhibitor_warhead)**: Autonomous Targeted Covalent Inhibitor (TCI) Electrophilic Warhead Reactivity & Cysteine Residence Time Engine - Evaluates electrophilic warhead acrylamide/haloacetamide reactivity with non-catalytic target cysteines, predicting kinome kinact/KI selectivity and target residence time.\n- **Phase 217 (synthetic_riboswitch_aptamer)**: Autonomous Synthetic Bio Riboswitch Aptamer Secondary Structure & Ligand-Induced Translation Terminator Engine - Engineers synthetic theophylline and small-molecule-sensing RNA riboswitches with precise ligand-induced conformational switching between antiterminator and terminator hairpin states.\n- **Phase 218 (whole_exome_tmb_msi_ranker)**: Autonomous Whole-Exome Sequencing (WES) Tumor Mutation Burden (TMB) & Microsatellite Instability (MSI) Ranker Engine - Analyzes whole-exome somatic variant calls to compute non-synonymous Tumor Mutation Burden (TMB) per megabase and assesses microsatellite instability (MSI-High) status.\n- **Phase 219 (mrna_cap_poly_a_decay)**: Autonomous Synthetic mRNA 5' Cap Structure & Poly(A) Tail Deadenylation Decay Kinetics Simulator Engine - Models synthetic mRNA translation initiation efficiency and half-life dynamics as a function of Cap-1/Cap-2 enzymatic structures and poly(A) deadenylation rate kinetics.\n- **Phase 220 (car_t_exhaustion_scvelo)**: Autonomous Single-Cell RNA Velocity Lineage Trajectory & CAR-T Epigenetic Exhaustion Interceptor Engine - Simulates spliced-to-unspliced mRNA turnover kinetics to construct dynamic RNA velocity vectors, identifying critical branching points where CAR-T cells diverge into terminal exhaustion.\n- **Phase 221 (spatial_mass_cytometry_imc)**: Autonomous Spatial Imaging Mass Cytometry (IMC) 40-Plex Phenotyping & Microenvironment Niche Ranker Engine - Processes metal-isotope tagged antibody imaging mass cytometry laser ablation channels, performing multi-channel cell segmentation, deep phenotyping, and cell neighborhood scoring.\n- **Phase 222 (crispr_prime_peg_rna_flap)**: Autonomous CRISPR Prime Editing pegRNA Primer Binding Site (PBS) & Reverse Transcription Flap Kinetics Synthesizer Engine - Synthesizes dual pegRNA/ngRNA configurations, optimizing PBS melting temperature and RT template length while suppressing competing 5'-flap non-homologous end joining.\n- **Phase 223 (nanobody_paratope_deep_mutational)**: Autonomous Heavy-Chain Nanobody (VHH) Paratope Deep Mutational Scanning (DMS) & Conformational Thermal Stability Engine - Predicts CDR3 paratope saturation mutagenesis fitness landscapes, calculating binding affinity DeltaDeltaG and melting temperature shifts for heavy-chain single-domain antibodies.\n- **Phase 224 (milestone_v2_4_orchestrator)**: Autonomous Milestone v2.4 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine - Meta-orchestrates all 224 active platforms and computational engines across 34 generations, executing cross-modal biophysical workflows, spatial deconvolution pipelines, and discovery campaigns.\n- **Phase 225 (metabolite_flux_metagenomics)**: Autonomous Metagenomic Metabolic Flux & Gut-Liver Axis Co-Metabolism Simulator Engine - Integrates whole-metagenome shotgun sequencing with multi-species flux balance analysis to forecast short-chain fatty acid and bile acid biotransformations across the gut-liver axis.\n- **Phase 226 (cryoem_subtomogram_membrane_coat)**: Autonomous In-Situ Cryo-ET Membrane Coat & Clathrin/COP-II Lattice Structural Fitting Engine - Reconstructs sub-nanometer resolution structural lattices of curved vesicular vesicle coat complexes directly inside intact eukaryotic cellular tomograms.\n- **Phase 227 (crispr_cas12a_direct_repeat_processing)**: Autonomous CRISPR-Cas12a Multiplex crRNA Array Self-Processing & Asymmetric Cleavage Engine - Models Cas12a intrinsic endoribonuclease maturation kinetics of tandem direct repeat pre-crRNA arrays and simulates staggered 5-overhang target DNA cutting.\n- **Phase 228 (tcr_pmhc_docking_affinity_landscape)**: Autonomous TCR-pMHC Complex Interface Geometric Docking & Cross-Reactivity Risk Engine - Predicts tertiary docking geometries, CDR3 loop induced-fit binding energies, and off-target cross-reactivity risks across human self-peptide-HLA presentation repertoires.\n- **Phase 229 (spatial_epigenomics_cut_tag)**: Autonomous Spatial Epigenomic Cleavage Under Targets and Tagmentation (CUT&Tag) Chromatin Landscape Engine - Decodes microfluidic spatial barcoding of in-situ pA-Tn5 antibody-tethered tagmentation for simultaneous histone modification mapping at tissue-scale.\n- **Phase 230 (sirna_chemical_modification_ps_ome)**: Autonomous siRNA Phosphorothioate & 2-O-Methyl Stability Optimization Engine - Optimizes alternating 2-F and 2-OMe ribose chemistry with stereopure terminal phosphorothioate backbones to maximize in-vivo serum exonuclease half-life.\n- **Phase 231 (milestone_v2_5_orchestrator)**: Autonomous Milestone v2.5 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine - Meta-orchestrates all 231 active platforms and computational engines across 35 generations, coordinating multi-modal structural biophysics, spatial epigenomics, and in-vivo therapeutic simulations.\n- **Phase 232 (spatial_cistromics_transcription_factor)**: Autonomous Spatial Cistromics TF-Binding Motif & Chromatin Footprinting Engine - Quantifies spatial transcription factor occupancy footprints, motif co-enrichment networks, and pioneer TF binding states in intact tissue architectures.\n- **Phase 233 (adc_payload_bystander_killing)**: Autonomous Antibody-Drug Conjugate (ADC) Payload Bystander Killing & Lysosomal Cleavability Engine - Simulates cathepsin-B lysosomal cleavage kinetics and neutral payload membrane permeability to forecast bystander tumor cell clearance in heterogeneous antigen-low regions.\n- **Phase 234 (single_cell_spatial_splice_junction)**: Autonomous Single-Cell & Spatial Alternative Splicing Isoform Deconvolution Engine - Deconvolutes exon-exon junction spanning reads from single-cell and spatial RNA-seq to quantify percent spliced in (PSI) metrics and neo-isoform switches.\n- **Phase 235 (cryoem_symmetry_mismatch_refine)**: Autonomous Cryo-EM Symmetry-Mismatch & Helical Filament Reconstruction Engine - Solves non-crystallographic helical and pseudo-symmetric mismatch architectures such as viral portal vertex motors and amyloidogenic tau fibrils.\n- **Phase 236 (targeted_protein_degrader_molecular_glue)**: Autonomous Molecular Glue Degrader (MGD) CRBN/VHL Ternary Composite Cooperativity Engine - Predicts small-molecule-induced E3 ligase surface remodeling, composite neo-epitope binding interfaces, and thermodynamic cooperativity factor alpha for targeted degradation.\n- **Phase 237 (crispr_anti_crispr_suppression)**: Autonomous Anti-CRISPR (Acr) Protein Interaction & Gene Editing Precision Regulator Engine - Engineers phage-derived anti-CRISPR spatial-temporal off-switches to restrict Cas9/Cas12a active time windows and ablate off-target genome cleavage.\n- **Phase 238 (milestone_v2_6_orchestrator)**: Autonomous Milestone v2.6 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine - Meta-orchestrates all 238 active platforms and computational engines across 36 generations, executing integrated multi-omics pipelines, structural modeling, and clinical biotherapy design.\n- **Phase 239 (single_molecule_force_spectroscopy)**: Autonomous Single-Molecule Optical Tweezers & AFM Force-Induced Unfolding Kinetics Engine - Models optical tweezers and atomic force spectroscopy force-extension curves, calculating Bell-Evans transition state barrier distances and mechanical rupture forces.\n- **Phase 240 (spatial_glycomics_mass_spec)**: Autonomous Spatial MALDI-MSI Glycan Branching & Sialylation Tissue Micro-Architecture Engine - Maps spatial distribution of N-linked glycan branchings, core fucosylation, and alpha-2,3/alpha-2,6 sialylation states across intact formalin-fixed tumor sections.\n- **Phase 241 (prime_editing_rt_template_secondary_structure)**: Autonomous Prime Editing RT Template Secondary Structure & Extension Velocity Forecaster Engine - Predicts reverse transcriptase template intramolecular hairpins and G-quadruplex structures, optimizing pegRNA sequences for maximum M-MLV RT processivity.\n- **Phase 242 (tcr_mimic_antibody_selectivity)**: Autonomous TCR-Mimic Antibody Fine Specificity & HLA-Allotype Cross-Reactivity Engine - Evaluates TCR-like monoclonal antibody fine epitope recognition across peptide-MHC complexes, ranking off-target self-peptide presentation risks and affinity.\n- **Phase 243 (cellular_thermal_shift_cetsa)**: Autonomous Intact-Cell Cellular Thermal Shift Assay (CETSA) & Target Engagement Deconvolution Engine - Analyzes multiplexed TMT isobaric proteomic thermal denaturation curves in intact cells to quantify small-molecule target engagement melting temperature shifts.\n- **Phase 244 (synthetic_promoter_regulatory_grammar)**: Autonomous De-Novo Synthetic Promoter Deep Generative Architecture & Specificity Grammar Engine - Generates de-novo cell-type-specific mini-promoter DNA architectures by optimizing TF motif spacing, helical phasing, and core initiator elements for targeted gene therapy.\n- **Phase 245 (milestone_v2_7_orchestrator)**: Autonomous Milestone v2.7 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine - Meta-orchestrates all 245 active platforms and computational engines across 37 generations, executing single-molecule biophysics, chemical proteomics, and synthetic gene regulatory discovery.

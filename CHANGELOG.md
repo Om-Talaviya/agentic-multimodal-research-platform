@@ -1,3 +1,47 @@
+# Changelog
+
+All notable changes to the **Agentic Multimodal Research Platform (AI Research OS)** will be documented in this file.
+
+## [v3.0.0] - 2026-09-28 (Centennial Super-Release)
+### Added (Phases 260 - 266)
+- **Phase 260**: Autonomous Spatial Multi-Modal Epigenome & Transcriptome Co-Assay Latent Alignment Engine (`spatial_epigenome_transcriptome_coassay`)
+- **Phase 261**: Autonomous Deep Generative Antibody De-Immunization & T-Cell Epitope Elimination Engine (`antibody_deimmunization_epitope_removal`)
+- **Phase 262**: Autonomous High-Throughput Perturb-seq Deep Causal Gene Regulatory Network Inversion & Epistasis Engine (`perturb_seq_epistasis_causal_network`)
+- **Phase 263**: Autonomous In-Silico Cryo-EM Continuous Motion Trajectory & Flexible Molecular Dynamics Fitting Engine (`cryoem_flexible_fitting_md`)
+- **Phase 264**: Autonomous Multi-Omics Microscopic Residual Disease (MRD) & Ultra-Low VAF Liquid Biopsy Deconvolution Engine (`liquid_biopsy_mrd_deconvolution`)
+- **Phase 265**: Autonomous Synthetic Minimal Genome Design & Metabolic Essentiality Minimization Engine (`synthetic_minimal_genome_design`)
+- **Phase 266**: Autonomous Milestone v3.0 Planetary Multi-Omics Research Synthesis & Centennial Meta-Orchestrator Engine (`milestone_v3_0_orchestrator`)
+
+## [v2.9.0] - 2026-09-28
+### Added (Phases 253 - 259)
+- **Phase 253**: Autonomous Single-Molecule FISH Subcellular RNA Transcript Localization & Cluster Analysis Engine (`smfish_subcellular_rna_localization`)
+- **Phase 254**: Autonomous Multi-Specific Antibody Fragment Geometry & Hinge Flexibility In-Silico Modeling Engine (`multispecific_antibody_hinge_geometry`)
+- **Phase 255**: Autonomous Single-Cell Proteomics by Mass Spectrometry (scMS) Carrier Proteome Deconvolution Engine (`single_cell_mass_spec_proteomics`)
+- **Phase 256**: Autonomous Targeted CRISPR Epigenome Methylation/Demethylation Editing & Chromatin Accessibility Engine (`crispr_epigenome_methylation_editor`)
+- **Phase 257**: Autonomous In-Silico Nanopore Direct RNA Sequencing (dRNA-seq) Base Modification Decoding Engine (`nanopore_direct_rna_modifications`)
+- **Phase 258**: Autonomous Liquid-Liquid Phase Separation (LLPS) Biomolecular Condensate Multivalent Driving Force Engine (`biomolecular_condensate_llps_dynamics`)
+- **Phase 259**: Autonomous Milestone v2.9 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_9_orchestrator`)
+
+## [v2.8.0] - 2026-09-28
+### Added (Phases 246 - 252)
+- **Phase 246**: Autonomous Targeted Protein Degradation (PROTAC) Ternary Complex Cooperativity & Ubiquitination Kinetics Engine (`protac_ternary_ubiquitination`)
+- **Phase 247**: Autonomous Spatial Transcriptomics Cell-Cell Communication & Distance-Decay Ligand-Receptor Engine (`spatial_cell_cell_communication`)
+- **Phase 248**: Autonomous Chemically Modified mRNA Secondary Structure & Translation Velocity Optimization Engine (`chemically_modified_mrna_design`)
+- **Phase 249**: Autonomous Cryo-EM Continuous Heterogeneity Conformational Landscape & Energy Surface Reconstruction Engine (`cryoem_continuous_energy_landscape`)
+- **Phase 250**: Autonomous Multi-Omics Drug-Induced Liver Injury (DILI) & Mitochondrial Toxicity Forecaster Engine (`dili_mitochondrial_toxicity`)
+- **Phase 251**: Autonomous CRISPR-Cas13 Collateral Cleavage & Viral RNA Detection Specificity Engine (`crispr_cas13_collateral_cleavage`)
+- **Phase 252**: Autonomous Milestone v2.8 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_8_orchestrator`)
+
+## [v2.7.0] - 2026-09-27
+### Added (Phases 239 - 245)
+- **Phase 239**: Autonomous Single-Molecule Optical Tweezers & AFM Force-Induced Unfolding Kinetics Engine (`single_molecule_force_spectroscopy`)
+- **Phase 240**: Autonomous Spatial MALDI-MSI Glycan Branching & Sialylation Tissue Micro-Architecture Engine (`spatial_glycomics_mass_spec`)
+- **Phase 241**: Autonomous Prime Editing RT Template Secondary Structure & Extension Velocity Forecaster Engine (`prime_editing_rt_template_secondary_structure`)
+- **Phase 242**: Autonomous TCR-Mimic Antibody Fine Specificity & HLA-Allotype Cross-Reactivity Engine (`tcr_mimic_antibody_selectivity`)
+- **Phase 243**: Autonomous Intact-Cell Cellular Thermal Shift Assay (CETSA) & Target Engagement Deconvolution Engine (`cellular_thermal_shift_cetsa`)
+- **Phase 244**: Autonomous De-Novo Synthetic Promoter Deep Generative Architecture & Specificity Grammar Engine (`synthetic_promoter_regulatory_grammar`)
+- **Phase 245**: Autonomous Milestone v2.7 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v2_7_orchestrator`)
+
 
 ## [v2.1.0] - 2026-09-25
 ### Added (Phases 169 - 175)
@@ -49,8 +93,6 @@
 - Phase 152: Hi-C Chromatin Looping & Enhancer-Promoter Contact Topology Engine
 - Phase 153: Multi-Objective mRNA Codon Adaptation (CAI) & Uridine Depletion Engine
 - Phase 154: Centennial Multi-Modal Bio-System Synthesis & Milestone v1.8 Certification
-
-# Changelog
 
 ## [v1.7.0] - Milestone v1.7 Deep Bio-Computational Systems & Precision Planetary AI (Phases 126-132)
 
