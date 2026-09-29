@@ -2290,3 +2290,9 @@ from database.models.repseq_shm_lineage_tree import (
     RepseqShmLineageTreeItemProfile,
     RepseqShmLineageTreeMetricTrace,
 )
+
+from database.models.milestone_v4_1_meta_orchestrator import (
+    MilestoneV41MetaOrchestratorStudy,
+    MilestoneV41MetaOrchestratorItemProfile,
+    MilestoneV41MetaOrchestratorMetricTrace,
+)

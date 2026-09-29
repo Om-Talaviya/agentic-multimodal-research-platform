@@ -1,3 +1,4 @@
+from api.routes.milestone_v4_1_meta_orchestrator import router as milestone_v4_1_meta_orchestrator_router
 from api.routes.repseq_shm_lineage_tree import router as repseq_shm_lineage_tree_router
 from api.routes.peptide_amphiphile_hydrogel import router as peptide_amphiphile_hydrogel_router
 from api.routes.mtdna_heteroplasmy_toxicity import router as mtdna_heteroplasmy_toxicity_router
@@ -1019,3 +1020,5 @@ app.include_router(mtdna_heteroplasmy_toxicity_router, prefix=settings.api_prefi
 app.include_router(peptide_amphiphile_hydrogel_router, prefix=settings.api_prefix)
 
 app.include_router(repseq_shm_lineage_tree_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v4_1_meta_orchestrator_router, prefix=settings.api_prefix)
