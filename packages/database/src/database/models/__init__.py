@@ -1732,3 +1732,9 @@ from database.models.mpra_variant_regulatory_impact import (
     MpraVariantRegulatoryImpactItemProfile,
     MpraVariantRegulatoryImpactMetricTrace,
 )
+
+from database.models.cytof_spectral_unmixing_compensator import (
+    CytofSpectralUnmixingCompensatorStudy,
+    CytofSpectralUnmixingCompensatorItemProfile,
+    CytofSpectralUnmixingCompensatorMetricTrace,
+)
