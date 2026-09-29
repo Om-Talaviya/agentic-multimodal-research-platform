@@ -1,3 +1,4 @@
+from api.routes.quantum_annealing_folding import router as quantum_annealing_folding_router
 from api.routes.milestone_v4_0_meta_orchestrator import router as milestone_v4_0_meta_orchestrator_router
 from api.routes.oligo_chem_modifier_optimizer import router as oligo_chem_modifier_optimizer_router
 from api.routes.ht_spr_kinetic_rate_extractor import router as ht_spr_kinetic_rate_extractor_router
@@ -959,3 +960,5 @@ app.include_router(ht_spr_kinetic_rate_extractor_router, prefix=settings.api_pre
 app.include_router(oligo_chem_modifier_optimizer_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v4_0_meta_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(quantum_annealing_folding_router, prefix=settings.api_prefix)

@@ -2170,3 +2170,9 @@ from database.models.milestone_v4_0_meta_orchestrator import (
     MilestoneV40MetaOrchestratorItemProfile,
     MilestoneV40MetaOrchestratorMetricTrace,
 )
+
+from database.models.quantum_annealing_folding import (
+    QuantumAnnealingFoldingStudy,
+    QuantumAnnealingFoldingItemProfile,
+    QuantumAnnealingFoldingMetricTrace,
+)

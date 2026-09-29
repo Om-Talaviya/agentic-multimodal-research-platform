@@ -1,3 +1,4 @@
+import { QuantumAnnealingFoldingStudioPage } from './pages/QuantumAnnealingFoldingStudioPage';
 import { MilestoneV40MetaOrchestratorStudioPage } from './pages/MilestoneV40MetaOrchestratorStudioPage';
 import { OligoChemModifierOptimizerStudioPage } from './pages/OligoChemModifierOptimizerStudioPage';
 import { HtSprKineticRateExtractorStudioPage } from './pages/HtSprKineticRateExtractorStudioPage';
@@ -543,6 +544,7 @@ function App() {
                 <Route path="/ht-spr-kinetics" element={<HtSprKineticRateExtractorStudioPage />} />
                 <Route path="/oligo-chem-modifier" element={<OligoChemModifierOptimizerStudioPage />} />
                 <Route path="/milestone-v4-0-orchestrator" element={<MilestoneV40MetaOrchestratorStudioPage />} />
+                <Route path="/quantum-annealing-folding" element={<QuantumAnnealingFoldingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
