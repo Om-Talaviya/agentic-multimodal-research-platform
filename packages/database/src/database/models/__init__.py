@@ -1972,3 +1972,9 @@ from database.models.droplet_single_microbe_culturomics import (
     DropletSingleMicrobeCulturomicsItemProfile,
     DropletSingleMicrobeCulturomicsMetricTrace,
 )
+
+from database.models.rna_condensation_localization_modeler import (
+    RnaCondensationLocalizationModelerStudy,
+    RnaCondensationLocalizationModelerItemProfile,
+    RnaCondensationLocalizationModelerMetricTrace,
+)

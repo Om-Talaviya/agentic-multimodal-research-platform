@@ -1,3 +1,4 @@
+import { RnaCondensationLocalizationModelerStudioPage } from './pages/RnaCondensationLocalizationModelerStudioPage';
 import { DropletSingleMicrobeCulturomicsStudioPage } from './pages/DropletSingleMicrobeCulturomicsStudioPage';
 import { LineageTracingCrisprPhylogenyStudioPage } from './pages/LineageTracingCrisprPhylogenyStudioPage';
 import { BiomimeticIonChannelGatingStudioPage } from './pages/BiomimeticIonChannelGatingStudioPage';
@@ -484,6 +485,7 @@ function App() {
                 <Route path="/biomimetic-ion-channel-gating" element={<BiomimeticIonChannelGatingStudioPage />} />
                 <Route path="/lineage-tracing-crispr-phylogeny" element={<LineageTracingCrisprPhylogenyStudioPage />} />
                 <Route path="/droplet-single-microbe-culturomics" element={<DropletSingleMicrobeCulturomicsStudioPage />} />
+                <Route path="/rna-condensation-localization" element={<RnaCondensationLocalizationModelerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
