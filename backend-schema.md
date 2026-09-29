@@ -320,3 +320,7 @@ CREATE TABLE projects (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```
+
+
+### Database Schema Extensions (Phases 309-329)
+- 21 new relational schemas with UUID primary keys, JSON metadata payloads, domain-specific telemetry columns, foreign keys to research projects, and indexed query paths.

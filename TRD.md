@@ -168,3 +168,7 @@ flowchart TD
 - **Phase 24 (Production Infrastructure)**: Celery/Redis distributed task queue, MinIO/S3 object storage, and read-replica routing.
 - **Phase 25 (Developer Platform)**: Public OpenAPI 3.1 gateway, SDK generation, and developer API key rate limiting.
 - **Phase 26 (Research Automation)**: Cron-based research workers with web change detection and webhook/email alert triggers.
+
+
+### Technical Requirements: Milestones v3.7 - v3.9
+- Implemented with SQLAlchemy 2.0 async session pools, Pydantic v2 schemas, FastAPI sub-routers with OpenAPI 3.1 documentation, and TypeScript frontend components.

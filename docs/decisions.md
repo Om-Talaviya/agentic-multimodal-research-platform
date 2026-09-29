@@ -1547,3 +1547,7 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Context: Unification of all 125 active research engines.
 ### Decision: Implement `DBMilestoneCentennialOrchestration`.
 ### Consequences: 100% CI pass rate and complete 125-phase milestone orchestration.
+
+
+### Architectural Decisions: Milestones v3.7 - v3.9
+- ADR-309 to ADR-329: Standardized on 3-tier decoupling (SQLAlchemy model, Pydantic schema/service, FastAPI router), zero breaking changes, isolated domain micro-modules, and full automated test coverage.

@@ -1358,3 +1358,7 @@ Master systematic literature review (SLR) study records tracking search strings,
 
 
 
+
+
+### Database Schema Extensions (Phases 309-329)
+- 21 new relational schemas with UUID primary keys, JSON metadata payloads, domain-specific telemetry columns, foreign keys to research projects, and indexed query paths.

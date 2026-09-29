@@ -188,3 +188,7 @@ This document records the key architectural, engineering, and product design dec
 
 
 
+
+
+### Architectural Decisions: Milestones v3.7 - v3.9
+- ADR-309 to ADR-329: Standardized on 3-tier decoupling (SQLAlchemy model, Pydantic schema/service, FastAPI router), zero breaking changes, isolated domain micro-modules, and full automated test coverage.
