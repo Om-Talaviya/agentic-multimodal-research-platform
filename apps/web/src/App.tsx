@@ -1,3 +1,4 @@
+import { SpatialLipidomicsMaldi2DesiStudioPage } from './pages/SpatialLipidomicsMaldi2DesiStudioPage';
 import { RibotacRnaCleavageDesignStudioPage } from './pages/RibotacRnaCleavageDesignStudioPage';
 import { CryoemDeepParticlePickingStudioPage } from './pages/CryoemDeepParticlePickingStudioPage';
 import { CellFreeTxtlKineticOptimizerStudioPage } from './pages/CellFreeTxtlKineticOptimizerStudioPage';
@@ -396,6 +397,7 @@ function App() {
                 <Route path="/cell-free-txtl-kinetic-optimizer" element={<CellFreeTxtlKineticOptimizerStudioPage />} />
                 <Route path="/cryoem-deep-particle-picking" element={<CryoemDeepParticlePickingStudioPage />} />
                 <Route path="/ribotac-rna-cleavage-design" element={<RibotacRnaCleavageDesignStudioPage />} />
+                <Route path="/spatial-lipidomics-maldi2-desi" element={<SpatialLipidomicsMaldi2DesiStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

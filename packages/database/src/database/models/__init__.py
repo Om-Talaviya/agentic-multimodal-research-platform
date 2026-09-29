@@ -1690,3 +1690,9 @@ from database.models.ribotac_rna_cleavage_design import (
     RibotacRnaCleavageDesignItemProfile,
     RibotacRnaCleavageDesignMetricTrace,
 )
+
+from database.models.spatial_lipidomics_maldi2_desi import (
+    SpatialLipidomicsMaldi2DesiStudy,
+    SpatialLipidomicsMaldi2DesiItemProfile,
+    SpatialLipidomicsMaldi2DesiMetricTrace,
+)
