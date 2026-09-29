@@ -2248,3 +2248,9 @@ from database.models.electroporation_gene_delivery import (
     ElectroporationGeneDeliveryItemProfile,
     ElectroporationGeneDeliveryMetricTrace,
 )
+
+from database.models.gut_brain_axis_metabolome import (
+    GutBrainAxisMetabolomeStudy,
+    GutBrainAxisMetabolomeItemProfile,
+    GutBrainAxisMetabolomeMetricTrace,
+)

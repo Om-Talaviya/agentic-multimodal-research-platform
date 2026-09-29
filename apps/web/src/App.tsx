@@ -1,3 +1,4 @@
+import { GutBrainAxisMetabolomeStudioPage } from './pages/GutBrainAxisMetabolomeStudioPage';
 import { ElectroporationGeneDeliveryStudioPage } from './pages/ElectroporationGeneDeliveryStudioPage';
 import { SpatialAtacRegulonFootprintStudioPage } from './pages/SpatialAtacRegulonFootprintStudioPage';
 import { AdcLinkerCleavageSimulatorStudioPage } from './pages/AdcLinkerCleavageSimulatorStudioPage';
@@ -569,6 +570,7 @@ function App() {
                 <Route path="/adc-linker-cleavage-simulator" element={<AdcLinkerCleavageSimulatorStudioPage />} />
                 <Route path="/spatial-atac-regulon-footprint" element={<SpatialAtacRegulonFootprintStudioPage />} />
                 <Route path="/electroporation-gene-delivery" element={<ElectroporationGeneDeliveryStudioPage />} />
+                <Route path="/gut-brain-axis-metabolome" element={<GutBrainAxisMetabolomeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
