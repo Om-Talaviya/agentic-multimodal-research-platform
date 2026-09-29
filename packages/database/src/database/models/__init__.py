@@ -1906,3 +1906,9 @@ from database.models.prime_editing_pe6_peg_rna_evaluator import (
     PrimeEditingPe6PegRnaEvaluatorItemProfile,
     PrimeEditingPe6PegRnaEvaluatorMetricTrace,
 )
+
+from database.models.spatial_metabolomics_maldi_orbitrap import (
+    SpatialMetabolomicsMaldiOrbitrapStudy,
+    SpatialMetabolomicsMaldiOrbitrapItemProfile,
+    SpatialMetabolomicsMaldiOrbitrapMetricTrace,
+)

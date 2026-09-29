@@ -1,3 +1,4 @@
+from api.routes.spatial_metabolomics_maldi_orbitrap import router as spatial_metabolomics_maldi_orbitrap_router
 from api.routes.prime_editing_pe6_peg_rna_evaluator import router as prime_editing_pe6_peg_rna_evaluator_router
 from api.routes.single_cell_multiome_cis_reg_network import router as single_cell_multiome_cis_reg_network_router
 from api.routes.milestone_v3_6_orchestrator import router as milestone_v3_6_orchestrator_router
@@ -839,3 +840,5 @@ app.include_router(milestone_v3_6_orchestrator_router, prefix=settings.api_prefi
 app.include_router(single_cell_multiome_cis_reg_network_router, prefix=settings.api_prefix)
 
 app.include_router(prime_editing_pe6_peg_rna_evaluator_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_metabolomics_maldi_orbitrap_router, prefix=settings.api_prefix)

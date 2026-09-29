@@ -1,3 +1,4 @@
+import { SpatialMetabolomicsMaldiOrbitrapStudioPage } from './pages/SpatialMetabolomicsMaldiOrbitrapStudioPage';
 import { PrimeEditingPe6PegRnaEvaluatorStudioPage } from './pages/PrimeEditingPe6PegRnaEvaluatorStudioPage';
 import { SingleCellMultiomeCisRegNetworkStudioPage } from './pages/SingleCellMultiomeCisRegNetworkStudioPage';
 import { MilestoneV36OrchestratorStudioPage } from './pages/MilestoneV36OrchestratorStudioPage';
@@ -464,6 +465,7 @@ function App() {
                 <Route path="/milestone-v3-6-orchestrator" element={<MilestoneV36OrchestratorStudioPage />} />
                 <Route path="/single-cell-multiome-cis-reg" element={<SingleCellMultiomeCisRegNetworkStudioPage />} />
                 <Route path="/prime-editing-pe6-peg-rna" element={<PrimeEditingPe6PegRnaEvaluatorStudioPage />} />
+                <Route path="/spatial-metabolomics-maldi" element={<SpatialMetabolomicsMaldiOrbitrapStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
