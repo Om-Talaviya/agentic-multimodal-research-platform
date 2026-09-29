@@ -1,3 +1,4 @@
+from api.routes.spatial_atac_regulon_footprint import router as spatial_atac_regulon_footprint_router
 from api.routes.adc_linker_cleavage_simulator import router as adc_linker_cleavage_simulator_router
 from api.routes.native_ms_complex_stoichiometry import router as native_ms_complex_stoichiometry_router
 from api.routes.gene_drive_ecological_risk import router as gene_drive_ecological_risk_router
@@ -992,3 +993,5 @@ app.include_router(gene_drive_ecological_risk_router, prefix=settings.api_prefix
 app.include_router(native_ms_complex_stoichiometry_router, prefix=settings.api_prefix)
 
 app.include_router(adc_linker_cleavage_simulator_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_atac_regulon_footprint_router, prefix=settings.api_prefix)

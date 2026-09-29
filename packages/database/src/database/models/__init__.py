@@ -2236,3 +2236,9 @@ from database.models.adc_linker_cleavage_simulator import (
     AdcLinkerCleavageSimulatorItemProfile,
     AdcLinkerCleavageSimulatorMetricTrace,
 )
+
+from database.models.spatial_atac_regulon_footprint import (
+    SpatialAtacRegulonFootprintStudy,
+    SpatialAtacRegulonFootprintItemProfile,
+    SpatialAtacRegulonFootprintMetricTrace,
+)

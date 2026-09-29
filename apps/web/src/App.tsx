@@ -1,3 +1,4 @@
+import { SpatialAtacRegulonFootprintStudioPage } from './pages/SpatialAtacRegulonFootprintStudioPage';
 import { AdcLinkerCleavageSimulatorStudioPage } from './pages/AdcLinkerCleavageSimulatorStudioPage';
 import { NativeMsComplexStoichiometryStudioPage } from './pages/NativeMsComplexStoichiometryStudioPage';
 import { GeneDriveEcologicalRiskStudioPage } from './pages/GeneDriveEcologicalRiskStudioPage';
@@ -565,6 +566,7 @@ function App() {
                 <Route path="/gene-drive-ecological-risk" element={<GeneDriveEcologicalRiskStudioPage />} />
                 <Route path="/native-ms-complex-stoichiometry" element={<NativeMsComplexStoichiometryStudioPage />} />
                 <Route path="/adc-linker-cleavage-simulator" element={<AdcLinkerCleavageSimulatorStudioPage />} />
+                <Route path="/spatial-atac-regulon-footprint" element={<SpatialAtacRegulonFootprintStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
