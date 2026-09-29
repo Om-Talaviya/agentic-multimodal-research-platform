@@ -1,3 +1,4 @@
+from api.routes.imc_spatial_proteomics_neighborhood import router as imc_spatial_proteomics_neighborhood_router
 from api.routes.degron_dtag_haloprotac_optimizer import router as degron_dtag_haloprotac_optimizer_router
 from api.routes.nanopore_readuntil_threat_sentinel import router as nanopore_readuntil_threat_sentinel_router
 from api.routes.microbial_metabolite_gpcr_signaling import router as microbial_metabolite_gpcr_signaling_router
@@ -827,3 +828,5 @@ app.include_router(microbial_metabolite_gpcr_signaling_router, prefix=settings.a
 app.include_router(nanopore_readuntil_threat_sentinel_router, prefix=settings.api_prefix)
 
 app.include_router(degron_dtag_haloprotac_optimizer_router, prefix=settings.api_prefix)
+
+app.include_router(imc_spatial_proteomics_neighborhood_router, prefix=settings.api_prefix)

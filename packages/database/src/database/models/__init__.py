@@ -1876,3 +1876,9 @@ from database.models.degron_dtag_haloprotac_optimizer import (
     DegronDtagHaloprotacOptimizerItemProfile,
     DegronDtagHaloprotacOptimizerMetricTrace,
 )
+
+from database.models.imc_spatial_proteomics_neighborhood import (
+    ImcSpatialProteomicsNeighborhoodStudy,
+    ImcSpatialProteomicsNeighborhoodItemProfile,
+    ImcSpatialProteomicsNeighborhoodMetricTrace,
+)

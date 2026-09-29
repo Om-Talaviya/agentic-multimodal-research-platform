@@ -1,3 +1,4 @@
+import { ImcSpatialProteomicsNeighborhoodStudioPage } from './pages/ImcSpatialProteomicsNeighborhoodStudioPage';
 import { DegronDtagHaloprotacOptimizerStudioPage } from './pages/DegronDtagHaloprotacOptimizerStudioPage';
 import { NanoporeReaduntilThreatSentinelStudioPage } from './pages/NanoporeReaduntilThreatSentinelStudioPage';
 import { MicrobialMetaboliteGpcrSignalingStudioPage } from './pages/MicrobialMetaboliteGpcrSignalingStudioPage';
@@ -456,6 +457,7 @@ function App() {
                 <Route path="/microbial-metabolite-gpcr-signaling" element={<MicrobialMetaboliteGpcrSignalingStudioPage />} />
                 <Route path="/nanopore-readuntil-threat-sentinel" element={<NanoporeReaduntilThreatSentinelStudioPage />} />
                 <Route path="/degron-dtag-haloprotac-optimizer" element={<DegronDtagHaloprotacOptimizerStudioPage />} />
+                <Route path="/imc-spatial-proteomics-neighborhood" element={<ImcSpatialProteomicsNeighborhoodStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
