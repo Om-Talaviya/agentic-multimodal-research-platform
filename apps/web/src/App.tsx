@@ -1,3 +1,4 @@
+import { MilestoneV37OrchestratorStudioPage } from './pages/MilestoneV37OrchestratorStudioPage';
 import { MicrobialConsortiaSyntrophyStudioPage } from './pages/MicrobialConsortiaSyntrophyStudioPage';
 import { OptogeneticSpatialGeneExpressionStudioPage } from './pages/OptogeneticSpatialGeneExpressionStudioPage';
 import { NanoporeDnaStorageCodecStudioPage } from './pages/NanoporeDnaStorageCodecStudioPage';
@@ -472,6 +473,7 @@ function App() {
                 <Route path="/nanopore-dna-storage-codec" element={<NanoporeDnaStorageCodecStudioPage />} />
                 <Route path="/optogenetic-spatial-gene" element={<OptogeneticSpatialGeneExpressionStudioPage />} />
                 <Route path="/microbial-consortia-syntrophy" element={<MicrobialConsortiaSyntrophyStudioPage />} />
+                <Route path="/milestone-v3-7-orchestrator" element={<MilestoneV37OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

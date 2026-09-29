@@ -1936,3 +1936,9 @@ from database.models.microbial_consortia_syntrophy import (
     MicrobialConsortiaSyntrophyItemProfile,
     MicrobialConsortiaSyntrophyMetricTrace,
 )
+
+from database.models.milestone_v3_7_orchestrator import (
+    MilestoneV37OrchestratorStudy,
+    MilestoneV37OrchestratorItemProfile,
+    MilestoneV37OrchestratorMetricTrace,
+)
