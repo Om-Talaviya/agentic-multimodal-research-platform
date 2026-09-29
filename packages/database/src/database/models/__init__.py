@@ -1708,3 +1708,9 @@ from database.models.sc_velocity_optimal_transport import (
     ScVelocityOptimalTransportItemProfile,
     ScVelocityOptimalTransportMetricTrace,
 )
+
+from database.models.milestone_v3_2_orchestrator import (
+    MilestoneV32OrchestratorStudy,
+    MilestoneV32OrchestratorItemProfile,
+    MilestoneV32OrchestratorMetricTrace,
+)

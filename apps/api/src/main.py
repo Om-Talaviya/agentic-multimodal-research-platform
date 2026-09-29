@@ -1,3 +1,4 @@
+from api.routes.milestone_v3_2_orchestrator import router as milestone_v3_2_orchestrator_router
 from api.routes.sc_velocity_optimal_transport import router as sc_velocity_optimal_transport_router
 from api.routes.pep_hla_neoantigen_presentation import router as pep_hla_neoantigen_presentation_router
 from api.routes.spatial_lipidomics_maldi2_desi import router as spatial_lipidomics_maldi2_desi_router
@@ -746,3 +747,5 @@ app.include_router(spatial_lipidomics_maldi2_desi_router, prefix=settings.api_pr
 app.include_router(pep_hla_neoantigen_presentation_router, prefix=settings.api_prefix)
 
 app.include_router(sc_velocity_optimal_transport_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v3_2_orchestrator_router, prefix=settings.api_prefix)

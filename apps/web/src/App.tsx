@@ -1,3 +1,4 @@
+import { MilestoneV32OrchestratorStudioPage } from './pages/MilestoneV32OrchestratorStudioPage';
 import { ScVelocityOptimalTransportStudioPage } from './pages/ScVelocityOptimalTransportStudioPage';
 import { PepHlaNeoantigenPresentationStudioPage } from './pages/PepHlaNeoantigenPresentationStudioPage';
 import { SpatialLipidomicsMaldi2DesiStudioPage } from './pages/SpatialLipidomicsMaldi2DesiStudioPage';
@@ -402,6 +403,7 @@ function App() {
                 <Route path="/spatial-lipidomics-maldi2-desi" element={<SpatialLipidomicsMaldi2DesiStudioPage />} />
                 <Route path="/pep-hla-neoantigen-presentation" element={<PepHlaNeoantigenPresentationStudioPage />} />
                 <Route path="/sc-velocity-optimal-transport" element={<ScVelocityOptimalTransportStudioPage />} />
+                <Route path="/milestone-v3-2-orchestrator" element={<MilestoneV32OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
