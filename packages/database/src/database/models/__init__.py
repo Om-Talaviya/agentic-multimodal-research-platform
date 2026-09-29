@@ -2020,3 +2020,9 @@ from database.models.in_vivo_targeted_pbpk_biodistribution import (
     InVivoTargetedPbpkBiodistributionItemProfile,
     InVivoTargetedPbpkBiodistributionMetricTrace,
 )
+
+from database.models.milestone_v3_9_orchestrator import (
+    MilestoneV39OrchestratorStudy,
+    MilestoneV39OrchestratorItemProfile,
+    MilestoneV39OrchestratorMetricTrace,
+)
