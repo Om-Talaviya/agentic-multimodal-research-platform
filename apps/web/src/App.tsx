@@ -1,3 +1,4 @@
+import { NanoporeReaduntilThreatSentinelStudioPage } from './pages/NanoporeReaduntilThreatSentinelStudioPage';
 import { MicrobialMetaboliteGpcrSignalingStudioPage } from './pages/MicrobialMetaboliteGpcrSignalingStudioPage';
 import { GuvSyntheticCellFactoryStudioPage } from './pages/GuvSyntheticCellFactoryStudioPage';
 import { WholeOrganVascularPerfusionStudioPage } from './pages/WholeOrganVascularPerfusionStudioPage';
@@ -452,6 +453,7 @@ function App() {
                 <Route path="/whole-organ-vascular-perfusion" element={<WholeOrganVascularPerfusionStudioPage />} />
                 <Route path="/guv-synthetic-cell-factory" element={<GuvSyntheticCellFactoryStudioPage />} />
                 <Route path="/microbial-metabolite-gpcr-signaling" element={<MicrobialMetaboliteGpcrSignalingStudioPage />} />
+                <Route path="/nanopore-readuntil-threat-sentinel" element={<NanoporeReaduntilThreatSentinelStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

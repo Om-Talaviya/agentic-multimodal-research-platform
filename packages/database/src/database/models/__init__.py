@@ -1858,3 +1858,15 @@ from database.models.microbial_metabolite_gpcr_signaling import (
     MicrobialMetaboliteGpcrSignalingItemProfile,
     MicrobialMetaboliteGpcrSignalingMetricTrace,
 )
+
+from database.models.nanopore_readuntil_threat_sentinel import (
+    NanoporeReaduntilThreatSentinelStudy,
+    NanoporeReaduntilThreatSentinelItemProfile,
+    NanoporeReaduntilThreatSentinelMetricTrace,
+)
+
+from database.models.nanopore_readuntil_threat_sentinel import (
+    NanoporeReaduntilThreatSentinelStudy,
+    NanoporeReaduntilThreatSentinelItemProfile,
+    NanoporeReaduntilThreatSentinelMetricTrace,
+)

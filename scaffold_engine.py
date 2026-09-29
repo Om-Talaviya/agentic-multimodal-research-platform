@@ -18,6 +18,7 @@ def build_phase(
     secondary_metric_name: str,
     secondary_metric_val: float,
 ):
+    title = title.replace('"', "").replace("'", "")
     print(f"Building Phase {phase_num}: {title} ({snake_name})...")
     
     # 1. Models
