@@ -2278,3 +2278,9 @@ from database.models.mtdna_heteroplasmy_toxicity import (
     MtdnaHeteroplasmyToxicityItemProfile,
     MtdnaHeteroplasmyToxicityMetricTrace,
 )
+
+from database.models.peptide_amphiphile_hydrogel import (
+    PeptideAmphiphileHydrogelStudy,
+    PeptideAmphiphileHydrogelItemProfile,
+    PeptideAmphiphileHydrogelMetricTrace,
+)

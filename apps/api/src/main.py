@@ -1,3 +1,4 @@
+from api.routes.peptide_amphiphile_hydrogel import router as peptide_amphiphile_hydrogel_router
 from api.routes.mtdna_heteroplasmy_toxicity import router as mtdna_heteroplasmy_toxicity_router
 from api.routes.opt_whole_organ_tomography import router as opt_whole_organ_tomography_router
 from api.routes.bioprinted_vascular_scaffold import router as bioprinted_vascular_scaffold_router
@@ -1013,3 +1014,5 @@ app.include_router(bioprinted_vascular_scaffold_router, prefix=settings.api_pref
 app.include_router(opt_whole_organ_tomography_router, prefix=settings.api_prefix)
 
 app.include_router(mtdna_heteroplasmy_toxicity_router, prefix=settings.api_prefix)
+
+app.include_router(peptide_amphiphile_hydrogel_router, prefix=settings.api_prefix)
