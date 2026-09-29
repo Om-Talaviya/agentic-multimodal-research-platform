@@ -1792,3 +1792,9 @@ from database.models.lnp_endosomal_escape_kinetics import (
     LnpEndosomalEscapeKineticsItemProfile,
     LnpEndosomalEscapeKineticsMetricTrace,
 )
+
+from database.models.milestone_v3_4_orchestrator import (
+    MilestoneV34OrchestratorStudy,
+    MilestoneV34OrchestratorItemProfile,
+    MilestoneV34OrchestratorMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { MilestoneV34OrchestratorStudioPage } from './pages/MilestoneV34OrchestratorStudioPage';
 import { LnpEndosomalEscapeKineticsStudioPage } from './pages/LnpEndosomalEscapeKineticsStudioPage';
 import { SingleCellMetabolomicsTimsStudioPage } from './pages/SingleCellMetabolomicsTimsStudioPage';
 import { CrisprCas12aMultiplexedSnpStudioPage } from './pages/CrisprCas12aMultiplexedSnpStudioPage';
@@ -430,6 +431,7 @@ function App() {
                 <Route path="/crispr-cas12a-multiplexed-snp" element={<CrisprCas12aMultiplexedSnpStudioPage />} />
                 <Route path="/single-cell-metabolomics-tims" element={<SingleCellMetabolomicsTimsStudioPage />} />
                 <Route path="/lnp-endosomal-escape-kinetics" element={<LnpEndosomalEscapeKineticsStudioPage />} />
+                <Route path="/milestone-v3-4-orchestrator" element={<MilestoneV34OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

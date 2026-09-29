@@ -1,3 +1,4 @@
+from api.routes.milestone_v3_4_orchestrator import router as milestone_v3_4_orchestrator_router
 from api.routes.lnp_endosomal_escape_kinetics import router as lnp_endosomal_escape_kinetics_router
 from api.routes.single_cell_metabolomics_tims import router as single_cell_metabolomics_tims_router
 from api.routes.crispr_cas12a_multiplexed_snp import router as crispr_cas12a_multiplexed_snp_router
@@ -788,3 +789,5 @@ app.include_router(crispr_cas12a_multiplexed_snp_router, prefix=settings.api_pre
 app.include_router(single_cell_metabolomics_tims_router, prefix=settings.api_prefix)
 
 app.include_router(lnp_endosomal_escape_kinetics_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v3_4_orchestrator_router, prefix=settings.api_prefix)
