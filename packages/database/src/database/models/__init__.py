@@ -1684,3 +1684,9 @@ from database.models.cryoem_deep_particle_picking import (
     CryoemDeepParticlePickingItemProfile,
     CryoemDeepParticlePickingMetricTrace,
 )
+
+from database.models.ribotac_rna_cleavage_design import (
+    RibotacRnaCleavageDesignStudy,
+    RibotacRnaCleavageDesignItemProfile,
+    RibotacRnaCleavageDesignMetricTrace,
+)

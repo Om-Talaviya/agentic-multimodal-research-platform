@@ -1,3 +1,4 @@
+import { RibotacRnaCleavageDesignStudioPage } from './pages/RibotacRnaCleavageDesignStudioPage';
 import { CryoemDeepParticlePickingStudioPage } from './pages/CryoemDeepParticlePickingStudioPage';
 import { CellFreeTxtlKineticOptimizerStudioPage } from './pages/CellFreeTxtlKineticOptimizerStudioPage';
 import { MilestoneV31OrchestratorStudioPage } from './pages/MilestoneV31OrchestratorStudioPage';
@@ -394,6 +395,7 @@ function App() {
                 <Route path="/milestone-v3-1-orchestrator" element={<MilestoneV31OrchestratorStudioPage />} />
                 <Route path="/cell-free-txtl-kinetic-optimizer" element={<CellFreeTxtlKineticOptimizerStudioPage />} />
                 <Route path="/cryoem-deep-particle-picking" element={<CryoemDeepParticlePickingStudioPage />} />
+                <Route path="/ribotac-rna-cleavage-design" element={<RibotacRnaCleavageDesignStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
