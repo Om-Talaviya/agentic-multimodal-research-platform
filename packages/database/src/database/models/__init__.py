@@ -2230,3 +2230,9 @@ from database.models.native_ms_complex_stoichiometry import (
     NativeMsComplexStoichiometryItemProfile,
     NativeMsComplexStoichiometryMetricTrace,
 )
+
+from database.models.adc_linker_cleavage_simulator import (
+    AdcLinkerCleavageSimulatorStudy,
+    AdcLinkerCleavageSimulatorItemProfile,
+    AdcLinkerCleavageSimulatorMetricTrace,
+)

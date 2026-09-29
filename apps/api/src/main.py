@@ -1,3 +1,4 @@
+from api.routes.adc_linker_cleavage_simulator import router as adc_linker_cleavage_simulator_router
 from api.routes.native_ms_complex_stoichiometry import router as native_ms_complex_stoichiometry_router
 from api.routes.gene_drive_ecological_risk import router as gene_drive_ecological_risk_router
 from api.routes.hd_mea_organoid_plasticity import router as hd_mea_organoid_plasticity_router
@@ -989,3 +990,5 @@ app.include_router(hd_mea_organoid_plasticity_router, prefix=settings.api_prefix
 app.include_router(gene_drive_ecological_risk_router, prefix=settings.api_prefix)
 
 app.include_router(native_ms_complex_stoichiometry_router, prefix=settings.api_prefix)
+
+app.include_router(adc_linker_cleavage_simulator_router, prefix=settings.api_prefix)
