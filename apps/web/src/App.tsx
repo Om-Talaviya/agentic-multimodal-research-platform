@@ -1,3 +1,4 @@
+import { InVivoCartReprogrammingTropismStudioPage } from './pages/InVivoCartReprogrammingTropismStudioPage';
 import { MilestoneV30OrchestratorStudioPage } from './pages/MilestoneV30OrchestratorStudioPage';
 import { SyntheticMinimalGenomeDesignStudioPage } from './pages/SyntheticMinimalGenomeDesignStudioPage';
 import { LiquidBiopsyMrdDeconvolutionStudioPage } from './pages/LiquidBiopsyMrdDeconvolutionStudioPage';
@@ -376,6 +377,7 @@ function App() {
                 <Route path="/liquid-biopsy-mrd-deconvolution" element={<LiquidBiopsyMrdDeconvolutionStudioPage />} />
                 <Route path="/synthetic-minimal-genome-design" element={<SyntheticMinimalGenomeDesignStudioPage />} />
                 <Route path="/milestone-v3-0-orchestrator" element={<MilestoneV30OrchestratorStudioPage />} />
+                <Route path="/in-vivo-cart-reprogramming-tropism" element={<InVivoCartReprogrammingTropismStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1630,3 +1630,9 @@ from database.models.milestone_v3_0_orchestrator import (
     MilestoneV30OrchestratorItemProfile,
     MilestoneV30OrchestratorMetricTrace,
 )
+
+from database.models.in_vivo_cart_reprogramming_tropism import (
+    InVivoCartReprogrammingTropismStudy,
+    InVivoCartReprogrammingTropismItemProfile,
+    InVivoCartReprogrammingTropismMetricTrace,
+)
