@@ -1,3 +1,4 @@
+import { GeneDriveEcologicalRiskStudioPage } from './pages/GeneDriveEcologicalRiskStudioPage';
 import { HdMeaOrganoidPlasticityStudioPage } from './pages/HdMeaOrganoidPlasticityStudioPage';
 import { BiofilmEpsPenetrationStudioPage } from './pages/BiofilmEpsPenetrationStudioPage';
 import { DropletMicrofluidicAntibodyStudioPage } from './pages/DropletMicrofluidicAntibodyStudioPage';
@@ -559,6 +560,7 @@ function App() {
                 <Route path="/droplet-microfluidic-antibody" element={<DropletMicrofluidicAntibodyStudioPage />} />
                 <Route path="/biofilm-eps-penetration" element={<BiofilmEpsPenetrationStudioPage />} />
                 <Route path="/hd-mea-organoid-plasticity" element={<HdMeaOrganoidPlasticityStudioPage />} />
+                <Route path="/gene-drive-ecological-risk" element={<GeneDriveEcologicalRiskStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

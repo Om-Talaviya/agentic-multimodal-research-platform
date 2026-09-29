@@ -2218,3 +2218,9 @@ from database.models.hd_mea_organoid_plasticity import (
     HdMeaOrganoidPlasticityItemProfile,
     HdMeaOrganoidPlasticityMetricTrace,
 )
+
+from database.models.gene_drive_ecological_risk import (
+    GeneDriveEcologicalRiskStudy,
+    GeneDriveEcologicalRiskItemProfile,
+    GeneDriveEcologicalRiskMetricTrace,
+)
