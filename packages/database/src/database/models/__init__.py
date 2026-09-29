@@ -1960,3 +1960,9 @@ from database.models.biomimetic_ion_channel_gating import (
     BiomimeticIonChannelGatingItemProfile,
     BiomimeticIonChannelGatingMetricTrace,
 )
+
+from database.models.lineage_tracing_crispr_phylogeny import (
+    LineageTracingCrisprPhylogenyStudy,
+    LineageTracingCrisprPhylogenyItemProfile,
+    LineageTracingCrisprPhylogenyMetricTrace,
+)

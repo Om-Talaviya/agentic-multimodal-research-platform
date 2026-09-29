@@ -1,3 +1,4 @@
+from api.routes.lineage_tracing_crispr_phylogeny import router as lineage_tracing_crispr_phylogeny_router
 from api.routes.biomimetic_ion_channel_gating import router as biomimetic_ion_channel_gating_router
 from api.routes.microglia_synaptic_pruning_modeler import router as microglia_synaptic_pruning_modeler_router
 from api.routes.cryoem_time_resolved_ensemble import router as cryoem_time_resolved_ensemble_router
@@ -863,3 +864,5 @@ app.include_router(cryoem_time_resolved_ensemble_router, prefix=settings.api_pre
 app.include_router(microglia_synaptic_pruning_modeler_router, prefix=settings.api_prefix)
 
 app.include_router(biomimetic_ion_channel_gating_router, prefix=settings.api_prefix)
+
+app.include_router(lineage_tracing_crispr_phylogeny_router, prefix=settings.api_prefix)
