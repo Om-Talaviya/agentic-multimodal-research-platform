@@ -1,3 +1,4 @@
+import { PaceContinuousDirectedEvolutionStudioPage } from './pages/PaceContinuousDirectedEvolutionStudioPage';
 import { MilestoneV33OrchestratorStudioPage } from './pages/MilestoneV33OrchestratorStudioPage';
 import { Cyp450PharmacometabolomicsClearanceStudioPage } from './pages/Cyp450PharmacometabolomicsClearanceStudioPage';
 import { ScrambleSyntheticChromosomeSimulatorStudioPage } from './pages/ScrambleSyntheticChromosomeSimulatorStudioPage';
@@ -418,6 +419,7 @@ function App() {
                 <Route path="/scramble-synthetic-chromosome-simulator" element={<ScrambleSyntheticChromosomeSimulatorStudioPage />} />
                 <Route path="/cyp450-pharmacometabolomics-clearance" element={<Cyp450PharmacometabolomicsClearanceStudioPage />} />
                 <Route path="/milestone-v3-3-orchestrator" element={<MilestoneV33OrchestratorStudioPage />} />
+                <Route path="/pace-continuous-directed-evolution" element={<PaceContinuousDirectedEvolutionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

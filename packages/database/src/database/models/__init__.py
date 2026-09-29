@@ -1756,3 +1756,9 @@ from database.models.milestone_v3_3_orchestrator import (
     MilestoneV33OrchestratorItemProfile,
     MilestoneV33OrchestratorMetricTrace,
 )
+
+from database.models.pace_continuous_directed_evolution import (
+    PaceContinuousDirectedEvolutionStudy,
+    PaceContinuousDirectedEvolutionItemProfile,
+    PaceContinuousDirectedEvolutionMetricTrace,
+)
