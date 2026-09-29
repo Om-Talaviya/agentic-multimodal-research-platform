@@ -2116,3 +2116,9 @@ from database.models.organoid_phenotypic_profiler import (
     OrganoidPhenotypicProfilerItemProfile,
     OrganoidPhenotypicProfilerMetricTrace,
 )
+
+from database.models.alternative_splicing_impact_predictor import (
+    AlternativeSplicingImpactPredictorStudy,
+    AlternativeSplicingImpactPredictorItemProfile,
+    AlternativeSplicingImpactPredictorMetricTrace,
+)
