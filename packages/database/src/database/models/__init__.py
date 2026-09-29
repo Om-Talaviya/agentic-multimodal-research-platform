@@ -1810,3 +1810,9 @@ from database.models.prime_editing_flap_resolution import (
     PrimeEditingFlapResolutionItemProfile,
     PrimeEditingFlapResolutionMetricTrace,
 )
+
+from database.models.nanobody_vhh_paratope_design import (
+    NanobodyVhhParatopeDesignStudy,
+    NanobodyVhhParatopeDesignItemProfile,
+    NanobodyVhhParatopeDesignMetricTrace,
+)

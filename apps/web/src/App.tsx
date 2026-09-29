@@ -1,3 +1,4 @@
+import { NanobodyVhhParatopeDesignStudioPage } from './pages/NanobodyVhhParatopeDesignStudioPage';
 import { PrimeEditingFlapResolutionStudioPage } from './pages/PrimeEditingFlapResolutionStudioPage';
 import { CryoetInsituFilamentTracingStudioPage } from './pages/CryoetInsituFilamentTracingStudioPage';
 import { MilestoneV34OrchestratorStudioPage } from './pages/MilestoneV34OrchestratorStudioPage';
@@ -436,6 +437,7 @@ function App() {
                 <Route path="/milestone-v3-4-orchestrator" element={<MilestoneV34OrchestratorStudioPage />} />
                 <Route path="/cryoet-insitu-filament-tracing" element={<CryoetInsituFilamentTracingStudioPage />} />
                 <Route path="/prime-editing-flap-resolution" element={<PrimeEditingFlapResolutionStudioPage />} />
+                <Route path="/nanobody-vhh-paratope-design" element={<NanobodyVhhParatopeDesignStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
