@@ -1,3 +1,4 @@
+import { SyntheticEpigeneticGeneSilencerStudioPage } from './pages/SyntheticEpigeneticGeneSilencerStudioPage';
 import { MilestoneV38OrchestratorStudioPage } from './pages/MilestoneV38OrchestratorStudioPage';
 import { RnaCondensationLocalizationModelerStudioPage } from './pages/RnaCondensationLocalizationModelerStudioPage';
 import { DropletSingleMicrobeCulturomicsStudioPage } from './pages/DropletSingleMicrobeCulturomicsStudioPage';
@@ -488,6 +489,7 @@ function App() {
                 <Route path="/droplet-single-microbe-culturomics" element={<DropletSingleMicrobeCulturomicsStudioPage />} />
                 <Route path="/rna-condensation-localization" element={<RnaCondensationLocalizationModelerStudioPage />} />
                 <Route path="/milestone-v3-8-orchestrator" element={<MilestoneV38OrchestratorStudioPage />} />
+                <Route path="/synthetic-epigenetic-silencer" element={<SyntheticEpigeneticGeneSilencerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

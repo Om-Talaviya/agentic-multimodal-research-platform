@@ -1984,3 +1984,9 @@ from database.models.milestone_v3_8_orchestrator import (
     MilestoneV38OrchestratorItemProfile,
     MilestoneV38OrchestratorMetricTrace,
 )
+
+from database.models.synthetic_epigenetic_gene_silencer import (
+    SyntheticEpigeneticGeneSilencerStudy,
+    SyntheticEpigeneticGeneSilencerItemProfile,
+    SyntheticEpigeneticGeneSilencerMetricTrace,
+)
