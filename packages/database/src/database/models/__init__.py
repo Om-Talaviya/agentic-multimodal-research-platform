@@ -2062,3 +2062,9 @@ from database.models.pisa_thermal_shift_assay import (
     PisaThermalShiftAssayItemProfile,
     PisaThermalShiftAssayMetricTrace,
 )
+
+from database.models.capsid_glycan_canopy_shielding import (
+    CapsidGlycanCanopyShieldingStudy,
+    CapsidGlycanCanopyShieldingItemProfile,
+    CapsidGlycanCanopyShieldingMetricTrace,
+)
