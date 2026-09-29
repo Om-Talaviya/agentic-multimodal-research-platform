@@ -1,3 +1,4 @@
+from api.routes.single_cell_multiome_cis_reg_network import router as single_cell_multiome_cis_reg_network_router
 from api.routes.milestone_v3_6_orchestrator import router as milestone_v3_6_orchestrator_router
 from api.routes.imc_spatial_proteomics_neighborhood import router as imc_spatial_proteomics_neighborhood_router
 from api.routes.degron_dtag_haloprotac_optimizer import router as degron_dtag_haloprotac_optimizer_router
@@ -833,3 +834,5 @@ app.include_router(degron_dtag_haloprotac_optimizer_router, prefix=settings.api_
 app.include_router(imc_spatial_proteomics_neighborhood_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v3_6_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(single_cell_multiome_cis_reg_network_router, prefix=settings.api_prefix)

@@ -1888,3 +1888,15 @@ from database.models.milestone_v3_6_orchestrator import (
     MilestoneV36OrchestratorItemProfile,
     MilestoneV36OrchestratorMetricTrace,
 )
+
+from database.models.single_cell_multiome_cis_reg_network import (
+    SingleCellMultiomeCisRegNetworkStudy,
+    SingleCellMultiomeCisRegNetworkItemProfile,
+    SingleCellMultiomeCisRegNetworkMetricTrace,
+)
+
+from database.models.single_cell_multiome_cis_reg_network import (
+    SingleCellMultiomeCisRegNetworkStudy,
+    SingleCellMultiomeCisRegNetworkItemProfile,
+    SingleCellMultiomeCisRegNetworkMetricTrace,
+)

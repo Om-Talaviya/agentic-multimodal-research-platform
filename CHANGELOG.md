@@ -2,6 +2,38 @@
 
 All notable changes to the **Agentic Multimodal Research Platform (AI Research OS)** will be documented in this file.
 
+## [v3.6.0] - 2026-09-29
+### Added (Phases 302 - 308)
+- **Phase 302**: Autonomous In-Silico Whole-Organ Vascular Micro-Perfusion & Dynamic Oxygen Gradient Hemodynamics Simulator (`whole_organ_vascular_perfusion`)
+- **Phase 303**: Autonomous Cell-Free Protein Synthesis Compartmentalized Giant Unilamellar Vesicle (GUV) Synthetic Cell Factory (`guv_synthetic_cell_factory`)
+- **Phase 304**: Autonomous Multi-Omics Microbially-Derived Metabolite Host GPCR Signal Transduction & Immunomodulation Modeler (`microbial_metabolite_gpcr_signaling`)
+- **Phase 305**: Autonomous In-Silico Nanopore Adaptive Real-Time Selective Sequencing ("ReadUntil") Bio-Threat Sentinel (`nanopore_readuntil_threat_sentinel`)
+- **Phase 306**: Autonomous Targeted Protein Degradation Heterobifunctional Degron Tag (dTAG/HaloPROTAC) Optimization Engine (`degron_dtag_haloprotac_optimizer`)
+- **Phase 307**: Autonomous Spatial Proteomics Imaging Mass Cytometry (IMC) Single-Cell Neighborhood Interaction & Escape Engine (`imc_spatial_proteomics_neighborhood`)
+- **Phase 308**: Autonomous Milestone v3.6 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v3_6_orchestrator`)
+
+## [v3.5.0] - 2026-09-29 (Tercentenary Milestone Release)
+### Added (Phases 295 - 301)
+- **Phase 295**: Autonomous Cryo-Electron Tomography (Cryo-ET) In-Situ Subtomogram Filament Tracing Simulator (`cryoet_insitu_filament_tracing`)
+- **Phase 296**: Autonomous Targeted Prime-Editing PegRNA-Engineered Flap Resolution & Microhomology Suppression Matrix (`prime_editing_flap_resolution`)
+- **Phase 297**: Autonomous In-Silico Multi-Specific Nanobody (VHH) Paratope Rigid-Body Conformation Forecaster (`nanobody_vhh_paratope_design`)
+- **Phase 298**: Autonomous High-Throughput Chemically Induced Proximity (CIP) Multi-Effector Biological Circuit Modeler (`chemically_induced_proximity_cip`)
+- **Phase 299**: Autonomous Spatial Transcriptomics Single-Molecule Spot Super-Resolution Diffusion Deconvolution Engine (`spatial_super_resolution_deconvolution`)
+- **Phase 300**: Autonomous Tercentenary Milestone v3.5 Bio-Computational Discovery Matrix & Planetary Master Convergence Engine (`tercentenary_milestone_v3_5_orchestrator`)
+- **Phase 301**: Autonomous Single-Cell Lineage Tracing Multi-Locus CRISPR Barcode Scar Deconvolution & Phylogeny Reconstructor (`crispr_lineage_barcode_phylogeny`)
+
+## [v3.4.0] - 2026-09-29
+### Added (Phases 288 - 294)
+- **Phase 288**: Autonomous Continuous Directed Protein Evolution (PACE) Phage Mutagenesis & Selection Velocity Engine (`pace_continuous_directed_evolution`)
+- **Phase 289**: Autonomous Spatial Multi-Omics Whole-Transcriptome In-Situ Sequencing (ISS) Padlock Decoding Engine (`iss_padlock_rolling_circle`)
+- **Phase 290**: Autonomous Intact Membrane Protein Native Mass Spectrometry & Lipid-Binding Stoichiometry Engine (`native_mass_spec_membrane_protein`)
+- **Phase 291**: Autonomous CRISPR-Cas12a (Cpf1) Multiplexed Trans-Cleavage Single-Nucleotide Polymorphism Sentinel (`crispr_cas12a_multiplexed_snp`)
+- **Phase 292**: Autonomous Single-Cell Metabolomics Trapped Ion Mobility Spectrometry (TIMS) Flux Deconvolution Engine (`single_cell_metabolomics_tims`)
+- **Phase 293**: Autonomous Non-Viral Lipid Nanoparticle (LNP) Endosomal Escape Kinetics & Bioavailability Forecaster (`lnp_endosomal_escape_kinetics`)
+- **Phase 294**: Autonomous Milestone v3.4 Planetary Multi-Omics Research Synthesis & Meta-Orchestrator Engine (`milestone_v3_4_orchestrator`)
+
+All notable changes to the **Agentic Multimodal Research Platform (AI Research OS)** will be documented in this file.
+
 ## [v3.3.0] - 2026-09-29
 ### Added (Phases 281 - 287)
 - **Phase 281**: Autonomous In-Silico Antibody-Drug Conjugate (ADC) Bystander Killing & Payload Diffusion Dynamics Forecaster (`adc_bystander_killing_diffusion`)

@@ -1,3 +1,4 @@
+import { SingleCellMultiomeCisRegNetworkStudioPage } from './pages/SingleCellMultiomeCisRegNetworkStudioPage';
 import { MilestoneV36OrchestratorStudioPage } from './pages/MilestoneV36OrchestratorStudioPage';
 import { ImcSpatialProteomicsNeighborhoodStudioPage } from './pages/ImcSpatialProteomicsNeighborhoodStudioPage';
 import { DegronDtagHaloprotacOptimizerStudioPage } from './pages/DegronDtagHaloprotacOptimizerStudioPage';
@@ -460,6 +461,7 @@ function App() {
                 <Route path="/degron-dtag-haloprotac-optimizer" element={<DegronDtagHaloprotacOptimizerStudioPage />} />
                 <Route path="/imc-spatial-proteomics-neighborhood" element={<ImcSpatialProteomicsNeighborhoodStudioPage />} />
                 <Route path="/milestone-v3-6-orchestrator" element={<MilestoneV36OrchestratorStudioPage />} />
+                <Route path="/single-cell-multiome-cis-reg" element={<SingleCellMultiomeCisRegNetworkStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
