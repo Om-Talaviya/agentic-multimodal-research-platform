@@ -2212,3 +2212,9 @@ from database.models.biofilm_eps_penetration import (
     BiofilmEpsPenetrationItemProfile,
     BiofilmEpsPenetrationMetricTrace,
 )
+
+from database.models.hd_mea_organoid_plasticity import (
+    HdMeaOrganoidPlasticityStudy,
+    HdMeaOrganoidPlasticityItemProfile,
+    HdMeaOrganoidPlasticityMetricTrace,
+)

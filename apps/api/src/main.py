@@ -1,3 +1,4 @@
+from api.routes.hd_mea_organoid_plasticity import router as hd_mea_organoid_plasticity_router
 from api.routes.biofilm_eps_penetration import router as biofilm_eps_penetration_router
 from api.routes.droplet_microfluidic_antibody import router as droplet_microfluidic_antibody_router
 from api.routes.tcell_exhaustion_rejuvenation import router as tcell_exhaustion_rejuvenation_router
@@ -980,3 +981,5 @@ app.include_router(tcell_exhaustion_rejuvenation_router, prefix=settings.api_pre
 app.include_router(droplet_microfluidic_antibody_router, prefix=settings.api_prefix)
 
 app.include_router(biofilm_eps_penetration_router, prefix=settings.api_prefix)
+
+app.include_router(hd_mea_organoid_plasticity_router, prefix=settings.api_prefix)
