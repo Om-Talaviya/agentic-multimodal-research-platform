@@ -1,3 +1,4 @@
+from api.routes.multimodal_cell_velocity_engine import router as multimodal_cell_velocity_engine_router
 from api.routes.hla_drug_hypersensitivity_profiler import router as hla_drug_hypersensitivity_profiler_router
 from api.routes.micro_c_chromatin_loop_caller import router as micro_c_chromatin_loop_caller_router
 from api.routes.lnp_endosomal_escape_predictor import router as lnp_endosomal_escape_predictor_router
@@ -947,3 +948,5 @@ app.include_router(lnp_endosomal_escape_predictor_router, prefix=settings.api_pr
 app.include_router(micro_c_chromatin_loop_caller_router, prefix=settings.api_prefix)
 
 app.include_router(hla_drug_hypersensitivity_profiler_router, prefix=settings.api_prefix)
+
+app.include_router(multimodal_cell_velocity_engine_router, prefix=settings.api_prefix)

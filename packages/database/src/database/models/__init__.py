@@ -2146,3 +2146,9 @@ from database.models.hla_drug_hypersensitivity_profiler import (
     HlaDrugHypersensitivityProfilerItemProfile,
     HlaDrugHypersensitivityProfilerMetricTrace,
 )
+
+from database.models.multimodal_cell_velocity_engine import (
+    MultimodalCellVelocityEngineStudy,
+    MultimodalCellVelocityEngineItemProfile,
+    MultimodalCellVelocityEngineMetricTrace,
+)
