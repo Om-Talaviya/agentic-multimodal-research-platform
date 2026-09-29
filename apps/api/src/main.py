@@ -1,3 +1,4 @@
+from api.routes.microbial_metabolite_gpcr_signaling import router as microbial_metabolite_gpcr_signaling_router
 from api.routes.guv_synthetic_cell_factory import router as guv_synthetic_cell_factory_router
 from api.routes.whole_organ_vascular_perfusion import router as whole_organ_vascular_perfusion_router
 from api.routes.crispr_lineage_barcode_phylogeny import router as crispr_lineage_barcode_phylogeny_router
@@ -818,3 +819,5 @@ app.include_router(crispr_lineage_barcode_phylogeny_router, prefix=settings.api_
 app.include_router(whole_organ_vascular_perfusion_router, prefix=settings.api_prefix)
 
 app.include_router(guv_synthetic_cell_factory_router, prefix=settings.api_prefix)
+
+app.include_router(microbial_metabolite_gpcr_signaling_router, prefix=settings.api_prefix)

@@ -1852,3 +1852,9 @@ from database.models.guv_synthetic_cell_factory import (
     GuvSyntheticCellFactoryItemProfile,
     GuvSyntheticCellFactoryMetricTrace,
 )
+
+from database.models.microbial_metabolite_gpcr_signaling import (
+    MicrobialMetaboliteGpcrSignalingStudy,
+    MicrobialMetaboliteGpcrSignalingItemProfile,
+    MicrobialMetaboliteGpcrSignalingMetricTrace,
+)
