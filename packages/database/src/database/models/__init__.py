@@ -2224,3 +2224,9 @@ from database.models.gene_drive_ecological_risk import (
     GeneDriveEcologicalRiskItemProfile,
     GeneDriveEcologicalRiskMetricTrace,
 )
+
+from database.models.native_ms_complex_stoichiometry import (
+    NativeMsComplexStoichiometryStudy,
+    NativeMsComplexStoichiometryItemProfile,
+    NativeMsComplexStoichiometryMetricTrace,
+)
