@@ -2056,3 +2056,9 @@ from database.models.chemical_proximity_degron import (
     ChemicalProximityDegronItemProfile,
     ChemicalProximityDegronMetricTrace,
 )
+
+from database.models.pisa_thermal_shift_assay import (
+    PisaThermalShiftAssayStudy,
+    PisaThermalShiftAssayItemProfile,
+    PisaThermalShiftAssayMetricTrace,
+)

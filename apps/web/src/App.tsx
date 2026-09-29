@@ -1,3 +1,4 @@
+import { PisaThermalShiftAssayStudioPage } from './pages/PisaThermalShiftAssayStudioPage';
 import { ChemicalProximityDegronStudioPage } from './pages/ChemicalProximityDegronStudioPage';
 import { MerfishSpatialTranscriptomicsStudioPage } from './pages/MerfishSpatialTranscriptomicsStudioPage';
 import { RiboseqTranslationDynamicsStudioPage } from './pages/RiboseqTranslationDynamicsStudioPage';
@@ -510,6 +511,7 @@ function App() {
                 <Route path="/riboseq-translation-dynamics" element={<RiboseqTranslationDynamicsStudioPage />} />
                 <Route path="/merfish-spatial-transcriptomics" element={<MerfishSpatialTranscriptomicsStudioPage />} />
                 <Route path="/chemical-proximity-degron" element={<ChemicalProximityDegronStudioPage />} />
+                <Route path="/pisa-thermal-shift" element={<PisaThermalShiftAssayStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

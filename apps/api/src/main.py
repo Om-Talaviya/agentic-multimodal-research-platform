@@ -1,3 +1,4 @@
+from api.routes.pisa_thermal_shift_assay import router as pisa_thermal_shift_assay_router
 from api.routes.chemical_proximity_degron import router as chemical_proximity_degron_router
 from api.routes.merfish_spatial_transcriptomics import router as merfish_spatial_transcriptomics_router
 from api.routes.riboseq_translation_dynamics import router as riboseq_translation_dynamics_router
@@ -908,3 +909,5 @@ app.include_router(riboseq_translation_dynamics_router, prefix=settings.api_pref
 app.include_router(merfish_spatial_transcriptomics_router, prefix=settings.api_prefix)
 
 app.include_router(chemical_proximity_degron_router, prefix=settings.api_prefix)
+
+app.include_router(pisa_thermal_shift_assay_router, prefix=settings.api_prefix)
