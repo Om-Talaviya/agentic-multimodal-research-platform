@@ -2182,3 +2182,9 @@ from database.models.mibi_tof_spatial_proteomics import (
     MibiTofSpatialProteomicsItemProfile,
     MibiTofSpatialProteomicsMetricTrace,
 )
+
+from database.models.two_photon_neural_dynamics import (
+    TwoPhotonNeuralDynamicsStudy,
+    TwoPhotonNeuralDynamicsItemProfile,
+    TwoPhotonNeuralDynamicsMetricTrace,
+)

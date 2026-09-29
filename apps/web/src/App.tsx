@@ -1,3 +1,4 @@
+import { TwoPhotonNeuralDynamicsStudioPage } from './pages/TwoPhotonNeuralDynamicsStudioPage';
 import { MibiTofSpatialProteomicsStudioPage } from './pages/MibiTofSpatialProteomicsStudioPage';
 import { QuantumAnnealingFoldingStudioPage } from './pages/QuantumAnnealingFoldingStudioPage';
 import { MilestoneV40MetaOrchestratorStudioPage } from './pages/MilestoneV40MetaOrchestratorStudioPage';
@@ -547,6 +548,7 @@ function App() {
                 <Route path="/milestone-v4-0-orchestrator" element={<MilestoneV40MetaOrchestratorStudioPage />} />
                 <Route path="/quantum-annealing-folding" element={<QuantumAnnealingFoldingStudioPage />} />
                 <Route path="/mibi-tof-spatial-proteomics" element={<MibiTofSpatialProteomicsStudioPage />} />
+                <Route path="/two-photon-neural-dynamics" element={<TwoPhotonNeuralDynamicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
