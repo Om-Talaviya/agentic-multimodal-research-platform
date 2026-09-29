@@ -1882,3 +1882,9 @@ from database.models.imc_spatial_proteomics_neighborhood import (
     ImcSpatialProteomicsNeighborhoodItemProfile,
     ImcSpatialProteomicsNeighborhoodMetricTrace,
 )
+
+from database.models.milestone_v3_6_orchestrator import (
+    MilestoneV36OrchestratorStudy,
+    MilestoneV36OrchestratorItemProfile,
+    MilestoneV36OrchestratorMetricTrace,
+)

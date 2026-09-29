@@ -1,3 +1,4 @@
+from api.routes.milestone_v3_6_orchestrator import router as milestone_v3_6_orchestrator_router
 from api.routes.imc_spatial_proteomics_neighborhood import router as imc_spatial_proteomics_neighborhood_router
 from api.routes.degron_dtag_haloprotac_optimizer import router as degron_dtag_haloprotac_optimizer_router
 from api.routes.nanopore_readuntil_threat_sentinel import router as nanopore_readuntil_threat_sentinel_router
@@ -830,3 +831,5 @@ app.include_router(nanopore_readuntil_threat_sentinel_router, prefix=settings.ap
 app.include_router(degron_dtag_haloprotac_optimizer_router, prefix=settings.api_prefix)
 
 app.include_router(imc_spatial_proteomics_neighborhood_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v3_6_orchestrator_router, prefix=settings.api_prefix)
