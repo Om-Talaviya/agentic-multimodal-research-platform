@@ -6,6 +6,10 @@ on:
       - "master"
       - "main"
       - "develop/v1.1"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
   pull_request:
     branches:
       - "master"
