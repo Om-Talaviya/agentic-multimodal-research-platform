@@ -1720,3 +1720,9 @@ from database.models.adc_bystander_killing_diffusion import (
     AdcBystanderKillingDiffusionItemProfile,
     AdcBystanderKillingDiffusionMetricTrace,
 )
+
+from database.models.single_cell_hic_3d_chromatin_loop import (
+    SingleCellHic3dChromatinLoopStudy,
+    SingleCellHic3dChromatinLoopItemProfile,
+    SingleCellHic3dChromatinLoopMetricTrace,
+)
