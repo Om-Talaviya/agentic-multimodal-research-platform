@@ -1,3 +1,4 @@
+from api.routes.daisy_chain_gene_drive_simulator import router as daisy_chain_gene_drive_simulator_router
 from api.routes.synthetic_epigenetic_gene_silencer import router as synthetic_epigenetic_gene_silencer_router
 from api.routes.milestone_v3_8_orchestrator import router as milestone_v3_8_orchestrator_router
 from api.routes.rna_condensation_localization_modeler import router as rna_condensation_localization_modeler_router
@@ -878,3 +879,5 @@ app.include_router(rna_condensation_localization_modeler_router, prefix=settings
 app.include_router(milestone_v3_8_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(synthetic_epigenetic_gene_silencer_router, prefix=settings.api_prefix)
+
+app.include_router(daisy_chain_gene_drive_simulator_router, prefix=settings.api_prefix)

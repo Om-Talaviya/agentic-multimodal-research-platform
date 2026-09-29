@@ -1990,3 +1990,9 @@ from database.models.synthetic_epigenetic_gene_silencer import (
     SyntheticEpigeneticGeneSilencerItemProfile,
     SyntheticEpigeneticGeneSilencerMetricTrace,
 )
+
+from database.models.daisy_chain_gene_drive_simulator import (
+    DaisyChainGeneDriveSimulatorStudy,
+    DaisyChainGeneDriveSimulatorItemProfile,
+    DaisyChainGeneDriveSimulatorMetricTrace,
+)
