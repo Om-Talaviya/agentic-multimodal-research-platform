@@ -1702,3 +1702,9 @@ from database.models.pep_hla_neoantigen_presentation import (
     PepHlaNeoantigenPresentationItemProfile,
     PepHlaNeoantigenPresentationMetricTrace,
 )
+
+from database.models.sc_velocity_optimal_transport import (
+    ScVelocityOptimalTransportStudy,
+    ScVelocityOptimalTransportItemProfile,
+    ScVelocityOptimalTransportMetricTrace,
+)
