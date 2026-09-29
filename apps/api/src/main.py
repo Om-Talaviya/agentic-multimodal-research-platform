@@ -1,3 +1,4 @@
+from api.routes.scramble_synthetic_chromosome_simulator import router as scramble_synthetic_chromosome_simulator_router
 from api.routes.cytof_spectral_unmixing_compensator import router as cytof_spectral_unmixing_compensator_router
 from api.routes.mpra_variant_regulatory_impact import router as mpra_variant_regulatory_impact_router
 from api.routes.single_cell_hic_3d_chromatin_loop import router as single_cell_hic_3d_chromatin_loop_router
@@ -761,3 +762,5 @@ app.include_router(single_cell_hic_3d_chromatin_loop_router, prefix=settings.api
 app.include_router(mpra_variant_regulatory_impact_router, prefix=settings.api_prefix)
 
 app.include_router(cytof_spectral_unmixing_compensator_router, prefix=settings.api_prefix)
+
+app.include_router(scramble_synthetic_chromosome_simulator_router, prefix=settings.api_prefix)

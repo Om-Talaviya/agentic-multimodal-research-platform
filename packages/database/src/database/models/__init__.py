@@ -1738,3 +1738,9 @@ from database.models.cytof_spectral_unmixing_compensator import (
     CytofSpectralUnmixingCompensatorItemProfile,
     CytofSpectralUnmixingCompensatorMetricTrace,
 )
+
+from database.models.scramble_synthetic_chromosome_simulator import (
+    ScrambleSyntheticChromosomeSimulatorStudy,
+    ScrambleSyntheticChromosomeSimulatorItemProfile,
+    ScrambleSyntheticChromosomeSimulatorMetricTrace,
+)
