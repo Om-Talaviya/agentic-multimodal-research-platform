@@ -2110,3 +2110,9 @@ from database.models.organoid_microfluidic_shear_twin import (
     OrganoidMicrofluidicShearTwinItemProfile,
     OrganoidMicrofluidicShearTwinMetricTrace,
 )
+
+from database.models.organoid_phenotypic_profiler import (
+    OrganoidPhenotypicProfilerStudy,
+    OrganoidPhenotypicProfilerItemProfile,
+    OrganoidPhenotypicProfilerMetricTrace,
+)
