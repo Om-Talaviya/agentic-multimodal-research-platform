@@ -1,3 +1,4 @@
+import { SpatialTensorCciDecompositionStudioPage } from './pages/SpatialTensorCciDecompositionStudioPage';
 import { CytofMassCytometryClusteringStudioPage } from './pages/CytofMassCytometryClusteringStudioPage';
 import { NanoporeEpitranscriptomeCallerStudioPage } from './pages/NanoporeEpitranscriptomeCallerStudioPage';
 import { CapsidGlycanCanopyShieldingStudioPage } from './pages/CapsidGlycanCanopyShieldingStudioPage';
@@ -518,6 +519,7 @@ function App() {
                 <Route path="/capsid-glycan-canopy" element={<CapsidGlycanCanopyShieldingStudioPage />} />
                 <Route path="/nanopore-epitranscriptome" element={<NanoporeEpitranscriptomeCallerStudioPage />} />
                 <Route path="/cytof-mass-cytometry" element={<CytofMassCytometryClusteringStudioPage />} />
+                <Route path="/spatial-tensor-cci" element={<SpatialTensorCciDecompositionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

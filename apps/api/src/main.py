@@ -1,3 +1,4 @@
+from api.routes.spatial_tensor_cci_decomposition import router as spatial_tensor_cci_decomposition_router
 from api.routes.cytof_mass_cytometry_clustering import router as cytof_mass_cytometry_clustering_router
 from api.routes.nanopore_epitranscriptome_caller import router as nanopore_epitranscriptome_caller_router
 from api.routes.capsid_glycan_canopy_shielding import router as capsid_glycan_canopy_shielding_router
@@ -920,3 +921,5 @@ app.include_router(capsid_glycan_canopy_shielding_router, prefix=settings.api_pr
 app.include_router(nanopore_epitranscriptome_caller_router, prefix=settings.api_prefix)
 
 app.include_router(cytof_mass_cytometry_clustering_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_tensor_cci_decomposition_router, prefix=settings.api_prefix)

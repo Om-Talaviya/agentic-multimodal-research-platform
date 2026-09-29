@@ -2080,3 +2080,15 @@ from database.models.cytof_mass_cytometry_clustering import (
     CytofMassCytometryClusteringItemProfile,
     CytofMassCytometryClusteringMetricTrace,
 )
+
+from database.models.spatial_tensor_cci_decomposition import (
+    SpatialTensorCciDecompositionStudy,
+    SpatialTensorCciDecompositionItemProfile,
+    SpatialTensorCciDecompositionMetricTrace,
+)
+
+from database.models.spatial_tensor_cci_decomposition import (
+    SpatialTensorCciDecompositionStudy,
+    SpatialTensorCciDecompositionItemProfile,
+    SpatialTensorCciDecompositionMetricTrace,
+)
