@@ -1,3 +1,4 @@
+from api.routes.prime_editing_flap_resolution import router as prime_editing_flap_resolution_router
 from api.routes.cryoet_insitu_filament_tracing import router as cryoet_insitu_filament_tracing_router
 from api.routes.milestone_v3_4_orchestrator import router as milestone_v3_4_orchestrator_router
 from api.routes.lnp_endosomal_escape_kinetics import router as lnp_endosomal_escape_kinetics_router
@@ -794,3 +795,5 @@ app.include_router(lnp_endosomal_escape_kinetics_router, prefix=settings.api_pre
 app.include_router(milestone_v3_4_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(cryoet_insitu_filament_tracing_router, prefix=settings.api_prefix)
+
+app.include_router(prime_editing_flap_resolution_router, prefix=settings.api_prefix)

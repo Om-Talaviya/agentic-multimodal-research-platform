@@ -1,3 +1,4 @@
+import { PrimeEditingFlapResolutionStudioPage } from './pages/PrimeEditingFlapResolutionStudioPage';
 import { CryoetInsituFilamentTracingStudioPage } from './pages/CryoetInsituFilamentTracingStudioPage';
 import { MilestoneV34OrchestratorStudioPage } from './pages/MilestoneV34OrchestratorStudioPage';
 import { LnpEndosomalEscapeKineticsStudioPage } from './pages/LnpEndosomalEscapeKineticsStudioPage';
@@ -434,6 +435,7 @@ function App() {
                 <Route path="/lnp-endosomal-escape-kinetics" element={<LnpEndosomalEscapeKineticsStudioPage />} />
                 <Route path="/milestone-v3-4-orchestrator" element={<MilestoneV34OrchestratorStudioPage />} />
                 <Route path="/cryoet-insitu-filament-tracing" element={<CryoetInsituFilamentTracingStudioPage />} />
+                <Route path="/prime-editing-flap-resolution" element={<PrimeEditingFlapResolutionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

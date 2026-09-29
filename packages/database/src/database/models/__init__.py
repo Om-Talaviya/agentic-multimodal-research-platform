@@ -1804,3 +1804,9 @@ from database.models.cryoet_insitu_filament_tracing import (
     CryoetInsituFilamentTracingItemProfile,
     CryoetInsituFilamentTracingMetricTrace,
 )
+
+from database.models.prime_editing_flap_resolution import (
+    PrimeEditingFlapResolutionStudy,
+    PrimeEditingFlapResolutionItemProfile,
+    PrimeEditingFlapResolutionMetricTrace,
+)
