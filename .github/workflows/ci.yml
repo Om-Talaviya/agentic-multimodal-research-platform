@@ -6,15 +6,15 @@ on:
       - "master"
       - "main"
       - "develop/v1.1"
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
   pull_request:
     branches:
       - "master"
       - "main"
       - "develop/v1.1"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   backend-tests:
@@ -39,7 +39,7 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel hatchling
           pip install pytest pytest-asyncio pytest-cov pytest-timeout httpx pydantic "pydantic[email]" email-validator pydantic-settings structlog python-json-logger python-dotenv typing-extensions python-jose cryptography passlib sqlalchemy alembic slowapi aiosqlite asyncpg greenlet rank-bm25 pdfplumber pymupdf python-docx Pillow google-genai google-generativeai croniter openpyxl pandas fastapi uvicorn python-multipart anyio
 
-      - name: Run Pytest Test Suite (612+ tests)
+      - name: Run Pytest Test Suite
         env:
           PYTHONPATH: "packages/shared/src:packages/sdk-python/src:packages/ai/src:packages/database/src:packages/tools/src:packages/agents/src:packages/research/src:packages/ingestion/src:packages/retrieval/src:apps/api/src"
           DATABASE_URL: "sqlite+aiosqlite:///:memory:"
