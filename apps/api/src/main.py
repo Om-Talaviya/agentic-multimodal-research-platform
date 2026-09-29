@@ -1,3 +1,4 @@
+from api.routes.lnp_endosomal_escape_kinetics import router as lnp_endosomal_escape_kinetics_router
 from api.routes.single_cell_metabolomics_tims import router as single_cell_metabolomics_tims_router
 from api.routes.crispr_cas12a_multiplexed_snp import router as crispr_cas12a_multiplexed_snp_router
 from api.routes.native_mass_spec_membrane_protein import router as native_mass_spec_membrane_protein_router
@@ -785,3 +786,5 @@ app.include_router(native_mass_spec_membrane_protein_router, prefix=settings.api
 app.include_router(crispr_cas12a_multiplexed_snp_router, prefix=settings.api_prefix)
 
 app.include_router(single_cell_metabolomics_tims_router, prefix=settings.api_prefix)
+
+app.include_router(lnp_endosomal_escape_kinetics_router, prefix=settings.api_prefix)

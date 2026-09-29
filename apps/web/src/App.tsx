@@ -1,3 +1,4 @@
+import { LnpEndosomalEscapeKineticsStudioPage } from './pages/LnpEndosomalEscapeKineticsStudioPage';
 import { SingleCellMetabolomicsTimsStudioPage } from './pages/SingleCellMetabolomicsTimsStudioPage';
 import { CrisprCas12aMultiplexedSnpStudioPage } from './pages/CrisprCas12aMultiplexedSnpStudioPage';
 import { NativeMassSpecMembraneProteinStudioPage } from './pages/NativeMassSpecMembraneProteinStudioPage';
@@ -428,6 +429,7 @@ function App() {
                 <Route path="/native-mass-spec-membrane-protein" element={<NativeMassSpecMembraneProteinStudioPage />} />
                 <Route path="/crispr-cas12a-multiplexed-snp" element={<CrisprCas12aMultiplexedSnpStudioPage />} />
                 <Route path="/single-cell-metabolomics-tims" element={<SingleCellMetabolomicsTimsStudioPage />} />
+                <Route path="/lnp-endosomal-escape-kinetics" element={<LnpEndosomalEscapeKineticsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

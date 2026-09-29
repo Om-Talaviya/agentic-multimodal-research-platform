@@ -1786,3 +1786,9 @@ from database.models.single_cell_metabolomics_tims import (
     SingleCellMetabolomicsTimsItemProfile,
     SingleCellMetabolomicsTimsMetricTrace,
 )
+
+from database.models.lnp_endosomal_escape_kinetics import (
+    LnpEndosomalEscapeKineticsStudy,
+    LnpEndosomalEscapeKineticsItemProfile,
+    LnpEndosomalEscapeKineticsMetricTrace,
+)
