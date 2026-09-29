@@ -1912,3 +1912,15 @@ from database.models.spatial_metabolomics_maldi_orbitrap import (
     SpatialMetabolomicsMaldiOrbitrapItemProfile,
     SpatialMetabolomicsMaldiOrbitrapMetricTrace,
 )
+
+from database.models.nanopore_dna_storage_codec import (
+    NanoporeDnaStorageCodecStudy,
+    NanoporeDnaStorageCodecItemProfile,
+    NanoporeDnaStorageCodecMetricTrace,
+)
+
+from database.models.nanopore_dna_storage_codec import (
+    NanoporeDnaStorageCodecStudy,
+    NanoporeDnaStorageCodecItemProfile,
+    NanoporeDnaStorageCodecMetricTrace,
+)
