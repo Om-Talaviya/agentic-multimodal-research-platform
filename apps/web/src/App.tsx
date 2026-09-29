@@ -1,3 +1,4 @@
+import { MilestoneV33OrchestratorStudioPage } from './pages/MilestoneV33OrchestratorStudioPage';
 import { Cyp450PharmacometabolomicsClearanceStudioPage } from './pages/Cyp450PharmacometabolomicsClearanceStudioPage';
 import { ScrambleSyntheticChromosomeSimulatorStudioPage } from './pages/ScrambleSyntheticChromosomeSimulatorStudioPage';
 import { CytofSpectralUnmixingCompensatorStudioPage } from './pages/CytofSpectralUnmixingCompensatorStudioPage';
@@ -416,6 +417,7 @@ function App() {
                 <Route path="/cytof-spectral-unmixing-compensator" element={<CytofSpectralUnmixingCompensatorStudioPage />} />
                 <Route path="/scramble-synthetic-chromosome-simulator" element={<ScrambleSyntheticChromosomeSimulatorStudioPage />} />
                 <Route path="/cyp450-pharmacometabolomics-clearance" element={<Cyp450PharmacometabolomicsClearanceStudioPage />} />
+                <Route path="/milestone-v3-3-orchestrator" element={<MilestoneV33OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

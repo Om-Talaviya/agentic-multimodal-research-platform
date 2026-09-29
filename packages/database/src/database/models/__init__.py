@@ -1750,3 +1750,9 @@ from database.models.cyp450_pharmacometabolomics_clearance import (
     Cyp450PharmacometabolomicsClearanceItemProfile,
     Cyp450PharmacometabolomicsClearanceMetricTrace,
 )
+
+from database.models.milestone_v3_3_orchestrator import (
+    MilestoneV33OrchestratorStudy,
+    MilestoneV33OrchestratorItemProfile,
+    MilestoneV33OrchestratorMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.milestone_v3_3_orchestrator import router as milestone_v3_3_orchestrator_router
 from api.routes.cyp450_pharmacometabolomics_clearance import router as cyp450_pharmacometabolomics_clearance_router
 from api.routes.scramble_synthetic_chromosome_simulator import router as scramble_synthetic_chromosome_simulator_router
 from api.routes.cytof_spectral_unmixing_compensator import router as cytof_spectral_unmixing_compensator_router
@@ -767,3 +768,5 @@ app.include_router(cytof_spectral_unmixing_compensator_router, prefix=settings.a
 app.include_router(scramble_synthetic_chromosome_simulator_router, prefix=settings.api_prefix)
 
 app.include_router(cyp450_pharmacometabolomics_clearance_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v3_3_orchestrator_router, prefix=settings.api_prefix)
