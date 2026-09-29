@@ -1,3 +1,4 @@
+import { CytofMassCytometryClusteringStudioPage } from './pages/CytofMassCytometryClusteringStudioPage';
 import { NanoporeEpitranscriptomeCallerStudioPage } from './pages/NanoporeEpitranscriptomeCallerStudioPage';
 import { CapsidGlycanCanopyShieldingStudioPage } from './pages/CapsidGlycanCanopyShieldingStudioPage';
 import { PisaThermalShiftAssayStudioPage } from './pages/PisaThermalShiftAssayStudioPage';
@@ -516,6 +517,7 @@ function App() {
                 <Route path="/pisa-thermal-shift" element={<PisaThermalShiftAssayStudioPage />} />
                 <Route path="/capsid-glycan-canopy" element={<CapsidGlycanCanopyShieldingStudioPage />} />
                 <Route path="/nanopore-epitranscriptome" element={<NanoporeEpitranscriptomeCallerStudioPage />} />
+                <Route path="/cytof-mass-cytometry" element={<CytofMassCytometryClusteringStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

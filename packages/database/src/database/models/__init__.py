@@ -2074,3 +2074,9 @@ from database.models.nanopore_epitranscriptome_caller import (
     NanoporeEpitranscriptomeCallerItemProfile,
     NanoporeEpitranscriptomeCallerMetricTrace,
 )
+
+from database.models.cytof_mass_cytometry_clustering import (
+    CytofMassCytometryClusteringStudy,
+    CytofMassCytometryClusteringItemProfile,
+    CytofMassCytometryClusteringMetricTrace,
+)
