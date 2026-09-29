@@ -1,3 +1,4 @@
+import { OptWholeOrganTomographyStudioPage } from './pages/OptWholeOrganTomographyStudioPage';
 import { BioprintedVascularScaffoldStudioPage } from './pages/BioprintedVascularScaffoldStudioPage';
 import { CrisprEpigenomeEditorStudioPage } from './pages/CrisprEpigenomeEditorStudioPage';
 import { GutBrainAxisMetabolomeStudioPage } from './pages/GutBrainAxisMetabolomeStudioPage';
@@ -575,6 +576,7 @@ function App() {
                 <Route path="/gut-brain-axis-metabolome" element={<GutBrainAxisMetabolomeStudioPage />} />
                 <Route path="/crispr-epigenome-editor" element={<CrisprEpigenomeEditorStudioPage />} />
                 <Route path="/bioprinted-vascular-scaffold" element={<BioprintedVascularScaffoldStudioPage />} />
+                <Route path="/opt-whole-organ-tomography" element={<OptWholeOrganTomographyStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

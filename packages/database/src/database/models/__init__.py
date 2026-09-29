@@ -2266,3 +2266,9 @@ from database.models.bioprinted_vascular_scaffold import (
     BioprintedVascularScaffoldItemProfile,
     BioprintedVascularScaffoldMetricTrace,
 )
+
+from database.models.opt_whole_organ_tomography import (
+    OptWholeOrganTomographyStudy,
+    OptWholeOrganTomographyItemProfile,
+    OptWholeOrganTomographyMetricTrace,
+)
