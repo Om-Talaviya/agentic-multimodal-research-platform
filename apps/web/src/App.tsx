@@ -1,3 +1,4 @@
+import { CrisprCas12aMultiplexedSnpStudioPage } from './pages/CrisprCas12aMultiplexedSnpStudioPage';
 import { NativeMassSpecMembraneProteinStudioPage } from './pages/NativeMassSpecMembraneProteinStudioPage';
 import { IssPadlockRollingCircleStudioPage } from './pages/IssPadlockRollingCircleStudioPage';
 import { PaceContinuousDirectedEvolutionStudioPage } from './pages/PaceContinuousDirectedEvolutionStudioPage';
@@ -424,6 +425,7 @@ function App() {
                 <Route path="/pace-continuous-directed-evolution" element={<PaceContinuousDirectedEvolutionStudioPage />} />
                 <Route path="/iss-padlock-rolling-circle" element={<IssPadlockRollingCircleStudioPage />} />
                 <Route path="/native-mass-spec-membrane-protein" element={<NativeMassSpecMembraneProteinStudioPage />} />
+                <Route path="/crispr-cas12a-multiplexed-snp" element={<CrisprCas12aMultiplexedSnpStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1774,3 +1774,9 @@ from database.models.native_mass_spec_membrane_protein import (
     NativeMassSpecMembraneProteinItemProfile,
     NativeMassSpecMembraneProteinMetricTrace,
 )
+
+from database.models.crispr_cas12a_multiplexed_snp import (
+    CrisprCas12aMultiplexedSnpStudy,
+    CrisprCas12aMultiplexedSnpItemProfile,
+    CrisprCas12aMultiplexedSnpMetricTrace,
+)
