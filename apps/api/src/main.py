@@ -1,3 +1,4 @@
+from api.routes.iss_padlock_rolling_circle import router as iss_padlock_rolling_circle_router
 from api.routes.pace_continuous_directed_evolution import router as pace_continuous_directed_evolution_router
 from api.routes.milestone_v3_3_orchestrator import router as milestone_v3_3_orchestrator_router
 from api.routes.cyp450_pharmacometabolomics_clearance import router as cyp450_pharmacometabolomics_clearance_router
@@ -773,3 +774,5 @@ app.include_router(cyp450_pharmacometabolomics_clearance_router, prefix=settings
 app.include_router(milestone_v3_3_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(pace_continuous_directed_evolution_router, prefix=settings.api_prefix)
+
+app.include_router(iss_padlock_rolling_circle_router, prefix=settings.api_prefix)

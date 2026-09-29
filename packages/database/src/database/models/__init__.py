@@ -1762,3 +1762,9 @@ from database.models.pace_continuous_directed_evolution import (
     PaceContinuousDirectedEvolutionItemProfile,
     PaceContinuousDirectedEvolutionMetricTrace,
 )
+
+from database.models.iss_padlock_rolling_circle import (
+    IssPadlockRollingCircleStudy,
+    IssPadlockRollingCircleItemProfile,
+    IssPadlockRollingCircleMetricTrace,
+)
