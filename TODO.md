@@ -1,6 +1,6 @@
 # Project Roadmap & Active Tasks (AI Research OS)
 
-**Current Release Status**: Milestone v3.6 Tercentenary Master Planetary Release  
+**Current Release Status**: Milestone v4.0 Tercentenary Master Planetary Release  
 **Total Completed Phases**: 308 / 308 (100% Active Completion)  
 **Total Automated Tests**: 1232+ Tests (100% CI Passing)  
 **Generations**: 1 through 46  
@@ -57,7 +57,7 @@
   - [x] `PlannerAgent` knowledge base integration inspecting local documents before decomposing inquiries.
   - [x] `DocumentAnalysisAgent` hybrid search integration with `KnowledgeSearchTool`.
   - [x] Document management REST endpoints (`GET /search`, `POST /{id}/reindex`, `DELETE /{id}`).
-- [x] **Documentation Architecture Synchronization** (`commit: a00949e`)
+- [x] **Documentation Architecture Synchronization** (`commit: a00952e`)
   - [x] Comprehensive documentation suite across root, `/docs/`, `/design/`, and roadmap specs.
 
 ---
@@ -546,8 +546,8 @@ All 41 Phases across Generations 1 through 15 are fully implemented, verified, d
 - [x] **Phase 48: Autonomous Multi-Omics Pathway Perturbation & Causal Signaling Simulator** <!-- id: 48 -->
   - **Goal**: Multi-omics dynamic ODE kinetic signaling simulation, metabolic flux balance shifts, bypass resistance mechanisms, database models (`DBMultiOmicsExperiment`, `DBPathwayCascade`, `DBPerturbationSimulation`), `PathwayPerturbationRepository`, `PathwayPerturbationEngine`, `/api/v1/pathways/*` REST API, and `PathwaySimulatorPage.tsx` React studio (**ADR 048**).
 
-- [x] **Phase 49: Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector** <!-- id: 49 -->
-  - **Goal**: RWE post-market adverse event mining, PRR/ROR disproportionality, BCPNN IC025, WHO-UMC causality, database models (`DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`), `PharmacovigilanceRepository`, `PharmacovigilanceEngine`, `/api/v1/pharmacovigilance/*` REST API, and `PharmacovigilanceStudioPage.tsx` React studio (**ADR 049**).
+- [x] **Phase 52: Autonomous Real-World Evidence (RWE) & Pharmacovigilance Signal Detector** <!-- id: 52 -->
+  - **Goal**: RWE post-market adverse event mining, PRR/ROR disproportionality, BCPNN IC025, WHO-UMC causality, database models (`DBPharmacovigilanceCorpus`, `DBSafetySignalReport`, `DBDisproportionalityMetric`), `PharmacovigilanceRepository`, `PharmacovigilanceEngine`, `/api/v1/pharmacovigilance/*` REST API, and `PharmacovigilanceStudioPage.tsx` React studio (**ADR 052**).
 
 - [x] **Phase 50: Autonomous AI Scientist Self-Evolving Research Agent & Nobel-Turing Discovery Engine** <!-- id: 50 -->
   - **Goal**: Autonomous closed-loop scientific discovery, metacognitive self-reflection, breakthrough scorecards, database models (`DBAutonomousScientistProgram`, `DBResearchIterationCycle`, `DBDiscoveryBreakthrough`), `AutonomousScientistRepository`, `AutonomousScientistEngine`, `/api/v1/ai-scientist/*` REST API, and `AIScientistStudioPage.tsx` React studio (**ADR 050**).

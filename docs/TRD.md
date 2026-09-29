@@ -224,5 +224,5 @@ flowchart TD
 
 
 
-### Technical Requirements: Milestones v3.7 - v3.9
+### Technical Requirements: Milestones v4.0 - v4.0
 - Implemented with SQLAlchemy 2.0 async session pools, Pydantic v2 schemas, FastAPI sub-routers with OpenAPI 3.1 documentation, and TypeScript frontend components.
