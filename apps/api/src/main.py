@@ -1,3 +1,4 @@
+from api.routes.bioprinted_vascular_scaffold import router as bioprinted_vascular_scaffold_router
 from api.routes.crispr_epigenome_editor import router as crispr_epigenome_editor_router
 from api.routes.gut_brain_axis_metabolome import router as gut_brain_axis_metabolome_router
 from api.routes.electroporation_gene_delivery import router as electroporation_gene_delivery_router
@@ -1004,3 +1005,5 @@ app.include_router(electroporation_gene_delivery_router, prefix=settings.api_pre
 app.include_router(gut_brain_axis_metabolome_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_epigenome_editor_router, prefix=settings.api_prefix)
+
+app.include_router(bioprinted_vascular_scaffold_router, prefix=settings.api_prefix)

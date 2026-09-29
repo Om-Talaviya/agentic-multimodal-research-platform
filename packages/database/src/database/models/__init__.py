@@ -2260,3 +2260,9 @@ from database.models.crispr_epigenome_editor import (
     CrisprEpigenomeEditorItemProfile,
     CrisprEpigenomeEditorMetricTrace,
 )
+
+from database.models.bioprinted_vascular_scaffold import (
+    BioprintedVascularScaffoldStudy,
+    BioprintedVascularScaffoldItemProfile,
+    BioprintedVascularScaffoldMetricTrace,
+)
