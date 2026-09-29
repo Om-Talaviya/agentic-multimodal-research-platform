@@ -1,3 +1,4 @@
+import { TercentenaryMilestoneV35OrchestratorStudioPage } from './pages/TercentenaryMilestoneV35OrchestratorStudioPage';
 import { SpatialSuperResolutionDeconvolutionStudioPage } from './pages/SpatialSuperResolutionDeconvolutionStudioPage';
 import { ChemicallyInducedProximityCipStudioPage } from './pages/ChemicallyInducedProximityCipStudioPage';
 import { NanobodyVhhParatopeDesignStudioPage } from './pages/NanobodyVhhParatopeDesignStudioPage';
@@ -442,6 +443,7 @@ function App() {
                 <Route path="/nanobody-vhh-paratope-design" element={<NanobodyVhhParatopeDesignStudioPage />} />
                 <Route path="/chemically-induced-proximity-cip" element={<ChemicallyInducedProximityCipStudioPage />} />
                 <Route path="/spatial-super-resolution-deconvolution" element={<SpatialSuperResolutionDeconvolutionStudioPage />} />
+                <Route path="/tercentenary-milestone-v3-5-orchestrator" element={<TercentenaryMilestoneV35OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1828,3 +1828,9 @@ from database.models.spatial_super_resolution_deconvolution import (
     SpatialSuperResolutionDeconvolutionItemProfile,
     SpatialSuperResolutionDeconvolutionMetricTrace,
 )
+
+from database.models.tercentenary_milestone_v3_5_orchestrator import (
+    TercentenaryMilestoneV35OrchestratorStudy,
+    TercentenaryMilestoneV35OrchestratorItemProfile,
+    TercentenaryMilestoneV35OrchestratorMetricTrace,
+)
