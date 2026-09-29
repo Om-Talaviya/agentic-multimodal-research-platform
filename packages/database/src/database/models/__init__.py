@@ -2188,3 +2188,9 @@ from database.models.two_photon_neural_dynamics import (
     TwoPhotonNeuralDynamicsItemProfile,
     TwoPhotonNeuralDynamicsMetricTrace,
 )
+
+from database.models.mrna_lipid_polymer_nanocapsule import (
+    MrnaLipidPolymerNanocapsuleStudy,
+    MrnaLipidPolymerNanocapsuleItemProfile,
+    MrnaLipidPolymerNanocapsuleMetricTrace,
+)
