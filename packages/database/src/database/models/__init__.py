@@ -1978,3 +1978,9 @@ from database.models.rna_condensation_localization_modeler import (
     RnaCondensationLocalizationModelerItemProfile,
     RnaCondensationLocalizationModelerMetricTrace,
 )
+
+from database.models.milestone_v3_8_orchestrator import (
+    MilestoneV38OrchestratorStudy,
+    MilestoneV38OrchestratorItemProfile,
+    MilestoneV38OrchestratorMetricTrace,
+)

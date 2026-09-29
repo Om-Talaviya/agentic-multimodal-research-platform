@@ -1,3 +1,4 @@
+from api.routes.milestone_v3_8_orchestrator import router as milestone_v3_8_orchestrator_router
 from api.routes.rna_condensation_localization_modeler import router as rna_condensation_localization_modeler_router
 from api.routes.droplet_single_microbe_culturomics import router as droplet_single_microbe_culturomics_router
 from api.routes.lineage_tracing_crispr_phylogeny import router as lineage_tracing_crispr_phylogeny_router
@@ -872,3 +873,5 @@ app.include_router(lineage_tracing_crispr_phylogeny_router, prefix=settings.api_
 app.include_router(droplet_single_microbe_culturomics_router, prefix=settings.api_prefix)
 
 app.include_router(rna_condensation_localization_modeler_router, prefix=settings.api_prefix)
+
+app.include_router(milestone_v3_8_orchestrator_router, prefix=settings.api_prefix)

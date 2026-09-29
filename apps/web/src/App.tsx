@@ -1,3 +1,4 @@
+import { MilestoneV38OrchestratorStudioPage } from './pages/MilestoneV38OrchestratorStudioPage';
 import { RnaCondensationLocalizationModelerStudioPage } from './pages/RnaCondensationLocalizationModelerStudioPage';
 import { DropletSingleMicrobeCulturomicsStudioPage } from './pages/DropletSingleMicrobeCulturomicsStudioPage';
 import { LineageTracingCrisprPhylogenyStudioPage } from './pages/LineageTracingCrisprPhylogenyStudioPage';
@@ -486,6 +487,7 @@ function App() {
                 <Route path="/lineage-tracing-crispr-phylogeny" element={<LineageTracingCrisprPhylogenyStudioPage />} />
                 <Route path="/droplet-single-microbe-culturomics" element={<DropletSingleMicrobeCulturomicsStudioPage />} />
                 <Route path="/rna-condensation-localization" element={<RnaCondensationLocalizationModelerStudioPage />} />
+                <Route path="/milestone-v3-8-orchestrator" element={<MilestoneV38OrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
