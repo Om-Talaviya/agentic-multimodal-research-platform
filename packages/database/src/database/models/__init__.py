@@ -1816,3 +1816,9 @@ from database.models.nanobody_vhh_paratope_design import (
     NanobodyVhhParatopeDesignItemProfile,
     NanobodyVhhParatopeDesignMetricTrace,
 )
+
+from database.models.chemically_induced_proximity_cip import (
+    ChemicallyInducedProximityCipStudy,
+    ChemicallyInducedProximityCipItemProfile,
+    ChemicallyInducedProximityCipMetricTrace,
+)

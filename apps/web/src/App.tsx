@@ -1,3 +1,4 @@
+import { ChemicallyInducedProximityCipStudioPage } from './pages/ChemicallyInducedProximityCipStudioPage';
 import { NanobodyVhhParatopeDesignStudioPage } from './pages/NanobodyVhhParatopeDesignStudioPage';
 import { PrimeEditingFlapResolutionStudioPage } from './pages/PrimeEditingFlapResolutionStudioPage';
 import { CryoetInsituFilamentTracingStudioPage } from './pages/CryoetInsituFilamentTracingStudioPage';
@@ -438,6 +439,7 @@ function App() {
                 <Route path="/cryoet-insitu-filament-tracing" element={<CryoetInsituFilamentTracingStudioPage />} />
                 <Route path="/prime-editing-flap-resolution" element={<PrimeEditingFlapResolutionStudioPage />} />
                 <Route path="/nanobody-vhh-paratope-design" element={<NanobodyVhhParatopeDesignStudioPage />} />
+                <Route path="/chemically-induced-proximity-cip" element={<ChemicallyInducedProximityCipStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
