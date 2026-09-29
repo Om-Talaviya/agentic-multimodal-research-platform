@@ -1660,3 +1660,9 @@ from database.models.microphysiological_organ_chip_sensors import (
     MicrophysiologicalOrganChipSensorsItemProfile,
     MicrophysiologicalOrganChipSensorsMetricTrace,
 )
+
+from database.models.chemoproteomics_abpp_covalent_screen import (
+    ChemoproteomicsAbppCovalentScreenStudy,
+    ChemoproteomicsAbppCovalentScreenItemProfile,
+    ChemoproteomicsAbppCovalentScreenMetricTrace,
+)

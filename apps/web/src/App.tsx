@@ -1,3 +1,4 @@
+import { ChemoproteomicsAbppCovalentScreenStudioPage } from './pages/ChemoproteomicsAbppCovalentScreenStudioPage';
 import { MicrophysiologicalOrganChipSensorsStudioPage } from './pages/MicrophysiologicalOrganChipSensorsStudioPage';
 import { SmfretRiboswitchKineticsStudioPage } from './pages/SmfretRiboswitchKineticsStudioPage';
 import { IntactGlycoproteomicsTopDownMsStudioPage } from './pages/IntactGlycoproteomicsTopDownMsStudioPage';
@@ -386,6 +387,7 @@ function App() {
                 <Route path="/intact-glycoproteomics-top-down-ms" element={<IntactGlycoproteomicsTopDownMsStudioPage />} />
                 <Route path="/smfret-riboswitch-kinetics" element={<SmfretRiboswitchKineticsStudioPage />} />
                 <Route path="/microphysiological-organ-chip-sensors" element={<MicrophysiologicalOrganChipSensorsStudioPage />} />
+                <Route path="/chemoproteomics-abpp-covalent-screen" element={<ChemoproteomicsAbppCovalentScreenStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
