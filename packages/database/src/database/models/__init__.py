@@ -2158,3 +2158,9 @@ from database.models.ht_spr_kinetic_rate_extractor import (
     HtSprKineticRateExtractorItemProfile,
     HtSprKineticRateExtractorMetricTrace,
 )
+
+from database.models.oligo_chem_modifier_optimizer import (
+    OligoChemModifierOptimizerStudy,
+    OligoChemModifierOptimizerItemProfile,
+    OligoChemModifierOptimizerMetricTrace,
+)

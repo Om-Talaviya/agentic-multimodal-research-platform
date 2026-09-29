@@ -1,3 +1,4 @@
+from api.routes.oligo_chem_modifier_optimizer import router as oligo_chem_modifier_optimizer_router
 from api.routes.ht_spr_kinetic_rate_extractor import router as ht_spr_kinetic_rate_extractor_router
 from api.routes.multimodal_cell_velocity_engine import router as multimodal_cell_velocity_engine_router
 from api.routes.hla_drug_hypersensitivity_profiler import router as hla_drug_hypersensitivity_profiler_router
@@ -953,3 +954,5 @@ app.include_router(hla_drug_hypersensitivity_profiler_router, prefix=settings.ap
 app.include_router(multimodal_cell_velocity_engine_router, prefix=settings.api_prefix)
 
 app.include_router(ht_spr_kinetic_rate_extractor_router, prefix=settings.api_prefix)
+
+app.include_router(oligo_chem_modifier_optimizer_router, prefix=settings.api_prefix)
