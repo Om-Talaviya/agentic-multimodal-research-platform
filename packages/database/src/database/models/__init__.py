@@ -1924,3 +1924,9 @@ from database.models.nanopore_dna_storage_codec import (
     NanoporeDnaStorageCodecItemProfile,
     NanoporeDnaStorageCodecMetricTrace,
 )
+
+from database.models.optogenetic_spatial_gene_expression import (
+    OptogeneticSpatialGeneExpressionStudy,
+    OptogeneticSpatialGeneExpressionItemProfile,
+    OptogeneticSpatialGeneExpressionMetricTrace,
+)
