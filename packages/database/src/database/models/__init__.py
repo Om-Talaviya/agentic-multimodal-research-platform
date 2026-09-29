@@ -2092,3 +2092,9 @@ from database.models.spatial_tensor_cci_decomposition import (
     SpatialTensorCciDecompositionItemProfile,
     SpatialTensorCciDecompositionMetricTrace,
 )
+
+from database.models.car_tcr_cross_reactivity_assayer import (
+    CarTcrCrossReactivityAssayerStudy,
+    CarTcrCrossReactivityAssayerItemProfile,
+    CarTcrCrossReactivityAssayerMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.car_tcr_cross_reactivity_assayer import router as car_tcr_cross_reactivity_assayer_router
 from api.routes.spatial_tensor_cci_decomposition import router as spatial_tensor_cci_decomposition_router
 from api.routes.cytof_mass_cytometry_clustering import router as cytof_mass_cytometry_clustering_router
 from api.routes.nanopore_epitranscriptome_caller import router as nanopore_epitranscriptome_caller_router
@@ -923,3 +924,5 @@ app.include_router(nanopore_epitranscriptome_caller_router, prefix=settings.api_
 app.include_router(cytof_mass_cytometry_clustering_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_tensor_cci_decomposition_router, prefix=settings.api_prefix)
+
+app.include_router(car_tcr_cross_reactivity_assayer_router, prefix=settings.api_prefix)
