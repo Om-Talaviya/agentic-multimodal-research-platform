@@ -2002,3 +2002,9 @@ from database.models.ocean_metatranscriptome_carbon_flux import (
     OceanMetatranscriptomeCarbonFluxItemProfile,
     OceanMetatranscriptomeCarbonFluxMetricTrace,
 )
+
+from database.models.continuous_evolution_pacman_bioreactor import (
+    ContinuousEvolutionPacmanBioreactorStudy,
+    ContinuousEvolutionPacmanBioreactorItemProfile,
+    ContinuousEvolutionPacmanBioreactorMetricTrace,
+)
