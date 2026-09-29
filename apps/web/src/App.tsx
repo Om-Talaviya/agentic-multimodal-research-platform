@@ -1,3 +1,4 @@
+import { CryoetInsituFilamentTracingStudioPage } from './pages/CryoetInsituFilamentTracingStudioPage';
 import { MilestoneV34OrchestratorStudioPage } from './pages/MilestoneV34OrchestratorStudioPage';
 import { LnpEndosomalEscapeKineticsStudioPage } from './pages/LnpEndosomalEscapeKineticsStudioPage';
 import { SingleCellMetabolomicsTimsStudioPage } from './pages/SingleCellMetabolomicsTimsStudioPage';
@@ -432,6 +433,7 @@ function App() {
                 <Route path="/single-cell-metabolomics-tims" element={<SingleCellMetabolomicsTimsStudioPage />} />
                 <Route path="/lnp-endosomal-escape-kinetics" element={<LnpEndosomalEscapeKineticsStudioPage />} />
                 <Route path="/milestone-v3-4-orchestrator" element={<MilestoneV34OrchestratorStudioPage />} />
+                <Route path="/cryoet-insitu-filament-tracing" element={<CryoetInsituFilamentTracingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

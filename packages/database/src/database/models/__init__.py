@@ -1798,3 +1798,9 @@ from database.models.milestone_v3_4_orchestrator import (
     MilestoneV34OrchestratorItemProfile,
     MilestoneV34OrchestratorMetricTrace,
 )
+
+from database.models.cryoet_insitu_filament_tracing import (
+    CryoetInsituFilamentTracingStudy,
+    CryoetInsituFilamentTracingItemProfile,
+    CryoetInsituFilamentTracingMetricTrace,
+)
