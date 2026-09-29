@@ -2206,3 +2206,9 @@ from database.models.droplet_microfluidic_antibody import (
     DropletMicrofluidicAntibodyItemProfile,
     DropletMicrofluidicAntibodyMetricTrace,
 )
+
+from database.models.biofilm_eps_penetration import (
+    BiofilmEpsPenetrationStudy,
+    BiofilmEpsPenetrationItemProfile,
+    BiofilmEpsPenetrationMetricTrace,
+)

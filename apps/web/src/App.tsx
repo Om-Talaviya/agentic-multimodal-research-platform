@@ -1,3 +1,4 @@
+import { BiofilmEpsPenetrationStudioPage } from './pages/BiofilmEpsPenetrationStudioPage';
 import { DropletMicrofluidicAntibodyStudioPage } from './pages/DropletMicrofluidicAntibodyStudioPage';
 import { TcellExhaustionRejuvenationStudioPage } from './pages/TcellExhaustionRejuvenationStudioPage';
 import { MrnaLipidPolymerNanocapsuleStudioPage } from './pages/MrnaLipidPolymerNanocapsuleStudioPage';
@@ -555,6 +556,7 @@ function App() {
                 <Route path="/mrna-lipid-polymer-nanocapsule" element={<MrnaLipidPolymerNanocapsuleStudioPage />} />
                 <Route path="/tcell-exhaustion-rejuvenation" element={<TcellExhaustionRejuvenationStudioPage />} />
                 <Route path="/droplet-microfluidic-antibody" element={<DropletMicrofluidicAntibodyStudioPage />} />
+                <Route path="/biofilm-eps-penetration" element={<BiofilmEpsPenetrationStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

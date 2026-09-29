@@ -1,3 +1,4 @@
+from api.routes.biofilm_eps_penetration import router as biofilm_eps_penetration_router
 from api.routes.droplet_microfluidic_antibody import router as droplet_microfluidic_antibody_router
 from api.routes.tcell_exhaustion_rejuvenation import router as tcell_exhaustion_rejuvenation_router
 from api.routes.mrna_lipid_polymer_nanocapsule import router as mrna_lipid_polymer_nanocapsule_router
@@ -977,3 +978,5 @@ app.include_router(mrna_lipid_polymer_nanocapsule_router, prefix=settings.api_pr
 app.include_router(tcell_exhaustion_rejuvenation_router, prefix=settings.api_prefix)
 
 app.include_router(droplet_microfluidic_antibody_router, prefix=settings.api_prefix)
+
+app.include_router(biofilm_eps_penetration_router, prefix=settings.api_prefix)
