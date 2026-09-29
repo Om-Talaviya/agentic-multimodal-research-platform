@@ -1780,3 +1780,9 @@ from database.models.crispr_cas12a_multiplexed_snp import (
     CrisprCas12aMultiplexedSnpItemProfile,
     CrisprCas12aMultiplexedSnpMetricTrace,
 )
+
+from database.models.single_cell_metabolomics_tims import (
+    SingleCellMetabolomicsTimsStudy,
+    SingleCellMetabolomicsTimsItemProfile,
+    SingleCellMetabolomicsTimsMetricTrace,
+)

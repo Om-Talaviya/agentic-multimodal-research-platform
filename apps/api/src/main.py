@@ -1,3 +1,4 @@
+from api.routes.single_cell_metabolomics_tims import router as single_cell_metabolomics_tims_router
 from api.routes.crispr_cas12a_multiplexed_snp import router as crispr_cas12a_multiplexed_snp_router
 from api.routes.native_mass_spec_membrane_protein import router as native_mass_spec_membrane_protein_router
 from api.routes.iss_padlock_rolling_circle import router as iss_padlock_rolling_circle_router
@@ -782,3 +783,5 @@ app.include_router(iss_padlock_rolling_circle_router, prefix=settings.api_prefix
 app.include_router(native_mass_spec_membrane_protein_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_cas12a_multiplexed_snp_router, prefix=settings.api_prefix)
+
+app.include_router(single_cell_metabolomics_tims_router, prefix=settings.api_prefix)
