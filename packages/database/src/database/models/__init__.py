@@ -2098,3 +2098,9 @@ from database.models.car_tcr_cross_reactivity_assayer import (
     CarTcrCrossReactivityAssayerItemProfile,
     CarTcrCrossReactivityAssayerMetricTrace,
 )
+
+from database.models.crispr_repair_outcome_forecaster import (
+    CrisprRepairOutcomeForecasterStudy,
+    CrisprRepairOutcomeForecasterItemProfile,
+    CrisprRepairOutcomeForecasterMetricTrace,
+)

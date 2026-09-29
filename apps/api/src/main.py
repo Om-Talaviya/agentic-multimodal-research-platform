@@ -1,3 +1,4 @@
+from api.routes.crispr_repair_outcome_forecaster import router as crispr_repair_outcome_forecaster_router
 from api.routes.car_tcr_cross_reactivity_assayer import router as car_tcr_cross_reactivity_assayer_router
 from api.routes.spatial_tensor_cci_decomposition import router as spatial_tensor_cci_decomposition_router
 from api.routes.cytof_mass_cytometry_clustering import router as cytof_mass_cytometry_clustering_router
@@ -926,3 +927,5 @@ app.include_router(cytof_mass_cytometry_clustering_router, prefix=settings.api_p
 app.include_router(spatial_tensor_cci_decomposition_router, prefix=settings.api_prefix)
 
 app.include_router(car_tcr_cross_reactivity_assayer_router, prefix=settings.api_prefix)
+
+app.include_router(crispr_repair_outcome_forecaster_router, prefix=settings.api_prefix)

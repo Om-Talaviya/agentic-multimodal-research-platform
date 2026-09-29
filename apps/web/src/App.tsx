@@ -1,3 +1,4 @@
+import { CrisprRepairOutcomeForecasterStudioPage } from './pages/CrisprRepairOutcomeForecasterStudioPage';
 import { CarTcrCrossReactivityAssayerStudioPage } from './pages/CarTcrCrossReactivityAssayerStudioPage';
 import { SpatialTensorCciDecompositionStudioPage } from './pages/SpatialTensorCciDecompositionStudioPage';
 import { CytofMassCytometryClusteringStudioPage } from './pages/CytofMassCytometryClusteringStudioPage';
@@ -522,6 +523,7 @@ function App() {
                 <Route path="/cytof-mass-cytometry" element={<CytofMassCytometryClusteringStudioPage />} />
                 <Route path="/spatial-tensor-cci" element={<SpatialTensorCciDecompositionStudioPage />} />
                 <Route path="/car-tcr-cross-reactivity" element={<CarTcrCrossReactivityAssayerStudioPage />} />
+                <Route path="/crispr-repair-forecaster" element={<CrisprRepairOutcomeForecasterStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
