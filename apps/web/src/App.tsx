@@ -1,3 +1,4 @@
+import { SmfretRiboswitchKineticsStudioPage } from './pages/SmfretRiboswitchKineticsStudioPage';
 import { IntactGlycoproteomicsTopDownMsStudioPage } from './pages/IntactGlycoproteomicsTopDownMsStudioPage';
 import { SpatialNicheBoundaryTransitionStudioPage } from './pages/SpatialNicheBoundaryTransitionStudioPage';
 import { InVivoCartReprogrammingTropismStudioPage } from './pages/InVivoCartReprogrammingTropismStudioPage';
@@ -382,6 +383,7 @@ function App() {
                 <Route path="/in-vivo-cart-reprogramming-tropism" element={<InVivoCartReprogrammingTropismStudioPage />} />
                 <Route path="/spatial-niche-boundary-transition" element={<SpatialNicheBoundaryTransitionStudioPage />} />
                 <Route path="/intact-glycoproteomics-top-down-ms" element={<IntactGlycoproteomicsTopDownMsStudioPage />} />
+                <Route path="/smfret-riboswitch-kinetics" element={<SmfretRiboswitchKineticsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

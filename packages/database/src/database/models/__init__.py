@@ -1648,3 +1648,9 @@ from database.models.intact_glycoproteomics_top_down_ms import (
     IntactGlycoproteomicsTopDownMsItemProfile,
     IntactGlycoproteomicsTopDownMsMetricTrace,
 )
+
+from database.models.smfret_riboswitch_kinetics import (
+    SmfretRiboswitchKineticsStudy,
+    SmfretRiboswitchKineticsItemProfile,
+    SmfretRiboswitchKineticsMetricTrace,
+)
