@@ -1840,3 +1840,9 @@ from database.models.crispr_lineage_barcode_phylogeny import (
     CrisprLineageBarcodePhylogenyItemProfile,
     CrisprLineageBarcodePhylogenyMetricTrace,
 )
+
+from database.models.whole_organ_vascular_perfusion import (
+    WholeOrganVascularPerfusionStudy,
+    WholeOrganVascularPerfusionItemProfile,
+    WholeOrganVascularPerfusionMetricTrace,
+)

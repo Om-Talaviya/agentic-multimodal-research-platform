@@ -1,3 +1,4 @@
+from api.routes.whole_organ_vascular_perfusion import router as whole_organ_vascular_perfusion_router
 from api.routes.crispr_lineage_barcode_phylogeny import router as crispr_lineage_barcode_phylogeny_router
 from api.routes.tercentenary_milestone_v3_5_orchestrator import router as tercentenary_milestone_v3_5_orchestrator_router
 from api.routes.spatial_super_resolution_deconvolution import router as spatial_super_resolution_deconvolution_router
@@ -812,3 +813,5 @@ app.include_router(spatial_super_resolution_deconvolution_router, prefix=setting
 app.include_router(tercentenary_milestone_v3_5_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_lineage_barcode_phylogeny_router, prefix=settings.api_prefix)
+
+app.include_router(whole_organ_vascular_perfusion_router, prefix=settings.api_prefix)
