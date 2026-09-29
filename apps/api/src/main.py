@@ -1,3 +1,4 @@
+from api.routes.organoid_microfluidic_shear_twin import router as organoid_microfluidic_shear_twin_router
 from api.routes.crispr_repair_outcome_forecaster import router as crispr_repair_outcome_forecaster_router
 from api.routes.car_tcr_cross_reactivity_assayer import router as car_tcr_cross_reactivity_assayer_router
 from api.routes.spatial_tensor_cci_decomposition import router as spatial_tensor_cci_decomposition_router
@@ -929,3 +930,5 @@ app.include_router(spatial_tensor_cci_decomposition_router, prefix=settings.api_
 app.include_router(car_tcr_cross_reactivity_assayer_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_repair_outcome_forecaster_router, prefix=settings.api_prefix)
+
+app.include_router(organoid_microfluidic_shear_twin_router, prefix=settings.api_prefix)

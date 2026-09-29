@@ -1,3 +1,4 @@
+import { OrganoidMicrofluidicShearTwinStudioPage } from './pages/OrganoidMicrofluidicShearTwinStudioPage';
 import { CrisprRepairOutcomeForecasterStudioPage } from './pages/CrisprRepairOutcomeForecasterStudioPage';
 import { CarTcrCrossReactivityAssayerStudioPage } from './pages/CarTcrCrossReactivityAssayerStudioPage';
 import { SpatialTensorCciDecompositionStudioPage } from './pages/SpatialTensorCciDecompositionStudioPage';
@@ -524,6 +525,7 @@ function App() {
                 <Route path="/spatial-tensor-cci" element={<SpatialTensorCciDecompositionStudioPage />} />
                 <Route path="/car-tcr-cross-reactivity" element={<CarTcrCrossReactivityAssayerStudioPage />} />
                 <Route path="/crispr-repair-forecaster" element={<CrisprRepairOutcomeForecasterStudioPage />} />
+                <Route path="/organoid-microfluidic-twin" element={<OrganoidMicrofluidicShearTwinStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

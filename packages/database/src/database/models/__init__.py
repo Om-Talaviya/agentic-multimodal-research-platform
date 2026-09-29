@@ -2104,3 +2104,9 @@ from database.models.crispr_repair_outcome_forecaster import (
     CrisprRepairOutcomeForecasterItemProfile,
     CrisprRepairOutcomeForecasterMetricTrace,
 )
+
+from database.models.organoid_microfluidic_shear_twin import (
+    OrganoidMicrofluidicShearTwinStudy,
+    OrganoidMicrofluidicShearTwinItemProfile,
+    OrganoidMicrofluidicShearTwinMetricTrace,
+)
