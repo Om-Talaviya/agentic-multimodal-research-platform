@@ -1654,3 +1654,9 @@ from database.models.smfret_riboswitch_kinetics import (
     SmfretRiboswitchKineticsItemProfile,
     SmfretRiboswitchKineticsMetricTrace,
 )
+
+from database.models.microphysiological_organ_chip_sensors import (
+    MicrophysiologicalOrganChipSensorsStudy,
+    MicrophysiologicalOrganChipSensorsItemProfile,
+    MicrophysiologicalOrganChipSensorsMetricTrace,
+)

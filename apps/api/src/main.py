@@ -1,3 +1,4 @@
+from api.routes.microphysiological_organ_chip_sensors import router as microphysiological_organ_chip_sensors_router
 from api.routes.smfret_riboswitch_kinetics import router as smfret_riboswitch_kinetics_router
 from api.routes.intact_glycoproteomics_top_down_ms import router as intact_glycoproteomics_top_down_ms_router
 from api.routes.spatial_niche_boundary_transition import router as spatial_niche_boundary_transition_router
@@ -719,3 +720,5 @@ app.include_router(spatial_niche_boundary_transition_router, prefix=settings.api
 app.include_router(intact_glycoproteomics_top_down_ms_router, prefix=settings.api_prefix)
 
 app.include_router(smfret_riboswitch_kinetics_router, prefix=settings.api_prefix)
+
+app.include_router(microphysiological_organ_chip_sensors_router, prefix=settings.api_prefix)
