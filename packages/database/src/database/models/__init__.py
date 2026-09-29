@@ -1642,3 +1642,9 @@ from database.models.spatial_niche_boundary_transition import (
     SpatialNicheBoundaryTransitionItemProfile,
     SpatialNicheBoundaryTransitionMetricTrace,
 )
+
+from database.models.intact_glycoproteomics_top_down_ms import (
+    IntactGlycoproteomicsTopDownMsStudy,
+    IntactGlycoproteomicsTopDownMsItemProfile,
+    IntactGlycoproteomicsTopDownMsMetricTrace,
+)

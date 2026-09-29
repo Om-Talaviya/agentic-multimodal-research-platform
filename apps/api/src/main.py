@@ -1,3 +1,4 @@
+from api.routes.intact_glycoproteomics_top_down_ms import router as intact_glycoproteomics_top_down_ms_router
 from api.routes.spatial_niche_boundary_transition import router as spatial_niche_boundary_transition_router
 from api.routes.in_vivo_cart_reprogramming_tropism import router as in_vivo_cart_reprogramming_tropism_router
 from api.routes.milestone_v3_0_orchestrator import router as milestone_v3_0_orchestrator_router
@@ -713,3 +714,5 @@ app.include_router(milestone_v3_0_orchestrator_router, prefix=settings.api_prefi
 app.include_router(in_vivo_cart_reprogramming_tropism_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_niche_boundary_transition_router, prefix=settings.api_prefix)
+
+app.include_router(intact_glycoproteomics_top_down_ms_router, prefix=settings.api_prefix)

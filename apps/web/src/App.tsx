@@ -1,3 +1,4 @@
+import { IntactGlycoproteomicsTopDownMsStudioPage } from './pages/IntactGlycoproteomicsTopDownMsStudioPage';
 import { SpatialNicheBoundaryTransitionStudioPage } from './pages/SpatialNicheBoundaryTransitionStudioPage';
 import { InVivoCartReprogrammingTropismStudioPage } from './pages/InVivoCartReprogrammingTropismStudioPage';
 import { MilestoneV30OrchestratorStudioPage } from './pages/MilestoneV30OrchestratorStudioPage';
@@ -380,6 +381,7 @@ function App() {
                 <Route path="/milestone-v3-0-orchestrator" element={<MilestoneV30OrchestratorStudioPage />} />
                 <Route path="/in-vivo-cart-reprogramming-tropism" element={<InVivoCartReprogrammingTropismStudioPage />} />
                 <Route path="/spatial-niche-boundary-transition" element={<SpatialNicheBoundaryTransitionStudioPage />} />
+                <Route path="/intact-glycoproteomics-top-down-ms" element={<IntactGlycoproteomicsTopDownMsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
