@@ -1822,3 +1822,9 @@ from database.models.chemically_induced_proximity_cip import (
     ChemicallyInducedProximityCipItemProfile,
     ChemicallyInducedProximityCipMetricTrace,
 )
+
+from database.models.spatial_super_resolution_deconvolution import (
+    SpatialSuperResolutionDeconvolutionStudy,
+    SpatialSuperResolutionDeconvolutionItemProfile,
+    SpatialSuperResolutionDeconvolutionMetricTrace,
+)

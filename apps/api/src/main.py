@@ -1,3 +1,4 @@
+from api.routes.spatial_super_resolution_deconvolution import router as spatial_super_resolution_deconvolution_router
 from api.routes.chemically_induced_proximity_cip import router as chemically_induced_proximity_cip_router
 from api.routes.nanobody_vhh_paratope_design import router as nanobody_vhh_paratope_design_router
 from api.routes.prime_editing_flap_resolution import router as prime_editing_flap_resolution_router
@@ -803,3 +804,5 @@ app.include_router(prime_editing_flap_resolution_router, prefix=settings.api_pre
 app.include_router(nanobody_vhh_paratope_design_router, prefix=settings.api_prefix)
 
 app.include_router(chemically_induced_proximity_cip_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_super_resolution_deconvolution_router, prefix=settings.api_prefix)
