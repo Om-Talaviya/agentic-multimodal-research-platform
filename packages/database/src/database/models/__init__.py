@@ -2242,3 +2242,9 @@ from database.models.spatial_atac_regulon_footprint import (
     SpatialAtacRegulonFootprintItemProfile,
     SpatialAtacRegulonFootprintMetricTrace,
 )
+
+from database.models.electroporation_gene_delivery import (
+    ElectroporationGeneDeliveryStudy,
+    ElectroporationGeneDeliveryItemProfile,
+    ElectroporationGeneDeliveryMetricTrace,
+)

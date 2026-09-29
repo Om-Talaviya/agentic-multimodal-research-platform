@@ -1,3 +1,4 @@
+from api.routes.electroporation_gene_delivery import router as electroporation_gene_delivery_router
 from api.routes.spatial_atac_regulon_footprint import router as spatial_atac_regulon_footprint_router
 from api.routes.adc_linker_cleavage_simulator import router as adc_linker_cleavage_simulator_router
 from api.routes.native_ms_complex_stoichiometry import router as native_ms_complex_stoichiometry_router
@@ -995,3 +996,5 @@ app.include_router(native_ms_complex_stoichiometry_router, prefix=settings.api_p
 app.include_router(adc_linker_cleavage_simulator_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_atac_regulon_footprint_router, prefix=settings.api_prefix)
+
+app.include_router(electroporation_gene_delivery_router, prefix=settings.api_prefix)
