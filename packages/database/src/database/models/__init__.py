@@ -2164,3 +2164,9 @@ from database.models.oligo_chem_modifier_optimizer import (
     OligoChemModifierOptimizerItemProfile,
     OligoChemModifierOptimizerMetricTrace,
 )
+
+from database.models.milestone_v4_0_meta_orchestrator import (
+    MilestoneV40MetaOrchestratorStudy,
+    MilestoneV40MetaOrchestratorItemProfile,
+    MilestoneV40MetaOrchestratorMetricTrace,
+)
