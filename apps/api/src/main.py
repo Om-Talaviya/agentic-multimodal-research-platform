@@ -1,3 +1,4 @@
+from api.routes.prime_editing_pe6_peg_rna_evaluator import router as prime_editing_pe6_peg_rna_evaluator_router
 from api.routes.single_cell_multiome_cis_reg_network import router as single_cell_multiome_cis_reg_network_router
 from api.routes.milestone_v3_6_orchestrator import router as milestone_v3_6_orchestrator_router
 from api.routes.imc_spatial_proteomics_neighborhood import router as imc_spatial_proteomics_neighborhood_router
@@ -836,3 +837,5 @@ app.include_router(imc_spatial_proteomics_neighborhood_router, prefix=settings.a
 app.include_router(milestone_v3_6_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(single_cell_multiome_cis_reg_network_router, prefix=settings.api_prefix)
+
+app.include_router(prime_editing_pe6_peg_rna_evaluator_router, prefix=settings.api_prefix)

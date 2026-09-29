@@ -1900,3 +1900,9 @@ from database.models.single_cell_multiome_cis_reg_network import (
     SingleCellMultiomeCisRegNetworkItemProfile,
     SingleCellMultiomeCisRegNetworkMetricTrace,
 )
+
+from database.models.prime_editing_pe6_peg_rna_evaluator import (
+    PrimeEditingPe6PegRnaEvaluatorStudy,
+    PrimeEditingPe6PegRnaEvaluatorItemProfile,
+    PrimeEditingPe6PegRnaEvaluatorMetricTrace,
+)
