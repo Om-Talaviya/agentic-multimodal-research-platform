@@ -1,3 +1,4 @@
+import { DropletSingleMicrobeCulturomicsStudioPage } from './pages/DropletSingleMicrobeCulturomicsStudioPage';
 import { LineageTracingCrisprPhylogenyStudioPage } from './pages/LineageTracingCrisprPhylogenyStudioPage';
 import { BiomimeticIonChannelGatingStudioPage } from './pages/BiomimeticIonChannelGatingStudioPage';
 import { MicrogliaSynapticPruningModelerStudioPage } from './pages/MicrogliaSynapticPruningModelerStudioPage';
@@ -482,6 +483,7 @@ function App() {
                 <Route path="/microglia-synaptic-pruning" element={<MicrogliaSynapticPruningModelerStudioPage />} />
                 <Route path="/biomimetic-ion-channel-gating" element={<BiomimeticIonChannelGatingStudioPage />} />
                 <Route path="/lineage-tracing-crispr-phylogeny" element={<LineageTracingCrisprPhylogenyStudioPage />} />
+                <Route path="/droplet-single-microbe-culturomics" element={<DropletSingleMicrobeCulturomicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

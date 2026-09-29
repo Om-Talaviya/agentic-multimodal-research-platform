@@ -1966,3 +1966,9 @@ from database.models.lineage_tracing_crispr_phylogeny import (
     LineageTracingCrisprPhylogenyItemProfile,
     LineageTracingCrisprPhylogenyMetricTrace,
 )
+
+from database.models.droplet_single_microbe_culturomics import (
+    DropletSingleMicrobeCulturomicsStudy,
+    DropletSingleMicrobeCulturomicsItemProfile,
+    DropletSingleMicrobeCulturomicsMetricTrace,
+)
