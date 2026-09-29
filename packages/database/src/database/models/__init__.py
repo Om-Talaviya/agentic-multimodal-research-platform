@@ -2026,3 +2026,15 @@ from database.models.milestone_v3_9_orchestrator import (
     MilestoneV39OrchestratorItemProfile,
     MilestoneV39OrchestratorMetricTrace,
 )
+
+from database.models.quantum_orbital_dmrg import (
+    QuantumOrbitalDmrgStudy,
+    QuantumOrbitalDmrgItemProfile,
+    QuantumOrbitalDmrgMetricTrace,
+)
+
+from database.models.quantum_orbital_dmrg import (
+    QuantumOrbitalDmrgStudy,
+    QuantumOrbitalDmrgItemProfile,
+    QuantumOrbitalDmrgMetricTrace,
+)

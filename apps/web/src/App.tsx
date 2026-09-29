@@ -1,3 +1,4 @@
+import { QuantumOrbitalDmrgStudioPage } from './pages/QuantumOrbitalDmrgStudioPage';
 import { MilestoneV39OrchestratorStudioPage } from './pages/MilestoneV39OrchestratorStudioPage';
 import { InVivoTargetedPbpkBiodistributionStudioPage } from './pages/InVivoTargetedPbpkBiodistributionStudioPage';
 import { OpticalElectrophysiologyVoltageImagingStudioPage } from './pages/OpticalElectrophysiologyVoltageImagingStudioPage';
@@ -502,6 +503,7 @@ function App() {
                 <Route path="/optical-electrophysiology-voltage" element={<OpticalElectrophysiologyVoltageImagingStudioPage />} />
                 <Route path="/in-vivo-targeted-pbpk" element={<InVivoTargetedPbpkBiodistributionStudioPage />} />
                 <Route path="/milestone-v3-9-orchestrator" element={<MilestoneV39OrchestratorStudioPage />} />
+                <Route path="/quantum-orbital-dmrg" element={<QuantumOrbitalDmrgStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
