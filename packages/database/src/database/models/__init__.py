@@ -2284,3 +2284,9 @@ from database.models.peptide_amphiphile_hydrogel import (
     PeptideAmphiphileHydrogelItemProfile,
     PeptideAmphiphileHydrogelMetricTrace,
 )
+
+from database.models.repseq_shm_lineage_tree import (
+    RepseqShmLineageTreeStudy,
+    RepseqShmLineageTreeItemProfile,
+    RepseqShmLineageTreeMetricTrace,
+)

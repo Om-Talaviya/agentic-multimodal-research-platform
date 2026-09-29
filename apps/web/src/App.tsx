@@ -1,3 +1,4 @@
+import { RepseqShmLineageTreeStudioPage } from './pages/RepseqShmLineageTreeStudioPage';
 import { PeptideAmphiphileHydrogelStudioPage } from './pages/PeptideAmphiphileHydrogelStudioPage';
 import { MtdnaHeteroplasmyToxicityStudioPage } from './pages/MtdnaHeteroplasmyToxicityStudioPage';
 import { OptWholeOrganTomographyStudioPage } from './pages/OptWholeOrganTomographyStudioPage';
@@ -581,6 +582,7 @@ function App() {
                 <Route path="/opt-whole-organ-tomography" element={<OptWholeOrganTomographyStudioPage />} />
                 <Route path="/mtdna-heteroplasmy-toxicity" element={<MtdnaHeteroplasmyToxicityStudioPage />} />
                 <Route path="/peptide-amphiphile-hydrogel" element={<PeptideAmphiphileHydrogelStudioPage />} />
+                <Route path="/repseq-shm-lineage-tree" element={<RepseqShmLineageTreeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
