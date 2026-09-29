@@ -1,3 +1,4 @@
+import { ChemicalProximityDegronStudioPage } from './pages/ChemicalProximityDegronStudioPage';
 import { MerfishSpatialTranscriptomicsStudioPage } from './pages/MerfishSpatialTranscriptomicsStudioPage';
 import { RiboseqTranslationDynamicsStudioPage } from './pages/RiboseqTranslationDynamicsStudioPage';
 import { QuantumOrbitalDmrgStudioPage } from './pages/QuantumOrbitalDmrgStudioPage';
@@ -508,6 +509,7 @@ function App() {
                 <Route path="/quantum-orbital-dmrg" element={<QuantumOrbitalDmrgStudioPage />} />
                 <Route path="/riboseq-translation-dynamics" element={<RiboseqTranslationDynamicsStudioPage />} />
                 <Route path="/merfish-spatial-transcriptomics" element={<MerfishSpatialTranscriptomicsStudioPage />} />
+                <Route path="/chemical-proximity-degron" element={<ChemicalProximityDegronStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

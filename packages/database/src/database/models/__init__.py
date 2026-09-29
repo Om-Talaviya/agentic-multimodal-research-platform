@@ -2050,3 +2050,9 @@ from database.models.merfish_spatial_transcriptomics import (
     MerfishSpatialTranscriptomicsItemProfile,
     MerfishSpatialTranscriptomicsMetricTrace,
 )
+
+from database.models.chemical_proximity_degron import (
+    ChemicalProximityDegronStudy,
+    ChemicalProximityDegronItemProfile,
+    ChemicalProximityDegronMetricTrace,
+)
