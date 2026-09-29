@@ -1996,3 +1996,9 @@ from database.models.daisy_chain_gene_drive_simulator import (
     DaisyChainGeneDriveSimulatorItemProfile,
     DaisyChainGeneDriveSimulatorMetricTrace,
 )
+
+from database.models.ocean_metatranscriptome_carbon_flux import (
+    OceanMetatranscriptomeCarbonFluxStudy,
+    OceanMetatranscriptomeCarbonFluxItemProfile,
+    OceanMetatranscriptomeCarbonFluxMetricTrace,
+)

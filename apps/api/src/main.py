@@ -1,3 +1,4 @@
+from api.routes.ocean_metatranscriptome_carbon_flux import router as ocean_metatranscriptome_carbon_flux_router
 from api.routes.daisy_chain_gene_drive_simulator import router as daisy_chain_gene_drive_simulator_router
 from api.routes.synthetic_epigenetic_gene_silencer import router as synthetic_epigenetic_gene_silencer_router
 from api.routes.milestone_v3_8_orchestrator import router as milestone_v3_8_orchestrator_router
@@ -881,3 +882,5 @@ app.include_router(milestone_v3_8_orchestrator_router, prefix=settings.api_prefi
 app.include_router(synthetic_epigenetic_gene_silencer_router, prefix=settings.api_prefix)
 
 app.include_router(daisy_chain_gene_drive_simulator_router, prefix=settings.api_prefix)
+
+app.include_router(ocean_metatranscriptome_carbon_flux_router, prefix=settings.api_prefix)

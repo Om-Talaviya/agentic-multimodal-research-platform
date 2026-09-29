@@ -1,3 +1,4 @@
+import { OceanMetatranscriptomeCarbonFluxStudioPage } from './pages/OceanMetatranscriptomeCarbonFluxStudioPage';
 import { DaisyChainGeneDriveSimulatorStudioPage } from './pages/DaisyChainGeneDriveSimulatorStudioPage';
 import { SyntheticEpigeneticGeneSilencerStudioPage } from './pages/SyntheticEpigeneticGeneSilencerStudioPage';
 import { MilestoneV38OrchestratorStudioPage } from './pages/MilestoneV38OrchestratorStudioPage';
@@ -492,6 +493,7 @@ function App() {
                 <Route path="/milestone-v3-8-orchestrator" element={<MilestoneV38OrchestratorStudioPage />} />
                 <Route path="/synthetic-epigenetic-silencer" element={<SyntheticEpigeneticGeneSilencerStudioPage />} />
                 <Route path="/daisy-chain-gene-drive" element={<DaisyChainGeneDriveSimulatorStudioPage />} />
+                <Route path="/ocean-metatranscriptome-carbon-flux" element={<OceanMetatranscriptomeCarbonFluxStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
