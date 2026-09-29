@@ -2038,3 +2038,9 @@ from database.models.quantum_orbital_dmrg import (
     QuantumOrbitalDmrgItemProfile,
     QuantumOrbitalDmrgMetricTrace,
 )
+
+from database.models.riboseq_translation_dynamics import (
+    RiboseqTranslationDynamicsStudy,
+    RiboseqTranslationDynamicsItemProfile,
+    RiboseqTranslationDynamicsMetricTrace,
+)

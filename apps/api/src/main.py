@@ -1,3 +1,4 @@
+from api.routes.riboseq_translation_dynamics import router as riboseq_translation_dynamics_router
 from api.routes.quantum_orbital_dmrg import router as quantum_orbital_dmrg_router
 from api.routes.milestone_v3_9_orchestrator import router as milestone_v3_9_orchestrator_router
 from api.routes.in_vivo_targeted_pbpk_biodistribution import router as in_vivo_targeted_pbpk_biodistribution_router
@@ -899,3 +900,5 @@ app.include_router(in_vivo_targeted_pbpk_biodistribution_router, prefix=settings
 app.include_router(milestone_v3_9_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(quantum_orbital_dmrg_router, prefix=settings.api_prefix)
+
+app.include_router(riboseq_translation_dynamics_router, prefix=settings.api_prefix)
