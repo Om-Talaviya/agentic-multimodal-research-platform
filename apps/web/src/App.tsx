@@ -1,3 +1,4 @@
+import { HlaDrugHypersensitivityProfilerStudioPage } from './pages/HlaDrugHypersensitivityProfilerStudioPage';
 import { MicroCChromatinLoopCallerStudioPage } from './pages/MicroCChromatinLoopCallerStudioPage';
 import { LnpEndosomalEscapePredictorStudioPage } from './pages/LnpEndosomalEscapePredictorStudioPage';
 import { AlternativeSplicingImpactPredictorStudioPage } from './pages/AlternativeSplicingImpactPredictorStudioPage';
@@ -533,6 +534,7 @@ function App() {
                 <Route path="/organoid-phenotypic-profiler" element={<OrganoidPhenotypicProfilerStudioPage />} />
                 <Route path="/alternative-splicing-impact" element={<AlternativeSplicingImpactPredictorStudioPage />} />
                 <Route path="/micro-c-chromatin-loops" element={<MicroCChromatinLoopCallerStudioPage />} />
+                <Route path="/hla-drug-hypersensitivity" element={<HlaDrugHypersensitivityProfilerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

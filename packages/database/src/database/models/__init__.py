@@ -2140,3 +2140,9 @@ from database.models.micro_c_chromatin_loop_caller import (
     MicroCChromatinLoopCallerItemProfile,
     MicroCChromatinLoopCallerMetricTrace,
 )
+
+from database.models.hla_drug_hypersensitivity_profiler import (
+    HlaDrugHypersensitivityProfilerStudy,
+    HlaDrugHypersensitivityProfilerItemProfile,
+    HlaDrugHypersensitivityProfilerMetricTrace,
+)
