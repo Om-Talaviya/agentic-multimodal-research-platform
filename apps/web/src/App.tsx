@@ -1,3 +1,4 @@
+import { MerfishSpatialTranscriptomicsStudioPage } from './pages/MerfishSpatialTranscriptomicsStudioPage';
 import { RiboseqTranslationDynamicsStudioPage } from './pages/RiboseqTranslationDynamicsStudioPage';
 import { QuantumOrbitalDmrgStudioPage } from './pages/QuantumOrbitalDmrgStudioPage';
 import { MilestoneV39OrchestratorStudioPage } from './pages/MilestoneV39OrchestratorStudioPage';
@@ -506,6 +507,7 @@ function App() {
                 <Route path="/milestone-v3-9-orchestrator" element={<MilestoneV39OrchestratorStudioPage />} />
                 <Route path="/quantum-orbital-dmrg" element={<QuantumOrbitalDmrgStudioPage />} />
                 <Route path="/riboseq-translation-dynamics" element={<RiboseqTranslationDynamicsStudioPage />} />
+                <Route path="/merfish-spatial-transcriptomics" element={<MerfishSpatialTranscriptomicsStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

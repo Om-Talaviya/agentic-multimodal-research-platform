@@ -2044,3 +2044,9 @@ from database.models.riboseq_translation_dynamics import (
     RiboseqTranslationDynamicsItemProfile,
     RiboseqTranslationDynamicsMetricTrace,
 )
+
+from database.models.merfish_spatial_transcriptomics import (
+    MerfishSpatialTranscriptomicsStudy,
+    MerfishSpatialTranscriptomicsItemProfile,
+    MerfishSpatialTranscriptomicsMetricTrace,
+)
