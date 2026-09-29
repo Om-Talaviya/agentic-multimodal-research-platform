@@ -1,3 +1,4 @@
+import { TcellExhaustionRejuvenationStudioPage } from './pages/TcellExhaustionRejuvenationStudioPage';
 import { MrnaLipidPolymerNanocapsuleStudioPage } from './pages/MrnaLipidPolymerNanocapsuleStudioPage';
 import { TwoPhotonNeuralDynamicsStudioPage } from './pages/TwoPhotonNeuralDynamicsStudioPage';
 import { MibiTofSpatialProteomicsStudioPage } from './pages/MibiTofSpatialProteomicsStudioPage';
@@ -551,6 +552,7 @@ function App() {
                 <Route path="/mibi-tof-spatial-proteomics" element={<MibiTofSpatialProteomicsStudioPage />} />
                 <Route path="/two-photon-neural-dynamics" element={<TwoPhotonNeuralDynamicsStudioPage />} />
                 <Route path="/mrna-lipid-polymer-nanocapsule" element={<MrnaLipidPolymerNanocapsuleStudioPage />} />
+                <Route path="/tcell-exhaustion-rejuvenation" element={<TcellExhaustionRejuvenationStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -1,3 +1,4 @@
+from api.routes.tcell_exhaustion_rejuvenation import router as tcell_exhaustion_rejuvenation_router
 from api.routes.mrna_lipid_polymer_nanocapsule import router as mrna_lipid_polymer_nanocapsule_router
 from api.routes.two_photon_neural_dynamics import router as two_photon_neural_dynamics_router
 from api.routes.mibi_tof_spatial_proteomics import router as mibi_tof_spatial_proteomics_router
@@ -971,3 +972,5 @@ app.include_router(mibi_tof_spatial_proteomics_router, prefix=settings.api_prefi
 app.include_router(two_photon_neural_dynamics_router, prefix=settings.api_prefix)
 
 app.include_router(mrna_lipid_polymer_nanocapsule_router, prefix=settings.api_prefix)
+
+app.include_router(tcell_exhaustion_rejuvenation_router, prefix=settings.api_prefix)

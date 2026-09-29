@@ -2194,3 +2194,9 @@ from database.models.mrna_lipid_polymer_nanocapsule import (
     MrnaLipidPolymerNanocapsuleItemProfile,
     MrnaLipidPolymerNanocapsuleMetricTrace,
 )
+
+from database.models.tcell_exhaustion_rejuvenation import (
+    TcellExhaustionRejuvenationStudy,
+    TcellExhaustionRejuvenationItemProfile,
+    TcellExhaustionRejuvenationMetricTrace,
+)
