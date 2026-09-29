@@ -1636,3 +1636,9 @@ from database.models.in_vivo_cart_reprogramming_tropism import (
     InVivoCartReprogrammingTropismItemProfile,
     InVivoCartReprogrammingTropismMetricTrace,
 )
+
+from database.models.spatial_niche_boundary_transition import (
+    SpatialNicheBoundaryTransitionStudy,
+    SpatialNicheBoundaryTransitionItemProfile,
+    SpatialNicheBoundaryTransitionMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { SpatialNicheBoundaryTransitionStudioPage } from './pages/SpatialNicheBoundaryTransitionStudioPage';
 import { InVivoCartReprogrammingTropismStudioPage } from './pages/InVivoCartReprogrammingTropismStudioPage';
 import { MilestoneV30OrchestratorStudioPage } from './pages/MilestoneV30OrchestratorStudioPage';
 import { SyntheticMinimalGenomeDesignStudioPage } from './pages/SyntheticMinimalGenomeDesignStudioPage';
@@ -378,6 +379,7 @@ function App() {
                 <Route path="/synthetic-minimal-genome-design" element={<SyntheticMinimalGenomeDesignStudioPage />} />
                 <Route path="/milestone-v3-0-orchestrator" element={<MilestoneV30OrchestratorStudioPage />} />
                 <Route path="/in-vivo-cart-reprogramming-tropism" element={<InVivoCartReprogrammingTropismStudioPage />} />
+                <Route path="/spatial-niche-boundary-transition" element={<SpatialNicheBoundaryTransitionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
