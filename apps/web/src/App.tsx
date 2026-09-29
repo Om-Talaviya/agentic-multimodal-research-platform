@@ -1,3 +1,4 @@
+import { OpticalElectrophysiologyVoltageImagingStudioPage } from './pages/OpticalElectrophysiologyVoltageImagingStudioPage';
 import { ContinuousEvolutionPacmanBioreactorStudioPage } from './pages/ContinuousEvolutionPacmanBioreactorStudioPage';
 import { OceanMetatranscriptomeCarbonFluxStudioPage } from './pages/OceanMetatranscriptomeCarbonFluxStudioPage';
 import { DaisyChainGeneDriveSimulatorStudioPage } from './pages/DaisyChainGeneDriveSimulatorStudioPage';
@@ -496,6 +497,7 @@ function App() {
                 <Route path="/daisy-chain-gene-drive" element={<DaisyChainGeneDriveSimulatorStudioPage />} />
                 <Route path="/ocean-metatranscriptome-carbon-flux" element={<OceanMetatranscriptomeCarbonFluxStudioPage />} />
                 <Route path="/continuous-evolution-pacman" element={<ContinuousEvolutionPacmanBioreactorStudioPage />} />
+                <Route path="/optical-electrophysiology-voltage" element={<OpticalElectrophysiologyVoltageImagingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -2008,3 +2008,9 @@ from database.models.continuous_evolution_pacman_bioreactor import (
     ContinuousEvolutionPacmanBioreactorItemProfile,
     ContinuousEvolutionPacmanBioreactorMetricTrace,
 )
+
+from database.models.optical_electrophysiology_voltage_imaging import (
+    OpticalElectrophysiologyVoltageImagingStudy,
+    OpticalElectrophysiologyVoltageImagingItemProfile,
+    OpticalElectrophysiologyVoltageImagingMetricTrace,
+)
