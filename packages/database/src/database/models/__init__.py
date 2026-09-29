@@ -2272,3 +2272,9 @@ from database.models.opt_whole_organ_tomography import (
     OptWholeOrganTomographyItemProfile,
     OptWholeOrganTomographyMetricTrace,
 )
+
+from database.models.mtdna_heteroplasmy_toxicity import (
+    MtdnaHeteroplasmyToxicityStudy,
+    MtdnaHeteroplasmyToxicityItemProfile,
+    MtdnaHeteroplasmyToxicityMetricTrace,
+)

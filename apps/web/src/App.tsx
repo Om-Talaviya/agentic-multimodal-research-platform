@@ -1,3 +1,4 @@
+import { MtdnaHeteroplasmyToxicityStudioPage } from './pages/MtdnaHeteroplasmyToxicityStudioPage';
 import { OptWholeOrganTomographyStudioPage } from './pages/OptWholeOrganTomographyStudioPage';
 import { BioprintedVascularScaffoldStudioPage } from './pages/BioprintedVascularScaffoldStudioPage';
 import { CrisprEpigenomeEditorStudioPage } from './pages/CrisprEpigenomeEditorStudioPage';
@@ -577,6 +578,7 @@ function App() {
                 <Route path="/crispr-epigenome-editor" element={<CrisprEpigenomeEditorStudioPage />} />
                 <Route path="/bioprinted-vascular-scaffold" element={<BioprintedVascularScaffoldStudioPage />} />
                 <Route path="/opt-whole-organ-tomography" element={<OptWholeOrganTomographyStudioPage />} />
+                <Route path="/mtdna-heteroplasmy-toxicity" element={<MtdnaHeteroplasmyToxicityStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
