@@ -1,3 +1,4 @@
+import { Cyp450PharmacometabolomicsClearanceStudioPage } from './pages/Cyp450PharmacometabolomicsClearanceStudioPage';
 import { ScrambleSyntheticChromosomeSimulatorStudioPage } from './pages/ScrambleSyntheticChromosomeSimulatorStudioPage';
 import { CytofSpectralUnmixingCompensatorStudioPage } from './pages/CytofSpectralUnmixingCompensatorStudioPage';
 import { MpraVariantRegulatoryImpactStudioPage } from './pages/MpraVariantRegulatoryImpactStudioPage';
@@ -414,6 +415,7 @@ function App() {
                 <Route path="/mpra-variant-regulatory-impact" element={<MpraVariantRegulatoryImpactStudioPage />} />
                 <Route path="/cytof-spectral-unmixing-compensator" element={<CytofSpectralUnmixingCompensatorStudioPage />} />
                 <Route path="/scramble-synthetic-chromosome-simulator" element={<ScrambleSyntheticChromosomeSimulatorStudioPage />} />
+                <Route path="/cyp450-pharmacometabolomics-clearance" element={<Cyp450PharmacometabolomicsClearanceStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

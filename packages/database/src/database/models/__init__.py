@@ -1744,3 +1744,9 @@ from database.models.scramble_synthetic_chromosome_simulator import (
     ScrambleSyntheticChromosomeSimulatorItemProfile,
     ScrambleSyntheticChromosomeSimulatorMetricTrace,
 )
+
+from database.models.cyp450_pharmacometabolomics_clearance import (
+    Cyp450PharmacometabolomicsClearanceStudy,
+    Cyp450PharmacometabolomicsClearanceItemProfile,
+    Cyp450PharmacometabolomicsClearanceMetricTrace,
+)
