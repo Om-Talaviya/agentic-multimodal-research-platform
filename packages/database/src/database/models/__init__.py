@@ -1846,3 +1846,9 @@ from database.models.whole_organ_vascular_perfusion import (
     WholeOrganVascularPerfusionItemProfile,
     WholeOrganVascularPerfusionMetricTrace,
 )
+
+from database.models.guv_synthetic_cell_factory import (
+    GuvSyntheticCellFactoryStudy,
+    GuvSyntheticCellFactoryItemProfile,
+    GuvSyntheticCellFactoryMetricTrace,
+)

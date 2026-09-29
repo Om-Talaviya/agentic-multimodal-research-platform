@@ -1,3 +1,4 @@
+import { GuvSyntheticCellFactoryStudioPage } from './pages/GuvSyntheticCellFactoryStudioPage';
 import { WholeOrganVascularPerfusionStudioPage } from './pages/WholeOrganVascularPerfusionStudioPage';
 import { CrisprLineageBarcodePhylogenyStudioPage } from './pages/CrisprLineageBarcodePhylogenyStudioPage';
 import { TercentenaryMilestoneV35OrchestratorStudioPage } from './pages/TercentenaryMilestoneV35OrchestratorStudioPage';
@@ -448,6 +449,7 @@ function App() {
                 <Route path="/tercentenary-milestone-v3-5-orchestrator" element={<TercentenaryMilestoneV35OrchestratorStudioPage />} />
                 <Route path="/crispr-lineage-barcode-phylogeny" element={<CrisprLineageBarcodePhylogenyStudioPage />} />
                 <Route path="/whole-organ-vascular-perfusion" element={<WholeOrganVascularPerfusionStudioPage />} />
+                <Route path="/guv-synthetic-cell-factory" element={<GuvSyntheticCellFactoryStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
