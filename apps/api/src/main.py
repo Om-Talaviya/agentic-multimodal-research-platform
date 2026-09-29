@@ -1,3 +1,4 @@
+from api.routes.ht_spr_kinetic_rate_extractor import router as ht_spr_kinetic_rate_extractor_router
 from api.routes.multimodal_cell_velocity_engine import router as multimodal_cell_velocity_engine_router
 from api.routes.hla_drug_hypersensitivity_profiler import router as hla_drug_hypersensitivity_profiler_router
 from api.routes.micro_c_chromatin_loop_caller import router as micro_c_chromatin_loop_caller_router
@@ -950,3 +951,5 @@ app.include_router(micro_c_chromatin_loop_caller_router, prefix=settings.api_pre
 app.include_router(hla_drug_hypersensitivity_profiler_router, prefix=settings.api_prefix)
 
 app.include_router(multimodal_cell_velocity_engine_router, prefix=settings.api_prefix)
+
+app.include_router(ht_spr_kinetic_rate_extractor_router, prefix=settings.api_prefix)

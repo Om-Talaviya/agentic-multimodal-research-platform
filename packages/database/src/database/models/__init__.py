@@ -2152,3 +2152,9 @@ from database.models.multimodal_cell_velocity_engine import (
     MultimodalCellVelocityEngineItemProfile,
     MultimodalCellVelocityEngineMetricTrace,
 )
+
+from database.models.ht_spr_kinetic_rate_extractor import (
+    HtSprKineticRateExtractorStudy,
+    HtSprKineticRateExtractorItemProfile,
+    HtSprKineticRateExtractorMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { HtSprKineticRateExtractorStudioPage } from './pages/HtSprKineticRateExtractorStudioPage';
 import { MultimodalCellVelocityEngineStudioPage } from './pages/MultimodalCellVelocityEngineStudioPage';
 import { HlaDrugHypersensitivityProfilerStudioPage } from './pages/HlaDrugHypersensitivityProfilerStudioPage';
 import { MicroCChromatinLoopCallerStudioPage } from './pages/MicroCChromatinLoopCallerStudioPage';
@@ -537,6 +538,7 @@ function App() {
                 <Route path="/micro-c-chromatin-loops" element={<MicroCChromatinLoopCallerStudioPage />} />
                 <Route path="/hla-drug-hypersensitivity" element={<HlaDrugHypersensitivityProfilerStudioPage />} />
                 <Route path="/multimodal-cell-velocity" element={<MultimodalCellVelocityEngineStudioPage />} />
+                <Route path="/ht-spr-kinetics" element={<HtSprKineticRateExtractorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
