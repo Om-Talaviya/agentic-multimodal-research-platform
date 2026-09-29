@@ -2014,3 +2014,9 @@ from database.models.optical_electrophysiology_voltage_imaging import (
     OpticalElectrophysiologyVoltageImagingItemProfile,
     OpticalElectrophysiologyVoltageImagingMetricTrace,
 )
+
+from database.models.in_vivo_targeted_pbpk_biodistribution import (
+    InVivoTargetedPbpkBiodistributionStudy,
+    InVivoTargetedPbpkBiodistributionItemProfile,
+    InVivoTargetedPbpkBiodistributionMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.in_vivo_targeted_pbpk_biodistribution import router as in_vivo_targeted_pbpk_biodistribution_router
 from api.routes.optical_electrophysiology_voltage_imaging import router as optical_electrophysiology_voltage_imaging_router
 from api.routes.continuous_evolution_pacman_bioreactor import router as continuous_evolution_pacman_bioreactor_router
 from api.routes.ocean_metatranscriptome_carbon_flux import router as ocean_metatranscriptome_carbon_flux_router
@@ -890,3 +891,5 @@ app.include_router(ocean_metatranscriptome_carbon_flux_router, prefix=settings.a
 app.include_router(continuous_evolution_pacman_bioreactor_router, prefix=settings.api_prefix)
 
 app.include_router(optical_electrophysiology_voltage_imaging_router, prefix=settings.api_prefix)
+
+app.include_router(in_vivo_targeted_pbpk_biodistribution_router, prefix=settings.api_prefix)
