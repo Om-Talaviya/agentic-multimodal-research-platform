@@ -1726,3 +1726,9 @@ from database.models.single_cell_hic_3d_chromatin_loop import (
     SingleCellHic3dChromatinLoopItemProfile,
     SingleCellHic3dChromatinLoopMetricTrace,
 )
+
+from database.models.mpra_variant_regulatory_impact import (
+    MpraVariantRegulatoryImpactStudy,
+    MpraVariantRegulatoryImpactItemProfile,
+    MpraVariantRegulatoryImpactMetricTrace,
+)

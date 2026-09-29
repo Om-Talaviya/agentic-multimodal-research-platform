@@ -1,3 +1,4 @@
+import { MpraVariantRegulatoryImpactStudioPage } from './pages/MpraVariantRegulatoryImpactStudioPage';
 import { SingleCellHic3dChromatinLoopStudioPage } from './pages/SingleCellHic3dChromatinLoopStudioPage';
 import { AdcBystanderKillingDiffusionStudioPage } from './pages/AdcBystanderKillingDiffusionStudioPage';
 import { MilestoneV32OrchestratorStudioPage } from './pages/MilestoneV32OrchestratorStudioPage';
@@ -408,6 +409,7 @@ function App() {
                 <Route path="/milestone-v3-2-orchestrator" element={<MilestoneV32OrchestratorStudioPage />} />
                 <Route path="/adc-bystander-killing-diffusion" element={<AdcBystanderKillingDiffusionStudioPage />} />
                 <Route path="/single-cell-hic-3d-chromatin-loop" element={<SingleCellHic3dChromatinLoopStudioPage />} />
+                <Route path="/mpra-variant-regulatory-impact" element={<MpraVariantRegulatoryImpactStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
