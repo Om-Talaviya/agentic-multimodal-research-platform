@@ -1,3 +1,4 @@
+from api.routes.native_mass_spec_membrane_protein import router as native_mass_spec_membrane_protein_router
 from api.routes.iss_padlock_rolling_circle import router as iss_padlock_rolling_circle_router
 from api.routes.pace_continuous_directed_evolution import router as pace_continuous_directed_evolution_router
 from api.routes.milestone_v3_3_orchestrator import router as milestone_v3_3_orchestrator_router
@@ -776,3 +777,5 @@ app.include_router(milestone_v3_3_orchestrator_router, prefix=settings.api_prefi
 app.include_router(pace_continuous_directed_evolution_router, prefix=settings.api_prefix)
 
 app.include_router(iss_padlock_rolling_circle_router, prefix=settings.api_prefix)
+
+app.include_router(native_mass_spec_membrane_protein_router, prefix=settings.api_prefix)

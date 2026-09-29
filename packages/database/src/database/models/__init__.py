@@ -1768,3 +1768,9 @@ from database.models.iss_padlock_rolling_circle import (
     IssPadlockRollingCircleItemProfile,
     IssPadlockRollingCircleMetricTrace,
 )
+
+from database.models.native_mass_spec_membrane_protein import (
+    NativeMassSpecMembraneProteinStudy,
+    NativeMassSpecMembraneProteinItemProfile,
+    NativeMassSpecMembraneProteinMetricTrace,
+)
