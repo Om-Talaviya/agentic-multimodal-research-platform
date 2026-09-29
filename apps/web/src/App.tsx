@@ -1,3 +1,4 @@
+import { MicroCChromatinLoopCallerStudioPage } from './pages/MicroCChromatinLoopCallerStudioPage';
 import { LnpEndosomalEscapePredictorStudioPage } from './pages/LnpEndosomalEscapePredictorStudioPage';
 import { AlternativeSplicingImpactPredictorStudioPage } from './pages/AlternativeSplicingImpactPredictorStudioPage';
 import { OrganoidPhenotypicProfilerStudioPage } from './pages/OrganoidPhenotypicProfilerStudioPage';
@@ -531,6 +532,7 @@ function App() {
                 <Route path="/organoid-microfluidic-twin" element={<OrganoidMicrofluidicShearTwinStudioPage />} />
                 <Route path="/organoid-phenotypic-profiler" element={<OrganoidPhenotypicProfilerStudioPage />} />
                 <Route path="/alternative-splicing-impact" element={<AlternativeSplicingImpactPredictorStudioPage />} />
+                <Route path="/micro-c-chromatin-loops" element={<MicroCChromatinLoopCallerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

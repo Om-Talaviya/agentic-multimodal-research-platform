@@ -2134,3 +2134,9 @@ from database.models.lnp_endosomal_escape_predictor import (
     LnpEndosomalEscapePredictorItemProfile,
     LnpEndosomalEscapePredictorMetricTrace,
 )
+
+from database.models.micro_c_chromatin_loop_caller import (
+    MicroCChromatinLoopCallerStudy,
+    MicroCChromatinLoopCallerItemProfile,
+    MicroCChromatinLoopCallerMetricTrace,
+)

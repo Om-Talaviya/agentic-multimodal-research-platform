@@ -1,3 +1,4 @@
+from api.routes.micro_c_chromatin_loop_caller import router as micro_c_chromatin_loop_caller_router
 from api.routes.lnp_endosomal_escape_predictor import router as lnp_endosomal_escape_predictor_router
 from api.routes.alternative_splicing_impact_predictor import router as alternative_splicing_impact_predictor_router
 from api.routes.organoid_phenotypic_profiler import router as organoid_phenotypic_profiler_router
@@ -941,3 +942,5 @@ app.include_router(organoid_phenotypic_profiler_router, prefix=settings.api_pref
 app.include_router(alternative_splicing_impact_predictor_router, prefix=settings.api_prefix)
 
 app.include_router(lnp_endosomal_escape_predictor_router, prefix=settings.api_prefix)
+
+app.include_router(micro_c_chromatin_loop_caller_router, prefix=settings.api_prefix)
