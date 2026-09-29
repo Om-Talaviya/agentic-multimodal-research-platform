@@ -1834,3 +1834,9 @@ from database.models.tercentenary_milestone_v3_5_orchestrator import (
     TercentenaryMilestoneV35OrchestratorItemProfile,
     TercentenaryMilestoneV35OrchestratorMetricTrace,
 )
+
+from database.models.crispr_lineage_barcode_phylogeny import (
+    CrisprLineageBarcodePhylogenyStudy,
+    CrisprLineageBarcodePhylogenyItemProfile,
+    CrisprLineageBarcodePhylogenyMetricTrace,
+)
