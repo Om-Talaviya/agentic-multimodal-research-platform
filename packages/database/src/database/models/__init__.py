@@ -2122,3 +2122,15 @@ from database.models.alternative_splicing_impact_predictor import (
     AlternativeSplicingImpactPredictorItemProfile,
     AlternativeSplicingImpactPredictorMetricTrace,
 )
+
+from database.models.lnp_endosomal_escape_predictor import (
+    LnpEndosomalEscapePredictorStudy,
+    LnpEndosomalEscapePredictorItemProfile,
+    LnpEndosomalEscapePredictorMetricTrace,
+)
+
+from database.models.lnp_endosomal_escape_predictor import (
+    LnpEndosomalEscapePredictorStudy,
+    LnpEndosomalEscapePredictorItemProfile,
+    LnpEndosomalEscapePredictorMetricTrace,
+)

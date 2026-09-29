@@ -42,6 +42,7 @@ class {pascal_name}Study(Base):
     """Study record for {desc}."""
 
     __tablename__ = "{table_prefix}_studies"
+    __table_args__ = {{"extend_existing": True}}
 
     id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(255), nullable=False, index=True)
@@ -63,6 +64,7 @@ class {pascal_name}ItemProfile(Base):
     """Detailed item profile."""
 
     __tablename__ = "{table_prefix}_item_profiles"
+    __table_args__ = {{"extend_existing": True}}
 
     id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     study_id = Column(PG_UUID(as_uuid=True), ForeignKey("{table_prefix}_studies.id", ondelete="CASCADE"), nullable=False, index=True)
@@ -80,6 +82,7 @@ class {pascal_name}MetricTrace(Base):
     """Longitudinal and dimensional metric trace."""
 
     __tablename__ = "{table_prefix}_metric_traces"
+    __table_args__ = {{"extend_existing": True}}
 
     id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     study_id = Column(PG_UUID(as_uuid=True), ForeignKey("{table_prefix}_studies.id", ondelete="CASCADE"), nullable=False, index=True)

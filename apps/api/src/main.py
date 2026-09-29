@@ -1,3 +1,4 @@
+from api.routes.lnp_endosomal_escape_predictor import router as lnp_endosomal_escape_predictor_router
 from api.routes.alternative_splicing_impact_predictor import router as alternative_splicing_impact_predictor_router
 from api.routes.organoid_phenotypic_profiler import router as organoid_phenotypic_profiler_router
 from api.routes.organoid_microfluidic_shear_twin import router as organoid_microfluidic_shear_twin_router
@@ -938,3 +939,5 @@ app.include_router(organoid_microfluidic_shear_twin_router, prefix=settings.api_
 app.include_router(organoid_phenotypic_profiler_router, prefix=settings.api_prefix)
 
 app.include_router(alternative_splicing_impact_predictor_router, prefix=settings.api_prefix)
+
+app.include_router(lnp_endosomal_escape_predictor_router, prefix=settings.api_prefix)

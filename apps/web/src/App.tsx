@@ -1,3 +1,4 @@
+import { LnpEndosomalEscapePredictorStudioPage } from './pages/LnpEndosomalEscapePredictorStudioPage';
 import { AlternativeSplicingImpactPredictorStudioPage } from './pages/AlternativeSplicingImpactPredictorStudioPage';
 import { OrganoidPhenotypicProfilerStudioPage } from './pages/OrganoidPhenotypicProfilerStudioPage';
 import { OrganoidMicrofluidicShearTwinStudioPage } from './pages/OrganoidMicrofluidicShearTwinStudioPage';
