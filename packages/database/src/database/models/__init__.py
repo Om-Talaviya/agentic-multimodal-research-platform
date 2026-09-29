@@ -1954,3 +1954,9 @@ from database.models.microglia_synaptic_pruning_modeler import (
     MicrogliaSynapticPruningModelerItemProfile,
     MicrogliaSynapticPruningModelerMetricTrace,
 )
+
+from database.models.biomimetic_ion_channel_gating import (
+    BiomimeticIonChannelGatingStudy,
+    BiomimeticIonChannelGatingItemProfile,
+    BiomimeticIonChannelGatingMetricTrace,
+)

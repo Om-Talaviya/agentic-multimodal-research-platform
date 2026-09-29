@@ -1,3 +1,4 @@
+import { BiomimeticIonChannelGatingStudioPage } from './pages/BiomimeticIonChannelGatingStudioPage';
 import { MicrogliaSynapticPruningModelerStudioPage } from './pages/MicrogliaSynapticPruningModelerStudioPage';
 import { CryoemTimeResolvedEnsembleStudioPage } from './pages/CryoemTimeResolvedEnsembleStudioPage';
 import { MilestoneV37OrchestratorStudioPage } from './pages/MilestoneV37OrchestratorStudioPage';
@@ -478,6 +479,7 @@ function App() {
                 <Route path="/milestone-v3-7-orchestrator" element={<MilestoneV37OrchestratorStudioPage />} />
                 <Route path="/cryoem-time-resolved-ensemble" element={<CryoemTimeResolvedEnsembleStudioPage />} />
                 <Route path="/microglia-synaptic-pruning" element={<MicrogliaSynapticPruningModelerStudioPage />} />
+                <Route path="/biomimetic-ion-channel-gating" element={<BiomimeticIonChannelGatingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
