@@ -2200,3 +2200,9 @@ from database.models.tcell_exhaustion_rejuvenation import (
     TcellExhaustionRejuvenationItemProfile,
     TcellExhaustionRejuvenationMetricTrace,
 )
+
+from database.models.droplet_microfluidic_antibody import (
+    DropletMicrofluidicAntibodyStudy,
+    DropletMicrofluidicAntibodyItemProfile,
+    DropletMicrofluidicAntibodyMetricTrace,
+)

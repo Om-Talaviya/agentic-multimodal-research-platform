@@ -1,3 +1,4 @@
+import { DropletMicrofluidicAntibodyStudioPage } from './pages/DropletMicrofluidicAntibodyStudioPage';
 import { TcellExhaustionRejuvenationStudioPage } from './pages/TcellExhaustionRejuvenationStudioPage';
 import { MrnaLipidPolymerNanocapsuleStudioPage } from './pages/MrnaLipidPolymerNanocapsuleStudioPage';
 import { TwoPhotonNeuralDynamicsStudioPage } from './pages/TwoPhotonNeuralDynamicsStudioPage';
@@ -553,6 +554,7 @@ function App() {
                 <Route path="/two-photon-neural-dynamics" element={<TwoPhotonNeuralDynamicsStudioPage />} />
                 <Route path="/mrna-lipid-polymer-nanocapsule" element={<MrnaLipidPolymerNanocapsuleStudioPage />} />
                 <Route path="/tcell-exhaustion-rejuvenation" element={<TcellExhaustionRejuvenationStudioPage />} />
+                <Route path="/droplet-microfluidic-antibody" element={<DropletMicrofluidicAntibodyStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
