@@ -1,3 +1,4 @@
+import { CrisprEpigenomeEditorStudioPage } from './pages/CrisprEpigenomeEditorStudioPage';
 import { GutBrainAxisMetabolomeStudioPage } from './pages/GutBrainAxisMetabolomeStudioPage';
 import { ElectroporationGeneDeliveryStudioPage } from './pages/ElectroporationGeneDeliveryStudioPage';
 import { SpatialAtacRegulonFootprintStudioPage } from './pages/SpatialAtacRegulonFootprintStudioPage';
@@ -571,6 +572,7 @@ function App() {
                 <Route path="/spatial-atac-regulon-footprint" element={<SpatialAtacRegulonFootprintStudioPage />} />
                 <Route path="/electroporation-gene-delivery" element={<ElectroporationGeneDeliveryStudioPage />} />
                 <Route path="/gut-brain-axis-metabolome" element={<GutBrainAxisMetabolomeStudioPage />} />
+                <Route path="/crispr-epigenome-editor" element={<CrisprEpigenomeEditorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

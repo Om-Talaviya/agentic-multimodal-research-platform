@@ -2254,3 +2254,9 @@ from database.models.gut_brain_axis_metabolome import (
     GutBrainAxisMetabolomeItemProfile,
     GutBrainAxisMetabolomeMetricTrace,
 )
+
+from database.models.crispr_epigenome_editor import (
+    CrisprEpigenomeEditorStudy,
+    CrisprEpigenomeEditorItemProfile,
+    CrisprEpigenomeEditorMetricTrace,
+)
