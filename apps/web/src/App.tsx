@@ -1,3 +1,4 @@
+import { CryoemDeepParticlePickingStudioPage } from './pages/CryoemDeepParticlePickingStudioPage';
 import { CellFreeTxtlKineticOptimizerStudioPage } from './pages/CellFreeTxtlKineticOptimizerStudioPage';
 import { MilestoneV31OrchestratorStudioPage } from './pages/MilestoneV31OrchestratorStudioPage';
 import { ChemoproteomicsAbppCovalentScreenStudioPage } from './pages/ChemoproteomicsAbppCovalentScreenStudioPage';
@@ -392,6 +393,7 @@ function App() {
                 <Route path="/chemoproteomics-abpp-covalent-screen" element={<ChemoproteomicsAbppCovalentScreenStudioPage />} />
                 <Route path="/milestone-v3-1-orchestrator" element={<MilestoneV31OrchestratorStudioPage />} />
                 <Route path="/cell-free-txtl-kinetic-optimizer" element={<CellFreeTxtlKineticOptimizerStudioPage />} />
+                <Route path="/cryoem-deep-particle-picking" element={<CryoemDeepParticlePickingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

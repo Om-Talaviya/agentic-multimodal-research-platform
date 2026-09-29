@@ -1678,3 +1678,9 @@ from database.models.cell_free_txtl_kinetic_optimizer import (
     CellFreeTxtlKineticOptimizerItemProfile,
     CellFreeTxtlKineticOptimizerMetricTrace,
 )
+
+from database.models.cryoem_deep_particle_picking import (
+    CryoemDeepParticlePickingStudy,
+    CryoemDeepParticlePickingItemProfile,
+    CryoemDeepParticlePickingMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.cryoem_deep_particle_picking import router as cryoem_deep_particle_picking_router
 from api.routes.cell_free_txtl_kinetic_optimizer import router as cell_free_txtl_kinetic_optimizer_router
 from api.routes.milestone_v3_1_orchestrator import router as milestone_v3_1_orchestrator_router
 from api.routes.chemoproteomics_abpp_covalent_screen import router as chemoproteomics_abpp_covalent_screen_router
@@ -731,3 +732,5 @@ app.include_router(chemoproteomics_abpp_covalent_screen_router, prefix=settings.
 app.include_router(milestone_v3_1_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(cell_free_txtl_kinetic_optimizer_router, prefix=settings.api_prefix)
+
+app.include_router(cryoem_deep_particle_picking_router, prefix=settings.api_prefix)
