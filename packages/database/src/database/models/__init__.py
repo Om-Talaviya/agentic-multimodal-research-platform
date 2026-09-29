@@ -1672,3 +1672,9 @@ from database.models.milestone_v3_1_orchestrator import (
     MilestoneV31OrchestratorItemProfile,
     MilestoneV31OrchestratorMetricTrace,
 )
+
+from database.models.cell_free_txtl_kinetic_optimizer import (
+    CellFreeTxtlKineticOptimizerStudy,
+    CellFreeTxtlKineticOptimizerItemProfile,
+    CellFreeTxtlKineticOptimizerMetricTrace,
+)

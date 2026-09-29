@@ -1,3 +1,4 @@
+import { CellFreeTxtlKineticOptimizerStudioPage } from './pages/CellFreeTxtlKineticOptimizerStudioPage';
 import { MilestoneV31OrchestratorStudioPage } from './pages/MilestoneV31OrchestratorStudioPage';
 import { ChemoproteomicsAbppCovalentScreenStudioPage } from './pages/ChemoproteomicsAbppCovalentScreenStudioPage';
 import { MicrophysiologicalOrganChipSensorsStudioPage } from './pages/MicrophysiologicalOrganChipSensorsStudioPage';
@@ -390,6 +391,7 @@ function App() {
                 <Route path="/microphysiological-organ-chip-sensors" element={<MicrophysiologicalOrganChipSensorsStudioPage />} />
                 <Route path="/chemoproteomics-abpp-covalent-screen" element={<ChemoproteomicsAbppCovalentScreenStudioPage />} />
                 <Route path="/milestone-v3-1-orchestrator" element={<MilestoneV31OrchestratorStudioPage />} />
+                <Route path="/cell-free-txtl-kinetic-optimizer" element={<CellFreeTxtlKineticOptimizerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
