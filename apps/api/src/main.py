@@ -1,3 +1,4 @@
+from api.routes.pep_hla_neoantigen_presentation import router as pep_hla_neoantigen_presentation_router
 from api.routes.spatial_lipidomics_maldi2_desi import router as spatial_lipidomics_maldi2_desi_router
 from api.routes.ribotac_rna_cleavage_design import router as ribotac_rna_cleavage_design_router
 from api.routes.cryoem_deep_particle_picking import router as cryoem_deep_particle_picking_router
@@ -740,3 +741,5 @@ app.include_router(cryoem_deep_particle_picking_router, prefix=settings.api_pref
 app.include_router(ribotac_rna_cleavage_design_router, prefix=settings.api_prefix)
 
 app.include_router(spatial_lipidomics_maldi2_desi_router, prefix=settings.api_prefix)
+
+app.include_router(pep_hla_neoantigen_presentation_router, prefix=settings.api_prefix)

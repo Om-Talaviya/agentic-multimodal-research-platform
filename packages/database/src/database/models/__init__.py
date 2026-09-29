@@ -1696,3 +1696,9 @@ from database.models.spatial_lipidomics_maldi2_desi import (
     SpatialLipidomicsMaldi2DesiItemProfile,
     SpatialLipidomicsMaldi2DesiMetricTrace,
 )
+
+from database.models.pep_hla_neoantigen_presentation import (
+    PepHlaNeoantigenPresentationStudy,
+    PepHlaNeoantigenPresentationItemProfile,
+    PepHlaNeoantigenPresentationMetricTrace,
+)

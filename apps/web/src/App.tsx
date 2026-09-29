@@ -1,3 +1,4 @@
+import { PepHlaNeoantigenPresentationStudioPage } from './pages/PepHlaNeoantigenPresentationStudioPage';
 import { SpatialLipidomicsMaldi2DesiStudioPage } from './pages/SpatialLipidomicsMaldi2DesiStudioPage';
 import { RibotacRnaCleavageDesignStudioPage } from './pages/RibotacRnaCleavageDesignStudioPage';
 import { CryoemDeepParticlePickingStudioPage } from './pages/CryoemDeepParticlePickingStudioPage';
@@ -398,6 +399,7 @@ function App() {
                 <Route path="/cryoem-deep-particle-picking" element={<CryoemDeepParticlePickingStudioPage />} />
                 <Route path="/ribotac-rna-cleavage-design" element={<RibotacRnaCleavageDesignStudioPage />} />
                 <Route path="/spatial-lipidomics-maldi2-desi" element={<SpatialLipidomicsMaldi2DesiStudioPage />} />
+                <Route path="/pep-hla-neoantigen-presentation" element={<PepHlaNeoantigenPresentationStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
