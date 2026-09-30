@@ -1558,3 +1558,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Milestone v4.3 completes Generations 59-61 across 21 autonomous multimodal research engines (Phases 393 to 413), introducing quantum dot nanotracking, SELEX aptamers, droplet digital PCR, lipid nanodisc MSMs, single-cell spatial CUT&Tag, icosahedral cryo-EM capsid reconstruction, and high-density neuromorphic MEA sorting.
 - **Decision**: Implemented unified 3-tier polyglot architecture (SQLAlchemy 2.0 async models, research orchestration engines, FastAPI routes, and automated test gates).
 - **Consequences**: Standardized continuous CI verification with zero breaking changes and full backward compatibility.
+
+## ADR-414: Autonomous Cryo-FIB Milling & In-Situ Lamella Thickness Optimization Engine
+- **Date**: 2026-09-30
+- **Status**: Accepted
+- **Context**: Cellular cryo-electron tomography (Cryo-ET) requires thinning frozen-hydrated cell specimens into vitreous lamellae (<150 nm) without devitrification, curtaining artifacts, or excessive gallium beam damage.
+- **Decision**: Implemented `CryoFibMillingEngine`, `CryoFibMillingStudy`, `CryoFibMillingRepository`, and `/api/v1/cryo-fib-milling/*` REST API.
+- **Consequences**: Provides deterministic thickness optimization, curtaining artifact suppression ratio, low-dose polishing current modulation, and vitreous ice score tracking.
+

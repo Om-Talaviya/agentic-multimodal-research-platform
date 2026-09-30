@@ -1,3 +1,4 @@
+from api.routes.cryo_fib_milling import router as cryo_fib_milling_router
 from api.routes.milestone_v4_3_meta_orchestrator import router as milestone_v4_3_meta_orchestrator_router
 from api.routes.acoustic_levitation_cell_assembly import router as acoustic_levitation_cell_assembly_router
 from api.routes.mitochondrial_metabolism_flux import router as mitochondrial_metabolism_flux_router
@@ -1148,3 +1149,6 @@ app.include_router(mitochondrial_metabolism_flux_router, prefix=settings.api_pre
 app.include_router(acoustic_levitation_cell_assembly_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v4_3_meta_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(cryo_fib_milling_router, prefix=settings.api_prefix)
+

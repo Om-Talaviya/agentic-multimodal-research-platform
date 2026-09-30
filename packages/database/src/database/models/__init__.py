@@ -2548,3 +2548,10 @@ from database.models.milestone_v4_3_meta_orchestrator import (
     MilestoneV43MetaOrchestratorItemProfile,
     MilestoneV43MetaOrchestratorMetricTrace,
 )
+
+from database.models.cryo_fib_milling import (
+    CryoFibMillingStudy,
+    CryoFibMillingItemProfile,
+    CryoFibMillingMetricTrace,
+)
+
