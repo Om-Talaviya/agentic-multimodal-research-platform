@@ -1551,3 +1551,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 
 ### Architectural Decisions: Milestones v4.2 - v4.2
 - ADR-309 to ADR-392: Standardized on 3-tier decoupling (SQLAlchemy model, Pydantic schema/service, FastAPI router), zero breaking changes, isolated domain micro-modules, and full automated test coverage.
+
+## ADR-413: Milestone v4.3 Planetary Frontier Bioscience Multimodal Research OS Synthesis
+- **Date**: 2026-09-30
+- **Status**: Accepted
+- **Context**: Milestone v4.3 completes Generations 59-61 across 21 autonomous multimodal research engines (Phases 393 to 413), introducing quantum dot nanotracking, SELEX aptamers, droplet digital PCR, lipid nanodisc MSMs, single-cell spatial CUT&Tag, icosahedral cryo-EM capsid reconstruction, and high-density neuromorphic MEA sorting.
+- **Decision**: Implemented unified 3-tier polyglot architecture (SQLAlchemy 2.0 async models, research orchestration engines, FastAPI routes, and automated test gates).
+- **Consequences**: Standardized continuous CI verification with zero breaking changes and full backward compatibility.
