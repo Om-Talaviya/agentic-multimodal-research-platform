@@ -2362,3 +2362,9 @@ from database.models.nanobody_multimer_optimizer import (
     NanobodyMultimerOptimizerItemProfile,
     NanobodyMultimerOptimizerMetricTrace,
 )
+
+from database.models.viral_tropism_detargeting import (
+    ViralTropismDetargetingStudy,
+    ViralTropismDetargetingItemProfile,
+    ViralTropismDetargetingMetricTrace,
+)

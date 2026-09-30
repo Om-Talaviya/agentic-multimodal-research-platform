@@ -1,3 +1,4 @@
+import { ViralTropismDetargetingStudioPage } from './pages/ViralTropismDetargetingStudioPage';
 import { NanobodyMultimerOptimizerStudioPage } from './pages/NanobodyMultimerOptimizerStudioPage';
 import { Singlecell5mc5hmcCallerStudioPage } from './pages/Singlecell5mc5hmcCallerStudioPage';
 import { HdxMsConformationalModelerStudioPage } from './pages/HdxMsConformationalModelerStudioPage';
@@ -607,6 +608,7 @@ function App() {
                 <Route path="/hdx-ms-conformational-modeler" element={<HdxMsConformationalModelerStudioPage />} />
                 <Route path="/singlecell-5mc-5hmc-caller" element={<Singlecell5mc5hmcCallerStudioPage />} />
                 <Route path="/nanobody-multimer-optimizer" element={<NanobodyMultimerOptimizerStudioPage />} />
+                <Route path="/viral-tropism-detargeting" element={<ViralTropismDetargetingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
