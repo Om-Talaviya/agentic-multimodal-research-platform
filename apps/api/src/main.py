@@ -1,3 +1,4 @@
+from api.routes.microfluidic_droplet_pcr import router as microfluidic_droplet_pcr_router
 from api.routes.aptamer_selex_affinity_ranker import router as aptamer_selex_affinity_ranker_router
 from api.routes.quantum_dots_cellular_tracker import router as quantum_dots_cellular_tracker_router
 from api.routes.milestone_v4_2_meta_orchestrator import router as milestone_v4_2_meta_orchestrator_router
@@ -1091,3 +1092,5 @@ app.include_router(milestone_v4_2_meta_orchestrator_router, prefix=settings.api_
 app.include_router(quantum_dots_cellular_tracker_router, prefix=settings.api_prefix)
 
 app.include_router(aptamer_selex_affinity_ranker_router, prefix=settings.api_prefix)
+
+app.include_router(microfluidic_droplet_pcr_router, prefix=settings.api_prefix)

@@ -2434,3 +2434,9 @@ from database.models.aptamer_selex_affinity_ranker import (
     AptamerSelexAffinityRankerItemProfile,
     AptamerSelexAffinityRankerMetricTrace,
 )
+
+from database.models.microfluidic_droplet_pcr import (
+    MicrofluidicDropletPcrStudy,
+    MicrofluidicDropletPcrItemProfile,
+    MicrofluidicDropletPcrMetricTrace,
+)
