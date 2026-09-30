@@ -1,3 +1,4 @@
+from api.routes.acoustic_levitation_cell_assembly import router as acoustic_levitation_cell_assembly_router
 from api.routes.mitochondrial_metabolism_flux import router as mitochondrial_metabolism_flux_router
 from api.routes.high_density_mea_spike_sorting import router as high_density_mea_spike_sorting_router
 from api.routes.targeted_rna_degradation_ribotac import router as targeted_rna_degradation_ribotac_router
@@ -1142,3 +1143,5 @@ app.include_router(targeted_rna_degradation_ribotac_router, prefix=settings.api_
 app.include_router(high_density_mea_spike_sorting_router, prefix=settings.api_prefix)
 
 app.include_router(mitochondrial_metabolism_flux_router, prefix=settings.api_prefix)
+
+app.include_router(acoustic_levitation_cell_assembly_router, prefix=settings.api_prefix)

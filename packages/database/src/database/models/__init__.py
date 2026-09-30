@@ -2536,3 +2536,9 @@ from database.models.mitochondrial_metabolism_flux import (
     MitochondrialMetabolismFluxItemProfile,
     MitochondrialMetabolismFluxMetricTrace,
 )
+
+from database.models.acoustic_levitation_cell_assembly import (
+    AcousticLevitationCellAssemblyStudy,
+    AcousticLevitationCellAssemblyItemProfile,
+    AcousticLevitationCellAssemblyMetricTrace,
+)
