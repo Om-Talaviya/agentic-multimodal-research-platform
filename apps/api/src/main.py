@@ -1,3 +1,4 @@
+from api.routes.targeted_exosome_engineering import router as targeted_exosome_engineering_router
 from api.routes.clem_subcellular_deconvolution import router as clem_subcellular_deconvolution_router
 from api.routes.milestone_v4_1_meta_orchestrator import router as milestone_v4_1_meta_orchestrator_router
 from api.routes.repseq_shm_lineage_tree import router as repseq_shm_lineage_tree_router
@@ -1025,3 +1026,5 @@ app.include_router(repseq_shm_lineage_tree_router, prefix=settings.api_prefix)
 app.include_router(milestone_v4_1_meta_orchestrator_router, prefix=settings.api_prefix)
 
 app.include_router(clem_subcellular_deconvolution_router, prefix=settings.api_prefix)
+
+app.include_router(targeted_exosome_engineering_router, prefix=settings.api_prefix)

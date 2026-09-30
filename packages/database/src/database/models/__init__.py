@@ -2302,3 +2302,9 @@ from database.models.clem_subcellular_deconvolution import (
     ClemSubcellularDeconvolutionItemProfile,
     ClemSubcellularDeconvolutionMetricTrace,
 )
+
+from database.models.targeted_exosome_engineering import (
+    TargetedExosomeEngineeringStudy,
+    TargetedExosomeEngineeringItemProfile,
+    TargetedExosomeEngineeringMetricTrace,
+)
