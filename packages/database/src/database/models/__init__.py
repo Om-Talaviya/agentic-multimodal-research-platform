@@ -2332,3 +2332,9 @@ from database.models.optical_pooled_crispr_screening import (
     OpticalPooledCrisprScreeningItemProfile,
     OpticalPooledCrisprScreeningMetricTrace,
 )
+
+from database.models.neoantigen_tcr_proofreading import (
+    NeoantigenTcrProofreadingStudy,
+    NeoantigenTcrProofreadingItemProfile,
+    NeoantigenTcrProofreadingMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.neoantigen_tcr_proofreading import router as neoantigen_tcr_proofreading_router
 from api.routes.optical_pooled_crispr_screening import router as optical_pooled_crispr_screening_router
 from api.routes.riboswitch_rna_ligand_binding import router as riboswitch_rna_ligand_binding_router
 from api.routes.spatial_epigenome_proteome_fusion import router as spatial_epigenome_proteome_fusion_router
@@ -1040,3 +1041,5 @@ app.include_router(spatial_epigenome_proteome_fusion_router, prefix=settings.api
 app.include_router(riboswitch_rna_ligand_binding_router, prefix=settings.api_prefix)
 
 app.include_router(optical_pooled_crispr_screening_router, prefix=settings.api_prefix)
+
+app.include_router(neoantigen_tcr_proofreading_router, prefix=settings.api_prefix)
