@@ -2416,3 +2416,9 @@ from database.models.antibody_fc_glycoengineering import (
     AntibodyFcGlycoengineeringItemProfile,
     AntibodyFcGlycoengineeringMetricTrace,
 )
+
+from database.models.milestone_v4_2_meta_orchestrator import (
+    MilestoneV42MetaOrchestratorStudy,
+    MilestoneV42MetaOrchestratorItemProfile,
+    MilestoneV42MetaOrchestratorMetricTrace,
+)

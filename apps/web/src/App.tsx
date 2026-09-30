@@ -1,3 +1,4 @@
+import { MilestoneV42MetaOrchestratorStudioPage } from './pages/MilestoneV42MetaOrchestratorStudioPage';
 import { AntibodyFcGlycoengineeringStudioPage } from './pages/AntibodyFcGlycoengineeringStudioPage';
 import { AllostericCrypticPocketMsmStudioPage } from './pages/AllostericCrypticPocketMsmStudioPage';
 import { M6aEpitranscriptomeBalancerStudioPage } from './pages/M6aEpitranscriptomeBalancerStudioPage';
@@ -625,6 +626,7 @@ function App() {
                 <Route path="/m6a-epitranscriptome-balancer" element={<M6aEpitranscriptomeBalancerStudioPage />} />
                 <Route path="/allosteric-cryptic-pocket-msm" element={<AllostericCrypticPocketMsmStudioPage />} />
                 <Route path="/antibody-fc-glycoengineering" element={<AntibodyFcGlycoengineeringStudioPage />} />
+                <Route path="/milestone-v4-2-orchestrator" element={<MilestoneV42MetaOrchestratorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
