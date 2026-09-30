@@ -1,3 +1,4 @@
+import { OpticalPooledCrisprScreeningStudioPage } from './pages/OpticalPooledCrisprScreeningStudioPage';
 import { RiboswitchRnaLigandBindingStudioPage } from './pages/RiboswitchRnaLigandBindingStudioPage';
 import { SpatialEpigenomeProteomeFusionStudioPage } from './pages/SpatialEpigenomeProteomeFusionStudioPage';
 import { CarbonFixationEnzymeCascadeStudioPage } from './pages/CarbonFixationEnzymeCascadeStudioPage';
@@ -595,6 +596,7 @@ function App() {
                 <Route path="/carbon-fixation-enzyme-cascade" element={<CarbonFixationEnzymeCascadeStudioPage />} />
                 <Route path="/spatial-epigenome-proteome-fusion" element={<SpatialEpigenomeProteomeFusionStudioPage />} />
                 <Route path="/riboswitch-rna-ligand-binding" element={<RiboswitchRnaLigandBindingStudioPage />} />
+                <Route path="/optical-pooled-crispr-screening" element={<OpticalPooledCrisprScreeningStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

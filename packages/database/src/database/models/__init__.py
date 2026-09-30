@@ -2326,3 +2326,9 @@ from database.models.riboswitch_rna_ligand_binding import (
     RiboswitchRnaLigandBindingItemProfile,
     RiboswitchRnaLigandBindingMetricTrace,
 )
+
+from database.models.optical_pooled_crispr_screening import (
+    OpticalPooledCrisprScreeningStudy,
+    OpticalPooledCrisprScreeningItemProfile,
+    OpticalPooledCrisprScreeningMetricTrace,
+)
