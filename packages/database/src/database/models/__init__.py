@@ -2440,3 +2440,9 @@ from database.models.microfluidic_droplet_pcr import (
     MicrofluidicDropletPcrItemProfile,
     MicrofluidicDropletPcrMetricTrace,
 )
+
+from database.models.membrane_protein_nanodisc_msm import (
+    MembraneProteinNanodiscMsmStudy,
+    MembraneProteinNanodiscMsmItemProfile,
+    MembraneProteinNanodiscMsmMetricTrace,
+)
