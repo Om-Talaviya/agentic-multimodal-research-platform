@@ -1,3 +1,4 @@
+from api.routes.allosteric_cryptic_pocket_msm import router as allosteric_cryptic_pocket_msm_router
 from api.routes.m6a_epitranscriptome_balancer import router as m6a_epitranscriptome_balancer_router
 from api.routes.organoid_patch_clamp_analyzer import router as organoid_patch_clamp_analyzer_router
 from api.routes.cell_free_protein_synthesis import router as cell_free_protein_synthesis_router
@@ -1076,3 +1077,5 @@ app.include_router(cell_free_protein_synthesis_router, prefix=settings.api_prefi
 app.include_router(organoid_patch_clamp_analyzer_router, prefix=settings.api_prefix)
 
 app.include_router(m6a_epitranscriptome_balancer_router, prefix=settings.api_prefix)
+
+app.include_router(allosteric_cryptic_pocket_msm_router, prefix=settings.api_prefix)

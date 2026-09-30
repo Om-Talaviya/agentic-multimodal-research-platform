@@ -2404,3 +2404,9 @@ from database.models.m6a_epitranscriptome_balancer import (
     M6aEpitranscriptomeBalancerItemProfile,
     M6aEpitranscriptomeBalancerMetricTrace,
 )
+
+from database.models.allosteric_cryptic_pocket_msm import (
+    AllostericCrypticPocketMsmStudy,
+    AllostericCrypticPocketMsmItemProfile,
+    AllostericCrypticPocketMsmMetricTrace,
+)

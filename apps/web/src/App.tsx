@@ -1,3 +1,4 @@
+import { AllostericCrypticPocketMsmStudioPage } from './pages/AllostericCrypticPocketMsmStudioPage';
 import { M6aEpitranscriptomeBalancerStudioPage } from './pages/M6aEpitranscriptomeBalancerStudioPage';
 import { OrganoidPatchClampAnalyzerStudioPage } from './pages/OrganoidPatchClampAnalyzerStudioPage';
 import { CellFreeProteinSynthesisStudioPage } from './pages/CellFreeProteinSynthesisStudioPage';
@@ -621,6 +622,7 @@ function App() {
                 <Route path="/cell-free-protein-synthesis" element={<CellFreeProteinSynthesisStudioPage />} />
                 <Route path="/organoid-patch-clamp-analyzer" element={<OrganoidPatchClampAnalyzerStudioPage />} />
                 <Route path="/m6a-epitranscriptome-balancer" element={<M6aEpitranscriptomeBalancerStudioPage />} />
+                <Route path="/allosteric-cryptic-pocket-msm" element={<AllostericCrypticPocketMsmStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
