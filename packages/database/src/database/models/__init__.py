@@ -2428,3 +2428,9 @@ from database.models.quantum_dots_cellular_tracker import (
     QuantumDotsCellularTrackerItemProfile,
     QuantumDotsCellularTrackerMetricTrace,
 )
+
+from database.models.aptamer_selex_affinity_ranker import (
+    AptamerSelexAffinityRankerStudy,
+    AptamerSelexAffinityRankerItemProfile,
+    AptamerSelexAffinityRankerMetricTrace,
+)
