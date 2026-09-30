@@ -2458,3 +2458,9 @@ from database.models.viral_capsid_cryoem_reconstructor import (
     ViralCapsidCryoemReconstructorItemProfile,
     ViralCapsidCryoemReconstructorMetricTrace,
 )
+
+from database.models.car_nk_exhaustion_resilience import (
+    CarNkExhaustionResilienceStudy,
+    CarNkExhaustionResilienceItemProfile,
+    CarNkExhaustionResilienceMetricTrace,
+)

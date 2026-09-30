@@ -1,3 +1,4 @@
+from api.routes.car_nk_exhaustion_resilience import router as car_nk_exhaustion_resilience_router
 from api.routes.viral_capsid_cryoem_reconstructor import router as viral_capsid_cryoem_reconstructor_router
 from api.routes.single_cell_spatial_epigenomics import router as single_cell_spatial_epigenomics_router
 from api.routes.membrane_protein_nanodisc_msm import router as membrane_protein_nanodisc_msm_router
@@ -1103,3 +1104,5 @@ app.include_router(membrane_protein_nanodisc_msm_router, prefix=settings.api_pre
 app.include_router(single_cell_spatial_epigenomics_router, prefix=settings.api_prefix)
 
 app.include_router(viral_capsid_cryoem_reconstructor_router, prefix=settings.api_prefix)
+
+app.include_router(car_nk_exhaustion_resilience_router, prefix=settings.api_prefix)
