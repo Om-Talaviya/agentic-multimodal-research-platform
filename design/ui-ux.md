@@ -21,8 +21,8 @@ This document defines the complete visual design system, interaction patterns, u
   --bg-primary: #0a0e17;
   --bg-secondary: #111827;
   --bg-card: rgba(17, 24, 39, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --bg-glass: rgba(258, 258, 258, 0.04);
+  --border-subtle: rgba(258, 258, 258, 0.08);
   --border-focus: #38bdf8;
   
   /* Brand & Accent Accents */

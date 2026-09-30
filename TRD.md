@@ -170,5 +170,5 @@ flowchart TD
 - **Phase 26 (Research Automation)**: Cron-based research workers with web change detection and webhook/email alert triggers.
 
 
-### Technical Requirements: Milestones v4.1 - v4.1
+### Technical Requirements: Milestones v4.2 - v4.2
 - Implemented with SQLAlchemy 2.0 async session pools, Pydantic v2 schemas, FastAPI sub-routers with OpenAPI 3.1 documentation, and TypeScript frontend components.

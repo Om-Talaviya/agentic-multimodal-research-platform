@@ -204,5 +204,5 @@ To maintain momentum and high engineering quality, the following anti-patterns a
 4. **Core Philosophy**: **Make the research engine excellent first $\rightarrow$ make knowledge deeply integrated $\rightarrow$ make evidence trustworthy $\rightarrow$ make multimodal analysis powerful $\rightarrow$ make it collaborative $\rightarrow$ make it production-grade.**
 
 
-### Product Requirements: Milestones v4.1 - v4.1
+### Product Requirements: Milestones v4.2 - v4.2
 - Full support for multiome cis-regulatory mapping, PE6 epegRNA optimization, MALDI spatial metabolomics, synthetic DNA digital storage, optogenetic circuits, microbial syntrophy, time-resolved Cryo-EM, synaptic pruning, biomimetic pores, CRISPR lineage trees, droplet culturomics, RNA LLPS condensates, epigenetic hit-and-run silencing, daisy-chain gene drives, ocean biogeochemical fluxes, PACE bioreactors, optical electrophysiology, whole-body PBPK biodistribution, and planetary meta-orchestration.

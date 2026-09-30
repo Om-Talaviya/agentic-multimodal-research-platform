@@ -238,5 +238,5 @@ To prevent engineering decay and maintain structural velocity:
 3. **Core Philosophy**: **Make the research engine excellent first $\rightarrow$ make knowledge deeply integrated $\rightarrow$ make evidence trustworthy $\rightarrow$ make multimodal analysis powerful $\rightarrow$ make it collaborative $\rightarrow$ make it production-grade.**
 
 
-### Milestone v4.1, v4.1 & v4.1 Planetary Scaled Layer
+### Milestone v4.2, v4.2 & v4.2 Planetary Scaled Layer
 - Integrates 21 new domain services across database repositories, research engines, FastAPI routers, and React TSX micro-frontends with full ACID transactions and multi-agent DAG consensus.

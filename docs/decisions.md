@@ -1549,5 +1549,5 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 ### Consequences: 100% CI pass rate and complete 125-phase milestone orchestration.
 
 
-### Architectural Decisions: Milestones v4.1 - v4.1
-- ADR-309 to ADR-371: Standardized on 3-tier decoupling (SQLAlchemy model, Pydantic schema/service, FastAPI router), zero breaking changes, isolated domain micro-modules, and full automated test coverage.
+### Architectural Decisions: Milestones v4.2 - v4.2
+- ADR-309 to ADR-392: Standardized on 3-tier decoupling (SQLAlchemy model, Pydantic schema/service, FastAPI router), zero breaking changes, isolated domain micro-modules, and full automated test coverage.
