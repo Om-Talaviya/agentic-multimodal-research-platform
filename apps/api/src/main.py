@@ -1,3 +1,4 @@
+from api.routes.crispr_prime_editing_efficiency import router as crispr_prime_editing_efficiency_router
 from api.routes.supramolecular_peptide_hydrogel import router as supramolecular_peptide_hydrogel_router
 from api.routes.circulating_tumor_dna_methylation import router as circulating_tumor_dna_methylation_router
 from api.routes.magnetic_tweezers_dna_supercoiling import router as magnetic_tweezers_dna_supercoiling_router
@@ -1118,3 +1119,5 @@ app.include_router(magnetic_tweezers_dna_supercoiling_router, prefix=settings.ap
 app.include_router(circulating_tumor_dna_methylation_router, prefix=settings.api_prefix)
 
 app.include_router(supramolecular_peptide_hydrogel_router, prefix=settings.api_prefix)
+
+app.include_router(crispr_prime_editing_efficiency_router, prefix=settings.api_prefix)

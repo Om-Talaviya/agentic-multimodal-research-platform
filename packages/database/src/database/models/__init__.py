@@ -2488,3 +2488,9 @@ from database.models.supramolecular_peptide_hydrogel import (
     SupramolecularPeptideHydrogelItemProfile,
     SupramolecularPeptideHydrogelMetricTrace,
 )
+
+from database.models.crispr_prime_editing_efficiency import (
+    CrisprPrimeEditingEfficiencyStudy,
+    CrisprPrimeEditingEfficiencyItemProfile,
+    CrisprPrimeEditingEfficiencyMetricTrace,
+)
