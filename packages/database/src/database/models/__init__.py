@@ -2356,3 +2356,9 @@ from database.models.singlecell_5mc_5hmc_caller import (
     Singlecell5mc5hmcCallerItemProfile,
     Singlecell5mc5hmcCallerMetricTrace,
 )
+
+from database.models.nanobody_multimer_optimizer import (
+    NanobodyMultimerOptimizerStudy,
+    NanobodyMultimerOptimizerItemProfile,
+    NanobodyMultimerOptimizerMetricTrace,
+)

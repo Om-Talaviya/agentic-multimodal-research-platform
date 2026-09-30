@@ -1,3 +1,4 @@
+from api.routes.nanobody_multimer_optimizer import router as nanobody_multimer_optimizer_router
 from api.routes.singlecell_5mc_5hmc_caller import router as singlecell_5mc_5hmc_caller_router
 from api.routes.hdx_ms_conformational_modeler import router as hdx_ms_conformational_modeler_router
 from api.routes.microbial_electrosynthesis_engine import router as microbial_electrosynthesis_engine_router
@@ -1052,3 +1053,5 @@ app.include_router(microbial_electrosynthesis_engine_router, prefix=settings.api
 app.include_router(hdx_ms_conformational_modeler_router, prefix=settings.api_prefix)
 
 app.include_router(singlecell_5mc_5hmc_caller_router, prefix=settings.api_prefix)
+
+app.include_router(nanobody_multimer_optimizer_router, prefix=settings.api_prefix)
