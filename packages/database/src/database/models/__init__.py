@@ -2524,3 +2524,9 @@ from database.models.targeted_rna_degradation_ribotac import (
     TargetedRnaDegradationRibotacItemProfile,
     TargetedRnaDegradationRibotacMetricTrace,
 )
+
+from database.models.high_density_mea_spike_sorting import (
+    HighDensityMeaSpikeSortingStudy,
+    HighDensityMeaSpikeSortingItemProfile,
+    HighDensityMeaSpikeSortingMetricTrace,
+)
