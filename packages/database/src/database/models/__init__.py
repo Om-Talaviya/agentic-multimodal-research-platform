@@ -2506,3 +2506,9 @@ from database.models.organoid_microfluidic_vasculature import (
     OrganoidMicrofluidicVasculatureItemProfile,
     OrganoidMicrofluidicVasculatureMetricTrace,
 )
+
+from database.models.antibody_humanness_immunogenicity import (
+    AntibodyHumannessImmunogenicityStudy,
+    AntibodyHumannessImmunogenicityItemProfile,
+    AntibodyHumannessImmunogenicityMetricTrace,
+)
