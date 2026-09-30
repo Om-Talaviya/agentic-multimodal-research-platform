@@ -2296,3 +2296,9 @@ from database.models.milestone_v4_1_meta_orchestrator import (
     MilestoneV41MetaOrchestratorItemProfile,
     MilestoneV41MetaOrchestratorMetricTrace,
 )
+
+from database.models.clem_subcellular_deconvolution import (
+    ClemSubcellularDeconvolutionStudy,
+    ClemSubcellularDeconvolutionItemProfile,
+    ClemSubcellularDeconvolutionMetricTrace,
+)

@@ -1,3 +1,4 @@
+import { ClemSubcellularDeconvolutionStudioPage } from './pages/ClemSubcellularDeconvolutionStudioPage';
 import { MilestoneV41MetaOrchestratorStudioPage } from './pages/MilestoneV41MetaOrchestratorStudioPage';
 import { RepseqShmLineageTreeStudioPage } from './pages/RepseqShmLineageTreeStudioPage';
 import { PeptideAmphiphileHydrogelStudioPage } from './pages/PeptideAmphiphileHydrogelStudioPage';
@@ -585,6 +586,7 @@ function App() {
                 <Route path="/peptide-amphiphile-hydrogel" element={<PeptideAmphiphileHydrogelStudioPage />} />
                 <Route path="/repseq-shm-lineage-tree" element={<RepseqShmLineageTreeStudioPage />} />
                 <Route path="/milestone-v4-1-orchestrator" element={<MilestoneV41MetaOrchestratorStudioPage />} />
+                <Route path="/clem-subcellular-deconvolution" element={<ClemSubcellularDeconvolutionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
