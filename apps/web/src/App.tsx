@@ -1,3 +1,4 @@
+import { OrganoidPatchClampAnalyzerStudioPage } from './pages/OrganoidPatchClampAnalyzerStudioPage';
 import { CellFreeProteinSynthesisStudioPage } from './pages/CellFreeProteinSynthesisStudioPage';
 import { DnaOrigamiNanorobotCargoStudioPage } from './pages/DnaOrigamiNanorobotCargoStudioPage';
 import { PeptideHlaDpDqPredictorStudioPage } from './pages/PeptideHlaDpDqPredictorStudioPage';
@@ -617,6 +618,7 @@ function App() {
                 <Route path="/peptide-hla-dp-dq-predictor" element={<PeptideHlaDpDqPredictorStudioPage />} />
                 <Route path="/dna-origami-nanorobot-cargo" element={<DnaOrigamiNanorobotCargoStudioPage />} />
                 <Route path="/cell-free-protein-synthesis" element={<CellFreeProteinSynthesisStudioPage />} />
+                <Route path="/organoid-patch-clamp-analyzer" element={<OrganoidPatchClampAnalyzerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

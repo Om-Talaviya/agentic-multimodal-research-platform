@@ -2392,3 +2392,9 @@ from database.models.cell_free_protein_synthesis import (
     CellFreeProteinSynthesisItemProfile,
     CellFreeProteinSynthesisMetricTrace,
 )
+
+from database.models.organoid_patch_clamp_analyzer import (
+    OrganoidPatchClampAnalyzerStudy,
+    OrganoidPatchClampAnalyzerItemProfile,
+    OrganoidPatchClampAnalyzerMetricTrace,
+)
