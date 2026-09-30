@@ -1,3 +1,4 @@
+from api.routes.single_molecule_fret_kinetics import router as single_molecule_fret_kinetics_router
 from api.routes.antibody_humanness_immunogenicity import router as antibody_humanness_immunogenicity_router
 from api.routes.organoid_microfluidic_vasculature import router as organoid_microfluidic_vasculature_router
 from api.routes.multiplexed_codex_neighborhood import router as multiplexed_codex_neighborhood_router
@@ -1130,3 +1131,5 @@ app.include_router(multiplexed_codex_neighborhood_router, prefix=settings.api_pr
 app.include_router(organoid_microfluidic_vasculature_router, prefix=settings.api_prefix)
 
 app.include_router(antibody_humanness_immunogenicity_router, prefix=settings.api_prefix)
+
+app.include_router(single_molecule_fret_kinetics_router, prefix=settings.api_prefix)

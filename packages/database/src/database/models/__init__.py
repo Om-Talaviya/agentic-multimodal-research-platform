@@ -2512,3 +2512,9 @@ from database.models.antibody_humanness_immunogenicity import (
     AntibodyHumannessImmunogenicityItemProfile,
     AntibodyHumannessImmunogenicityMetricTrace,
 )
+
+from database.models.single_molecule_fret_kinetics import (
+    SingleMoleculeFretKineticsStudy,
+    SingleMoleculeFretKineticsItemProfile,
+    SingleMoleculeFretKineticsMetricTrace,
+)
