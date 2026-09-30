@@ -1,3 +1,4 @@
+import { MicrobialElectrosynthesisEngineStudioPage } from './pages/MicrobialElectrosynthesisEngineStudioPage';
 import { NeoantigenTcrProofreadingStudioPage } from './pages/NeoantigenTcrProofreadingStudioPage';
 import { OpticalPooledCrisprScreeningStudioPage } from './pages/OpticalPooledCrisprScreeningStudioPage';
 import { RiboswitchRnaLigandBindingStudioPage } from './pages/RiboswitchRnaLigandBindingStudioPage';
@@ -599,6 +600,7 @@ function App() {
                 <Route path="/riboswitch-rna-ligand-binding" element={<RiboswitchRnaLigandBindingStudioPage />} />
                 <Route path="/optical-pooled-crispr-screening" element={<OpticalPooledCrisprScreeningStudioPage />} />
                 <Route path="/neoantigen-tcr-proofreading" element={<NeoantigenTcrProofreadingStudioPage />} />
+                <Route path="/microbial-electrosynthesis-engine" element={<MicrobialElectrosynthesisEngineStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

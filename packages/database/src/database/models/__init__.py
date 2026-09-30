@@ -2338,3 +2338,9 @@ from database.models.neoantigen_tcr_proofreading import (
     NeoantigenTcrProofreadingItemProfile,
     NeoantigenTcrProofreadingMetricTrace,
 )
+
+from database.models.microbial_electrosynthesis_engine import (
+    MicrobialElectrosynthesisEngineStudy,
+    MicrobialElectrosynthesisEngineItemProfile,
+    MicrobialElectrosynthesisEngineMetricTrace,
+)
