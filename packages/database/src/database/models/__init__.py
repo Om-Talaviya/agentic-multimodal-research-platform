@@ -2500,3 +2500,9 @@ from database.models.multiplexed_codex_neighborhood import (
     MultiplexedCodexNeighborhoodItemProfile,
     MultiplexedCodexNeighborhoodMetricTrace,
 )
+
+from database.models.organoid_microfluidic_vasculature import (
+    OrganoidMicrofluidicVasculatureStudy,
+    OrganoidMicrofluidicVasculatureItemProfile,
+    OrganoidMicrofluidicVasculatureMetricTrace,
+)
