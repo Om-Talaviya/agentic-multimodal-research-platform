@@ -67,7 +67,7 @@ export const MtdnaHeteroplasmyToxicityStudioPage: React.FC = () => {
             </h1>
           </div>
           <p className="text-slate-400 text-sm mt-1">
-            Phase 368: Autonomous Quantifies circular 16.5kb mitochondrial genome single-nucleotide variant heteroplasmy levels (e.g. m.1555A>G, m.3243A>G) to predict aminoglycoside ototoxicity and nucleoside reverse transcriptase inhibitor myopathies.
+            Phase 368: Autonomous Quantifies circular 16.5kb mitochondrial genome single-nucleotide variant heteroplasmy levels (e.g. m.1555A&gt;G, m.3243A&gt;G) to predict aminoglycoside ototoxicity and nucleoside reverse transcriptase inhibitor myopathies.
           </p>
         </div>
         <div className="flex items-center space-x-4">
