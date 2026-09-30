@@ -2410,3 +2410,9 @@ from database.models.allosteric_cryptic_pocket_msm import (
     AllostericCrypticPocketMsmItemProfile,
     AllostericCrypticPocketMsmMetricTrace,
 )
+
+from database.models.antibody_fc_glycoengineering import (
+    AntibodyFcGlycoengineeringStudy,
+    AntibodyFcGlycoengineeringItemProfile,
+    AntibodyFcGlycoengineeringMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.antibody_fc_glycoengineering import router as antibody_fc_glycoengineering_router
 from api.routes.allosteric_cryptic_pocket_msm import router as allosteric_cryptic_pocket_msm_router
 from api.routes.m6a_epitranscriptome_balancer import router as m6a_epitranscriptome_balancer_router
 from api.routes.organoid_patch_clamp_analyzer import router as organoid_patch_clamp_analyzer_router
@@ -1079,3 +1080,5 @@ app.include_router(organoid_patch_clamp_analyzer_router, prefix=settings.api_pre
 app.include_router(m6a_epitranscriptome_balancer_router, prefix=settings.api_prefix)
 
 app.include_router(allosteric_cryptic_pocket_msm_router, prefix=settings.api_prefix)
+
+app.include_router(antibody_fc_glycoengineering_router, prefix=settings.api_prefix)
