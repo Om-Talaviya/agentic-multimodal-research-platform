@@ -2446,3 +2446,9 @@ from database.models.membrane_protein_nanodisc_msm import (
     MembraneProteinNanodiscMsmItemProfile,
     MembraneProteinNanodiscMsmMetricTrace,
 )
+
+from database.models.single_cell_spatial_epigenomics import (
+    SingleCellSpatialEpigenomicsStudy,
+    SingleCellSpatialEpigenomicsItemProfile,
+    SingleCellSpatialEpigenomicsMetricTrace,
+)
