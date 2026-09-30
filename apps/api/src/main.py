@@ -1,3 +1,4 @@
+from api.routes.hdx_ms_conformational_modeler import router as hdx_ms_conformational_modeler_router
 from api.routes.microbial_electrosynthesis_engine import router as microbial_electrosynthesis_engine_router
 from api.routes.neoantigen_tcr_proofreading import router as neoantigen_tcr_proofreading_router
 from api.routes.optical_pooled_crispr_screening import router as optical_pooled_crispr_screening_router
@@ -1046,3 +1047,5 @@ app.include_router(optical_pooled_crispr_screening_router, prefix=settings.api_p
 app.include_router(neoantigen_tcr_proofreading_router, prefix=settings.api_prefix)
 
 app.include_router(microbial_electrosynthesis_engine_router, prefix=settings.api_prefix)
+
+app.include_router(hdx_ms_conformational_modeler_router, prefix=settings.api_prefix)

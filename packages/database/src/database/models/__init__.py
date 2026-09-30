@@ -2344,3 +2344,9 @@ from database.models.microbial_electrosynthesis_engine import (
     MicrobialElectrosynthesisEngineItemProfile,
     MicrobialElectrosynthesisEngineMetricTrace,
 )
+
+from database.models.hdx_ms_conformational_modeler import (
+    HdxMsConformationalModelerStudy,
+    HdxMsConformationalModelerItemProfile,
+    HdxMsConformationalModelerMetricTrace,
+)

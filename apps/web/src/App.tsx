@@ -1,3 +1,4 @@
+import { HdxMsConformationalModelerStudioPage } from './pages/HdxMsConformationalModelerStudioPage';
 import { MicrobialElectrosynthesisEngineStudioPage } from './pages/MicrobialElectrosynthesisEngineStudioPage';
 import { NeoantigenTcrProofreadingStudioPage } from './pages/NeoantigenTcrProofreadingStudioPage';
 import { OpticalPooledCrisprScreeningStudioPage } from './pages/OpticalPooledCrisprScreeningStudioPage';
@@ -601,6 +602,7 @@ function App() {
                 <Route path="/optical-pooled-crispr-screening" element={<OpticalPooledCrisprScreeningStudioPage />} />
                 <Route path="/neoantigen-tcr-proofreading" element={<NeoantigenTcrProofreadingStudioPage />} />
                 <Route path="/microbial-electrosynthesis-engine" element={<MicrobialElectrosynthesisEngineStudioPage />} />
+                <Route path="/hdx-ms-conformational-modeler" element={<HdxMsConformationalModelerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
