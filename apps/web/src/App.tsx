@@ -1,3 +1,4 @@
+import { RiboswitchRnaLigandBindingStudioPage } from './pages/RiboswitchRnaLigandBindingStudioPage';
 import { SpatialEpigenomeProteomeFusionStudioPage } from './pages/SpatialEpigenomeProteomeFusionStudioPage';
 import { CarbonFixationEnzymeCascadeStudioPage } from './pages/CarbonFixationEnzymeCascadeStudioPage';
 import { TargetedExosomeEngineeringStudioPage } from './pages/TargetedExosomeEngineeringStudioPage';
@@ -593,6 +594,7 @@ function App() {
                 <Route path="/targeted-exosome-engineering" element={<TargetedExosomeEngineeringStudioPage />} />
                 <Route path="/carbon-fixation-enzyme-cascade" element={<CarbonFixationEnzymeCascadeStudioPage />} />
                 <Route path="/spatial-epigenome-proteome-fusion" element={<SpatialEpigenomeProteomeFusionStudioPage />} />
+                <Route path="/riboswitch-rna-ligand-binding" element={<RiboswitchRnaLigandBindingStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

@@ -2320,3 +2320,9 @@ from database.models.spatial_epigenome_proteome_fusion import (
     SpatialEpigenomeProteomeFusionItemProfile,
     SpatialEpigenomeProteomeFusionMetricTrace,
 )
+
+from database.models.riboswitch_rna_ligand_binding import (
+    RiboswitchRnaLigandBindingStudy,
+    RiboswitchRnaLigandBindingItemProfile,
+    RiboswitchRnaLigandBindingMetricTrace,
+)
