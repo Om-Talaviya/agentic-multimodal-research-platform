@@ -2494,3 +2494,9 @@ from database.models.crispr_prime_editing_efficiency import (
     CrisprPrimeEditingEfficiencyItemProfile,
     CrisprPrimeEditingEfficiencyMetricTrace,
 )
+
+from database.models.multiplexed_codex_neighborhood import (
+    MultiplexedCodexNeighborhoodStudy,
+    MultiplexedCodexNeighborhoodItemProfile,
+    MultiplexedCodexNeighborhoodMetricTrace,
+)

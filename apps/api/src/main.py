@@ -1,3 +1,4 @@
+from api.routes.multiplexed_codex_neighborhood import router as multiplexed_codex_neighborhood_router
 from api.routes.crispr_prime_editing_efficiency import router as crispr_prime_editing_efficiency_router
 from api.routes.supramolecular_peptide_hydrogel import router as supramolecular_peptide_hydrogel_router
 from api.routes.circulating_tumor_dna_methylation import router as circulating_tumor_dna_methylation_router
@@ -1121,3 +1122,5 @@ app.include_router(circulating_tumor_dna_methylation_router, prefix=settings.api
 app.include_router(supramolecular_peptide_hydrogel_router, prefix=settings.api_prefix)
 
 app.include_router(crispr_prime_editing_efficiency_router, prefix=settings.api_prefix)
+
+app.include_router(multiplexed_codex_neighborhood_router, prefix=settings.api_prefix)
