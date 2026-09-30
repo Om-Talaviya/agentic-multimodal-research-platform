@@ -2530,3 +2530,9 @@ from database.models.high_density_mea_spike_sorting import (
     HighDensityMeaSpikeSortingItemProfile,
     HighDensityMeaSpikeSortingMetricTrace,
 )
+
+from database.models.mitochondrial_metabolism_flux import (
+    MitochondrialMetabolismFluxStudy,
+    MitochondrialMetabolismFluxItemProfile,
+    MitochondrialMetabolismFluxMetricTrace,
+)
