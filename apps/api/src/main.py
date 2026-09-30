@@ -1,3 +1,4 @@
+from api.routes.singlecell_5mc_5hmc_caller import router as singlecell_5mc_5hmc_caller_router
 from api.routes.hdx_ms_conformational_modeler import router as hdx_ms_conformational_modeler_router
 from api.routes.microbial_electrosynthesis_engine import router as microbial_electrosynthesis_engine_router
 from api.routes.neoantigen_tcr_proofreading import router as neoantigen_tcr_proofreading_router
@@ -1049,3 +1050,5 @@ app.include_router(neoantigen_tcr_proofreading_router, prefix=settings.api_prefi
 app.include_router(microbial_electrosynthesis_engine_router, prefix=settings.api_prefix)
 
 app.include_router(hdx_ms_conformational_modeler_router, prefix=settings.api_prefix)
+
+app.include_router(singlecell_5mc_5hmc_caller_router, prefix=settings.api_prefix)

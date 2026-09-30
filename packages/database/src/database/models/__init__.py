@@ -2350,3 +2350,9 @@ from database.models.hdx_ms_conformational_modeler import (
     HdxMsConformationalModelerItemProfile,
     HdxMsConformationalModelerMetricTrace,
 )
+
+from database.models.singlecell_5mc_5hmc_caller import (
+    Singlecell5mc5hmcCallerStudy,
+    Singlecell5mc5hmcCallerItemProfile,
+    Singlecell5mc5hmcCallerMetricTrace,
+)
