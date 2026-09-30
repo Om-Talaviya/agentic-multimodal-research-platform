@@ -1,3 +1,4 @@
+from api.routes.circulating_tumor_dna_methylation import router as circulating_tumor_dna_methylation_router
 from api.routes.magnetic_tweezers_dna_supercoiling import router as magnetic_tweezers_dna_supercoiling_router
 from api.routes.whole_exome_tmb_msi_evaluator import router as whole_exome_tmb_msi_evaluator_router
 from api.routes.car_nk_exhaustion_resilience import router as car_nk_exhaustion_resilience_router
@@ -1112,3 +1113,5 @@ app.include_router(car_nk_exhaustion_resilience_router, prefix=settings.api_pref
 app.include_router(whole_exome_tmb_msi_evaluator_router, prefix=settings.api_prefix)
 
 app.include_router(magnetic_tweezers_dna_supercoiling_router, prefix=settings.api_prefix)
+
+app.include_router(circulating_tumor_dna_methylation_router, prefix=settings.api_prefix)

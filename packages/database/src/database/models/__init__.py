@@ -2476,3 +2476,9 @@ from database.models.magnetic_tweezers_dna_supercoiling import (
     MagneticTweezersDnaSupercoilingItemProfile,
     MagneticTweezersDnaSupercoilingMetricTrace,
 )
+
+from database.models.circulating_tumor_dna_methylation import (
+    CirculatingTumorDnaMethylationStudy,
+    CirculatingTumorDnaMethylationItemProfile,
+    CirculatingTumorDnaMethylationMetricTrace,
+)
