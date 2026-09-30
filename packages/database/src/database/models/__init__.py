@@ -2464,3 +2464,9 @@ from database.models.car_nk_exhaustion_resilience import (
     CarNkExhaustionResilienceItemProfile,
     CarNkExhaustionResilienceMetricTrace,
 )
+
+from database.models.whole_exome_tmb_msi_evaluator import (
+    WholeExomeTmbMsiEvaluatorStudy,
+    WholeExomeTmbMsiEvaluatorItemProfile,
+    WholeExomeTmbMsiEvaluatorMetricTrace,
+)
