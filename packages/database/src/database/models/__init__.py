@@ -2470,3 +2470,9 @@ from database.models.whole_exome_tmb_msi_evaluator import (
     WholeExomeTmbMsiEvaluatorItemProfile,
     WholeExomeTmbMsiEvaluatorMetricTrace,
 )
+
+from database.models.magnetic_tweezers_dna_supercoiling import (
+    MagneticTweezersDnaSupercoilingStudy,
+    MagneticTweezersDnaSupercoilingItemProfile,
+    MagneticTweezersDnaSupercoilingMetricTrace,
+)

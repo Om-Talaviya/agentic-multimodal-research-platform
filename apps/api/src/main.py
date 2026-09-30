@@ -1,3 +1,4 @@
+from api.routes.magnetic_tweezers_dna_supercoiling import router as magnetic_tweezers_dna_supercoiling_router
 from api.routes.whole_exome_tmb_msi_evaluator import router as whole_exome_tmb_msi_evaluator_router
 from api.routes.car_nk_exhaustion_resilience import router as car_nk_exhaustion_resilience_router
 from api.routes.viral_capsid_cryoem_reconstructor import router as viral_capsid_cryoem_reconstructor_router
@@ -1109,3 +1110,5 @@ app.include_router(viral_capsid_cryoem_reconstructor_router, prefix=settings.api
 app.include_router(car_nk_exhaustion_resilience_router, prefix=settings.api_prefix)
 
 app.include_router(whole_exome_tmb_msi_evaluator_router, prefix=settings.api_prefix)
+
+app.include_router(magnetic_tweezers_dna_supercoiling_router, prefix=settings.api_prefix)
