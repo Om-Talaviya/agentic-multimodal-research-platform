@@ -1,3 +1,4 @@
+from api.routes.targeted_rna_degradation_ribotac import router as targeted_rna_degradation_ribotac_router
 from api.routes.single_molecule_fret_kinetics import router as single_molecule_fret_kinetics_router
 from api.routes.antibody_humanness_immunogenicity import router as antibody_humanness_immunogenicity_router
 from api.routes.organoid_microfluidic_vasculature import router as organoid_microfluidic_vasculature_router
@@ -1133,3 +1134,5 @@ app.include_router(organoid_microfluidic_vasculature_router, prefix=settings.api
 app.include_router(antibody_humanness_immunogenicity_router, prefix=settings.api_prefix)
 
 app.include_router(single_molecule_fret_kinetics_router, prefix=settings.api_prefix)
+
+app.include_router(targeted_rna_degradation_ribotac_router, prefix=settings.api_prefix)

@@ -2518,3 +2518,9 @@ from database.models.single_molecule_fret_kinetics import (
     SingleMoleculeFretKineticsItemProfile,
     SingleMoleculeFretKineticsMetricTrace,
 )
+
+from database.models.targeted_rna_degradation_ribotac import (
+    TargetedRnaDegradationRibotacStudy,
+    TargetedRnaDegradationRibotacItemProfile,
+    TargetedRnaDegradationRibotacMetricTrace,
+)
