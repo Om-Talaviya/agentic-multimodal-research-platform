@@ -2482,3 +2482,9 @@ from database.models.circulating_tumor_dna_methylation import (
     CirculatingTumorDnaMethylationItemProfile,
     CirculatingTumorDnaMethylationMetricTrace,
 )
+
+from database.models.supramolecular_peptide_hydrogel import (
+    SupramolecularPeptideHydrogelStudy,
+    SupramolecularPeptideHydrogelItemProfile,
+    SupramolecularPeptideHydrogelMetricTrace,
+)
