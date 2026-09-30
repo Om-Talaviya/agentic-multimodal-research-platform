@@ -1,3 +1,4 @@
+from api.routes.peptide_hla_dp_dq_predictor import router as peptide_hla_dp_dq_predictor_router
 from api.routes.microfluidic_bioreactor_twin import router as microfluidic_bioreactor_twin_router
 from api.routes.viral_tropism_detargeting import router as viral_tropism_detargeting_router
 from api.routes.nanobody_multimer_optimizer import router as nanobody_multimer_optimizer_router
@@ -1061,3 +1062,5 @@ app.include_router(nanobody_multimer_optimizer_router, prefix=settings.api_prefi
 app.include_router(viral_tropism_detargeting_router, prefix=settings.api_prefix)
 
 app.include_router(microfluidic_bioreactor_twin_router, prefix=settings.api_prefix)
+
+app.include_router(peptide_hla_dp_dq_predictor_router, prefix=settings.api_prefix)

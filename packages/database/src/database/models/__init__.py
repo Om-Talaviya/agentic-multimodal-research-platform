@@ -2374,3 +2374,9 @@ from database.models.microfluidic_bioreactor_twin import (
     MicrofluidicBioreactorTwinItemProfile,
     MicrofluidicBioreactorTwinMetricTrace,
 )
+
+from database.models.peptide_hla_dp_dq_predictor import (
+    PeptideHlaDpDqPredictorStudy,
+    PeptideHlaDpDqPredictorItemProfile,
+    PeptideHlaDpDqPredictorMetricTrace,
+)

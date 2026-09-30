@@ -1,3 +1,4 @@
+import { PeptideHlaDpDqPredictorStudioPage } from './pages/PeptideHlaDpDqPredictorStudioPage';
 import { MicrofluidicBioreactorTwinStudioPage } from './pages/MicrofluidicBioreactorTwinStudioPage';
 import { ViralTropismDetargetingStudioPage } from './pages/ViralTropismDetargetingStudioPage';
 import { NanobodyMultimerOptimizerStudioPage } from './pages/NanobodyMultimerOptimizerStudioPage';
@@ -611,6 +612,7 @@ function App() {
                 <Route path="/nanobody-multimer-optimizer" element={<NanobodyMultimerOptimizerStudioPage />} />
                 <Route path="/viral-tropism-detargeting" element={<ViralTropismDetargetingStudioPage />} />
                 <Route path="/microfluidic-bioreactor-twin" element={<MicrofluidicBioreactorTwinStudioPage />} />
+                <Route path="/peptide-hla-dp-dq-predictor" element={<PeptideHlaDpDqPredictorStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
