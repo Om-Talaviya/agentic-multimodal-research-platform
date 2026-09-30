@@ -2452,3 +2452,9 @@ from database.models.single_cell_spatial_epigenomics import (
     SingleCellSpatialEpigenomicsItemProfile,
     SingleCellSpatialEpigenomicsMetricTrace,
 )
+
+from database.models.viral_capsid_cryoem_reconstructor import (
+    ViralCapsidCryoemReconstructorStudy,
+    ViralCapsidCryoemReconstructorItemProfile,
+    ViralCapsidCryoemReconstructorMetricTrace,
+)
