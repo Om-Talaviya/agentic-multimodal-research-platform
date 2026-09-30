@@ -2380,3 +2380,9 @@ from database.models.peptide_hla_dp_dq_predictor import (
     PeptideHlaDpDqPredictorItemProfile,
     PeptideHlaDpDqPredictorMetricTrace,
 )
+
+from database.models.dna_origami_nanorobot_cargo import (
+    DnaOrigamiNanorobotCargoStudy,
+    DnaOrigamiNanorobotCargoItemProfile,
+    DnaOrigamiNanorobotCargoMetricTrace,
+)

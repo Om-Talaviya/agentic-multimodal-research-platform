@@ -1,3 +1,4 @@
+import { DnaOrigamiNanorobotCargoStudioPage } from './pages/DnaOrigamiNanorobotCargoStudioPage';
 import { PeptideHlaDpDqPredictorStudioPage } from './pages/PeptideHlaDpDqPredictorStudioPage';
 import { MicrofluidicBioreactorTwinStudioPage } from './pages/MicrofluidicBioreactorTwinStudioPage';
 import { ViralTropismDetargetingStudioPage } from './pages/ViralTropismDetargetingStudioPage';
@@ -613,6 +614,7 @@ function App() {
                 <Route path="/viral-tropism-detargeting" element={<ViralTropismDetargetingStudioPage />} />
                 <Route path="/microfluidic-bioreactor-twin" element={<MicrofluidicBioreactorTwinStudioPage />} />
                 <Route path="/peptide-hla-dp-dq-predictor" element={<PeptideHlaDpDqPredictorStudioPage />} />
+                <Route path="/dna-origami-nanorobot-cargo" element={<DnaOrigamiNanorobotCargoStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
