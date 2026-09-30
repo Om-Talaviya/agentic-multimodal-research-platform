@@ -1,3 +1,4 @@
+import { CarbonFixationEnzymeCascadeStudioPage } from './pages/CarbonFixationEnzymeCascadeStudioPage';
 import { TargetedExosomeEngineeringStudioPage } from './pages/TargetedExosomeEngineeringStudioPage';
 import { ClemSubcellularDeconvolutionStudioPage } from './pages/ClemSubcellularDeconvolutionStudioPage';
 import { MilestoneV41MetaOrchestratorStudioPage } from './pages/MilestoneV41MetaOrchestratorStudioPage';
@@ -589,6 +590,7 @@ function App() {
                 <Route path="/milestone-v4-1-orchestrator" element={<MilestoneV41MetaOrchestratorStudioPage />} />
                 <Route path="/clem-subcellular-deconvolution" element={<ClemSubcellularDeconvolutionStudioPage />} />
                 <Route path="/targeted-exosome-engineering" element={<TargetedExosomeEngineeringStudioPage />} />
+                <Route path="/carbon-fixation-enzyme-cascade" element={<CarbonFixationEnzymeCascadeStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

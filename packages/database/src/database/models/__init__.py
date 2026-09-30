@@ -2308,3 +2308,9 @@ from database.models.targeted_exosome_engineering import (
     TargetedExosomeEngineeringItemProfile,
     TargetedExosomeEngineeringMetricTrace,
 )
+
+from database.models.carbon_fixation_enzyme_cascade import (
+    CarbonFixationEnzymeCascadeStudy,
+    CarbonFixationEnzymeCascadeItemProfile,
+    CarbonFixationEnzymeCascadeMetricTrace,
+)

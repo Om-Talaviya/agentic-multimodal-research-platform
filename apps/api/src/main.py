@@ -1,3 +1,4 @@
+from api.routes.carbon_fixation_enzyme_cascade import router as carbon_fixation_enzyme_cascade_router
 from api.routes.targeted_exosome_engineering import router as targeted_exosome_engineering_router
 from api.routes.clem_subcellular_deconvolution import router as clem_subcellular_deconvolution_router
 from api.routes.milestone_v4_1_meta_orchestrator import router as milestone_v4_1_meta_orchestrator_router
@@ -1028,3 +1029,5 @@ app.include_router(milestone_v4_1_meta_orchestrator_router, prefix=settings.api_
 app.include_router(clem_subcellular_deconvolution_router, prefix=settings.api_prefix)
 
 app.include_router(targeted_exosome_engineering_router, prefix=settings.api_prefix)
+
+app.include_router(carbon_fixation_enzyme_cascade_router, prefix=settings.api_prefix)
