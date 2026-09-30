@@ -1,3 +1,4 @@
+from api.routes.spatial_epigenome_proteome_fusion import router as spatial_epigenome_proteome_fusion_router
 from api.routes.carbon_fixation_enzyme_cascade import router as carbon_fixation_enzyme_cascade_router
 from api.routes.targeted_exosome_engineering import router as targeted_exosome_engineering_router
 from api.routes.clem_subcellular_deconvolution import router as clem_subcellular_deconvolution_router
@@ -1031,3 +1032,5 @@ app.include_router(clem_subcellular_deconvolution_router, prefix=settings.api_pr
 app.include_router(targeted_exosome_engineering_router, prefix=settings.api_prefix)
 
 app.include_router(carbon_fixation_enzyme_cascade_router, prefix=settings.api_prefix)
+
+app.include_router(spatial_epigenome_proteome_fusion_router, prefix=settings.api_prefix)

@@ -2314,3 +2314,9 @@ from database.models.carbon_fixation_enzyme_cascade import (
     CarbonFixationEnzymeCascadeItemProfile,
     CarbonFixationEnzymeCascadeMetricTrace,
 )
+
+from database.models.spatial_epigenome_proteome_fusion import (
+    SpatialEpigenomeProteomeFusionStudy,
+    SpatialEpigenomeProteomeFusionItemProfile,
+    SpatialEpigenomeProteomeFusionMetricTrace,
+)

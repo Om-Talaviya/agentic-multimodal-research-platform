@@ -1,3 +1,4 @@
+import { SpatialEpigenomeProteomeFusionStudioPage } from './pages/SpatialEpigenomeProteomeFusionStudioPage';
 import { CarbonFixationEnzymeCascadeStudioPage } from './pages/CarbonFixationEnzymeCascadeStudioPage';
 import { TargetedExosomeEngineeringStudioPage } from './pages/TargetedExosomeEngineeringStudioPage';
 import { ClemSubcellularDeconvolutionStudioPage } from './pages/ClemSubcellularDeconvolutionStudioPage';
@@ -591,6 +592,7 @@ function App() {
                 <Route path="/clem-subcellular-deconvolution" element={<ClemSubcellularDeconvolutionStudioPage />} />
                 <Route path="/targeted-exosome-engineering" element={<TargetedExosomeEngineeringStudioPage />} />
                 <Route path="/carbon-fixation-enzyme-cascade" element={<CarbonFixationEnzymeCascadeStudioPage />} />
+                <Route path="/spatial-epigenome-proteome-fusion" element={<SpatialEpigenomeProteomeFusionStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
