@@ -1,3 +1,4 @@
+import { M6aEpitranscriptomeBalancerStudioPage } from './pages/M6aEpitranscriptomeBalancerStudioPage';
 import { OrganoidPatchClampAnalyzerStudioPage } from './pages/OrganoidPatchClampAnalyzerStudioPage';
 import { CellFreeProteinSynthesisStudioPage } from './pages/CellFreeProteinSynthesisStudioPage';
 import { DnaOrigamiNanorobotCargoStudioPage } from './pages/DnaOrigamiNanorobotCargoStudioPage';
@@ -619,6 +620,7 @@ function App() {
                 <Route path="/dna-origami-nanorobot-cargo" element={<DnaOrigamiNanorobotCargoStudioPage />} />
                 <Route path="/cell-free-protein-synthesis" element={<CellFreeProteinSynthesisStudioPage />} />
                 <Route path="/organoid-patch-clamp-analyzer" element={<OrganoidPatchClampAnalyzerStudioPage />} />
+                <Route path="/m6a-epitranscriptome-balancer" element={<M6aEpitranscriptomeBalancerStudioPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />

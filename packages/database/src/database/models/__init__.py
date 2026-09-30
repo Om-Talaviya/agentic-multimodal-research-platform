@@ -2398,3 +2398,9 @@ from database.models.organoid_patch_clamp_analyzer import (
     OrganoidPatchClampAnalyzerItemProfile,
     OrganoidPatchClampAnalyzerMetricTrace,
 )
+
+from database.models.m6a_epitranscriptome_balancer import (
+    M6aEpitranscriptomeBalancerStudy,
+    M6aEpitranscriptomeBalancerItemProfile,
+    M6aEpitranscriptomeBalancerMetricTrace,
+)
