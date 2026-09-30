@@ -2422,3 +2422,9 @@ from database.models.milestone_v4_2_meta_orchestrator import (
     MilestoneV42MetaOrchestratorItemProfile,
     MilestoneV42MetaOrchestratorMetricTrace,
 )
+
+from database.models.quantum_dots_cellular_tracker import (
+    QuantumDotsCellularTrackerStudy,
+    QuantumDotsCellularTrackerItemProfile,
+    QuantumDotsCellularTrackerMetricTrace,
+)

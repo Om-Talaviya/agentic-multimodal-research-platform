@@ -1,3 +1,4 @@
+from api.routes.quantum_dots_cellular_tracker import router as quantum_dots_cellular_tracker_router
 from api.routes.milestone_v4_2_meta_orchestrator import router as milestone_v4_2_meta_orchestrator_router
 from api.routes.antibody_fc_glycoengineering import router as antibody_fc_glycoengineering_router
 from api.routes.allosteric_cryptic_pocket_msm import router as allosteric_cryptic_pocket_msm_router
@@ -1085,3 +1086,5 @@ app.include_router(allosteric_cryptic_pocket_msm_router, prefix=settings.api_pre
 app.include_router(antibody_fc_glycoengineering_router, prefix=settings.api_prefix)
 
 app.include_router(milestone_v4_2_meta_orchestrator_router, prefix=settings.api_prefix)
+
+app.include_router(quantum_dots_cellular_tracker_router, prefix=settings.api_prefix)
