@@ -2542,3 +2542,9 @@ from database.models.acoustic_levitation_cell_assembly import (
     AcousticLevitationCellAssemblyItemProfile,
     AcousticLevitationCellAssemblyMetricTrace,
 )
+
+from database.models.milestone_v4_3_meta_orchestrator import (
+    MilestoneV43MetaOrchestratorStudy,
+    MilestoneV43MetaOrchestratorItemProfile,
+    MilestoneV43MetaOrchestratorMetricTrace,
+)
