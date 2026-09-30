@@ -1,3 +1,4 @@
+from api.routes.cell_free_protein_synthesis import router as cell_free_protein_synthesis_router
 from api.routes.dna_origami_nanorobot_cargo import router as dna_origami_nanorobot_cargo_router
 from api.routes.peptide_hla_dp_dq_predictor import router as peptide_hla_dp_dq_predictor_router
 from api.routes.microfluidic_bioreactor_twin import router as microfluidic_bioreactor_twin_router
@@ -1067,3 +1068,5 @@ app.include_router(microfluidic_bioreactor_twin_router, prefix=settings.api_pref
 app.include_router(peptide_hla_dp_dq_predictor_router, prefix=settings.api_prefix)
 
 app.include_router(dna_origami_nanorobot_cargo_router, prefix=settings.api_prefix)
+
+app.include_router(cell_free_protein_synthesis_router, prefix=settings.api_prefix)

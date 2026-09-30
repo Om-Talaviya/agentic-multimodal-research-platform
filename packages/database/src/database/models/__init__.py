@@ -2386,3 +2386,9 @@ from database.models.dna_origami_nanorobot_cargo import (
     DnaOrigamiNanorobotCargoItemProfile,
     DnaOrigamiNanorobotCargoMetricTrace,
 )
+
+from database.models.cell_free_protein_synthesis import (
+    CellFreeProteinSynthesisStudy,
+    CellFreeProteinSynthesisItemProfile,
+    CellFreeProteinSynthesisMetricTrace,
+)
