@@ -1,3 +1,4 @@
+from api.routes.microfluidic_bioreactor_twin import router as microfluidic_bioreactor_twin_router
 from api.routes.viral_tropism_detargeting import router as viral_tropism_detargeting_router
 from api.routes.nanobody_multimer_optimizer import router as nanobody_multimer_optimizer_router
 from api.routes.singlecell_5mc_5hmc_caller import router as singlecell_5mc_5hmc_caller_router
@@ -1058,3 +1059,5 @@ app.include_router(singlecell_5mc_5hmc_caller_router, prefix=settings.api_prefix
 app.include_router(nanobody_multimer_optimizer_router, prefix=settings.api_prefix)
 
 app.include_router(viral_tropism_detargeting_router, prefix=settings.api_prefix)
+
+app.include_router(microfluidic_bioreactor_twin_router, prefix=settings.api_prefix)

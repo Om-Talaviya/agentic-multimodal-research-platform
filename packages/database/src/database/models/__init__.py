@@ -2368,3 +2368,9 @@ from database.models.viral_tropism_detargeting import (
     ViralTropismDetargetingItemProfile,
     ViralTropismDetargetingMetricTrace,
 )
+
+from database.models.microfluidic_bioreactor_twin import (
+    MicrofluidicBioreactorTwinStudy,
+    MicrofluidicBioreactorTwinItemProfile,
+    MicrofluidicBioreactorTwinMetricTrace,
+)
