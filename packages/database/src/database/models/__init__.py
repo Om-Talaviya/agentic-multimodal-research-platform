@@ -2693,3 +2693,9 @@ from database.models.microbial_electrogenic_biofilm_flux import (
     MicrobialElectrogenicBiofilmItemProfile,
     MicrobialElectrogenicBiofilmMetricTrace,
 )
+
+from database.models.cryoet_nuclear_pore_basket_tomography import (
+    CryoetNuclearPoreBasketStudy,
+    CryoetNuclearPoreBasketItemProfile,
+    CryoetNuclearPoreBasketMetricTrace,
+)

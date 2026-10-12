@@ -1727,3 +1727,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous microbial electrogenic biofilm extracellular electron transfer (eet) simulator.
 - **Decision**: Implemented `MicrobialElectrogenicBiofilmEngine`, `MicrobialElectrogenicBiofilmStudy`, `MicrobialElectrogenicBiofilmRepository`, and `/api/v1/microbial-electrogenic-biofilm/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-438: Autonomous Cryo-ET In-Situ Nuclear Pore Complex (NPC) Nuclear Basket Dynamic Conformation Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cryo-et in-situ nuclear pore complex (npc) nuclear basket dynamic conformation engine.
+- **Decision**: Implemented `CryoetNuclearPoreBasketEngine`, `CryoetNuclearPoreBasketStudy`, `CryoetNuclearPoreBasketRepository`, and `/api/v1/cryoet-nuclear-pore-basket/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

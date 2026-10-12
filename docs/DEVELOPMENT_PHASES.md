@@ -1098,3 +1098,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 435**: Autonomous Reconfigurable DNA Origami Dynamic Hinge Compliant Nano-Actuator Engine (`dna_origami_dynamic_hinge_biosensor`)
 - [x] **Phase 436**: Autonomous Diamond NV-Center Nanoscale Single-Molecule Magnetic Resonance Engine (`single_molecule_magnetic_resonance_nv_center`)
 - [x] **Phase 437**: Autonomous Microbial Electrogenic Biofilm Extracellular Electron Transfer (EET) Simulator (`microbial_electrogenic_biofilm_flux`)
+- [x] **Phase 438**: Autonomous Cryo-ET In-Situ Nuclear Pore Complex (NPC) Nuclear Basket Dynamic Conformation Engine (`cryoet_nuclear_pore_basket_tomography`)
