@@ -2669,3 +2669,9 @@ from database.models.synchrotron_saxs_ensemble_fitter import (
     SynchrotronSaxsEnsembleFitterItemProfile,
     SynchrotronSaxsEnsembleFitterMetricTrace,
 )
+
+from database.models.milestone_v4_4_meta_orchestrator import (
+    MilestoneV44MetaOrchestratorStudy,
+    MilestoneV44MetaOrchestratorItemProfile,
+    MilestoneV44MetaOrchestratorMetricTrace,
+)

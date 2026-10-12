@@ -1,3 +1,4 @@
+from api.routes.milestone_v4_4_meta_orchestrator import router as milestone_v4_4_meta_orchestrator_router
 from api.routes.synchrotron_saxs_ensemble_fitter import router as synchrotron_saxs_ensemble_fitter_router
 from api.routes.pace_directed_evolution_trajectory import router as pace_directed_evolution_trajectory_router
 from api.routes.spatial_transcriptomics_niche_deconvolution import router as spatial_transcriptomics_niche_deconvolution_router
@@ -1189,3 +1190,4 @@ app.include_router(bifunctional_degron_ternary_docking_router, prefix=settings.a
 app.include_router(spatial_transcriptomics_niche_deconvolution_router, prefix=settings.api_prefix)
 app.include_router(pace_directed_evolution_trajectory_router, prefix=settings.api_prefix)
 app.include_router(synchrotron_saxs_ensemble_fitter_router, prefix=settings.api_prefix)
+app.include_router(milestone_v4_4_meta_orchestrator_router, prefix=settings.api_prefix)
