@@ -2603,3 +2603,9 @@ from database.models.ligand_residence_time_koff import (
     LigandResidenceTimeKoffItemProfile,
     LigandResidenceTimeKoffMetricTrace,
 )
+
+from database.models.minimal_cell_lipid_asymmetry import (
+    MinimalCellLipidAsymmetryStudy,
+    MinimalCellLipidAsymmetryItemProfile,
+    MinimalCellLipidAsymmetryMetricTrace,
+)

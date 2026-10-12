@@ -1,3 +1,4 @@
+from api.routes.minimal_cell_lipid_asymmetry import router as minimal_cell_lipid_asymmetry_router
 from api.routes.ligand_residence_time_koff import router as ligand_residence_time_koff_router
 from api.routes.dna_paint_nanometer_counting import router as dna_paint_nanometer_counting_router
 from api.routes.citeseq_tcr_immune_synapse import router as citeseq_tcr_immune_synapse_router
@@ -1167,3 +1168,4 @@ app.include_router(in_cell_nmr_crowding_tensor_router, prefix=settings.api_prefi
 app.include_router(citeseq_tcr_immune_synapse_router, prefix=settings.api_prefix)
 app.include_router(dna_paint_nanometer_counting_router, prefix=settings.api_prefix)
 app.include_router(ligand_residence_time_koff_router, prefix=settings.api_prefix)
+app.include_router(minimal_cell_lipid_asymmetry_router, prefix=settings.api_prefix)

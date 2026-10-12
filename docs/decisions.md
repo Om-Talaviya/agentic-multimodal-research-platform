@@ -1622,3 +1622,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous allosteric ligand residence time & dissociation rate constant (k_off) molecular dynamics extractor.
 - **Decision**: Implemented `LigandResidenceTimeKoffEngine`, `LigandResidenceTimeKoffStudy`, `LigandResidenceTimeKoffRepository`, and `/api/v1/ligand-residence-time-koff/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-423: Autonomous Synthetic Minimal Cell Membrane Lipid Bilayer Asymmetry & Vesicle Budding Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous synthetic minimal cell membrane lipid bilayer asymmetry & vesicle budding engine.
+- **Decision**: Implemented `MinimalCellLipidAsymmetryEngine`, `MinimalCellLipidAsymmetryStudy`, `MinimalCellLipidAsymmetryRepository`, and `/api/v1/minimal-cell-lipid-asymmetry/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

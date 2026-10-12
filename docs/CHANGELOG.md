@@ -1,5 +1,6 @@
 ## [v4.4.0] - Milestone v4.4 Autonomous Nanoscale Biophysics, Epitranscriptomics & Planetary Synthesis OS
 ### Added
+- **Phase 423**: Autonomous Synthetic Minimal Cell Membrane Lipid Bilayer Asymmetry & Vesicle Budding Engine (`minimal_cell_lipid_asymmetry`)
 - **Phase 422**: Autonomous Allosteric Ligand Residence Time & Dissociation Rate Constant (k_off) Molecular Dynamics Extractor (`ligand_residence_time_koff`)
 - **Phase 421**: Autonomous DNA-PAINT Nanometer Super-Resolution Spatial Molecular Counting Engine (`dna_paint_nanometer_counting`)
 - **Phase 420**: Autonomous Single-Cell Multi-Modal CITE-seq & TCR Clonotype Immune Synapse Dynamics Deconvolver (`citeseq_tcr_immune_synapse`)
