@@ -66,28 +66,28 @@ PHASES = [
     },
     {
         "phase": 417,
-        "module": "riboseq_translation_kinetics",
-        "tag": "riboseq-translation-kinetics",
-        "class_prefix": "RiboseqTranslationKinetics",
-        "page_name": "RiboseqTranslationKineticsStudioPage",
-        "title": "Autonomous High-Throughput Ribosome Profiling (Ribo-seq) Translation Efficiency & Pause Site Forecaster",
-        "specimen": "Polysome-Bound 80S Ribosomal Footprint mRNA Libraries",
-        "modality": "riboseq-translation",
-        "metric1_name": "translation_efficiency_index",
+        "module": "solid_state_nanopore_single_molecule_sensing",
+        "tag": "solid-state-nanopore-sensing",
+        "class_prefix": "SolidStateNanoporeSensing",
+        "page_name": "SolidStateNanoporeSensingStudioPage",
+        "title": "Autonomous Solid-State Silicon Nitride Nanopore Single-Molecule Protein Translocation Engine",
+        "specimen": "Conformationally Stretched Native Protein Translocation Through Sub-5nm SiNx Nanopore",
+        "modality": "solid-state-nanopore",
+        "metric1_name": "translocation_dwell_time_us",
         "metric1_type": "Float",
-        "metric1_val": 3.82,
-        "metric2_name": "ribosome_pause_duration_ms",
+        "metric1_val": 245.0,
+        "metric2_name": "fractional_current_blockade_ratio",
         "metric2_type": "Float",
-        "metric2_val": 245.0,
-        "metric3_name": "triplet_periodicity_phase_ratio",
+        "metric2_val": 0.785,
+        "metric3_name": "nanopore_diameter_nm",
         "metric3_type": "Float",
-        "metric3_val": 0.934,
-        "metric4_name": "codon_dwell_time_ratio",
+        "metric3_val": 3.8,
+        "metric4_name": "capture_frequency_events_per_s",
         "metric4_type": "Float",
-        "metric4_val": 1.48,
-        "confidence": 0.985,
-        "item_name": "A_Site_Codon_Translational_Pause_Peak",
-        "metric_dim": "translation_efficiency_index",
+        "metric4_val": 18.5,
+        "confidence": 0.988,
+        "item_name": "Single_Molecule_Ionic_Current_Blockade_Event",
+        "metric_dim": "translocation_dwell_time_us",
     },
     {
         "phase": 418,
@@ -1455,16 +1455,17 @@ export const {page_name}: React.FC = () => {{
 
 
 def main():
-    print("=== Starting Batch Build for Milestone v4.4 ===")
-    commit_count = 0
+    print("=== Starting Batch Build for Milestone v4.4 ===", flush=True)
+    remaining_phases = [p for p in PHASES if p["phase"] >= 417]
+    commit_count = 2  # 415 and 416 already pushed
 
-    for idx, p in enumerate(PHASES):
+    for idx, p in enumerate(remaining_phases):
         phase_num = p["phase"]
         tag = p["tag"]
         title = p["title"]
         module = p["module"]
 
-        print(f"\n--- [{idx+1}/{len(PHASES)}] Processing Phase {phase_num}: {title} ---")
+        print(f"\n--- [{idx+1}/{len(remaining_phases)}] Processing Phase {phase_num}: {title} ---", flush=True)
         generate_phase_files(p)
 
         # Run tests for this phase
@@ -1477,11 +1478,11 @@ def main():
         ]
         res = subprocess.run(test_cmd, cwd=str(REPO_ROOT), capture_output=True, text=True)
         if res.returncode != 0:
-            print(f"Error testing phase {phase_num}:")
-            print(res.stdout)
-            print(res.stderr)
+            print(f"Error testing phase {phase_num}:", flush=True)
+            print(res.stdout, flush=True)
+            print(res.stderr, flush=True)
             sys.exit(1)
-        print(f"Tests passed for Phase {phase_num}!")
+        print(f"Tests passed for Phase {phase_num}!", flush=True)
 
         # Git add
         subprocess.run(["git", "add", "."], cwd=str(REPO_ROOT), check=True)
@@ -1490,15 +1491,15 @@ def main():
         commit_msg = f"feat({tag}): complete Phase {phase_num} {title}"
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(REPO_ROOT), check=True)
         commit_count += 1
-        print(f"Committed: {commit_msg}")
+        print(f"Committed ({commit_count}/20): {commit_msg}", flush=True)
 
         # Git push to develop/v1.1 and master
-        print(f"Pushing commit {commit_count} to GitHub...")
+        print(f"Pushing commit {commit_count} to GitHub...", flush=True)
         subprocess.run(["git", "push", "origin", "develop/v1.1"], cwd=str(REPO_ROOT), check=True)
         subprocess.run(["git", "push", "origin", "develop/v1.1:master"], cwd=str(REPO_ROOT), check=True)
-        print(f"Pushed Phase {phase_num} successfully!")
+        print(f"Pushed Phase {phase_num} successfully!", flush=True)
 
-    print(f"\n=== Successfully completed and pushed all {len(PHASES)} feature phases! ===")
+    print(f"\n=== Successfully completed and pushed all {commit_count} feature phases! ===", flush=True)
 
 if __name__ == "__main__":
     main()

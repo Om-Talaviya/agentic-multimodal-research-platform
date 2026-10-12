@@ -2567,3 +2567,9 @@ from database.models.optical_tweezers_dna_mechanics import (
     OpticalTweezersDnaMechanicsItemProfile,
     OpticalTweezersDnaMechanicsMetricTrace,
 )
+
+from database.models.solid_state_nanopore_single_molecule_sensing import (
+    SolidStateNanoporeSensingStudy,
+    SolidStateNanoporeSensingItemProfile,
+    SolidStateNanoporeSensingMetricTrace,
+)

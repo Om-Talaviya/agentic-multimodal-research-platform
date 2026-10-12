@@ -1,3 +1,4 @@
+from api.routes.solid_state_nanopore_single_molecule_sensing import router as solid_state_nanopore_single_molecule_sensing_router
 from api.routes.optical_tweezers_dna_mechanics import router as optical_tweezers_dna_mechanics_router
 from api.routes.direct_rna_nanopore_pseudouridine import router as direct_rna_nanopore_pseudouridine_router
 from api.routes.cryo_fib_milling import router as cryo_fib_milling_router
@@ -1155,3 +1156,4 @@ app.include_router(milestone_v4_3_meta_orchestrator_router, prefix=settings.api_
 app.include_router(cryo_fib_milling_router, prefix=settings.api_prefix)
 app.include_router(direct_rna_nanopore_pseudouridine_router, prefix=settings.api_prefix)
 app.include_router(optical_tweezers_dna_mechanics_router, prefix=settings.api_prefix)
+app.include_router(solid_state_nanopore_single_molecule_sensing_router, prefix=settings.api_prefix)

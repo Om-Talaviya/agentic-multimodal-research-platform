@@ -1580,3 +1580,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous optical tweezers dna-protein mechanical tension & force-extension overstretching modeler.
 - **Decision**: Implemented `OpticalTweezersDnaMechanicsEngine`, `OpticalTweezersDnaMechanicsStudy`, `OpticalTweezersDnaMechanicsRepository`, and `/api/v1/optical-tweezers-dna-mechanics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-417: Autonomous Solid-State Silicon Nitride Nanopore Single-Molecule Protein Translocation Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous solid-state silicon nitride nanopore single-molecule protein translocation engine.
+- **Decision**: Implemented `SolidStateNanoporeSensingEngine`, `SolidStateNanoporeSensingStudy`, `SolidStateNanoporeSensingRepository`, and `/api/v1/solid-state-nanopore-sensing/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
