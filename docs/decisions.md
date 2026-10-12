@@ -1748,3 +1748,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous interferometric minflux nanometer single-fluorophore dynamic tracking engine.
 - **Decision**: Implemented `MinfluxNanometerTrackingEngine`, `MinfluxNanometerTrackingStudy`, `MinfluxNanometerTrackingRepository`, and `/api/v1/minflux-nanometer-tracking/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-441: Autonomous Fenna-Matthews-Olson (FMO) Complex Quantum Exciton Energy Transfer & Coherence Modeler
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous fenna-matthews-olson (fmo) complex quantum exciton energy transfer & coherence modeler.
+- **Decision**: Implemented `PhotosystemQuantumCoherenceEngine`, `PhotosystemQuantumCoherenceStudy`, `PhotosystemQuantumCoherenceRepository`, and `/api/v1/photosystem-quantum-coherence/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -2711,3 +2711,9 @@ from database.models.super_resolution_minflux_nanometer_tracking import (
     MinfluxNanometerTrackingItemProfile,
     MinfluxNanometerTrackingMetricTrace,
 )
+
+from database.models.photosystem_quantum_coherence_exciton_fmo import (
+    PhotosystemQuantumCoherenceStudy,
+    PhotosystemQuantumCoherenceItemProfile,
+    PhotosystemQuantumCoherenceMetricTrace,
+)

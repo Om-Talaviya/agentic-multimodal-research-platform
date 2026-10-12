@@ -1,3 +1,4 @@
+from api.routes.photosystem_quantum_coherence_exciton_fmo import router as photosystem_quantum_coherence_exciton_fmo_router
 from api.routes.super_resolution_minflux_nanometer_tracking import router as super_resolution_minflux_nanometer_tracking_router
 from api.routes.bacterial_chemotaxis_run_tumble_simulator import router as bacterial_chemotaxis_run_tumble_simulator_router
 from api.routes.cryoet_nuclear_pore_basket_tomography import router as cryoet_nuclear_pore_basket_tomography_router
@@ -1203,3 +1204,4 @@ app.include_router(microbial_electrogenic_biofilm_flux_router, prefix=settings.a
 app.include_router(cryoet_nuclear_pore_basket_tomography_router, prefix=settings.api_prefix)
 app.include_router(bacterial_chemotaxis_run_tumble_simulator_router, prefix=settings.api_prefix)
 app.include_router(super_resolution_minflux_nanometer_tracking_router, prefix=settings.api_prefix)
+app.include_router(photosystem_quantum_coherence_exciton_fmo_router, prefix=settings.api_prefix)
