@@ -1,3 +1,4 @@
+from api.routes.bacterial_chemotaxis_run_tumble_simulator import router as bacterial_chemotaxis_run_tumble_simulator_router
 from api.routes.cryoet_nuclear_pore_basket_tomography import router as cryoet_nuclear_pore_basket_tomography_router
 from api.routes.microbial_electrogenic_biofilm_flux import router as microbial_electrogenic_biofilm_flux_router
 from api.routes.single_molecule_magnetic_resonance_nv_center import router as single_molecule_magnetic_resonance_nv_center_router
@@ -1199,3 +1200,4 @@ app.include_router(dna_origami_dynamic_hinge_biosensor_router, prefix=settings.a
 app.include_router(single_molecule_magnetic_resonance_nv_center_router, prefix=settings.api_prefix)
 app.include_router(microbial_electrogenic_biofilm_flux_router, prefix=settings.api_prefix)
 app.include_router(cryoet_nuclear_pore_basket_tomography_router, prefix=settings.api_prefix)
+app.include_router(bacterial_chemotaxis_run_tumble_simulator_router, prefix=settings.api_prefix)

@@ -2699,3 +2699,9 @@ from database.models.cryoet_nuclear_pore_basket_tomography import (
     CryoetNuclearPoreBasketItemProfile,
     CryoetNuclearPoreBasketMetricTrace,
 )
+
+from database.models.bacterial_chemotaxis_run_tumble_simulator import (
+    BacterialChemotaxisSimulatorStudy,
+    BacterialChemotaxisSimulatorItemProfile,
+    BacterialChemotaxisSimulatorMetricTrace,
+)

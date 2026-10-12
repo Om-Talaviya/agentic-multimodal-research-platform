@@ -1734,3 +1734,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cryo-et in-situ nuclear pore complex (npc) nuclear basket dynamic conformation engine.
 - **Decision**: Implemented `CryoetNuclearPoreBasketEngine`, `CryoetNuclearPoreBasketStudy`, `CryoetNuclearPoreBasketRepository`, and `/api/v1/cryoet-nuclear-pore-basket/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-439: Autonomous Flagellar Motor Stochastic Switching & Bacterial Chemotaxis Run-Tumble Trajectory Simulator
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous flagellar motor stochastic switching & bacterial chemotaxis run-tumble trajectory simulator.
+- **Decision**: Implemented `BacterialChemotaxisSimulatorEngine`, `BacterialChemotaxisSimulatorStudy`, `BacterialChemotaxisSimulatorRepository`, and `/api/v1/bacterial-chemotaxis-simulator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

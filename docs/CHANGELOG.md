@@ -1,5 +1,6 @@
 ## [v4.5.0] - Milestone v4.5 Planetary Nanoscale Biomachines, Quantum Biology & Synthetic Cellular Consortia OS
 ### Added
+- **Phase 439**: Autonomous Flagellar Motor Stochastic Switching & Bacterial Chemotaxis Run-Tumble Trajectory Simulator (`bacterial_chemotaxis_run_tumble_simulator`)
 - **Phase 438**: Autonomous Cryo-ET In-Situ Nuclear Pore Complex (NPC) Nuclear Basket Dynamic Conformation Engine (`cryoet_nuclear_pore_basket_tomography`)
 - **Phase 437**: Autonomous Microbial Electrogenic Biofilm Extracellular Electron Transfer (EET) Simulator (`microbial_electrogenic_biofilm_flux`)
 - **Phase 436**: Autonomous Diamond NV-Center Nanoscale Single-Molecule Magnetic Resonance Engine (`single_molecule_magnetic_resonance_nv_center`)
