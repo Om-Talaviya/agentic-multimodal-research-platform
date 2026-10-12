@@ -2657,3 +2657,9 @@ from database.models.spatial_transcriptomics_niche_deconvolution import (
     SpatialTranscriptomicsNicheDeconvolutionItemProfile,
     SpatialTranscriptomicsNicheDeconvolutionMetricTrace,
 )
+
+from database.models.pace_directed_evolution_trajectory import (
+    PaceDirectedEvolutionTrajectoryStudy,
+    PaceDirectedEvolutionTrajectoryItemProfile,
+    PaceDirectedEvolutionTrajectoryMetricTrace,
+)

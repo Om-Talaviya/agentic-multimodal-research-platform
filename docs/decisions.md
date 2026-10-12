@@ -1685,3 +1685,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous high-plex spatial transcriptomics spot deconvolution & cell-type niche interaction engine.
 - **Decision**: Implemented `SpatialTranscriptomicsNicheDeconvolutionEngine`, `SpatialTranscriptomicsNicheDeconvolutionStudy`, `SpatialTranscriptomicsNicheDeconvolutionRepository`, and `/api/v1/spatial-transcriptomics-niche-deconvolution/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-432: Autonomous Continuous Directed Evolution PACE (Phage-Assisted Continuous Evolution) Fitness Trajectory Modeler
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous continuous directed evolution pace (phage-assisted continuous evolution) fitness trajectory modeler.
+- **Decision**: Implemented `PaceDirectedEvolutionTrajectoryEngine`, `PaceDirectedEvolutionTrajectoryStudy`, `PaceDirectedEvolutionTrajectoryRepository`, and `/api/v1/pace-directed-evolution-trajectory/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
