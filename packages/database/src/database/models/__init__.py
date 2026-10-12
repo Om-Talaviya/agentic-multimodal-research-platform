@@ -2579,3 +2579,9 @@ from database.models.subtomogram_microtubule_stepping import (
     SubtomogramMicrotubuleSteppingItemProfile,
     SubtomogramMicrotubuleSteppingMetricTrace,
 )
+
+from database.models.in_cell_nmr_crowding_tensor import (
+    InCellNmrCrowdingTensorStudy,
+    InCellNmrCrowdingTensorItemProfile,
+    InCellNmrCrowdingTensorMetricTrace,
+)

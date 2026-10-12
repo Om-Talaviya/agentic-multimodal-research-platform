@@ -1594,3 +1594,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cryo-et high-density subtomogram microtubule protofilament & motor protein stepping tracker.
 - **Decision**: Implemented `SubtomogramMicrotubuleSteppingEngine`, `SubtomogramMicrotubuleSteppingStudy`, `SubtomogramMicrotubuleSteppingRepository`, and `/api/v1/subtomogram-microtubule-stepping/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-419: Autonomous In-Cell NMR Macromolecular Crowding & Chemical Shift Perturbation Tensor Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous in-cell nmr macromolecular crowding & chemical shift perturbation tensor engine.
+- **Decision**: Implemented `InCellNmrCrowdingTensorEngine`, `InCellNmrCrowdingTensorStudy`, `InCellNmrCrowdingTensorRepository`, and `/api/v1/in-cell-nmr-crowding-tensor/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

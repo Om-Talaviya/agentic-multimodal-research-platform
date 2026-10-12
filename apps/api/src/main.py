@@ -1,3 +1,4 @@
+from api.routes.in_cell_nmr_crowding_tensor import router as in_cell_nmr_crowding_tensor_router
 from api.routes.subtomogram_microtubule_stepping import router as subtomogram_microtubule_stepping_router
 from api.routes.solid_state_nanopore_single_molecule_sensing import router as solid_state_nanopore_single_molecule_sensing_router
 from api.routes.optical_tweezers_dna_mechanics import router as optical_tweezers_dna_mechanics_router
@@ -1159,3 +1160,4 @@ app.include_router(direct_rna_nanopore_pseudouridine_router, prefix=settings.api
 app.include_router(optical_tweezers_dna_mechanics_router, prefix=settings.api_prefix)
 app.include_router(solid_state_nanopore_single_molecule_sensing_router, prefix=settings.api_prefix)
 app.include_router(subtomogram_microtubule_stepping_router, prefix=settings.api_prefix)
+app.include_router(in_cell_nmr_crowding_tensor_router, prefix=settings.api_prefix)
