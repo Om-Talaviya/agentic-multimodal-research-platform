@@ -2705,3 +2705,9 @@ from database.models.bacterial_chemotaxis_run_tumble_simulator import (
     BacterialChemotaxisSimulatorItemProfile,
     BacterialChemotaxisSimulatorMetricTrace,
 )
+
+from database.models.super_resolution_minflux_nanometer_tracking import (
+    MinfluxNanometerTrackingStudy,
+    MinfluxNanometerTrackingItemProfile,
+    MinfluxNanometerTrackingMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.super_resolution_minflux_nanometer_tracking import router as super_resolution_minflux_nanometer_tracking_router
 from api.routes.bacterial_chemotaxis_run_tumble_simulator import router as bacterial_chemotaxis_run_tumble_simulator_router
 from api.routes.cryoet_nuclear_pore_basket_tomography import router as cryoet_nuclear_pore_basket_tomography_router
 from api.routes.microbial_electrogenic_biofilm_flux import router as microbial_electrogenic_biofilm_flux_router
@@ -1201,3 +1202,4 @@ app.include_router(single_molecule_magnetic_resonance_nv_center_router, prefix=s
 app.include_router(microbial_electrogenic_biofilm_flux_router, prefix=settings.api_prefix)
 app.include_router(cryoet_nuclear_pore_basket_tomography_router, prefix=settings.api_prefix)
 app.include_router(bacterial_chemotaxis_run_tumble_simulator_router, prefix=settings.api_prefix)
+app.include_router(super_resolution_minflux_nanometer_tracking_router, prefix=settings.api_prefix)

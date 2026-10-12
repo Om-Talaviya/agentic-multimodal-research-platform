@@ -1741,3 +1741,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous flagellar motor stochastic switching & bacterial chemotaxis run-tumble trajectory simulator.
 - **Decision**: Implemented `BacterialChemotaxisSimulatorEngine`, `BacterialChemotaxisSimulatorStudy`, `BacterialChemotaxisSimulatorRepository`, and `/api/v1/bacterial-chemotaxis-simulator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-440: Autonomous Interferometric MINFLUX Nanometer Single-Fluorophore Dynamic Tracking Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous interferometric minflux nanometer single-fluorophore dynamic tracking engine.
+- **Decision**: Implemented `MinfluxNanometerTrackingEngine`, `MinfluxNanometerTrackingStudy`, `MinfluxNanometerTrackingRepository`, and `/api/v1/minflux-nanometer-tracking/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
