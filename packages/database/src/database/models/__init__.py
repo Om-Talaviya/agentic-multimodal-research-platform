@@ -2609,3 +2609,9 @@ from database.models.minimal_cell_lipid_asymmetry import (
     MinimalCellLipidAsymmetryItemProfile,
     MinimalCellLipidAsymmetryMetricTrace,
 )
+
+from database.models.deep_mutational_scanning_epistasis import (
+    DeepMutationalScanningEpistasisStudy,
+    DeepMutationalScanningEpistasisItemProfile,
+    DeepMutationalScanningEpistasisMetricTrace,
+)

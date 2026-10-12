@@ -1,3 +1,4 @@
+from api.routes.deep_mutational_scanning_epistasis import router as deep_mutational_scanning_epistasis_router
 from api.routes.minimal_cell_lipid_asymmetry import router as minimal_cell_lipid_asymmetry_router
 from api.routes.ligand_residence_time_koff import router as ligand_residence_time_koff_router
 from api.routes.dna_paint_nanometer_counting import router as dna_paint_nanometer_counting_router
@@ -1169,3 +1170,4 @@ app.include_router(citeseq_tcr_immune_synapse_router, prefix=settings.api_prefix
 app.include_router(dna_paint_nanometer_counting_router, prefix=settings.api_prefix)
 app.include_router(ligand_residence_time_koff_router, prefix=settings.api_prefix)
 app.include_router(minimal_cell_lipid_asymmetry_router, prefix=settings.api_prefix)
+app.include_router(deep_mutational_scanning_epistasis_router, prefix=settings.api_prefix)

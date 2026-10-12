@@ -1629,3 +1629,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous synthetic minimal cell membrane lipid bilayer asymmetry & vesicle budding engine.
 - **Decision**: Implemented `MinimalCellLipidAsymmetryEngine`, `MinimalCellLipidAsymmetryStudy`, `MinimalCellLipidAsymmetryRepository`, and `/api/v1/minimal-cell-lipid-asymmetry/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-424: Autonomous Deep Mutational Scanning (DMS) Variant Fitness & Thermostability Epistasis Forecaster
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous deep mutational scanning (dms) variant fitness & thermostability epistasis forecaster.
+- **Decision**: Implemented `DeepMutationalScanningEpistasisEngine`, `DeepMutationalScanningEpistasisStudy`, `DeepMutationalScanningEpistasisRepository`, and `/api/v1/deep-mutational-scanning-epistasis/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
