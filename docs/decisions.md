@@ -1636,3 +1636,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous deep mutational scanning (dms) variant fitness & thermostability epistasis forecaster.
 - **Decision**: Implemented `DeepMutationalScanningEpistasisEngine`, `DeepMutationalScanningEpistasisStudy`, `DeepMutationalScanningEpistasisRepository`, and `/api/v1/deep-mutational-scanning-epistasis/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-425: Autonomous Cell-Free Protein TX-TL Compartmentalized Microfluidic Logic Oscillator
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cell-free protein tx-tl compartmentalized microfluidic logic oscillator.
+- **Decision**: Implemented `CfpsMicrofluidicOscillatorEngine`, `CfpsMicrofluidicOscillatorStudy`, `CfpsMicrofluidicOscillatorRepository`, and `/api/v1/cfps-microfluidic-oscillator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

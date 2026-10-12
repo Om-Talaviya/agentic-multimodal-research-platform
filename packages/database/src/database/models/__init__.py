@@ -2615,3 +2615,9 @@ from database.models.deep_mutational_scanning_epistasis import (
     DeepMutationalScanningEpistasisItemProfile,
     DeepMutationalScanningEpistasisMetricTrace,
 )
+
+from database.models.cfps_microfluidic_oscillator import (
+    CfpsMicrofluidicOscillatorStudy,
+    CfpsMicrofluidicOscillatorItemProfile,
+    CfpsMicrofluidicOscillatorMetricTrace,
+)

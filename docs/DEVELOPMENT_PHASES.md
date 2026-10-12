@@ -1083,3 +1083,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 422**: Autonomous Allosteric Ligand Residence Time & Dissociation Rate Constant (k_off) Molecular Dynamics Extractor (`ligand_residence_time_koff`)
 - [x] **Phase 423**: Autonomous Synthetic Minimal Cell Membrane Lipid Bilayer Asymmetry & Vesicle Budding Engine (`minimal_cell_lipid_asymmetry`)
 - [x] **Phase 424**: Autonomous Deep Mutational Scanning (DMS) Variant Fitness & Thermostability Epistasis Forecaster (`deep_mutational_scanning_epistasis`)
+- [x] **Phase 425**: Autonomous Cell-Free Protein TX-TL Compartmentalized Microfluidic Logic Oscillator (`cfps_microfluidic_oscillator`)
