@@ -1,5 +1,6 @@
 ## [v4.4.0] - Milestone v4.4 Autonomous Nanoscale Biophysics, Epitranscriptomics & Planetary Synthesis OS
 ### Added
+- **Phase 426**: Autonomous Mass Photometry Macromolecular Oligomeric Mass Distribution & Dissociation Constant (KD) Estimator (`mass_photometry_oligomer_kd`)
 - **Phase 425**: Autonomous Cell-Free Protein TX-TL Compartmentalized Microfluidic Logic Oscillator (`cfps_microfluidic_oscillator`)
 - **Phase 424**: Autonomous Deep Mutational Scanning (DMS) Variant Fitness & Thermostability Epistasis Forecaster (`deep_mutational_scanning_epistasis`)
 - **Phase 423**: Autonomous Synthetic Minimal Cell Membrane Lipid Bilayer Asymmetry & Vesicle Budding Engine (`minimal_cell_lipid_asymmetry`)

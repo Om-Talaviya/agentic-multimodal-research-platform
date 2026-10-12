@@ -1643,3 +1643,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cell-free protein tx-tl compartmentalized microfluidic logic oscillator.
 - **Decision**: Implemented `CfpsMicrofluidicOscillatorEngine`, `CfpsMicrofluidicOscillatorStudy`, `CfpsMicrofluidicOscillatorRepository`, and `/api/v1/cfps-microfluidic-oscillator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-426: Autonomous Mass Photometry Macromolecular Oligomeric Mass Distribution & Dissociation Constant (KD) Estimator
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous mass photometry macromolecular oligomeric mass distribution & dissociation constant (kd) estimator.
+- **Decision**: Implemented `MassPhotometryOligomerKdEngine`, `MassPhotometryOligomerKdStudy`, `MassPhotometryOligomerKdRepository`, and `/api/v1/mass-photometry-oligomer-kd/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

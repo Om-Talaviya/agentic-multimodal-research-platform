@@ -2621,3 +2621,9 @@ from database.models.cfps_microfluidic_oscillator import (
     CfpsMicrofluidicOscillatorItemProfile,
     CfpsMicrofluidicOscillatorMetricTrace,
 )
+
+from database.models.mass_photometry_oligomer_kd import (
+    MassPhotometryOligomerKdStudy,
+    MassPhotometryOligomerKdItemProfile,
+    MassPhotometryOligomerKdMetricTrace,
+)

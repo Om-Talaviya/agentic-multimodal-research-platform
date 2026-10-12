@@ -1,3 +1,4 @@
+from api.routes.mass_photometry_oligomer_kd import router as mass_photometry_oligomer_kd_router
 from api.routes.cfps_microfluidic_oscillator import router as cfps_microfluidic_oscillator_router
 from api.routes.deep_mutational_scanning_epistasis import router as deep_mutational_scanning_epistasis_router
 from api.routes.minimal_cell_lipid_asymmetry import router as minimal_cell_lipid_asymmetry_router
@@ -1173,3 +1174,4 @@ app.include_router(ligand_residence_time_koff_router, prefix=settings.api_prefix
 app.include_router(minimal_cell_lipid_asymmetry_router, prefix=settings.api_prefix)
 app.include_router(deep_mutational_scanning_epistasis_router, prefix=settings.api_prefix)
 app.include_router(cfps_microfluidic_oscillator_router, prefix=settings.api_prefix)
+app.include_router(mass_photometry_oligomer_kd_router, prefix=settings.api_prefix)
