@@ -2675,3 +2675,9 @@ from database.models.milestone_v4_4_meta_orchestrator import (
     MilestoneV44MetaOrchestratorItemProfile,
     MilestoneV44MetaOrchestratorMetricTrace,
 )
+
+from database.models.dna_origami_dynamic_hinge_biosensor import (
+    DnaOrigamiDynamicHingeStudy,
+    DnaOrigamiDynamicHingeItemProfile,
+    DnaOrigamiDynamicHingeMetricTrace,
+)

@@ -1706,3 +1706,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous milestone v4.4 planetary frontier bioscience multimodal research os grand synthesis & meta-orchestrator engine.
 - **Decision**: Implemented `MilestoneV44MetaOrchestratorEngine`, `MilestoneV44MetaOrchestratorStudy`, `MilestoneV44MetaOrchestratorRepository`, and `/api/v1/milestone-v4-4-meta-orchestrator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-435: Autonomous Reconfigurable DNA Origami Dynamic Hinge Compliant Nano-Actuator Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous reconfigurable dna origami dynamic hinge compliant nano-actuator engine.
+- **Decision**: Implemented `DnaOrigamiDynamicHingeEngine`, `DnaOrigamiDynamicHingeStudy`, `DnaOrigamiDynamicHingeRepository`, and `/api/v1/dna-origami-dynamic-hinge/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

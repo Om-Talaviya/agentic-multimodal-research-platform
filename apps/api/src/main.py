@@ -1,3 +1,4 @@
+from api.routes.dna_origami_dynamic_hinge_biosensor import router as dna_origami_dynamic_hinge_biosensor_router
 from api.routes.milestone_v4_4_meta_orchestrator import router as milestone_v4_4_meta_orchestrator_router
 from api.routes.synchrotron_saxs_ensemble_fitter import router as synchrotron_saxs_ensemble_fitter_router
 from api.routes.pace_directed_evolution_trajectory import router as pace_directed_evolution_trajectory_router
@@ -1191,3 +1192,4 @@ app.include_router(spatial_transcriptomics_niche_deconvolution_router, prefix=se
 app.include_router(pace_directed_evolution_trajectory_router, prefix=settings.api_prefix)
 app.include_router(synchrotron_saxs_ensemble_fitter_router, prefix=settings.api_prefix)
 app.include_router(milestone_v4_4_meta_orchestrator_router, prefix=settings.api_prefix)
+app.include_router(dna_origami_dynamic_hinge_biosensor_router, prefix=settings.api_prefix)
