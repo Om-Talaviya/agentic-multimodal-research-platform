@@ -2561,3 +2561,9 @@ from database.models.direct_rna_nanopore_pseudouridine import (
     DirectRnaNanoporePseudouridineItemProfile,
     DirectRnaNanoporePseudouridineMetricTrace,
 )
+
+from database.models.optical_tweezers_dna_mechanics import (
+    OpticalTweezersDnaMechanicsStudy,
+    OpticalTweezersDnaMechanicsItemProfile,
+    OpticalTweezersDnaMechanicsMetricTrace,
+)

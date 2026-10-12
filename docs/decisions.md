@@ -1573,3 +1573,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous epitranscriptomic direct rna nanopore pseudouridine (psi) & m6a stoichiometry profiler.
 - **Decision**: Implemented `DirectRnaNanoporePseudouridineEngine`, `DirectRnaNanoporePseudouridineStudy`, `DirectRnaNanoporePseudouridineRepository`, and `/api/v1/direct-rna-nanopore-pseudouridine/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-416: Autonomous Optical Tweezers DNA-Protein Mechanical Tension & Force-Extension Overstretching Modeler
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous optical tweezers dna-protein mechanical tension & force-extension overstretching modeler.
+- **Decision**: Implemented `OpticalTweezersDnaMechanicsEngine`, `OpticalTweezersDnaMechanicsStudy`, `OpticalTweezersDnaMechanicsRepository`, and `/api/v1/optical-tweezers-dna-mechanics/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
