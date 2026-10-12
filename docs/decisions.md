@@ -1587,3 +1587,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous solid-state silicon nitride nanopore single-molecule protein translocation engine.
 - **Decision**: Implemented `SolidStateNanoporeSensingEngine`, `SolidStateNanoporeSensingStudy`, `SolidStateNanoporeSensingRepository`, and `/api/v1/solid-state-nanopore-sensing/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-418: Autonomous Cryo-ET High-Density Subtomogram Microtubule Protofilament & Motor Protein Stepping Tracker
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cryo-et high-density subtomogram microtubule protofilament & motor protein stepping tracker.
+- **Decision**: Implemented `SubtomogramMicrotubuleSteppingEngine`, `SubtomogramMicrotubuleSteppingStudy`, `SubtomogramMicrotubuleSteppingRepository`, and `/api/v1/subtomogram-microtubule-stepping/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

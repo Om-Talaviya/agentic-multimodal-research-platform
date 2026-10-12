@@ -1,5 +1,6 @@
 ## [v4.4.0] - Milestone v4.4 Autonomous Nanoscale Biophysics, Epitranscriptomics & Planetary Synthesis OS
 ### Added
+- **Phase 418**: Autonomous Cryo-ET High-Density Subtomogram Microtubule Protofilament & Motor Protein Stepping Tracker (`subtomogram_microtubule_stepping`)
 - **Phase 417**: Autonomous Solid-State Silicon Nitride Nanopore Single-Molecule Protein Translocation Engine (`solid_state_nanopore_single_molecule_sensing`)
 - **Phase 416**: Autonomous Optical Tweezers DNA-Protein Mechanical Tension & Force-Extension Overstretching Modeler (`optical_tweezers_dna_mechanics`)
 - **Phase 415**: Autonomous Epitranscriptomic Direct RNA Nanopore Pseudouridine (Psi) & m6A Stoichiometry Profiler (`direct_rna_nanopore_pseudouridine`)

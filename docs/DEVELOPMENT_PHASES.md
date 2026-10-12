@@ -1076,3 +1076,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 415**: Autonomous Epitranscriptomic Direct RNA Nanopore Pseudouridine (Psi) & m6A Stoichiometry Profiler (`direct_rna_nanopore_pseudouridine`)
 - [x] **Phase 416**: Autonomous Optical Tweezers DNA-Protein Mechanical Tension & Force-Extension Overstretching Modeler (`optical_tweezers_dna_mechanics`)
 - [x] **Phase 417**: Autonomous Solid-State Silicon Nitride Nanopore Single-Molecule Protein Translocation Engine (`solid_state_nanopore_single_molecule_sensing`)
+- [x] **Phase 418**: Autonomous Cryo-ET High-Density Subtomogram Microtubule Protofilament & Motor Protein Stepping Tracker (`subtomogram_microtubule_stepping`)
