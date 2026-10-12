@@ -1692,3 +1692,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous continuous directed evolution pace (phage-assisted continuous evolution) fitness trajectory modeler.
 - **Decision**: Implemented `PaceDirectedEvolutionTrajectoryEngine`, `PaceDirectedEvolutionTrajectoryStudy`, `PaceDirectedEvolutionTrajectoryRepository`, and `/api/v1/pace-directed-evolution-trajectory/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-433: Autonomous Synchrotron Small-Angle X-ray Scattering (SAXS) Ensemble Conformational Fitting Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous synchrotron small-angle x-ray scattering (saxs) ensemble conformational fitting engine.
+- **Decision**: Implemented `SynchrotronSaxsEnsembleFitterEngine`, `SynchrotronSaxsEnsembleFitterStudy`, `SynchrotronSaxsEnsembleFitterRepository`, and `/api/v1/synchrotron-saxs-ensemble-fitter/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

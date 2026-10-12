@@ -1,3 +1,4 @@
+from api.routes.synchrotron_saxs_ensemble_fitter import router as synchrotron_saxs_ensemble_fitter_router
 from api.routes.pace_directed_evolution_trajectory import router as pace_directed_evolution_trajectory_router
 from api.routes.spatial_transcriptomics_niche_deconvolution import router as spatial_transcriptomics_niche_deconvolution_router
 from api.routes.bifunctional_degron_ternary_docking import router as bifunctional_degron_ternary_docking_router
@@ -1187,3 +1188,4 @@ app.include_router(organelle_contact_site_proximity_router, prefix=settings.api_
 app.include_router(bifunctional_degron_ternary_docking_router, prefix=settings.api_prefix)
 app.include_router(spatial_transcriptomics_niche_deconvolution_router, prefix=settings.api_prefix)
 app.include_router(pace_directed_evolution_trajectory_router, prefix=settings.api_prefix)
+app.include_router(synchrotron_saxs_ensemble_fitter_router, prefix=settings.api_prefix)

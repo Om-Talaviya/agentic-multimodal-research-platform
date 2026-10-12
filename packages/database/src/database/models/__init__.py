@@ -2663,3 +2663,9 @@ from database.models.pace_directed_evolution_trajectory import (
     PaceDirectedEvolutionTrajectoryItemProfile,
     PaceDirectedEvolutionTrajectoryMetricTrace,
 )
+
+from database.models.synchrotron_saxs_ensemble_fitter import (
+    SynchrotronSaxsEnsembleFitterStudy,
+    SynchrotronSaxsEnsembleFitterItemProfile,
+    SynchrotronSaxsEnsembleFitterMetricTrace,
+)
