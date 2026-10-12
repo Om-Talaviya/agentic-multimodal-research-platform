@@ -2645,3 +2645,9 @@ from database.models.organelle_contact_site_proximity import (
     OrganelleContactSiteProximityItemProfile,
     OrganelleContactSiteProximityMetricTrace,
 )
+
+from database.models.bifunctional_degron_ternary_docking import (
+    BifunctionalDegronTernaryDockingStudy,
+    BifunctionalDegronTernaryDockingItemProfile,
+    BifunctionalDegronTernaryDockingMetricTrace,
+)

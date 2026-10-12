@@ -1671,3 +1671,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous whole-cell organelle contact site & membrane proximity distance transformer.
 - **Decision**: Implemented `OrganelleContactSiteProximityEngine`, `OrganelleContactSiteProximityStudy`, `OrganelleContactSiteProximityRepository`, and `/api/v1/organelle-contact-site-proximity/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-430: Autonomous Targeted Protein Degradation Bifunctional Degron Heterobifunctional Ternary Interface Docking Forecaster
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous targeted protein degradation bifunctional degron heterobifunctional ternary interface docking forecaster.
+- **Decision**: Implemented `BifunctionalDegronTernaryDockingEngine`, `BifunctionalDegronTernaryDockingStudy`, `BifunctionalDegronTernaryDockingRepository`, and `/api/v1/bifunctional-degron-ternary-docking/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
