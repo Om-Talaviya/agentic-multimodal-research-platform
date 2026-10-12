@@ -2597,3 +2597,9 @@ from database.models.dna_paint_nanometer_counting import (
     DnaPaintNanometerCountingItemProfile,
     DnaPaintNanometerCountingMetricTrace,
 )
+
+from database.models.ligand_residence_time_koff import (
+    LigandResidenceTimeKoffStudy,
+    LigandResidenceTimeKoffItemProfile,
+    LigandResidenceTimeKoffMetricTrace,
+)

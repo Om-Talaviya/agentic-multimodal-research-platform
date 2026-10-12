@@ -1615,3 +1615,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous dna-paint nanometer super-resolution spatial molecular counting engine.
 - **Decision**: Implemented `DnaPaintNanometerCountingEngine`, `DnaPaintNanometerCountingStudy`, `DnaPaintNanometerCountingRepository`, and `/api/v1/dna-paint-nanometer-counting/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-422: Autonomous Allosteric Ligand Residence Time & Dissociation Rate Constant (k_off) Molecular Dynamics Extractor
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous allosteric ligand residence time & dissociation rate constant (k_off) molecular dynamics extractor.
+- **Decision**: Implemented `LigandResidenceTimeKoffEngine`, `LigandResidenceTimeKoffStudy`, `LigandResidenceTimeKoffRepository`, and `/api/v1/ligand-residence-time-koff/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -1080,3 +1080,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 419**: Autonomous In-Cell NMR Macromolecular Crowding & Chemical Shift Perturbation Tensor Engine (`in_cell_nmr_crowding_tensor`)
 - [x] **Phase 420**: Autonomous Single-Cell Multi-Modal CITE-seq & TCR Clonotype Immune Synapse Dynamics Deconvolver (`citeseq_tcr_immune_synapse`)
 - [x] **Phase 421**: Autonomous DNA-PAINT Nanometer Super-Resolution Spatial Molecular Counting Engine (`dna_paint_nanometer_counting`)
+- [x] **Phase 422**: Autonomous Allosteric Ligand Residence Time & Dissociation Rate Constant (k_off) Molecular Dynamics Extractor (`ligand_residence_time_koff`)
