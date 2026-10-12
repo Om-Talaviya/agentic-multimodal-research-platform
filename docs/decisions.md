@@ -1566,3 +1566,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Decision**: Implemented `CryoFibMillingEngine`, `CryoFibMillingStudy`, `CryoFibMillingRepository`, and `/api/v1/cryo-fib-milling/*` REST API.
 - **Consequences**: Provides deterministic thickness optimization, curtaining artifact suppression ratio, low-dose polishing current modulation, and vitreous ice score tracking.
 
+
+## ADR-415: Autonomous Epitranscriptomic Direct RNA Nanopore Pseudouridine (Psi) & m6A Stoichiometry Profiler
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous epitranscriptomic direct rna nanopore pseudouridine (psi) & m6a stoichiometry profiler.
+- **Decision**: Implemented `DirectRnaNanoporePseudouridineEngine`, `DirectRnaNanoporePseudouridineStudy`, `DirectRnaNanoporePseudouridineRepository`, and `/api/v1/direct-rna-nanopore-pseudouridine/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

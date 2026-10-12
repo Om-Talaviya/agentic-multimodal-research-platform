@@ -2555,3 +2555,9 @@ from database.models.cryo_fib_milling import (
     CryoFibMillingMetricTrace,
 )
 
+
+from database.models.direct_rna_nanopore_pseudouridine import (
+    DirectRnaNanoporePseudouridineStudy,
+    DirectRnaNanoporePseudouridineItemProfile,
+    DirectRnaNanoporePseudouridineMetricTrace,
+)

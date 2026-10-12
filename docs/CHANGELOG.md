@@ -1,5 +1,6 @@
 ## [v4.4.0] - Milestone v4.4 Autonomous Nanoscale Biophysics, Epitranscriptomics & Planetary Synthesis OS
 ### Added
+- **Phase 415**: Autonomous Epitranscriptomic Direct RNA Nanopore Pseudouridine (Psi) & m6A Stoichiometry Profiler (`direct_rna_nanopore_pseudouridine`)
 - **Phase 414**: Autonomous Cryo-FIB Milling & In-Situ Lamella Thickness Optimization Engine (`cryo_fib_milling`)
 
 ## [v4.3.0] - Milestone v4.3 Planetary Frontier Bioscience Multimodal Research OS
