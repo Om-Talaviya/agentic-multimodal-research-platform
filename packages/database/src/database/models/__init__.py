@@ -2681,3 +2681,9 @@ from database.models.dna_origami_dynamic_hinge_biosensor import (
     DnaOrigamiDynamicHingeItemProfile,
     DnaOrigamiDynamicHingeMetricTrace,
 )
+
+from database.models.single_molecule_magnetic_resonance_nv_center import (
+    SingleMoleculeNvCenterNmrStudy,
+    SingleMoleculeNvCenterNmrItemProfile,
+    SingleMoleculeNvCenterNmrMetricTrace,
+)
