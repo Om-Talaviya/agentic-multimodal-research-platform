@@ -1,3 +1,4 @@
+from api.routes.microbial_electrogenic_biofilm_flux import router as microbial_electrogenic_biofilm_flux_router
 from api.routes.single_molecule_magnetic_resonance_nv_center import router as single_molecule_magnetic_resonance_nv_center_router
 from api.routes.dna_origami_dynamic_hinge_biosensor import router as dna_origami_dynamic_hinge_biosensor_router
 from api.routes.milestone_v4_4_meta_orchestrator import router as milestone_v4_4_meta_orchestrator_router
@@ -1195,3 +1196,4 @@ app.include_router(synchrotron_saxs_ensemble_fitter_router, prefix=settings.api_
 app.include_router(milestone_v4_4_meta_orchestrator_router, prefix=settings.api_prefix)
 app.include_router(dna_origami_dynamic_hinge_biosensor_router, prefix=settings.api_prefix)
 app.include_router(single_molecule_magnetic_resonance_nv_center_router, prefix=settings.api_prefix)
+app.include_router(microbial_electrogenic_biofilm_flux_router, prefix=settings.api_prefix)

@@ -1720,3 +1720,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous diamond nv-center nanoscale single-molecule magnetic resonance engine.
 - **Decision**: Implemented `SingleMoleculeNvCenterNmrEngine`, `SingleMoleculeNvCenterNmrStudy`, `SingleMoleculeNvCenterNmrRepository`, and `/api/v1/single-molecule-nv-center-nmr/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-437: Autonomous Microbial Electrogenic Biofilm Extracellular Electron Transfer (EET) Simulator
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous microbial electrogenic biofilm extracellular electron transfer (eet) simulator.
+- **Decision**: Implemented `MicrobialElectrogenicBiofilmEngine`, `MicrobialElectrogenicBiofilmStudy`, `MicrobialElectrogenicBiofilmRepository`, and `/api/v1/microbial-electrogenic-biofilm/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

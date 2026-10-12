@@ -2687,3 +2687,9 @@ from database.models.single_molecule_magnetic_resonance_nv_center import (
     SingleMoleculeNvCenterNmrItemProfile,
     SingleMoleculeNvCenterNmrMetricTrace,
 )
+
+from database.models.microbial_electrogenic_biofilm_flux import (
+    MicrobialElectrogenicBiofilmStudy,
+    MicrobialElectrogenicBiofilmItemProfile,
+    MicrobialElectrogenicBiofilmMetricTrace,
+)
