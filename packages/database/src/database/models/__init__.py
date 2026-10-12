@@ -2633,3 +2633,9 @@ from database.models.cgbe_cas12f_miniature_editing import (
     CgbeCas12fMiniatureEditingItemProfile,
     CgbeCas12fMiniatureEditingMetricTrace,
 )
+
+from database.models.liquid_cell_tem_nucleation import (
+    LiquidCellTemNucleationStudy,
+    LiquidCellTemNucleationItemProfile,
+    LiquidCellTemNucleationMetricTrace,
+)

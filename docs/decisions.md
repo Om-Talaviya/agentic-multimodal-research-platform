@@ -1657,3 +1657,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous crispr c-to-g base editor (cgbe) & cas12f miniature transposon editing forecaster.
 - **Decision**: Implemented `CgbeCas12fMiniatureEditingEngine`, `CgbeCas12fMiniatureEditingStudy`, `CgbeCas12fMiniatureEditingRepository`, and `/api/v1/cgbe-cas12f-miniature-editing/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-428: Autonomous In-Situ Liquid-Cell Transmission Electron Microscopy (LC-TEM) Nanoparticle Nucleation Simulator
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous in-situ liquid-cell transmission electron microscopy (lc-tem) nanoparticle nucleation simulator.
+- **Decision**: Implemented `LiquidCellTemNucleationEngine`, `LiquidCellTemNucleationStudy`, `LiquidCellTemNucleationRepository`, and `/api/v1/liquid-cell-tem-nucleation/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

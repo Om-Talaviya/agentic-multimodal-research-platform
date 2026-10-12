@@ -1,3 +1,4 @@
+from api.routes.liquid_cell_tem_nucleation import router as liquid_cell_tem_nucleation_router
 from api.routes.cgbe_cas12f_miniature_editing import router as cgbe_cas12f_miniature_editing_router
 from api.routes.mass_photometry_oligomer_kd import router as mass_photometry_oligomer_kd_router
 from api.routes.cfps_microfluidic_oscillator import router as cfps_microfluidic_oscillator_router
@@ -1177,3 +1178,4 @@ app.include_router(deep_mutational_scanning_epistasis_router, prefix=settings.ap
 app.include_router(cfps_microfluidic_oscillator_router, prefix=settings.api_prefix)
 app.include_router(mass_photometry_oligomer_kd_router, prefix=settings.api_prefix)
 app.include_router(cgbe_cas12f_miniature_editing_router, prefix=settings.api_prefix)
+app.include_router(liquid_cell_tem_nucleation_router, prefix=settings.api_prefix)
