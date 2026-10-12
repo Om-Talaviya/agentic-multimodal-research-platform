@@ -2723,3 +2723,9 @@ from database.models.mammalian_circadian_clock_transcriptional_oscillator import
     MammalianCircadianClockItemProfile,
     MammalianCircadianClockMetricTrace,
 )
+
+from database.models.cellular_senescence_sasp_paracrine_spreading import (
+    CellularSenescenceSaspStudy,
+    CellularSenescenceSaspItemProfile,
+    CellularSenescenceSaspMetricTrace,
+)

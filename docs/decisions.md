@@ -1762,3 +1762,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous mammalian circadian transcriptional-translational feedback loop (ttfl) limit cycle simulator.
 - **Decision**: Implemented `MammalianCircadianClockEngine`, `MammalianCircadianClockStudy`, `MammalianCircadianClockRepository`, and `/api/v1/mammalian-circadian-clock/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-443: Autonomous Cellular Senescence-Associated Secretory Phenotype (SASP) Paracrine Spreading & Tissue Exhaustion Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cellular senescence-associated secretory phenotype (sasp) paracrine spreading & tissue exhaustion engine.
+- **Decision**: Implemented `CellularSenescenceSaspEngine`, `CellularSenescenceSaspStudy`, `CellularSenescenceSaspRepository`, and `/api/v1/cellular-senescence-sasp/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
