@@ -2717,3 +2717,9 @@ from database.models.photosystem_quantum_coherence_exciton_fmo import (
     PhotosystemQuantumCoherenceItemProfile,
     PhotosystemQuantumCoherenceMetricTrace,
 )
+
+from database.models.mammalian_circadian_clock_transcriptional_oscillator import (
+    MammalianCircadianClockStudy,
+    MammalianCircadianClockItemProfile,
+    MammalianCircadianClockMetricTrace,
+)
