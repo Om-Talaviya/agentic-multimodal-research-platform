@@ -1085,3 +1085,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 424**: Autonomous Deep Mutational Scanning (DMS) Variant Fitness & Thermostability Epistasis Forecaster (`deep_mutational_scanning_epistasis`)
 - [x] **Phase 425**: Autonomous Cell-Free Protein TX-TL Compartmentalized Microfluidic Logic Oscillator (`cfps_microfluidic_oscillator`)
 - [x] **Phase 426**: Autonomous Mass Photometry Macromolecular Oligomeric Mass Distribution & Dissociation Constant (KD) Estimator (`mass_photometry_oligomer_kd`)
+- [x] **Phase 427**: Autonomous CRISPR C-to-G Base Editor (CGBE) & Cas12f Miniature Transposon Editing Forecaster (`cgbe_cas12f_miniature_editing`)

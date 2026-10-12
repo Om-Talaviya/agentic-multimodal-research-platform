@@ -1650,3 +1650,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous mass photometry macromolecular oligomeric mass distribution & dissociation constant (kd) estimator.
 - **Decision**: Implemented `MassPhotometryOligomerKdEngine`, `MassPhotometryOligomerKdStudy`, `MassPhotometryOligomerKdRepository`, and `/api/v1/mass-photometry-oligomer-kd/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-427: Autonomous CRISPR C-to-G Base Editor (CGBE) & Cas12f Miniature Transposon Editing Forecaster
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous crispr c-to-g base editor (cgbe) & cas12f miniature transposon editing forecaster.
+- **Decision**: Implemented `CgbeCas12fMiniatureEditingEngine`, `CgbeCas12fMiniatureEditingStudy`, `CgbeCas12fMiniatureEditingRepository`, and `/api/v1/cgbe-cas12f-miniature-editing/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

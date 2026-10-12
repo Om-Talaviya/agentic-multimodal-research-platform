@@ -2627,3 +2627,9 @@ from database.models.mass_photometry_oligomer_kd import (
     MassPhotometryOligomerKdItemProfile,
     MassPhotometryOligomerKdMetricTrace,
 )
+
+from database.models.cgbe_cas12f_miniature_editing import (
+    CgbeCas12fMiniatureEditingStudy,
+    CgbeCas12fMiniatureEditingItemProfile,
+    CgbeCas12fMiniatureEditingMetricTrace,
+)
