@@ -1,5 +1,6 @@
 ## [v4.4.0] - Milestone v4.4 Autonomous Nanoscale Biophysics, Epitranscriptomics & Planetary Synthesis OS
 ### Added
+- **Phase 431**: Autonomous High-Plex Spatial Transcriptomics Spot Deconvolution & Cell-Type Niche Interaction Engine (`spatial_transcriptomics_niche_deconvolution`)
 - **Phase 430**: Autonomous Targeted Protein Degradation Bifunctional Degron Heterobifunctional Ternary Interface Docking Forecaster (`bifunctional_degron_ternary_docking`)
 - **Phase 429**: Autonomous Whole-Cell Organelle Contact Site & Membrane Proximity Distance Transformer (`organelle_contact_site_proximity`)
 - **Phase 428**: Autonomous In-Situ Liquid-Cell Transmission Electron Microscopy (LC-TEM) Nanoparticle Nucleation Simulator (`liquid_cell_tem_nucleation`)

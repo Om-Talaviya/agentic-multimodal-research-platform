@@ -2651,3 +2651,9 @@ from database.models.bifunctional_degron_ternary_docking import (
     BifunctionalDegronTernaryDockingItemProfile,
     BifunctionalDegronTernaryDockingMetricTrace,
 )
+
+from database.models.spatial_transcriptomics_niche_deconvolution import (
+    SpatialTranscriptomicsNicheDeconvolutionStudy,
+    SpatialTranscriptomicsNicheDeconvolutionItemProfile,
+    SpatialTranscriptomicsNicheDeconvolutionMetricTrace,
+)

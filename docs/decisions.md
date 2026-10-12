@@ -1678,3 +1678,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous targeted protein degradation bifunctional degron heterobifunctional ternary interface docking forecaster.
 - **Decision**: Implemented `BifunctionalDegronTernaryDockingEngine`, `BifunctionalDegronTernaryDockingStudy`, `BifunctionalDegronTernaryDockingRepository`, and `/api/v1/bifunctional-degron-ternary-docking/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-431: Autonomous High-Plex Spatial Transcriptomics Spot Deconvolution & Cell-Type Niche Interaction Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous high-plex spatial transcriptomics spot deconvolution & cell-type niche interaction engine.
+- **Decision**: Implemented `SpatialTranscriptomicsNicheDeconvolutionEngine`, `SpatialTranscriptomicsNicheDeconvolutionStudy`, `SpatialTranscriptomicsNicheDeconvolutionRepository`, and `/api/v1/spatial-transcriptomics-niche-deconvolution/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
