@@ -1601,3 +1601,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous in-cell nmr macromolecular crowding & chemical shift perturbation tensor engine.
 - **Decision**: Implemented `InCellNmrCrowdingTensorEngine`, `InCellNmrCrowdingTensorStudy`, `InCellNmrCrowdingTensorRepository`, and `/api/v1/in-cell-nmr-crowding-tensor/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-420: Autonomous Single-Cell Multi-Modal CITE-seq & TCR Clonotype Immune Synapse Dynamics Deconvolver
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous single-cell multi-modal cite-seq & tcr clonotype immune synapse dynamics deconvolver.
+- **Decision**: Implemented `CiteseqTcrImmuneSynapseEngine`, `CiteseqTcrImmuneSynapseStudy`, `CiteseqTcrImmuneSynapseRepository`, and `/api/v1/citeseq-tcr-immune-synapse/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

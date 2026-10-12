@@ -1,3 +1,4 @@
+from api.routes.citeseq_tcr_immune_synapse import router as citeseq_tcr_immune_synapse_router
 from api.routes.in_cell_nmr_crowding_tensor import router as in_cell_nmr_crowding_tensor_router
 from api.routes.subtomogram_microtubule_stepping import router as subtomogram_microtubule_stepping_router
 from api.routes.solid_state_nanopore_single_molecule_sensing import router as solid_state_nanopore_single_molecule_sensing_router
@@ -1161,3 +1162,4 @@ app.include_router(optical_tweezers_dna_mechanics_router, prefix=settings.api_pr
 app.include_router(solid_state_nanopore_single_molecule_sensing_router, prefix=settings.api_prefix)
 app.include_router(subtomogram_microtubule_stepping_router, prefix=settings.api_prefix)
 app.include_router(in_cell_nmr_crowding_tensor_router, prefix=settings.api_prefix)
+app.include_router(citeseq_tcr_immune_synapse_router, prefix=settings.api_prefix)

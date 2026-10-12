@@ -1,5 +1,6 @@
 ## [v4.4.0] - Milestone v4.4 Autonomous Nanoscale Biophysics, Epitranscriptomics & Planetary Synthesis OS
 ### Added
+- **Phase 420**: Autonomous Single-Cell Multi-Modal CITE-seq & TCR Clonotype Immune Synapse Dynamics Deconvolver (`citeseq_tcr_immune_synapse`)
 - **Phase 419**: Autonomous In-Cell NMR Macromolecular Crowding & Chemical Shift Perturbation Tensor Engine (`in_cell_nmr_crowding_tensor`)
 - **Phase 418**: Autonomous Cryo-ET High-Density Subtomogram Microtubule Protofilament & Motor Protein Stepping Tracker (`subtomogram_microtubule_stepping`)
 - **Phase 417**: Autonomous Solid-State Silicon Nitride Nanopore Single-Molecule Protein Translocation Engine (`solid_state_nanopore_single_molecule_sensing`)

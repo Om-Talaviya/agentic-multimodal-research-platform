@@ -2585,3 +2585,9 @@ from database.models.in_cell_nmr_crowding_tensor import (
     InCellNmrCrowdingTensorItemProfile,
     InCellNmrCrowdingTensorMetricTrace,
 )
+
+from database.models.citeseq_tcr_immune_synapse import (
+    CiteseqTcrImmuneSynapseStudy,
+    CiteseqTcrImmuneSynapseItemProfile,
+    CiteseqTcrImmuneSynapseMetricTrace,
+)
