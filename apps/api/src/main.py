@@ -1,3 +1,4 @@
+from api.routes.dna_paint_nanometer_counting import router as dna_paint_nanometer_counting_router
 from api.routes.citeseq_tcr_immune_synapse import router as citeseq_tcr_immune_synapse_router
 from api.routes.in_cell_nmr_crowding_tensor import router as in_cell_nmr_crowding_tensor_router
 from api.routes.subtomogram_microtubule_stepping import router as subtomogram_microtubule_stepping_router
@@ -1163,3 +1164,4 @@ app.include_router(solid_state_nanopore_single_molecule_sensing_router, prefix=s
 app.include_router(subtomogram_microtubule_stepping_router, prefix=settings.api_prefix)
 app.include_router(in_cell_nmr_crowding_tensor_router, prefix=settings.api_prefix)
 app.include_router(citeseq_tcr_immune_synapse_router, prefix=settings.api_prefix)
+app.include_router(dna_paint_nanometer_counting_router, prefix=settings.api_prefix)

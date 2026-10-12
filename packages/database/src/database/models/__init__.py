@@ -2591,3 +2591,9 @@ from database.models.citeseq_tcr_immune_synapse import (
     CiteseqTcrImmuneSynapseItemProfile,
     CiteseqTcrImmuneSynapseMetricTrace,
 )
+
+from database.models.dna_paint_nanometer_counting import (
+    DnaPaintNanometerCountingStudy,
+    DnaPaintNanometerCountingItemProfile,
+    DnaPaintNanometerCountingMetricTrace,
+)

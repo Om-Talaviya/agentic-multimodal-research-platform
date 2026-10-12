@@ -1608,3 +1608,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous single-cell multi-modal cite-seq & tcr clonotype immune synapse dynamics deconvolver.
 - **Decision**: Implemented `CiteseqTcrImmuneSynapseEngine`, `CiteseqTcrImmuneSynapseStudy`, `CiteseqTcrImmuneSynapseRepository`, and `/api/v1/citeseq-tcr-immune-synapse/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-421: Autonomous DNA-PAINT Nanometer Super-Resolution Spatial Molecular Counting Engine
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous dna-paint nanometer super-resolution spatial molecular counting engine.
+- **Decision**: Implemented `DnaPaintNanometerCountingEngine`, `DnaPaintNanometerCountingStudy`, `DnaPaintNanometerCountingRepository`, and `/api/v1/dna-paint-nanometer-counting/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
