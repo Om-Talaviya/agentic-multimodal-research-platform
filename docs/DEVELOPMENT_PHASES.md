@@ -1087,3 +1087,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 426**: Autonomous Mass Photometry Macromolecular Oligomeric Mass Distribution & Dissociation Constant (KD) Estimator (`mass_photometry_oligomer_kd`)
 - [x] **Phase 427**: Autonomous CRISPR C-to-G Base Editor (CGBE) & Cas12f Miniature Transposon Editing Forecaster (`cgbe_cas12f_miniature_editing`)
 - [x] **Phase 428**: Autonomous In-Situ Liquid-Cell Transmission Electron Microscopy (LC-TEM) Nanoparticle Nucleation Simulator (`liquid_cell_tem_nucleation`)
+- [x] **Phase 429**: Autonomous Whole-Cell Organelle Contact Site & Membrane Proximity Distance Transformer (`organelle_contact_site_proximity`)

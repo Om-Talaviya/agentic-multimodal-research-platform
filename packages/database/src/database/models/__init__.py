@@ -2639,3 +2639,9 @@ from database.models.liquid_cell_tem_nucleation import (
     LiquidCellTemNucleationItemProfile,
     LiquidCellTemNucleationMetricTrace,
 )
+
+from database.models.organelle_contact_site_proximity import (
+    OrganelleContactSiteProximityStudy,
+    OrganelleContactSiteProximityItemProfile,
+    OrganelleContactSiteProximityMetricTrace,
+)

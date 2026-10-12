@@ -1664,3 +1664,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous in-situ liquid-cell transmission electron microscopy (lc-tem) nanoparticle nucleation simulator.
 - **Decision**: Implemented `LiquidCellTemNucleationEngine`, `LiquidCellTemNucleationStudy`, `LiquidCellTemNucleationRepository`, and `/api/v1/liquid-cell-tem-nucleation/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-429: Autonomous Whole-Cell Organelle Contact Site & Membrane Proximity Distance Transformer
+- **Date**: 2026-10-12
+- **Status**: Accepted
+- **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous whole-cell organelle contact site & membrane proximity distance transformer.
+- **Decision**: Implemented `OrganelleContactSiteProximityEngine`, `OrganelleContactSiteProximityStudy`, `OrganelleContactSiteProximityRepository`, and `/api/v1/organelle-contact-site-proximity/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
