@@ -1916,3 +1916,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic symbiotic consortia metabolic division-of-labor population dynamics simulator within Milestone v4.6.
 - **Decision**: Implemented `SymbioticConsortiaDivisionOfLaborEngine`, `SymbioticConsortiaDivisionOfLaborStudy`, `SymbioticConsortiaDivisionOfLaborRepository`, and `/api/v1/symbiotic-consortia-division-of-labor/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-465: Autonomous Microfluidic Acoustic Tweezers Multicellular Spheroid Patterning & Cytoskeletal Stress Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic acoustic tweezers multicellular spheroid patterning & cytoskeletal stress engine within Milestone v4.6.
+- **Decision**: Implemented `AcousticTweezersSpheroidPatterningEngine`, `AcousticTweezersSpheroidPatterningStudy`, `AcousticTweezersSpheroidPatterningRepository`, and `/api/v1/acoustic-tweezers-spheroid-patterning/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

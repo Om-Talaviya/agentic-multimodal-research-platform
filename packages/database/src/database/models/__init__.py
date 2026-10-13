@@ -2855,3 +2855,9 @@ from database.models.symbiotic_consortia_division_of_labor import (
     SymbioticConsortiaDivisionOfLaborItemProfile,
     SymbioticConsortiaDivisionOfLaborMetricTrace,
 )
+
+from database.models.acoustic_tweezers_spheroid_patterning import (
+    AcousticTweezersSpheroidPatterningStudy,
+    AcousticTweezersSpheroidPatterningItemProfile,
+    AcousticTweezersSpheroidPatterningMetricTrace,
+)
