@@ -1804,3 +1804,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic epigenetic prime-converter base insertion & inverted repeat profiler within Milestone v4.5.
 - **Decision**: Implemented `SyntheticEpigeneticPrimeConverterEngine`, `SyntheticEpigeneticPrimeConverterStudy`, `SyntheticEpigeneticPrimeConverterRepository`, and `/api/v1/synthetic-epigenetic-prime-converter/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-449: Autonomous Microfluidic Droplet Single-Cell Metabolic Metabolomics Isotope Labeling Profiler
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic droplet single-cell metabolic metabolomics isotope labeling profiler within Milestone v4.5.
+- **Decision**: Implemented `DropletSingleCellIsotopeMetabolomicsEngine`, `DropletSingleCellIsotopeMetabolomicsStudy`, `DropletSingleCellIsotopeMetabolomicsRepository`, and `/api/v1/droplet-single-cell-metabolomics/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

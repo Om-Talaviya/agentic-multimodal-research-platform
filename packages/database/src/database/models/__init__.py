@@ -2759,3 +2759,9 @@ from database.models.synthetic_epigenetic_prime_converter import (
     SyntheticEpigeneticPrimeConverterItemProfile,
     SyntheticEpigeneticPrimeConverterMetricTrace,
 )
+
+from database.models.droplet_single_cell_isotope_metabolomics import (
+    DropletSingleCellIsotopeMetabolomicsStudy,
+    DropletSingleCellIsotopeMetabolomicsItemProfile,
+    DropletSingleCellIsotopeMetabolomicsMetricTrace,
+)
