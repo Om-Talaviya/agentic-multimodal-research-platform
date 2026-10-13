@@ -2825,3 +2825,9 @@ from database.models.multicellular_planar_cell_polarity import (
     MulticellularPlanarCellPolarityItemProfile,
     MulticellularPlanarCellPolarityMetricTrace,
 )
+
+from database.models.cryo_clem_fiducial_alignment import (
+    CryoClemFiducialAlignmentStudy,
+    CryoClemFiducialAlignmentItemProfile,
+    CryoClemFiducialAlignmentMetricTrace,
+)

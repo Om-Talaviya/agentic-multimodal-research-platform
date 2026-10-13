@@ -1881,3 +1881,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic multicellular planar cell polarity (pcp) asymmetric segregation engine within Milestone v4.6.
 - **Decision**: Implemented `MulticellularPlanarCellPolarityEngine`, `MulticellularPlanarCellPolarityStudy`, `MulticellularPlanarCellPolarityRepository`, and `/api/v1/multicellular-planar-cell-polarity/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-460: Autonomous In-Situ Cryo-CLEM Fluorescent Target Correlation & Precision Fiducial Alignment Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-clem fluorescent target correlation & precision fiducial alignment engine within Milestone v4.6.
+- **Decision**: Implemented `CryoClemFiducialAlignmentEngine`, `CryoClemFiducialAlignmentStudy`, `CryoClemFiducialAlignmentRepository`, and `/api/v1/cryo-clem-fiducial-alignment/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

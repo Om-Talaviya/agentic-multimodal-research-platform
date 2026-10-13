@@ -1,5 +1,6 @@
 ## [v4.6.0] - Milestone v4.6 Autonomous Synthetic Morphogenesis, Biohybrid Cybernetics & Planetary Multicellular OS
 ### Added
+- **Phase 460**: Autonomous In-Situ Cryo-CLEM Fluorescent Target Correlation & Precision Fiducial Alignment Engine (`cryo_clem_fiducial_alignment`)
 - **Phase 459**: Autonomous Synthetic Multicellular Planar Cell Polarity (PCP) Asymmetric Segregation Engine (`multicellular_planar_cell_polarity`)
 - **Phase 458**: Autonomous Organ-on-Chip Multi-Tissue Microvascular Fluid Shear Stress Perfusion Engine (`organ_on_chip_microvascular_shear`)
 - **Phase 457**: Autonomous Biohybrid Cybernetic Soft Actuator Myotube Electromechanical Force Forecaster (`biohybrid_soft_actuator_myotube`)

@@ -1,3 +1,4 @@
+from api.routes.cryo_clem_fiducial_alignment import router as cryo_clem_fiducial_alignment_router
 from api.routes.multicellular_planar_cell_polarity import router as multicellular_planar_cell_polarity_router
 from api.routes.organ_on_chip_microvascular_shear import router as organ_on_chip_microvascular_shear_router
 from api.routes.biohybrid_soft_actuator_myotube import router as biohybrid_soft_actuator_myotube_router
@@ -1241,3 +1242,4 @@ app.include_router(morphogen_gradient_turing_pattern_router, prefix=settings.api
 app.include_router(biohybrid_soft_actuator_myotube_router, prefix=settings.api_prefix)
 app.include_router(organ_on_chip_microvascular_shear_router, prefix=settings.api_prefix)
 app.include_router(multicellular_planar_cell_polarity_router, prefix=settings.api_prefix)
+app.include_router(cryo_clem_fiducial_alignment_router, prefix=settings.api_prefix)
