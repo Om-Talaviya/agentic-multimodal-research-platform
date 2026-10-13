@@ -2771,3 +2771,9 @@ from database.models.nanopore_blockade_topology_classifier import (
     NanoporeBlockadeTopologyItemProfile,
     NanoporeBlockadeTopologyMetricTrace,
 )
+
+from database.models.optical_tweezers_ribosome_translation import (
+    OpticalTweezersRibosomeTranslationStudy,
+    OpticalTweezersRibosomeTranslationItemProfile,
+    OpticalTweezersRibosomeTranslationMetricTrace,
+)

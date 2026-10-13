@@ -1818,3 +1818,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous nanopore ionic current blockade shape classifier for macromolecular topologies within Milestone v4.5.
 - **Decision**: Implemented `NanoporeBlockadeTopologyEngine`, `NanoporeBlockadeTopologyStudy`, `NanoporeBlockadeTopologyRepository`, and `/api/v1/nanopore-blockade-topology/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-451: Autonomous Single-Molecule Optical Tweezers Ribosome Translation Kinetic Polypeptide Translocation Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule optical tweezers ribosome translation kinetic polypeptide translocation engine within Milestone v4.5.
+- **Decision**: Implemented `OpticalTweezersRibosomeTranslationEngine`, `OpticalTweezersRibosomeTranslationStudy`, `OpticalTweezersRibosomeTranslationRepository`, and `/api/v1/optical-tweezers-ribosome-translation/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
