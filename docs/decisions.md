@@ -1790,3 +1790,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous spatial epigenomic histone h3k27me3 polycomb repressive domain spreading modeler within Milestone v4.5.
 - **Decision**: Implemented `PolycombEpigenomicDomainEngine`, `PolycombEpigenomicDomainStudy`, `PolycombEpigenomicDomainRepository`, and `/api/v1/polycomb-epigenomic-domain/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-447: Autonomous Coarse-Grained DNA-Protein Complex Martini Force-Field Molecular Dynamics Simulator
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous coarse-grained dna-protein complex martini force-field molecular dynamics simulator within Milestone v4.5.
+- **Decision**: Implemented `CoarseGrainedMartiniDnaProteinEngine`, `CoarseGrainedMartiniDnaProteinStudy`, `CoarseGrainedMartiniDnaProteinRepository`, and `/api/v1/coarse-grained-martini-dynamics/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

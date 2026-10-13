@@ -1,3 +1,4 @@
+from api.routes.coarse_grained_martini_dna_protein import router as coarse_grained_martini_dna_protein_router
 from api.routes.polycomb_epigenomic_domain_spreading import router as polycomb_epigenomic_domain_spreading_router
 from api.routes.solid_phase_peptide_synthesis_coupling import router as solid_phase_peptide_synthesis_coupling_router
 from api.routes.optogenetic_action_potential_trajectory import router as optogenetic_action_potential_trajectory_router
@@ -1215,3 +1216,4 @@ app.include_router(cellular_senescence_sasp_paracrine_spreading_router, prefix=s
 app.include_router(optogenetic_action_potential_trajectory_router, prefix=settings.api_prefix)
 app.include_router(solid_phase_peptide_synthesis_coupling_router, prefix=settings.api_prefix)
 app.include_router(polycomb_epigenomic_domain_spreading_router, prefix=settings.api_prefix)
+app.include_router(coarse_grained_martini_dna_protein_router, prefix=settings.api_prefix)

@@ -2747,3 +2747,9 @@ from database.models.polycomb_epigenomic_domain_spreading import (
     PolycombEpigenomicDomainItemProfile,
     PolycombEpigenomicDomainMetricTrace,
 )
+
+from database.models.coarse_grained_martini_dna_protein import (
+    CoarseGrainedMartiniDnaProteinStudy,
+    CoarseGrainedMartiniDnaProteinItemProfile,
+    CoarseGrainedMartiniDnaProteinMetricTrace,
+)
