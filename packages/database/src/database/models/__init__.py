@@ -2789,3 +2789,9 @@ from database.models.quantum_dots_optoelectronic_synapse import (
     QuantumDotsOptoelectronicSynapseItemProfile,
     QuantumDotsOptoelectronicSynapseMetricTrace,
 )
+
+from database.models.cell_free_quorum_feedback_oscillator import (
+    CellFreeQuorumFeedbackOscillatorStudy,
+    CellFreeQuorumFeedbackOscillatorItemProfile,
+    CellFreeQuorumFeedbackOscillatorMetricTrace,
+)
