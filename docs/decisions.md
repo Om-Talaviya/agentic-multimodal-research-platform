@@ -1930,3 +1930,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous optogenetic rheotaxis bacterial micro-swarm bio-convective flow modeler within Milestone v4.6.
 - **Decision**: Implemented `OptogeneticRheotaxisMicroSwarmEngine`, `OptogeneticRheotaxisMicroSwarmStudy`, `OptogeneticRheotaxisMicroSwarmRepository`, and `/api/v1/optogenetic-rheotaxis-micro-swarm/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-467: Autonomous Living Tissue Origami Programmable 4D Cell-Sheet Self-Folding Mechanics Simulator
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous living tissue origami programmable 4d cell-sheet self-folding mechanics simulator within Milestone v4.6.
+- **Decision**: Implemented `TissueOrigamiCellSheetFoldingEngine`, `TissueOrigamiCellSheetFoldingStudy`, `TissueOrigamiCellSheetFoldingRepository`, and `/api/v1/tissue-origami-cell-sheet-folding/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -2867,3 +2867,9 @@ from database.models.optogenetic_rheotaxis_micro_swarm import (
     OptogeneticRheotaxisMicroSwarmItemProfile,
     OptogeneticRheotaxisMicroSwarmMetricTrace,
 )
+
+from database.models.tissue_origami_cell_sheet_folding import (
+    TissueOrigamiCellSheetFoldingStudy,
+    TissueOrigamiCellSheetFoldingItemProfile,
+    TissueOrigamiCellSheetFoldingMetricTrace,
+)
