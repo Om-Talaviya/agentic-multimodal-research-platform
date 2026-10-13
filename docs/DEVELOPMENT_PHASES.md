@@ -1104,3 +1104,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 441**: Autonomous Fenna-Matthews-Olson (FMO) Complex Quantum Exciton Energy Transfer & Coherence Modeler (`photosystem_quantum_coherence_exciton_fmo`)
 - [x] **Phase 442**: Autonomous Mammalian Circadian Transcriptional-Translational Feedback Loop (TTFL) Limit Cycle Simulator (`mammalian_circadian_clock_transcriptional_oscillator`)
 - [x] **Phase 443**: Autonomous Cellular Senescence-Associated Secretory Phenotype (SASP) Paracrine Spreading & Tissue Exhaustion Engine (`cellular_senescence_sasp_paracrine_spreading`)
+- [x] **Phase 444**: Autonomous Optogenetic Membrane Depolarization & Action Potential Firing Trajectory Simulator (`optogenetic_action_potential_trajectory`)

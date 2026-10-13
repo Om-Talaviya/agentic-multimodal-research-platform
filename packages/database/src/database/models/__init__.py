@@ -2729,3 +2729,9 @@ from database.models.cellular_senescence_sasp_paracrine_spreading import (
     CellularSenescenceSaspItemProfile,
     CellularSenescenceSaspMetricTrace,
 )
+
+from database.models.optogenetic_action_potential_trajectory import (
+    OptogeneticActionPotentialStudy,
+    OptogeneticActionPotentialItemProfile,
+    OptogeneticActionPotentialMetricTrace,
+)

@@ -1769,3 +1769,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous biophysical and epitranscriptomic multi-modal research engine addressing autonomous cellular senescence-associated secretory phenotype (sasp) paracrine spreading & tissue exhaustion engine.
 - **Decision**: Implemented `CellularSenescenceSaspEngine`, `CellularSenescenceSaspStudy`, `CellularSenescenceSaspRepository`, and `/api/v1/cellular-senescence-sasp/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-444: Autonomous Optogenetic Membrane Depolarization & Action Potential Firing Trajectory Simulator
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous optogenetic membrane depolarization & action potential firing trajectory simulator within Milestone v4.5.
+- **Decision**: Implemented `OptogeneticActionPotentialEngine`, `OptogeneticActionPotentialStudy`, `OptogeneticActionPotentialRepository`, and `/api/v1/optogenetic-action-potential/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
