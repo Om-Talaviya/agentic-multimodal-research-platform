@@ -1,3 +1,4 @@
+from api.routes.optogenetic_rheotaxis_micro_swarm import router as optogenetic_rheotaxis_micro_swarm_router
 from api.routes.acoustic_tweezers_spheroid_patterning import router as acoustic_tweezers_spheroid_patterning_router
 from api.routes.symbiotic_consortia_division_of_labor import router as symbiotic_consortia_division_of_labor_router
 from api.routes.neural_organoid_bursting_connectivity import router as neural_organoid_bursting_connectivity_router
@@ -1253,3 +1254,4 @@ app.include_router(bacterial_cellulose_scaffold_crosslinking_router, prefix=sett
 app.include_router(neural_organoid_bursting_connectivity_router, prefix=settings.api_prefix)
 app.include_router(symbiotic_consortia_division_of_labor_router, prefix=settings.api_prefix)
 app.include_router(acoustic_tweezers_spheroid_patterning_router, prefix=settings.api_prefix)
+app.include_router(optogenetic_rheotaxis_micro_swarm_router, prefix=settings.api_prefix)

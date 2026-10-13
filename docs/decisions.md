@@ -1923,3 +1923,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic acoustic tweezers multicellular spheroid patterning & cytoskeletal stress engine within Milestone v4.6.
 - **Decision**: Implemented `AcousticTweezersSpheroidPatterningEngine`, `AcousticTweezersSpheroidPatterningStudy`, `AcousticTweezersSpheroidPatterningRepository`, and `/api/v1/acoustic-tweezers-spheroid-patterning/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-466: Autonomous Optogenetic Rheotaxis Bacterial Micro-Swarm Bio-Convective Flow Modeler
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous optogenetic rheotaxis bacterial micro-swarm bio-convective flow modeler within Milestone v4.6.
+- **Decision**: Implemented `OptogeneticRheotaxisMicroSwarmEngine`, `OptogeneticRheotaxisMicroSwarmStudy`, `OptogeneticRheotaxisMicroSwarmRepository`, and `/api/v1/optogenetic-rheotaxis-micro-swarm/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

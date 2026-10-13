@@ -1,5 +1,6 @@
 ## [v4.6.0] - Milestone v4.6 Autonomous Synthetic Morphogenesis, Biohybrid Cybernetics & Planetary Multicellular OS
 ### Added
+- **Phase 466**: Autonomous Optogenetic Rheotaxis Bacterial Micro-Swarm Bio-Convective Flow Modeler (`optogenetic_rheotaxis_micro_swarm`)
 - **Phase 465**: Autonomous Microfluidic Acoustic Tweezers Multicellular Spheroid Patterning & Cytoskeletal Stress Engine (`acoustic_tweezers_spheroid_patterning`)
 - **Phase 464**: Autonomous Synthetic Symbiotic Consortia Metabolic Division-of-Labor Population Dynamics Simulator (`symbiotic_consortia_division_of_labor`)
 - **Phase 463**: Autonomous Neural Organoid Spontaneous Synchronous Bursting & Functional Connectivity Grapher (`neural_organoid_bursting_connectivity`)

@@ -2861,3 +2861,9 @@ from database.models.acoustic_tweezers_spheroid_patterning import (
     AcousticTweezersSpheroidPatterningItemProfile,
     AcousticTweezersSpheroidPatterningMetricTrace,
 )
+
+from database.models.optogenetic_rheotaxis_micro_swarm import (
+    OptogeneticRheotaxisMicroSwarmStudy,
+    OptogeneticRheotaxisMicroSwarmItemProfile,
+    OptogeneticRheotaxisMicroSwarmMetricTrace,
+)
