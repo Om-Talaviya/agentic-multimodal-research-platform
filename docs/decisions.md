@@ -1909,3 +1909,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous neural organoid spontaneous synchronous bursting & functional connectivity grapher within Milestone v4.6.
 - **Decision**: Implemented `NeuralOrganoidBurstingConnectivityEngine`, `NeuralOrganoidBurstingConnectivityStudy`, `NeuralOrganoidBurstingConnectivityRepository`, and `/api/v1/neural-organoid-bursting-connectivity/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-464: Autonomous Synthetic Symbiotic Consortia Metabolic Division-of-Labor Population Dynamics Simulator
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic symbiotic consortia metabolic division-of-labor population dynamics simulator within Milestone v4.6.
+- **Decision**: Implemented `SymbioticConsortiaDivisionOfLaborEngine`, `SymbioticConsortiaDivisionOfLaborStudy`, `SymbioticConsortiaDivisionOfLaborRepository`, and `/api/v1/symbiotic-consortia-division-of-labor/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

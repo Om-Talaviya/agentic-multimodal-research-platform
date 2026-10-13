@@ -2849,3 +2849,9 @@ from database.models.neural_organoid_bursting_connectivity import (
     NeuralOrganoidBurstingConnectivityItemProfile,
     NeuralOrganoidBurstingConnectivityMetricTrace,
 )
+
+from database.models.symbiotic_consortia_division_of_labor import (
+    SymbioticConsortiaDivisionOfLaborStudy,
+    SymbioticConsortiaDivisionOfLaborItemProfile,
+    SymbioticConsortiaDivisionOfLaborMetricTrace,
+)
