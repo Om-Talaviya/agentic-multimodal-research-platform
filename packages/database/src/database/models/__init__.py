@@ -2741,3 +2741,9 @@ from database.models.solid_phase_peptide_synthesis_coupling import (
     SolidPhasePeptideSynthesisItemProfile,
     SolidPhasePeptideSynthesisMetricTrace,
 )
+
+from database.models.polycomb_epigenomic_domain_spreading import (
+    PolycombEpigenomicDomainStudy,
+    PolycombEpigenomicDomainItemProfile,
+    PolycombEpigenomicDomainMetricTrace,
+)

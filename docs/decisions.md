@@ -1783,3 +1783,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-density solid-phase peptide synthesis (spps) coupling yield & aggregation engine within Milestone v4.5.
 - **Decision**: Implemented `SolidPhasePeptideSynthesisEngine`, `SolidPhasePeptideSynthesisStudy`, `SolidPhasePeptideSynthesisRepository`, and `/api/v1/solid-phase-peptide-synthesis/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-446: Autonomous Spatial Epigenomic Histone H3K27me3 Polycomb Repressive Domain Spreading Modeler
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous spatial epigenomic histone h3k27me3 polycomb repressive domain spreading modeler within Milestone v4.5.
+- **Decision**: Implemented `PolycombEpigenomicDomainEngine`, `PolycombEpigenomicDomainStudy`, `PolycombEpigenomicDomainRepository`, and `/api/v1/polycomb-epigenomic-domain/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
