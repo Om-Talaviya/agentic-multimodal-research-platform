@@ -2843,3 +2843,9 @@ from database.models.bacterial_cellulose_scaffold_crosslinking import (
     BacterialCelluloseScaffoldItemProfile,
     BacterialCelluloseScaffoldMetricTrace,
 )
+
+from database.models.neural_organoid_bursting_connectivity import (
+    NeuralOrganoidBurstingConnectivityStudy,
+    NeuralOrganoidBurstingConnectivityItemProfile,
+    NeuralOrganoidBurstingConnectivityMetricTrace,
+)

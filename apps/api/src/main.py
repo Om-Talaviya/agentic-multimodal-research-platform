@@ -1,3 +1,4 @@
+from api.routes.neural_organoid_bursting_connectivity import router as neural_organoid_bursting_connectivity_router
 from api.routes.bacterial_cellulose_scaffold_crosslinking import router as bacterial_cellulose_scaffold_crosslinking_router
 from api.routes.notch_delta_tension_transducer import router as notch_delta_tension_transducer_router
 from api.routes.cryo_clem_fiducial_alignment import router as cryo_clem_fiducial_alignment_router
@@ -1247,3 +1248,4 @@ app.include_router(multicellular_planar_cell_polarity_router, prefix=settings.ap
 app.include_router(cryo_clem_fiducial_alignment_router, prefix=settings.api_prefix)
 app.include_router(notch_delta_tension_transducer_router, prefix=settings.api_prefix)
 app.include_router(bacterial_cellulose_scaffold_crosslinking_router, prefix=settings.api_prefix)
+app.include_router(neural_organoid_bursting_connectivity_router, prefix=settings.api_prefix)

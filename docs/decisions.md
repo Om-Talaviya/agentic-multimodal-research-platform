@@ -1902,3 +1902,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous living biomaterial engineered bacterial cellulose scaffold cross-linking engine within Milestone v4.6.
 - **Decision**: Implemented `BacterialCelluloseScaffoldEngine`, `BacterialCelluloseScaffoldStudy`, `BacterialCelluloseScaffoldRepository`, and `/api/v1/bacterial-cellulose-scaffold/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-463: Autonomous Neural Organoid Spontaneous Synchronous Bursting & Functional Connectivity Grapher
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous neural organoid spontaneous synchronous bursting & functional connectivity grapher within Milestone v4.6.
+- **Decision**: Implemented `NeuralOrganoidBurstingConnectivityEngine`, `NeuralOrganoidBurstingConnectivityStudy`, `NeuralOrganoidBurstingConnectivityRepository`, and `/api/v1/neural-organoid-bursting-connectivity/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
