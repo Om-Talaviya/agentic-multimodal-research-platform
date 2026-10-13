@@ -2891,3 +2891,9 @@ from database.models.piezoelectric_collagen_matrix_transduction import (
     PiezoelectricCollagenMatrixTransductionItemProfile,
     PiezoelectricCollagenMatrixTransductionMetricTrace,
 )
+
+from database.models.somatogenesis_hes7_clock_wavefront import (
+    SomatogenesisHes7ClockWavefrontStudy,
+    SomatogenesisHes7ClockWavefrontItemProfile,
+    SomatogenesisHes7ClockWavefrontMetricTrace,
+)

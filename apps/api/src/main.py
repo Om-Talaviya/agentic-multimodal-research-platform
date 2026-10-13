@@ -1,3 +1,4 @@
+from api.routes.somatogenesis_hes7_clock_wavefront import router as somatogenesis_hes7_clock_wavefront_router
 from api.routes.piezoelectric_collagen_matrix_transduction import router as piezoelectric_collagen_matrix_transduction_router
 from api.routes.cryoet_actin_microtubule_lattice import router as cryoet_actin_microtubule_lattice_router
 from api.routes.eph_ephrin_morpho_repulsion import router as eph_ephrin_morpho_repulsion_router
@@ -1263,3 +1264,4 @@ app.include_router(tissue_origami_cell_sheet_folding_router, prefix=settings.api
 app.include_router(eph_ephrin_morpho_repulsion_router, prefix=settings.api_prefix)
 app.include_router(cryoet_actin_microtubule_lattice_router, prefix=settings.api_prefix)
 app.include_router(piezoelectric_collagen_matrix_transduction_router, prefix=settings.api_prefix)
+app.include_router(somatogenesis_hes7_clock_wavefront_router, prefix=settings.api_prefix)

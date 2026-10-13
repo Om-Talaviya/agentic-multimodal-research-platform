@@ -1958,3 +1958,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous bio-piezoelectric collagen matrix electromechanical transduction engine within Milestone v4.6.
 - **Decision**: Implemented `PiezoelectricCollagenMatrixTransductionEngine`, `PiezoelectricCollagenMatrixTransductionStudy`, `PiezoelectricCollagenMatrixTransductionRepository`, and `/api/v1/piezoelectric-collagen-transduction/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-471: Autonomous Synthetic Multicellular Somatogenesis Clock-and-Wavefront Hes7 Notch Pulse Tracker
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic multicellular somatogenesis clock-and-wavefront hes7 notch pulse tracker within Milestone v4.6.
+- **Decision**: Implemented `SomatogenesisHes7ClockWavefrontEngine`, `SomatogenesisHes7ClockWavefrontStudy`, `SomatogenesisHes7ClockWavefrontRepository`, and `/api/v1/somatogenesis-hes7-clock-wavefront/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
