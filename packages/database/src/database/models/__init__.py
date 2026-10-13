@@ -2837,3 +2837,9 @@ from database.models.notch_delta_tension_transducer import (
     NotchDeltaTensionTransducerItemProfile,
     NotchDeltaTensionTransducerMetricTrace,
 )
+
+from database.models.bacterial_cellulose_scaffold_crosslinking import (
+    BacterialCelluloseScaffoldStudy,
+    BacterialCelluloseScaffoldItemProfile,
+    BacterialCelluloseScaffoldMetricTrace,
+)

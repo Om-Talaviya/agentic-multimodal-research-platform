@@ -1895,3 +1895,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic morphogenetic cell-cell contact notch-delta mechanical tension transducer within Milestone v4.6.
 - **Decision**: Implemented `NotchDeltaTensionTransducerEngine`, `NotchDeltaTensionTransducerStudy`, `NotchDeltaTensionTransducerRepository`, and `/api/v1/notch-delta-tension-transducer/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-462: Autonomous Living Biomaterial Engineered Bacterial Cellulose Scaffold Cross-Linking Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous living biomaterial engineered bacterial cellulose scaffold cross-linking engine within Milestone v4.6.
+- **Decision**: Implemented `BacterialCelluloseScaffoldEngine`, `BacterialCelluloseScaffoldStudy`, `BacterialCelluloseScaffoldRepository`, and `/api/v1/bacterial-cellulose-scaffold/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
