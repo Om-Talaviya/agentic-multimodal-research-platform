@@ -2807,3 +2807,9 @@ from database.models.morphogen_gradient_turing_pattern import (
     MorphogenGradientTuringPatternItemProfile,
     MorphogenGradientTuringPatternMetricTrace,
 )
+
+from database.models.biohybrid_soft_actuator_myotube import (
+    BiohybridSoftActuatorMyotubeStudy,
+    BiohybridSoftActuatorMyotubeItemProfile,
+    BiohybridSoftActuatorMyotubeMetricTrace,
+)
