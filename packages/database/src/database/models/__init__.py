@@ -2777,3 +2777,9 @@ from database.models.optical_tweezers_ribosome_translation import (
     OpticalTweezersRibosomeTranslationItemProfile,
     OpticalTweezersRibosomeTranslationMetricTrace,
 )
+
+from database.models.mitotic_spindle_sac_tension_simulator import (
+    MitoticSpindleSacTensionStudy,
+    MitoticSpindleSacTensionItemProfile,
+    MitoticSpindleSacTensionMetricTrace,
+)

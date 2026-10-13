@@ -1825,3 +1825,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule optical tweezers ribosome translation kinetic polypeptide translocation engine within Milestone v4.5.
 - **Decision**: Implemented `OpticalTweezersRibosomeTranslationEngine`, `OpticalTweezersRibosomeTranslationStudy`, `OpticalTweezersRibosomeTranslationRepository`, and `/api/v1/optical-tweezers-ribosome-translation/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-452: Autonomous Microtubule Spindle Assembly Checkpoint (SAC) Mitotic Tension Kinetic Simulator
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous microtubule spindle assembly checkpoint (sac) mitotic tension kinetic simulator within Milestone v4.5.
+- **Decision**: Implemented `MitoticSpindleSacTensionEngine`, `MitoticSpindleSacTensionStudy`, `MitoticSpindleSacTensionRepository`, and `/api/v1/mitotic-spindle-sac-tension/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
