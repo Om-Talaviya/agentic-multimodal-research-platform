@@ -1797,3 +1797,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous coarse-grained dna-protein complex martini force-field molecular dynamics simulator within Milestone v4.5.
 - **Decision**: Implemented `CoarseGrainedMartiniDnaProteinEngine`, `CoarseGrainedMartiniDnaProteinStudy`, `CoarseGrainedMartiniDnaProteinRepository`, and `/api/v1/coarse-grained-martini-dynamics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-448: Autonomous Synthetic Epigenetic Prime-Converter Base Insertion & Inverted Repeat Profiler
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic epigenetic prime-converter base insertion & inverted repeat profiler within Milestone v4.5.
+- **Decision**: Implemented `SyntheticEpigeneticPrimeConverterEngine`, `SyntheticEpigeneticPrimeConverterStudy`, `SyntheticEpigeneticPrimeConverterRepository`, and `/api/v1/synthetic-epigenetic-prime-converter/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

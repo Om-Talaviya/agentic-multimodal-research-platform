@@ -2753,3 +2753,9 @@ from database.models.coarse_grained_martini_dna_protein import (
     CoarseGrainedMartiniDnaProteinItemProfile,
     CoarseGrainedMartiniDnaProteinMetricTrace,
 )
+
+from database.models.synthetic_epigenetic_prime_converter import (
+    SyntheticEpigeneticPrimeConverterStudy,
+    SyntheticEpigeneticPrimeConverterItemProfile,
+    SyntheticEpigeneticPrimeConverterMetricTrace,
+)
