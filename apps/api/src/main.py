@@ -1,3 +1,4 @@
+from api.routes.nanopore_blockade_topology_classifier import router as nanopore_blockade_topology_classifier_router
 from api.routes.droplet_single_cell_isotope_metabolomics import router as droplet_single_cell_isotope_metabolomics_router
 from api.routes.synthetic_epigenetic_prime_converter import router as synthetic_epigenetic_prime_converter_router
 from api.routes.coarse_grained_martini_dna_protein import router as coarse_grained_martini_dna_protein_router
@@ -1221,3 +1222,4 @@ app.include_router(polycomb_epigenomic_domain_spreading_router, prefix=settings.
 app.include_router(coarse_grained_martini_dna_protein_router, prefix=settings.api_prefix)
 app.include_router(synthetic_epigenetic_prime_converter_router, prefix=settings.api_prefix)
 app.include_router(droplet_single_cell_isotope_metabolomics_router, prefix=settings.api_prefix)
+app.include_router(nanopore_blockade_topology_classifier_router, prefix=settings.api_prefix)

@@ -1110,3 +1110,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 447**: Autonomous Coarse-Grained DNA-Protein Complex Martini Force-Field Molecular Dynamics Simulator (`coarse_grained_martini_dna_protein`)
 - [x] **Phase 448**: Autonomous Synthetic Epigenetic Prime-Converter Base Insertion & Inverted Repeat Profiler (`synthetic_epigenetic_prime_converter`)
 - [x] **Phase 449**: Autonomous Microfluidic Droplet Single-Cell Metabolic Metabolomics Isotope Labeling Profiler (`droplet_single_cell_isotope_metabolomics`)
+- [x] **Phase 450**: Autonomous Nanopore Ionic Current Blockade Shape Classifier for Macromolecular Topologies (`nanopore_blockade_topology_classifier`)

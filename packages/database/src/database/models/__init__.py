@@ -2765,3 +2765,9 @@ from database.models.droplet_single_cell_isotope_metabolomics import (
     DropletSingleCellIsotopeMetabolomicsItemProfile,
     DropletSingleCellIsotopeMetabolomicsMetricTrace,
 )
+
+from database.models.nanopore_blockade_topology_classifier import (
+    NanoporeBlockadeTopologyStudy,
+    NanoporeBlockadeTopologyItemProfile,
+    NanoporeBlockadeTopologyMetricTrace,
+)

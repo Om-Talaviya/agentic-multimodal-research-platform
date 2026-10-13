@@ -1811,3 +1811,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic droplet single-cell metabolic metabolomics isotope labeling profiler within Milestone v4.5.
 - **Decision**: Implemented `DropletSingleCellIsotopeMetabolomicsEngine`, `DropletSingleCellIsotopeMetabolomicsStudy`, `DropletSingleCellIsotopeMetabolomicsRepository`, and `/api/v1/droplet-single-cell-metabolomics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-450: Autonomous Nanopore Ionic Current Blockade Shape Classifier for Macromolecular Topologies
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous nanopore ionic current blockade shape classifier for macromolecular topologies within Milestone v4.5.
+- **Decision**: Implemented `NanoporeBlockadeTopologyEngine`, `NanoporeBlockadeTopologyStudy`, `NanoporeBlockadeTopologyRepository`, and `/api/v1/nanopore-blockade-topology/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

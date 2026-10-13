@@ -1,5 +1,6 @@
 ## [v4.5.0] - Milestone v4.5 Planetary Nanoscale Biomachines, Quantum Biology & Synthetic Cellular Consortia OS
 ### Added
+- **Phase 450**: Autonomous Nanopore Ionic Current Blockade Shape Classifier for Macromolecular Topologies (`nanopore_blockade_topology_classifier`)
 - **Phase 449**: Autonomous Microfluidic Droplet Single-Cell Metabolic Metabolomics Isotope Labeling Profiler (`droplet_single_cell_isotope_metabolomics`)
 - **Phase 448**: Autonomous Synthetic Epigenetic Prime-Converter Base Insertion & Inverted Repeat Profiler (`synthetic_epigenetic_prime_converter`)
 - **Phase 447**: Autonomous Coarse-Grained DNA-Protein Complex Martini Force-Field Molecular Dynamics Simulator (`coarse_grained_martini_dna_protein`)
