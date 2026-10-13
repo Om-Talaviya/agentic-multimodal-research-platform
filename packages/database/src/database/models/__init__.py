@@ -2795,3 +2795,9 @@ from database.models.cell_free_quorum_feedback_oscillator import (
     CellFreeQuorumFeedbackOscillatorItemProfile,
     CellFreeQuorumFeedbackOscillatorMetricTrace,
 )
+
+from database.models.milestone_v4_5_meta_orchestrator import (
+    MilestoneV45MetaOrchestratorStudy,
+    MilestoneV45MetaOrchestratorItemProfile,
+    MilestoneV45MetaOrchestratorMetricTrace,
+)

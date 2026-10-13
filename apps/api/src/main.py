@@ -1,3 +1,4 @@
+from api.routes.milestone_v4_5_meta_orchestrator import router as milestone_v4_5_meta_orchestrator_router
 from api.routes.cell_free_quorum_feedback_oscillator import router as cell_free_quorum_feedback_oscillator_router
 from api.routes.quantum_dots_optoelectronic_synapse import router as quantum_dots_optoelectronic_synapse_router
 from api.routes.mitotic_spindle_sac_tension_simulator import router as mitotic_spindle_sac_tension_simulator_router
@@ -1231,3 +1232,4 @@ app.include_router(optical_tweezers_ribosome_translation_router, prefix=settings
 app.include_router(mitotic_spindle_sac_tension_simulator_router, prefix=settings.api_prefix)
 app.include_router(quantum_dots_optoelectronic_synapse_router, prefix=settings.api_prefix)
 app.include_router(cell_free_quorum_feedback_oscillator_router, prefix=settings.api_prefix)
+app.include_router(milestone_v4_5_meta_orchestrator_router, prefix=settings.api_prefix)
