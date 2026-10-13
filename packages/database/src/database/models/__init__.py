@@ -2831,3 +2831,9 @@ from database.models.cryo_clem_fiducial_alignment import (
     CryoClemFiducialAlignmentItemProfile,
     CryoClemFiducialAlignmentMetricTrace,
 )
+
+from database.models.notch_delta_tension_transducer import (
+    NotchDeltaTensionTransducerStudy,
+    NotchDeltaTensionTransducerItemProfile,
+    NotchDeltaTensionTransducerMetricTrace,
+)

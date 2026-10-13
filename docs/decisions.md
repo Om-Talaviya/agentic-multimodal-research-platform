@@ -1888,3 +1888,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-clem fluorescent target correlation & precision fiducial alignment engine within Milestone v4.6.
 - **Decision**: Implemented `CryoClemFiducialAlignmentEngine`, `CryoClemFiducialAlignmentStudy`, `CryoClemFiducialAlignmentRepository`, and `/api/v1/cryo-clem-fiducial-alignment/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-461: Autonomous Synthetic Morphogenetic Cell-Cell Contact Notch-Delta Mechanical Tension Transducer
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic morphogenetic cell-cell contact notch-delta mechanical tension transducer within Milestone v4.6.
+- **Decision**: Implemented `NotchDeltaTensionTransducerEngine`, `NotchDeltaTensionTransducerStudy`, `NotchDeltaTensionTransducerRepository`, and `/api/v1/notch-delta-tension-transducer/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
