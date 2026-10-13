@@ -2735,3 +2735,9 @@ from database.models.optogenetic_action_potential_trajectory import (
     OptogeneticActionPotentialItemProfile,
     OptogeneticActionPotentialMetricTrace,
 )
+
+from database.models.solid_phase_peptide_synthesis_coupling import (
+    SolidPhasePeptideSynthesisStudy,
+    SolidPhasePeptideSynthesisItemProfile,
+    SolidPhasePeptideSynthesisMetricTrace,
+)

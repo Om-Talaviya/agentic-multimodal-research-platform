@@ -1776,3 +1776,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous optogenetic membrane depolarization & action potential firing trajectory simulator within Milestone v4.5.
 - **Decision**: Implemented `OptogeneticActionPotentialEngine`, `OptogeneticActionPotentialStudy`, `OptogeneticActionPotentialRepository`, and `/api/v1/optogenetic-action-potential/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-445: Autonomous High-Density Solid-Phase Peptide Synthesis (SPPS) Coupling Yield & Aggregation Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-density solid-phase peptide synthesis (spps) coupling yield & aggregation engine within Milestone v4.5.
+- **Decision**: Implemented `SolidPhasePeptideSynthesisEngine`, `SolidPhasePeptideSynthesisStudy`, `SolidPhasePeptideSynthesisRepository`, and `/api/v1/solid-phase-peptide-synthesis/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
