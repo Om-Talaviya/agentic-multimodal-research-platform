@@ -1,5 +1,6 @@
 ## [v4.6.0] - Milestone v4.6 Autonomous Synthetic Morphogenesis, Biohybrid Cybernetics & Planetary Multicellular OS
 ### Added
+- **Phase 468**: Autonomous Synthetic Morphogenetic Morpho-Kinetic Boundary Sharpening & Eph-Ephrin Repulsion Engine (`eph_ephrin_morpho_repulsion`)
 - **Phase 467**: Autonomous Living Tissue Origami Programmable 4D Cell-Sheet Self-Folding Mechanics Simulator (`tissue_origami_cell_sheet_folding`)
 - **Phase 466**: Autonomous Optogenetic Rheotaxis Bacterial Micro-Swarm Bio-Convective Flow Modeler (`optogenetic_rheotaxis_micro_swarm`)
 - **Phase 465**: Autonomous Microfluidic Acoustic Tweezers Multicellular Spheroid Patterning & Cytoskeletal Stress Engine (`acoustic_tweezers_spheroid_patterning`)

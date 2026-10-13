@@ -2873,3 +2873,9 @@ from database.models.tissue_origami_cell_sheet_folding import (
     TissueOrigamiCellSheetFoldingItemProfile,
     TissueOrigamiCellSheetFoldingMetricTrace,
 )
+
+from database.models.eph_ephrin_morpho_repulsion import (
+    EphEphrinMorphoRepulsionStudy,
+    EphEphrinMorphoRepulsionItemProfile,
+    EphEphrinMorphoRepulsionMetricTrace,
+)
