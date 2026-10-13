@@ -1832,3 +1832,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous microtubule spindle assembly checkpoint (sac) mitotic tension kinetic simulator within Milestone v4.5.
 - **Decision**: Implemented `MitoticSpindleSacTensionEngine`, `MitoticSpindleSacTensionStudy`, `MitoticSpindleSacTensionRepository`, and `/api/v1/mitotic-spindle-sac-tension/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-453: Autonomous Quantum Dots-Mediated Optoelectronic Neuromorphic Synaptic Potentiation Modeler
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous quantum dots-mediated optoelectronic neuromorphic synaptic potentiation modeler within Milestone v4.5.
+- **Decision**: Implemented `QuantumDotsOptoelectronicSynapseEngine`, `QuantumDotsOptoelectronicSynapseStudy`, `QuantumDotsOptoelectronicSynapseRepository`, and `/api/v1/quantum-dots-optoelectronic-synapse/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

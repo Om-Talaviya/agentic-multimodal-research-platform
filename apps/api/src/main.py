@@ -1,3 +1,4 @@
+from api.routes.quantum_dots_optoelectronic_synapse import router as quantum_dots_optoelectronic_synapse_router
 from api.routes.mitotic_spindle_sac_tension_simulator import router as mitotic_spindle_sac_tension_simulator_router
 from api.routes.optical_tweezers_ribosome_translation import router as optical_tweezers_ribosome_translation_router
 from api.routes.nanopore_blockade_topology_classifier import router as nanopore_blockade_topology_classifier_router
@@ -1227,3 +1228,4 @@ app.include_router(droplet_single_cell_isotope_metabolomics_router, prefix=setti
 app.include_router(nanopore_blockade_topology_classifier_router, prefix=settings.api_prefix)
 app.include_router(optical_tweezers_ribosome_translation_router, prefix=settings.api_prefix)
 app.include_router(mitotic_spindle_sac_tension_simulator_router, prefix=settings.api_prefix)
+app.include_router(quantum_dots_optoelectronic_synapse_router, prefix=settings.api_prefix)

@@ -2783,3 +2783,9 @@ from database.models.mitotic_spindle_sac_tension_simulator import (
     MitoticSpindleSacTensionItemProfile,
     MitoticSpindleSacTensionMetricTrace,
 )
+
+from database.models.quantum_dots_optoelectronic_synapse import (
+    QuantumDotsOptoelectronicSynapseStudy,
+    QuantumDotsOptoelectronicSynapseItemProfile,
+    QuantumDotsOptoelectronicSynapseMetricTrace,
+)
