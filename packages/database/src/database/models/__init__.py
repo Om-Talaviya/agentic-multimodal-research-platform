@@ -2813,3 +2813,9 @@ from database.models.biohybrid_soft_actuator_myotube import (
     BiohybridSoftActuatorMyotubeItemProfile,
     BiohybridSoftActuatorMyotubeMetricTrace,
 )
+
+from database.models.organ_on_chip_microvascular_shear import (
+    OrganOnChipMicrovascularShearStudy,
+    OrganOnChipMicrovascularShearItemProfile,
+    OrganOnChipMicrovascularShearMetricTrace,
+)
