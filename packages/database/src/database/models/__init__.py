@@ -2801,3 +2801,9 @@ from database.models.milestone_v4_5_meta_orchestrator import (
     MilestoneV45MetaOrchestratorItemProfile,
     MilestoneV45MetaOrchestratorMetricTrace,
 )
+
+from database.models.morphogen_gradient_turing_pattern import (
+    MorphogenGradientTuringPatternStudy,
+    MorphogenGradientTuringPatternItemProfile,
+    MorphogenGradientTuringPatternMetricTrace,
+)
