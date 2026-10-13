@@ -1,3 +1,4 @@
+from api.routes.multicellular_planar_cell_polarity import router as multicellular_planar_cell_polarity_router
 from api.routes.organ_on_chip_microvascular_shear import router as organ_on_chip_microvascular_shear_router
 from api.routes.biohybrid_soft_actuator_myotube import router as biohybrid_soft_actuator_myotube_router
 from api.routes.morphogen_gradient_turing_pattern import router as morphogen_gradient_turing_pattern_router
@@ -1239,3 +1240,4 @@ app.include_router(milestone_v4_5_meta_orchestrator_router, prefix=settings.api_
 app.include_router(morphogen_gradient_turing_pattern_router, prefix=settings.api_prefix)
 app.include_router(biohybrid_soft_actuator_myotube_router, prefix=settings.api_prefix)
 app.include_router(organ_on_chip_microvascular_shear_router, prefix=settings.api_prefix)
+app.include_router(multicellular_planar_cell_polarity_router, prefix=settings.api_prefix)

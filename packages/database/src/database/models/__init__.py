@@ -2819,3 +2819,9 @@ from database.models.organ_on_chip_microvascular_shear import (
     OrganOnChipMicrovascularShearItemProfile,
     OrganOnChipMicrovascularShearMetricTrace,
 )
+
+from database.models.multicellular_planar_cell_polarity import (
+    MulticellularPlanarCellPolarityStudy,
+    MulticellularPlanarCellPolarityItemProfile,
+    MulticellularPlanarCellPolarityMetricTrace,
+)

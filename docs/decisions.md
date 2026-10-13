@@ -1874,3 +1874,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous organ-on-chip multi-tissue microvascular fluid shear stress perfusion engine within Milestone v4.6.
 - **Decision**: Implemented `OrganOnChipMicrovascularShearEngine`, `OrganOnChipMicrovascularShearStudy`, `OrganOnChipMicrovascularShearRepository`, and `/api/v1/organ-on-chip-microvascular-shear/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-459: Autonomous Synthetic Multicellular Planar Cell Polarity (PCP) Asymmetric Segregation Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic multicellular planar cell polarity (pcp) asymmetric segregation engine within Milestone v4.6.
+- **Decision**: Implemented `MulticellularPlanarCellPolarityEngine`, `MulticellularPlanarCellPolarityStudy`, `MulticellularPlanarCellPolarityRepository`, and `/api/v1/multicellular-planar-cell-polarity/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
