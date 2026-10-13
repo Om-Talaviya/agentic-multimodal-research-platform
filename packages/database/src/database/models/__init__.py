@@ -2885,3 +2885,9 @@ from database.models.cryoet_actin_microtubule_lattice import (
     CryoetActinMicrotubuleLatticeItemProfile,
     CryoetActinMicrotubuleLatticeMetricTrace,
 )
+
+from database.models.piezoelectric_collagen_matrix_transduction import (
+    PiezoelectricCollagenMatrixTransductionStudy,
+    PiezoelectricCollagenMatrixTransductionItemProfile,
+    PiezoelectricCollagenMatrixTransductionMetricTrace,
+)

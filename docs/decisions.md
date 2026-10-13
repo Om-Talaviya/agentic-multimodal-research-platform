@@ -1951,3 +1951,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et cytoskeletal actin-microtubule cross-linking structural lattice engine within Milestone v4.6.
 - **Decision**: Implemented `CryoetActinMicrotubuleLatticeEngine`, `CryoetActinMicrotubuleLatticeStudy`, `CryoetActinMicrotubuleLatticeRepository`, and `/api/v1/cryoet-actin-microtubule-lattice/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-470: Autonomous Bio-Piezoelectric Collagen Matrix Electromechanical Transduction Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous bio-piezoelectric collagen matrix electromechanical transduction engine within Milestone v4.6.
+- **Decision**: Implemented `PiezoelectricCollagenMatrixTransductionEngine`, `PiezoelectricCollagenMatrixTransductionStudy`, `PiezoelectricCollagenMatrixTransductionRepository`, and `/api/v1/piezoelectric-collagen-transduction/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
