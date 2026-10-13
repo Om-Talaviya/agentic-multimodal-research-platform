@@ -2879,3 +2879,9 @@ from database.models.eph_ephrin_morpho_repulsion import (
     EphEphrinMorphoRepulsionItemProfile,
     EphEphrinMorphoRepulsionMetricTrace,
 )
+
+from database.models.cryoet_actin_microtubule_lattice import (
+    CryoetActinMicrotubuleLatticeStudy,
+    CryoetActinMicrotubuleLatticeItemProfile,
+    CryoetActinMicrotubuleLatticeMetricTrace,
+)

@@ -1944,3 +1944,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic morphogenetic morpho-kinetic boundary sharpening & eph-ephrin repulsion engine within Milestone v4.6.
 - **Decision**: Implemented `EphEphrinMorphoRepulsionEngine`, `EphEphrinMorphoRepulsionStudy`, `EphEphrinMorphoRepulsionRepository`, and `/api/v1/eph-ephrin-morpho-repulsion/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-469: Autonomous In-Situ Cryo-ET Cytoskeletal Actin-Microtubule Cross-Linking Structural Lattice Engine
+- **Date**: 2026-10-13
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et cytoskeletal actin-microtubule cross-linking structural lattice engine within Milestone v4.6.
+- **Decision**: Implemented `CryoetActinMicrotubuleLatticeEngine`, `CryoetActinMicrotubuleLatticeStudy`, `CryoetActinMicrotubuleLatticeRepository`, and `/api/v1/cryoet-actin-microtubule-lattice/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

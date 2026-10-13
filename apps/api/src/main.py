@@ -1,3 +1,4 @@
+from api.routes.cryoet_actin_microtubule_lattice import router as cryoet_actin_microtubule_lattice_router
 from api.routes.eph_ephrin_morpho_repulsion import router as eph_ephrin_morpho_repulsion_router
 from api.routes.tissue_origami_cell_sheet_folding import router as tissue_origami_cell_sheet_folding_router
 from api.routes.optogenetic_rheotaxis_micro_swarm import router as optogenetic_rheotaxis_micro_swarm_router
@@ -1259,3 +1260,4 @@ app.include_router(acoustic_tweezers_spheroid_patterning_router, prefix=settings
 app.include_router(optogenetic_rheotaxis_micro_swarm_router, prefix=settings.api_prefix)
 app.include_router(tissue_origami_cell_sheet_folding_router, prefix=settings.api_prefix)
 app.include_router(eph_ephrin_morpho_repulsion_router, prefix=settings.api_prefix)
+app.include_router(cryoet_actin_microtubule_lattice_router, prefix=settings.api_prefix)
