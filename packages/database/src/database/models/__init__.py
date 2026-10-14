@@ -3215,3 +3215,9 @@ from database.models.droplet_single_cell_mass_spec_proteomics import (
     DropletSingleCellMassSpecProteomicsItemProfile,
     DropletSingleCellMassSpecProteomicsMetricTrace,
 )
+
+from database.models.crispr_cas12a_direct_rna_targeting_diagnostics import (
+    CrisprCas12aDirectRnaTargetingDiagnosticsStudy,
+    CrisprCas12aDirectRnaTargetingDiagnosticsItemProfile,
+    CrisprCas12aDirectRnaTargetingDiagnosticsMetricTrace,
+)

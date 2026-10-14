@@ -2336,3 +2336,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous picoliter microfluidic droplet single-cell mass spectrometry proteome fingerprinter within Milestone v4.9.
 - **Decision**: Implemented `DropletSingleCellMassSpecProteomicsEngine`, `DropletSingleCellMassSpecProteomicsStudy`, `DropletSingleCellMassSpecProteomicsRepository`, and `/api/v1/droplet-single-cell-mass-spec-proteomics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-525: Autonomous Engineered Cas12a Direct RNA Single-Nucleotide Variant Diagnostic Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous engineered cas12a direct rna single-nucleotide variant diagnostic engine within Milestone v4.9.
+- **Decision**: Implemented `CrisprCas12aDirectRnaTargetingDiagnosticsEngine`, `CrisprCas12aDirectRnaTargetingDiagnosticsStudy`, `CrisprCas12aDirectRnaTargetingDiagnosticsRepository`, and `/api/v1/crispr-cas12a-direct-rna-targeting-diagnostics/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
