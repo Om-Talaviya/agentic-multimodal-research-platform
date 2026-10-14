@@ -3161,3 +3161,9 @@ from database.models.epigenetic_crispr_chromatin_loop_extrusion import (
     EpigeneticCrisprChromatinLoopExtrusionItemProfile,
     EpigeneticCrisprChromatinLoopExtrusionMetricTrace,
 )
+
+from database.models.high_throughput_mass_photometry_ribosome import (
+    HighThroughputMassPhotometryRibosomeStudy,
+    HighThroughputMassPhotometryRibosomeItemProfile,
+    HighThroughputMassPhotometryRibosomeMetricTrace,
+)

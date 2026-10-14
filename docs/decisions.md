@@ -2273,3 +2273,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous dcas9-mediated chromatin loop extrusion & cohesin-ctcf boundary rewriter within Milestone v4.8.
 - **Decision**: Implemented `EpigeneticCrisprChromatinLoopExtrusionEngine`, `EpigeneticCrisprChromatinLoopExtrusionStudy`, `EpigeneticCrisprChromatinLoopExtrusionRepository`, and `/api/v1/epigenetic-crispr-chromatin-loop-extrusion/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-516: Autonomous Automated High-Throughput Mass Photometry Macromolecular Mass Dispersity Profiler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous automated high-throughput mass photometry macromolecular mass dispersity profiler within Milestone v4.8.
+- **Decision**: Implemented `HighThroughputMassPhotometryRibosomeEngine`, `HighThroughputMassPhotometryRibosomeStudy`, `HighThroughputMassPhotometryRibosomeRepository`, and `/api/v1/high-throughput-mass-photometry-ribosome/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -1,3 +1,4 @@
+from api.routes.high_throughput_mass_photometry_ribosome import router as high_throughput_mass_photometry_ribosome_router
 from api.routes.epigenetic_crispr_chromatin_loop_extrusion import router as epigenetic_crispr_chromatin_loop_extrusion_router
 from api.routes.deep_learning_tcr_pmhc_docking_energy import router as deep_learning_tcr_pmhc_docking_energy_router
 from api.routes.synthetic_quorum_sensing_cross_species_switch import router as synthetic_quorum_sensing_cross_species_switch_router
@@ -1353,3 +1354,4 @@ app.include_router(single_molecule_optical_trap_dna_helicase_router, prefix=sett
 app.include_router(synthetic_quorum_sensing_cross_species_switch_router, prefix=settings.api_prefix)
 app.include_router(deep_learning_tcr_pmhc_docking_energy_router, prefix=settings.api_prefix)
 app.include_router(epigenetic_crispr_chromatin_loop_extrusion_router, prefix=settings.api_prefix)
+app.include_router(high_throughput_mass_photometry_ribosome_router, prefix=settings.api_prefix)
