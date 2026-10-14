@@ -3203,3 +3203,9 @@ from database.models.super_resolution_expansion_cryo_microscopy import (
     SuperResolutionExpansionCryoMicroscopyItemProfile,
     SuperResolutionExpansionCryoMicroscopyMetricTrace,
 )
+
+from database.models.synthetic_dna_nanomachine_cargo_shuttle import (
+    SyntheticDnaNanomachineCargoShuttleStudy,
+    SyntheticDnaNanomachineCargoShuttleItemProfile,
+    SyntheticDnaNanomachineCargoShuttleMetricTrace,
+)

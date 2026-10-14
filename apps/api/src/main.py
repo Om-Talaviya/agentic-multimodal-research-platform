@@ -1,3 +1,4 @@
+from api.routes.synthetic_dna_nanomachine_cargo_shuttle import router as synthetic_dna_nanomachine_cargo_shuttle_router
 from api.routes.super_resolution_expansion_cryo_microscopy import router as super_resolution_expansion_cryo_microscopy_router
 from api.routes.neuromorphic_memristive_synapse_protein import router as neuromorphic_memristive_synapse_protein_router
 from api.routes.liquid_cell_tem_protein_crystallization import router as liquid_cell_tem_protein_crystallization_router
@@ -1367,3 +1368,4 @@ app.include_router(active_matter_cytoskeletal_nematic_defect_router, prefix=sett
 app.include_router(liquid_cell_tem_protein_crystallization_router, prefix=settings.api_prefix)
 app.include_router(neuromorphic_memristive_synapse_protein_router, prefix=settings.api_prefix)
 app.include_router(super_resolution_expansion_cryo_microscopy_router, prefix=settings.api_prefix)
+app.include_router(synthetic_dna_nanomachine_cargo_shuttle_router, prefix=settings.api_prefix)

@@ -2322,3 +2322,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous expansion super-resolution optical cryo-correlative multimodal profiler within Milestone v4.9.
 - **Decision**: Implemented `SuperResolutionExpansionCryoMicroscopyEngine`, `SuperResolutionExpansionCryoMicroscopyStudy`, `SuperResolutionExpansionCryoMicroscopyRepository`, and `/api/v1/super-resolution-expansion-cryo-microscopy/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-523: Autonomous Autonomous DNA Nanomachine Cargo Transport Track Walker & Dynamic Shuttle
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous autonomous dna nanomachine cargo transport track walker & dynamic shuttle within Milestone v4.9.
+- **Decision**: Implemented `SyntheticDnaNanomachineCargoShuttleEngine`, `SyntheticDnaNanomachineCargoShuttleStudy`, `SyntheticDnaNanomachineCargoShuttleRepository`, and `/api/v1/synthetic-dna-nanomachine-cargo-shuttle/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
