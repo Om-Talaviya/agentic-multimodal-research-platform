@@ -2909,3 +2909,9 @@ from database.models.flexoelectric_membrane_curvature import (
     FlexoelectricMembraneCurvatureItemProfile,
     FlexoelectricMembraneCurvatureMetricTrace,
 )
+
+from database.models.kinesin_dynein_vesicle_transport import (
+    KinesinDyneinVesicleTransportStudy,
+    KinesinDyneinVesicleTransportItemProfile,
+    KinesinDyneinVesicleTransportMetricTrace,
+)

@@ -1979,3 +1979,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous bio-piezoelectric cell membrane flexoelectric curvature transduction engine within Milestone v4.6.
 - **Decision**: Implemented `FlexoelectricMembraneCurvatureEngine`, `FlexoelectricMembraneCurvatureStudy`, `FlexoelectricMembraneCurvatureRepository`, and `/api/v1/flexoelectric-membrane-curvature/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-474: Autonomous Subcellular Microtubule Kinesin-Dynein Tug-of-War Vesicle Transport Modeler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous subcellular microtubule kinesin-dynein tug-of-war vesicle transport modeler within Milestone v4.6.
+- **Decision**: Implemented `KinesinDyneinVesicleTransportEngine`, `KinesinDyneinVesicleTransportStudy`, `KinesinDyneinVesicleTransportRepository`, and `/api/v1/kinesin-dynein-vesicle-transport/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
