@@ -3119,3 +3119,9 @@ from database.models.solid_state_nanopore_protein_unfolding import (
     SolidStateNanoporeProteinUnfoldingItemProfile,
     SolidStateNanoporeProteinUnfoldingMetricTrace,
 )
+
+from database.models.quantum_biophoton_mitochondrial_emission import (
+    QuantumBiophotonMitochondrialEmissionStudy,
+    QuantumBiophotonMitochondrialEmissionItemProfile,
+    QuantumBiophotonMitochondrialEmissionMetricTrace,
+)

@@ -2224,3 +2224,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous solid-state nanopore single-molecule protein co-translocational unfolding modeler within Milestone v4.8.
 - **Decision**: Implemented `SolidStateNanoporeProteinUnfoldingEngine`, `SolidStateNanoporeProteinUnfoldingStudy`, `SolidStateNanoporeProteinUnfoldingRepository`, and `/api/v1/solid-state-nanopore-protein-unfolding/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-509: Autonomous Ultra-Weak Biophoton Emission & Mitochondrial ROS Chemiluminescence Forecaster
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous ultra-weak biophoton emission & mitochondrial ros chemiluminescence forecaster within Milestone v4.8.
+- **Decision**: Implemented `QuantumBiophotonMitochondrialEmissionEngine`, `QuantumBiophotonMitochondrialEmissionStudy`, `QuantumBiophotonMitochondrialEmissionRepository`, and `/api/v1/quantum-biophoton-mitochondrial-emission/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
