@@ -2049,3 +2049,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous dna origami molecular crane nanomechanical arm & rotational stepper engine within Milestone v4.7.
 - **Decision**: Implemented `DnaOrigamiMolecularCraneEngine`, `DnaOrigamiMolecularCraneStudy`, `DnaOrigamiMolecularCraneRepository`, and `/api/v1/dna-origami-molecular-crane/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-484: Autonomous Single-Molecule Magnetic Tweezers Topoisomerase Type II DNA Catenation Decatenator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule magnetic tweezers topoisomerase type ii dna catenation decatenator within Milestone v4.7.
+- **Decision**: Implemented `MagneticTweezersTopoisomeraseDecatenationEngine`, `MagneticTweezersTopoisomeraseDecatenationStudy`, `MagneticTweezersTopoisomeraseDecatenationRepository`, and `/api/v1/magnetic-tweezers-topoisomerase-decatenation/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

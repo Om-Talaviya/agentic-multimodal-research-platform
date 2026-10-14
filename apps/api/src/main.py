@@ -1,3 +1,4 @@
+from api.routes.magnetic_tweezers_topoisomerase_decatenation import router as magnetic_tweezers_topoisomerase_decatenation_router
 from api.routes.dna_origami_molecular_crane import router as dna_origami_molecular_crane_router
 from api.routes.ferroptosis_fenton_cascade_simulator import router as ferroptosis_fenton_cascade_simulator_router
 from api.routes.cryoet_polysome_chaperone_topology import router as cryoet_polysome_chaperone_topology_router
@@ -1289,3 +1290,4 @@ app.include_router(guv_electroformation_dynamics_router, prefix=settings.api_pre
 app.include_router(cryoet_polysome_chaperone_topology_router, prefix=settings.api_prefix)
 app.include_router(ferroptosis_fenton_cascade_simulator_router, prefix=settings.api_prefix)
 app.include_router(dna_origami_molecular_crane_router, prefix=settings.api_prefix)
+app.include_router(magnetic_tweezers_topoisomerase_decatenation_router, prefix=settings.api_prefix)

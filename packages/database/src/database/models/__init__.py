@@ -2969,3 +2969,9 @@ from database.models.dna_origami_molecular_crane import (
     DnaOrigamiMolecularCraneItemProfile,
     DnaOrigamiMolecularCraneMetricTrace,
 )
+
+from database.models.magnetic_tweezers_topoisomerase_decatenation import (
+    MagneticTweezersTopoisomeraseDecatenationStudy,
+    MagneticTweezersTopoisomeraseDecatenationItemProfile,
+    MagneticTweezersTopoisomeraseDecatenationMetricTrace,
+)
