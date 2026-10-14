@@ -2056,3 +2056,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule magnetic tweezers topoisomerase type ii dna catenation decatenator within Milestone v4.7.
 - **Decision**: Implemented `MagneticTweezersTopoisomeraseDecatenationEngine`, `MagneticTweezersTopoisomeraseDecatenationStudy`, `MagneticTweezersTopoisomeraseDecatenationRepository`, and `/api/v1/magnetic-tweezers-topoisomerase-decatenation/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-485: Autonomous Bacterial Quorum Quenching Enzymatic Lactonase Biofilm Dispersion Forecaster
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous bacterial quorum quenching enzymatic lactonase biofilm dispersion forecaster within Milestone v4.7.
+- **Decision**: Implemented `QuorumQuenchingLactonaseDispersionEngine`, `QuorumQuenchingLactonaseDispersionStudy`, `QuorumQuenchingLactonaseDispersionRepository`, and `/api/v1/quorum-quenching-lactonase-dispersion/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

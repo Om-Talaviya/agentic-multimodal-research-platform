@@ -2975,3 +2975,9 @@ from database.models.magnetic_tweezers_topoisomerase_decatenation import (
     MagneticTweezersTopoisomeraseDecatenationItemProfile,
     MagneticTweezersTopoisomeraseDecatenationMetricTrace,
 )
+
+from database.models.quorum_quenching_lactonase_dispersion import (
+    QuorumQuenchingLactonaseDispersionStudy,
+    QuorumQuenchingLactonaseDispersionItemProfile,
+    QuorumQuenchingLactonaseDispersionMetricTrace,
+)
