@@ -3137,3 +3137,9 @@ from database.models.cryoet_nuclear_envelope_lamina_meshwork import (
     CryoetNuclearEnvelopeLaminaMeshworkItemProfile,
     CryoetNuclearEnvelopeLaminaMeshworkMetricTrace,
 )
+
+from database.models.single_molecule_optical_trap_dna_helicase import (
+    SingleMoleculeOpticalTrapDnaHelicaseStudy,
+    SingleMoleculeOpticalTrapDnaHelicaseItemProfile,
+    SingleMoleculeOpticalTrapDnaHelicaseMetricTrace,
+)

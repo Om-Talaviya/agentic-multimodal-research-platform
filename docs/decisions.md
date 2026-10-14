@@ -2245,3 +2245,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et nuclear envelope lamina meshwork & mechanical rigidity engine within Milestone v4.8.
 - **Decision**: Implemented `CryoetNuclearEnvelopeLaminaMeshworkEngine`, `CryoetNuclearEnvelopeLaminaMeshworkStudy`, `CryoetNuclearEnvelopeLaminaMeshworkRepository`, and `/api/v1/cryoet-nuclear-envelope-lamina-meshwork/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-512: Autonomous Single-Molecule Dual-Trap Optical Tweezers DNA Helicase Unwinding Stepper
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule dual-trap optical tweezers dna helicase unwinding stepper within Milestone v4.8.
+- **Decision**: Implemented `SingleMoleculeOpticalTrapDnaHelicaseEngine`, `SingleMoleculeOpticalTrapDnaHelicaseStudy`, `SingleMoleculeOpticalTrapDnaHelicaseRepository`, and `/api/v1/single-molecule-optical-trap-dna-helicase/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
