@@ -3089,3 +3089,9 @@ from database.models.coacervate_guv_hybrid_bionanoreactor import (
     CoacervateGuvHybridBionanoreactorItemProfile,
     CoacervateGuvHybridBionanoreactorMetricTrace,
 )
+
+from database.models.droplet_microfluidic_enzyme_evolution import (
+    DropletMicrofluidicEnzymeEvolutionStudy,
+    DropletMicrofluidicEnzymeEvolutionItemProfile,
+    DropletMicrofluidicEnzymeEvolutionMetricTrace,
+)

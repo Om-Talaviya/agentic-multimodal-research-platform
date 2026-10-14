@@ -1,3 +1,4 @@
+from api.routes.droplet_microfluidic_enzyme_evolution import router as droplet_microfluidic_enzyme_evolution_router
 from api.routes.coacervate_guv_hybrid_bionanoreactor import router as coacervate_guv_hybrid_bionanoreactor_router
 from api.routes.acoustic_droplet_single_exosome_profiler import router as acoustic_droplet_single_exosome_profiler_router
 from api.routes.cast_transposase_genomic_integration import router as cast_transposase_genomic_integration_router
@@ -1329,3 +1330,4 @@ app.include_router(bioelectronic_living_materials_network_router, prefix=setting
 app.include_router(cast_transposase_genomic_integration_router, prefix=settings.api_prefix)
 app.include_router(acoustic_droplet_single_exosome_profiler_router, prefix=settings.api_prefix)
 app.include_router(coacervate_guv_hybrid_bionanoreactor_router, prefix=settings.api_prefix)
+app.include_router(droplet_microfluidic_enzyme_evolution_router, prefix=settings.api_prefix)
