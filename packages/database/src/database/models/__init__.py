@@ -3149,3 +3149,9 @@ from database.models.synthetic_quorum_sensing_cross_species_switch import (
     SyntheticQuorumSensingCrossSpeciesSwitchItemProfile,
     SyntheticQuorumSensingCrossSpeciesSwitchMetricTrace,
 )
+
+from database.models.deep_learning_tcr_pmhc_docking_energy import (
+    DeepLearningTcrPmhcDockingEnergyStudy,
+    DeepLearningTcrPmhcDockingEnergyItemProfile,
+    DeepLearningTcrPmhcDockingEnergyMetricTrace,
+)

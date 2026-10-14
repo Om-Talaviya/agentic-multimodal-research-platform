@@ -2259,3 +2259,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous cross-species synthetic quorum sensing interbacterial commensal switch modeler within Milestone v4.8.
 - **Decision**: Implemented `SyntheticQuorumSensingCrossSpeciesSwitchEngine`, `SyntheticQuorumSensingCrossSpeciesSwitchStudy`, `SyntheticQuorumSensingCrossSpeciesSwitchRepository`, and `/api/v1/synthetic-quorum-sensing-cross-species-switch/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-514: Autonomous Equivariant Graph Neural Network TCR-pMHC Interface Binding Energy Forecaster
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous equivariant graph neural network tcr-pmhc interface binding energy forecaster within Milestone v4.8.
+- **Decision**: Implemented `DeepLearningTcrPmhcDockingEnergyEngine`, `DeepLearningTcrPmhcDockingEnergyStudy`, `DeepLearningTcrPmhcDockingEnergyRepository`, and `/api/v1/deep-learning-tcr-pmhc-docking-energy/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

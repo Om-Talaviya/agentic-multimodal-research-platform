@@ -1,3 +1,4 @@
+from api.routes.deep_learning_tcr_pmhc_docking_energy import router as deep_learning_tcr_pmhc_docking_energy_router
 from api.routes.synthetic_quorum_sensing_cross_species_switch import router as synthetic_quorum_sensing_cross_species_switch_router
 from api.routes.single_molecule_optical_trap_dna_helicase import router as single_molecule_optical_trap_dna_helicase_router
 from api.routes.cryoet_nuclear_envelope_lamina_meshwork import router as cryoet_nuclear_envelope_lamina_meshwork_router
@@ -1349,3 +1350,4 @@ app.include_router(organoid_vascular_perfusion_endothelial_shear_router, prefix=
 app.include_router(cryoet_nuclear_envelope_lamina_meshwork_router, prefix=settings.api_prefix)
 app.include_router(single_molecule_optical_trap_dna_helicase_router, prefix=settings.api_prefix)
 app.include_router(synthetic_quorum_sensing_cross_species_switch_router, prefix=settings.api_prefix)
+app.include_router(deep_learning_tcr_pmhc_docking_energy_router, prefix=settings.api_prefix)
