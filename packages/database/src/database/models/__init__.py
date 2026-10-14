@@ -3047,3 +3047,9 @@ from database.models.gastruloid_axial_patterning_wnt_bmp import (
     GastruloidAxialPatterningWntBmpItemProfile,
     GastruloidAxialPatterningWntBmpMetricTrace,
 )
+
+from database.models.milestone_v4_7_meta_orchestrator import (
+    MilestoneV47MetaOrchestratorStudy,
+    MilestoneV47MetaOrchestratorItemProfile,
+    MilestoneV47MetaOrchestratorMetricTrace,
+)
