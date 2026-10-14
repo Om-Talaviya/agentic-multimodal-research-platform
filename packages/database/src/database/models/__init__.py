@@ -3095,3 +3095,9 @@ from database.models.droplet_microfluidic_enzyme_evolution import (
     DropletMicrofluidicEnzymeEvolutionItemProfile,
     DropletMicrofluidicEnzymeEvolutionMetricTrace,
 )
+
+from database.models.ribosome_in_cell_conformation_smfret import (
+    RibosomeInCellConformationSmfretStudy,
+    RibosomeInCellConformationSmfretItemProfile,
+    RibosomeInCellConformationSmfretMetricTrace,
+)

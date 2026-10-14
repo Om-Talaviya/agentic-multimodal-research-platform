@@ -2196,3 +2196,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-throughput droplet microfluidic ultra-fast directed enzyme evolution kinetic screener within Milestone v4.8.
 - **Decision**: Implemented `DropletMicrofluidicEnzymeEvolutionEngine`, `DropletMicrofluidicEnzymeEvolutionStudy`, `DropletMicrofluidicEnzymeEvolutionRepository`, and `/api/v1/droplet-microfluidic-enzyme-evolution/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-505: Autonomous In-Cell Single-Molecule FRET Ribosome Conformational Dynamics Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-cell single-molecule fret ribosome conformational dynamics engine within Milestone v4.8.
+- **Decision**: Implemented `RibosomeInCellConformationSmfretEngine`, `RibosomeInCellConformationSmfretStudy`, `RibosomeInCellConformationSmfretRepository`, and `/api/v1/ribosome-in-cell-conformation-smfret/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
