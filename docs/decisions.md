@@ -2147,3 +2147,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous milestone v4.7 planetary subcellular nanomechanics, quantum biomolecular electronics & synthetic organogenesis os grand meta-orchestrator engine within Milestone v4.7.
 - **Decision**: Implemented `MilestoneV47MetaOrchestratorEngine`, `MilestoneV47MetaOrchestratorStudy`, `MilestoneV47MetaOrchestratorRepository`, and `/api/v1/milestone-v4-7-meta-orchestrator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-498: Autonomous Xenobiotic Non-Canonical Amino Acid Expanded Genetic Code Ribosome Translator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous xenobiotic non-canonical amino acid expanded genetic code ribosome translator within Milestone v4.8.
+- **Decision**: Implemented `XnaNcaaExpandedGeneticCodeEngine`, `XnaNcaaExpandedGeneticCodeStudy`, `XnaNcaaExpandedGeneticCodeRepository`, and `/api/v1/xna-ncaa-expanded-genetic-code/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

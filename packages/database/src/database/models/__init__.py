@@ -3053,3 +3053,9 @@ from database.models.milestone_v4_7_meta_orchestrator import (
     MilestoneV47MetaOrchestratorItemProfile,
     MilestoneV47MetaOrchestratorMetricTrace,
 )
+
+from database.models.xna_ncaa_expanded_genetic_code import (
+    XnaNcaaExpandedGeneticCodeStudy,
+    XnaNcaaExpandedGeneticCodeItemProfile,
+    XnaNcaaExpandedGeneticCodeMetricTrace,
+)

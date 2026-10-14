@@ -1,3 +1,4 @@
+from api.routes.xna_ncaa_expanded_genetic_code import router as xna_ncaa_expanded_genetic_code_router
 from api.routes.milestone_v4_7_meta_orchestrator import router as milestone_v4_7_meta_orchestrator_router
 from api.routes.gastruloid_axial_patterning_wnt_bmp import router as gastruloid_axial_patterning_wnt_bmp_router
 from api.routes.cuttag_rna_joint_diffusion_trajectory import router as cuttag_rna_joint_diffusion_trajectory_router
@@ -1317,3 +1318,4 @@ app.include_router(piezo_mechanosensitive_channel_gating_router, prefix=settings
 app.include_router(cuttag_rna_joint_diffusion_trajectory_router, prefix=settings.api_prefix)
 app.include_router(gastruloid_axial_patterning_wnt_bmp_router, prefix=settings.api_prefix)
 app.include_router(milestone_v4_7_meta_orchestrator_router, prefix=settings.api_prefix)
+app.include_router(xna_ncaa_expanded_genetic_code_router, prefix=settings.api_prefix)
