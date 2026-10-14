@@ -2951,3 +2951,9 @@ from database.models.guv_electroformation_dynamics import (
     GuvElectroformationDynamicsItemProfile,
     GuvElectroformationDynamicsMetricTrace,
 )
+
+from database.models.cryoet_polysome_chaperone_topology import (
+    CryoetPolysomeChaperoneTopologyStudy,
+    CryoetPolysomeChaperoneTopologyItemProfile,
+    CryoetPolysomeChaperoneTopologyMetricTrace,
+)

@@ -2028,3 +2028,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic protocellular giant unilamellar vesicle (guv) electroformation simulator within Milestone v4.7.
 - **Decision**: Implemented `GuvElectroformationDynamicsEngine`, `GuvElectroformationDynamicsStudy`, `GuvElectroformationDynamicsRepository`, and `/api/v1/guv-electroformation-dynamics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-481: Autonomous In-Situ Cryo-ET Ribosome Polysome Structural Topology & Nascent Chain Chaperone Coordinator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et ribosome polysome structural topology & nascent chain chaperone coordinator within Milestone v4.7.
+- **Decision**: Implemented `CryoetPolysomeChaperoneTopologyEngine`, `CryoetPolysomeChaperoneTopologyStudy`, `CryoetPolysomeChaperoneTopologyRepository`, and `/api/v1/cryoet-polysome-chaperone-topology/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
