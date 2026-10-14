@@ -2315,3 +2315,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous biomolecular protein nanofiber memristive synaptic weight plasticity forecaster within Milestone v4.9.
 - **Decision**: Implemented `NeuromorphicMemristiveSynapseProteinEngine`, `NeuromorphicMemristiveSynapseProteinStudy`, `NeuromorphicMemristiveSynapseProteinRepository`, and `/api/v1/neuromorphic-memristive-synapse-protein/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-522: Autonomous Expansion Super-Resolution Optical Cryo-Correlative Multimodal Profiler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous expansion super-resolution optical cryo-correlative multimodal profiler within Milestone v4.9.
+- **Decision**: Implemented `SuperResolutionExpansionCryoMicroscopyEngine`, `SuperResolutionExpansionCryoMicroscopyStudy`, `SuperResolutionExpansionCryoMicroscopyRepository`, and `/api/v1/super-resolution-expansion-cryo-microscopy/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

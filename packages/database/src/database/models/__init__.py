@@ -3197,3 +3197,9 @@ from database.models.neuromorphic_memristive_synapse_protein import (
     NeuromorphicMemristiveSynapseProteinItemProfile,
     NeuromorphicMemristiveSynapseProteinMetricTrace,
 )
+
+from database.models.super_resolution_expansion_cryo_microscopy import (
+    SuperResolutionExpansionCryoMicroscopyStudy,
+    SuperResolutionExpansionCryoMicroscopyItemProfile,
+    SuperResolutionExpansionCryoMicroscopyMetricTrace,
+)
