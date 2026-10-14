@@ -2981,3 +2981,9 @@ from database.models.quorum_quenching_lactonase_dispersion import (
     QuorumQuenchingLactonaseDispersionItemProfile,
     QuorumQuenchingLactonaseDispersionMetricTrace,
 )
+
+from database.models.droplet_pcr_methylation_amplification import (
+    DropletPcrMethylationAmplificationStudy,
+    DropletPcrMethylationAmplificationItemProfile,
+    DropletPcrMethylationAmplificationMetricTrace,
+)

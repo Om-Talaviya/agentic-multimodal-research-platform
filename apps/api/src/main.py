@@ -1,3 +1,4 @@
+from api.routes.droplet_pcr_methylation_amplification import router as droplet_pcr_methylation_amplification_router
 from api.routes.quorum_quenching_lactonase_dispersion import router as quorum_quenching_lactonase_dispersion_router
 from api.routes.magnetic_tweezers_topoisomerase_decatenation import router as magnetic_tweezers_topoisomerase_decatenation_router
 from api.routes.dna_origami_molecular_crane import router as dna_origami_molecular_crane_router
@@ -1293,3 +1294,4 @@ app.include_router(ferroptosis_fenton_cascade_simulator_router, prefix=settings.
 app.include_router(dna_origami_molecular_crane_router, prefix=settings.api_prefix)
 app.include_router(magnetic_tweezers_topoisomerase_decatenation_router, prefix=settings.api_prefix)
 app.include_router(quorum_quenching_lactonase_dispersion_router, prefix=settings.api_prefix)
+app.include_router(droplet_pcr_methylation_amplification_router, prefix=settings.api_prefix)

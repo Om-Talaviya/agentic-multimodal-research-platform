@@ -2063,3 +2063,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous bacterial quorum quenching enzymatic lactonase biofilm dispersion forecaster within Milestone v4.7.
 - **Decision**: Implemented `QuorumQuenchingLactonaseDispersionEngine`, `QuorumQuenchingLactonaseDispersionStudy`, `QuorumQuenchingLactonaseDispersionRepository`, and `/api/v1/quorum-quenching-lactonase-dispersion/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-486: Autonomous Microfluidic Droplet PCR Digital Methylation Specific Amplification Modeler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic droplet pcr digital methylation specific amplification modeler within Milestone v4.7.
+- **Decision**: Implemented `DropletPcrMethylationAmplificationEngine`, `DropletPcrMethylationAmplificationStudy`, `DropletPcrMethylationAmplificationRepository`, and `/api/v1/droplet-pcr-methylation-amplification/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
