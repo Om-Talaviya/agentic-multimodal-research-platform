@@ -1,3 +1,4 @@
+from api.routes.bioelectronic_living_materials_network import router as bioelectronic_living_materials_network_router
 from api.routes.mrfm_single_nuclear_spin_imaging import router as mrfm_single_nuclear_spin_imaging_router
 from api.routes.xna_ncaa_expanded_genetic_code import router as xna_ncaa_expanded_genetic_code_router
 from api.routes.milestone_v4_7_meta_orchestrator import router as milestone_v4_7_meta_orchestrator_router
@@ -1321,3 +1322,4 @@ app.include_router(gastruloid_axial_patterning_wnt_bmp_router, prefix=settings.a
 app.include_router(milestone_v4_7_meta_orchestrator_router, prefix=settings.api_prefix)
 app.include_router(xna_ncaa_expanded_genetic_code_router, prefix=settings.api_prefix)
 app.include_router(mrfm_single_nuclear_spin_imaging_router, prefix=settings.api_prefix)
+app.include_router(bioelectronic_living_materials_network_router, prefix=settings.api_prefix)

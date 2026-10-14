@@ -3065,3 +3065,9 @@ from database.models.mrfm_single_nuclear_spin_imaging import (
     MrfmSingleNuclearSpinImagingItemProfile,
     MrfmSingleNuclearSpinImagingMetricTrace,
 )
+
+from database.models.bioelectronic_living_materials_network import (
+    BioelectronicLivingMaterialsNetworkStudy,
+    BioelectronicLivingMaterialsNetworkItemProfile,
+    BioelectronicLivingMaterialsNetworkMetricTrace,
+)

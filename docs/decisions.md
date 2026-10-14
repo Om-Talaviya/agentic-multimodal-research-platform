@@ -2161,3 +2161,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule magnetic resonance force microscopy 3d nuclear spin imaging engine within Milestone v4.8.
 - **Decision**: Implemented `MrfmSingleNuclearSpinImagingEngine`, `MrfmSingleNuclearSpinImagingStudy`, `MrfmSingleNuclearSpinImagingRepository`, and `/api/v1/mrfm-single-nuclear-spin-imaging/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-500: Autonomous Bioelectronic Living Biomaterial Microbial Electron Transport Network Modeler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous bioelectronic living biomaterial microbial electron transport network modeler within Milestone v4.8.
+- **Decision**: Implemented `BioelectronicLivingMaterialsNetworkEngine`, `BioelectronicLivingMaterialsNetworkStudy`, `BioelectronicLivingMaterialsNetworkRepository`, and `/api/v1/bioelectronic-living-materials-network/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
