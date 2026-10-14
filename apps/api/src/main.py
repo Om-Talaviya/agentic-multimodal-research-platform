@@ -1,3 +1,4 @@
+from api.routes.ferroptosis_fenton_cascade_simulator import router as ferroptosis_fenton_cascade_simulator_router
 from api.routes.cryoet_polysome_chaperone_topology import router as cryoet_polysome_chaperone_topology_router
 from api.routes.guv_electroformation_dynamics import router as guv_electroformation_dynamics_router
 from api.routes.photoactivatable_cre_lineage_tracker import router as photoactivatable_cre_lineage_tracker_router
@@ -1285,3 +1286,4 @@ app.include_router(nanopore_dna_methylation_discrimination_router, prefix=settin
 app.include_router(photoactivatable_cre_lineage_tracker_router, prefix=settings.api_prefix)
 app.include_router(guv_electroformation_dynamics_router, prefix=settings.api_prefix)
 app.include_router(cryoet_polysome_chaperone_topology_router, prefix=settings.api_prefix)
+app.include_router(ferroptosis_fenton_cascade_simulator_router, prefix=settings.api_prefix)

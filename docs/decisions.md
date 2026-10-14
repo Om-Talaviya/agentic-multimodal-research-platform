@@ -2035,3 +2035,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et ribosome polysome structural topology & nascent chain chaperone coordinator within Milestone v4.7.
 - **Decision**: Implemented `CryoetPolysomeChaperoneTopologyEngine`, `CryoetPolysomeChaperoneTopologyStudy`, `CryoetPolysomeChaperoneTopologyRepository`, and `/api/v1/cryoet-polysome-chaperone-topology/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-482: Autonomous Cellular Ferroptosis Lipid Peroxidation Fenton Reaction Cascade Simulator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous cellular ferroptosis lipid peroxidation fenton reaction cascade simulator within Milestone v4.7.
+- **Decision**: Implemented `FerroptosisFentonCascadeSimulatorEngine`, `FerroptosisFentonCascadeSimulatorStudy`, `FerroptosisFentonCascadeSimulatorRepository`, and `/api/v1/ferroptosis-fenton-cascade-simulator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

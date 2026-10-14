@@ -2957,3 +2957,9 @@ from database.models.cryoet_polysome_chaperone_topology import (
     CryoetPolysomeChaperoneTopologyItemProfile,
     CryoetPolysomeChaperoneTopologyMetricTrace,
 )
+
+from database.models.ferroptosis_fenton_cascade_simulator import (
+    FerroptosisFentonCascadeSimulatorStudy,
+    FerroptosisFentonCascadeSimulatorItemProfile,
+    FerroptosisFentonCascadeSimulatorMetricTrace,
+)
