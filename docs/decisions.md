@@ -1965,3 +1965,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic multicellular somatogenesis clock-and-wavefront hes7 notch pulse tracker within Milestone v4.6.
 - **Decision**: Implemented `SomatogenesisHes7ClockWavefrontEngine`, `SomatogenesisHes7ClockWavefrontStudy`, `SomatogenesisHes7ClockWavefrontRepository`, and `/api/v1/somatogenesis-hes7-clock-wavefront/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-472: Autonomous Synthetic Gene Circuit Cross-Repression Epigenetic Bistable Switch Simulator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic gene circuit cross-repression epigenetic bistable switch simulator within Milestone v4.6.
+- **Decision**: Implemented `GeneCircuitBistableSwitchEngine`, `GeneCircuitBistableSwitchStudy`, `GeneCircuitBistableSwitchRepository`, and `/api/v1/gene-circuit-bistable-switch/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

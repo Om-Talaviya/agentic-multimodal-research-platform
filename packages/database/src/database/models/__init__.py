@@ -2897,3 +2897,9 @@ from database.models.somatogenesis_hes7_clock_wavefront import (
     SomatogenesisHes7ClockWavefrontItemProfile,
     SomatogenesisHes7ClockWavefrontMetricTrace,
 )
+
+from database.models.gene_circuit_bistable_switch import (
+    GeneCircuitBistableSwitchStudy,
+    GeneCircuitBistableSwitchItemProfile,
+    GeneCircuitBistableSwitchMetricTrace,
+)
