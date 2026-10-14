@@ -1,3 +1,4 @@
+from api.routes.milestone_v4_8_meta_orchestrator import router as milestone_v4_8_meta_orchestrator_router
 from api.routes.multiplexed_optogenetic_neocortical_synchrony import router as multiplexed_optogenetic_neocortical_synchrony_router
 from api.routes.high_throughput_mass_photometry_ribosome import router as high_throughput_mass_photometry_ribosome_router
 from api.routes.epigenetic_crispr_chromatin_loop_extrusion import router as epigenetic_crispr_chromatin_loop_extrusion_router
@@ -1357,3 +1358,4 @@ app.include_router(deep_learning_tcr_pmhc_docking_energy_router, prefix=settings
 app.include_router(epigenetic_crispr_chromatin_loop_extrusion_router, prefix=settings.api_prefix)
 app.include_router(high_throughput_mass_photometry_ribosome_router, prefix=settings.api_prefix)
 app.include_router(multiplexed_optogenetic_neocortical_synchrony_router, prefix=settings.api_prefix)
+app.include_router(milestone_v4_8_meta_orchestrator_router, prefix=settings.api_prefix)

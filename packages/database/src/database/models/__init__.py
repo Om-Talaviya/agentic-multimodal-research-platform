@@ -3173,3 +3173,9 @@ from database.models.multiplexed_optogenetic_neocortical_synchrony import (
     MultiplexedOptogeneticNeocorticalSynchronyItemProfile,
     MultiplexedOptogeneticNeocorticalSynchronyMetricTrace,
 )
+
+from database.models.milestone_v4_8_meta_orchestrator import (
+    MilestoneV48MetaOrchestratorStudy,
+    MilestoneV48MetaOrchestratorItemProfile,
+    MilestoneV48MetaOrchestratorMetricTrace,
+)
