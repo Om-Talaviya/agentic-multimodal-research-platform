@@ -3101,3 +3101,9 @@ from database.models.ribosome_in_cell_conformation_smfret import (
     RibosomeInCellConformationSmfretItemProfile,
     RibosomeInCellConformationSmfretMetricTrace,
 )
+
+from database.models.dna_origami_plasmonic_nanoruler import (
+    DnaOrigamiPlasmonicNanorulerStudy,
+    DnaOrigamiPlasmonicNanorulerItemProfile,
+    DnaOrigamiPlasmonicNanorulerMetricTrace,
+)

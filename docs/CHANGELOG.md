@@ -1,5 +1,6 @@
 ## [v4.8.0] - Milestone v4.8 Autonomous Synthetic Biofoundry, Quantum Biological Sensor Networks & Planetary Xenobiology OS
 ### Added
+- **Phase 506**: Autonomous DNA Origami Reconfigurable Plasmonic Nanoruler Distance Calibrator (`dna_origami_plasmonic_nanoruler`)
 - **Phase 505**: Autonomous In-Cell Single-Molecule FRET Ribosome Conformational Dynamics Engine (`ribosome_in_cell_conformation_smfret`)
 - **Phase 504**: Autonomous High-Throughput Droplet Microfluidic Ultra-Fast Directed Enzyme Evolution Kinetic Screener (`droplet_microfluidic_enzyme_evolution`)
 - **Phase 503**: Autonomous Synthetic Protocellular Compartment Membraneless Coacervate-GUV Hybrid Bionanoreactor (`coacervate_guv_hybrid_bionanoreactor`)

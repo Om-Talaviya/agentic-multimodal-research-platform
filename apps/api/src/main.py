@@ -1,3 +1,4 @@
+from api.routes.dna_origami_plasmonic_nanoruler import router as dna_origami_plasmonic_nanoruler_router
 from api.routes.ribosome_in_cell_conformation_smfret import router as ribosome_in_cell_conformation_smfret_router
 from api.routes.droplet_microfluidic_enzyme_evolution import router as droplet_microfluidic_enzyme_evolution_router
 from api.routes.coacervate_guv_hybrid_bionanoreactor import router as coacervate_guv_hybrid_bionanoreactor_router
@@ -1333,3 +1334,4 @@ app.include_router(acoustic_droplet_single_exosome_profiler_router, prefix=setti
 app.include_router(coacervate_guv_hybrid_bionanoreactor_router, prefix=settings.api_prefix)
 app.include_router(droplet_microfluidic_enzyme_evolution_router, prefix=settings.api_prefix)
 app.include_router(ribosome_in_cell_conformation_smfret_router, prefix=settings.api_prefix)
+app.include_router(dna_origami_plasmonic_nanoruler_router, prefix=settings.api_prefix)

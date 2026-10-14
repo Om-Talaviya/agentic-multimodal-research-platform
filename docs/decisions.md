@@ -2203,3 +2203,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-cell single-molecule fret ribosome conformational dynamics engine within Milestone v4.8.
 - **Decision**: Implemented `RibosomeInCellConformationSmfretEngine`, `RibosomeInCellConformationSmfretStudy`, `RibosomeInCellConformationSmfretRepository`, and `/api/v1/ribosome-in-cell-conformation-smfret/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-506: Autonomous DNA Origami Reconfigurable Plasmonic Nanoruler Distance Calibrator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous dna origami reconfigurable plasmonic nanoruler distance calibrator within Milestone v4.8.
+- **Decision**: Implemented `DnaOrigamiPlasmonicNanorulerEngine`, `DnaOrigamiPlasmonicNanorulerStudy`, `DnaOrigamiPlasmonicNanorulerRepository`, and `/api/v1/dna-origami-plasmonic-nanoruler/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
