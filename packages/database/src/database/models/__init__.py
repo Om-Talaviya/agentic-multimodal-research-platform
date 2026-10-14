@@ -3071,3 +3071,9 @@ from database.models.bioelectronic_living_materials_network import (
     BioelectronicLivingMaterialsNetworkItemProfile,
     BioelectronicLivingMaterialsNetworkMetricTrace,
 )
+
+from database.models.cast_transposase_genomic_integration import (
+    CastTransposaseGenomicIntegrationStudy,
+    CastTransposaseGenomicIntegrationItemProfile,
+    CastTransposaseGenomicIntegrationMetricTrace,
+)

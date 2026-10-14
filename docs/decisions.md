@@ -2168,3 +2168,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous bioelectronic living biomaterial microbial electron transport network modeler within Milestone v4.8.
 - **Decision**: Implemented `BioelectronicLivingMaterialsNetworkEngine`, `BioelectronicLivingMaterialsNetworkStudy`, `BioelectronicLivingMaterialsNetworkRepository`, and `/api/v1/bioelectronic-living-materials-network/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-501: Autonomous CRISPR-Associated Transposase (CAST) Targeted Large Genomic Cargo Integrator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous crispr-associated transposase (cast) targeted large genomic cargo integrator within Milestone v4.8.
+- **Decision**: Implemented `CastTransposaseGenomicIntegrationEngine`, `CastTransposaseGenomicIntegrationStudy`, `CastTransposaseGenomicIntegrationRepository`, and `/api/v1/cast-transposase-genomic-integration/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
