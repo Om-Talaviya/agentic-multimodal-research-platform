@@ -1,5 +1,6 @@
 ## [v4.7.0] - Milestone v4.7 Autonomous Subcellular Nanomechanics, Quantum Biomolecular Electronics & Synthetic Organogenesis OS
 ### Added
+- **Phase 494**: Autonomous Mechanosensitive Ion Channel PIEZO1 Gating & Membrane Tension Indentation Engine (`piezo_mechanosensitive_channel_gating`)
 - **Phase 493**: Autonomous Quantum Coherent Magnetoreception Cryptochrome Radical Pair Dynamics Simulator (`cryptochrome_radical_pair_magnetoreception`)
 - **Phase 492**: Autonomous Multi-Organ Microphysiological Human-on-a-Chip Endocrine-Metabolic Feedback Loop (`human_on_chip_endocrine_feedback`)
 - **Phase 491**: Autonomous Biomimetic Synthetic Membrane Water Aquaporin Channel Transport Forecaster (`aquaporin_biomimetic_water_transport`)

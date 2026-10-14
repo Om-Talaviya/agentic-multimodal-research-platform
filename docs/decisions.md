@@ -2119,3 +2119,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous quantum coherent magnetoreception cryptochrome radical pair dynamics simulator within Milestone v4.7.
 - **Decision**: Implemented `CryptochromeRadicalPairMagnetoreceptionEngine`, `CryptochromeRadicalPairMagnetoreceptionStudy`, `CryptochromeRadicalPairMagnetoreceptionRepository`, and `/api/v1/cryptochrome-radical-pair-magnetoreception/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-494: Autonomous Mechanosensitive Ion Channel PIEZO1 Gating & Membrane Tension Indentation Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous mechanosensitive ion channel piezo1 gating & membrane tension indentation engine within Milestone v4.7.
+- **Decision**: Implemented `PiezoMechanosensitiveChannelGatingEngine`, `PiezoMechanosensitiveChannelGatingStudy`, `PiezoMechanosensitiveChannelGatingRepository`, and `/api/v1/piezo-mechanosensitive-channel-gating/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

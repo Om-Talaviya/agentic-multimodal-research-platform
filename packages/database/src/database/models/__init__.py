@@ -3029,3 +3029,9 @@ from database.models.cryptochrome_radical_pair_magnetoreception import (
     CryptochromeRadicalPairMagnetoreceptionItemProfile,
     CryptochromeRadicalPairMagnetoreceptionMetricTrace,
 )
+
+from database.models.piezo_mechanosensitive_channel_gating import (
+    PiezoMechanosensitiveChannelGatingStudy,
+    PiezoMechanosensitiveChannelGatingItemProfile,
+    PiezoMechanosensitiveChannelGatingMetricTrace,
+)
