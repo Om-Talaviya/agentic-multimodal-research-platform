@@ -2963,3 +2963,9 @@ from database.models.ferroptosis_fenton_cascade_simulator import (
     FerroptosisFentonCascadeSimulatorItemProfile,
     FerroptosisFentonCascadeSimulatorMetricTrace,
 )
+
+from database.models.dna_origami_molecular_crane import (
+    DnaOrigamiMolecularCraneStudy,
+    DnaOrigamiMolecularCraneItemProfile,
+    DnaOrigamiMolecularCraneMetricTrace,
+)

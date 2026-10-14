@@ -1,3 +1,4 @@
+from api.routes.dna_origami_molecular_crane import router as dna_origami_molecular_crane_router
 from api.routes.ferroptosis_fenton_cascade_simulator import router as ferroptosis_fenton_cascade_simulator_router
 from api.routes.cryoet_polysome_chaperone_topology import router as cryoet_polysome_chaperone_topology_router
 from api.routes.guv_electroformation_dynamics import router as guv_electroformation_dynamics_router
@@ -1287,3 +1288,4 @@ app.include_router(photoactivatable_cre_lineage_tracker_router, prefix=settings.
 app.include_router(guv_electroformation_dynamics_router, prefix=settings.api_prefix)
 app.include_router(cryoet_polysome_chaperone_topology_router, prefix=settings.api_prefix)
 app.include_router(ferroptosis_fenton_cascade_simulator_router, prefix=settings.api_prefix)
+app.include_router(dna_origami_molecular_crane_router, prefix=settings.api_prefix)

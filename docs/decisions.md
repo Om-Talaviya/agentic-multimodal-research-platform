@@ -2042,3 +2042,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous cellular ferroptosis lipid peroxidation fenton reaction cascade simulator within Milestone v4.7.
 - **Decision**: Implemented `FerroptosisFentonCascadeSimulatorEngine`, `FerroptosisFentonCascadeSimulatorStudy`, `FerroptosisFentonCascadeSimulatorRepository`, and `/api/v1/ferroptosis-fenton-cascade-simulator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-483: Autonomous DNA Origami Molecular Crane Nanomechanical Arm & Rotational Stepper Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous dna origami molecular crane nanomechanical arm & rotational stepper engine within Milestone v4.7.
+- **Decision**: Implemented `DnaOrigamiMolecularCraneEngine`, `DnaOrigamiMolecularCraneStudy`, `DnaOrigamiMolecularCraneRepository`, and `/api/v1/dna-origami-molecular-crane/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
