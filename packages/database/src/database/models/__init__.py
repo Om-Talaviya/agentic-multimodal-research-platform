@@ -2993,3 +2993,9 @@ from database.models.snare_complex_dynamic_zippering import (
     SnareComplexDynamicZipperingItemProfile,
     SnareComplexDynamicZipperingMetricTrace,
 )
+
+from database.models.synthetic_txtl_compartmental_oscillator import (
+    SyntheticTxtlCompartmentalOscillatorStudy,
+    SyntheticTxtlCompartmentalOscillatorItemProfile,
+    SyntheticTxtlCompartmentalOscillatorMetricTrace,
+)

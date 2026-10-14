@@ -2077,3 +2077,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synaptic vesicle snare complex dynamic zippering & neurotransmitter release predictor within Milestone v4.7.
 - **Decision**: Implemented `SnareComplexDynamicZipperingEngine`, `SnareComplexDynamicZipperingStudy`, `SnareComplexDynamicZipperingRepository`, and `/api/v1/snare-complex-dynamic-zippering/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-488: Autonomous Cell-Free Compartmentalized Synthetic Transcription-Translation (TX-TL) Feedback Oscillator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous cell-free compartmentalized synthetic transcription-translation (tx-tl) feedback oscillator within Milestone v4.7.
+- **Decision**: Implemented `SyntheticTxtlCompartmentalOscillatorEngine`, `SyntheticTxtlCompartmentalOscillatorStudy`, `SyntheticTxtlCompartmentalOscillatorRepository`, and `/api/v1/synthetic-txtl-compartmental-oscillator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

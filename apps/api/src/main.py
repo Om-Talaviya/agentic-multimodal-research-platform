@@ -1,3 +1,4 @@
+from api.routes.synthetic_txtl_compartmental_oscillator import router as synthetic_txtl_compartmental_oscillator_router
 from api.routes.snare_complex_dynamic_zippering import router as snare_complex_dynamic_zippering_router
 from api.routes.droplet_pcr_methylation_amplification import router as droplet_pcr_methylation_amplification_router
 from api.routes.quorum_quenching_lactonase_dispersion import router as quorum_quenching_lactonase_dispersion_router
@@ -1297,3 +1298,4 @@ app.include_router(magnetic_tweezers_topoisomerase_decatenation_router, prefix=s
 app.include_router(quorum_quenching_lactonase_dispersion_router, prefix=settings.api_prefix)
 app.include_router(droplet_pcr_methylation_amplification_router, prefix=settings.api_prefix)
 app.include_router(snare_complex_dynamic_zippering_router, prefix=settings.api_prefix)
+app.include_router(synthetic_txtl_compartmental_oscillator_router, prefix=settings.api_prefix)
