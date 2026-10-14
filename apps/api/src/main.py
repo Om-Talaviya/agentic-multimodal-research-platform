@@ -1,3 +1,4 @@
+from api.routes.actin_ring_cytokinesis_constriction import router as actin_ring_cytokinesis_constriction_router
 from api.routes.milestone_v4_6_meta_orchestrator import router as milestone_v4_6_meta_orchestrator_router
 from api.routes.acoustic_impedance_cytometry import router as acoustic_impedance_cytometry_router
 from api.routes.kinesin_dynein_vesicle_transport import router as kinesin_dynein_vesicle_transport_router
@@ -1275,3 +1276,4 @@ app.include_router(flexoelectric_membrane_curvature_router, prefix=settings.api_
 app.include_router(kinesin_dynein_vesicle_transport_router, prefix=settings.api_prefix)
 app.include_router(acoustic_impedance_cytometry_router, prefix=settings.api_prefix)
 app.include_router(milestone_v4_6_meta_orchestrator_router, prefix=settings.api_prefix)
+app.include_router(actin_ring_cytokinesis_constriction_router, prefix=settings.api_prefix)

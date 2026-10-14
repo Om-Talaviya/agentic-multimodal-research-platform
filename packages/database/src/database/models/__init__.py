@@ -2927,3 +2927,9 @@ from database.models.milestone_v4_6_meta_orchestrator import (
     MilestoneV46MetaOrchestratorItemProfile,
     MilestoneV46MetaOrchestratorMetricTrace,
 )
+
+from database.models.actin_ring_cytokinesis_constriction import (
+    ActinRingCytokinesisConstrictionStudy,
+    ActinRingCytokinesisConstrictionItemProfile,
+    ActinRingCytokinesisConstrictionMetricTrace,
+)

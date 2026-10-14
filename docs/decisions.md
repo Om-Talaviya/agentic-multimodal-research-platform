@@ -2000,3 +2000,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous milestone v4.6 planetary synthetic morphogenesis, biohybrid cybernetics & multicellular os grand meta-orchestrator engine within Milestone v4.6.
 - **Decision**: Implemented `MilestoneV46MetaOrchestratorEngine`, `MilestoneV46MetaOrchestratorStudy`, `MilestoneV46MetaOrchestratorRepository`, and `/api/v1/milestone-v4-6-meta-orchestrator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-477: Autonomous Nanoscale Cytoskeletal Actin Ring Constriction & Cytokinesis Cleavage Furrow Modeler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous nanoscale cytoskeletal actin ring constriction & cytokinesis cleavage furrow modeler within Milestone v4.7.
+- **Decision**: Implemented `ActinRingCytokinesisConstrictionEngine`, `ActinRingCytokinesisConstrictionStudy`, `ActinRingCytokinesisConstrictionRepository`, and `/api/v1/actin-ring-cytokinesis-constriction/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
