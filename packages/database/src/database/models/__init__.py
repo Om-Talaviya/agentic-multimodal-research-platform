@@ -2933,3 +2933,9 @@ from database.models.actin_ring_cytokinesis_constriction import (
     ActinRingCytokinesisConstrictionItemProfile,
     ActinRingCytokinesisConstrictionMetricTrace,
 )
+
+from database.models.nanopore_dna_methylation_discrimination import (
+    NanoporeDnaMethylationDiscriminationStudy,
+    NanoporeDnaMethylationDiscriminationItemProfile,
+    NanoporeDnaMethylationDiscriminationMetricTrace,
+)

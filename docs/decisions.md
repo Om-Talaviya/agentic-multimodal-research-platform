@@ -2007,3 +2007,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous nanoscale cytoskeletal actin ring constriction & cytokinesis cleavage furrow modeler within Milestone v4.7.
 - **Decision**: Implemented `ActinRingCytokinesisConstrictionEngine`, `ActinRingCytokinesisConstrictionStudy`, `ActinRingCytokinesisConstrictionRepository`, and `/api/v1/actin-ring-cytokinesis-constriction/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-478: Autonomous Solid-State Nanopore DNA Methylation Direct Ionic Current Discrimination Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous solid-state nanopore dna methylation direct ionic current discrimination engine within Milestone v4.7.
+- **Decision**: Implemented `NanoporeDnaMethylationDiscriminationEngine`, `NanoporeDnaMethylationDiscriminationStudy`, `NanoporeDnaMethylationDiscriminationRepository`, and `/api/v1/nanopore-dna-methylation-discrimination/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
