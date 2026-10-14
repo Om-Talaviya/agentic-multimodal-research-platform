@@ -2294,3 +2294,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous milestone v4.8 planetary synthetic biofoundry, quantum sensor networks & xenobiology os grand meta-orchestrator engine within Milestone v4.8.
 - **Decision**: Implemented `MilestoneV48MetaOrchestratorEngine`, `MilestoneV48MetaOrchestratorStudy`, `MilestoneV48MetaOrchestratorRepository`, and `/api/v1/milestone-v4-8-meta-orchestrator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-519: Autonomous Non-Equilibrium Active Matter Cytoskeletal Topological Defect Self-Propulsion Simulator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous non-equilibrium active matter cytoskeletal topological defect self-propulsion simulator within Milestone v4.9.
+- **Decision**: Implemented `ActiveMatterCytoskeletalNematicDefectEngine`, `ActiveMatterCytoskeletalNematicDefectStudy`, `ActiveMatterCytoskeletalNematicDefectRepository`, and `/api/v1/active-matter-cytoskeletal-nematic-defect/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

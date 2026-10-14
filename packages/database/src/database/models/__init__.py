@@ -3179,3 +3179,9 @@ from database.models.milestone_v4_8_meta_orchestrator import (
     MilestoneV48MetaOrchestratorItemProfile,
     MilestoneV48MetaOrchestratorMetricTrace,
 )
+
+from database.models.active_matter_cytoskeletal_nematic_defect import (
+    ActiveMatterCytoskeletalNematicDefectStudy,
+    ActiveMatterCytoskeletalNematicDefectItemProfile,
+    ActiveMatterCytoskeletalNematicDefectMetricTrace,
+)
