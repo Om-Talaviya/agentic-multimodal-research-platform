@@ -1,3 +1,4 @@
+from api.routes.organoid_vascular_perfusion_endothelial_shear import router as organoid_vascular_perfusion_endothelial_shear_router
 from api.routes.quantum_biophoton_mitochondrial_emission import router as quantum_biophoton_mitochondrial_emission_router
 from api.routes.solid_state_nanopore_protein_unfolding import router as solid_state_nanopore_protein_unfolding_router
 from api.routes.metabolic_retrosynthesis_xenobiology import router as metabolic_retrosynthesis_xenobiology_router
@@ -1341,3 +1342,4 @@ app.include_router(dna_origami_plasmonic_nanoruler_router, prefix=settings.api_p
 app.include_router(metabolic_retrosynthesis_xenobiology_router, prefix=settings.api_prefix)
 app.include_router(solid_state_nanopore_protein_unfolding_router, prefix=settings.api_prefix)
 app.include_router(quantum_biophoton_mitochondrial_emission_router, prefix=settings.api_prefix)
+app.include_router(organoid_vascular_perfusion_endothelial_shear_router, prefix=settings.api_prefix)

@@ -3125,3 +3125,9 @@ from database.models.quantum_biophoton_mitochondrial_emission import (
     QuantumBiophotonMitochondrialEmissionItemProfile,
     QuantumBiophotonMitochondrialEmissionMetricTrace,
 )
+
+from database.models.organoid_vascular_perfusion_endothelial_shear import (
+    OrganoidVascularPerfusionEndothelialShearStudy,
+    OrganoidVascularPerfusionEndothelialShearItemProfile,
+    OrganoidVascularPerfusionEndothelialShearMetricTrace,
+)
