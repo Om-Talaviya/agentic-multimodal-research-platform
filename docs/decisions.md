@@ -2238,3 +2238,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous vascularized cerebral organoid lumen shear stress & perfusion simulator within Milestone v4.8.
 - **Decision**: Implemented `OrganoidVascularPerfusionEndothelialShearEngine`, `OrganoidVascularPerfusionEndothelialShearStudy`, `OrganoidVascularPerfusionEndothelialShearRepository`, and `/api/v1/organoid-vascular-perfusion-endothelial-shear/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-511: Autonomous In-Situ Cryo-ET Nuclear Envelope Lamina Meshwork & Mechanical Rigidity Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et nuclear envelope lamina meshwork & mechanical rigidity engine within Milestone v4.8.
+- **Decision**: Implemented `CryoetNuclearEnvelopeLaminaMeshworkEngine`, `CryoetNuclearEnvelopeLaminaMeshworkStudy`, `CryoetNuclearEnvelopeLaminaMeshworkRepository`, and `/api/v1/cryoet-nuclear-envelope-lamina-meshwork/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

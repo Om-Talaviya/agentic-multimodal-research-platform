@@ -3131,3 +3131,9 @@ from database.models.organoid_vascular_perfusion_endothelial_shear import (
     OrganoidVascularPerfusionEndothelialShearItemProfile,
     OrganoidVascularPerfusionEndothelialShearMetricTrace,
 )
+
+from database.models.cryoet_nuclear_envelope_lamina_meshwork import (
+    CryoetNuclearEnvelopeLaminaMeshworkStudy,
+    CryoetNuclearEnvelopeLaminaMeshworkItemProfile,
+    CryoetNuclearEnvelopeLaminaMeshworkMetricTrace,
+)
