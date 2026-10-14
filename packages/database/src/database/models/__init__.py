@@ -3191,3 +3191,9 @@ from database.models.liquid_cell_tem_protein_crystallization import (
     LiquidCellTemProteinCrystallizationItemProfile,
     LiquidCellTemProteinCrystallizationMetricTrace,
 )
+
+from database.models.neuromorphic_memristive_synapse_protein import (
+    NeuromorphicMemristiveSynapseProteinStudy,
+    NeuromorphicMemristiveSynapseProteinItemProfile,
+    NeuromorphicMemristiveSynapseProteinMetricTrace,
+)

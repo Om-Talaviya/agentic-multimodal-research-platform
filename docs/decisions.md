@@ -2308,3 +2308,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-situ liquid-cell transmission electron microscopy protein nucleation real-time tracker within Milestone v4.9.
 - **Decision**: Implemented `LiquidCellTemProteinCrystallizationEngine`, `LiquidCellTemProteinCrystallizationStudy`, `LiquidCellTemProteinCrystallizationRepository`, and `/api/v1/liquid-cell-tem-protein-crystallization/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-521: Autonomous Biomolecular Protein Nanofiber Memristive Synaptic Weight Plasticity Forecaster
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous biomolecular protein nanofiber memristive synaptic weight plasticity forecaster within Milestone v4.9.
+- **Decision**: Implemented `NeuromorphicMemristiveSynapseProteinEngine`, `NeuromorphicMemristiveSynapseProteinStudy`, `NeuromorphicMemristiveSynapseProteinRepository`, and `/api/v1/neuromorphic-memristive-synapse-protein/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
