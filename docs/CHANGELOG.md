@@ -1,5 +1,6 @@
 ## [v4.7.0] - Milestone v4.7 Autonomous Subcellular Nanomechanics, Quantum Biomolecular Electronics & Synthetic Organogenesis OS
 ### Added
+- **Phase 479**: Autonomous Optogenetic Photoactivatable Cre-Lox Recombinase Genomic Barcode Lineage Tracker (`photoactivatable_cre_lineage_tracker`)
 - **Phase 478**: Autonomous Solid-State Nanopore DNA Methylation Direct Ionic Current Discrimination Engine (`nanopore_dna_methylation_discrimination`)
 - **Phase 477**: Autonomous Nanoscale Cytoskeletal Actin Ring Constriction & Cytokinesis Cleavage Furrow Modeler (`actin_ring_cytokinesis_constriction`)
 

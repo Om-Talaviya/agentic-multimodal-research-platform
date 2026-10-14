@@ -1,3 +1,4 @@
+from api.routes.photoactivatable_cre_lineage_tracker import router as photoactivatable_cre_lineage_tracker_router
 from api.routes.nanopore_dna_methylation_discrimination import router as nanopore_dna_methylation_discrimination_router
 from api.routes.actin_ring_cytokinesis_constriction import router as actin_ring_cytokinesis_constriction_router
 from api.routes.milestone_v4_6_meta_orchestrator import router as milestone_v4_6_meta_orchestrator_router
@@ -1279,3 +1280,4 @@ app.include_router(acoustic_impedance_cytometry_router, prefix=settings.api_pref
 app.include_router(milestone_v4_6_meta_orchestrator_router, prefix=settings.api_prefix)
 app.include_router(actin_ring_cytokinesis_constriction_router, prefix=settings.api_prefix)
 app.include_router(nanopore_dna_methylation_discrimination_router, prefix=settings.api_prefix)
+app.include_router(photoactivatable_cre_lineage_tracker_router, prefix=settings.api_prefix)

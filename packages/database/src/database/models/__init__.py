@@ -2939,3 +2939,9 @@ from database.models.nanopore_dna_methylation_discrimination import (
     NanoporeDnaMethylationDiscriminationItemProfile,
     NanoporeDnaMethylationDiscriminationMetricTrace,
 )
+
+from database.models.photoactivatable_cre_lineage_tracker import (
+    PhotoactivatableCreLineageTrackerStudy,
+    PhotoactivatableCreLineageTrackerItemProfile,
+    PhotoactivatableCreLineageTrackerMetricTrace,
+)
