@@ -1,3 +1,4 @@
+from api.routes.aquaporin_biomimetic_water_transport import router as aquaporin_biomimetic_water_transport_router
 from api.routes.cmos_mea_axonal_conduction import router as cmos_mea_axonal_conduction_router
 from api.routes.emt_snail_twist_continuum import router as emt_snail_twist_continuum_router
 from api.routes.synthetic_txtl_compartmental_oscillator import router as synthetic_txtl_compartmental_oscillator_router
@@ -1303,3 +1304,4 @@ app.include_router(snare_complex_dynamic_zippering_router, prefix=settings.api_p
 app.include_router(synthetic_txtl_compartmental_oscillator_router, prefix=settings.api_prefix)
 app.include_router(emt_snail_twist_continuum_router, prefix=settings.api_prefix)
 app.include_router(cmos_mea_axonal_conduction_router, prefix=settings.api_prefix)
+app.include_router(aquaporin_biomimetic_water_transport_router, prefix=settings.api_prefix)

@@ -2098,3 +2098,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-density cmos microelectrode array neuromorphic axonal conduction velocity mapper within Milestone v4.7.
 - **Decision**: Implemented `CmosMeaAxonalConductionEngine`, `CmosMeaAxonalConductionStudy`, `CmosMeaAxonalConductionRepository`, and `/api/v1/cmos-mea-axonal-conduction/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-491: Autonomous Biomimetic Synthetic Membrane Water Aquaporin Channel Transport Forecaster
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous biomimetic synthetic membrane water aquaporin channel transport forecaster within Milestone v4.7.
+- **Decision**: Implemented `AquaporinBiomimeticWaterTransportEngine`, `AquaporinBiomimeticWaterTransportStudy`, `AquaporinBiomimeticWaterTransportRepository`, and `/api/v1/aquaporin-biomimetic-water-transport/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

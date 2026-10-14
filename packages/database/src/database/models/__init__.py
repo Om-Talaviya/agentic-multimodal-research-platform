@@ -3011,3 +3011,9 @@ from database.models.cmos_mea_axonal_conduction import (
     CmosMeaAxonalConductionItemProfile,
     CmosMeaAxonalConductionMetricTrace,
 )
+
+from database.models.aquaporin_biomimetic_water_transport import (
+    AquaporinBiomimeticWaterTransportStudy,
+    AquaporinBiomimeticWaterTransportItemProfile,
+    AquaporinBiomimeticWaterTransportMetricTrace,
+)
