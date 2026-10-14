@@ -3167,3 +3167,9 @@ from database.models.high_throughput_mass_photometry_ribosome import (
     HighThroughputMassPhotometryRibosomeItemProfile,
     HighThroughputMassPhotometryRibosomeMetricTrace,
 )
+
+from database.models.multiplexed_optogenetic_neocortical_synchrony import (
+    MultiplexedOptogeneticNeocorticalSynchronyStudy,
+    MultiplexedOptogeneticNeocorticalSynchronyItemProfile,
+    MultiplexedOptogeneticNeocorticalSynchronyMetricTrace,
+)

@@ -2280,3 +2280,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous automated high-throughput mass photometry macromolecular mass dispersity profiler within Milestone v4.8.
 - **Decision**: Implemented `HighThroughputMassPhotometryRibosomeEngine`, `HighThroughputMassPhotometryRibosomeStudy`, `HighThroughputMassPhotometryRibosomeRepository`, and `/api/v1/high-throughput-mass-photometry-ribosome/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-517: Autonomous Dual-Color Multiplexed Optogenetic Neocortical Oscillatory Synchrony Mapper
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous dual-color multiplexed optogenetic neocortical oscillatory synchrony mapper within Milestone v4.8.
+- **Decision**: Implemented `MultiplexedOptogeneticNeocorticalSynchronyEngine`, `MultiplexedOptogeneticNeocorticalSynchronyStudy`, `MultiplexedOptogeneticNeocorticalSynchronyRepository`, and `/api/v1/multiplexed-optogenetic-neocortical-synchrony/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
