@@ -3059,3 +3059,9 @@ from database.models.xna_ncaa_expanded_genetic_code import (
     XnaNcaaExpandedGeneticCodeItemProfile,
     XnaNcaaExpandedGeneticCodeMetricTrace,
 )
+
+from database.models.mrfm_single_nuclear_spin_imaging import (
+    MrfmSingleNuclearSpinImagingStudy,
+    MrfmSingleNuclearSpinImagingItemProfile,
+    MrfmSingleNuclearSpinImagingMetricTrace,
+)

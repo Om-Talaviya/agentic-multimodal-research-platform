@@ -2154,3 +2154,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous xenobiotic non-canonical amino acid expanded genetic code ribosome translator within Milestone v4.8.
 - **Decision**: Implemented `XnaNcaaExpandedGeneticCodeEngine`, `XnaNcaaExpandedGeneticCodeStudy`, `XnaNcaaExpandedGeneticCodeRepository`, and `/api/v1/xna-ncaa-expanded-genetic-code/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-499: Autonomous Single-Molecule Magnetic Resonance Force Microscopy 3D Nuclear Spin Imaging Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule magnetic resonance force microscopy 3d nuclear spin imaging engine within Milestone v4.8.
+- **Decision**: Implemented `MrfmSingleNuclearSpinImagingEngine`, `MrfmSingleNuclearSpinImagingStudy`, `MrfmSingleNuclearSpinImagingRepository`, and `/api/v1/mrfm-single-nuclear-spin-imaging/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
