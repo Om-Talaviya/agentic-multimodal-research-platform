@@ -2252,3 +2252,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule dual-trap optical tweezers dna helicase unwinding stepper within Milestone v4.8.
 - **Decision**: Implemented `SingleMoleculeOpticalTrapDnaHelicaseEngine`, `SingleMoleculeOpticalTrapDnaHelicaseStudy`, `SingleMoleculeOpticalTrapDnaHelicaseRepository`, and `/api/v1/single-molecule-optical-trap-dna-helicase/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-513: Autonomous Cross-Species Synthetic Quorum Sensing Interbacterial Commensal Switch Modeler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous cross-species synthetic quorum sensing interbacterial commensal switch modeler within Milestone v4.8.
+- **Decision**: Implemented `SyntheticQuorumSensingCrossSpeciesSwitchEngine`, `SyntheticQuorumSensingCrossSpeciesSwitchStudy`, `SyntheticQuorumSensingCrossSpeciesSwitchRepository`, and `/api/v1/synthetic-quorum-sensing-cross-species-switch/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

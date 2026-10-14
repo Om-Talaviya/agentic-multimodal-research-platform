@@ -3143,3 +3143,9 @@ from database.models.single_molecule_optical_trap_dna_helicase import (
     SingleMoleculeOpticalTrapDnaHelicaseItemProfile,
     SingleMoleculeOpticalTrapDnaHelicaseMetricTrace,
 )
+
+from database.models.synthetic_quorum_sensing_cross_species_switch import (
+    SyntheticQuorumSensingCrossSpeciesSwitchStudy,
+    SyntheticQuorumSensingCrossSpeciesSwitchItemProfile,
+    SyntheticQuorumSensingCrossSpeciesSwitchMetricTrace,
+)
