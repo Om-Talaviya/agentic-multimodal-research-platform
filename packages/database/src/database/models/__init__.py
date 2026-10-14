@@ -2999,3 +2999,9 @@ from database.models.synthetic_txtl_compartmental_oscillator import (
     SyntheticTxtlCompartmentalOscillatorItemProfile,
     SyntheticTxtlCompartmentalOscillatorMetricTrace,
 )
+
+from database.models.emt_snail_twist_continuum import (
+    EmtSnailTwistContinuumStudy,
+    EmtSnailTwistContinuumItemProfile,
+    EmtSnailTwistContinuumMetricTrace,
+)

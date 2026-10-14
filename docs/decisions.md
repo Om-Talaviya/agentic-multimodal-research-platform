@@ -2084,3 +2084,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous cell-free compartmentalized synthetic transcription-translation (tx-tl) feedback oscillator within Milestone v4.7.
 - **Decision**: Implemented `SyntheticTxtlCompartmentalOscillatorEngine`, `SyntheticTxtlCompartmentalOscillatorStudy`, `SyntheticTxtlCompartmentalOscillatorRepository`, and `/api/v1/synthetic-txtl-compartmental-oscillator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-489: Autonomous Multicellular Epithelial-to-Mesenchymal Transition (EMT) Snail-Twist Continuum Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous multicellular epithelial-to-mesenchymal transition (emt) snail-twist continuum engine within Milestone v4.7.
+- **Decision**: Implemented `EmtSnailTwistContinuumEngine`, `EmtSnailTwistContinuumStudy`, `EmtSnailTwistContinuumRepository`, and `/api/v1/emt-snail-twist-continuum/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
