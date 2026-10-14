@@ -3083,3 +3083,9 @@ from database.models.acoustic_droplet_single_exosome_profiler import (
     AcousticDropletSingleExosomeProfilerItemProfile,
     AcousticDropletSingleExosomeProfilerMetricTrace,
 )
+
+from database.models.coacervate_guv_hybrid_bionanoreactor import (
+    CoacervateGuvHybridBionanoreactorStudy,
+    CoacervateGuvHybridBionanoreactorItemProfile,
+    CoacervateGuvHybridBionanoreactorMetricTrace,
+)

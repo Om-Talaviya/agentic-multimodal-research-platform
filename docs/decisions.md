@@ -2182,3 +2182,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic acoustic sorting & droplet single-exosome surface tetraspanin profiler within Milestone v4.8.
 - **Decision**: Implemented `AcousticDropletSingleExosomeProfilerEngine`, `AcousticDropletSingleExosomeProfilerStudy`, `AcousticDropletSingleExosomeProfilerRepository`, and `/api/v1/acoustic-droplet-single-exosome-profiler/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-503: Autonomous Synthetic Protocellular Compartment Membraneless Coacervate-GUV Hybrid Bionanoreactor
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic protocellular compartment membraneless coacervate-guv hybrid bionanoreactor within Milestone v4.8.
+- **Decision**: Implemented `CoacervateGuvHybridBionanoreactorEngine`, `CoacervateGuvHybridBionanoreactorStudy`, `CoacervateGuvHybridBionanoreactorRepository`, and `/api/v1/coacervate-guv-hybrid-bionanoreactor/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
