@@ -2112,3 +2112,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous multi-organ microphysiological human-on-a-chip endocrine-metabolic feedback loop within Milestone v4.7.
 - **Decision**: Implemented `HumanOnChipEndocrineFeedbackEngine`, `HumanOnChipEndocrineFeedbackStudy`, `HumanOnChipEndocrineFeedbackRepository`, and `/api/v1/human-on-chip-endocrine-feedback/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-493: Autonomous Quantum Coherent Magnetoreception Cryptochrome Radical Pair Dynamics Simulator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous quantum coherent magnetoreception cryptochrome radical pair dynamics simulator within Milestone v4.7.
+- **Decision**: Implemented `CryptochromeRadicalPairMagnetoreceptionEngine`, `CryptochromeRadicalPairMagnetoreceptionStudy`, `CryptochromeRadicalPairMagnetoreceptionRepository`, and `/api/v1/cryptochrome-radical-pair-magnetoreception/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

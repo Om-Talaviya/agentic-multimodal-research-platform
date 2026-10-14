@@ -3023,3 +3023,9 @@ from database.models.human_on_chip_endocrine_feedback import (
     HumanOnChipEndocrineFeedbackItemProfile,
     HumanOnChipEndocrineFeedbackMetricTrace,
 )
+
+from database.models.cryptochrome_radical_pair_magnetoreception import (
+    CryptochromeRadicalPairMagnetoreceptionStudy,
+    CryptochromeRadicalPairMagnetoreceptionItemProfile,
+    CryptochromeRadicalPairMagnetoreceptionMetricTrace,
+)
