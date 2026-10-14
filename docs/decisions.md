@@ -2217,3 +2217,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous non-natural xenobiotic pathway metabolic retrosynthesis generator within Milestone v4.8.
 - **Decision**: Implemented `MetabolicRetrosynthesisXenobiologyEngine`, `MetabolicRetrosynthesisXenobiologyStudy`, `MetabolicRetrosynthesisXenobiologyRepository`, and `/api/v1/metabolic-retrosynthesis-xenobiology/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-508: Autonomous Solid-State Nanopore Single-Molecule Protein Co-Translocational Unfolding Modeler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous solid-state nanopore single-molecule protein co-translocational unfolding modeler within Milestone v4.8.
+- **Decision**: Implemented `SolidStateNanoporeProteinUnfoldingEngine`, `SolidStateNanoporeProteinUnfoldingStudy`, `SolidStateNanoporeProteinUnfoldingRepository`, and `/api/v1/solid-state-nanopore-protein-unfolding/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -1174,3 +1174,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 505**: Autonomous In-Cell Single-Molecule FRET Ribosome Conformational Dynamics Engine (`ribosome_in_cell_conformation_smfret`)
 - [x] **Phase 506**: Autonomous DNA Origami Reconfigurable Plasmonic Nanoruler Distance Calibrator (`dna_origami_plasmonic_nanoruler`)
 - [x] **Phase 507**: Autonomous Non-Natural Xenobiotic Pathway Metabolic Retrosynthesis Generator (`metabolic_retrosynthesis_xenobiology`)
+- [x] **Phase 508**: Autonomous Solid-State Nanopore Single-Molecule Protein Co-Translocational Unfolding Modeler (`solid_state_nanopore_protein_unfolding`)

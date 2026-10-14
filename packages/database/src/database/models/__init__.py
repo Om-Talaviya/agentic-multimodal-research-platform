@@ -3113,3 +3113,9 @@ from database.models.metabolic_retrosynthesis_xenobiology import (
     MetabolicRetrosynthesisXenobiologyItemProfile,
     MetabolicRetrosynthesisXenobiologyMetricTrace,
 )
+
+from database.models.solid_state_nanopore_protein_unfolding import (
+    SolidStateNanoporeProteinUnfoldingStudy,
+    SolidStateNanoporeProteinUnfoldingItemProfile,
+    SolidStateNanoporeProteinUnfoldingMetricTrace,
+)
