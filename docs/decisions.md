@@ -2175,3 +2175,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous crispr-associated transposase (cast) targeted large genomic cargo integrator within Milestone v4.8.
 - **Decision**: Implemented `CastTransposaseGenomicIntegrationEngine`, `CastTransposaseGenomicIntegrationStudy`, `CastTransposaseGenomicIntegrationRepository`, and `/api/v1/cast-transposase-genomic-integration/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-502: Autonomous Microfluidic Acoustic Sorting & Droplet Single-Exosome Surface Tetraspanin Profiler
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic acoustic sorting & droplet single-exosome surface tetraspanin profiler within Milestone v4.8.
+- **Decision**: Implemented `AcousticDropletSingleExosomeProfilerEngine`, `AcousticDropletSingleExosomeProfilerStudy`, `AcousticDropletSingleExosomeProfilerRepository`, and `/api/v1/acoustic-droplet-single-exosome-profiler/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

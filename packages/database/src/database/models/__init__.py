@@ -3077,3 +3077,9 @@ from database.models.cast_transposase_genomic_integration import (
     CastTransposaseGenomicIntegrationItemProfile,
     CastTransposaseGenomicIntegrationMetricTrace,
 )
+
+from database.models.acoustic_droplet_single_exosome_profiler import (
+    AcousticDropletSingleExosomeProfilerStudy,
+    AcousticDropletSingleExosomeProfilerItemProfile,
+    AcousticDropletSingleExosomeProfilerMetricTrace,
+)

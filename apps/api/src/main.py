@@ -1,3 +1,4 @@
+from api.routes.acoustic_droplet_single_exosome_profiler import router as acoustic_droplet_single_exosome_profiler_router
 from api.routes.cast_transposase_genomic_integration import router as cast_transposase_genomic_integration_router
 from api.routes.bioelectronic_living_materials_network import router as bioelectronic_living_materials_network_router
 from api.routes.mrfm_single_nuclear_spin_imaging import router as mrfm_single_nuclear_spin_imaging_router
@@ -1325,3 +1326,4 @@ app.include_router(xna_ncaa_expanded_genetic_code_router, prefix=settings.api_pr
 app.include_router(mrfm_single_nuclear_spin_imaging_router, prefix=settings.api_prefix)
 app.include_router(bioelectronic_living_materials_network_router, prefix=settings.api_prefix)
 app.include_router(cast_transposase_genomic_integration_router, prefix=settings.api_prefix)
+app.include_router(acoustic_droplet_single_exosome_profiler_router, prefix=settings.api_prefix)
