@@ -3107,3 +3107,9 @@ from database.models.dna_origami_plasmonic_nanoruler import (
     DnaOrigamiPlasmonicNanorulerItemProfile,
     DnaOrigamiPlasmonicNanorulerMetricTrace,
 )
+
+from database.models.metabolic_retrosynthesis_xenobiology import (
+    MetabolicRetrosynthesisXenobiologyStudy,
+    MetabolicRetrosynthesisXenobiologyItemProfile,
+    MetabolicRetrosynthesisXenobiologyMetricTrace,
+)

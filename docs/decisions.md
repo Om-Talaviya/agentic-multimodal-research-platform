@@ -2210,3 +2210,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous dna origami reconfigurable plasmonic nanoruler distance calibrator within Milestone v4.8.
 - **Decision**: Implemented `DnaOrigamiPlasmonicNanorulerEngine`, `DnaOrigamiPlasmonicNanorulerStudy`, `DnaOrigamiPlasmonicNanorulerRepository`, and `/api/v1/dna-origami-plasmonic-nanoruler/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-507: Autonomous Non-Natural Xenobiotic Pathway Metabolic Retrosynthesis Generator
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous non-natural xenobiotic pathway metabolic retrosynthesis generator within Milestone v4.8.
+- **Decision**: Implemented `MetabolicRetrosynthesisXenobiologyEngine`, `MetabolicRetrosynthesisXenobiologyStudy`, `MetabolicRetrosynthesisXenobiologyRepository`, and `/api/v1/metabolic-retrosynthesis-xenobiology/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

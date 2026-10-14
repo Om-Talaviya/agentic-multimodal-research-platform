@@ -1,3 +1,4 @@
+from api.routes.metabolic_retrosynthesis_xenobiology import router as metabolic_retrosynthesis_xenobiology_router
 from api.routes.dna_origami_plasmonic_nanoruler import router as dna_origami_plasmonic_nanoruler_router
 from api.routes.ribosome_in_cell_conformation_smfret import router as ribosome_in_cell_conformation_smfret_router
 from api.routes.droplet_microfluidic_enzyme_evolution import router as droplet_microfluidic_enzyme_evolution_router
@@ -1335,3 +1336,4 @@ app.include_router(coacervate_guv_hybrid_bionanoreactor_router, prefix=settings.
 app.include_router(droplet_microfluidic_enzyme_evolution_router, prefix=settings.api_prefix)
 app.include_router(ribosome_in_cell_conformation_smfret_router, prefix=settings.api_prefix)
 app.include_router(dna_origami_plasmonic_nanoruler_router, prefix=settings.api_prefix)
+app.include_router(metabolic_retrosynthesis_xenobiology_router, prefix=settings.api_prefix)
