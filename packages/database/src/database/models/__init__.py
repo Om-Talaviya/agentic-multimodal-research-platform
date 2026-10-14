@@ -2921,3 +2921,9 @@ from database.models.acoustic_impedance_cytometry import (
     AcousticImpedanceCytometryItemProfile,
     AcousticImpedanceCytometryMetricTrace,
 )
+
+from database.models.milestone_v4_6_meta_orchestrator import (
+    MilestoneV46MetaOrchestratorStudy,
+    MilestoneV46MetaOrchestratorItemProfile,
+    MilestoneV46MetaOrchestratorMetricTrace,
+)
