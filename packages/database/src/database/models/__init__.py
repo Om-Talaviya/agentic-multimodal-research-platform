@@ -3017,3 +3017,9 @@ from database.models.aquaporin_biomimetic_water_transport import (
     AquaporinBiomimeticWaterTransportItemProfile,
     AquaporinBiomimeticWaterTransportMetricTrace,
 )
+
+from database.models.human_on_chip_endocrine_feedback import (
+    HumanOnChipEndocrineFeedbackStudy,
+    HumanOnChipEndocrineFeedbackItemProfile,
+    HumanOnChipEndocrineFeedbackMetricTrace,
+)

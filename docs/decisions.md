@@ -2105,3 +2105,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous biomimetic synthetic membrane water aquaporin channel transport forecaster within Milestone v4.7.
 - **Decision**: Implemented `AquaporinBiomimeticWaterTransportEngine`, `AquaporinBiomimeticWaterTransportStudy`, `AquaporinBiomimeticWaterTransportRepository`, and `/api/v1/aquaporin-biomimetic-water-transport/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-492: Autonomous Multi-Organ Microphysiological Human-on-a-Chip Endocrine-Metabolic Feedback Loop
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous multi-organ microphysiological human-on-a-chip endocrine-metabolic feedback loop within Milestone v4.7.
+- **Decision**: Implemented `HumanOnChipEndocrineFeedbackEngine`, `HumanOnChipEndocrineFeedbackStudy`, `HumanOnChipEndocrineFeedbackRepository`, and `/api/v1/human-on-chip-endocrine-feedback/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
