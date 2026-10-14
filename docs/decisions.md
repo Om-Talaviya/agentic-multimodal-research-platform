@@ -2126,3 +2126,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous mechanosensitive ion channel piezo1 gating & membrane tension indentation engine within Milestone v4.7.
 - **Decision**: Implemented `PiezoMechanosensitiveChannelGatingEngine`, `PiezoMechanosensitiveChannelGatingStudy`, `PiezoMechanosensitiveChannelGatingRepository`, and `/api/v1/piezo-mechanosensitive-channel-gating/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-495: Autonomous Spatial Multi-Modal Epigenomic CUT&Tag-RNA Joint Profiling Diffusion Trajectory Mapper
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous spatial multi-modal epigenomic cut&tag-rna joint profiling diffusion trajectory mapper within Milestone v4.7.
+- **Decision**: Implemented `CuttagRnaJointDiffusionTrajectoryEngine`, `CuttagRnaJointDiffusionTrajectoryStudy`, `CuttagRnaJointDiffusionTrajectoryRepository`, and `/api/v1/cuttag-rna-joint-diffusion-trajectory/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

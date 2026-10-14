@@ -1,3 +1,4 @@
+from api.routes.cuttag_rna_joint_diffusion_trajectory import router as cuttag_rna_joint_diffusion_trajectory_router
 from api.routes.piezo_mechanosensitive_channel_gating import router as piezo_mechanosensitive_channel_gating_router
 from api.routes.cryptochrome_radical_pair_magnetoreception import router as cryptochrome_radical_pair_magnetoreception_router
 from api.routes.human_on_chip_endocrine_feedback import router as human_on_chip_endocrine_feedback_router
@@ -1311,3 +1312,4 @@ app.include_router(aquaporin_biomimetic_water_transport_router, prefix=settings.
 app.include_router(human_on_chip_endocrine_feedback_router, prefix=settings.api_prefix)
 app.include_router(cryptochrome_radical_pair_magnetoreception_router, prefix=settings.api_prefix)
 app.include_router(piezo_mechanosensitive_channel_gating_router, prefix=settings.api_prefix)
+app.include_router(cuttag_rna_joint_diffusion_trajectory_router, prefix=settings.api_prefix)

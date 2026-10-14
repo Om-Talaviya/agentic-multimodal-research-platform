@@ -3035,3 +3035,9 @@ from database.models.piezo_mechanosensitive_channel_gating import (
     PiezoMechanosensitiveChannelGatingItemProfile,
     PiezoMechanosensitiveChannelGatingMetricTrace,
 )
+
+from database.models.cuttag_rna_joint_diffusion_trajectory import (
+    CuttagRnaJointDiffusionTrajectoryStudy,
+    CuttagRnaJointDiffusionTrajectoryItemProfile,
+    CuttagRnaJointDiffusionTrajectoryMetricTrace,
+)
