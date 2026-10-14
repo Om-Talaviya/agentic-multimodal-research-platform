@@ -2945,3 +2945,9 @@ from database.models.photoactivatable_cre_lineage_tracker import (
     PhotoactivatableCreLineageTrackerItemProfile,
     PhotoactivatableCreLineageTrackerMetricTrace,
 )
+
+from database.models.guv_electroformation_dynamics import (
+    GuvElectroformationDynamicsStudy,
+    GuvElectroformationDynamicsItemProfile,
+    GuvElectroformationDynamicsMetricTrace,
+)
