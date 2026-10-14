@@ -2266,3 +2266,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous equivariant graph neural network tcr-pmhc interface binding energy forecaster within Milestone v4.8.
 - **Decision**: Implemented `DeepLearningTcrPmhcDockingEnergyEngine`, `DeepLearningTcrPmhcDockingEnergyStudy`, `DeepLearningTcrPmhcDockingEnergyRepository`, and `/api/v1/deep-learning-tcr-pmhc-docking-energy/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-515: Autonomous dCas9-Mediated Chromatin Loop Extrusion & Cohesin-CTCF Boundary Rewriter
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous dcas9-mediated chromatin loop extrusion & cohesin-ctcf boundary rewriter within Milestone v4.8.
+- **Decision**: Implemented `EpigeneticCrisprChromatinLoopExtrusionEngine`, `EpigeneticCrisprChromatinLoopExtrusionStudy`, `EpigeneticCrisprChromatinLoopExtrusionRepository`, and `/api/v1/epigenetic-crispr-chromatin-loop-extrusion/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

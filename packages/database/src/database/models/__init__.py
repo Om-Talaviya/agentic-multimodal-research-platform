@@ -3155,3 +3155,9 @@ from database.models.deep_learning_tcr_pmhc_docking_energy import (
     DeepLearningTcrPmhcDockingEnergyItemProfile,
     DeepLearningTcrPmhcDockingEnergyMetricTrace,
 )
+
+from database.models.epigenetic_crispr_chromatin_loop_extrusion import (
+    EpigeneticCrisprChromatinLoopExtrusionStudy,
+    EpigeneticCrisprChromatinLoopExtrusionItemProfile,
+    EpigeneticCrisprChromatinLoopExtrusionMetricTrace,
+)
