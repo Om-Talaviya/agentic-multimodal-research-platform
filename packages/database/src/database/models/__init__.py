@@ -3041,3 +3041,9 @@ from database.models.cuttag_rna_joint_diffusion_trajectory import (
     CuttagRnaJointDiffusionTrajectoryItemProfile,
     CuttagRnaJointDiffusionTrajectoryMetricTrace,
 )
+
+from database.models.gastruloid_axial_patterning_wnt_bmp import (
+    GastruloidAxialPatterningWntBmpStudy,
+    GastruloidAxialPatterningWntBmpItemProfile,
+    GastruloidAxialPatterningWntBmpMetricTrace,
+)

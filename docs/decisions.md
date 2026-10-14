@@ -2133,3 +2133,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous spatial multi-modal epigenomic cut&tag-rna joint profiling diffusion trajectory mapper within Milestone v4.7.
 - **Decision**: Implemented `CuttagRnaJointDiffusionTrajectoryEngine`, `CuttagRnaJointDiffusionTrajectoryStudy`, `CuttagRnaJointDiffusionTrajectoryRepository`, and `/api/v1/cuttag-rna-joint-diffusion-trajectory/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-496: Autonomous Synthetic Organogenesis Gastruloid Axial Patterning & Wnt-BMP Morphogenetic Polarization Engine
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic organogenesis gastruloid axial patterning & wnt-bmp morphogenetic polarization engine within Milestone v4.7.
+- **Decision**: Implemented `GastruloidAxialPatterningWntBmpEngine`, `GastruloidAxialPatterningWntBmpStudy`, `GastruloidAxialPatterningWntBmpRepository`, and `/api/v1/gastruloid-axial-patterning-wnt-bmp/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
