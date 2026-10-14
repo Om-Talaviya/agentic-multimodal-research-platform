@@ -3185,3 +3185,9 @@ from database.models.active_matter_cytoskeletal_nematic_defect import (
     ActiveMatterCytoskeletalNematicDefectItemProfile,
     ActiveMatterCytoskeletalNematicDefectMetricTrace,
 )
+
+from database.models.liquid_cell_tem_protein_crystallization import (
+    LiquidCellTemProteinCrystallizationStudy,
+    LiquidCellTemProteinCrystallizationItemProfile,
+    LiquidCellTemProteinCrystallizationMetricTrace,
+)

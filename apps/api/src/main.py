@@ -1,3 +1,4 @@
+from api.routes.liquid_cell_tem_protein_crystallization import router as liquid_cell_tem_protein_crystallization_router
 from api.routes.active_matter_cytoskeletal_nematic_defect import router as active_matter_cytoskeletal_nematic_defect_router
 from api.routes.milestone_v4_8_meta_orchestrator import router as milestone_v4_8_meta_orchestrator_router
 from api.routes.multiplexed_optogenetic_neocortical_synchrony import router as multiplexed_optogenetic_neocortical_synchrony_router
@@ -1361,3 +1362,4 @@ app.include_router(high_throughput_mass_photometry_ribosome_router, prefix=setti
 app.include_router(multiplexed_optogenetic_neocortical_synchrony_router, prefix=settings.api_prefix)
 app.include_router(milestone_v4_8_meta_orchestrator_router, prefix=settings.api_prefix)
 app.include_router(active_matter_cytoskeletal_nematic_defect_router, prefix=settings.api_prefix)
+app.include_router(liquid_cell_tem_protein_crystallization_router, prefix=settings.api_prefix)

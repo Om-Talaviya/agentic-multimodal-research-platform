@@ -1188,3 +1188,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 
 ### Milestone v4.9: Autonomous Planetary Cryo-Architecture, Non-Equilibrium Active Matter & Neuromorphic Quantum Bio-Computing OS (Phases 519-539)
 - [x] **Phase 519**: Autonomous Non-Equilibrium Active Matter Cytoskeletal Topological Defect Self-Propulsion Simulator (`active_matter_cytoskeletal_nematic_defect`)
+- [x] **Phase 520**: Autonomous In-Situ Liquid-Cell Transmission Electron Microscopy Protein Nucleation Real-Time Tracker (`liquid_cell_tem_protein_crystallization`)

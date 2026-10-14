@@ -2301,3 +2301,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous non-equilibrium active matter cytoskeletal topological defect self-propulsion simulator within Milestone v4.9.
 - **Decision**: Implemented `ActiveMatterCytoskeletalNematicDefectEngine`, `ActiveMatterCytoskeletalNematicDefectStudy`, `ActiveMatterCytoskeletalNematicDefectRepository`, and `/api/v1/active-matter-cytoskeletal-nematic-defect/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-520: Autonomous In-Situ Liquid-Cell Transmission Electron Microscopy Protein Nucleation Real-Time Tracker
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-situ liquid-cell transmission electron microscopy protein nucleation real-time tracker within Milestone v4.9.
+- **Decision**: Implemented `LiquidCellTemProteinCrystallizationEngine`, `LiquidCellTemProteinCrystallizationStudy`, `LiquidCellTemProteinCrystallizationRepository`, and `/api/v1/liquid-cell-tem-protein-crystallization/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
