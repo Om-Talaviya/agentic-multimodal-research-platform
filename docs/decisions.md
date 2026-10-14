@@ -1986,3 +1986,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous subcellular microtubule kinesin-dynein tug-of-war vesicle transport modeler within Milestone v4.6.
 - **Decision**: Implemented `KinesinDyneinVesicleTransportEngine`, `KinesinDyneinVesicleTransportStudy`, `KinesinDyneinVesicleTransportRepository`, and `/api/v1/kinesin-dynein-vesicle-transport/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-475: Autonomous Multiplexed Bio-Acoustic Cellular Impedance Flow Cytometry Classifier
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous multiplexed bio-acoustic cellular impedance flow cytometry classifier within Milestone v4.6.
+- **Decision**: Implemented `AcousticImpedanceCytometryEngine`, `AcousticImpedanceCytometryStudy`, `AcousticImpedanceCytometryRepository`, and `/api/v1/acoustic-impedance-cytometry/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

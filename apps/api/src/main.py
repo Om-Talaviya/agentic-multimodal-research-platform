@@ -1,3 +1,4 @@
+from api.routes.acoustic_impedance_cytometry import router as acoustic_impedance_cytometry_router
 from api.routes.kinesin_dynein_vesicle_transport import router as kinesin_dynein_vesicle_transport_router
 from api.routes.flexoelectric_membrane_curvature import router as flexoelectric_membrane_curvature_router
 from api.routes.gene_circuit_bistable_switch import router as gene_circuit_bistable_switch_router
@@ -1271,3 +1272,4 @@ app.include_router(somatogenesis_hes7_clock_wavefront_router, prefix=settings.ap
 app.include_router(gene_circuit_bistable_switch_router, prefix=settings.api_prefix)
 app.include_router(flexoelectric_membrane_curvature_router, prefix=settings.api_prefix)
 app.include_router(kinesin_dynein_vesicle_transport_router, prefix=settings.api_prefix)
+app.include_router(acoustic_impedance_cytometry_router, prefix=settings.api_prefix)

@@ -2915,3 +2915,9 @@ from database.models.kinesin_dynein_vesicle_transport import (
     KinesinDyneinVesicleTransportItemProfile,
     KinesinDyneinVesicleTransportMetricTrace,
 )
+
+from database.models.acoustic_impedance_cytometry import (
+    AcousticImpedanceCytometryStudy,
+    AcousticImpedanceCytometryItemProfile,
+    AcousticImpedanceCytometryMetricTrace,
+)

@@ -1,5 +1,6 @@
 ## [v4.6.0] - Milestone v4.6 Autonomous Synthetic Morphogenesis, Biohybrid Cybernetics & Planetary Multicellular OS
 ### Added
+- **Phase 475**: Autonomous Multiplexed Bio-Acoustic Cellular Impedance Flow Cytometry Classifier (`acoustic_impedance_cytometry`)
 - **Phase 474**: Autonomous Subcellular Microtubule Kinesin-Dynein Tug-of-War Vesicle Transport Modeler (`kinesin_dynein_vesicle_transport`)
 - **Phase 473**: Autonomous Bio-Piezoelectric Cell Membrane Flexoelectric Curvature Transduction Engine (`flexoelectric_membrane_curvature`)
 - **Phase 472**: Autonomous Synthetic Gene Circuit Cross-Repression Epigenetic Bistable Switch Simulator (`gene_circuit_bistable_switch`)
