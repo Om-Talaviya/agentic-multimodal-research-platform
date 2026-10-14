@@ -2903,3 +2903,9 @@ from database.models.gene_circuit_bistable_switch import (
     GeneCircuitBistableSwitchItemProfile,
     GeneCircuitBistableSwitchMetricTrace,
 )
+
+from database.models.flexoelectric_membrane_curvature import (
+    FlexoelectricMembraneCurvatureStudy,
+    FlexoelectricMembraneCurvatureItemProfile,
+    FlexoelectricMembraneCurvatureMetricTrace,
+)

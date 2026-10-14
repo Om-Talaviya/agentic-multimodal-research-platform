@@ -1,3 +1,4 @@
+from api.routes.flexoelectric_membrane_curvature import router as flexoelectric_membrane_curvature_router
 from api.routes.gene_circuit_bistable_switch import router as gene_circuit_bistable_switch_router
 from api.routes.somatogenesis_hes7_clock_wavefront import router as somatogenesis_hes7_clock_wavefront_router
 from api.routes.piezoelectric_collagen_matrix_transduction import router as piezoelectric_collagen_matrix_transduction_router
@@ -1267,3 +1268,4 @@ app.include_router(cryoet_actin_microtubule_lattice_router, prefix=settings.api_
 app.include_router(piezoelectric_collagen_matrix_transduction_router, prefix=settings.api_prefix)
 app.include_router(somatogenesis_hes7_clock_wavefront_router, prefix=settings.api_prefix)
 app.include_router(gene_circuit_bistable_switch_router, prefix=settings.api_prefix)
+app.include_router(flexoelectric_membrane_curvature_router, prefix=settings.api_prefix)
