@@ -1,3 +1,4 @@
+from api.routes.cmos_mea_axonal_conduction import router as cmos_mea_axonal_conduction_router
 from api.routes.emt_snail_twist_continuum import router as emt_snail_twist_continuum_router
 from api.routes.synthetic_txtl_compartmental_oscillator import router as synthetic_txtl_compartmental_oscillator_router
 from api.routes.snare_complex_dynamic_zippering import router as snare_complex_dynamic_zippering_router
@@ -1301,3 +1302,4 @@ app.include_router(droplet_pcr_methylation_amplification_router, prefix=settings
 app.include_router(snare_complex_dynamic_zippering_router, prefix=settings.api_prefix)
 app.include_router(synthetic_txtl_compartmental_oscillator_router, prefix=settings.api_prefix)
 app.include_router(emt_snail_twist_continuum_router, prefix=settings.api_prefix)
+app.include_router(cmos_mea_axonal_conduction_router, prefix=settings.api_prefix)

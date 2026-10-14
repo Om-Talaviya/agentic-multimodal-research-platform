@@ -3005,3 +3005,9 @@ from database.models.emt_snail_twist_continuum import (
     EmtSnailTwistContinuumItemProfile,
     EmtSnailTwistContinuumMetricTrace,
 )
+
+from database.models.cmos_mea_axonal_conduction import (
+    CmosMeaAxonalConductionStudy,
+    CmosMeaAxonalConductionItemProfile,
+    CmosMeaAxonalConductionMetricTrace,
+)

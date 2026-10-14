@@ -2091,3 +2091,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous multicellular epithelial-to-mesenchymal transition (emt) snail-twist continuum engine within Milestone v4.7.
 - **Decision**: Implemented `EmtSnailTwistContinuumEngine`, `EmtSnailTwistContinuumStudy`, `EmtSnailTwistContinuumRepository`, and `/api/v1/emt-snail-twist-continuum/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-490: Autonomous High-Density CMOS Microelectrode Array Neuromorphic Axonal Conduction Velocity Mapper
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-density cmos microelectrode array neuromorphic axonal conduction velocity mapper within Milestone v4.7.
+- **Decision**: Implemented `CmosMeaAxonalConductionEngine`, `CmosMeaAxonalConductionStudy`, `CmosMeaAxonalConductionRepository`, and `/api/v1/cmos-mea-axonal-conduction/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
