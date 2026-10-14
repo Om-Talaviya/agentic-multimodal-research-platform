@@ -2987,3 +2987,9 @@ from database.models.droplet_pcr_methylation_amplification import (
     DropletPcrMethylationAmplificationItemProfile,
     DropletPcrMethylationAmplificationMetricTrace,
 )
+
+from database.models.snare_complex_dynamic_zippering import (
+    SnareComplexDynamicZipperingStudy,
+    SnareComplexDynamicZipperingItemProfile,
+    SnareComplexDynamicZipperingMetricTrace,
+)

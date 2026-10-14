@@ -2070,3 +2070,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic droplet pcr digital methylation specific amplification modeler within Milestone v4.7.
 - **Decision**: Implemented `DropletPcrMethylationAmplificationEngine`, `DropletPcrMethylationAmplificationStudy`, `DropletPcrMethylationAmplificationRepository`, and `/api/v1/droplet-pcr-methylation-amplification/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-487: Autonomous Synaptic Vesicle SNARE Complex Dynamic Zippering & Neurotransmitter Release Predictor
+- **Date**: 2026-10-14
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synaptic vesicle snare complex dynamic zippering & neurotransmitter release predictor within Milestone v4.7.
+- **Decision**: Implemented `SnareComplexDynamicZipperingEngine`, `SnareComplexDynamicZipperingStudy`, `SnareComplexDynamicZipperingRepository`, and `/api/v1/snare-complex-dynamic-zippering/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
