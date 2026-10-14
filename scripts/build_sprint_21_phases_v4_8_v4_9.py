@@ -1440,7 +1440,7 @@ def main():
     env["SECRET_KEY"] = "ci-secret-key-for-testing-only-32-chars-long"
     env["TESTING"] = "true"
 
-    for idx, p in enumerate(PHASES):
+    for idx, p in enumerate(PHASES[19:], start=19):
         phase_num = p["phase"]
         tag = p["tag"]
         title = p["title"]

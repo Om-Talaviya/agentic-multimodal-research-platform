@@ -3209,3 +3209,9 @@ from database.models.synthetic_dna_nanomachine_cargo_shuttle import (
     SyntheticDnaNanomachineCargoShuttleItemProfile,
     SyntheticDnaNanomachineCargoShuttleMetricTrace,
 )
+
+from database.models.droplet_single_cell_mass_spec_proteomics import (
+    DropletSingleCellMassSpecProteomicsStudy,
+    DropletSingleCellMassSpecProteomicsItemProfile,
+    DropletSingleCellMassSpecProteomicsMetricTrace,
+)
