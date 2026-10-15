@@ -1,3 +1,4 @@
+from api.routes.synthetic_cell_division_ftsz_constriction import router as synthetic_cell_division_ftsz_constriction_router
 from api.routes.single_molecule_quantum_defect_spin_sensor import router as single_molecule_quantum_defect_spin_sensor_router
 from api.routes.milestone_v4_9_meta_orchestrator import router as milestone_v4_9_meta_orchestrator_router
 from api.routes.photosynthetic_antenna_quantum_vibronic_coupling import router as photosynthetic_antenna_quantum_vibronic_coupling_router
@@ -1403,3 +1404,4 @@ app.include_router(single_molecule_magnetic_torque_tweezer_router, prefix=settin
 app.include_router(photosynthetic_antenna_quantum_vibronic_coupling_router, prefix=settings.api_prefix)
 app.include_router(milestone_v4_9_meta_orchestrator_router, prefix=settings.api_prefix)
 app.include_router(single_molecule_quantum_defect_spin_sensor_router, prefix=settings.api_prefix)
+app.include_router(synthetic_cell_division_ftsz_constriction_router, prefix=settings.api_prefix)

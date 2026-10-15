@@ -3311,3 +3311,9 @@ from database.models.single_molecule_quantum_defect_spin_sensor import (
     SingleMoleculeQuantumDefectSpinSensorItemProfile,
     SingleMoleculeQuantumDefectSpinSensorMetricTrace,
 )
+
+from database.models.synthetic_cell_division_ftsz_constriction import (
+    SyntheticCellDivisionFtszConstrictionStudy,
+    SyntheticCellDivisionFtszConstrictionItemProfile,
+    SyntheticCellDivisionFtszConstrictionMetricTrace,
+)

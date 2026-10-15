@@ -2448,3 +2448,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous diamond nitrogen-vacancy (nv) center quantum defect intracellular thermal & magnetic sensor within Milestone v5.0.
 - **Decision**: Implemented `SingleMoleculeQuantumDefectSpinSensorEngine`, `SingleMoleculeQuantumDefectSpinSensorStudy`, `SingleMoleculeQuantumDefectSpinSensorRepository`, and `/api/v1/single-molecule-quantum-defect-spin-sensor/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-541: Autonomous Synthetic Protocellular Compartment FtsZ-Min System Dynamic Cleavage Constriction Modeler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic protocellular compartment ftsz-min system dynamic cleavage constriction modeler within Milestone v5.0.
+- **Decision**: Implemented `SyntheticCellDivisionFtszConstrictionEngine`, `SyntheticCellDivisionFtszConstrictionStudy`, `SyntheticCellDivisionFtszConstrictionRepository`, and `/api/v1/synthetic-cell-division-ftsz-constriction/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
