@@ -3335,3 +3335,9 @@ from database.models.cryo_correlative_light_electron_tomography_clem import (
     CryoCorrelativeLightElectronTomographyClemItemProfile,
     CryoCorrelativeLightElectronTomographyClemMetricTrace,
 )
+
+from database.models.microfluidic_acoustic_droplet_dna_storage import (
+    MicrofluidicAcousticDropletDnaStorageStudy,
+    MicrofluidicAcousticDropletDnaStorageItemProfile,
+    MicrofluidicAcousticDropletDnaStorageMetricTrace,
+)
