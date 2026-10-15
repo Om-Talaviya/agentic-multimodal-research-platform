@@ -3299,3 +3299,9 @@ from database.models.photosynthetic_antenna_quantum_vibronic_coupling import (
     PhotosyntheticAntennaQuantumVibronicCouplingItemProfile,
     PhotosyntheticAntennaQuantumVibronicCouplingMetricTrace,
 )
+
+from database.models.milestone_v4_9_meta_orchestrator import (
+    MilestoneV49MetaOrchestratorStudy,
+    MilestoneV49MetaOrchestratorItemProfile,
+    MilestoneV49MetaOrchestratorMetricTrace,
+)

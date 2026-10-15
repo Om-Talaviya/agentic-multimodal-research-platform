@@ -1,3 +1,4 @@
+from api.routes.milestone_v4_9_meta_orchestrator import router as milestone_v4_9_meta_orchestrator_router
 from api.routes.photosynthetic_antenna_quantum_vibronic_coupling import router as photosynthetic_antenna_quantum_vibronic_coupling_router
 from api.routes.single_molecule_magnetic_torque_tweezer import router as single_molecule_magnetic_torque_tweezer_router
 from api.routes.cryoet_organelle_membrane_curvature_stress import router as cryoet_organelle_membrane_curvature_stress_router
@@ -1399,3 +1400,4 @@ app.include_router(synthetic_epigenetic_crispr_memory_cascade_router, prefix=set
 app.include_router(cryoet_organelle_membrane_curvature_stress_router, prefix=settings.api_prefix)
 app.include_router(single_molecule_magnetic_torque_tweezer_router, prefix=settings.api_prefix)
 app.include_router(photosynthetic_antenna_quantum_vibronic_coupling_router, prefix=settings.api_prefix)
+app.include_router(milestone_v4_9_meta_orchestrator_router, prefix=settings.api_prefix)
