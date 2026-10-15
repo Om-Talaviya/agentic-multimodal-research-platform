@@ -1,3 +1,4 @@
+from api.routes.neuromorphic_optogenetic_synaptic_emulator import router as neuromorphic_optogenetic_synaptic_emulator_router
 from api.routes.direct_rna_pseudouridine_nanopore_sequencing import router as direct_rna_pseudouridine_nanopore_sequencing_router
 from api.routes.synthetic_cell_division_ftsz_constriction import router as synthetic_cell_division_ftsz_constriction_router
 from api.routes.single_molecule_quantum_defect_spin_sensor import router as single_molecule_quantum_defect_spin_sensor_router
@@ -1407,3 +1408,4 @@ app.include_router(milestone_v4_9_meta_orchestrator_router, prefix=settings.api_
 app.include_router(single_molecule_quantum_defect_spin_sensor_router, prefix=settings.api_prefix)
 app.include_router(synthetic_cell_division_ftsz_constriction_router, prefix=settings.api_prefix)
 app.include_router(direct_rna_pseudouridine_nanopore_sequencing_router, prefix=settings.api_prefix)
+app.include_router(neuromorphic_optogenetic_synaptic_emulator_router, prefix=settings.api_prefix)

@@ -3323,3 +3323,9 @@ from database.models.direct_rna_pseudouridine_nanopore_sequencing import (
     DirectRnaPseudouridineNanoporeSequencingItemProfile,
     DirectRnaPseudouridineNanoporeSequencingMetricTrace,
 )
+
+from database.models.neuromorphic_optogenetic_synaptic_emulator import (
+    NeuromorphicOptogeneticSynapticEmulatorStudy,
+    NeuromorphicOptogeneticSynapticEmulatorItemProfile,
+    NeuromorphicOptogeneticSynapticEmulatorMetricTrace,
+)

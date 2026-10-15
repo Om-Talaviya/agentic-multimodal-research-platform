@@ -2462,3 +2462,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous direct rna nanopore sequencing pseudouridine (ψ) chemical stoichiometry profiler within Milestone v5.0.
 - **Decision**: Implemented `DirectRnaPseudouridineNanoporeSequencingEngine`, `DirectRnaPseudouridineNanoporeSequencingStudy`, `DirectRnaPseudouridineNanoporeSequencingRepository`, and `/api/v1/direct-rna-pseudouridine-nanopore-sequencing/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-543: Autonomous Biomimetic Neuromorphic Optoelectronic Synapse Photo-Memristive Plasticity Forecaster
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous biomimetic neuromorphic optoelectronic synapse photo-memristive plasticity forecaster within Milestone v5.0.
+- **Decision**: Implemented `NeuromorphicOptogeneticSynapticEmulatorEngine`, `NeuromorphicOptogeneticSynapticEmulatorStudy`, `NeuromorphicOptogeneticSynapticEmulatorRepository`, and `/api/v1/neuromorphic-optogenetic-synaptic-emulator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
