@@ -3245,3 +3245,9 @@ from database.models.magnetic_resonance_hyperpolarization_dnp import (
     MagneticResonanceHyperpolarizationDnpItemProfile,
     MagneticResonanceHyperpolarizationDnpMetricTrace,
 )
+
+from database.models.bacterial_outer_membrane_vesicle_packaging import (
+    BacterialOuterMembraneVesiclePackagingStudy,
+    BacterialOuterMembraneVesiclePackagingItemProfile,
+    BacterialOuterMembraneVesiclePackagingMetricTrace,
+)

@@ -2371,3 +2371,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous dissolution dynamic nuclear polarization (dnp) hyperpolarized carbon-13 flux tracer within Milestone v4.9.
 - **Decision**: Implemented `MagneticResonanceHyperpolarizationDnpEngine`, `MagneticResonanceHyperpolarizationDnpStudy`, `MagneticResonanceHyperpolarizationDnpRepository`, and `/api/v1/magnetic-resonance-hyperpolarization-dnp/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-530: Autonomous Bacterial Outer Membrane Vesicle (OMV) Biogenesis & Cargo Sorting Predictor
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous bacterial outer membrane vesicle (omv) biogenesis & cargo sorting predictor within Milestone v4.9.
+- **Decision**: Implemented `BacterialOuterMembraneVesiclePackagingEngine`, `BacterialOuterMembraneVesiclePackagingStudy`, `BacterialOuterMembraneVesiclePackagingRepository`, and `/api/v1/bacterial-outer-membrane-vesicle-packaging/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

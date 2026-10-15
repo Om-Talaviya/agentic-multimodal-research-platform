@@ -1,3 +1,4 @@
+from api.routes.bacterial_outer_membrane_vesicle_packaging import router as bacterial_outer_membrane_vesicle_packaging_router
 from api.routes.magnetic_resonance_hyperpolarization_dnp import router as magnetic_resonance_hyperpolarization_dnp_router
 from api.routes.high_speed_afm_molecular_motor_dynamics import router as high_speed_afm_molecular_motor_dynamics_router
 from api.routes.coacervate_nucleic_acid_liquid_condensation import router as coacervate_nucleic_acid_liquid_condensation_router
@@ -1381,3 +1382,4 @@ app.include_router(nanopore_single_molecule_sequencing_kinetics_router, prefix=s
 app.include_router(coacervate_nucleic_acid_liquid_condensation_router, prefix=settings.api_prefix)
 app.include_router(high_speed_afm_molecular_motor_dynamics_router, prefix=settings.api_prefix)
 app.include_router(magnetic_resonance_hyperpolarization_dnp_router, prefix=settings.api_prefix)
+app.include_router(bacterial_outer_membrane_vesicle_packaging_router, prefix=settings.api_prefix)
