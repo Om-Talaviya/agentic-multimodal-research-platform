@@ -3257,3 +3257,9 @@ from database.models.optogenetic_mitochondrial_calcium_oscillator import (
     OptogeneticMitochondrialCalciumOscillatorItemProfile,
     OptogeneticMitochondrialCalciumOscillatorMetricTrace,
 )
+
+from database.models.single_cell_spatial_lipidomics_maldi import (
+    SingleCellSpatialLipidomicsMaldiStudy,
+    SingleCellSpatialLipidomicsMaldiItemProfile,
+    SingleCellSpatialLipidomicsMaldiMetricTrace,
+)

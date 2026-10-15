@@ -1200,3 +1200,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] **Phase 529**: Autonomous Dissolution Dynamic Nuclear Polarization (DNP) Hyperpolarized Carbon-13 Flux Tracer (`magnetic_resonance_hyperpolarization_dnp`)
 - [x] **Phase 530**: Autonomous Bacterial Outer Membrane Vesicle (OMV) Biogenesis & Cargo Sorting Predictor (`bacterial_outer_membrane_vesicle_packaging`)
 - [x] **Phase 531**: Autonomous Spatially-Resolved Optogenetic Mitochondrial Calcium Spark & Bioenergetics Modeler (`optogenetic_mitochondrial_calcium_oscillator`)
+- [x] **Phase 532**: Autonomous High-Mass-Resolution MALDI MSI Single-Cell Spatial Phospholipid Fingerprinter (`single_cell_spatial_lipidomics_maldi`)

@@ -2385,3 +2385,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous spatially-resolved optogenetic mitochondrial calcium spark & bioenergetics modeler within Milestone v4.9.
 - **Decision**: Implemented `OptogeneticMitochondrialCalciumOscillatorEngine`, `OptogeneticMitochondrialCalciumOscillatorStudy`, `OptogeneticMitochondrialCalciumOscillatorRepository`, and `/api/v1/optogenetic-mitochondrial-calcium-oscillator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-532: Autonomous High-Mass-Resolution MALDI MSI Single-Cell Spatial Phospholipid Fingerprinter
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-mass-resolution maldi msi single-cell spatial phospholipid fingerprinter within Milestone v4.9.
+- **Decision**: Implemented `SingleCellSpatialLipidomicsMaldiEngine`, `SingleCellSpatialLipidomicsMaldiStudy`, `SingleCellSpatialLipidomicsMaldiRepository`, and `/api/v1/single-cell-spatial-lipidomics-maldi/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
