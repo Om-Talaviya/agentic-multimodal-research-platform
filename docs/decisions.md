@@ -2455,3 +2455,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic protocellular compartment ftsz-min system dynamic cleavage constriction modeler within Milestone v5.0.
 - **Decision**: Implemented `SyntheticCellDivisionFtszConstrictionEngine`, `SyntheticCellDivisionFtszConstrictionStudy`, `SyntheticCellDivisionFtszConstrictionRepository`, and `/api/v1/synthetic-cell-division-ftsz-constriction/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-542: Autonomous Direct RNA Nanopore Sequencing Pseudouridine (Ψ) Chemical Stoichiometry Profiler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous direct rna nanopore sequencing pseudouridine (ψ) chemical stoichiometry profiler within Milestone v5.0.
+- **Decision**: Implemented `DirectRnaPseudouridineNanoporeSequencingEngine`, `DirectRnaPseudouridineNanoporeSequencingStudy`, `DirectRnaPseudouridineNanoporeSequencingRepository`, and `/api/v1/direct-rna-pseudouridine-nanopore-sequencing/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -3317,3 +3317,9 @@ from database.models.synthetic_cell_division_ftsz_constriction import (
     SyntheticCellDivisionFtszConstrictionItemProfile,
     SyntheticCellDivisionFtszConstrictionMetricTrace,
 )
+
+from database.models.direct_rna_pseudouridine_nanopore_sequencing import (
+    DirectRnaPseudouridineNanoporeSequencingStudy,
+    DirectRnaPseudouridineNanoporeSequencingItemProfile,
+    DirectRnaPseudouridineNanoporeSequencingMetricTrace,
+)
