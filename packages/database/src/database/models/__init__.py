@@ -3251,3 +3251,9 @@ from database.models.bacterial_outer_membrane_vesicle_packaging import (
     BacterialOuterMembraneVesiclePackagingItemProfile,
     BacterialOuterMembraneVesiclePackagingMetricTrace,
 )
+
+from database.models.optogenetic_mitochondrial_calcium_oscillator import (
+    OptogeneticMitochondrialCalciumOscillatorStudy,
+    OptogeneticMitochondrialCalciumOscillatorItemProfile,
+    OptogeneticMitochondrialCalciumOscillatorMetricTrace,
+)

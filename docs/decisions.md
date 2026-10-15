@@ -2378,3 +2378,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous bacterial outer membrane vesicle (omv) biogenesis & cargo sorting predictor within Milestone v4.9.
 - **Decision**: Implemented `BacterialOuterMembraneVesiclePackagingEngine`, `BacterialOuterMembraneVesiclePackagingStudy`, `BacterialOuterMembraneVesiclePackagingRepository`, and `/api/v1/bacterial-outer-membrane-vesicle-packaging/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-531: Autonomous Spatially-Resolved Optogenetic Mitochondrial Calcium Spark & Bioenergetics Modeler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous spatially-resolved optogenetic mitochondrial calcium spark & bioenergetics modeler within Milestone v4.9.
+- **Decision**: Implemented `OptogeneticMitochondrialCalciumOscillatorEngine`, `OptogeneticMitochondrialCalciumOscillatorStudy`, `OptogeneticMitochondrialCalciumOscillatorRepository`, and `/api/v1/optogenetic-mitochondrial-calcium-oscillator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
