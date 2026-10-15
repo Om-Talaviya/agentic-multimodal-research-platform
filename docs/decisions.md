@@ -2406,3 +2406,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-throughput 3d microfluidic dielectrophoresis (dep) circulating tumor cell sorter within Milestone v4.9.
 - **Decision**: Implemented `MicrofluidicCellSortingDielectrophoresisEngine`, `MicrofluidicCellSortingDielectrophoresisStudy`, `MicrofluidicCellSortingDielectrophoresisRepository`, and `/api/v1/microfluidic-cell-sorting-dielectrophoresis/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-535: Autonomous Multi-Tier Synthetic Epigenetic CRISPR Reversible Silencing Transcriptional Memory Cascade
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous multi-tier synthetic epigenetic crispr reversible silencing transcriptional memory cascade within Milestone v4.9.
+- **Decision**: Implemented `SyntheticEpigeneticCrisprMemoryCascadeEngine`, `SyntheticEpigeneticCrisprMemoryCascadeStudy`, `SyntheticEpigeneticCrisprMemoryCascadeRepository`, and `/api/v1/synthetic-epigenetic-crispr-memory-cascade/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

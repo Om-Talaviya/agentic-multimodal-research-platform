@@ -3275,3 +3275,9 @@ from database.models.microfluidic_cell_sorting_dielectrophoresis import (
     MicrofluidicCellSortingDielectrophoresisItemProfile,
     MicrofluidicCellSortingDielectrophoresisMetricTrace,
 )
+
+from database.models.synthetic_epigenetic_crispr_memory_cascade import (
+    SyntheticEpigeneticCrisprMemoryCascadeStudy,
+    SyntheticEpigeneticCrisprMemoryCascadeItemProfile,
+    SyntheticEpigeneticCrisprMemoryCascadeMetricTrace,
+)

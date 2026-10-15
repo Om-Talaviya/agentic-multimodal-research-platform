@@ -1,3 +1,4 @@
+from api.routes.synthetic_epigenetic_crispr_memory_cascade import router as synthetic_epigenetic_crispr_memory_cascade_router
 from api.routes.microfluidic_cell_sorting_dielectrophoresis import router as microfluidic_cell_sorting_dielectrophoresis_router
 from api.routes.dna_origami_plasmonic_nanopore_hybrid import router as dna_origami_plasmonic_nanopore_hybrid_router
 from api.routes.single_cell_spatial_lipidomics_maldi import router as single_cell_spatial_lipidomics_maldi_router
@@ -1391,3 +1392,4 @@ app.include_router(optogenetic_mitochondrial_calcium_oscillator_router, prefix=s
 app.include_router(single_cell_spatial_lipidomics_maldi_router, prefix=settings.api_prefix)
 app.include_router(dna_origami_plasmonic_nanopore_hybrid_router, prefix=settings.api_prefix)
 app.include_router(microfluidic_cell_sorting_dielectrophoresis_router, prefix=settings.api_prefix)
+app.include_router(synthetic_epigenetic_crispr_memory_cascade_router, prefix=settings.api_prefix)
