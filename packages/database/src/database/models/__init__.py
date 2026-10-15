@@ -3341,3 +3341,9 @@ from database.models.microfluidic_acoustic_droplet_dna_storage import (
     MicrofluidicAcousticDropletDnaStorageItemProfile,
     MicrofluidicAcousticDropletDnaStorageMetricTrace,
 )
+
+from database.models.epigenetic_reprogramming_yamanaka_factor_kinetics import (
+    EpigeneticReprogrammingYamanakaFactorKineticsStudy,
+    EpigeneticReprogrammingYamanakaFactorKineticsItemProfile,
+    EpigeneticReprogrammingYamanakaFactorKineticsMetricTrace,
+)
