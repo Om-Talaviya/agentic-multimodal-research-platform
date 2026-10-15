@@ -2350,3 +2350,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous solid-state nanopore polymerase-guided dna sequencing kinetics forecaster within Milestone v4.9.
 - **Decision**: Implemented `NanoporeSingleMoleculeSequencingKineticsEngine`, `NanoporeSingleMoleculeSequencingKineticsStudy`, `NanoporeSingleMoleculeSequencingKineticsRepository`, and `/api/v1/nanopore-single-molecule-sequencing-kinetics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-527: Autonomous Membraneless Coacervate RNA Condensation & Ribozyme Catalytic Acceleration Modeler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous membraneless coacervate rna condensation & ribozyme catalytic acceleration modeler within Milestone v4.9.
+- **Decision**: Implemented `CoacervateNucleicAcidLiquidCondensationEngine`, `CoacervateNucleicAcidLiquidCondensationStudy`, `CoacervateNucleicAcidLiquidCondensationRepository`, and `/api/v1/coacervate-nucleic-acid-liquid-condensation/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

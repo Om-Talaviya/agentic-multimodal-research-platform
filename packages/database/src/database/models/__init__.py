@@ -3227,3 +3227,9 @@ from database.models.nanopore_single_molecule_sequencing_kinetics import (
     NanoporeSingleMoleculeSequencingKineticsItemProfile,
     NanoporeSingleMoleculeSequencingKineticsMetricTrace,
 )
+
+from database.models.coacervate_nucleic_acid_liquid_condensation import (
+    CoacervateNucleicAcidLiquidCondensationStudy,
+    CoacervateNucleicAcidLiquidCondensationItemProfile,
+    CoacervateNucleicAcidLiquidCondensationMetricTrace,
+)
