@@ -2413,3 +2413,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous multi-tier synthetic epigenetic crispr reversible silencing transcriptional memory cascade within Milestone v4.9.
 - **Decision**: Implemented `SyntheticEpigeneticCrisprMemoryCascadeEngine`, `SyntheticEpigeneticCrisprMemoryCascadeStudy`, `SyntheticEpigeneticCrisprMemoryCascadeRepository`, and `/api/v1/synthetic-epigenetic-crispr-memory-cascade/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-536: Autonomous In-Situ Cryo-ET Endoplasmic Reticulum-Mitochondria Membrane Curvature Elastic Stress Profiler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et endoplasmic reticulum-mitochondria membrane curvature elastic stress profiler within Milestone v4.9.
+- **Decision**: Implemented `CryoetOrganelleMembraneCurvatureStressEngine`, `CryoetOrganelleMembraneCurvatureStressStudy`, `CryoetOrganelleMembraneCurvatureStressRepository`, and `/api/v1/cryoet-organelle-membrane-curvature-stress/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
