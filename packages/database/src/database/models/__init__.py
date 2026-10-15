@@ -3221,3 +3221,9 @@ from database.models.crispr_cas12a_direct_rna_targeting_diagnostics import (
     CrisprCas12aDirectRnaTargetingDiagnosticsItemProfile,
     CrisprCas12aDirectRnaTargetingDiagnosticsMetricTrace,
 )
+
+from database.models.nanopore_single_molecule_sequencing_kinetics import (
+    NanoporeSingleMoleculeSequencingKineticsStudy,
+    NanoporeSingleMoleculeSequencingKineticsItemProfile,
+    NanoporeSingleMoleculeSequencingKineticsMetricTrace,
+)
