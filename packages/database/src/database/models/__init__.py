@@ -3293,3 +3293,9 @@ from database.models.single_molecule_magnetic_torque_tweezer import (
     SingleMoleculeMagneticTorqueTweezerItemProfile,
     SingleMoleculeMagneticTorqueTweezerMetricTrace,
 )
+
+from database.models.photosynthetic_antenna_quantum_vibronic_coupling import (
+    PhotosyntheticAntennaQuantumVibronicCouplingStudy,
+    PhotosyntheticAntennaQuantumVibronicCouplingItemProfile,
+    PhotosyntheticAntennaQuantumVibronicCouplingMetricTrace,
+)
