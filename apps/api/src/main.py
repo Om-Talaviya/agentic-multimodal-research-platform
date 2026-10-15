@@ -1,3 +1,4 @@
+from api.routes.dna_origami_plasmonic_nanopore_hybrid import router as dna_origami_plasmonic_nanopore_hybrid_router
 from api.routes.single_cell_spatial_lipidomics_maldi import router as single_cell_spatial_lipidomics_maldi_router
 from api.routes.optogenetic_mitochondrial_calcium_oscillator import router as optogenetic_mitochondrial_calcium_oscillator_router
 from api.routes.bacterial_outer_membrane_vesicle_packaging import router as bacterial_outer_membrane_vesicle_packaging_router
@@ -1387,3 +1388,4 @@ app.include_router(magnetic_resonance_hyperpolarization_dnp_router, prefix=setti
 app.include_router(bacterial_outer_membrane_vesicle_packaging_router, prefix=settings.api_prefix)
 app.include_router(optogenetic_mitochondrial_calcium_oscillator_router, prefix=settings.api_prefix)
 app.include_router(single_cell_spatial_lipidomics_maldi_router, prefix=settings.api_prefix)
+app.include_router(dna_origami_plasmonic_nanopore_hybrid_router, prefix=settings.api_prefix)

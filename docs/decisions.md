@@ -2392,3 +2392,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-mass-resolution maldi msi single-cell spatial phospholipid fingerprinter within Milestone v4.9.
 - **Decision**: Implemented `SingleCellSpatialLipidomicsMaldiEngine`, `SingleCellSpatialLipidomicsMaldiStudy`, `SingleCellSpatialLipidomicsMaldiRepository`, and `/api/v1/single-cell-spatial-lipidomics-maldi/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-533: Autonomous DNA Origami Plasmonic Hotspot Nanopore Single-Molecule Optical Tweezers Integrator
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous dna origami plasmonic hotspot nanopore single-molecule optical tweezers integrator within Milestone v4.9.
+- **Decision**: Implemented `DnaOrigamiPlasmonicNanoporeHybridEngine`, `DnaOrigamiPlasmonicNanoporeHybridStudy`, `DnaOrigamiPlasmonicNanoporeHybridRepository`, and `/api/v1/dna-origami-plasmonic-nanopore-hybrid/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -3263,3 +3263,9 @@ from database.models.single_cell_spatial_lipidomics_maldi import (
     SingleCellSpatialLipidomicsMaldiItemProfile,
     SingleCellSpatialLipidomicsMaldiMetricTrace,
 )
+
+from database.models.dna_origami_plasmonic_nanopore_hybrid import (
+    DnaOrigamiPlasmonicNanoporeHybridStudy,
+    DnaOrigamiPlasmonicNanoporeHybridItemProfile,
+    DnaOrigamiPlasmonicNanoporeHybridMetricTrace,
+)
