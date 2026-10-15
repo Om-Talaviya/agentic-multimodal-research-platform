@@ -2441,3 +2441,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous milestone v4.9 planetary cryo-architecture, non-equilibrium active matter & neuromorphic quantum bio-computing os grand meta-orchestrator engine within Milestone v4.9.
 - **Decision**: Implemented `MilestoneV49MetaOrchestratorEngine`, `MilestoneV49MetaOrchestratorStudy`, `MilestoneV49MetaOrchestratorRepository`, and `/api/v1/milestone-v4-9-meta-orchestrator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-540: Autonomous Diamond Nitrogen-Vacancy (NV) Center Quantum Defect Intracellular Thermal & Magnetic Sensor
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous diamond nitrogen-vacancy (nv) center quantum defect intracellular thermal & magnetic sensor within Milestone v5.0.
+- **Decision**: Implemented `SingleMoleculeQuantumDefectSpinSensorEngine`, `SingleMoleculeQuantumDefectSpinSensorStudy`, `SingleMoleculeQuantumDefectSpinSensorRepository`, and `/api/v1/single-molecule-quantum-defect-spin-sensor/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

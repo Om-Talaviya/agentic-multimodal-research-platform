@@ -3305,3 +3305,9 @@ from database.models.milestone_v4_9_meta_orchestrator import (
     MilestoneV49MetaOrchestratorItemProfile,
     MilestoneV49MetaOrchestratorMetricTrace,
 )
+
+from database.models.single_molecule_quantum_defect_spin_sensor import (
+    SingleMoleculeQuantumDefectSpinSensorStudy,
+    SingleMoleculeQuantumDefectSpinSensorItemProfile,
+    SingleMoleculeQuantumDefectSpinSensorMetricTrace,
+)
