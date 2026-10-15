@@ -3239,3 +3239,9 @@ from database.models.high_speed_afm_molecular_motor_dynamics import (
     HighSpeedAfmMolecularMotorDynamicsItemProfile,
     HighSpeedAfmMolecularMotorDynamicsMetricTrace,
 )
+
+from database.models.magnetic_resonance_hyperpolarization_dnp import (
+    MagneticResonanceHyperpolarizationDnpStudy,
+    MagneticResonanceHyperpolarizationDnpItemProfile,
+    MagneticResonanceHyperpolarizationDnpMetricTrace,
+)

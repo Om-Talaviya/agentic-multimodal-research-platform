@@ -2364,3 +2364,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-speed atomic force microscopy (hs-afm) myosin motor stepping real-time profiler within Milestone v4.9.
 - **Decision**: Implemented `HighSpeedAfmMolecularMotorDynamicsEngine`, `HighSpeedAfmMolecularMotorDynamicsStudy`, `HighSpeedAfmMolecularMotorDynamicsRepository`, and `/api/v1/high-speed-afm-molecular-motor-dynamics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-529: Autonomous Dissolution Dynamic Nuclear Polarization (DNP) Hyperpolarized Carbon-13 Flux Tracer
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous dissolution dynamic nuclear polarization (dnp) hyperpolarized carbon-13 flux tracer within Milestone v4.9.
+- **Decision**: Implemented `MagneticResonanceHyperpolarizationDnpEngine`, `MagneticResonanceHyperpolarizationDnpStudy`, `MagneticResonanceHyperpolarizationDnpRepository`, and `/api/v1/magnetic-resonance-hyperpolarization-dnp/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
