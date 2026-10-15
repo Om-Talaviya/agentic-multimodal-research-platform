@@ -3269,3 +3269,9 @@ from database.models.dna_origami_plasmonic_nanopore_hybrid import (
     DnaOrigamiPlasmonicNanoporeHybridItemProfile,
     DnaOrigamiPlasmonicNanoporeHybridMetricTrace,
 )
+
+from database.models.microfluidic_cell_sorting_dielectrophoresis import (
+    MicrofluidicCellSortingDielectrophoresisStudy,
+    MicrofluidicCellSortingDielectrophoresisItemProfile,
+    MicrofluidicCellSortingDielectrophoresisMetricTrace,
+)

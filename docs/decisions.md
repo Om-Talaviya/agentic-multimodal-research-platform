@@ -2399,3 +2399,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous dna origami plasmonic hotspot nanopore single-molecule optical tweezers integrator within Milestone v4.9.
 - **Decision**: Implemented `DnaOrigamiPlasmonicNanoporeHybridEngine`, `DnaOrigamiPlasmonicNanoporeHybridStudy`, `DnaOrigamiPlasmonicNanoporeHybridRepository`, and `/api/v1/dna-origami-plasmonic-nanopore-hybrid/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-534: Autonomous High-Throughput 3D Microfluidic Dielectrophoresis (DEP) Circulating Tumor Cell Sorter
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-throughput 3d microfluidic dielectrophoresis (dep) circulating tumor cell sorter within Milestone v4.9.
+- **Decision**: Implemented `MicrofluidicCellSortingDielectrophoresisEngine`, `MicrofluidicCellSortingDielectrophoresisStudy`, `MicrofluidicCellSortingDielectrophoresisRepository`, and `/api/v1/microfluidic-cell-sorting-dielectrophoresis/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
