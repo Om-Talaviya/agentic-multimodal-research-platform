@@ -2469,3 +2469,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous biomimetic neuromorphic optoelectronic synapse photo-memristive plasticity forecaster within Milestone v5.0.
 - **Decision**: Implemented `NeuromorphicOptogeneticSynapticEmulatorEngine`, `NeuromorphicOptogeneticSynapticEmulatorStudy`, `NeuromorphicOptogeneticSynapticEmulatorRepository`, and `/api/v1/neuromorphic-optogenetic-synaptic-emulator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-544: Autonomous Integrated Cryo-CLEM High-Precision 3D Sub-Diffraction Nanoscale Fiducial Correlator
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous integrated cryo-clem high-precision 3d sub-diffraction nanoscale fiducial correlator within Milestone v5.0.
+- **Decision**: Implemented `CryoCorrelativeLightElectronTomographyClemEngine`, `CryoCorrelativeLightElectronTomographyClemStudy`, `CryoCorrelativeLightElectronTomographyClemRepository`, and `/api/v1/cryo-correlative-light-electron-tomography-clem/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

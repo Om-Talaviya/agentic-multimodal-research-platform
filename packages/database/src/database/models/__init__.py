@@ -3329,3 +3329,9 @@ from database.models.neuromorphic_optogenetic_synaptic_emulator import (
     NeuromorphicOptogeneticSynapticEmulatorItemProfile,
     NeuromorphicOptogeneticSynapticEmulatorMetricTrace,
 )
+
+from database.models.cryo_correlative_light_electron_tomography_clem import (
+    CryoCorrelativeLightElectronTomographyClemStudy,
+    CryoCorrelativeLightElectronTomographyClemItemProfile,
+    CryoCorrelativeLightElectronTomographyClemMetricTrace,
+)
