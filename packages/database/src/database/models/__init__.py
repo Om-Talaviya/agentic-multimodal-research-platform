@@ -3287,3 +3287,9 @@ from database.models.cryoet_organelle_membrane_curvature_stress import (
     CryoetOrganelleMembraneCurvatureStressItemProfile,
     CryoetOrganelleMembraneCurvatureStressMetricTrace,
 )
+
+from database.models.single_molecule_magnetic_torque_tweezer import (
+    SingleMoleculeMagneticTorqueTweezerStudy,
+    SingleMoleculeMagneticTorqueTweezerItemProfile,
+    SingleMoleculeMagneticTorqueTweezerMetricTrace,
+)

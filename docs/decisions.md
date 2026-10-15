@@ -2420,3 +2420,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-situ cryo-et endoplasmic reticulum-mitochondria membrane curvature elastic stress profiler within Milestone v4.9.
 - **Decision**: Implemented `CryoetOrganelleMembraneCurvatureStressEngine`, `CryoetOrganelleMembraneCurvatureStressStudy`, `CryoetOrganelleMembraneCurvatureStressRepository`, and `/api/v1/cryoet-organelle-membrane-curvature-stress/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-537: Autonomous Single-Molecule Magnetic Torque Tweezers (MTT) DNA Supercoiling & Twist Modeler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule magnetic torque tweezers (mtt) dna supercoiling & twist modeler within Milestone v4.9.
+- **Decision**: Implemented `SingleMoleculeMagneticTorqueTweezerEngine`, `SingleMoleculeMagneticTorqueTweezerStudy`, `SingleMoleculeMagneticTorqueTweezerRepository`, and `/api/v1/single-molecule-magnetic-torque-tweezer/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
