@@ -2357,3 +2357,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous membraneless coacervate rna condensation & ribozyme catalytic acceleration modeler within Milestone v4.9.
 - **Decision**: Implemented `CoacervateNucleicAcidLiquidCondensationEngine`, `CoacervateNucleicAcidLiquidCondensationStudy`, `CoacervateNucleicAcidLiquidCondensationRepository`, and `/api/v1/coacervate-nucleic-acid-liquid-condensation/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-528: Autonomous High-Speed Atomic Force Microscopy (HS-AFM) Myosin Motor Stepping Real-Time Profiler
+- **Date**: 2026-10-15
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-speed atomic force microscopy (hs-afm) myosin motor stepping real-time profiler within Milestone v4.9.
+- **Decision**: Implemented `HighSpeedAfmMolecularMotorDynamicsEngine`, `HighSpeedAfmMolecularMotorDynamicsStudy`, `HighSpeedAfmMolecularMotorDynamicsRepository`, and `/api/v1/high-speed-afm-molecular-motor-dynamics/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

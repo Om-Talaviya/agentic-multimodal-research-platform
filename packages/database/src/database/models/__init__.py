@@ -3233,3 +3233,9 @@ from database.models.coacervate_nucleic_acid_liquid_condensation import (
     CoacervateNucleicAcidLiquidCondensationItemProfile,
     CoacervateNucleicAcidLiquidCondensationMetricTrace,
 )
+
+from database.models.high_speed_afm_molecular_motor_dynamics import (
+    HighSpeedAfmMolecularMotorDynamicsStudy,
+    HighSpeedAfmMolecularMotorDynamicsItemProfile,
+    HighSpeedAfmMolecularMotorDynamicsMetricTrace,
+)
