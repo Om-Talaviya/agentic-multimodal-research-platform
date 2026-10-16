@@ -3407,3 +3407,9 @@ from database.models.mammalian_gene_circuit_homeostatic_controller import (
     MammalianGeneCircuitHomeostaticControllerItemProfile,
     MammalianGeneCircuitHomeostaticControllerMetricTrace,
 )
+
+from database.models.time_resolved_xfel_structural_dynamics import (
+    TimeResolvedXfelStructuralDynamicsStudy,
+    TimeResolvedXfelStructuralDynamicsItemProfile,
+    TimeResolvedXfelStructuralDynamicsMetricTrace,
+)

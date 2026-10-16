@@ -2560,3 +2560,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic mammalian gene circuit feedback integral controller for homeostatic glucose regulation within Milestone v5.0.
 - **Decision**: Implemented `MammalianGeneCircuitHomeostaticControllerEngine`, `MammalianGeneCircuitHomeostaticControllerStudy`, `MammalianGeneCircuitHomeostaticControllerRepository`, and `/api/v1/mammalian-gene-circuit-homeostatic-controller/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-557: Autonomous Time-Resolved Femtosecond X-ray Free-Electron Laser (XFEL) Macromolecular Structural Dynamics Engine
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous time-resolved femtosecond x-ray free-electron laser (xfel) macromolecular structural dynamics engine within Milestone v5.0.
+- **Decision**: Implemented `TimeResolvedXfelStructuralDynamicsEngine`, `TimeResolvedXfelStructuralDynamicsStudy`, `TimeResolvedXfelStructuralDynamicsRepository`, and `/api/v1/time-resolved-xfel-structural-dynamics/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
