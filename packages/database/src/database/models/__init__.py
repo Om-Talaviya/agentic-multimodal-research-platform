@@ -3347,3 +3347,9 @@ from database.models.epigenetic_reprogramming_yamanaka_factor_kinetics import (
     EpigeneticReprogrammingYamanakaFactorKineticsItemProfile,
     EpigeneticReprogrammingYamanakaFactorKineticsMetricTrace,
 )
+
+from database.models.quantum_smlm_localization_filter import (
+    QuantumSmlmLocalizationFilterStudy,
+    QuantumSmlmLocalizationFilterItemProfile,
+    QuantumSmlmLocalizationFilterMetricTrace,
+)

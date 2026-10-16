@@ -2490,3 +2490,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous stochastic pioneer transcription factor yamanaka reprogramming trajectory predictor within Milestone v5.0.
 - **Decision**: Implemented `EpigeneticReprogrammingYamanakaFactorKineticsEngine`, `EpigeneticReprogrammingYamanakaFactorKineticsStudy`, `EpigeneticReprogrammingYamanakaFactorKineticsRepository`, and `/api/v1/epigenetic-reprogramming-yamanaka-factor-kinetics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-547: Autonomous Quantum Super-Resolution Single-Molecule Localization Microscopy (SMLM) Quantum State Squeezing Filter
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous quantum super-resolution single-molecule localization microscopy (smlm) quantum state squeezing filter within Milestone v5.0.
+- **Decision**: Implemented `QuantumSmlmLocalizationFilterEngine`, `QuantumSmlmLocalizationFilterStudy`, `QuantumSmlmLocalizationFilterRepository`, and `/api/v1/quantum-smlm-localization-filter/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
