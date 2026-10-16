@@ -3,7 +3,7 @@ import { Layers, Zap, Sparkles, Activity, Crosshair, Cpu } from 'lucide-react';
 
 export const DenovoRbsTranslationInitiationOptimizerStudioPage: React.FC = () => {
   const [name, setName] = useState('Autonomous Deep Learning De Novo Ribosome Binding Site (RBS) Translation Initiation Rate Optimizer Investigation');
-  const [specimen, setSpecimen] = useState('Synthetic mRNA Polycistronic Operon 5' UTR Shine-Dalgarno Core Library in Escherichia coli BL21(DE3)');
+  const [specimen, setSpecimen] = useState("Synthetic mRNA Polycistronic Operon 5' UTR Shine-Dalgarno Core Library in Escherichia coli BL21(DE3)");
   const [modality, setModality] = useState('de-novo-rbs-optimization');
   const [scale, setScale] = useState(1.0);
   const [analyzing, setAnalyzing] = useState(false);
