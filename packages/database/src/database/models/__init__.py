@@ -3497,3 +3497,9 @@ from database.models.single_cell_spatial_epigenomic_cut_and_tag import (
     SingleCellSpatialEpigenomicCutAndTagItemProfile,
     SingleCellSpatialEpigenomicCutAndTagMetricTrace,
 )
+
+from database.models.optogenetic_neuromodulatory_gpc_receptor_activator import (
+    OptogeneticNeuromodulatoryGpcReceptorActivatorStudy,
+    OptogeneticNeuromodulatoryGpcReceptorActivatorItemProfile,
+    OptogeneticNeuromodulatoryGpcReceptorActivatorMetricTrace,
+)

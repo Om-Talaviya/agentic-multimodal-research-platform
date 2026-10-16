@@ -861,3 +861,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Phase 569**: Completed Autonomous In-Situ Cryo-Correlative Super-Resolution Cryo-Fluorescence & Cryo-ET Single-Molecule Spatial Registration Engine (Milestone v5.1) with full DB, API, Engine, and Studio Page instrumentation.
 - **Phase 570**: Completed Autonomous Synthetic DNA Strand Displacement (DSD) Molecular Neural Network Winner-Take-All Classifier Engine (Milestone v5.1) with full DB, API, Engine, and Studio Page instrumentation.
 - **Phase 571**: Completed Autonomous High-Plex Microfluidic Spatial In-Situ CUT&Tag Chromatin Modification Niche Profiler (Milestone v5.1) with full DB, API, Engine, and Studio Page instrumentation.
+- **Phase 572**: Completed Autonomous Optogenetic G-Protein-Coupled Receptor (Opto-GPCR) Spatiotemporal Second Messenger Signaling Predictor (Milestone v5.1) with full DB, API, Engine, and Studio Page instrumentation.
