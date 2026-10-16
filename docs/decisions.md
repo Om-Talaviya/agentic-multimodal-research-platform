@@ -2616,3 +2616,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous acoustic micro-streaming single-cell intracellular delivery sonoporation engine within Milestone v5.1.
 - **Decision**: Implemented `AcousticMicrostreamingSonoporationEngineEngine`, `AcousticMicrostreamingSonoporationEngineStudy`, `AcousticMicrostreamingSonoporationEngineRepository`, and `/api/v1/acoustic-microstreaming-sonoporation-engine/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-565: Autonomous Quantum Entangled Photon Biological Tissue Multiphoton Imaging Resolution Maximizer
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous quantum entangled photon biological tissue multiphoton imaging resolution maximizer within Milestone v5.1.
+- **Decision**: Implemented `QuantumEntangledPhotonMultiphotonImagingEngine`, `QuantumEntangledPhotonMultiphotonImagingStudy`, `QuantumEntangledPhotonMultiphotonImagingRepository`, and `/api/v1/quantum-entangled-photon-multiphoton-imaging/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

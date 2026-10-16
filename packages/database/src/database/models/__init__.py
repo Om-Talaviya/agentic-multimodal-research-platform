@@ -3455,3 +3455,9 @@ from database.models.acoustic_microstreaming_sonoporation_engine import (
     AcousticMicrostreamingSonoporationEngineItemProfile,
     AcousticMicrostreamingSonoporationEngineMetricTrace,
 )
+
+from database.models.quantum_entangled_photon_multiphoton_imaging import (
+    QuantumEntangledPhotonMultiphotonImagingStudy,
+    QuantumEntangledPhotonMultiphotonImagingItemProfile,
+    QuantumEntangledPhotonMultiphotonImagingMetricTrace,
+)
