@@ -2630,3 +2630,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous programmable rna-targeted adar deaminase epitranscriptomic editing window predictor within Milestone v5.1.
 - **Decision**: Implemented `RnaTargetedAdarDeaminaseEditingEngine`, `RnaTargetedAdarDeaminaseEditingStudy`, `RnaTargetedAdarDeaminaseEditingRepository`, and `/api/v1/rna-targeted-adar-deaminase-editing/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-567: Autonomous Synthetic Protocellular Droplet-Interface-Bilayer (DIB) Ion Channel Network Communicator
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic protocellular droplet-interface-bilayer (dib) ion channel network communicator within Milestone v5.1.
+- **Decision**: Implemented `DropletInterfaceBilayerIonNetworkEngine`, `DropletInterfaceBilayerIonNetworkStudy`, `DropletInterfaceBilayerIonNetworkRepository`, and `/api/v1/droplet-interface-bilayer-ion-network/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -3467,3 +3467,9 @@ from database.models.rna_targeted_adar_deaminase_editing import (
     RnaTargetedAdarDeaminaseEditingItemProfile,
     RnaTargetedAdarDeaminaseEditingMetricTrace,
 )
+
+from database.models.droplet_interface_bilayer_ion_network import (
+    DropletInterfaceBilayerIonNetworkStudy,
+    DropletInterfaceBilayerIonNetworkItemProfile,
+    DropletInterfaceBilayerIonNetworkMetricTrace,
+)
