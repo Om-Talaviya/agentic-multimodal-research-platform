@@ -1,3 +1,4 @@
+from api.routes.super_resolution_cryo_fluorescence_correlator import router as super_resolution_cryo_fluorescence_correlator_router
 from api.routes.bacterial_chemotactic_micro_biohybrid_swimmer import router as bacterial_chemotactic_micro_biohybrid_swimmer_router
 from api.routes.droplet_interface_bilayer_ion_network import router as droplet_interface_bilayer_ion_network_router
 from api.routes.rna_targeted_adar_deaminase_editing import router as rna_targeted_adar_deaminase_editing_router
@@ -1459,3 +1460,4 @@ app.include_router(quantum_entangled_photon_multiphoton_imaging_router, prefix=s
 app.include_router(rna_targeted_adar_deaminase_editing_router, prefix=settings.api_prefix)
 app.include_router(droplet_interface_bilayer_ion_network_router, prefix=settings.api_prefix)
 app.include_router(bacterial_chemotactic_micro_biohybrid_swimmer_router, prefix=settings.api_prefix)
+app.include_router(super_resolution_cryo_fluorescence_correlator_router, prefix=settings.api_prefix)

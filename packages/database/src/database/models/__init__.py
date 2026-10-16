@@ -3479,3 +3479,9 @@ from database.models.bacterial_chemotactic_micro_biohybrid_swimmer import (
     BacterialChemotacticMicroBiohybridSwimmerItemProfile,
     BacterialChemotacticMicroBiohybridSwimmerMetricTrace,
 )
+
+from database.models.super_resolution_cryo_fluorescence_correlator import (
+    SuperResolutionCryoFluorescenceCorrelatorStudy,
+    SuperResolutionCryoFluorescenceCorrelatorItemProfile,
+    SuperResolutionCryoFluorescenceCorrelatorMetricTrace,
+)
