@@ -3509,3 +3509,9 @@ from database.models.deep_learning_protein_protein_docking_affinity import (
     DeepLearningProteinProteinDockingAffinityItemProfile,
     DeepLearningProteinProteinDockingAffinityMetricTrace,
 )
+
+from database.models.engineered_probiotic_in_vivo_biosurveillance import (
+    EngineeredProbioticInVivoBiosurveillanceStudy,
+    EngineeredProbioticInVivoBiosurveillanceItemProfile,
+    EngineeredProbioticInVivoBiosurveillanceMetricTrace,
+)

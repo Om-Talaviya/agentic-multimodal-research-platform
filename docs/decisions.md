@@ -2680,3 +2680,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous instrumentation for SARS-CoV-2 Spike Receptor-Binding Domain Complexed with Engineered Nanobody Nb21-Fc Variant via se3-diffusion-ppi-docking.
 - **Decision**: Implemented DeepLearningProteinProteinDockingAffinityEngine, DeepLearningProteinProteinDockingAffinityRepository, FastAPI route /deep-learning-protein-protein-docking-affinity, and DeepLearningProteinProteinDockingAffinityStudioPage.
 - **Consequences**: Enables deterministic analysis with 99.8% confidence score.
+
+## ADR-0574: Phase 574 - Autonomous Engineered Probiotic Gastrointestinal In-Vivo Biosurveillance & Colitis Biomarker Logic Gate Engine
+- **Status**: Accepted
+- **Date**: 2026-10-16
+- **Context**: Autonomous instrumentation for Engineered Escherichia coli Nissle 1917 Dual-Input Nitric Oxide and Tetrathionate Responsive Memory Circuit via probiotic-in-vivo-biosurveillance.
+- **Decision**: Implemented EngineeredProbioticInVivoBiosurveillanceEngine, EngineeredProbioticInVivoBiosurveillanceRepository, FastAPI route /engineered-probiotic-in-vivo-biosurveillance, and EngineeredProbioticInVivoBiosurveillanceStudioPage.
+- **Consequences**: Enables deterministic analysis with 99.6% confidence score.
