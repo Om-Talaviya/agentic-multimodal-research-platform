@@ -3449,3 +3449,9 @@ from database.models.whole_brain_connectomics_synapse_segmenter import (
     WholeBrainConnectomicsSynapseSegmenterItemProfile,
     WholeBrainConnectomicsSynapseSegmenterMetricTrace,
 )
+
+from database.models.acoustic_microstreaming_sonoporation_engine import (
+    AcousticMicrostreamingSonoporationEngineStudy,
+    AcousticMicrostreamingSonoporationEngineItemProfile,
+    AcousticMicrostreamingSonoporationEngineMetricTrace,
+)

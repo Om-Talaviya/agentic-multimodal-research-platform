@@ -2609,3 +2609,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous whole-brain nanoscale connectomics automated volume electron microscopy synapse segmenter within Milestone v5.1.
 - **Decision**: Implemented `WholeBrainConnectomicsSynapseSegmenterEngine`, `WholeBrainConnectomicsSynapseSegmenterStudy`, `WholeBrainConnectomicsSynapseSegmenterRepository`, and `/api/v1/whole-brain-connectomics-synapse-segmenter/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-564: Autonomous Acoustic Micro-Streaming Single-Cell Intracellular Delivery Sonoporation Engine
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous acoustic micro-streaming single-cell intracellular delivery sonoporation engine within Milestone v5.1.
+- **Decision**: Implemented `AcousticMicrostreamingSonoporationEngineEngine`, `AcousticMicrostreamingSonoporationEngineStudy`, `AcousticMicrostreamingSonoporationEngineRepository`, and `/api/v1/acoustic-microstreaming-sonoporation-engine/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
