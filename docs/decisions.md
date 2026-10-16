@@ -2546,3 +2546,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous optogenetic intercellular gap junction coupling & calcium synchrony network forecaster within Milestone v5.0.
 - **Decision**: Implemented `OptogeneticGapJunctionCalciumNetworkEngine`, `OptogeneticGapJunctionCalciumNetworkStudy`, `OptogeneticGapJunctionCalciumNetworkRepository`, and `/api/v1/optogenetic-gap-junction-calcium-network/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-555: Autonomous Microfluidic High-Pressure Supercritical Fluid Nanoparticle Encapsulation Engine
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic high-pressure supercritical fluid nanoparticle encapsulation engine within Milestone v5.0.
+- **Decision**: Implemented `SupercriticalFluidNanoparticleEncapsulationEngine`, `SupercriticalFluidNanoparticleEncapsulationStudy`, `SupercriticalFluidNanoparticleEncapsulationRepository`, and `/api/v1/supercritical-fluid-nanoparticle-encapsulation/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

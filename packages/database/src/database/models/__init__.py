@@ -3395,3 +3395,9 @@ from database.models.optogenetic_gap_junction_calcium_network import (
     OptogeneticGapJunctionCalciumNetworkItemProfile,
     OptogeneticGapJunctionCalciumNetworkMetricTrace,
 )
+
+from database.models.supercritical_fluid_nanoparticle_encapsulation import (
+    SupercriticalFluidNanoparticleEncapsulationStudy,
+    SupercriticalFluidNanoparticleEncapsulationItemProfile,
+    SupercriticalFluidNanoparticleEncapsulationMetricTrace,
+)
