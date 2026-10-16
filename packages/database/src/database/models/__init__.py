@@ -3437,3 +3437,9 @@ from database.models.ocean_hydrothermal_metagenomic_enzyme_prospector import (
     OceanHydrothermalMetagenomicEnzymeProspectorItemProfile,
     OceanHydrothermalMetagenomicEnzymeProspectorMetricTrace,
 )
+
+from database.models.synthetic_xenobiotic_ubp_replication_fidelity import (
+    SyntheticXenobioticUbpReplicationFidelityStudy,
+    SyntheticXenobioticUbpReplicationFidelityItemProfile,
+    SyntheticXenobioticUbpReplicationFidelityMetricTrace,
+)
