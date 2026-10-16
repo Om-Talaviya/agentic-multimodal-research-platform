@@ -3371,3 +3371,9 @@ from database.models.single_cell_5hmc_droplet_profiler import (
     SingleCell5HmcDropletProfilerItemProfile,
     SingleCell5HmcDropletProfilerMetricTrace,
 )
+
+from database.models.magnetotactic_bacterial_magnetosome_transport import (
+    MagnetotacticBacterialMagnetosomeTransportStudy,
+    MagnetotacticBacterialMagnetosomeTransportItemProfile,
+    MagnetotacticBacterialMagnetosomeTransportMetricTrace,
+)

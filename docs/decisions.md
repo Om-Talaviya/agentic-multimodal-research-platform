@@ -2518,3 +2518,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous high-throughput droplet-based single-cell epigenomic dna hydroxymethylation (5hmc) profiler within Milestone v5.0.
 - **Decision**: Implemented `SingleCell5HmcDropletProfilerEngine`, `SingleCell5HmcDropletProfilerStudy`, `SingleCell5HmcDropletProfilerRepository`, and `/api/v1/single-cell-5hmc-droplet-profiler/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-551: Autonomous Engineered Magnetotactic Bacterial Magnetosome Nanowire Steering & Drug Cargo Transport Simulator
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous engineered magnetotactic bacterial magnetosome nanowire steering & drug cargo transport simulator within Milestone v5.0.
+- **Decision**: Implemented `MagnetotacticBacterialMagnetosomeTransportEngine`, `MagnetotacticBacterialMagnetosomeTransportStudy`, `MagnetotacticBacterialMagnetosomeTransportRepository`, and `/api/v1/magnetotactic-bacterial-magnetosome-transport/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

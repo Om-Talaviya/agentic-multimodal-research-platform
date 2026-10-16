@@ -118,8 +118,8 @@ PHASES = [
         "modality": "bacterial-magnetosome-transport",
         "metric1_name": "magnetic_steering_velocity_um_s",
         "metric1_val": 48.5,
-        "metric2_name": "magnetosome_chain_magnetic_moment_emu",
-        "metric2_val": 1.25e-13,
+        "metric2_name": "magnetosome_chain_magnetic_moment_femu",
+        "metric2_val": 12.5,
         "metric3_name": "tumor_microvascular_extravasation_rate_pct",
         "metric3_val": 34.2,
         "metric4_name": "nanocarrier_drug_payload_delivery_ng_ml",
@@ -1444,6 +1444,8 @@ def main():
 
     for idx, p in enumerate(PHASES):
         phase_num = p["phase"]
+        if phase_num <= 550:
+            continue
         tag = p["tag"]
         title = p["title"]
         module = p["module"]

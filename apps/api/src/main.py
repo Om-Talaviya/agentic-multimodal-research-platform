@@ -1,3 +1,4 @@
+from api.routes.magnetotactic_bacterial_magnetosome_transport import router as magnetotactic_bacterial_magnetosome_transport_router
 from api.routes.single_cell_5hmc_droplet_profiler import router as single_cell_5hmc_droplet_profiler_router
 from api.routes.active_chiral_hydrodynamics_vorticity import router as active_chiral_hydrodynamics_vorticity_router
 from api.routes.cryo_electron_ptychography_reconstruction import router as cryo_electron_ptychography_reconstruction_router
@@ -1423,3 +1424,4 @@ app.include_router(quantum_smlm_localization_filter_router, prefix=settings.api_
 app.include_router(cryo_electron_ptychography_reconstruction_router, prefix=settings.api_prefix)
 app.include_router(active_chiral_hydrodynamics_vorticity_router, prefix=settings.api_prefix)
 app.include_router(single_cell_5hmc_droplet_profiler_router, prefix=settings.api_prefix)
+app.include_router(magnetotactic_bacterial_magnetosome_transport_router, prefix=settings.api_prefix)
