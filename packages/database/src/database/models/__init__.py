@@ -3473,3 +3473,9 @@ from database.models.droplet_interface_bilayer_ion_network import (
     DropletInterfaceBilayerIonNetworkItemProfile,
     DropletInterfaceBilayerIonNetworkMetricTrace,
 )
+
+from database.models.bacterial_chemotactic_micro_biohybrid_swimmer import (
+    BacterialChemotacticMicroBiohybridSwimmerStudy,
+    BacterialChemotacticMicroBiohybridSwimmerItemProfile,
+    BacterialChemotacticMicroBiohybridSwimmerMetricTrace,
+)

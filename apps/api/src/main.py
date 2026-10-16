@@ -1,3 +1,4 @@
+from api.routes.bacterial_chemotactic_micro_biohybrid_swimmer import router as bacterial_chemotactic_micro_biohybrid_swimmer_router
 from api.routes.droplet_interface_bilayer_ion_network import router as droplet_interface_bilayer_ion_network_router
 from api.routes.rna_targeted_adar_deaminase_editing import router as rna_targeted_adar_deaminase_editing_router
 from api.routes.quantum_entangled_photon_multiphoton_imaging import router as quantum_entangled_photon_multiphoton_imaging_router
@@ -1457,3 +1458,4 @@ app.include_router(acoustic_microstreaming_sonoporation_engine_router, prefix=se
 app.include_router(quantum_entangled_photon_multiphoton_imaging_router, prefix=settings.api_prefix)
 app.include_router(rna_targeted_adar_deaminase_editing_router, prefix=settings.api_prefix)
 app.include_router(droplet_interface_bilayer_ion_network_router, prefix=settings.api_prefix)
+app.include_router(bacterial_chemotactic_micro_biohybrid_swimmer_router, prefix=settings.api_prefix)

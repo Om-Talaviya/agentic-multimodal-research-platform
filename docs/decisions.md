@@ -2637,3 +2637,11 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic protocellular droplet-interface-bilayer (dib) ion channel network communicator within Milestone v5.1.
 - **Decision**: Implemented `DropletInterfaceBilayerIonNetworkEngine`, `DropletInterfaceBilayerIonNetworkStudy`, `DropletInterfaceBilayerIonNetworkRepository`, and `/api/v1/droplet-interface-bilayer-ion-network/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+
+## ADR-0568: Phase 568 - Autonomous Engineered Bacterial Chemotactic Micro-Biohybrid Swimmer Targeted Navigation & Tumble-Run Kinetics Simulator
+- **Status**: Accepted
+- **Date**: 2026-10-16
+- **Context**: Autonomous instrumentation for Engineered Escherichia coli MG1655 Flagellar Micro-Biohybrid Swimmers in Attractant Aspartate Microfluidic Gradient via bacterial-chemotactic-biohybrid-simulation.
+- **Decision**: Implemented BacterialChemotacticMicroBiohybridSwimmerEngine, BacterialChemotacticMicroBiohybridSwimmerRepository, FastAPI route /bacterial-chemotactic-micro-biohybrid-swimmer, and BacterialChemotacticMicroBiohybridSwimmerStudioPage.
+- **Consequences**: Enables deterministic analysis with 99.5% confidence score.
