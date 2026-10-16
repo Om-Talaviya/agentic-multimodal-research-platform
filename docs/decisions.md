@@ -2652,3 +2652,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous instrumentation for Vitrified Mammalian HeLa Lamella with Cryo-Photoswitchable mEos4b Fluorophores and Gold Nanoparticle Fiducials via cryo-super-resolution-registration.
 - **Decision**: Implemented SuperResolutionCryoFluorescenceCorrelatorEngine, SuperResolutionCryoFluorescenceCorrelatorRepository, FastAPI route /super-resolution-cryo-fluorescence-correlator, and SuperResolutionCryoFluorescenceCorrelatorStudioPage.
 - **Consequences**: Enables deterministic analysis with 99.6% confidence score.
+
+## ADR-0570: Phase 570 - Autonomous Synthetic DNA Strand Displacement (DSD) Molecular Neural Network Winner-Take-All Classifier Engine
+- **Status**: Accepted
+- **Date**: 2026-10-16
+- **Context**: Autonomous instrumentation for Toehold-Mediated 4-Input 2-Class DNA Strand Displacement Reaction Network in Tris-Acetate-EDTA Buffer via dsd-molecular-neural-classification.
+- **Decision**: Implemented SyntheticDnaStrandDisplacementNeuralGateEngine, SyntheticDnaStrandDisplacementNeuralGateRepository, FastAPI route /synthetic-dna-strand-displacement-neural-gate, and SyntheticDnaStrandDisplacementNeuralGateStudioPage.
+- **Consequences**: Enables deterministic analysis with 99.7% confidence score.

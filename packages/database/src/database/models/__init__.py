@@ -3485,3 +3485,9 @@ from database.models.super_resolution_cryo_fluorescence_correlator import (
     SuperResolutionCryoFluorescenceCorrelatorItemProfile,
     SuperResolutionCryoFluorescenceCorrelatorMetricTrace,
 )
+
+from database.models.synthetic_dna_strand_displacement_neural_gate import (
+    SyntheticDnaStrandDisplacementNeuralGateStudy,
+    SyntheticDnaStrandDisplacementNeuralGateItemProfile,
+    SyntheticDnaStrandDisplacementNeuralGateMetricTrace,
+)
