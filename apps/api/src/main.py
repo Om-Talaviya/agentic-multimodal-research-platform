@@ -1,3 +1,4 @@
+from api.routes.whole_brain_connectomics_synapse_segmenter import router as whole_brain_connectomics_synapse_segmenter_router
 from api.routes.synthetic_xenobiotic_ubp_replication_fidelity import router as synthetic_xenobiotic_ubp_replication_fidelity_router
 from api.routes.ocean_hydrothermal_metagenomic_enzyme_prospector import router as ocean_hydrothermal_metagenomic_enzyme_prospector_router
 from api.routes.milestone_v5_0_meta_orchestrator import router as milestone_v5_0_meta_orchestrator_router
@@ -1447,3 +1448,4 @@ app.include_router(biohybrid_microbial_fuel_cell_redox_router, prefix=settings.a
 app.include_router(milestone_v5_0_meta_orchestrator_router, prefix=settings.api_prefix)
 app.include_router(ocean_hydrothermal_metagenomic_enzyme_prospector_router, prefix=settings.api_prefix)
 app.include_router(synthetic_xenobiotic_ubp_replication_fidelity_router, prefix=settings.api_prefix)
+app.include_router(whole_brain_connectomics_synapse_segmenter_router, prefix=settings.api_prefix)

@@ -1235,3 +1235,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 ### Milestone v5.1: Autonomous Planetary Deep Metagenomics, Xenobiotic Biocatalysis & Neural Connectomics OS (Phases 561-581)
 - [x] **Phase 561**: Autonomous High-Throughput Deep Ocean Hydrothermal Vent Metagenomic Novel Enzyme Prospector (`ocean_hydrothermal_metagenomic_enzyme_prospector`)
 - [x] **Phase 562**: Autonomous Synthetic Xenobiotic Unnatural Base Pair (UBP: dNaM-d5SICS) DNA Replication Fidelity Forecaster (`synthetic_xenobiotic_ubp_replication_fidelity`)
+- [x] **Phase 563**: Autonomous Whole-Brain Nanoscale Connectomics Automated Volume Electron Microscopy Synapse Segmenter (`whole_brain_connectomics_synapse_segmenter`)

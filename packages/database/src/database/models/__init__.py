@@ -3443,3 +3443,9 @@ from database.models.synthetic_xenobiotic_ubp_replication_fidelity import (
     SyntheticXenobioticUbpReplicationFidelityItemProfile,
     SyntheticXenobioticUbpReplicationFidelityMetricTrace,
 )
+
+from database.models.whole_brain_connectomics_synapse_segmenter import (
+    WholeBrainConnectomicsSynapseSegmenterStudy,
+    WholeBrainConnectomicsSynapseSegmenterItemProfile,
+    WholeBrainConnectomicsSynapseSegmenterMetricTrace,
+)

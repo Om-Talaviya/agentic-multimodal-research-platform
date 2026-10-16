@@ -2602,3 +2602,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous synthetic xenobiotic unnatural base pair (ubp: dnam-d5sics) dna replication fidelity forecaster within Milestone v5.1.
 - **Decision**: Implemented `SyntheticXenobioticUbpReplicationFidelityEngine`, `SyntheticXenobioticUbpReplicationFidelityStudy`, `SyntheticXenobioticUbpReplicationFidelityRepository`, and `/api/v1/synthetic-xenobiotic-ubp-replication-fidelity/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-563: Autonomous Whole-Brain Nanoscale Connectomics Automated Volume Electron Microscopy Synapse Segmenter
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous whole-brain nanoscale connectomics automated volume electron microscopy synapse segmenter within Milestone v5.1.
+- **Decision**: Implemented `WholeBrainConnectomicsSynapseSegmenterEngine`, `WholeBrainConnectomicsSynapseSegmenterStudy`, `WholeBrainConnectomicsSynapseSegmenterRepository`, and `/api/v1/whole-brain-connectomics-synapse-segmenter/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
