@@ -2511,3 +2511,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous non-equilibrium active chiral hydrodynamics swarming vorticity modeler within Milestone v5.0.
 - **Decision**: Implemented `ActiveChiralHydrodynamicsVorticityEngine`, `ActiveChiralHydrodynamicsVorticityStudy`, `ActiveChiralHydrodynamicsVorticityRepository`, and `/api/v1/active-chiral-hydrodynamics-vorticity/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-550: Autonomous High-Throughput Droplet-Based Single-Cell Epigenomic DNA Hydroxymethylation (5hmC) Profiler
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-throughput droplet-based single-cell epigenomic dna hydroxymethylation (5hmc) profiler within Milestone v5.0.
+- **Decision**: Implemented `SingleCell5HmcDropletProfilerEngine`, `SingleCell5HmcDropletProfilerStudy`, `SingleCell5HmcDropletProfilerRepository`, and `/api/v1/single-cell-5hmc-droplet-profiler/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
