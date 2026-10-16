@@ -1,3 +1,4 @@
+from api.routes.milestone_v5_0_meta_orchestrator import router as milestone_v5_0_meta_orchestrator_router
 from api.routes.biohybrid_microbial_fuel_cell_redox import router as biohybrid_microbial_fuel_cell_redox_router
 from api.routes.single_molecule_chromatin_nucleosome_unwrapping import router as single_molecule_chromatin_nucleosome_unwrapping_router
 from api.routes.time_resolved_xfel_structural_dynamics import router as time_resolved_xfel_structural_dynamics_router
@@ -1441,3 +1442,4 @@ app.include_router(mammalian_gene_circuit_homeostatic_controller_router, prefix=
 app.include_router(time_resolved_xfel_structural_dynamics_router, prefix=settings.api_prefix)
 app.include_router(single_molecule_chromatin_nucleosome_unwrapping_router, prefix=settings.api_prefix)
 app.include_router(biohybrid_microbial_fuel_cell_redox_router, prefix=settings.api_prefix)
+app.include_router(milestone_v5_0_meta_orchestrator_router, prefix=settings.api_prefix)

@@ -2581,3 +2581,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous biohybrid microbial fuel cell extracellular electron shuttle redox kinetics simulator within Milestone v5.0.
 - **Decision**: Implemented `BiohybridMicrobialFuelCellRedoxEngine`, `BiohybridMicrobialFuelCellRedoxStudy`, `BiohybridMicrobialFuelCellRedoxRepository`, and `/api/v1/biohybrid-microbial-fuel-cell-redox/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-560: Autonomous Milestone v5.0 Planetary Multi-Scale Biodynamics, Quantum Bio-Spintronics & Cellular Reprogramming OS Grand Meta-Orchestrator Engine
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous milestone v5.0 planetary multi-scale biodynamics, quantum bio-spintronics & cellular reprogramming os grand meta-orchestrator engine within Milestone v5.0.
+- **Decision**: Implemented `MilestoneV50MetaOrchestratorEngine`, `MilestoneV50MetaOrchestratorStudy`, `MilestoneV50MetaOrchestratorRepository`, and `/api/v1/milestone-v5-0-meta-orchestrator/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

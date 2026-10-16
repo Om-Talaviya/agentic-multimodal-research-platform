@@ -3425,3 +3425,9 @@ from database.models.biohybrid_microbial_fuel_cell_redox import (
     BiohybridMicrobialFuelCellRedoxItemProfile,
     BiohybridMicrobialFuelCellRedoxMetricTrace,
 )
+
+from database.models.milestone_v5_0_meta_orchestrator import (
+    MilestoneV50MetaOrchestratorStudy,
+    MilestoneV50MetaOrchestratorItemProfile,
+    MilestoneV50MetaOrchestratorMetricTrace,
+)
