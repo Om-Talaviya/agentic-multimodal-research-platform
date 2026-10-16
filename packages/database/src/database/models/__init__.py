@@ -3377,3 +3377,9 @@ from database.models.magnetotactic_bacterial_magnetosome_transport import (
     MagnetotacticBacterialMagnetosomeTransportItemProfile,
     MagnetotacticBacterialMagnetosomeTransportMetricTrace,
 )
+
+from database.models.denovo_rbs_translation_initiation_optimizer import (
+    DenovoRbsTranslationInitiationOptimizerStudy,
+    DenovoRbsTranslationInitiationOptimizerItemProfile,
+    DenovoRbsTranslationInitiationOptimizerMetricTrace,
+)

@@ -1,3 +1,4 @@
+from api.routes.denovo_rbs_translation_initiation_optimizer import router as denovo_rbs_translation_initiation_optimizer_router
 from api.routes.magnetotactic_bacterial_magnetosome_transport import router as magnetotactic_bacterial_magnetosome_transport_router
 from api.routes.single_cell_5hmc_droplet_profiler import router as single_cell_5hmc_droplet_profiler_router
 from api.routes.active_chiral_hydrodynamics_vorticity import router as active_chiral_hydrodynamics_vorticity_router
@@ -1425,3 +1426,4 @@ app.include_router(cryo_electron_ptychography_reconstruction_router, prefix=sett
 app.include_router(active_chiral_hydrodynamics_vorticity_router, prefix=settings.api_prefix)
 app.include_router(single_cell_5hmc_droplet_profiler_router, prefix=settings.api_prefix)
 app.include_router(magnetotactic_bacterial_magnetosome_transport_router, prefix=settings.api_prefix)
+app.include_router(denovo_rbs_translation_initiation_optimizer_router, prefix=settings.api_prefix)

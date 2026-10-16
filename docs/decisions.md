@@ -2525,3 +2525,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous engineered magnetotactic bacterial magnetosome nanowire steering & drug cargo transport simulator within Milestone v5.0.
 - **Decision**: Implemented `MagnetotacticBacterialMagnetosomeTransportEngine`, `MagnetotacticBacterialMagnetosomeTransportStudy`, `MagnetotacticBacterialMagnetosomeTransportRepository`, and `/api/v1/magnetotactic-bacterial-magnetosome-transport/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-552: Autonomous Deep Learning De Novo Ribosome Binding Site (RBS) Translation Initiation Rate Optimizer
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous deep learning de novo ribosome binding site (rbs) translation initiation rate optimizer within Milestone v5.0.
+- **Decision**: Implemented `DenovoRbsTranslationInitiationOptimizerEngine`, `DenovoRbsTranslationInitiationOptimizerStudy`, `DenovoRbsTranslationInitiationOptimizerRepository`, and `/api/v1/denovo-rbs-translation-initiation-optimizer/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
