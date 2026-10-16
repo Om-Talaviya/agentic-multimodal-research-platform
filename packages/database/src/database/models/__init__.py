@@ -3383,3 +3383,9 @@ from database.models.denovo_rbs_translation_initiation_optimizer import (
     DenovoRbsTranslationInitiationOptimizerItemProfile,
     DenovoRbsTranslationInitiationOptimizerMetricTrace,
 )
+
+from database.models.nanopore_electroosmotic_protein_folding import (
+    NanoporeElectroosmoticProteinFoldingStudy,
+    NanoporeElectroosmoticProteinFoldingItemProfile,
+    NanoporeElectroosmoticProteinFoldingMetricTrace,
+)

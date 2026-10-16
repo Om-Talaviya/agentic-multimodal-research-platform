@@ -2532,3 +2532,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous deep learning de novo ribosome binding site (rbs) translation initiation rate optimizer within Milestone v5.0.
 - **Decision**: Implemented `DenovoRbsTranslationInitiationOptimizerEngine`, `DenovoRbsTranslationInitiationOptimizerStudy`, `DenovoRbsTranslationInitiationOptimizerRepository`, and `/api/v1/denovo-rbs-translation-initiation-optimizer/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-553: Autonomous Nanopore Electro-Osmotic Trap Protein Native State Unfolding & Refolding Kinetics Modeler
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous nanopore electro-osmotic trap protein native state unfolding & refolding kinetics modeler within Milestone v5.0.
+- **Decision**: Implemented `NanoporeElectroosmoticProteinFoldingEngine`, `NanoporeElectroosmoticProteinFoldingStudy`, `NanoporeElectroosmoticProteinFoldingRepository`, and `/api/v1/nanopore-electroosmotic-protein-folding/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
