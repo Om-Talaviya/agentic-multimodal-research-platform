@@ -1,3 +1,4 @@
+from api.routes.cryo_electron_ptychography_reconstruction import router as cryo_electron_ptychography_reconstruction_router
 from api.routes.quantum_smlm_localization_filter import router as quantum_smlm_localization_filter_router
 from api.routes.epigenetic_reprogramming_yamanaka_factor_kinetics import router as epigenetic_reprogramming_yamanaka_factor_kinetics_router
 from api.routes.microfluidic_acoustic_droplet_dna_storage import router as microfluidic_acoustic_droplet_dna_storage_router
@@ -1417,3 +1418,4 @@ app.include_router(cryo_correlative_light_electron_tomography_clem_router, prefi
 app.include_router(microfluidic_acoustic_droplet_dna_storage_router, prefix=settings.api_prefix)
 app.include_router(epigenetic_reprogramming_yamanaka_factor_kinetics_router, prefix=settings.api_prefix)
 app.include_router(quantum_smlm_localization_filter_router, prefix=settings.api_prefix)
+app.include_router(cryo_electron_ptychography_reconstruction_router, prefix=settings.api_prefix)
