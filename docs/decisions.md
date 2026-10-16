@@ -2553,3 +2553,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous microfluidic high-pressure supercritical fluid nanoparticle encapsulation engine within Milestone v5.0.
 - **Decision**: Implemented `SupercriticalFluidNanoparticleEncapsulationEngine`, `SupercriticalFluidNanoparticleEncapsulationStudy`, `SupercriticalFluidNanoparticleEncapsulationRepository`, and `/api/v1/supercritical-fluid-nanoparticle-encapsulation/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-556: Autonomous Synthetic Mammalian Gene Circuit Feedback Integral Controller for Homeostatic Glucose Regulation
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous synthetic mammalian gene circuit feedback integral controller for homeostatic glucose regulation within Milestone v5.0.
+- **Decision**: Implemented `MammalianGeneCircuitHomeostaticControllerEngine`, `MammalianGeneCircuitHomeostaticControllerStudy`, `MammalianGeneCircuitHomeostaticControllerRepository`, and `/api/v1/mammalian-gene-circuit-homeostatic-controller/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

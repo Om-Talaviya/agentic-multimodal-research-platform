@@ -3401,3 +3401,9 @@ from database.models.supercritical_fluid_nanoparticle_encapsulation import (
     SupercriticalFluidNanoparticleEncapsulationItemProfile,
     SupercriticalFluidNanoparticleEncapsulationMetricTrace,
 )
+
+from database.models.mammalian_gene_circuit_homeostatic_controller import (
+    MammalianGeneCircuitHomeostaticControllerStudy,
+    MammalianGeneCircuitHomeostaticControllerItemProfile,
+    MammalianGeneCircuitHomeostaticControllerMetricTrace,
+)
