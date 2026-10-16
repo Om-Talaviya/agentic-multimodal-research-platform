@@ -2588,3 +2588,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous milestone v5.0 planetary multi-scale biodynamics, quantum bio-spintronics & cellular reprogramming os grand meta-orchestrator engine within Milestone v5.0.
 - **Decision**: Implemented `MilestoneV50MetaOrchestratorEngine`, `MilestoneV50MetaOrchestratorStudy`, `MilestoneV50MetaOrchestratorRepository`, and `/api/v1/milestone-v5-0-meta-orchestrator/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-561: Autonomous High-Throughput Deep Ocean Hydrothermal Vent Metagenomic Novel Enzyme Prospector
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous high-throughput deep ocean hydrothermal vent metagenomic novel enzyme prospector within Milestone v5.1.
+- **Decision**: Implemented `OceanHydrothermalMetagenomicEnzymeProspectorEngine`, `OceanHydrothermalMetagenomicEnzymeProspectorStudy`, `OceanHydrothermalMetagenomicEnzymeProspectorRepository`, and `/api/v1/ocean-hydrothermal-metagenomic-enzyme-prospector/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

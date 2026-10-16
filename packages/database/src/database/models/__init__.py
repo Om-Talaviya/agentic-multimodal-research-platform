@@ -3431,3 +3431,9 @@ from database.models.milestone_v5_0_meta_orchestrator import (
     MilestoneV50MetaOrchestratorItemProfile,
     MilestoneV50MetaOrchestratorMetricTrace,
 )
+
+from database.models.ocean_hydrothermal_metagenomic_enzyme_prospector import (
+    OceanHydrothermalMetagenomicEnzymeProspectorStudy,
+    OceanHydrothermalMetagenomicEnzymeProspectorItemProfile,
+    OceanHydrothermalMetagenomicEnzymeProspectorMetricTrace,
+)
