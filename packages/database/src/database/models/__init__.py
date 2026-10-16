@@ -3503,3 +3503,9 @@ from database.models.optogenetic_neuromodulatory_gpc_receptor_activator import (
     OptogeneticNeuromodulatoryGpcReceptorActivatorItemProfile,
     OptogeneticNeuromodulatoryGpcReceptorActivatorMetricTrace,
 )
+
+from database.models.deep_learning_protein_protein_docking_affinity import (
+    DeepLearningProteinProteinDockingAffinityStudy,
+    DeepLearningProteinProteinDockingAffinityItemProfile,
+    DeepLearningProteinProteinDockingAffinityMetricTrace,
+)

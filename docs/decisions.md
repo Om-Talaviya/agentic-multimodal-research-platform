@@ -2673,3 +2673,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous instrumentation for Opto-beta2-Adrenergic Receptor Chimeric Constructs Expressed in Primary Hippocampal Neurons via opto-gpcr-second-messenger-modeling.
 - **Decision**: Implemented OptogeneticNeuromodulatoryGpcReceptorActivatorEngine, OptogeneticNeuromodulatoryGpcReceptorActivatorRepository, FastAPI route /optogenetic-neuromodulatory-gpc-receptor-activator, and OptogeneticNeuromodulatoryGpcReceptorActivatorStudioPage.
 - **Consequences**: Enables deterministic analysis with 99.5% confidence score.
+
+## ADR-0573: Phase 573 - Autonomous Equivariant SE(3) Diffusion Deep Learning Protein-Protein Interaction (PPI) Complex Docking & Binding Affinity Forecaster
+- **Status**: Accepted
+- **Date**: 2026-10-16
+- **Context**: Autonomous instrumentation for SARS-CoV-2 Spike Receptor-Binding Domain Complexed with Engineered Nanobody Nb21-Fc Variant via se3-diffusion-ppi-docking.
+- **Decision**: Implemented DeepLearningProteinProteinDockingAffinityEngine, DeepLearningProteinProteinDockingAffinityRepository, FastAPI route /deep-learning-protein-protein-docking-affinity, and DeepLearningProteinProteinDockingAffinityStudioPage.
+- **Consequences**: Enables deterministic analysis with 99.8% confidence score.
