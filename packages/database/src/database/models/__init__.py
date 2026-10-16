@@ -3491,3 +3491,9 @@ from database.models.synthetic_dna_strand_displacement_neural_gate import (
     SyntheticDnaStrandDisplacementNeuralGateItemProfile,
     SyntheticDnaStrandDisplacementNeuralGateMetricTrace,
 )
+
+from database.models.single_cell_spatial_epigenomic_cut_and_tag import (
+    SingleCellSpatialEpigenomicCutAndTagStudy,
+    SingleCellSpatialEpigenomicCutAndTagItemProfile,
+    SingleCellSpatialEpigenomicCutAndTagMetricTrace,
+)

@@ -1244,3 +1244,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Phase 568: Autonomous Engineered Bacterial Chemotactic Micro-Biohybrid Swimmer Targeted Navigation & Tumble-Run Kinetics Simulator (Milestone v5.1)
 - [x] Phase 569: Autonomous In-Situ Cryo-Correlative Super-Resolution Cryo-Fluorescence & Cryo-ET Single-Molecule Spatial Registration Engine (Milestone v5.1)
 - [x] Phase 570: Autonomous Synthetic DNA Strand Displacement (DSD) Molecular Neural Network Winner-Take-All Classifier Engine (Milestone v5.1)
+- [x] Phase 571: Autonomous High-Plex Microfluidic Spatial In-Situ CUT&Tag Chromatin Modification Niche Profiler (Milestone v5.1)

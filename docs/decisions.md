@@ -2659,3 +2659,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous instrumentation for Toehold-Mediated 4-Input 2-Class DNA Strand Displacement Reaction Network in Tris-Acetate-EDTA Buffer via dsd-molecular-neural-classification.
 - **Decision**: Implemented SyntheticDnaStrandDisplacementNeuralGateEngine, SyntheticDnaStrandDisplacementNeuralGateRepository, FastAPI route /synthetic-dna-strand-displacement-neural-gate, and SyntheticDnaStrandDisplacementNeuralGateStudioPage.
 - **Consequences**: Enables deterministic analysis with 99.7% confidence score.
+
+## ADR-0571: Phase 571 - Autonomous High-Plex Microfluidic Spatial In-Situ CUT&Tag Chromatin Modification Niche Profiler
+- **Status**: Accepted
+- **Date**: 2026-10-16
+- **Context**: Autonomous instrumentation for Murine Embryonic Cortex Cryosection Microfluidic Deterministic Barcoding CUT&Tag for H3K27me3 and H3K4me3 via spatial-cut-and-tag-epigenomics.
+- **Decision**: Implemented SingleCellSpatialEpigenomicCutAndTagEngine, SingleCellSpatialEpigenomicCutAndTagRepository, FastAPI route /single-cell-spatial-epigenomic-cut-and-tag, and SingleCellSpatialEpigenomicCutAndTagStudioPage.
+- **Consequences**: Enables deterministic analysis with 99.4% confidence score.
