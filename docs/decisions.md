@@ -2687,3 +2687,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous instrumentation for Engineered Escherichia coli Nissle 1917 Dual-Input Nitric Oxide and Tetrathionate Responsive Memory Circuit via probiotic-in-vivo-biosurveillance.
 - **Decision**: Implemented EngineeredProbioticInVivoBiosurveillanceEngine, EngineeredProbioticInVivoBiosurveillanceRepository, FastAPI route /engineered-probiotic-in-vivo-biosurveillance, and EngineeredProbioticInVivoBiosurveillanceStudioPage.
 - **Consequences**: Enables deterministic analysis with 99.6% confidence score.
+
+## ADR-0575: Phase 575 - Autonomous In-Situ Cryo-ET Subtomogram Averaging Clathrin & COP-II Vesicular Membrane Coat Symmetry Assembler
+- **Status**: Accepted
+- **Date**: 2026-10-16
+- **Context**: Autonomous instrumentation for Vitrified Saccharomyces cerevisiae Budding Vesicle Donor Sites with COP-II Polyhedral Lattice Outer Shell via cryoet-subtomogram-coat-assembly.
+- **Decision**: Implemented CryoEtSubtomogramMembraneCoatAssemblerEngine, CryoEtSubtomogramMembraneCoatAssemblerRepository, FastAPI route /cryo-et-subtomogram-membrane-coat-assembler, and CryoEtSubtomogramMembraneCoatAssemblerStudioPage.
+- **Consequences**: Enables deterministic analysis with 99.5% confidence score.

@@ -3515,3 +3515,9 @@ from database.models.engineered_probiotic_in_vivo_biosurveillance import (
     EngineeredProbioticInVivoBiosurveillanceItemProfile,
     EngineeredProbioticInVivoBiosurveillanceMetricTrace,
 )
+
+from database.models.cryo_et_subtomogram_membrane_coat_assembler import (
+    CryoEtSubtomogramMembraneCoatAssemblerStudy,
+    CryoEtSubtomogramMembraneCoatAssemblerItemProfile,
+    CryoEtSubtomogramMembraneCoatAssemblerMetricTrace,
+)
