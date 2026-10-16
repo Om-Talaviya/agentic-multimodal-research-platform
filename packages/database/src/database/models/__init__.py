@@ -3389,3 +3389,9 @@ from database.models.nanopore_electroosmotic_protein_folding import (
     NanoporeElectroosmoticProteinFoldingItemProfile,
     NanoporeElectroosmoticProteinFoldingMetricTrace,
 )
+
+from database.models.optogenetic_gap_junction_calcium_network import (
+    OptogeneticGapJunctionCalciumNetworkStudy,
+    OptogeneticGapJunctionCalciumNetworkItemProfile,
+    OptogeneticGapJunctionCalciumNetworkMetricTrace,
+)

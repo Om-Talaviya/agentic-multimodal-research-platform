@@ -1,3 +1,4 @@
+from api.routes.optogenetic_gap_junction_calcium_network import router as optogenetic_gap_junction_calcium_network_router
 from api.routes.nanopore_electroosmotic_protein_folding import router as nanopore_electroosmotic_protein_folding_router
 from api.routes.denovo_rbs_translation_initiation_optimizer import router as denovo_rbs_translation_initiation_optimizer_router
 from api.routes.magnetotactic_bacterial_magnetosome_transport import router as magnetotactic_bacterial_magnetosome_transport_router
@@ -1429,3 +1430,4 @@ app.include_router(single_cell_5hmc_droplet_profiler_router, prefix=settings.api
 app.include_router(magnetotactic_bacterial_magnetosome_transport_router, prefix=settings.api_prefix)
 app.include_router(denovo_rbs_translation_initiation_optimizer_router, prefix=settings.api_prefix)
 app.include_router(nanopore_electroosmotic_protein_folding_router, prefix=settings.api_prefix)
+app.include_router(optogenetic_gap_junction_calcium_network_router, prefix=settings.api_prefix)
