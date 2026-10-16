@@ -2623,3 +2623,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous quantum entangled photon biological tissue multiphoton imaging resolution maximizer within Milestone v5.1.
 - **Decision**: Implemented `QuantumEntangledPhotonMultiphotonImagingEngine`, `QuantumEntangledPhotonMultiphotonImagingStudy`, `QuantumEntangledPhotonMultiphotonImagingRepository`, and `/api/v1/quantum-entangled-photon-multiphoton-imaging/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-566: Autonomous Programmable RNA-Targeted ADAR Deaminase Epitranscriptomic Editing Window Predictor
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous programmable rna-targeted adar deaminase epitranscriptomic editing window predictor within Milestone v5.1.
+- **Decision**: Implemented `RnaTargetedAdarDeaminaseEditingEngine`, `RnaTargetedAdarDeaminaseEditingStudy`, `RnaTargetedAdarDeaminaseEditingRepository`, and `/api/v1/rna-targeted-adar-deaminase-editing/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

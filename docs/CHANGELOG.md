@@ -1,5 +1,6 @@
 ## [v5.1.0] - Milestone v5.1 Autonomous Planetary Deep Metagenomics, Xenobiotic Biocatalysis & Neural Connectomics OS
 ### Added
+- Phase 566: Complete Autonomous Programmable RNA-Targeted ADAR Deaminase Epitranscriptomic Editing Window Predictor (`rna_targeted_adar_deaminase_editing`)
 - Phase 565: Complete Autonomous Quantum Entangled Photon Biological Tissue Multiphoton Imaging Resolution Maximizer (`quantum_entangled_photon_multiphoton_imaging`)
 - Phase 564: Complete Autonomous Acoustic Micro-Streaming Single-Cell Intracellular Delivery Sonoporation Engine (`acoustic_microstreaming_sonoporation_engine`)
 - Phase 563: Complete Autonomous Whole-Brain Nanoscale Connectomics Automated Volume Electron Microscopy Synapse Segmenter (`whole_brain_connectomics_synapse_segmenter`)

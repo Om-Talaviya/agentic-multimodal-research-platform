@@ -1,3 +1,4 @@
+from api.routes.rna_targeted_adar_deaminase_editing import router as rna_targeted_adar_deaminase_editing_router
 from api.routes.quantum_entangled_photon_multiphoton_imaging import router as quantum_entangled_photon_multiphoton_imaging_router
 from api.routes.acoustic_microstreaming_sonoporation_engine import router as acoustic_microstreaming_sonoporation_engine_router
 from api.routes.whole_brain_connectomics_synapse_segmenter import router as whole_brain_connectomics_synapse_segmenter_router
@@ -1453,3 +1454,4 @@ app.include_router(synthetic_xenobiotic_ubp_replication_fidelity_router, prefix=
 app.include_router(whole_brain_connectomics_synapse_segmenter_router, prefix=settings.api_prefix)
 app.include_router(acoustic_microstreaming_sonoporation_engine_router, prefix=settings.api_prefix)
 app.include_router(quantum_entangled_photon_multiphoton_imaging_router, prefix=settings.api_prefix)
+app.include_router(rna_targeted_adar_deaminase_editing_router, prefix=settings.api_prefix)

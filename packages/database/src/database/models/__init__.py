@@ -3461,3 +3461,9 @@ from database.models.quantum_entangled_photon_multiphoton_imaging import (
     QuantumEntangledPhotonMultiphotonImagingItemProfile,
     QuantumEntangledPhotonMultiphotonImagingMetricTrace,
 )
+
+from database.models.rna_targeted_adar_deaminase_editing import (
+    RnaTargetedAdarDeaminaseEditingStudy,
+    RnaTargetedAdarDeaminaseEditingItemProfile,
+    RnaTargetedAdarDeaminaseEditingMetricTrace,
+)
