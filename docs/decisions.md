@@ -2567,3 +2567,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous time-resolved femtosecond x-ray free-electron laser (xfel) macromolecular structural dynamics engine within Milestone v5.0.
 - **Decision**: Implemented `TimeResolvedXfelStructuralDynamicsEngine`, `TimeResolvedXfelStructuralDynamicsStudy`, `TimeResolvedXfelStructuralDynamicsRepository`, and `/api/v1/time-resolved-xfel-structural-dynamics/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-558: Autonomous Single-Molecule Mechanical Force Spectroscopy Chromatin Fiber Nucleosome Unwrapping Modeler
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule mechanical force spectroscopy chromatin fiber nucleosome unwrapping modeler within Milestone v5.0.
+- **Decision**: Implemented `SingleMoleculeChromatinNucleosomeUnwrappingEngine`, `SingleMoleculeChromatinNucleosomeUnwrappingStudy`, `SingleMoleculeChromatinNucleosomeUnwrappingRepository`, and `/api/v1/single-molecule-chromatin-nucleosome-unwrapping/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

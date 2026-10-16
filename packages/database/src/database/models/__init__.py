@@ -3413,3 +3413,9 @@ from database.models.time_resolved_xfel_structural_dynamics import (
     TimeResolvedXfelStructuralDynamicsItemProfile,
     TimeResolvedXfelStructuralDynamicsMetricTrace,
 )
+
+from database.models.single_molecule_chromatin_nucleosome_unwrapping import (
+    SingleMoleculeChromatinNucleosomeUnwrappingStudy,
+    SingleMoleculeChromatinNucleosomeUnwrappingItemProfile,
+    SingleMoleculeChromatinNucleosomeUnwrappingMetricTrace,
+)

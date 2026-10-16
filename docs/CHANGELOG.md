@@ -1,5 +1,6 @@
 ## [v5.0.0] - Milestone v5.0 Autonomous Planetary Multi-Scale Biodynamics, Quantum Bio-Spintronics & Cellular Reprogramming OS
 ### Added
+- Phase 558: Complete Autonomous Single-Molecule Mechanical Force Spectroscopy Chromatin Fiber Nucleosome Unwrapping Modeler (`single_molecule_chromatin_nucleosome_unwrapping`)
 - Phase 557: Complete Autonomous Time-Resolved Femtosecond X-ray Free-Electron Laser (XFEL) Macromolecular Structural Dynamics Engine (`time_resolved_xfel_structural_dynamics`)
 - Phase 556: Complete Autonomous Synthetic Mammalian Gene Circuit Feedback Integral Controller for Homeostatic Glucose Regulation (`mammalian_gene_circuit_homeostatic_controller`)
 - Phase 555: Complete Autonomous Microfluidic High-Pressure Supercritical Fluid Nanoparticle Encapsulation Engine (`supercritical_fluid_nanoparticle_encapsulation`)
