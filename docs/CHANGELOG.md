@@ -1,5 +1,6 @@
 ## [v5.0.0] - Milestone v5.0 Autonomous Planetary Multi-Scale Biodynamics, Quantum Bio-Spintronics & Cellular Reprogramming OS
 ### Added
+- Phase 549: Complete Autonomous Non-Equilibrium Active Chiral Hydrodynamics Swarming Vorticity Modeler (`active_chiral_hydrodynamics_vorticity`)
 - Phase 548: Complete Autonomous In-Cell Cryo-Electron Ptychography Phase-Plate Macromolecular Reconstruction Engine (`cryo_electron_ptychography_reconstruction`)
 - Phase 547: Complete Autonomous Quantum Super-Resolution Single-Molecule Localization Microscopy (SMLM) Quantum State Squeezing Filter (`quantum_smlm_localization_filter`)
 - Phase 546: Complete Autonomous Stochastic Pioneer Transcription Factor Yamanaka Reprogramming Trajectory Predictor (`epigenetic_reprogramming_yamanaka_factor_kinetics`)

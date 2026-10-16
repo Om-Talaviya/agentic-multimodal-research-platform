@@ -2504,3 +2504,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous in-cell cryo-electron ptychography phase-plate macromolecular reconstruction engine within Milestone v5.0.
 - **Decision**: Implemented `CryoElectronPtychographyReconstructionEngine`, `CryoElectronPtychographyReconstructionStudy`, `CryoElectronPtychographyReconstructionRepository`, and `/api/v1/cryo-electron-ptychography-reconstruction/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-549: Autonomous Non-Equilibrium Active Chiral Hydrodynamics Swarming Vorticity Modeler
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous non-equilibrium active chiral hydrodynamics swarming vorticity modeler within Milestone v5.0.
+- **Decision**: Implemented `ActiveChiralHydrodynamicsVorticityEngine`, `ActiveChiralHydrodynamicsVorticityStudy`, `ActiveChiralHydrodynamicsVorticityRepository`, and `/api/v1/active-chiral-hydrodynamics-vorticity/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

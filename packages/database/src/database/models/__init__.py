@@ -3359,3 +3359,9 @@ from database.models.cryo_electron_ptychography_reconstruction import (
     CryoElectronPtychographyReconstructionItemProfile,
     CryoElectronPtychographyReconstructionMetricTrace,
 )
+
+from database.models.active_chiral_hydrodynamics_vorticity import (
+    ActiveChiralHydrodynamicsVorticityStudy,
+    ActiveChiralHydrodynamicsVorticityItemProfile,
+    ActiveChiralHydrodynamicsVorticityMetricTrace,
+)
