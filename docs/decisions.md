@@ -2574,3 +2574,10 @@ Implement `DBMetagenomicSample`, `DBPathogenAbundance`, and `DBAntimicrobialResi
 - **Context**: Autonomous multi-modal research engine addressing autonomous single-molecule mechanical force spectroscopy chromatin fiber nucleosome unwrapping modeler within Milestone v5.0.
 - **Decision**: Implemented `SingleMoleculeChromatinNucleosomeUnwrappingEngine`, `SingleMoleculeChromatinNucleosomeUnwrappingStudy`, `SingleMoleculeChromatinNucleosomeUnwrappingRepository`, and `/api/v1/single-molecule-chromatin-nucleosome-unwrapping/*` REST API.
 - **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.
+
+## ADR-559: Autonomous Biohybrid Microbial Fuel Cell Extracellular Electron Shuttle Redox Kinetics Simulator
+- **Date**: 2026-10-16
+- **Status**: Accepted
+- **Context**: Autonomous multi-modal research engine addressing autonomous biohybrid microbial fuel cell extracellular electron shuttle redox kinetics simulator within Milestone v5.0.
+- **Decision**: Implemented `BiohybridMicrobialFuelCellRedoxEngine`, `BiohybridMicrobialFuelCellRedoxStudy`, `BiohybridMicrobialFuelCellRedoxRepository`, and `/api/v1/biohybrid-microbial-fuel-cell-redox/*` REST API.
+- **Consequences**: Standardized 3-tier architecture with zero breaking changes and complete test coverage.

@@ -3419,3 +3419,9 @@ from database.models.single_molecule_chromatin_nucleosome_unwrapping import (
     SingleMoleculeChromatinNucleosomeUnwrappingItemProfile,
     SingleMoleculeChromatinNucleosomeUnwrappingMetricTrace,
 )
+
+from database.models.biohybrid_microbial_fuel_cell_redox import (
+    BiohybridMicrobialFuelCellRedoxStudy,
+    BiohybridMicrobialFuelCellRedoxItemProfile,
+    BiohybridMicrobialFuelCellRedoxMetricTrace,
+)
