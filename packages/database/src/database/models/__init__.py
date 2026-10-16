@@ -3521,3 +3521,9 @@ from database.models.cryo_et_subtomogram_membrane_coat_assembler import (
     CryoEtSubtomogramMembraneCoatAssemblerItemProfile,
     CryoEtSubtomogramMembraneCoatAssemblerMetricTrace,
 )
+
+from database.models.single_molecule_fret_polymerase_fidelity_tracker import (
+    SingleMoleculeFretPolymeraseFidelityTrackerStudy,
+    SingleMoleculeFretPolymeraseFidelityTrackerItemProfile,
+    SingleMoleculeFretPolymeraseFidelityTrackerMetricTrace,
+)
