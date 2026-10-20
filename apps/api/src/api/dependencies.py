@@ -41,6 +41,7 @@ from database.repositories import (
     WorkspaceRepository,
 )
 from retrieval.bm25 import BM25Index
+from retrieval.chroma_store import ChromaVectorStore
 from retrieval.embedder import Embedder
 from retrieval.in_memory_store import InMemoryVectorStore
 from retrieval.indexer import KnowledgeIndexer
@@ -62,6 +63,21 @@ _bm25_index: Optional[BM25Index] = None
 _retriever: Optional[HybridRetriever] = None
 _indexer: Optional[KnowledgeIndexer] = None
 _memory_manager: Optional[ResearchMemoryManager] = None
+
+
+def _build_vector_store() -> VectorStore:
+    chroma_store = ChromaVectorStore(
+        persist_directory=str(settings.chroma_persist_directory)
+    )
+    if chroma_store.is_available:
+        logger.info(
+            "Using ChromaDB vector store",
+            persist_directory=str(settings.chroma_persist_directory),
+        )
+        return chroma_store
+    persist_path = str(settings.vector_store_persist_path)
+    logger.info("Using persistent in-memory vector store", persist_path=persist_path)
+    return InMemoryVectorStore(persist_path=persist_path)
 
 
 async def init_providers() -> None:
@@ -141,7 +157,7 @@ async def init_providers() -> None:
     
     # Initialize Retrieval & RAG services
     global _vector_store, _embedder, _bm25_index, _retriever, _indexer
-    _vector_store = InMemoryVectorStore()
+    _vector_store = _build_vector_store()
     _embedder = Embedder(model_router=_model_router)
     _bm25_index = BM25Index()
     _retriever = HybridRetriever(

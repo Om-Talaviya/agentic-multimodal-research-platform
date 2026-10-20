@@ -108,3 +108,5 @@ tmp/
 temp/
 *.tmp
 *.bak
+# Runtime vector store data
+data/

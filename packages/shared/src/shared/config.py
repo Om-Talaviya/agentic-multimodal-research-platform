@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     # Vector Store (ChromaDB)
     chroma_host: str = "localhost"
     chroma_port: int = 8000
+    chroma_persist_directory: Path = Path("./data/chroma")
+    vector_store_persist_path: Path = Path("./data/vector_store.json")
     
     # Redis
     redis_url: str = "redis://localhost:6379/0"
