@@ -29,7 +29,7 @@ allow-direct-references = true
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-select = ["E", "F", "I", "UP", "W", "C4", "C90", "ISC", "ICN", "PIE", "T20", "PYI", "PT", "QF", "RSE", "RET", "SIM", "TCH", "TRY", "PL", "ARG", "PTH", "ERA", "PD", "PGH", "PLW", "NPY", "CPY", "DTZ", "TID", "EXE"]
+select = ["E", "F", "I", "UP", "W", "C4", "C90", "ISC", "ICN", "PIE", "T20", "PYI", "PT", "RSE", "RET", "SIM", "TCH", "TRY", "PL", "ARG", "PTH", "ERA", "PD", "PGH", "PLW", "NPY", "CPY", "DTZ", "TID", "EXE"]
 ignore = ["E501", "ARG001", "ARG002"]
 
 [tool.pytest.ini_options]
