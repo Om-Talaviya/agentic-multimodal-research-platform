@@ -3527,3 +3527,10 @@ from database.models.single_molecule_fret_polymerase_fidelity_tracker import (
     SingleMoleculeFretPolymeraseFidelityTrackerItemProfile,
     SingleMoleculeFretPolymeraseFidelityTrackerMetricTrace,
 )
+
+from database.models.microfluidic_droplet_directed_evolution import (
+    MicrofluidicDropletDirectedEvolutionStudy,
+    MicrofluidicDropletDirectedEvolutionItemProfile,
+    MicrofluidicDropletDirectedEvolutionMetricTrace,
+)
+

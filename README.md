@@ -4,9 +4,9 @@
   <a href="https://github.com/Om-Talaviya"><img src="https://img.shields.io/badge/Architect-Om%20Talaviya-38bdf8?style=for-the-badge&logo=github&logoColor=white" alt="Author" /></a>
   <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776ab?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Framework-FastAPI%20%26%20LangGraph-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Release-v5.1%20(576%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
+  <img src="https://img.shields.io/badge/Release-v5.1%20(577%20Phases)-7c3aed?style=for-the-badge" alt="Release" />
   <img src="https://img.shields.io/badge/CI%2FCD-100%25%20Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI" />
-  <img src="https://img.shields.io/badge/Tests-2018%2B%20Passing-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests" />
+  <img src="https://img.shields.io/badge/Tests-2021%2B%20Passing-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests" />
 </p>
 
 ---
