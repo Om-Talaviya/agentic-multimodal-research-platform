@@ -3534,3 +3534,9 @@ from database.models.microfluidic_droplet_directed_evolution import (
     MicrofluidicDropletDirectedEvolutionMetricTrace,
 )
 
+from database.models.xenobiotic_pet_depolymerase import (
+    XenobioticPetDepolymeraseStudy,
+    XenobioticPetDepolymeraseItemProfile,
+    XenobioticPetDepolymeraseMetricTrace,
+)
+
