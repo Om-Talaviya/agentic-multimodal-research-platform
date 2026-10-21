@@ -1251,3 +1251,4 @@ curl -X POST http://localhost:8000/api/v1/auth/login \
 - [x] Phase 575: Autonomous In-Situ Cryo-ET Subtomogram Averaging Clathrin & COP-II Vesicular Membrane Coat Symmetry Assembler (Milestone v5.1)
 - [x] Phase 576: Autonomous Single-Molecule smFRET High-Fidelity DNA Polymerase Mismatch Proofreading & Exonuclease Kinetic Tracker (Milestone v5.1)
 - [x] Phase 577: Autonomous Microfluidic Droplet-Based Directed Evolution & Enzyme Fitness Landscape Navigator (Milestone v5.1)
+- [x] Phase 578: Autonomous Xenobiotic Polyethylene Terephthalate (PET) Plastic Enzymatic Depolymerase Engineering & Micro-Solvation Energy Forecaster (Milestone v5.1)
