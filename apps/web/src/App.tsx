@@ -214,14 +214,14 @@ import { CRISPRPrimeEditingPegDNAStudioPage } from './pages/CRISPRPrimeEditingPe
 import { CircRNABiogenesisStudioPage } from './pages/CircRNABiogenesisStudioPage';
 import { ADCDAROptimizationStudioPage } from './pages/ADCDAROptimizationStudioPage';
 import { MilestoneV19StudioPage } from './pages/MilestoneV19StudioPage';
-import { smFRETKineticsStudioPage as SmFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
+import { SmFRETKineticsStudioPage } from './pages/smFRETKineticsStudioPage';
 import { CRISPREpigeneticStudioPage } from './pages/CRISPREpigeneticStudioPage';
 import { TCellEngagerStudioPage } from './pages/TCellEngagerStudioPage';
 import { CFPSTXTLStudioPage } from './pages/CFPSTXTLStudioPage';
 import { PROTACKineticsStudioPage } from './pages/PROTACKineticsStudioPage';
 import { SpatialProteomicsCODEXStudioPage } from './pages/SpatialProteomicsCODEXStudioPage';
 import { MilestoneV18StudioPage } from './pages/MilestoneV18StudioPage';
-import { mRNACodonStudioPage as MRNACodonStudioPage } from './pages/mRNACodonStudioPage';
+import { MRNACodonStudioPage } from './pages/mRNACodonStudioPage';
 import { ChromatinLoopStudioPage } from './pages/ChromatinLoopStudioPage';
 import { CapsidAssemblyStudioPage } from './pages/CapsidAssemblyStudioPage';
 import { SpatialFluxStudioPage } from './pages/SpatialFluxStudioPage';

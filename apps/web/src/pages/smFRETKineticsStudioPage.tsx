@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, ShieldCheck, Zap, Sparkles, Activity } from 'lucide-react';
 
-export const smFRETKineticsStudioPage: React.FC = () => {
+export const SmFRETKineticsStudioPage: React.FC = () => {
   const [biomolecule, setBiomolecule] = useState('Hsp90 Molecular Chaperone Homodimer');
   const [donor, setDonor] = useState('Cy3 (Donor)');
   const [acceptor, setAcceptor] = useState('Cy5 (Acceptor)');
@@ -187,4 +187,4 @@ export const smFRETKineticsStudioPage: React.FC = () => {
   );
 };
 
-export default smFRETKineticsStudioPage;
+export default SmFRETKineticsStudioPage;

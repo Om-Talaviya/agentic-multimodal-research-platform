@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dna, ShieldCheck, Zap, Layers, Sparkles, Sliders } from 'lucide-react';
 
-export const mRNACodonStudioPage: React.FC = () => {
+export const MRNACodonStudioPage: React.FC = () => {
   const [proteinName, setProteinName] = useState('Personalized Neoantigen / Spike mRNA');
   const [host, setHost] = useState('Homo sapiens (Human)');
   const [gcTarget, setGcTarget] = useState(58.0);
@@ -163,4 +163,4 @@ export const mRNACodonStudioPage: React.FC = () => {
   );
 };
 
-export default mRNACodonStudioPage;
+export default MRNACodonStudioPage;
