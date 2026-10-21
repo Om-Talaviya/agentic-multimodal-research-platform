@@ -1,3 +1,4 @@
+from api.routes.xenobiotic_pet_depolymerase import router as xenobiotic_pet_depolymerase_router
 from api.routes.microfluidic_droplet_directed_evolution import router as microfluidic_droplet_directed_evolution_router
 from api.routes.single_molecule_fret_polymerase_fidelity_tracker import router as single_molecule_fret_polymerase_fidelity_tracker_router
 from api.routes.cryo_et_subtomogram_membrane_coat_assembler import router as cryo_et_subtomogram_membrane_coat_assembler_router
@@ -1477,4 +1478,5 @@ app.include_router(engineered_probiotic_in_vivo_biosurveillance_router, prefix=s
 app.include_router(cryo_et_subtomogram_membrane_coat_assembler_router, prefix=settings.api_prefix)
 app.include_router(single_molecule_fret_polymerase_fidelity_tracker_router, prefix=settings.api_prefix)
 app.include_router(microfluidic_droplet_directed_evolution_router, prefix=settings.api_prefix)
+app.include_router(xenobiotic_pet_depolymerase_router, prefix=settings.api_prefix)
 
